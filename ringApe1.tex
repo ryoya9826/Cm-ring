@@ -1,0 +1,65 @@
+\part[Appendix \thepart, Various Example]{様々な例}
+
+Counter example of Commutative Algebra を目指したい.
+
+\section{加群の同型と相等}
+
+加群について,全単射準同型の存在,すなわち同型$M\cong N$と,集合としての相等$M=N$は区別しなければならない.例えば中山の補題で大変なことになる.次の例を見てみよう.
+
+\begin{ex}
+	$A$を環, $x$を零因子でない元とする. $A$加群として$A\cong xA$であるので,中山の補題(\ref{cor:NAK})からある$a\in A$で$a-1\in(x),aA=0$となるものが存在する. $aA=0$より$a=0$であり, $-1\in (x)$となるので$x$は可逆である.
+\end{ex}
+
+この結果は明らかに正しくない.矛盾を引き起こした理由は\textbf{同型}であって\textbf{相等}ではないときに中山の補題を適用してしまったからである.このように加群の同型をイコールと思って扱うと大変なことになってしまうので注意を必要とする.
+\section{ED,PID,UFD}
+\begin{surex}
+	体$K$について, $K[X,X^{-1}]$はPIDである.
+\end{surex}
+
+\begin{proof}
+	$I$を$K[X,X^{-1}]$のイデアルとする.これはNoetherなので$I=(f_1,\dots,f_r)$とできる. $f_1,\dots,f_r$に現れる負ベキの項は高々有限個だから,ある$n\geq0$が存在して$X^nf_i\in K[X]$とできる. $(X^nf_1,\dots,X^nf_r)$を$K[X]$のイデアルとみると,これはPIDなので$(X^nf_1,\dots,X^nf_r)=(g)$となる$g\in K[X]$が存在し, $K[X,X^{-1}]$のイデアルとしても$(f_1,\dots,f_r)=(g)$となる.
+\end{proof}
+\begin{surex}[UFDだがPIDでない環]
+	体$K$について, $K[X,Y]$はUFDだがPIDではない.
+\end{surex}
+
+\begin{surex}[PIDだがEDでない環]
+	$\Z[(1+\sqrt{-19})/2]$はPIDだがEDではない.
+\end{surex}
+
+PIDだがEDでない環は,このように2次体の整数環についてよく知られているが,次の定理が知られている(証明は\cite{goel2018nullstellenstze}を見よ).
+
+\begin{thm}
+	$b,c\in\R$を$b>0,c>0$とする. $\R[X,Y]/(X^2+bY^2+c)$はPIDであるがEDではない.
+\end{thm}
+
+\begin{proof}
+	$\R[X,Y]/(X^2+bY^2+c)$は$b>0,c>0$のときEDではない(\cite{goel2018nullstellenstze},系2.17).また, $\R[X,Y]/(X^2+bY^2+c)$がPIDであることは$c>0$と同値である(\cite{goel2018nullstellenstze},系2.18).
+\end{proof}
+
+\section{次元論}
+\begin{surex}[無限次元のNoether整域の例(\citealp{nagatakan})]\label{ex:無限次元Noether環}
+	$k$を体とし, $A=k[x_1,\dots,x_n,\dots]$を可算無限個の変数をもつ多項式環とする.自然数の増加列$\{n_i\}$を, $n_i-n_{i-1}<n_{i+1}-n_i$が成り立つように取る. $P_i=(x_{n_i},\dots, x_{n_{i+1}-1})$とおく. これらは素イデアルであるから, $\bigcup P_i$の$A$における補集合を$S$とすると,これは積閉である. $S^{-1}A$は無限次元のNoether整域となる.
+\end{surex}
+
+\begin{proof}
+実際, $S^{-1}A$の素イデアルは$\bigcup P_i$に含まれる$A$の素イデアルであることを考えると$\dim S^{-1}A=\infty$であることは明らか. Noetherであることは,次の補題から従う.
+		
+\begin{lem}
+	環$A$について,以下の2つ;
+	\begin{sakura}
+		\item $\ideal{m}$が$A$の極大イデアルならば, $A_{\ideal{m}}$はNoetherである.
+		\item 任意の$0\neq x\in A$について, $x$を含む$A$の極大イデアルは有限個しかない.
+	\end{sakura}
+		を満たすならば, $A$はNoetherである.
+\end{lem}
+		
+\begin{proof}[\textbf{補題の証明}]
+	$I$を$A$のイデアルとする. (ii)より, $I$を含む極大イデアルは有限個しかない.それらを$\ideal{m}_1,\dots,\ideal{m}_s$としよう.任意の$x_0\in I$をとる. $x$を含む極大イデアルは有限個であるから,それを$\ideal{m}_1,\dots,\ideal{m}_s,\ideal{m}_{s+1},\dots,\ideal{m}_{s+r}$とする.各$1\leq j\leq r$について, $x_j\in I$で$x_j\not\in\ideal{m}_j$であるものがとれる.また, (i)より各$1\leq i\leq s$について$A_{\ideal{m}_i}$はNoetherなので, $IA_{\ideal{m}_i}$を生成する$I$の元は有限個である.それらを$x_{s+1},\dots,x_{s+t}$としよう. $I'=(x_0,\dots,x_t)$とおく.明らかに$I'\subset I$であるので, $A$自然な$A$加群の準同型$\iota:I'\hookrightarrow I$が存在する.このとき\ref{prop:局所的性質}を用いて$\iota$が全射であることを示す. $A$の極大イデアル$\ideal{m}$について, $\ideal{m}$が$\ideal{m}_1,\dots,\ideal{m}_s$のどれとも異なるとき, $I,I'\not\subset\ideal{m}$であるから, $IA_{\ideal{m}}=I'A_{\ideal{m}}=A_{\ideal{m}}$である.また$\ideal{m}_i (1\leq i\leq s)$については, $I'$は$IA_{\ideal{m}_i}$の生成元をすべて含むので, $I'A_{\ideal{m}_i}=IA_{\ideal{m}_i}$である.よって,任意の極大イデアルに$\iota$を誘導したものは全単射であるから,\ref{prop:局所的性質}によって$\iota$は全射,すなわち$I=I'$である.よって$I$は有限生成.
+\end{proof}
+		
+この補題が適用できることを見るために, $S^{-1}A$の極大イデアルは$S^{-1}P_i$のみであることを示そう. $P\in\spec A$が$P\subset\bigcup P_i$であるとすると, $P\subset P_i$となる$i$があることをいえば十分.任意の$a\in P$に対して, $a$を含む$P_j$たちは有限個なので,それをすべてとってきて$(a)\subset\bigcup_{j=1}^n P_j$とする.任意の$x\in P$に対し, $x$を含む$P_j$たちも有限個だから,ある$n'$に対して$(a,x)\subset\bigcup_{j=1}^{n'}P_j$とできる. Prime avoidanceより$(a,x)\subset P_{j}$となる$j\leq n'$がとれるが, $a\in P_j$より$j\leq n$でなければならず,すると$(a,x)\subset\bigcup_{j=1}^n P_j$である.よって, $x$は任意で, $n$のとりかたは$x$によらないので$P\subset\bigcup_{j=1}^n P_i$である.再びPrime avoidanceを使って$P\subset P_i$となる$i$がとれる.
+
+また, ${S^{-1}A}_{S^{-1}P_i}=A_{P_i}$であるので, $S^{-1}A$は補題を満たす.
+
+\end{proof}

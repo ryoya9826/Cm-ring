@@ -1,0 +1,1097 @@
+\part[Homological algebra]{ホモロジー代数}
+ホモロジー代数とは,圏の手法を用いてホモロジーの考察を行うものだが,その手法がSerreらの手によって可換環論に応用され,革命をもたらした.現代では,代数を研究する際の非常に有用な道具として使われている.初等的には,完全列とその乱れを調べる手法のことだと思って構わない.この章以降,\textbf{圏の簡単な知識を仮定する.}その内容については付録の特に圏,関手, Abel圏の節を見よ.
+\section{基本命題}
+この節では完全列について考えるときの基本的な道具となる, \textbf{5項補題}(five lemma), \textbf{蛇の補題}(snake's lemma), \textbf{分裂補題}(splitting lemma)を紹介しよう.また,常に$A$加群の圏$\operatorname{Mod}(A)$を考える.
+
+\begin{lem}\label{lem:核余核の可換性}
+	図式Figure.\ref{fig:核余核の可換性1}が可換ならば,核,余核に誘導される可換図式Figure.\ref{fig:核余核の可換性2}がある.
+	
+	\begin{minipage}{.30\textwidth}
+		\begin{figure}[H]
+			\centering
+			\begin{tikzcd}[row sep=scriptsize, column sep=scriptsize]
+			M_1\darrow[h_1]\nxcell[f]M_2\darrow[h_2]\\
+			N_1\nxcell[g]N_2
+			\end{tikzcd}
+			\caption{}\label{fig:核余核の可換性1}
+		\end{figure}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{.55\textwidth}
+		\begin{figure}[H]
+			\centering
+			\begin{tikzcd}[row sep=scriptsize, column sep=scriptsize]
+			0\nxcell\ker f\darrow[\varphi]\nxcell M_1\darrow[h_1]\nxcell[f]M_2\darrow[h_2]\nxcell\coker f\darrow[\psi]\nxcell0\\
+			0\nxcell\ker g\nxcell N_1\nxcell[g]N_2\nxcell\coker g\nxcell0
+			\end{tikzcd}
+			\caption{}\label{fig:核余核の可換性2}
+		\end{figure}
+	\end{minipage}
+
+\end{lem}
+
+\begin{proof}
+	任意の$x\in\ker f$について, $h_1(x)\in\ker g$であるので, $\varphi:\ker f\to\ker g;x\mapsto h_1(x)$が定まる.
+	
+	また, $\psi:\coker f\to\coker g;y+\im f\mapsto h_2(y)+\im g$が求める準同型を与える.実際$y+\im f=y'+\im f$ならば$y-y'\in\im f$なので,ある$x\in M_1$がとれて$h_2(y)-h_2(y')=g(h_1(x))\in\im g$である.よってwell-defined.
+\end{proof}
+\begin{lem}[5項補題]\index{ごこうほだい@5項補題}
+	2つの行が完全であるような次の可換図式;
+	\[\begin{tikzcd}
+		M_1\arrow[d,"h_1"]\nxcell[f_1]M_2\arrow[d,"h_2"]\nxcell[f_2]M_3\arrow[d,"h_3"]\nxcell[f_3]M_4\arrow[d,"h_4"]\nxcell[f_4]M_5\arrow[d,"h_5"]\\
+		N_1\nxcell[g_1]N_2\nxcell[g_2]N_3\nxcell[g_3]N_4\nxcell[g_4]N_5
+	\end{tikzcd}\]
+	について,次が成り立つ.
+	\begin{sakura}
+		\item $h_1$が全射で$h_2,h_4$が単射ならば$h_3$は単射.
+		\item $h_5$が単射で$h_2,h_4$が全射ならば$h_3$は全射.
+	\end{sakura}
+
+	特に$h_1,h_2,h_4,h_5$が同型ならば$h_3$も同型である.
+\end{lem}
+
+\begin{proof}
+	\begin{sakura}
+		\item \quad$h_3(x_3)=h_3(x_3')$とする.すると$f_3(x_3-x_3')\in\ker h_4=0$である.よって$x_3-x_3'\in\ker f_3=\im f_2$であるので, $x_3-x_3'=f_2(x_2)$とかける.ここで$g_2(h_2(x_2))=h_3(x_3-x_3')=0$より$h_2(x_2)\in\ker g_2=\im g_1$である.とって$h_2(x_2)=g_1(y_1)$とかけている.すると$h_1$が全射なので$h_2(x_2)=g_1(h_1(x_1))=h_2(f_1(x_1))$とかけている.よって$h_2$が単射だから$x_2-f_1(x_1)=0$である.すると$f_2(x_2-f_1(x_1))=x_3-x_3'=0$である.よって$h_3$は単射.
+		
+		\item\quad 任意の$y_3\in N_3$に対して, $h_4$が全射なので$g_3(y_3)=h_4(x_4)$となる$x_4$がとれる.すると$h_5(f_4(x_4))=g_4(h_4(x_4))=0$より$h_5$が単射であるから, $f_4(x_4)=0$である.よって$x_4\in\ker f_4=\im f_3$である.よって$f_3(x_3)=x_4$となる$x_3$がとれる.このとき$g_3(y_3)=h_4(x_4)=h_4(f_3(x_3))=g_3(h_3(x_3))$であるので, $y_3-h_3(x_3)\in\ker g_3=\im g_2$である.よって$h_2$の全射性から$y_3-h_3(x_3)=g_2(y_2)=g_2(h_2(x_2))=h_3(f_2(x_2))$とかける$x_2,y_2$が存在する.ゆえに$y_3=h_3(x_3+f_2(x_2))$となり全射である.
+	\end{sakura}
+\end{proof}
+
+\begin{lem}[蛇の補題]\index{へびのほだい@蛇の補題}
+	2つの行が完全であるような次の可換図式;
+	\[\begin{tikzcd}
+		& M_1\arrow[d,"f_1"]\nxcell[\varphi]M_2\arrow[d,"f_2"]\nxcell[\psi]M_3\arrow[d,"f_3"]\nxcell0\\
+		0\nxcell N_1\nxcell[\varphi']N_2\nxcell[\psi']N_3
+	\end{tikzcd}\]
+	を考えると,自然に誘導される射たちが存在して;
+	\[\begin{tikzcd}	
+	\ker f_1\nxcell[\bar{\varphi}]\ker f_2\nxcell[\bar{\psi}]\ker f_3\\[-1em]
+	&{}\nxcell[d]\coker f_1\nxcell[\bar{\varphi'}]\coker f_2\nxcell[\bar{\psi'}]\coker f_3
+	\end{tikzcd}\]
+	が完全になる.
+\end{lem}
+
+また, $\varphi$が単射であることと$\bar{\varphi}$が単射であること, $\psi'$が全射であることと$\bar{\psi'}$が全射であることは同値.
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+		(0\nxcell)\ker f_1\arrow[d]\nxcell[\bar{\varphi}]\ker f_2\arrow[d]\arrow[ddd,phantom,""{coordinate,name=Z}]\nxcell[\bar{\psi}]
+		\ker f_3\arrow[d]\arrow[r,"d",no head]
+		\arrow[llddd,near start,
+			rounded corners,
+			to path={ -- ([xshift=4.5em]\tikztostart.east)
+			|- (Z) [near end]\tikztonodes
+			-| ([xshift=-4.5em]\tikztotarget.west)
+			-- (\tikztotarget)}
+		]&{}\\
+		(0\nxcell) M_1\arrow[d,"f_1",near start]\nxcell[\varphi]M_2\arrow[d,"f_2",near start]\nxcell[\psi]M_3\arrow[d,"f_3",near start]\nxcell0\\[2em]
+		0\nxcell N_1\arrow[d]\nxcell[\varphi']N_2\arrow[d]\nxcell[\psi']N_3\arrow[d](\nxcell0)\\
+		&\coker f_1\nxcell[\bar{\varphi'}]\coker f_2\nxcell[\bar{\psi'}]\coker f_3(\nxcell0)
+	\end{tikzcd}
+	\caption{蛇の補題}
+\end{figure}
+
+\begin{proof}
+	\begin{step}
+		\item $\bar{\varphi},\bar{\psi}$の定義.
+		
+			$\varphi,\psi$を制限することで定義しよう.実際, $x\in\ker f_1$について, $f_2(\varphi(x))=\varphi'(f_1(x))=0$であるので, $\varphi(x)\in\ker f_2$である. $\psi$についても同様.
+			
+		\item $\bar{\varphi'},\bar{\psi'}$の定義.
+		
+			$\varphi',\psi'$を$\coker $に誘導することで定義しよう. well-definednessを確認しておく. $\bar{y}=\bar{y'}$と仮定すると, $y-y'\in\im f_1$より,ある$x\in M_1$で$y-y'=f_1(x)$となるものが存在する.すると$\varphi'(y-y')=f_2(\varphi(x))\in\im f_2$より$\bar{\varphi'(y)}=\bar{\varphi'(y')}$である.
+			
+		\item $d$の定義.
+		
+			$d:\ker f_3\to\coker f_1$を次のように定めよう. $x\in\ker f_3$に対し$\psi$が全射なので$\psi(x_2)=x$となる$x_2\in M_2$がとれる.このとき$f_2(x_2)\in\ker\psi'=\im\varphi'$となり,ただ１つの$y_1\in N_1$が存在して$f_2(x_2)=\varphi'(y_1)$である. $d(x)=\bar{y_1}\in\coker f_1$と定義する.
+			
+			この定義においてwell-deinfednessを確かめるには, $x_2$のとり方によらないことを見れば良い. $\psi(x_2)=\psi(x_2')=x$となっているとしよう.このとき$\varphi'(y_1')=f_2(x_2')$となる$y_1'$をとると, $\varphi'(y_1'-y_1)=f_2(x_2'-x_2)$であり, $x_2'-x_2\in\ker\psi=\im\varphi$より$\varphi(x_1)=x_2'-x_2$となる$x_i\in M_1$がとれる.すると$\varphi'(f_1(x_1))=f_2(x_2'-x_2)=\varpi'(y_1'-y_1)$となり, $\varphi'$は単射だから$y_1'-y_1=f_1(x_1)\in\im f_1$である.
+			
+		\item $d$の完全性のみ確認しておこう.
+		
+		\begin{sakura}
+			\item $\im\bar\psi=\ker d$であること.
+			
+			$x\in\im\bar\psi$をとる. $d(x)=0$を示せばよい. 定義から$x_2\in\ker f_2$が存在して$x_3=\psi(x_2)$とかけている.すると$\varphi'(y_1)=f_2(x_2)=0$となる$y_1$をとれば$d(x)=\bar{y_1}$だが, $y_1\in\ker\varphi'=0$である.よって$d(x)=0$である.
+			
+			$x\in\ker d$をとると, $x=\psi(x_2)$となる$x_2\in M_2$がとれる. $f_2(x_2)=\varphi'(y_1)$となる$y_1$について, $\bar{y_1}=d(x)=0$より$y_1\in\im f_1$である.よって$y_1=f_1(x_1)$となる$x_1\in M_1$をとる.すると$f_2(x_2)=\varphi'(y_1)=\varphi'(f_1(x_1))=f_2(\varphi(x_1))$であるので, $x_2-\varphi(x_1)\in\ker f_2$となる.このとき$\psi(x_2-\varphi(x_1))=\psi(x_2)=x_3$であるので, $x_3\in\im\bar\psi$である.
+		
+			\item $\im d=\ker\bar{\varphi'}$であること.
+			
+			$\bar{y_1}\in\im d$をとる. $d(x)=\bar{y_1}$とすると, $\psi(x_2)=x_3$となる$x_2$をとったとき, $f_2(x_2)=\varphi'(y_1')$となる$y_1'$について$\bar{y_1}=\bar{y_1'}$である.いま$\varphi(y_1')\in\im f_2$なので, $\bar{\varphi'}(\bar{y_1})=0$である.
+			
+			$\bar{y_1}\in\ker\bar{\varphi'}$をとる.すると$\varphi'(y_1)\in\im f_2$である.よって$\varphi'(y_1)=f_2(x_2)$となる$x_2\in M_2$がとれる.このとき$d(\psi(x_2))=\bar{y_1}$となる.
+		\end{sakura}
+	\end{step}
+\end{proof}
+
+\begin{defi}[分裂完全列]\index{ぶんれつかんぜんれつ@分裂完全列}
+	完全列;
+	\[\ses[\iota][\pi]{M_1}{M}{M_2}\tag{$\ast$}\]
+	について,次の条件;
+	\begin{sakura}
+		\item $i:M_2\to M$が存在して$\pi\circ i=\id_{M_2}$が成り立つ.
+		\item $p:M\to M_1$が存在して$p\circ\iota=\id_{M_1}$が成り立つ.
+	\end{sakura}
+	のどちらかが成り立つとき,完全列$(\ast)$は\textbf{分裂}(split)するという. 特に(i)を\textbf{左分裂}(left split), (ii)を\textbf{右分裂}(right split)という.
+\end{defi}
+
+\begin{lem}[分裂補題]\index{ぶんれつほだい@分裂補題}
+	完全列$\ses[\iota][\pi]{M_1}{M}{M_2}$について,以下の3つ;
+	\begin{sakura}
+		\item $M$は$M_1\oplus M_2$と同型.
+			
+		\item $i:M_2\to M$が存在して$\pi\circ i=\id_{M_2}$が成り立つ.
+		
+		\item $p:M\to M_1$が存在して$p\circ\iota=\id_{M_1}$が成り立つ.
+	\end{sakura}
+	は同値.すなわち,完全列が分裂していることと,中央の項が左右の項の直和であることが同値.
+\end{lem}
+
+\begin{proof}
+	\begin{eqv}[3]
+		\item 自然な$i:M_2\to M_1\oplus M_2$によって得られる.
+		
+		\item 任意の$x\in M$について, $x-i(\pi(x))\in\ker\pi=\im\iota$より, $y\in M_1$で$\iota(y)=x-i(\pi(x))$となるものが一意的に定まる.これによって$p:M\to M_1$を$p(x)=y$と定めると,題意を満たす.
+		
+		\item $\varphi:M\to M_1\oplus M_2;x\mapsto(p(x),\pi(x))$が同型射となる.
+		\begin{step}
+			\item 単射であること.
+			
+			$\varphi(x)=0$とすると, $p(x)=\pi(x)=0$であるので, $x\in\ker\pi=\im\iota$よりある$y\in M_1$が存在して$\iota(y)=x$とかける.すると$p(x)=y=0$なので$x=0$である.
+			
+			\item 全射であること.
+			
+			任意の$(x_1,x_2)\in M_1\oplus M_2$について, $\pi$が全射なのである$x\in M$が存在して$\pi(x)=x_2$である.このとき$\varphi(x+\iota(x_1))=(x_1,x_2)$となる.
+		\end{step}
+		
+	\end{eqv}
+\end{proof}
+
+\begin{thm}\label{thm:分裂しているなら完全性は保存される}
+	完全列$\ses{M_1}{M}{M_2}$が分裂しているとする.加群の圏への半完全関手$F$に対して;
+	\[\ses{F(M_1)}{F(M)}{F(M_2)}\]
+	は完全である.
+\end{thm}
+
+\begin{proof}
+	$F(p\circ\iota)=F(p)\circ F(\iota)=F(\id_{M_1})=\id_{F(M_1)}$より$F(\iota)$が単射であることがわかり,同様にして$F(\pi)$は全射である.
+\end{proof}
+\section{複体とホモロジー,コホモロジー}
+
+この節ではAbel圏$\mathscr{A}$で考えていく（付録Bもみよ）が,埋め込み定理（\ref{thm:埋め込み定理}）により加群だとおもって話を進めていく.つまり核,余核は今までどおりの見知った対象であると考え,元についての操作を行う.圏論的な考え方で議論を押し切って行くことを「アブストラクト・ナンセンス(abstract nonsense)」とよく言うが,これはごちゃごちゃした計算に頼ることなく,いわば考えている対象を\quo{上に}あげて,コホモロジーやスペクトル系列などの道具で計算してから地上に戻してみると証明したかったことがわかっている,といった状況のことをいう. \cite{kato}によれば「使われているすべてのコホモロジーは,みな導来関手」である.まずは導来関手を考えるためにホモロジー代数の基礎知識を集め,定義していこう.
+	
+\begin{defi}[複体]\index{ふくたい@複体}
+	Abel圏$\mathscr{A}$の対象の族$\{A_i\}_{i\in\Z}$と,射$d_i:A_{i+1}\to A_i$の族$\{d_i\}$で, $d_{i}\circ d_{i+1}=0$を満たすものを\textbf{（鎖）複体}(chain complex)という.これらをまとめて$A_\bullet$とかく.また, $\mathscr{A}$の対象の族$\{A^i\}_{i\in\Z}$と,射$d^i:A^i\to A^{i+1}$の族$\{d^i\}$で,~$d^i\circ d^{i-1}=0$を満たすものを\textbf{余鎖複体}(cochain complex)という.これらを$A^\bullet$とかく.
+\end{defi}
+
+射$d_i$を$i$次\textbf{境界作用素}(boundary operator)ともいう.\index{きょうかいさようそ@境界作用素} この定義の意味を考えてみよう.列（鎖）;
+\[\begin{tikzcd}
+\cdots\nxcell[d_{i+2}]A_{i+1}\nxcell[d_{i+1}]A_i\nxcell[d_i]A_{i-1}\nxcell[d_{i-1}]\cdots\nxcell A_0\nxcell[d_0]0
+\end{tikzcd}\]
+\[\begin{tikzcd}
+0\nxcell[d^0]A_0\nxcell\cdots\nxcell A^{i-1}\nxcell[d^{i-1}]A^i\nxcell[d^i]A^{i+1}\nxcell[d^{i+1}]\cdots
+\end{tikzcd}\]
+があったとき,ここから情報としてホモロジー,コホモロジーを取りたいわけだが,先の節ですこし口走ったように,その定義は$\ker$を$\im$で割ったものであるので,この定義が意味を持つのは$\im d_{i+1}\subset\ker d_i$であるとき,つまり$d_i\circ d_{i+1}=0$であるときである.これが複体の意味である.以後,単に複体といえば鎖複体を表すものとする.
+\begin{defi}[ホモロジー群,コホモロジー群]\index{ほもろじーぐん@ホモロジー群}\index{こほもろじーぐん@コホモロジー群}
+	$A_\bullet$を複体とする.各$i$に対して$\ker d_i/\im d_{i+1}$を$A_\bullet$の$i$次\textbf{ホモロジー群}(homology group)といい,~$H_i(A_\bullet)$で表す.余鎖複体$A^\bullet$については, $H^i(A^\bullet)=\ker d^i/\im d^{i-1}$を$i$次\textbf{コホモロジー群}(cohomology group)という.
+\end{defi}
+
+ホモロジー群とは$A_i$の部分商である.自然な全射をそれぞれ$\pi_i:\ker d_i\to H_i(A_\bullet),\pi^i:\ker d^i\to H^i(A^\bullet)$という.それぞれの対象がどうなっているかについていろいろと名前があるので,それを挙げておく.
+\begin{defi}[非輪状]\index{ひりんじょう@非輪状}
+	すべての$i>0$について$H_i(A_\bullet)=0$となるとき,つまり$\ker d_i=\im d_{i+1}$となるとき,~$A_\bullet$を完全(exact),ひいては\textbf{非輪状}(acyclic)という. $A^\bullet$についても同様.
+\end{defi}
+
+完全列そのものではどこのホモロジー,コホモロジーをとっても消えてしまう.しかし,見方を返せば完全列に関手を施して複体を作ったとき,そこでホモロジーが消えない,ということは完全性が乱れてしまった,ということにほかならない.以前取り上げた左(右)完全関手はその一例である.このようにホモロジーは鎖がどれだけ完全列から離れているかという\quo{乱れ}を計測する手段であるといえる.
+
+\begin{defi}[コサイクル,コバウンダリー]\index{コサイクル}\index{コバウンダリー}
+	$\ker d_i$の元を\textbf{サイクル,輪体}(cycle),~$\im d^{i+1}$の元を\textbf{バウンダリー,境界輪体}(boundary)という. $\ker d^i,\im d_{i-1}$については\textbf{コサイクル,余輪体}(cocycle), \textbf{コバウンダリー,余境界輪体}(coboundary)という.
+\end{defi}
+
+次に複体の圏について考えたい.そのために複体の間の射$f_\bullet:A_\bullet\to B_\bullet$を考えねばならない.射$f_i:A_i\to B_i$の族$\{f_i\}$ないし$\{f^i\}$で,次の図式;
+
+\begin{minipage}{.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		\cdots\arrow[r]&A_{i+1}\arrow[r,"d_{i+1}"]\arrow[d,"f_{i+1}"]&A_i\arrow[r,"d_i"]\arrow[d,"f_i"]&A_{i-1}\arrow[r]\arrow[d,"f_{i-1}"]&\cdots\\
+		\cdots\arrow[r]&B_{i+1}\arrow[r,"{d'}_{i+1}"]&B_i\arrow[r,"{d'}_{i}"]&B_{i-1}\arrow[r]&\cdots
+		\end{tikzcd}
+		\caption{複体の射}\label{fig:複体の射}
+	\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{.45\textwidth}
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+	\cdots\arrow[r]&A^{i-1}\arrow[r,"d^{i-1}"]\arrow[d,"f^{i-1}"]&A^i\arrow[r,"d^i"]\arrow[d,"f^i"]&A^{i+1}\arrow[r]\arrow[d,"f^{i+1}"]&\cdots\\
+	\cdots\arrow[r]&B^{i-1}\arrow[r,"{d'}^{i-1}"]&B^i\arrow[r,"{d'}^{i}"]&B^{i+1}\arrow[r]&\cdots
+	\end{tikzcd}
+	\caption{余鎖複体の射}\label{fig:余鎖複体の射}
+\end{figure}
+\end{minipage}
+
+を可換にするものを\textbf{複体の射}といい,~$f_\bullet,f^\bullet$とかく.まとめよう.
+\begin{defi}[複体の圏]
+	$\mathscr{A}$をAbel圏とする.対象を$\mathscr{A}$の複体,射を$f_\bullet$として定める圏を$\ch{A}$とかき, \textbf{複体の圏}という.また余鎖複体と$f^\bullet$のなす圏を$\coch{A}$とかく.
+\end{defi}\let\co\coch
+コホモロジーとは導来関手である,と述べたが,まずホモロジーをとることは関手になることをみよう.
+\begin{prop}
+	各$i$に対し,ホモロジー$H_i$は$\ch{A}$から$\mathscr{A}$への関手になる.
+\end{prop}
+\begin{proof}
+	複体の射$f_\bullet$について,~$H_i(f_\bullet)$を次で定めよう;
+	\[H_i(f_\bullet)=\widetilde{f}_i:H_i(A_\bullet)\to H_i(B_\bullet);x+\im d_{i+1}\mapsto f_i(x)+\im d_{i+1}'\]
+	$x\in\ker d_i$ならば$f_i(x)\in\ker d'_i$であるので,この定義は意味を持つ.well-definednessについても計算すれば明らかである.
+\end{proof}
+
+コホモロジーについても同様に$\coch{A}$から$\mathscr{A}$への関手になる.
+
+では,いつ$H_i(f_\bullet)=H_i(g_\bullet)$となるかを考えよう.まず$H_i(f_\bullet)=H_i(g_\bullet)$であることと,任意の$x\in\ker d_i$に対して$f_i(x)-g_i(x)\in\im d'_{i+1}$であることは同値である.ここで,射$s_i:A_i\to B_{i+1}$が存在して$f_i-g_i=(d'_{i+1}\circ s_i)+(s_{i-1}\circ d_i)$となるとき,~$x\in\ker d_i$なら$f_i(x)-g_i(x)\in\im d'_{i+1}$である.~このような$s^i$がすべての$i$でとれるとき,任意の次数のホモロジーが一致する.このとき$f_\bullet$と$g_\bullet$は\textbf{ホモトピー同値}であるという.
+\begin{defi}[ホモトピー同値]\index{ほもとぴーどうち@ホモトピー同値}
+	複体の射$f_\bullet,g_\bullet$に対し,射$s_i:A_i\to B_{i+1}$の族$\{s_i\}$で,各$i$に対し$f_i-g_i=(d'_{i+1}\circ s_i)+(s_{i-1}\circ d_i)$となるものが存在するとき,~$f_\bullet$と$g_\bullet$は\textbf{ホモトピー同値,ホモトピック}(homotopic)であるという.
+\end{defi}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}[row sep=huge, column sep=huge]
+	\cdots\arrow[r]&A_{i+1}\arrow[r,"d_{i+1}"]\arrow[d,"f_{i+1}",shift left=.5ex]\arrow[d,"g_{i+1}",swap,shift right =.5ex]\arrow[dl,"s_{i+1}",swap]&A_i\arrow[r,"d_i"]\arrow[d,"f_i",shift left=.5ex]\arrow[d,"g_i",swap,shift right=.5ex]\arrow[dl,"s_i",swap]&A_{i-1}\arrow[r]\arrow[d,"f_{i-1}",shift left=.5ex]\arrow[d,"g_{i-1}",swap,shift right=.5ex]\arrow[dl,"s_{i-1}",swap]&\cdots\arrow[dl]\\
+	\cdots\arrow[r]&B_{i+1}\arrow[r,"{d'}_{i+1}"]&B_i\arrow[r,"{d'}_{i}"]&B_{i-1}\arrow[r]&\cdots
+	\end{tikzcd}
+	\caption{複体の射のホモトピー同値}
+\end{figure}
+
+余鎖複体についても同様に少し調整し, $f^i-g^i=(d'^{i-1}\circ s^i)+(s^{i+1}\circ d^i)$とすればよい.
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}[row sep=huge, column sep=huge]
+	\cdots\arrow[r]&A^{i-1}\arrow[r,"d^{i-1}"]\arrow[d,"f^{i-1}",shift left=.5ex]\arrow[d,"g^{i-1}",swap,shift right =.5ex]\arrow[dl,"s^{i-1}",swap]&A^i\arrow[r,"d^i"]\arrow[d,"f^i",shift left=.5ex]\arrow[d,"g^i",swap,shift right=.5ex]\arrow[dl,"s^i",swap]&A^{i+1}\arrow[r]\arrow[d,"f^{i+1}",shift left=.5ex]\arrow[d,"g^{i+1}",swap,shift right=.5ex]\arrow[dl,"s^{i+1}",swap]&\cdots\arrow[dl]\\
+	\cdots\arrow[r]&B^{i-1}\arrow[r,"{d'}^{i-1}"]&B^i\arrow[r,"{d'}^{i}"]&B^{i+1}\arrow[r]&\cdots
+	\end{tikzcd}
+	\caption{余鎖複体の射のホモトピー同値}
+\end{figure}
+\begin{exer}
+	ホモトピー同値は同値関係である.
+\end{exer}
+複体に加法的関手を施すことを考えよう.というのも,加法的関手$F$に対して,~$\mathscr{A}$の対象$A$における導来関手$R^iF(A)$を対応させたいからである.前述の通り$F$が完全関手でなければ非輪状な(完全な)複体は,移した先ではもはや完全ではない.そこでのホモロジーを見ることで,どの程度関係が乱れたかを測りたい.そのためには移した先でも複体になっていることが必要である.
+\begin{prop}
+	$\mathscr{A},\mathscr{B}$をAbel圏とし,~$F:\mathscr{A}\to\mathscr{B}$を加法的関手とする.複体$A_\bullet\in\ch{A}$に対し;
+	\[\begin{tikzcd}
+	\cdots\nxcell F A_{i+1}\nxcell[F d_{i+1}]F A_i\nxcell[F d_i]F A_{i-1}\nxcell[F d_{i-1}]\cdots
+	\end{tikzcd}\]
+	は$\mathscr{B}$の複体となる.これを$F A_\bullet$とかく.
+\end{prop}
+\begin{proof}
+	$A_\bullet$が複体なので$d_i\circ d_{i+1}=0$である.~$F$が加法的関手なので$F(d_i)\circ F(d_{i+1})=F(d_i\circ d_{i+1})=F(0)=0$である.ゆえに複体となる.
+\end{proof}
+
+よってホモロジーをとることができる.
+
+\begin{exer}
+	ホモトピー同値は加法的関手で保たれる.
+\end{exer}
+
+しかし,そもそもは対象$A$の情報を取りたかったのである.とはいえ,ここまで複体に対してホモロジーを考えてきた.では,~$A$から定まる自然な複体についてコホモロジーを考えてみるのはどうだろうか.
+\begin{prop}
+	Abel圏$\mathscr{A}$は,~$\ch{A}$の部分圏になる.
+\end{prop}
+\begin{proof}
+	次の自然な鎖;
+	\[\begin{tikzcd}
+	\cdots\nxcell0\nxcell A\nxcell 0\nxcell\cdots
+	\end{tikzcd}\tag{$\ast$}\]
+	は複体になる.
+\end{proof}
+
+とはいえこの構成はあまりに自然すぎて,ここに加法的関手を施しても,たかだか$A$の前後でしか完全性は乱れない（加法的関手は0を0に移すからである）.そこで$A$を分解してみるのである.とはいえ,その分解はあくまで$A$の代わりであるので, （移す前の）ホモロジーは($\ast$)と一致することを要求する.それを実現してくれるのがここから話す\textbf{射影分解}である.コホモロジーでは\textbf{単射的分解}を用いる.
+
+\section{射影分解と単射的分解}
+前節の最後に話したことを図式で書いてみよう;
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+	\cdots\nxcell P_2\arrow[d]\nxcell[d_2]P_1\arrow[d]\nxcell[d_1]P_0\arrow[d,"\varepsilon"]\nxcell[d_0]0\arrow[d]\nxcell\cdots\\
+	\cdots\nxcell0\nxcell0\nxcell A\nxcell 0\nxcell\cdots\\
+	\end{tikzcd}
+	\caption{}\label{fig:射影分解したい}
+\end{figure}
+となる複体$P_\bullet$で,ホモロジーを取ると$H_0(P_\bullet)=\ker d_0/\im d_1=A,H_i(P_\bullet)=\ker d_i/\im d_{i+1}=0~(i\geq1)$となるものをうまく取りたい,ということであった.高次のホモロジーが消えているような$P_\bullet$を定義するために,まずはうまい$P_i$を取る必要がある.
+\begin{defi}[射影対象]\index{しゃえいたいしょう@射影対象}
+	Abel圏の対象$P$で,任意の完全列;
+	\[\begin{tikzcd}
+	A\nxcell[\varepsilon]A''\nxcell0
+	\end{tikzcd}\]
+	と$f:P\to A''$が与えられたとき,~$\varepsilon\circ\widetilde{f}=f$となる$f:P\to A$が必ず存在するとき,~$P$を\textbf{射影対象}(projective object)という.
+\end{defi}
+
+これは次の図式が可換になる$\widetilde{f}$の存在といえる.
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}[row sep=huge, column sep=huge]
+		A\nxcell[\varphi]A''\nxcell0\\
+		P\arrow[u,"\widetilde{f}",dashed]\arrow[ur,"f"]
+	\end{tikzcd}
+	\caption{}
+\end{figure}
+射影加群(injective module)の定義を思い出そう.一般のAbel圏でも関手$\hom(N,-)$は左完全関手になる.射影加群の定義はこの関手を完全にする$M$のことであったが,射影対象も$\hom_{\mathscr{A}}(P,-)$が（$0\to A'\to A\to A''\to0$に対して）完全になる関手のことである,といってよい.これを用いて$A$の都合の良い分解を与える.
+
+\begin{defi}[射影分解]\index{しゃえいてきぶんかい@射影分解}
+	Abel圏$\mathscr{A}$の対象$A$について,単射的対象$P^i~(i\geq0)$がとれて;
+	\[\begin{tikzcd}
+	\cdots\nxcell[d_2]P_1\nxcell[d_1]P_0\nxcell[\varepsilon]A\nxcell0
+	\end{tikzcd}\]
+	が完全列であるとき, $d_0$を自然な零射とする複体;
+	\[\begin{tikzcd}
+	\cdots\nxcell P_2\nxcell[d_2]P_1\nxcell[d_1]P_0\nxcell[d_0]0
+	\end{tikzcd}\]
+	を$P_\bullet$と書いて,~$A$の\textbf{射影分解}(projective resolution)という.
+\end{defi}
+
+このとき, $H_0(P_\bullet)=\ker d_0/\im d_1=P_0/\ker\varepsilon=A$となっていることに注意しよう. 
+
+どんな$A$でも射影分解が行えるとは限らないが,分解の存在を保証してくれる条件はもちろんある.
+\begin{defi}
+	Abel圏$\mathscr{A}$の任意の対象$A$について, $\mathscr{A}$の射影対象$P$が存在して;
+	\[\begin{tikzcd}
+	P\nxcell[\varepsilon] A\nxcell0
+	\end{tikzcd}\]
+	が完全になるような$\varepsilon$が存在するとき, $\mathscr{A}$は\textbf{射影対象を十分に持つ}(has enough projectives)という.
+	
+\end{defi}
+
+射影対象を十分に持つなら,~$A$の射影分解が構成できることは演習問題としよう.
+
+\begin{prop}
+	$A$加群の圏$\operatorname{Mod}(A)$は射影対象を十分に持つ.
+\end{prop}
+
+\begin{proof}
+	$A$加群$M$について,自由加群$F$からの全射$\varepsilon:F\to M$が存在する.自由加群は射影加群（\ref{prop:自由加群は射影加群}）なので,題意は満たされる.
+\end{proof}
+
+次に単射的分解について考えよう. Figure.\ref{fig:射影分解したい}の余鎖複体バージョンを考えると,次のようになる;
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+	\cdots\nxcell0\arrow[d]\nxcell A\arrow[d,"\varepsilon"]\nxcell 0\arrow[d]\nxcell0\arrow[d]\nxcell\cdots\\
+	\cdots\nxcell0\nxcell I^0\nxcell[d^0] I^1\nxcell[d^1]I^2\nxcell[d^2]\cdots
+	\end{tikzcd}
+	\caption{}
+\end{figure}
+
+となる複体$I^\bullet$で,コホモロジーを取ると$H^0(I^\bullet)=\ker d^0=A,H^i(I^\bullet)=\ker d^i/\im d^{i-1}=0~(i\geq1)$となるものをうまく取りたい.
+
+\begin{defi}[単射的対象]\index{たんしゃてきたいしょう@単射的対象}
+	Abel圏の対象$I$で,任意の完全列;
+	\[\begin{tikzcd}
+	0\nxcell A'\nxcell[\varepsilon]A
+	\end{tikzcd}\]
+	と$f':A'\to I$が与えられたとき,~$f\circ\varepsilon=f'$となる$f:A\to I$が必ず存在するとき,~$I$を\textbf{単射的対象}(injective object)という.
+\end{defi}
+
+これは次の図式が可換になる$f$の存在といえる.
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}[row sep=huge, column sep=huge]
+	&&I\\
+	0\arrow[r]&A'\arrow[ur,"f'"]\arrow[r,"\varepsilon"]&A\arrow[u,dashed,"f"]
+	\end{tikzcd}
+	\caption{}
+\end{figure}
+
+\begin{defi}[単射的分解]\index{たんしゃてきぶんかい@単射的分解}
+	Abel圏$\mathscr{A}$の対象$A$について,単射的対象$I^i~(i\geq0)$がとれて;
+	\[\begin{tikzcd}
+	0\nxcell A\nxcell[\varepsilon]I^0\nxcell[d^0] I^1\nxcell[d^1]\cdots
+	\end{tikzcd}\]
+	が完全列であるとき,複体;
+	\[\begin{tikzcd}
+		0\nxcell I^0\nxcell[d^0] I^1\nxcell[d^1]I^2\nxcell[d^2]\cdots
+	\end{tikzcd}\]
+	を$I^\bullet$と書いて,~$A$の\textbf{単射的分解}(injective resolution)という.
+\end{defi}
+
+同様に, $H^0(I^\bullet)=\ker d^0=\im\varepsilon=A$であることに注意しよう.
+
+射影分解と同様に, \textbf{単射的対象を十分に持つ}なら単射的分解が必ずできる.
+
+\begin{defi}
+	Abel圏$\mathscr{A}$の任意の対象$A$について, $\mathscr{A}$の単射的対象$I$が存在して;
+	\[\begin{tikzcd}
+		0\nxcell A\nxcell[\varepsilon]I
+	\end{tikzcd}\]
+	が完全になるような$\varepsilon$が存在するとき, $\mathscr{A}$は\textbf{単射的対象を十分に持つ}(has enough injectives)という.
+\end{defi}
+
+$A$加群の圏$\operatorname{Mod}(A)$が単射的対象を十分に持つことを示すには,射影加群の場合と違って多少手間がかかる.
+
+\begin{prop}[Baer's Criterion]
+	$A$加群$I$が単射的であることと,すべての$A$のイデアル$\ideal{a}$に対して$\ideal{a}\to I$が$A\to I$に拡張できることは同値である.
+\end{prop}
+
+\begin{proof}
+	片方の矢印は明らか.~$M\subset N$を$A$加群とし,~$\varphi:M\to I$とする.ここで,~Zornの補題から$N'$を$M\subset N'\subset N$なる加群のうちで,~$\varphi$を拡張できる極大のものとしてとれる.ここで$N'\neq N$を仮定する.任意の$x\in N-N'$をとる.ここで$\ideal{a}=\mkset{a\in A}{ax\in N'}$は$A$のイデアルとなる.このとき$\ideal{a}\to N';a\mapsto ax$と$\varphi':N'\to A$の合成は,仮定より$\psi:A\to I$に持ち上がる.ここで;
+	\[\varphi'':N'+Ax\to I:n'+an\mapsto \varphi'(n')+\psi(a)\]
+	は,その構成から$N'$に制限すると$\varphi$に一致する.これは$N'$の極大性に矛盾.よって$I$は単射的となる. 
+\end{proof}
+
+\begin{cor}
+	$\Z$加群$\Q/\Z$は単射的である.
+\end{cor}
+
+$A$加群$M$に対し,~$T$を$\Z$加群とすると,~$M$の$T$双対$M^\ast=\hom_{\Z}(M,T)$は$a\cdot f:x\mapsto f(ax)$と定めることで$A$加群になる.
+\begin{lem}
+	$I$を単射的$\Z$加群とすると,射影加群$P$に対し,その$I$双対$P^\ast$は単射的である.
+\end{lem}
+\begin{proof}
+	$M\subset N$と$\varphi:M\to P^\ast$をとると;
+	\[M\times P\to I;(m,y)\mapsto \varphi(m)(y)\]
+	が$A$双線形になり,テンソル積の普遍性から$\psi:M\otimes P\to I$がある.ここで$P$は射影加群なので,平坦だから単射$M\otimes P\to N\otimes P$が存在する.このとき$I$の単射性から$\hat\psi:N\otimes P\to I$が存在し,これにより;
+	\[\hat\varphi:N\to P^\ast; x\mapsto (y\mapsto \hat\psi(x\otimes y))\]
+	が定まるが,これは構成から$x\in M$ならば$\hat\psi(x\otimes y)=\psi(x\otimes y)=\varphi(x)(y)$となり,~$\hat\varphi(x)=\varphi(x)$となる.よって$P^\ast$は単射的である.
+\end{proof}
+\begin{lem}
+	$A$加群$M$に対して,~$T=\Q/\Z$双対$M^\ast$の双対$M^{\ast\ast}$を考えると,単射$M\to M^{\ast\ast}$が存在する.
+\end{lem}
+\begin{proof}
+	次の準同型;
+	\[i:M\to M^{\ast\ast};x\mapsto (f\mapsto f(x))\]
+	が単射になる.~$i(x)=0$と仮定しよう.このとき$x=0$を示したいので,~$x\neq0$ならば,ある$f\in M^\ast$が存在して$f(x)\neq0$を示せば良い.
+	
+	$x$の$M$の位数が$n$ならば$f(x)=1/n+\Z$,~位数が無限なら$f(x)=1/2+\Z$と定義すると$\Z$準同型$m\Z\to T$が定まる.~$T$の単射性からこれは$M\to T$に持ち上がり,~$f(x)\neq0$である.
+\end{proof}
+\begin{thm}
+	$A$加群の圏は単射的対象を充分に持つ.
+\end{thm}
+\begin{proof}
+	$M$を$A$加群とする.~$M$の$T$双対$M^\ast$は生成系をとると,自由加群$P$からの全射$s:P\to M^\ast$が存在する.~$T$双対をとって$s^\ast:M^{\ast\ast}\to P^\ast;\varphi\mapsto\varphi\circ s$を考える.これは$s$が全射なので単射である.上の補題たちより$P^\ast$は単射的で,単射$M\hookrightarrow M^{\ast\ast}$が存在するので,~$M\hookrightarrow P^\ast=I$が存在する.
+\end{proof}
+
+\section{導来関手}
+
+いよいよ導来関手の定義である.
+\begin{defi}[左導来関手]\index{ひだりどうらいかんしゅ@導来関手}
+	$\mathscr{A,B}$をAbel圏とし,対象$A\in\mathscr{A}$と加法的右完全関手$F:\mathscr{A}\to\mathscr{B}$を考える.~$A$の射影分解$P_\bullet$について,~$F P_\bullet$も複体になる.これに対する$\mathscr{B}$の中でのホモロジー$H_i(F P_\bullet)$を$L_i F (A)$とかいて,~$L_iF$を$F$の$A$における$i$次\textbf{左導来関手}(left derived functor)という.
+\end{defi}
+
+\textbf{左}導来関手は\textbf{誤植ではない.} 右完全関手によって,複体（左に伸びる鎖）が左に伸びるホモロジーの列を作る（\ref{thm:左導来関手の特徴付け}をみよ）から左導来関手と呼ぶ.
+
+この定義では$P_\bullet$を無視して$L_i F(A)$と書いているのだから,射影分解のとり方によらないことを証明する必要がある（\ref{prop:左導来関手のwell-definedness}）.つまり$J_\bullet$を$A$の別の射影分解とすると,~$F$で送ったときにホモロジーが一致せねばならない.このことを\textbf{擬同型}であるという.
+
+\begin{defi}[擬同型]\index{ぎどうけいふくたい@擬同型(複体)}
+	複体$A_\bullet,B_\bullet$に対し,各$i$について$H_i(A_\bullet)=H_i(B_\bullet)$であるとき$A_\bullet$と$B_\bullet$は\textbf{擬同型}(quasi-isomorphic)であるという.
+\end{defi}
+
+この用語は余鎖複体$A^\bullet,B^\bullet$についてコホモロジーが一致するときにも用いられる.
+
+\begin{prop}\label{prop:左導来関手のwell-definedness}
+	$P_\bullet,Q_\bullet$を$A$の射影分解とすると,加法的右完全関手$F$について$F P_\bullet$と$F Q_\bullet$は擬同型である.
+\end{prop}
+\begin{proof}
+	
+まず,複体の射$f_\bullet:P_\bullet\to Q_\bullet,g_\bullet:Q_\bullet\to P_\bullet$を構成しよう.
+	
+全射$\varepsilon:P_0\to A,\varepsilon':Q_0\to A$を考える. $P_0$は射影的なので, $\varepsilon'$に対して$f_0:P_0\to Q_0$が存在する.次に$d_1'\circ f_1=f_0\circ d_1$となるような$f_1:P_1\to Q_1$を作りたい.
+	
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}	
+		\cdots\nxcell P_2\arrow[dd,"f_2",dashed]\nxcell[d_2]P_1\arrow[dd,dashed,"f_1"]\nxcell[d_1]P_0\arrow[dd,"f_0"]\arrow[dr,"\varepsilon"]\\[-1.5em]
+		&&&&A\nxcell0\\[-1.5em]
+		\cdots\nxcell Q_2\nxcell[d_2']Q_1\nxcell[d_1']Q_0\arrow[ur,"\varepsilon'"]
+	\end{tikzcd}
+	\caption{}
+\end{figure}
+	
+ここで, $\im(f_0\circ d_1)\subset\im d_1'$であるので,次の図式を考えることができ, $P_1$の射影性から$f_1$がとれる.可換性は構成から明らか.
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+		P_1\arrow[d,dashed,"f_1"]\arrow[dr,"f_0\circ d_1"]\\
+		Q_1\arrow[r,"d_1'"]&\im d_1'\nxcell0
+	\end{tikzcd}
+	\caption{}
+\end{figure}	
+	
+これを続けることで$f_\bullet$が構成され, $g_\bullet$も同様に作ることができる.	
+
+関手$F$を施して,ホモロジーをとることで,~$H_i(Fg_\bullet),H_i(Ff_\bullet)$が同型射であることを示せばよい.ここで;
+\[H_i(Fg_\bullet)\circ H_i(Ff_\bullet)=H_i(F(g_\bullet\circ f_\bullet))\]
+であるので,~$F(g_\bullet\circ f_\bullet)$と$F(\id_{P_\bullet}),F(f_\bullet\circ g_\bullet)$と$F(\id_{Q_\bullet})$がホモトピックであることを示せばよい. $g_\bullet\circ f_\bullet$と$\id_{P_\bullet}$がホモトピックであることを示そう.
+
+$h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n)$となる$\{s_n\}$を帰納的に作ろう.
+
+\begin{step}
+	\item $n=0$のとき.
+	
+	$\im h_0\subset\im d_1=\ker\varepsilon$なので, $P_１$の射影性から次の図式のように$s_0:P_0\to P_1$が$d_1\circ s_0=h_0$となるように作れる.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			&P_0\arrow[d,"h_0"]\arrow[ld,"s_0",dashed,swap]\\
+			P_1\nxcell[d_1]\im d_1\nxcell0
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+
+	\item $n=1$のとき.
+	
+	$\im (h_1-s_0\circ d_1)\subset\im d_2=\ker d_1$より, $P_2$の射影性から次の図式;
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			&P_1\arrow[d,"h_1-(s_0\circ d_1)"]\arrow[ld,"s_1",swap,dashed]\\
+			P_2\nxcell[d_2] \im d_2\nxcell 0
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+	
+	のように$s_1:P_1\to P_2$が$d_2\circ s_1=h_1-(s_0\circ d_1)$となるようにできる.
+
+	\item $n-1$まで正しいとき.
+	
+	同様に$\im (h_n-(s_{n-1}\circ d_n))\subset \im d_{n+1}=\ker d_n$なので, $P_{n+1}$の射影性から$s_n$が定まる.
+\end{step}
+
+
+よって$g_\bullet\circ f_\bullet$と$\id_{P_\bullet}$はホモトピックで, $f_\bullet\circ g_\bullet$と$\id_{Q_\bullet}$についても同様.以上から$H_i(FI_\bullet)=H_i(FJ_\bullet)$であることがわかった.
+\end{proof}
+
+これにより,左導来関手は射影分解のとり方によらない.次に右導来関手を考えよう.
+
+\begin{defi}[右導来関手]\index{みぎどうらいかんしゅ@右導来関手}
+	$\mathscr{A,B}$をAbel圏とし,対象$A\in\mathscr{A}$と加法的左完全関手$F:\mathscr{A}\to\mathscr{B}$を考える.~$A$の単射的分解$I^\bullet$について,~$F I^\bullet$も複体になる.これに対する$\mathscr{B}$の中でのコホモロジー$H^i(F I^\bullet)$を$R^i F (A)$とかいて,~$F$の$A$における$i$次\textbf{右導来関手}(right derived functor)という.
+\end{defi}
+
+右導来関手も単射的分解のとり方によらない.
+
+\begin{prop}\label{prop:右導来関手のwell-definedness}
+	$I^\bullet,J^\bullet$を$A$の単射的分解とすると,~$F I^\bullet$と$F J^\bullet$は擬同型である.
+\end{prop}
+\begin{proof}
+	単射$\varepsilon:A\to I^0,\varepsilon':A\to J^0$を考える.このとき$J^0$が単射的対象なので$f^0:I^0\to J^0$が存在する.
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		&&I^0\arrow[r,"d^0"]\arrow[dd,dashed,"f^0"]&I^1\nxcell[d^1]\cdots\\[-1.5em]
+		0\nxcell A\arrow[ru,"\varepsilon"]\arrow[dr,"\varepsilon'",swap]\\[-1.5em]
+		&&J^0\nxcell[d'^0]J^1\nxcell[d'^1]\cdots
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+
+	$\ker d^0\subset\ker(d'^0\circ f^0)$（たしかめよ）であるので, $\varphi:\im d^0\to \im (d'\circ f^0)\subset J^1$が$\varphi\circ d^0=d'^0\circ f^0$となるように定まる.これを$J^1$の単射性から持ち上げて$f^1$を得る.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			I^0\arrow[drr,"d'^0\circ f^0",bend right]\nxcell[d^0]\im d^0\arrow[rd,"\varphi"]\nxcell I^1\arrow[d,"f^1",dashed]\\
+			&&\ J^1
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+	
+	これを繰り返して複体の射$f^\bullet$を作ることができる. $g^\bullet$も同様.
+	
+	$H^i(Fg^\bullet),H^i(Ff^\bullet)$が同型射であることを示せばよい.左導来関手のときと同様に$g^\bullet\circ f^\bullet$と$\id_{I^\bullet}$がホモトピックであることを示そう.
+	
+	$h_n=\id_{I^n}-(g^n\circ f^n)$とおき, $s^n\circ d^{n-1}=h_{n-1}-(d^{n-1}\circ s^{n-1})$となるような$\{s^n\}$を帰納的に作ろう.左導来関手と違い$n=1$からの議論なことに注意する.
+	
+	まず$n=1$のとき, $\ker d^0\subset\ker h^0$なので, $\varphi:\im d^0\to\im h^0\subset I$が$\varphi\circ d^0=h^0$となるように定まる.これを$I^1$の単射性から持ち上げて$s^1$を得る.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			I^0\arrow[d,"h^0"]\nxcell[d^0]\im d^0\arrow[dl,"\varphi"]\nxcell I^1\arrow[lld,bend left,dashed,"s^1"]\\
+			I^0
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+	
+	次に$s^{n-1}$まで存在するとする.このとき$s^{n-1}\circ d^{n-2}=h_{n-2}-(d^{n-3}\circ s^{n-2})$であることに注意すると, $\ker d^{n-2}\subset\ker (h_{n-1}-(d^{n-2}\circ s^{n-1}))$であることが確かめられる.よって,次の図式から$s^n$の存在がわかる.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			I^{n-1}\arrow[d,"h_{n-1}-(d^{n-2}\circ s^{n-1})",swap]\nxcell[d^{n-1}]\im d^{n-1}\arrow[ld]\nxcell I^n\arrow[lld,dashed,"s^n",bend left]\\
+			I^{n-1}
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+	
+	 これを繰り返して$\id_{I^\bullet}$と$g^\bullet\circ f^\bullet$がホモトピックであることを得る.よって$H^i(FI^\bullet)=H^i(FJ^\bullet)$であることがわかった.
+\end{proof}
+
+ここでは共変関手のみ考えていたが,加法的反変右完全関手は単射分解から左導来関手を導き,加法的反変左完全関手は射影分解から右導来関手を導く.以後証明は共変関手のことしか考えない.また,これらの証明における$f_\bullet,f^\bullet$の構成を真似することで次の補題を得る.
+
+\begin{lem}\label{lem:分解への持ち上げ}
+	任意の射$\varphi:A\to B$と$A,B$の射影分解$P_\bullet,Q_\bullet$について,複体の射$\varphi_\bullet:P_\bullet\to Q_\bullet$を次の図式が可換になるようにとれる（単射分解についても同様）;
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			\cdots\nxcell P_2\arrow[dd,"\varphi_2",dashed]\nxcell[d_2]P_1\arrow[dd,"\varphi_1",dashed]\nxcell[d_1]P_0\arrow[dd,"\varphi_0",dashed]\nxcell[\varepsilon]A\arrow[dd,"\varphi"]\arrow[rd]\\[-1.5em]
+			&&&&&0\\[-1.5em]
+			\cdots\nxcell Q_2\nxcell[d_2']Q_1\nxcell[d_1']Q_0\nxcell[\varepsilon']B\arrow[ur]
+		\end{tikzcd}
+	\end{figure}
+	
+\end{lem}
+
+次に,複体の完全列について$H_n$を施すとどうなるのかを観察しよう.
+
+\begin{prop}[ホモロジー長完全列と連結射の存在]\label{lem:ホモロジー長完全列と連結射の存在}
+	複体の完全列$\ses[\varphi_\bullet][\psi_\bullet]{A_\bullet}{B_\bullet}{C_\bullet}$について,任意の$n$について$\partial_n:H_n(C_\bullet)\to H_{n-1}(A_\bullet)$が存在して;
+	\[\begin{tikzcd}
+	\cdots\nxcell[\partial_{n+1}]H_n(A_\bullet)\nxcell[]H_n(B_\bullet)\nxcell[]H_n(C_\bullet)\nxcell[\partial_{n}]\cdots\\
+	\nxcell[\partial_{1}]H_0(A_\bullet)\nxcell H_0(B_\bullet)\nxcell[]H_n(C_\bullet)\nxcell 0
+	\end{tikzcd}\]
+	が完全.
+\end{prop}
+
+この長完全列を$\ses{A_\bullet}{B_\bullet}{C_\bullet}$に伴う\textbf{ホモロジー長完全列}(long exact sequence of homologies)といい, $\partial_n$を\textbf{連結射}(connecting morphism)という.\index{れんけつしゃ@連結射}
+
+\begin{proof}
+	\begin{step}
+		\item 
+		
+		$A_\bullet$において, $d_n:A_n\to A_{n-1}$に対して;
+		\[\widetilde{d_n}:\coker d_{n+1}\to\ker d_{n-1};x+\im d_{n+1}\mapsto d_n(x)\]
+		と定めると,これはwell-definedである.このとき;
+		\[\begin{tikzcd}
+		0\nxcell\ker\widetilde{d_n}\nxcell\coker d_{n+1}\nxcell[\widetilde{d_n}]\ker d_{n-1}\nxcell\coker\widetilde{d_n}\nxcell0
+		\end{tikzcd}\]
+		は完全で,構成から$\ker\widetilde{d_n}=\ker d_n/\im d_{n+1}=H_n(A_\bullet),\coker\widetilde{d_n}=\ker/d_{n-1}/\im\widetilde{d_n}=H_{n-1}(A_\bullet)$なので,完全列;
+		\[\begin{tikzcd}
+		0\nxcell H_n(A_\bullet)\nxcell\coker d_{n+1}\nxcell[\widetilde{d_n}]\ker d_{n-1}\nxcell H_{n-1}(A_\bullet)\nxcell0
+		\end{tikzcd}\]
+		が得られた.
+		
+		\item 
+		
+		それぞれの複体の境界作用素を$d_{n,1},d_{n,2},d_{n,3}$とおくと,蛇の補題から次の可換図式がある.
+		\begin{figure}[H]
+			\centering
+			\begin{tikzcd}
+			0\nxcell\ker d_{n,1}\arrow[d]\nxcell[]\ker d_{n,2}\arrow[d]\arrow[ddd,phantom,""{coordinate,name=Z}]\nxcell[]
+			\ker d_{n,3}\arrow[d]\arrow[r,"",no head]
+			\arrow[llddd,near start,
+			rounded corners,
+			to path={ -- ([xshift=4.5em]\tikztostart.east)
+				|- (Z) [near end]\tikztonodes
+				-| ([xshift=-4.5em]\tikztotarget.west)
+				-- (\tikztotarget)}
+			]&{}\\
+			0\nxcell A_n\arrow[d,near start]\nxcell[\varphi_n]B_n\arrow[d,near start]\nxcell[\psi_n]C_n\arrow[d,near start]\nxcell0\\[2em]
+			0\nxcell A_{n-1}\arrow[d]\nxcell[\varphi_{n-1}]B_{n-1}\arrow[d]\nxcell[\psi_{n-1}]C_{n-1}\arrow[d]\nxcell0\\
+			&\coker d_{n-1,1}\nxcell[]\coker d_{n-2,2}\nxcell[]\coker d_{n-1,3}\nxcell0
+			\end{tikzcd}
+		\end{figure}
+		特に;
+		\[\begin{tikzcd}
+		\coker d_{n+1,1}\nxcell\coker d_{n+1,2}\nxcell\coker d_{n+1,3}\nxcell0
+		\end{tikzcd}\]
+		\[\begin{tikzcd}
+		0\nxcell\ker d_{n-1,1}\nxcell\ker d_{n-1,2}\nxcell\ker d_{n-1,3}
+		\end{tikzcd}\]
+		が完全である.すると,再び蛇の補題とStep.1から;
+		\begin{figure}[H]
+			\centering
+			\begin{tikzcd}
+			&H_n(A_\bullet)\arrow[d]\nxcell[\varphi_n]H_n(B_\bullet)\arrow[ddd,phantom,""{coordinate,name=Z}]\arrow[d]\nxcell[\psi_n]H_n(C_\bullet)\arrow[d]\arrow[r,"\partial_n",no head]
+			\arrow[llddd,near start,
+			rounded corners,
+			to path={ -- ([xshift=4.5em]\tikztostart.east)
+				|- (Z) [near end]\tikztonodes
+				-| ([xshift=-4.5em]\tikztotarget.west)
+				-- (\tikztotarget)}
+			]&{}\\
+			&\coker d_{n+1,1}\arrow[d,"\widetilde{d_{n,1}}",near start]\nxcell\coker d_{n+1,2}\arrow[d,"\widetilde{d_{n,2}}",near start]\nxcell\coker d_{n+1,3}\arrow[d,"\widetilde{d_{n,3}}",near start]\nxcell0\\[2em]
+			0\nxcell\ker d_{n-1,1}\arrow[d]\nxcell\ker d_{n-1,2}\arrow[d]\nxcell\ker d_{n-1,3}\arrow[d]\\
+			&H_{n-1}(A_\bullet)\nxcell[\varphi_{n-1}]H_{n-1}(B_\bullet)\nxcell[\psi_{n-1}]H_{n-1}(C_\bullet)
+			\end{tikzcd}
+		\end{figure}
+		が得られる.
+		
+		連結射$\partial_n$は,記号的には$\varphi_{n-1}^{-1}\circ d_{n,2}\circ \psi_n^{-1}$と書くことができる.
+	\end{step}
+\end{proof}
+
+\begin{prop}[連結射の可換性]\label{prop:連結射の可換性}
+	各行が完全であるような複体の可換図式;
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		0\nxcell A_\bullet\arrow[d,"f_\bullet"]\nxcell[\varphi_\bullet]B_\bullet\arrow[d,"g_\bullet"]\nxcell[\psi_\bullet]C_\bullet\arrow[d,"h_\bullet"]\nxcell0\\
+		0\nxcell A_\bullet'\nxcell[\varphi_\bullet']B_\bullet'\nxcell[\psi_\bullet']C_\bullet'\nxcell0
+		\end{tikzcd}
+	\end{figure}
+	について,各$n$と連結射$\partial_n:H_n(C_\bullet)\to H_{n-1}(A_\bullet),\delta_n:H_n(C_\bullet')\to H_{n-1}(A_\bullet')$に対して;
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		H_n(C_\bullet)\arrow[d,"H_n(h_n)"]\nxcell[\partial_n]H_{n-1}(A_\bullet)\arrow[d,"H_n(f_n)"]\\
+		H_n(C_\bullet')\nxcell[\delta_n]H_{n-1}(A_\bullet')
+		\end{tikzcd}
+	\end{figure}
+	が可換である.
+\end{prop}
+
+\begin{proof}
+	$\partial_n=\varphi_{n-1}^{-1}\circ d_{n,2}\circ\psi_n^{-1},\delta_n={\varphi_{n-1}'}^{-1}\circ{d_{n,2}}'\circ{\psi_n'}^{-1}$に注意すると, $\ker{d_{n,3}}/\im d_{n+1,3}$上で${\varphi_{n-1}'}^{-1}\circ{d_{n,2}'}\circ{\psi_n'}^{-1}\circ h_n=f_{n-1}\circ\varphi_{n-1}^{-1}\circ d_{n,2}\circ\psi_n^{-1}$に帰着するが,これは次の図式を追うことでわかる.
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}[row sep=scriptsize, column sep=scriptsize]
+		& A_n \arrow[dl] \arrow[rr] \arrow[dd] & & B_n \arrow[dl,"d_{n,2}",swap] \arrow[dd] \arrow[rr,"\psi_n"]&&C_n\arrow[dd,"h_n"]\arrow[ld]\\
+		A_{n-1} \arrow[rr, crossing over,"\varphi_{n-1}",near end] \arrow[dd,"f_{n-1}"] & & B_{n-1} \arrow[rr,crossing over]&& C_{n-1}\\
+		& A_n' \arrow[dl] \arrow[rr] & & B_n' \arrow[dl,"d_{n,2}'"] \arrow[rr,near start,"\psi_n'"]&&C_n'\arrow[ld]\\
+		A_{n-1}' \arrow[rr,"\varphi_{n-1}'"] & & B_{n-1}' \arrow[from=uu, crossing over]\arrow[rr]&&C_{n-1}'\arrow[from=uu,crossing over]\\
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+\end{proof}
+
+以上2つの結果はコホモロジーについても同様に成り立ち,\textbf{コホモロジー長完全系列}と連結射$\partial^n$の存在と可換性がいえる.
+
+\begin{thm}[左導来関手の特徴付け]\label{thm:左導来関手の特徴付け}
+	$F$を$\mathscr{A}\to\mathscr{B}$の加法的右完全関手とする.このとき$F$の左導来関手$L_iF$に対し次が成り立つ.
+	\begin{defiterm}{LDF}
+		\item $L_0 F\cong F$
+		\item $\mathscr{A}$の完全列$\ses[\varphi][\psi]{A_1}{A_2}{A_3}$
+		に対し,各$i\geq0$について連結射$\partial_{i+1}:L_{i+1}F(A_3)\to L_{i}F(A_1)$が存在して;
+		\[\begin{tikzcd}
+			\cdots\nxcell[\partial_{n+1}]L_nF(A_1)\nxcell[L_nF(\varphi)]L_nF(A_2)\nxcell[L_nF(\psi)]L_nF(A_3)\\
+			\nxcell[\partial_{n}]\cdots\\
+			\nxcell[\partial_{2}]L_1F(A_1)\nxcell[L_1F(\varphi)]L_1F(A_2)\nxcell[L_1F(\psi)]L_1F(A_3)\\
+			\nxcell[\partial_{1}]F(A_1)\nxcell[F(\varphi)]F(A_2)\nxcell[F(\psi)]F(A_3)\nxcell 0
+		\end{tikzcd}\]
+		が$\mathscr{B}$の完全列になる.
+		
+		\item $\mathscr{A}$の可換図式;
+		\[\begin{tikzcd}
+		0\nxcell A_1\arrow[d,"f"]\nxcell[\varphi]A_2\arrow[d,"g"]\nxcell[\psi]A_3\arrow[d,"h"]\nxcell0\\
+		0\nxcell B_1\nxcell[\lambda]B_2\nxcell[\mu]B_3\nxcell0
+		\end{tikzcd}\]
+		に対して,下の列について
+		の連結射を$\delta_i:L_{i+1}F(B_3)\to L_{i}F(B_1)$とすると,図式;
+		\[\begin{tikzcd}
+		L_{i+1}F(A_3)\arrow[d,"L_{i+1}F(h)"]\nxcell[\partial_i]L_iF(A_1)\arrow[d,"L_iF(f)"]\\
+		L_{i+1}F(B_3)\nxcell[\delta_i]L_iF(B_1)
+		\end{tikzcd}\]
+		が可換である.
+		
+		\item $P$を射影的対象とすると,~$i>0$について$L_iF(P)=0$である.
+	\end{defiterm}
+\end{thm}
+
+逆に, $F:\mathscr{A}\to\mathscr{B}$を加法的右完全な関手とする.このとき, $T_0,T_1,\cdots$という加法的な関手の列が;
+\begin{sakura}
+	\item 同型な自然変換$T^0\cong F$がある.
+	
+	\item $\mathscr{A}$の完全列$\ses[\varphi][\psi]{A_1}{A_2}{A_3}$について$\mathscr{B}$の射$\partial_n:T_{n+1}(A_3)\to T_n(A_1)$が存在して;
+	\[\begin{tikzcd}
+		\cdots\nxcell T_{n+1}(A_3)\nxcell[\partial_n] T_n(A_1)\nxcell T_n(A_2)\nxcell T_n(A_1)\nxcell[\partial_{n-1}]\cdots\\
+		&\cdots\nxcell[\partial_1] F(A_1)\nxcell F(A_2)\nxcell F(A_3)\nxcell 0 
+	\end{tikzcd}\]
+	が完全.
+	
+	\item $\mathscr{A}$での可換図式;
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			0\nxcell A_1\arrow[d]\nxcell A_2\arrow[d]\nxcell A_3\arrow[d]\nxcell0\\
+			0\nxcell B_1\nxcell B_2\nxcell B_3\nxcell0
+		\end{tikzcd}
+	\end{figure}
+	について, $\mathscr{B}$内で;
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			T_{i+1}(A_3)\arrow[d]\nxcell[\partial_i]T_i(A_1)\arrow[d]\\
+			T_{i+1}(B_3)\nxcell[\delta_i]\nxcell T_i(B_1)
+		\end{tikzcd}
+	\end{figure}
+	が可換.
+
+	\item $\mathscr{A}$の射影的対象$P$について, $i\geq1$について$T_i(P)=0$.
+\end{sakura}
+
+を満たすとき, $T_i$を$F$の左導来関手と定義することができる.
+
+\begin{proof}[\textbf{\ref{thm:左導来関手の特徴付け}の証明}]
+	\begin{defiterm}{LDF}
+		\item $A$の射影分解$P_\bullet$について, $L_0F(A)=H_0(FP_\bullet)=\ker F(d_0)/\im F(d_1)=F(P_0)/\im F(d_1)$であるが, $F$は右完全なので$\begin{tikzcd}
+			F(P_1)\nxcell[F(d_1)]F(P_0)\nxcell[F(\varepsilon)]F(A)\nxcell0
+		\end{tikzcd}$は完全.よって$\im F(d_1)=\ker F(d_1)$であるので, $L_0F(A)=F(P_0)/\ker F(d_1)=F(A)$である.
+		
+		\item $A_1,A_2,A_3$の射影分解からなる複体の完全列で,分裂しているものを作りたい. $A_1,A_3$の射影分解の初項を$P_{0,1},P_{0,3}$とする.ここで, $P_{0,2}=P_{0,1}\midoplus P_{0,3}$とおくと,これは射影的である.また,自然な単射,全射があって次の図式が考えられる;
+		\begin{figure}[H]
+			\centering
+			\begin{tikzcd}
+				&P_{0,1}\arrow[d,"\varepsilon_1"]\arrow[r,shift left=.5ex,"\iota_0"]&P_{0,2}\arrow[d,dashed,"\varepsilon_2"]\arrow[l,shift left=.5ex,"p_0"]\arrow[r,shift left=.5ex,"\pi_0"]&P_{0,3}\arrow[d,"\varepsilon_3"]\arrow[l,shift left=.5ex,"i_0"]\\
+				0\nxcell A_1\arrow[d]\nxcell[\varphi]A_2\arrow[d]\nxcell[\psi]A_3\arrow[d]\nxcell 0\\
+				&0&0&0
+			\end{tikzcd}
+			\caption{}\label{fig:LDF-1}
+		\end{figure}
+		これが可換になるような全射$\varepsilon_2:P_{0,2}\to A_2$を作りたい.まず, $P_{0,2}$の射影性から, $\varepsilon_3\circ\pi_0:P_{0,2}\to A_3$の拡張$\varepsilon_2':P_{0,2}\to A_2$が定まる.ここで$\varepsilon_2=\varphi\circ\varepsilon_1\circ p_0+\varepsilon_2'$とおくと,これは図式を可換にする全射となる（$\varepsilon_2'$だけみていると$P_{0,3}$の情報はでてくるが$P_{0,1}$の情報はでてこないので,そこを補おうという気持ち）. すると,蛇の補題から;
+		\[\ses{\ker\varepsilon_1}{\ker\varepsilon_2}{\ker\varepsilon_3}\]
+		は完全.ここで$A_1,A_3$の射影分解について境界作用素をそれぞれ$d_{i,1},d_{i,3}$としたとき$\ker\varepsilon_1=\im d_{1,1},\ker\varepsilon_3=\im d_{1,3}$であるので, $P_{1,2}=P_{1,1}\oplus P_{1,3}$とおくことで次の可換図式がある.
+		\begin{figure}[H]
+			\centering
+			\begin{tikzcd}
+				&P_{1,1}\arrow[d,"d_{1,1}"]\arrow[r,shift left=.5ex,"\iota_1"]&P_{1,2}\arrow[d,dashed,"d_{1,2}"]\arrow[l,shift left=.5ex,"p_1"]\arrow[r,shift left=.5ex,"\pi_1"]&P_{1,3}\arrow[d,"d_{1,3}"]\arrow[l,shift left=.5ex,"i_1"]\\
+				0\nxcell \im d_{1,1}\arrow[d]\nxcell[]\ker\varepsilon_2\arrow[d]\nxcell[]\im d_{1,3}\arrow[d]\nxcell 0\\
+				&0&0&0
+			\end{tikzcd}
+			\caption{}
+		\end{figure}
+		これはFigure.\ref{fig:LDF-1}と全く同様にして全射$d_{1,2}$の存在を導く.ゆえに, $A_1,A_2,A_3$の射影分解$P_{\bullet,1},P_{\bullet,2},P_{\bullet,3}$からなる複体の完全列で,分裂しているものができる.すると\ref{thm:分裂しているなら完全性は保存される}により$F$を施しても完全なので, \ref{lem:ホモロジー長完全列と連結射の存在}を適用することができる.
+		
+		\item 
+		
+		\ref{lem:分解への持ち上げ}と(LDF1)の証明から,それぞれの射影分解からなる複体の完全列で,行は分裂しているものができる.これに$F$と\ref{prop:連結射の可換性}を施して求める結果を得る.
+		
+		\item $\begin{tikzcd}\cdots\nxcell0\nxcell0\nxcell P\nxcell0
+		\end{tikzcd}$
+		自体が射影分解となることから明らか.
+	\end{defiterm}
+\end{proof}
+
+右導来関手についても同様に得られる.証明は省略するが,結果だけ述べておこう.
+
+\begin{thm}[右導来関手の特徴付け]\label{thm:右導来関手の特徴付け}
+	$F$を$\mathscr{A}\to\mathscr{B}$の加法的左完全関手とする.このとき$F$の導来関手$R^iF$に対し;
+	\begin{defiterm}{RDF}
+		\item $R^0 F\cong F$
+		\item $\mathscr{A}$の完全列$\ses[\varphi][\psi]{A_1}{A_2}{A_3}$に対し,各$i\geq0$について連結射$\partial^i:R^iF(A_3)\to R^{i+1}F(A_1)$が存在して;
+		\[\begin{tikzcd}[row sep=tiny, column sep=scriptsize]
+		0\nxcell F(A_1)\nxcell[F(\varphi)]F(A_2)\nxcell[F(\psi)]F(A_3)\nxcell[\partial^0]{}\cdots\\%	R^1F(A_1)\nxcell[R^1F(\varphi)]R^1F(A_2)\nxcell[R^1F(\psi)]R^1F(A_3)\nxcell[\partial^1]R^2F(A_1)\nxcell[R^2F(\varphi)]\cdots\\
+		{}\nxcell[\partial^{i-1}]R^iF(A_1)\nxcell[R^iF(\varphi)]R^iF(A_2)\nxcell[R^iF(\psi)]R^iF(A_3)\nxcell[\partial^i]\cdots
+		\end{tikzcd}\]
+		が$\mathscr{B}$の完全列になる.
+		
+		\item $\mathscr{A}$の可換図式;
+		\[\begin{tikzcd}
+		0\nxcell A_1\arrow[d,"f"]\nxcell[\varphi]A_2\arrow[d,"g"]\nxcell[\psi]A_3\arrow[d,"h"]\nxcell0\\
+		0\nxcell B_1\nxcell[\lambda]B_2\nxcell[\mu]B_3\nxcell0
+		\end{tikzcd}\]
+		に対して,~下の列についての連結射を$\delta^i:R^iF(B_3)\to R^{i+1}F(B_1)$とすると,図式;
+		\[\begin{tikzcd}
+		R^iF(A_3)\arrow[d,"R^iF(h)"]\nxcell[\partial^i]R^{i+1}F(A_1)\arrow[d,"R^{i+1}F(f)"]\\
+		R^iF(B_3)\nxcell[\delta^i]R^{i+1}F(B_1)
+		\end{tikzcd}\]
+		が可換である.
+		
+		\item $I$を単射的対象とすると,~$i>0$について$R^iF(I)=0$である.
+	\end{defiterm}
+\end{thm}
+
+\section{二重複体}
+導来関手の例として$\Tor,\Ext$を定義したいのだが,計算の必要性から\textbf{二重複体}についての知識が必要となる.
+
+\begin{defi}[二重複体]\index{にじゅうふくたい@二重複体}\label{defi:二重複体}
+	Abel圏$\mathscr{A}$の対象の族$\{X_{p,q}\}_{p,q\in\N}$と,射$d_{p,q}':X_{p,q}\to X_{p-1,q}, d_{p,q}'':X_{p,q}\to X_{p,q-1}$の族$\{d_{p,q}'\},\{d_{p,q}''\}$について;
+	\[d_{p-1,q}'\circ d_{p,q}'=0,\quad d_{p,q-1}''\circ d_{p,q}''=0,\quad d_{p-1,q}''\circ d_{p,q}'+d_{p,q-1}'\circ d_{p,q}''=0\]
+	が成り立つとき,これらをまとめて$X_{\bullet,\ast}$とかいて\textbf{二重複体}(double chain complex)という.
+\end{defi}
+
+
+\begin{figure}[H]
+	\centering
+		\begin{tikzcd}
+			&\vdots\arrow[d]&\vdots\arrow[d]&\vdots\arrow[d]\\
+			\cdots\nxcell X_{p+1,q+1}\arrow[d,"d_{p+1,q+1}''"]\nxcell[d_{p+1,q+1}']X_{p,q+1}\arrow[d,"d_{p,q+1}''"]\nxcell[d_{p,q+1}']X_{p-1,q+1}\arrow[d,"d_{p-1,q+1}''"]\nxcell\cdots\\
+			\cdots\nxcell X_{p+1,q}\arrow[d,"d_{p+1,q}''"]\nxcell[d_{p+1,q}']X_{p,q}\arrow[d,"d_{p,q}''"]\nxcell[d_{p,q}']X_{p-1,q}\arrow[d,"d_{p-1,q}''"]\nxcell\cdots\\
+			\cdots\nxcell X_{p+1,q-1}\arrow[d]\nxcell[d_{p+1,q-1}']X_{p,q-1}\arrow[d]\nxcell[d_{p,q-1}']X_{p-1,q-1}\arrow[d]\nxcell\cdots\\
+			&\vdots&\vdots&\vdots
+	\end{tikzcd}
+	\caption{二重複体}\label{fig:二重複体}
+\end{figure}
+
+双対的に,\textbf{二重余鎖複体}についても同様の定義ができる.
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+		&\vdots\arrow[d]&\vdots\arrow[d]&\vdots\arrow[d]\\
+		\cdots\nxcell X^{p-1,q-1}\arrow[d,"{d''}^{p-1,q-1}"]\nxcell[{d'}^{ p-1,q-1}]X^{p,q-1}\arrow[d,"{d''}^{p,q-1}"]\nxcell[{d'}^{p,q-1}]X^{p+1,q-1}\arrow[d,"{d''}^{p+1,q-1}"]\nxcell\cdots\\
+		\cdots\nxcell X^{p-1,q}\arrow[d,"{d''}^{p-1,q}"]\nxcell[{d'}^{p-1,q}]X^{p,q}\arrow[d,"{d''}^{p,q}"]\nxcell[{d'}^{p,q}]X^{p+1,q}\arrow[d,"{d''}^{p+1,q}"]\nxcell\cdots\\
+		\cdots\nxcell X^{p-1,q+1}\arrow[d]\nxcell[{d'}^{p-1,q+1}]X^{p,q-1}\arrow[d]\nxcell[{d'}^{p,q-1}]X^{p+1,q-1}\arrow[d]\nxcell\cdots\\
+		&\vdots&\vdots&\vdots
+	\end{tikzcd}
+	\caption{二重余鎖複体}
+\end{figure}
+
+本によって射が満たすべき性質が異なることに注意しておく.ここでは\cite{kawada},\cite{siho}に合わせた. \cite{kato}ではFigure.\ref{fig:二重複体}が可換であることを要請している. \cite{kato}のように;
+\[d_{p-1,q}'\circ d_{p,q}'=0,\quad d_{p,q-1}''\circ d_{p,q}''=0,\quad d_{p-1,q}''\circ d_{p,q}'=d_{p,q-1}'\circ d_{p,q}''\]
+を仮定すると,これは複体の複体となるので$\ch(\ch(\mathscr{A}))$の対象となる.一般にこれは二重複体にはならないが, $d_{p,q}''$を$-d_{p,q}''$に変えることにより二重複体が得られる.この対応は$\ch(\ch(\mathscr{A}))$と二重複体の圏の間の圏同値を与える.
+
+複体を二重複体とみなす自然な方法は（２つ）あることがすぐにわかるが,二重複体から複体を得ることもできる.以下ではとりあえず３通り紹介しよう.
+
+\begin{defi}[全複体]\index{ぜんふくたい@全複体}
+	二重複体$X_{\bullet,\ast}$について;
+	\[T_n=\bigoplus_{p+q=n} X_{p,q},\quad d_n=\sum_{p+q=n}(d_{p,q}'+d_{p,q}''):T_n\to T_{n-1}\]
+	と定めると$T_\bullet$は複体となる.これを$X_{\bullet,\ast}$の\textbf{全複体}(total chain complex)という.
+\end{defi}
+
+また、各行,列からも複体が作られる.
+\begin{defi}
+	二重複体$X_{\bullet,\ast}$について;
+	\[A_q=\coker d_{1,q}',\quad B_p=\coker d_{p,1}''\]
+	とおくと,\ref{lem:核余核の可換性}より定まる$d_q^A:A_q\to A_{q-1},d_p^B:P_p\to B_{p-1}$によって$\{A_q,d_q^A\},\{B_p,d_p^B\}$は複体となる.これを$X_{\bullet,\ast}$の\textbf{辺複体}(bordered chain complex)という.
+\end{defi}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+		&&&&\vdots\arrow[d]&\vdots\arrow[d]&\vdots\arrow[d]\\
+		&&&\cdots\nxcell X_{1,q}\arrow[d,"d_{1,q}''"]\nxcell[d_{1,q}'] X_{0,q}\darrow[d_{0,q}'']\nxcell[\varepsilon_q']A_q\darrow[d_q^A]\nxcell0\\
+		&&&\cdots\nxcell X_{1,q-1}\darrow\nxcell[d_{1,q-1}'] X_{0,q-1}\darrow\nxcell[\varepsilon_{q-1}']A_{q-1}\darrow\nxcell0\\
+		&\vdots\darrow&\vdots\darrow&{}&\vdots\darrow&\vdots\darrow&\vdots\darrow\\
+		\cdots\nxcell X_{p,1}\darrow[d_{p,1}'']\nxcell[d_{p,1}']X_{p-1,1}\darrow[d_{p-1,1}'']\nxcell\cdots\nxcell X_{1,1}\darrow[d_{1,1}'']\nxcell[d_{1,1}']X_{0,1}\darrow[d_{0,1}'']\nxcell[\varepsilon_1']A_1\darrow[d_1^A]\nxcell0\\
+		\cdots\nxcell X_{p,0}\darrow[{\varepsilon_q}'']\nxcell[d_{p,0}']X_{p-1,0}\darrow[{\varepsilon_{p-1}}'']\nxcell\cdots\nxcell X_{1,0}\darrow[\varepsilon_1'']\nxcell[d_{1,0}']X_{0,0}\darrow[\varepsilon_0'']\nxcell[\varepsilon_0']A_0\nxcell0\\
+		\cdots\nxcell B_p\darrow\nxcell[d_p^B] B_{p-1}\darrow\nxcell\cdots\nxcell B_1\darrow\nxcell[d_1^B]B_0\darrow\\
+		&0&0&&0&0
+	\end{tikzcd}
+	\caption{}
+\end{figure}
+
+\begin{thm}\label{thm:辺複体のhomologyは同型}
+	二重複体$X_{\bullet,\ast}$の全複体$T_\bullet$,辺複体$A_\bullet,B_\bullet$について,各$p,q$に対して次の列;
+	\[\begin{tikzcd}
+		\cdots\nxcell[d_{2,q}']X_{1,q}\nxcell[d_{1,q}']X_{0,q}\nxcell[\varepsilon_q']A_q\nxcell0
+	\end{tikzcd},\quad\begin{tikzcd}
+		\cdots\nxcell[d_{p,2}'']X_{p,1}\nxcell[d_{p,1}'']X_{p,0}\nxcell[\varepsilon_q'']B_q\nxcell0
+	\end{tikzcd}\]
+	が完全であるならば,ホモロジーについて$H_n(T_\bullet)=H_n(A_\bullet)=H_n(B_\bullet)$が成り立つ.
+\end{thm}
+\begin{proof}
+	全複体$T_\bullet$,辺複体$A_\bullet,B_\bullet$の間に複体の射;
+	\[\varphi_n:T_n\to A_n;(x_{p,q})_{p+q=n}\mapsto\varepsilon_n'(x_{0,n}),\quad\psi_n:T_n\to B_n;(x_{p,q})_{p+q=n}\mapsto\varepsilon_n''(x_{n,0})\]
+	が定義できる.例えば, $\varphi$について$\varphi_{n+1}\circ d_{n+1}=d_{n+1}^A\circ\varphi_n$を確かめることは簡単である. $\psi$も同様.
+
+	$H_n(\varphi_n):H_n(T_\bullet)\to H_n(A_\bullet)$が全単射であることを示そう. $H_n(\psi_n)$についても同様に示すことができる.
+	
+	\begin{step}
+		\item 単射であること.
+		
+		$(x_{p,q})_{p+q=n}\in\ker d_n$に対して, $\varepsilon_n'(x_{0,n})\in\im d_{n+1}^A$ならば$(x_{p,q})\in\im d_{n+1}$を示せばよい.まず, $\varepsilon_{n+1}'$は全射なので,ある$x_{0,n+1}\in X_{0,n+1}$が存在して$x_{0,n}-d_{0,n+1}''(x_{0,n+1})\in\ker\varepsilon_n'=\im d_{1,n}$である.ゆえに,ある$x_{1,n}\in X_{1,n}$が存在して$x_{0,n}=d_{1,n}'(x_{1,n})+d_{0,n+1}''(x_{0,n+1})$である.
+		
+		次に, $x_{1,n-1}$について,仮定から$d_{1,n-1}'(x_{1,n-1})+d_{0,n}''(x_{0,n})=0$である.すると$x_{0,n}=d_{1,n}'(x_{1,n})+d_{0,n+1}''(x_{0,n+1})$であったので;
+		\[d_{1,n-1}'(x_{1,n-1})+d_{0,n}''(x_{0,n})=d_{1,n-1}'(x_{1,n-1})+d_{1,n-1}'(d_{1,n}''(x_{1,n}))=0\]
+		となる.すなわち$x_{1,n-1}-d_{1,n}''(x_{1,n})\in\ker d_{1,n-1}'=\im d_{2,n-1}'$であるから, $x_{1,n-1}=d_{1,n}''(x_{1,n})+d_{2,n-1}'(x_{2,n-1})$となる$x_{2,n-1}\in X_{2,n-1}$がみつかる.
+		
+		以後帰納的に$x_{n,0}$まで続けることで$(x_{p,q})\in\im d_{n+1}$を示すことができる.
+		
+		\item 全射であること.
+		
+		任意の$x_n+\im d_{n+1}^A\in\ker d_n^A$について, $(x_{p+q})_{p+q=n}$を$(x_{p+q})\in\ker d_n,\varepsilon_n'(x_{0,n})=x_n$となるようにとりたい.
+		
+		まず, $\varepsilon_n'$は全射なので,ある$x_{0,n}$で$\varepsilon_n'(x_{0,n})=x_n$となるものが存在する.次に$d_{1,n-1}'(x_{1,n-1})+d_{0,n}''(x_{0,n})=0$となる$x_{1,n-1}$の存在を言いたいので, $-d_{0,n}''(x_{0,n})\in\im d_{1,n-1}'=\ker\varepsilon_{n-1}'$を示せばよいが, $d_n^A$の定義から$\varepsilon_{n-1}'\circ d_{0,n}''=d_n^A\circ\varepsilon_n'$であるので, $\varepsilon_n'(x_{0,n})=x_n\in\ker d_A$より成り立っていることがわかる.以後帰納的に続けることで条件を満たす$(x_{p,q})_{p+q=n}$を構成することができる.
+		
+	\end{step}
+\end{proof}
+
+全複体,辺複体の定義と\ref{thm:辺複体のhomologyは同型}は余鎖複体についても双対的に行うことができる.
+
+満を持して$\Tor$と$\Ext$の登場である.
+\begin{defi}[$\Tor$]\index{#Tor@$\Tor$}
+	加群$M$について,関手$M\otimes -$は右完全である.これによる左導来関手を$\Tor_n(M,-)$とかく.これをTor\textbf{関手}(Tor functor, torsion functor)という. 
+\end{defi}
+
+この定義からは, $\Tor(M,N)$を計算するには$N$の射影分解$P_\bullet$を計算する必要があるように思われるが,\ref{thm:辺複体のhomologyは同型}より次の定理を言うことができる.
+
+\begin{thm}[$\Tor$の可換性]
+	$A$加群$M,N$について, $M$の射影分解に$N$をテンソルした複体;
+	\[\begin{tikzcd}
+		\cdots Q_2\otimes N\nxcell Q_1\otimes N\nxcell Q_0\otimes N\nxcell0
+	\end{tikzcd}\]
+	の$n$次のホモロジーは$\Tor_n(M,N)$と同型である.特に$\Tor(M,N)\cong\Tor(N,M)$である.
+\end{thm}
+
+\begin{proof}
+	$M,N$の射影分解からなる複体を$Q_\bullet,P_\bullet$とする.ここで射影加群は平坦であることに注意すると,各$i,j$について次の複体たちは完全である;
+	\[\begin{tikzcd}
+		\cdots P_1\otimes Q_j\nxcell[d_1\otimes\id_{Q_j}] P_0\otimes Q_j\nxcell[\varepsilon\otimes\id_{Q_j}]N\otimes Q_j\nxcell0
+	\end{tikzcd}\]
+	\[\begin{tikzcd}
+		\cdots P_i\otimes Q_1\nxcell[\id_{P_i}\otimes d_1'] P_i\otimes Q_0\nxcell[\id_{P_i}\otimes\varepsilon']P_i\otimes M\nxcell0
+	\end{tikzcd}\]
+	よって,辺複体が$M\otimes P_\bullet,N\otimes Q_\bullet$である二重複体$P_\bullet\otimes Q_\ast$で,各行,列が完全なものができる.これに\ref{thm:辺複体のhomologyは同型}を適用して$\Tor(M,N)\cong\Tor(N,M)$を得る.
+\end{proof}
+
+\begin{defi}[$\Ext$]\index{#Ext@$\Ext$}
+	加群$M$について,関手$\hom(M,-)$は左完全である.これによる右導来関手を$\Ext^n(M,-)$とかき, $\Ext$\textbf{関手}(Ext functor, extension functor)という.
+\end{defi}
+
+$\Tor$と同様に, $\Ext(M,N)$の計算は$N$の\textbf{単射}分解と$M$の\textbf{射影}分解のどちらを計算しても良い（$\hom(-,N)$は反変左完全であるから）.
+
+
+
+
+
+
+
+
+
+
+%%---archive これいらなかった気がする・・・。
+%ここで$\Tor$の計算に使うため,平坦性の同値条件を示しておく.
+%\begin{prop}
+%	次の2つは同値である.
+%	\begin{sakura}
+%		\item 	$A$加群$L$は平坦である.
+%		\item   $L$を第3項とする任意の完全列$\ses{M_1}{M_2}{L}$
+%	について,任意の$A$加群$N$に対し;
+%	\[\ses{M_1\otimes N}{M_2\otimes N}{L\otimes N}\]
+%	が完全となる.
+%	\end{sakura}
+%\end{prop}
+%
+%\begin{proof}
+%	\begin{eqv}
+%		\item $N$について,射影加群$P$と全射$\varphi:P\to N$がとれるから,完全列;
+%		\[\ses[\iota][\varphi]{\ker\varphi}{P}{N}\]
+%		がある.ここで射影加群は平坦なので,次の可換図式があり,各行,列は完全である.
+%		\begin{figure}[H]
+%			\centering
+%			\begin{tikzcd}
+%				&&&0\arrow[d]\\
+%				&M_1\otimes\ker\varphi\arrow[d,"\id_{M_1}\otimes\iota"]\nxcell M_2\otimes\ker\varphi\arrow[d,"\id_{M_2}\otimes\iota"]\nxcell L\otimes\ker\varphi\arrow[d,"\id_L\otimes\iota"]\nxcell0\\
+%				0\nxcell M_1\otimes P\arrow[d]\nxcell M_2\otimes P\arrow[d]\nxcell L\otimes P\arrow[d]\nxcell0\\
+%				&M_1\otimes N\arrow[d]\nxcell M_2\otimes N\arrow[d]\nxcell L\otimes N\arrow[d]\nxcell0\\
+%				&0&0&0
+%			\end{tikzcd}
+%			\caption{}
+%		\end{figure}
+%		ここで$\coker\id_{M_1}\otimes\iota=M_1\otimes N,\coker\id_{M_2}\otimes\iota=M_2\otimes N,\coker\id_{L}\otimes\iota=L\otimes N$であるから,上2行について蛇の補題を使うと;
+%		\[\ses{M_1\otimes N}{M_2\otimes N}{L\otimes N}\]
+%		が完全である.
+%		\item 完全列;
+%		\[\ses{M_1}{M_2}{M_3}\]
+%		を考える.射影加群$P$で, $L$への全射$\varphi:P\to L$が存在するものを取ると, (ii)から次の可換図式で完全なものがとれる.
+%		\begin{figure}[H]
+%			\centering
+%			\begin{tikzcd}
+%				&0\arrow[d]&0\arrow[d]&0\arrow[d]\\
+%				&M_1\otimes\ker\varphi\arrow[d]\nxcell M_2\otimes\ker\varphi\arrow[d]\nxcell M_3\otimes\ker\varphi\arrow[d]\nxcell0\\
+%				0\nxcell M_1\otimes P\arrow[d]\nxcell M_2\otimes P\arrow[d]\nxcell M_3\otimes P\arrow[d]\nxcell0\\
+%				&M_1\otimes L\arrow[d]\nxcell M_2\otimes L\arrow[d]\nxcell M_3\otimes L\arrow[d]\nxcell0\\
+%				&0&0&0
+%			\end{tikzcd}
+%			\caption{}
+%		\end{figure}
+%		先ほどと同様に,蛇の補題から;
+%		\[\ses{M_1\otimes L}{M_2\otimes L}{M_3\otimes L}\]
+%		が完全である.
+%	\end{eqv}
+%\end{proof}
+%
+
+

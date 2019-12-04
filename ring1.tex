@@ -1,0 +1,991 @@
+\part[Preliminaries]{準備}
+この章では,基礎的なことを主に結果のみ集める.
+\section{加群}
+
+この節では,基礎事項のさらに基礎として簡単な定義をする.
+\begin{defi}[加群]\index{かぐん@加群}
+	$A$を環とし, $M$をAbel群とする. $A$の作用$A\times M\to M;(a,x)\mapsto ax$が存在して;
+	\begin{defiterm}{M}
+		\item $1x=x$
+		\item $a(bx)=(ab)x$
+		\item $(a+b)x=ax+bx$
+		\item $a(x+y)=ax+ay$
+	\end{defiterm}
+	をみたすとき, $M$と作用の組を$A$\textbf{加群}(module)という.
+\end{defi}
+
+$A$が非可換の時,作用が左（右）作用のとき左（右）加群という. $A$が可換のときは単に$A$加群という.右加群では(M2)の代わりに
+\[\textrm{(M2)}'\quad a(bx)=b(ax)\]
+を要請する必要がある.また, $A$が体のときは線形空間に他ならない.
+
+最初に注意しておいたとおり,以後すべて$A$は可換環として進める.
+\begin{prop}
+	任意の$a\in A$と$x\in M$に対して次が成立.
+	\[a0=0,0x=0,(-a)x=-ax\]
+\end{prop}
+
+証明は線形空間と同様.
+
+$A$加群の族$\{M_\lambda\}_{\lambda\in\Lambda}$に対して,直積$\prod M_\lambda$に$A$の作用を;
+\[a(x_\lambda)_{\lambda\in\Lambda}=(ax_\lambda)_{\lambda\in\Lambda}\]
+とすると, $\prod M_\lambda$は$A$加群になる.同様に,直和
+\[\bigoplus_{\lambda\in\Lambda}M_{\lambda}=\mkset{(x_\lambda)_{\lambda\in\Lambda}\in\prod M_\lambda}{\text{有限個の}\lambda\text{を除いて}x_\lambda=0\text{である}.}\]
+も加群になる.特に$\Lambda$が有限のとき,直積と一致する.
+
+\begin{defi}[準同型]
+	$M,N$を$A$加群とする. $\varphi:M\to N$が,任意の$a,b\in A$と$x,y\in M$に対し;
+	\[\varphi(ax+by)=a\varphi(x)+b\varphi(y)\]
+	を満たす時, $\varphi$を$A$準同型という.
+\end{defi}
+
+もちろん, $\varphi$が全単射の時$A$同型という.
+
+\begin{defi}[部分加群]
+	$A$加群$M$の部分集合$N$が,Abel群として$M$の部分群であり,任意の$a\in A$と$x\in N$に対して$ax\in N, $すなわち$A$の作用で閉じているとき$N$を部分加群であるという.
+\end{defi}
+
+$A$自身を$A$加群とみなすとき, $A$の部分加群とはまさに$A$のイデアルにほかならない.すると次の定義も自然だろう.
+\begin{defi}[剰余加群]\index{じょうよかぐん@剰余加群}
+	$M$を$A$加群とし, $N$をその部分加群とする.Abel群としての剰余群$M/N$に$A$作用を次のようにして定義する;
+	\[a(x+y)=ax+N\]
+	これを剰余加群という.
+\end{defi}
+
+\begin{thm}[準同型定理]
+	$\varphi:M\to N$を$A$加群の$A$準同型とすると, $\ker\varphi,\im\varphi$はそれぞれ$M,N$の部分加群で,同型;
+	\[M/\ker\varphi\cong\im\varphi\]
+	が成立する.
+\end{thm}
+\begin{proof}
+	群の準同型定理により引き起こされる同型写像に対して, $A$の作用のそれぞれの定義から明らか.
+\end{proof}
+
+\begin{defi}[イデアル商]\index{いであるしょう@イデアル商}
+	$A$を環とし, $\ideal{a},\ideal{b}$をイデアルとする.
+	\[(\ideal{a}:\ideal{b})=\mkset{x\in A}{x\ideal{b}\subset a}\]
+	を$\ideal{a}$と$\ideal{b}$の\textbf{イデアル商}(ideal quotient)という.
+\end{defi}
+
+これは$A$加群$M$に対しても,その部分加群について考えることができる.また,イデアル$(0:M)$を$M$の\textbf{零化イデアル}(anihilator)といい$\ann(M)$とかく. $\ann(M)=0$となる加群を\textbf{忠実}(faithful)であるという.
+
+次が基本的である.
+\begin{prop}\label{prop:加群商}
+	\begin{sakura}
+		\item $M\subset(M:N)$
+		\item $(M:N)N\subset M$
+		\item $((M:N):P)=(\ideal{ab}:P)=((M:P):N)$
+		\item $(\bigcap_\lambda M_\lambda:N)=\bigcap_\lambda (M_\lambda:N)$
+		\item $(M:\sum_\lambda N_\lambda)=\bigcap_\lambda (M:N_\lambda)$
+		\item $\ann (M+N)=\ann (M)\cap\ann (N)$
+		\item $(M:N)=\ann((M+N)/M)$
+	\end{sakura}
+\end{prop}
+
+証明は簡単なので省略する.
+
+線形空間の\quo{基底}に対応して,加群の基底について触れる.以下, $M$を$A$加群とし, $(u_\lambda)_{\lambda\in\Lambda}$（しばしば略して$(u_\lambda)$とかく）を$M$の元の族とする.
+
+\begin{defi}[生成系]\index{せいせいけい@生成系}
+	$M$の任意の元が$\sum_{\lambda\in\Lambda}a_\lambda u_\lambda ~(a_\lambda\in A)$とかけるとき, $(u_\lambda)$を$M$の\textbf{生成系}{system of generator}という.
+\end{defi}
+\begin{defi}[一次独立]\index{いちじどくりつ@一次独立}
+	$\sum a_\lambda u_\lambda=0$なら,任意の$\lambda\in\Lambda$に対し$a_\lambda=0$となるとき, $(u_\lambda)$は\textbf{一次独立}(linearly independent)であるという.無限集合$S$については$S$の任意の有限部分集合が一次独立のとき, $S$が一次独立であるという.
+\end{defi}
+\begin{defi}[基底]\index{きてい@基底}
+	$M$の任意の元が$\sum a_\lambda u_\lambda$の形に一意に書けるとき, $(u_\lambda)$は$M$の\textbf{基底}(basis)であるという.	
+\end{defi}
+
+それぞれ,準同型;
+\[\bigoplus_{\lambda\in\Lambda} A\to M;(a_\lambda)\mapsto\sum a_\lambda u_\lambda\]
+が,全射,単射,全単射であることとそれぞれ同値.特に, $(u_\lambda)$が基底であることは$(u_\lambda)$が一次独立な生成系であることと同値.
+
+\begin{defi}[自由加群]\index{じゆうかぐん@自由加群}
+	$M$が基底を持つとき, $M$を\textbf{自由加群}(free module)という.
+\end{defi}
+
+線形代数の復習として,基底の存在は保証されていること,その濃度は一意的であることを思い出そう.
+\begin{thm}
+	体$K$上の加群$V$は自由加群であり,その基底の濃度は一定である.
+\end{thm}
+%\begin{proof}
+%	\begin{mrkw}
+%		\item 基底が存在すること.
+%		
+%		$V=0$のときは示すことがない. $V\neq0$とする. $V$の部分集合の族
+%		\[\mathscr{S}=\mkset{S\subset V}{S\text{は}K\text{上一次独立}}\]
+%		が,包含関係による帰納的順序集合になることを示す.まず, $x\neq0$なら$\{x\}\in\mathscr{S}$より$\mathscr{S}\neq\emptyset$である. $\{S_\alpha\}_{\alpha\in A}$を$\mathscr{S}$の全順序部分集合とする. $S_\infty=\bigcup_{\alpha\in A}S_\alpha$とすると,任意の$S_\infty$の有限部分集合$S'\subset S_\infty$に対し,ある$\alpha$を選べば$S'\subset S_\alpha$となり, $S_\alpha$の一次独立性から$S'$も一次独立.よって$S_\infty$は一次独立となり, $S_\infty \in\mathscr{S}$である.よって, $S_\infty$は$\{S_\alpha\}$の上界を与えるので, $\mathscr{S}$は帰納的である.よって,Zornの補題より$\mathscr{S}$は極大元$\mathcal{B}$を持つ. $\mathcal{B}$は一次独立なので,これが生成系になることを示せば良い. $\mathcal{B}$が生成する部分加群を, $\mathcal{B}=(b_\lambda)_{\lambda\in\Lambda}$とおいて, $KB=\mkset{\sum a_\lambda b_\lambda}{a_\lambda\in K}$とする. $V\setminus KB\neq\emptyset$と仮定して, $x\in V\setminus KB$をとる.すると, $\mathcal{B}\cup \{x\}$は$\mathcal{B}$を含むので,一次独立ではありえない.よって,すべてが0でない$a,a_i(1\leq i\leq n)$があって;
+%		\[ax+\sum_{i=1}^n a_ib_i=0\]
+%		となる.ここで$a=0$とすると$(b_\lambda)$が一次独立でなくなり矛盾するので$a\neq0$である. $K$が体なので$x=-a^{-1}\sum_{\lambda\in\Lambda}a_\lambda b_\lambda\in KB$となり矛盾.よって, $V=KB$である.
+%		\item 濃度が一定であること.
+%		\begin{sakura}
+%			\item $\mathcal{B}$が有限のとき.
+%			
+%			$V$の任意の一次独立な$S$について, $\#S\leq\#B$を示せば良い. $\#B=n$として, $B=\{b_1,\dots,b_n\}$としよう. $n<\#S$と仮定すると, $\nitem{y}\in S$は基底の延長定理より$V$の基底をなす.よって, $S$は一次独立でなくなり,矛盾する.
+%			\item $\mathcal{B}$が無限のとき.
+%			
+%			$\mathcal{B}=(x_\lambda)_{\lambda\in\Lambda}$のほかに$\mathcal{B'}=(y_\omega)_{\omega\in\Omega}$が$M$の基底をなすとする.対称性から$\#\Omega\leq\#\Lambda$なら逆も成立するので,これを示せば良い.さて
+%			\[x_\lambda =\sum_{\omega\in\Omega_\lambda}a_\omega y_\omega~(a_\omega\neq0)\]
+%			となるように$\Omega_\lambda$を定義する.基底の定義から$\bigcup_{\lambda\in\Lambda}\Omega_\lambda=\Omega$であり, $\Omega_\lambda$は有限である.すると,濃度の計算をして
+%			\[\#\Omega\leq\sum_{\lambda\in\Lambda}\#\Omega_\lambda\leq\#\Lambda\times\max\mkset{\#\Omega_\lambda}{\lambda\in\Lambda}\leq\#\Lambda\times\aleph_0=\#\Lambda\]
+%			となるので,示された.
+%		\end{sakura}
+%	\end{mrkw}
+%\end{proof}
+
+可換環上の自由加群についても,濃度は一定である（非可換環については,基底が有限なとき一般には成立しない）.
+
+\begin{thm}
+	可換環上の自由加群の基底の濃度は一定である.
+\end{thm}
+
+\begin{proof}
+	$A$を可換環とし, $M$を$A$上の自由加群とする.その基底を$\{u_\lambda\}_{\lambda\in\Lambda},\{v_\omega\}_{\omega\in\Omega}$とする.すると
+	\[M=\bigoplus_{\lambda\in\Lambda}Au_{\lambda}=\bigoplus_{\omega\in\Omega}Av_\omega\]
+	とかける. Krullの定理より, $A$は極大イデアル$\ideal{m}$を持つ.また, $A/\ideal{m}$は体である.ここで;
+	\[\ideal{m}M=\mkset{\sum_{\text{有限和}}a_k x_k}{a_k\in\ideal{m},v_k\in M}\]
+	とすると,これは$M$の部分加群で, $\{u_\lambda\}_{\lambda\in\Lambda}$が$M$の基底なので;
+	\[\begin{aligned}
+	\ideal{m}M&=\mkset{\sum_{\lambda\in\Lambda} c_\lambda u_\lambda}{c_i\in\ideal{m}\text{は有限個を除いて}0}\\
+	&=\bigoplus_{\lambda\in\Lambda}\ideal{m}u_\lambda
+	\end{aligned}\]
+	となる.よって$M/\ideal{m}M\cong\middleoplus_{\lambda\in\Lambda} Au_\lambda/\ideal{m} u_\lambda$となる.ここで$M/\ideal{m}M$は$A/\ideal{m}$上の加群とみなすことができる.実際,作用;
+	\[M/\ideal{m}\times A/\ideal{m}\to M/\ideal{m}M;(x+\ideal{m}M,r+\ideal{m})\mapsto rx+\ideal{m}M\]
+	はwell-definedである.それを確かめよう. $x+\ideal{m}M=x'+\ideal{m}M,r+\ideal{m}=r'+\ideal{m}$とする.このとき, $rx+\ideal{m}M=r'x'+\ideal{m}M$,すなわち$rx-r'x'\in\ideal{m}M$が成立すればよい.ここで
+	\[rx-r'x'=rx-r'x+r'x-r'x'=(r-r')x+r'(x-x')\]
+	であり, $r-r'\in\ideal{m}$より$(r-r')x\in\ideal{m}M,x-x'\in\ideal{m}M$より$r'(x-x')\in\ideal{m}M$である.よって,well-definedであることがわかった.また$Au_\lambda/\ideal{m}u_\lambda$の元を考えると, $au_\lambda-bu_\lambda\in\ideal{m}u_\lambda$であることは$a-b\in\ideal{m}$であることと同値だから, $Au_\lambda/\ideal{m}u_\lambda=(A/\ideal{m})u_\lambda$とかける.よって;
+	\[M/\ideal{m}M\cong\bigoplus_{\lambda\in\Lambda}(A/\ideal{m})u_\lambda\]
+	となり, $\{u_\lambda\}_{\lambda\in\Lambda}$を$A/\ideal{m}$上の加群として基底に持つことがわかる.同様に, $\{v_\omega\}_{\omega\in\Omega}$も$M/\ideal{m}M$の基底となっていて, $\ideal{m}M$は体$A/\ideal{m}$上の加群であるから,その基底の濃度は一定であるので$\#\Lambda=\#\Omega$である.
+\end{proof}
+
+\section{Noether環}
+
+\begin{defi}[Noether環]\index{#Noetherかん@Noether環}
+		環$A$の任意のイデアルが有限生成であるとき, $A$をNoether\textbf{環}という.
+\end{defi}
+	
+Noether環は次の同値条件を持つので,どれを定義にしても良い.
+
+\begin{prop}
+	次は同値である.
+	\begin{sakura}
+		\item $A$はNoether環である.
+		\item $A$のイデアルの任意の増大列は有限個で停止する（昇鎖条件）.
+		\item $A$のイデアルの空でない任意の族は極大元を持つ（極大条件）.
+	\end{sakura}
+\end{prop}
+	
+\begin{proof}
+	\begin{eqv}[3]
+		\item 
+		$A$のイデアルの増大列を
+		\[I_1\subset I_2\subset\dots\subset I_i\subset\cdots\]
+		とする.ここで,~$I=\bigcup_{i=1}^\infty I_i$とおくと,これはイデアルである.仮定から有限生成であるので,~$I=(\nitem[r]{x})$とおく.任意の$i$に対して,定義からある$n_i$が存在して$x_i\in I_{n_i}$である.よって,~$i$は有限個であるから,~$n$を十分大きく取ればすべての$i$について$x_i\in I_n$すなわち$I\subset I_{n}$となる.これは$n\leq k$に対して$I_{n}=I_k$であることにほかならない.
+		\item
+		$I_{\lambda(\lambda\in\Lambda)}$を$A$のイデアルの空でない族とする.これが極大元を持たないとすると,任意の$\lambda_1\in\Lambda$に対して,ある$\lambda_2\in\Lambda$が存在して$I_{\lambda_1}\subsetneq I_{\lambda_2}$となる.以下同様に,真の増大列
+		\[I_{\lambda_1}\subsetneq I_{\lambda_2}\subsetneq\dots\subsetneq I_{\lambda_i}\subsetneq\cdots\]
+		がとれて,これは(ii)に矛盾.
+		\item 
+		$I$を$A$のイデアルとする.~$I$の有限部分集合が生成する$A$のイデアル全体の集合を$\Im$とする.~$0\in\Im$より$\Im\neq\emptyset$であるので,これは極大元$I_0$を持つ.ここで,~$I\neq I_0$とすると$x\in I\setminus I_0$に対し$I_0\subsetneq I_0+(x)\in\Im$となり,極大性に反する.よって$I_0=I$である.よって(i)が言える.
+	\end{eqv}
+\end{proof}
+
+増大列（昇鎖）を減少列（降鎖）に置き換えて包含関係を逆にしたものがArtin\textbf{性}と呼ばれるものである.
+
+\begin{defi}[Artin環]\index{#Artinかん@Artin環}
+	次の同値な条件;
+	\begin{sakura}
+		\item  $A$のイデアルの任意の減少列は有限個で停止する（降鎖条件）.
+		\item $A$のイデアルの空でない任意の族は極小元を持つ（極小条件）.
+	\end{sakura}
+	を満たす環をArtin\textbf{環}という.
+\end{defi}
+
+昇鎖条件,降鎖条件はそれぞれACC (Ascending Chain Condition), DCC (Dscending Chain Condition)と略される.
+
+\begin{prop}
+	$A$がNoether (Artin)なら,任意のイデアル$I$について$A/I$もNoether (Artin)である.
+\end{prop}
+\begin{proof}
+	イデアルの対応を考えればわかる.
+\end{proof}
+
+Noether環の部分環が必ずしもNoetherではないことに注意しよう.例えば, Noetherでない整域は商体に含まれる.
+
+次の定理から,有限生成を確かめるのは素イデアルだけでよいことがわかる.
+\begin{thm}[I.S.Cohen]
+	$A$の素イデアルが有限生成なら, $A$はNoether的.
+\end{thm}
+\begin{proof}
+	$A$のイデアルで,有限生成でないもの全体を$\Sigma$とする. $\Sigma\neq\emptyset$と仮定すると, Zornの補題から極大元$I$が存在する.仮定から$I$は素イデアルでないので, $x,y\in A$で$xy\in I,x,y\not\in I$を満たすものが存在する.すると, $I+Ax$は$I$より真に大きいから,有限生成で,ある$\nitem{u}\in I$を;
+	\[I+Ax=(\nitem{u},x)\]
+	となるようにとれる. $y\in (I:x)=\mkset{a\in A}{ax\in I}$より$I\subsetneq(I:x)$だからこれも有限生成で, $(I:x)=(\nitem[m]{v})$とできる.
+	
+	よって, $I=(\nitem{u},v_1x,\dots,v_mx)$となり, $I\in\Sigma$に矛盾.よって$\Sigma=\emptyset$である.
+\end{proof}
+
+\section{$A$代数と次数付き環}
+\begin{defi}[$A$代数]\index{だいすう@($A$)代数}
+	環$A,B$に対し,環準同型$f:A\to B$が定まっているとき$B$は$A$\textbf{代数}(algebra)であるという.
+\end{defi}
+
+このとき$B$は$a\cdot b=f(a)b$により$A$加群とみなせる.
+
+\begin{defi}[有限型]\index{ゆうげんがた@有限型}
+	$f:A\to B$により$B$を$A$代数とみる.ある$n\in\N$が存在して,全射準同型$\varphi:A[\nitem{X}]\to B$が存在するとき, $f$は\textbf{有限型}(finite type)であるという.
+\end{defi}
+
+このとき, $S=\{\varphi(X_1),\dots,\varphi(X_n)\}$を$B$の代数としての生成元といい, $B$は$A$\textbf{代数として有限生成}(finitely generated as $A$ algebla)という. $B$が$A$加群として有限生成であることとは異なる定義であるので,注意が必要である.なお,注意として単にfinite $A$-algebraと書かれた場合,これはfinite type を\textbf{意味しない.} これは$A$代数として自然に入る加群構造で有限生成であることを意味する.
+
+Hilbertの基底定理について述べておこう.
+\begin{thm}[Hilbertの基底定理]\index{#Hilbertのきていていり@Hilbertの基底定理}\label{thm:Hilbertの基底定理}
+		Noether環上の有限生成代数はNoether環である.
+	\end{thm}
+	\begin{proof}
+		$A$がNoether環のとき, $A[X]$がNoether環なら帰納的に$A[\nitem{X}]$がNoether環となり,その剰余環である有限生成代数$B$はNoether環である.
+		
+		よって, $A[X]$がNoetherであることを示せば良い. $I\neq0$を$A[X]$のイデアルとする.これが有限生成であることを示す. $f_1\neq0$を, $I$の最小次数の多項式とする. $(f_1)\subsetneq I$ならば, $f_2$を$I\setminus(f_1)$の最小次数の元とする.同様に$(\nitem[i]{f})\subsetneq I$ならば, $f_{i+1}$を$I\setminus(\nitem[i]{f})$の最小次数の多項式とする.ここで,各$f_i$に対し, $\lt(f_i)=a_iX^{r_i}$とし, $A$のイデアルの増大列
+		\[(a_1)\subset(a_1,a_2)\subset\dots\subset(\nitem[i]{a})\subset\cdots\]
+		を考えると, $A$はNoether環なのでこれは停まる.すなわち,ある$n$があって, $j\geq n$に対して$a_j\in(\nitem{a})$となる.この$n$に対して$(\nitem{f})=I$であることを示す.
+		
+		背理法を用いる. $I\setminus(\nitem{f})\neq\emptyset$とすると, $f_{n+1}$を次数最小のものとしてとれる.さて, $a_{n+1}\in(\nitem{a})$より, $a_{n+1}=\sum_{i=1}^n c_ia_i~(c_i\in A)$とかける.いま$\deg{f_i}=r_i$であり,作り方から$r_i\leq r_{n+1}$なので
+		\[g=f_{n+1}-\sum c_iX^{r_{n+1}-r_i}f_i\]
+		とおくと, $\deg g<r_{n+1}$である. $f$の次数最小性より$g\not\in I\setminus(\nitem{f})$すなわち$g\in(\nitem{f})$となり, $f_{n+1}\in(\nitem{f})$が従うが,これは矛盾.よって$(\nitem{f})=I$である.
+\end{proof}
+
+\begin{cor}
+	$A$がNoether環ならば$A[X]$はNoether環である.
+\end{cor}
+
+\begin{exer}
+	$A[X]$がNoetherのとき, $A$はNoetherとなるか？
+\end{exer}
+
+\begin{defi}[次数付き環]\index{じすうつきかん@次数付き環}
+	$S_0$は環, $d>0$について$S_d$は$S_0$加群になっているとする. $s=\middleoplus_{i=0}^\infty S_i$に積が定義でき, $S_0$の元による積はスカラーの作用と一致し,かつ$S_nS_m\subset S_{n+m}$が成立するとき$S$を\textbf{次数付き環}(graded ring)という.
+\end{defi}
+
+$S_d$の元を$S$の斉次元という.わかりやすい例として,多項式環は次数付き環である.1変数多項式環$A[X]$は$S_d=AX^d$とすればよく, $n$変数については$d$次元斉次多項式,すなわち各項をなす単項式の総次数がすべて等しいもの（たとえば$X^2+2XY+Y^2$）全体を$S_d$とすると次数付き環になる.また, $S_+=\oplus_{d>0}S_d$は$S$のイデアルとなる.これを$S$の\textbf{無縁イデアル}(irrelevant ideal)という.\index{むえんいである@無縁イデアル}
+
+%\begin{defi}[斉次イデアル]\index{せいじいである@斉次イデアル}
+%	$S$を次数付き環, $I$を$S$のイデアルとする. $I=\middleoplus(S_d\cap I)$が成り立つとき, $I$を\textbf{斉次イデアル}(homogeneous ideal)という.
+%\end{defi}
+%\begin{prop}
+%	次数付き環$S$のイデアル$I$が斉次であることと, $I$が$S$の斉次元たちで生成されることは同値である.
+%\end{prop}
+%\begin{prop}
+%	$I$を次数付き環$S$の斉次イデアルとする.このとき$I$が素であること,任意の\textbf{斉次元}$x,y$について$xy\in I$なら$x\in I$または$y\in I$が成り立つことは同値である.
+%\end{prop}
+
+
+\section{中山の補題}
+
+線形代数で習ったCayley-Hamiltonの定理を拡張できる（\textbf{行列式のトリック}とも呼ばれる）.
+\begin{thm}[Cayley-Hamilton]\index{#Cayler-Hamiltonのていり@Cayley-Hamiltonの定理}
+	\label{thm:Cayley-Hamilton}
+	$M$を$n$個の元で生成される有限生成な$A$加群とし, $\varphi\in\text{End}_A(M)$が,ある$A$のイデアル$I$に対して$\varphi(M)\subset IM$であると仮定する.このとき, $\nitem{a}\in I$が存在して
+	\[\varphi^n+a_1\varphi^{n-1}+\dots+a_n=0\]
+	を満たす.
+\end{thm}
+\begin{proof}
+	$M$の生成系を$\{\nitem{u}\}$とすると,~$\varphi(M)\subset IM$より
+	\[\varphi(u_i)=\sum_{j=1}^n a_{ij}u_j\quad(a_{ij}\in I)\]
+	とできる.よってKroneckerのデルタ$\delta_{ij}$を用いると$\sum_j(\delta_{ij}\varphi-a_{ij})u_j=0$である.行列$(\delta_{ij}\varphi-a_{ij})_{i,j}$に対し余因子行列をかけて, $\det(\delta_{ij}\varphi-a_{ij})$は$M$の自己準同型となるが,これはすべての$x_i$を消すので零射にほかならない.行列式を展開すれば求める式が得られる.
+\end{proof}
+
+これを利用して,つぎの有名な補題が証明できる.これは普段\textbf{中山の補題}と呼ばれている.
+\begin{thm}[中山の補題]\index{なかやまのほだい@中山の補題(NAK)}\label{thm:NAK}
+	$M$を有限生成$A$加群, $I$を$A$のイデアルとする. $M=IM$であるとき, $aM=0$かつ$a\equiv1\pmod{I}$を満たす$a\in A$が存在する.とくに$I\subset\rad(A)$ならば$M=0$である.
+\end{thm}
+
+\begin{proof}
+	Cayley-Hamiltonの定理で$\varphi=\id_{M}$とすれば
+	\[a=1+a_1+\dots a_n\]
+	がそれを満たす.また, $I\subset\rad(A)$ならば, $a$は可逆なので$M=0$である.
+\end{proof}
+
+\begin{cor}\label{cor:NAK}
+	$I$を$\rad(A)$に含まれるイデアルとする. $A$加群$M$と,その部分加群$N$が$M/N$が有限生成かつ$M=N+IM$であるとすると, $M=N$である.
+\end{cor}
+
+\begin{proof}
+	$M/N\cong IM$より$M/N=0$である.
+\end{proof}
+
+\section{テンソル積}
+
+\begin{defi}[Hom加群]
+	環$A$上の加群$M,N$において;
+	\[\hom_A(M,N)=\mkset{\varphi:M\to N}{\varphi:\text{準同型}}\]
+	は$f,g\in\hom_A(M,N)$に対し$f+g$を$x\mapsto f(x)+g(x)$で定めることで加法群をなす.また, $A$によるスカラーを$af$は$x\mapsto f(ax)$となる準同型として定めることで定義できる.
+\end{defi}
+
+加群の間の準同型を考えることで,圏論的に言えば関手的な取り扱いが可能になる.とはいえ,この節では圏論の知識を仮定せずとも良いように配慮した.圏論を学んでから,具体例として検討してもらいたい.その手助けとなるように,断った上で圏論的記述を加えたところもある.
+
+準同型を考えると,自然に出てくるものが完全列である.これについて復習しておこう.
+\begin{defi}[完全列]\index{かんぜんれつ@完全列}
+	$M_i$を加群とし, $\varphi_i:M_i\to M_{i+1}$を準同型とする.そのとき,列;
+	\[\begin{tikzcd}
+	\cdots\nxcell M_{i-1}\nxcell[\varphi_{i-1}]M_i\nxcell[\varphi_i]M_{i+1}\nxcell\cdots
+	\end{tikzcd}\]
+	は任意の$i$に対し$\im\varphi_{i-1}=\ker{\varphi_i}$となるとき\textbf{完全列}(exact sequence)であるという.
+\end{defi}
+
+特に;
+\[\ses[\varphi][\psi]{M_1}{M_2}{M_3}\]
+が完全であることと, $\varphi$が単射, $\psi$が全射であることは同値である.この完全列を特に\textbf{短完全列}(short exact sequence)という.
+
+また,次の完全列;
+\[\begin{tikzcd}
+M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3\nxcell0
+\end{tikzcd}\]
+\[\begin{tikzcd}
+0\nxcell M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3
+\end{tikzcd}\]
+はそれぞれ（短）右完全列,左完全列という.
+
+次にテンソル積を定義する.
+\begin{defi}[双線型写像]\index{そうせんけいしゃぞう@双線型写像}
+	$M,N,L$を$A$加群とする. $\varphi:M\times N\to L$が次の3つ;
+	\begin{defiterm}{BM}
+		\item $\varphi(x_1+x_2,y)=\varphi(x_1,y)+\varphi(x_2,y)$
+		\item $\varphi(x,y_1+y_2)=\varphi(x,y_1)+\varphi(x,y_2)$
+		\item $\varphi(ax,y)=\varphi(x,ay)=a\varphi(x,y)$
+	\end{defiterm}
+	を満たすとき, $\varphi$を$A$双線型写像という.
+\end{defi}
+
+双線型写像$M\times N\to L$の全体を$\bil_A(M,N;L)$で表すとすると,ある$A$加群$X$と$\tau\in\bil_A(M,N;L)$が存在して$\hom_A(X,L)\to\bil_A(M,N;L);f\mapsto f\circ\tau$を同型となるようにできることが知られている.この$X$と$\tau$を, $N$と$M$の$A$上の\textbf{テンソル積}(tensor product)という.%実際の証明は煩雑である上にあまりに多くの成書があるのでそちらに譲る（例えば\cite{atimac},命題2.12）.
+
+\begin{thm}[テンソル積]\index{テンソル積}
+	$M,N$を$A$加群とすると,任意の$A$加群$L$に対して,Figure.\ref{fig:tensor}を可換にする$A$加群$M\otimes_A N$と$\tau\in\bil_A(M,N;M\otimes_AN)$が同型を除いて一意的に存在する.
+\end{thm}
+
+すなわち,任意の双線型写像$\varphi:M\times N\to L$に対して,準同型$f:M\otimes_AN\to L$で$f\circ\tau=\varphi$となるものが一意的に存在する.この性質をテンソル積の\textbf{普遍性}(universaliy)という.
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+	M\times N\arrow[r,"\varphi"]\arrow[d,"\tau"]&L\\
+	M\otimes_A N\arrow[ur,"f",dashed]
+	\end{tikzcd}
+	\caption{}\label{fig:tensor}
+\end{figure}
+
+\begin{proof}
+	\begin{step}
+		\item 存在すること.
+		
+		直積$M\times N$が生成する$A$加群;
+		\[\mathcal{T}=\mkset{\sum_{\text{有限和}}a_i(x_i,y_i)}{a_i\in A,(x_i,y_i)\in M\times N}\]
+		を考える.ここで,~$a\in A,x,x_1,x_2\in M,y,y_1,y_2\in N$として,次の形の元
+		\[(x_1+x_2,y)-(x_1,y)-(x_2,y),\quad (x,y_1+y_2)-(x,y_1)-(x,y_2)\]
+		\[(ax,y)-a(x,y),\quad (x,ay)-a(x,y)\]
+		で生成される$\mathcal{T}$の部分加群を$\mathcal{I}$とする.すると,~$\mathcal{T}/\mathcal{I}$が$\tau:M\times N\to\mathcal{T}/\mathcal{I};(x,y)\mapsto(x,y)+\mathcal{I}$によりテンソル積となる.実際,~$\varphi:M\times N\to L$に対し;
+		\[\widetilde{\varphi}:\mathcal{T}\to L;\sum a_i(x_i,y_i)\mapsto\sum a_i\varphi(x_i,y_i)\]
+		を考えると,~$\varphi$の双線形性より$\mathcal{I}\subset\ker\widetilde{\varphi}$がわかる.よって;
+		\[\mathcal{T}/\mathcal{I}\to\mathcal{T}/\ker\widetilde{\varphi};(x,y)+\mathcal{I}\mapsto(x,y)+\ker\widetilde{\varphi}\]
+		がwell-definedであることがわかるので,同型$\mathcal{T}/\ker\widetilde{\varphi}\to L$と合成して,準同型;
+		\[f:\mathcal{T}/\mathcal{I}\to L;(x,y)+\mathcal{I}\mapsto\varphi(x,y)\]
+		を得る.これは$\tau$の全射性から一意に定まる.
+		\item 一意であること.
+		
+		$\tau:M\times N\to T,\tau':M\times N\to T'$とし,~$T$と$T'$がそれぞれテンソル積であるとする.すると,~Figure.\ref{fig:tensor-proof1}のように$f\circ f'\circ\tau=\tau',f'\circ\tau'=\tau$とできる.よって,~$f\circ f'\circ\tau'=\tau',f'\circ f\circ\tau=\tau$であって,~Figure.\ref{fig:tensor-proof2}において,~$f$の一意性から$f=\id_{T}$しかありえないから,~$f'\circ f=\id_{T'},f'\circ f=\id_{T}$となり$T$と$T'$は同型である.
+		
+		\begin{minipage}[c]{.45\textwidth}%
+			\begin{figure}[H]%
+				\centering
+				\begin{tikzcd}
+				M\times N\arrow[r,"\tau'"]\arrow[d,"\tau"]&T'\arrow[dl,"f'",shift left=.5ex]\\
+				T\arrow[ur,"f",shift left=.5ex]
+				\end{tikzcd}
+				\caption{}\label{fig:tensor-proof1}
+			\end{figure}
+		\end{minipage}%
+		\hfill
+		\begin{minipage}[c]{.45\textwidth}%
+			\begin{figure}[H]%
+				\centering
+				\begin{tikzcd}
+				M\times N\arrow[r,"\tau"]\arrow[d,"\tau"]&T\\
+				T\arrow[ur,"f"]
+				\end{tikzcd}
+				\caption{}\label{fig:tensor-proof2}
+			\end{figure}%
+		\end{minipage}
+	\end{step}
+\end{proof}
+$x\in M,y\in N$に対し$\tau(x,y)=x\otimes y$ともかき,これを元のテンソル積という.
+テンソル積は$M\otimes_A N$は$x\otimes y$を生成元とし;
+\[(x_1+x_2)\otimes y=x_1\otimes y+x_2\otimes y\]
+\[x\otimes(y_1+y_2)=x\otimes y_1+x\otimes y_2\]
+\[(ax)\otimes y=x\otimes (ay)=a(x\otimes y)\]
+を満たす$A$加群と解釈できる.また,ここから任意の$M\otimes N$の元は$x\otimes y (x\in M,y\in N)$の有限和でかけることもわかる.
+
+これらのことが頭に入っていれば,煩雑な構成の証明は忘れても構わないが,いくつかの注意が必要である.
+ここで, $x\otimes y$という表示はどの加群のテンソル積かを決定しないと意味がないことに注意しておこう.例えば$\Z$加群で考えると $\Z\otimes \Z/2\Z$において$2\otimes\bar{1}=1\otimes\bar{2}=1\otimes\bar{0}=0$だが, $\Z$の部分加群$2\Z$を考えると$2\Z\otimes\Z/2\Z$において$2\otimes\bar{1}\neq0$である.
+
+しかし,次の事実はテンソル積の構成から即座に従うもので,有用である.
+
+\begin{prop}\label{prop:テンソルの有限生成への制限}
+	$A$加群$M,N$について, $0=\sum x_i\otimes y_i\in M\otimes N$とする.このとき,それぞれ有限生成な部分$A$加群$M_0,N_0$が存在して, $M_0\otimes N_0$において$\sum x_i\otimes y_i=0$である.
+\end{prop}
+
+\begin{proof}
+	構成の証明中の記号を用いる. $\sum x_i\otimes y_i\in\mathcal{I}$なので,これは$\mathcal{I}$の生成系の有限和である.それらの各項を$x_j\otimes y_j$とし, $x_i,x_j$で生成される$M$の有限生成部分加群を$M_0, y_i,y_j$で生成される$N$の部分加群を$N_0$とすればよい.
+\end{proof}
+
+次に準同型のテンソルについて定義しておく.
+
+\begin{prop}
+	$f\in\hom(M,M')$と$g\in\hom(N,N')$に対し,準同型$f\otimes g:M\otimes N\to M'\otimes N'$で, $(f\otimes g)(x\otimes y)=f(x)\otimes g(x)$を満たすものが一意的に存在する.
+\end{prop}
+\begin{proof}
+	直積の間の準同型$f\times g:M\times N\to M'\times N'$と$\tau':M'\times N'\to M'\otimes N'$の合成$(x,y)\mapsto f(x)\otimes g(x)$に対し,~$M\otimes N$の普遍性から$(f\otimes g)\circ\tau=\tau'\circ(f\times g)$となる$f\otimes g$が一意に定まる.このとき,~$f\otimes g:x\otimes y\mapsto f(x)\otimes g(x)$であるから,~$f\otimes g$は求める準同型であり,一意性は普遍性から従う.
+\end{proof}
+これは$f\times g:M\times N\to M'\times N';(x,y)\mapsto (f(x),g(x))$をテンソル積に誘導したものにほかならない.
+
+テンソル積を演算と見ると次が基本的である.
+\begin{prop}
+	テンソル積は可換なモノイドをなす.つまり次の3つが成り立つ.
+	\[A\otimes M\cong M, M\otimes N\cong N\otimes M, (M\otimes N)\otimes L\cong M\otimes (N\otimes L)\]
+	また,テンソル積は直和と可換である.すなわち;
+	\[\left(\bigoplus_{\lambda\in\Lambda} M_\lambda\right)\otimes N\cong \bigoplus_{\lambda\in\Lambda}(M_\lambda\otimes N)\]
+	である.
+\end{prop}
+\begin{proof}
+	\begin{step}
+		\item モノイドをなすこと.
+	\begin{sakura}
+		\item $A\otimes M\to M;a\otimes x\mapsto ax$と,~$M\to A\otimes M;x\mapsto 1\otimes x$が互いに逆の関係となる.
+		\item $\varphi:M\times N\to N\otimes M;(x,y)\mapsto y\otimes x$に対し, $f:M\otimes N\to N\otimes M;x\otimes y\mapsto y\otimes x$がとれる.同様に$\psi:N\times M\to M\otimes N;(y,x)\mapsto x\otimes y$に対して$g:N\otimes M\to M\otimes N;y\otimes x\mapsto x\otimes y$とでき,これが$f$の逆となる.
+		\item 各$z\in L$について, $\varphi_z:M\times N\to M\otimes(N\otimes L);(x,y)\mapsto x\otimes(y\otimes z)$と定義することで,普遍性から$f_z:M\otimes N\to M\otimes(N\otimes L);x\otimes y\mapsto x\otimes(y\otimes z)$が定まる.これを用いて,双線形写像$\psi:(M\otimes N)\times L\to M\otimes(N\otimes L);(x\otimes y,z)\mapsto f_z(x\otimes y)$が定義できる.これをさらにテンソル積に落とすことで;
+		\[f:(x\otimes y)\otimes z\mapsto x\otimes(y\otimes z)\]
+		とできる.同様に
+		\[g:x\otimes (y\otimes z)\mapsto (x\otimes y)\otimes z\]
+		がとれて,~$f$と$g$は逆の関係である.
+	\end{sakura}
+	\item 直和と可換であること.
+	
+	\begin{mrkw}
+		\item \[\varphi:\left(\bigoplus_\lambda M_\lambda\right)\times N\to\bigoplus_\lambda(M_\lambda\otimes N);((x_\lambda)_\lambda,y)\mapsto(x_\lambda\otimes y)_\lambda\]
+		に対し,テンソル積の普遍性から
+		\[f:\left(\bigoplus_\lambda M_\lambda\right)\otimes N\to \bigoplus_\lambda(M_\lambda\otimes N);(x_\lambda)_\lambda\otimes y\mapsto(x_\lambda\otimes y)_\lambda\]
+		が存在する.
+		\item 任意の$\lambda'\in\Lambda$に対し
+		\[\psi_\lambda':M_\lambda'\times N\to\left(\bigoplus_\lambda M_\lambda\right)\otimes N;(x_\lambda',y)\mapsto(\tilde{x}_\lambda)_\lambda\otimes y\]
+		を,~$\lambda=\lambda'$のとき$\tilde{x}_\lambda=x_\lambda',~\lambda\neq\lambda'$のとき$\tilde{x}_\lambda=0$として定める.テンソル積の普遍性から
+		\[g_\lambda':M_\lambda'\otimes N\to\left(\bigoplus_\lambda M_\lambda\right)\otimes N;(x_\lambda'\otimes y\mapsto(\tilde{x}_\lambda)_\lambda\otimes y\]
+		がとれて,直和の普遍性から
+		\[g:\bigoplus_\lambda M_\lambda\otimes N\to \left(\bigoplus_\lambda M_\lambda\right)\otimes N;(x_\lambda\otimes y)_\lambda\to(x_\lambda)_\lambda\otimes y\]
+		とできる.作り方から$f$と$g$は逆の関係である.
+	\end{mrkw}
+	\end{step}
+\end{proof}
+
+ある加群からある加群を作り出す\quo{操作}（圏論では\textbf{関手}(functor)的であるという）があるときには,完全列にどのような影響を与えるかをみることは常套手段である.
+
+\begin{prop}[テンソル積の右完全性]
+	$A$加群の完全列;
+	\[\begin{tikzcd}
+	M_1\nxcell[f]M_2\nxcell[g]M_3\nxcell0
+	\end{tikzcd}\]
+	に対し,任意の$A$加群$N$は;
+	\[\begin{tikzcd}
+	M_1\otimes N\nxcell[f\otimes\id_{N}]M_2\otimes N\nxcell[g\otimes\id_{N}]M_3\otimes N\nxcell0
+	\end{tikzcd}\]
+	を完全にする.
+\end{prop}
+\begin{proof}
+	$g\otimes\id_{N}$の全射性は明らか.~$\im(f\otimes\id_{N})=\ker(g\otimes\id_{N})$を示そう. $\subset$は明らかなので$\supset$を示す.任意の$\sum_i x_i\otimes y_i\in\ker(g\otimes\id_{N})$をとる.~$M_3\cong M_2/f(M_1)$より
+	\[\varphi:M_3\times N\to (M_2\otimes N)/(f(M_1)\otimes N);(g(x),y)\mapsto x\otimes y+f(M_1)\otimes N\]
+	はwell-definedである.実際$g(x)=g(x')$とすると$x-x'\in\ker g=\im f$より$x\otimes y\in f(M_1)\otimes N$となる.よって,~$\varphi$は普遍性から
+	\[h:M_3\otimes N\to(M_2\otimes N)/(f(M_1)\otimes N)\]
+	を引き起こす.さて$g\otimes\id_{N}(\sum x_i\otimes y_i)=\sum g(x_i)\otimes y_i=0$より$0=h(\sum g(x_i)\otimes y_i)=\sum \varphi(g(x_i),y_i)=\sum x_i\otimes y_i+f(M_1)\otimes N$であるので,~$\sum x_i\otimes y_i\in\im(f\otimes\id_{N})$である.
+\end{proof}
+もちろん短完全列に対してこの命題を適用すると,右完全列が得られる.この状況は,圏論的には関手$-\otimes N$は右完全である,ということになる.これが完全関手になるような$N$のことを平坦であるという.
+
+\begin{defi}[平坦加群]\index{へいたんかぐん@平坦加群}
+	任意の短完全列;
+	\[\ses{M_1}{M_2}{M_3}\]
+	に対して;
+	\[\ses{M_1\otimes N}{M_2\otimes N}{M_3\otimes N}\]
+	が完全であるとき, $N$を\textbf{平坦}(flat)な加群であるという.
+\end{defi}
+
+これは単射な$\eta:M_1\to M_2$に対して, $\eta\otimes\id_{N}$もまた単射になることと同値である.
+
+平坦性を確かめるには,実は有限生成な加群についてのみ確かめればよい.
+
+\begin{prop}\label{prop:平坦性は有限生成を調べれば良い}
+	$A$加群$N$が平坦であることと, $f:M_1\to M_2$が単射で$M_1,M_2$が有限生成ならば$f\otimes\id$が単射になることは同値である.
+\end{prop}
+
+\begin{proof}
+	前者から後者が従うことは明らかである. $M_1,M_2$を（有限生成とは限らない）$A$加群とし,単射$f:M_1\to M_2$を考える. $u=\sum_{i=1}^s x_i\otimes y_i\in\ker(f\otimes\id)$をとる. $u=0$を示せばよい. $M_1'$を$x_1,\dots,x_s$によって生成される$M_1$の部分加群とする. $u'$を$M_1'\otimes N$における$\sum x_i\otimes y_i$を表すものとする.ここで$0=\sum f(x_i)\otimes y_i\in M_2\otimes N$であり, \ref{prop:テンソルの有限生成への制限}により有限生成部分加群$M_2'$が存在して, $M_2'\otimes N$において$\sum f(x_i)\otimes y_i=0$である.また, $M_1'$の構成から$f(M_1')\subset M_2'$である.すると, $f$の$M_1'$への制限$f':M_1'\to M_2'$が定義され,先の議論からこの記号のもとで$f'\otimes\id(u')=0$である.仮定から$f'\otimes\id$は単射なので$u'=0$であり,これは$u=0$を導く.
+\end{proof}
+
+実際の平坦な加群の例は,次節以降紹介する\textbf{局所化}や\textbf{射影加群}が与える.
+
+\section{素イデアルと局所化}
+
+\begin{defi}[局所化]\index{きょくしょか@局所化}
+	$A$を環とし, $S$を$A$の積閉な部分集合とする. $S$の元を分母に許すような環$S^{-1}A$を, $A$の$S$による\textbf{局所化}(localization)または\textbf{分数環}(fractional ring)という.
+\end{defi}
+
+$S^{-1}A$の正確な定義を与えておこう.直積$A\times S$に次の関係を入れる.
+\[(a,s)\sim(a',s')\Longleftrightarrow t(sa'-s'a)=0\text{となる}t\in S\text{が存在する.}\]
+これによる同値類を$a/s$とかき,その集合に自然な加法と乗法を定めたものを$S^{-1}A$とかく.
+
+写像$\varphi:A\to S^{-1}A;a\mapsto a/1$により, $S^{-1}A$には自然な$A$代数としての構造が入る.また
+\[\ker\varphi=\mkset{a}{sa=0\text{となる}s\in S\text{がある}}\]
+であるから, $S$が零因子を持たなければ$\varphi$が単射となり, $A$を$S^{-1}A$に埋め込める.
+
+$S$を$A$の非零因子全体の集合とすると,上の$\varphi$は単射であって, $S^{-1}A$を$A$の\textbf{全商環}(total fractional ring)\index{ぜんしょうかん@全商環}という. $A$が整域のとき,これは商体にほかならならない.
+\begin{prop}[分数環の普遍性]
+	$S$を$A$の積閉集合とする.このとき$f:A\to B$で$f(S)\subset B^\times$となる$A$代数$B$に対し,準同型$g:S^{-1}A\to B$で$g\circ\varphi=f$となるものが同型を除いて一意的に存在する.
+\end{prop}
+\begin{proof}
+	$g:S^{-1}A\to B;x/s\mapsto f(x)f(s)^{-1}$により与えられる.
+\end{proof}
+
+次の命題は実際の計算によく用いられる.
+\begin{prop}\label{prop:Spec S^-1Aの引き戻し}
+	$S$を環$A$の積閉集合とする. $S^{-1}A$の素イデアルは$P\cap S=\emptyset$となる$P\in\spec A$と一対一に対応する.特に, $S^{-1}A$の素イデアルは;
+	\[S^{-1}P=\mkset{a/s}{a\in P,s\in S}\]
+	という形をしている.
+\end{prop}
+\begin{proof}
+	$P\in\spec A$について, $S^{-1}P$は$S^{-1}A$の素イデアルとなる.
+	
+	また,一般に環準同型$\varphi:A\to B$と$P\in\spec B$について$\varphi^{-1}(P)\in\spec A$である.ここで$P'\in\spec S^{-1}A$について$\varphi^{-1}(P')\in\spec A$であって, $\widetilde{P'}=\mkset{x/s\in S^{-1}A}{x\in\varphi^{-1}(P'),s\in S}$とするとこれは$P'$に一致する.
+	
+	以上より, $P$と$\varphi^{-1}(P)$は一対一に対応する.また$Q\in\spec A$が$Q\cap S\neq\emptyset$ならば$S^{-1}Q$は単元を含み,$\varphi^{-1}(P)\cap S=\emptyset$となることもわかる.
+\end{proof}
+
+というのも,可換環論においては素イデアルが非常に重要な働きをする.環$A$の素イデアル全体を$\spec A$とかき,そこには位相構造が入ることが知られている.
+
+\begin{defi}[Zariski位相]\label{defi:Zariski位相}\index{#Zariskiいそう@Zariski位相}
+	環$A$のイデアル$I\subset A$に対し, $V(I)=\mkset{ P\in\spec A}{I\subset P}$は$\spec A$の閉集合系としての位相を定める.これを$A$のZariski位相という.
+\end{defi}
+
+それぞれ確認しよう.
+\begin{sakura}
+	\item $V(A)=\emptyset,V(0)=\spec A$である.
+	\item $V(I)\cup V(J)=V(I\cap J)$である.
+	\item $\bigcap_{\lambda}V(I_\lambda)=V(\sum_\lambda I_\lambda)$である.
+\end{sakura}
+
+\begin{lem}\label{lem:イデアルの根基と素イデアル}
+	$A$のイデアル$I$に対し $\sqrt{I}=\bigcap_{P\in V(I)} P$である.
+\end{lem}
+\begin{proof}
+	$\subset $は簡単にわかる.逆に$x\in\bigcap_{P\in V(I)}P$をとる. $x\not\in\sqrt{I}$であるとしよう.すると$S=\{x^n\}_{n\in\N}$は$I$と交わらない積閉集合となる.すると$I$は$S^{-1}A$の真のイデアルとなる.すると$S^{-1}A$の極大イデアル$\ideal{m}$がとれて$I$を含む.すると$\ideal{m}$は極大であるので,特に素イデアル.一方で$P\cap S\neq\emptyset$であるので$I$を含む素イデアルは存在しない.これは矛盾である.
+\end{proof}
+
+この補題を用いると閉集合の包含関係は次で判定できる.
+\begin{prop}
+	$A$のイデアル$I,J$に対し, $V(I)\subset V(J)$であることと$\sqrt{J}\subset\sqrt{I}$であることは同値である.
+\end{prop}
+
+\begin{defi}
+	$ P\in\spec A$に対し, $S=A\setminus P$は素イデアルの定義から積閉で,これによる局所化を$A_P$とかいて$A$の$P$による局所化という.
+\end{defi}
+
+環$A$で,唯1つの極大イデアル$\ideal{m}$を持つものを\textbf{局所環}(local ring)というのであった.次の判定条件を思い出そう.
+
+\begin{prop}\label{prop:local ring equiv}
+	$(A,\ideal{m})$が局所環であることと, $\ideal{m}=A\setminus A^\times$がイデアルであることは同値.
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item $\ideal{m}_0$を$A$の極大イデアルとする. $\ideal{m}_0\subset\ideal{m}$は明らかなので,逆を示す.任意の$x\in\ideal{m}$をとる.すると, $x\not\in A^\times$より$(x)\subsetneq A$である. $(x)$を含む極大イデアルが存在するが, $A$は局所環なのでそれは$\ideal{m}_0$に一致する.すなわち$(x)\subset\ideal{m}_0$となり, $x\in\ideal{m}_0$すなわち$\ideal{m}\subset\ideal{m}_0$である.よって$\ideal{m}=\ideal{m}_0$となり, $\ideal{m}$はイデアルである.
+		\item 任意の真のイデアル$I$を考えると, $I\cap A^\times=\emptyset$より$I\subset\ideal{m}$となり, $\ideal{m}$が唯一の極大イデアルである. 
+	\end{eqv}
+\end{proof}
+
+局所化,という名前はつぎの系から来ている.
+\begin{cor}
+	$A_P$は局所環である.
+\end{cor}
+
+局所化$S^{-1}A$は自然に$A$代数になっていることに注意しよう.さきは$A_P$について素イデアルを考えたが,一般に$A$代数$B$があったときに(素)イデアルの対応を考えることは大切である. たとえば$\varphi:A\to B$があったとき, $P\in\spec A$について必ずしも$\varphi(P)$は$B$のイデアルになるかどうかすらわからない.そこで, $A$のイデアル$I$に対応する$B$のイデアルについては$\varphi(I)$が$B$で生成するイデアルを考えることが自然である.また, $Q\in\spec B$について$\varphi^{-1}(Q)$は必ず素イデアルになることを確かめることができる.これは自然な射$\spec B\to\spec A$
+に他ならないが,それについては代数幾何についての教科書を見てほしい. $A\to S^{-1}A$などの自然な準同型による$Q\in\spec S^{-1}A$の引き戻しは$Q\cap A$と書いたりする.
+
+\begin{defi}[剰余体]\index{じょうよたい@剰余体}\index{じょうよたい@剰余体}
+	環$A$と素イデアル$P$について, 体$A_P/PA_P$を$K(P)$とかいて, $A$の$P$における\textbf{剰余体}(residue field)という.
+\end{defi}
+
+\begin{prop}\label{prop:上にイデアルがあることの同値条件}
+	$\varphi:A\to B$を準同型とし, $P\in\spec A$とする. $\varphi(P)$が$B$で生成するイデアルを$B'$とかく.ある$Q\in\spec B$が存在して$\varphi^{-1}(Q)=P$となることと, $\varphi^{-1}(P')=P$となることは同値である.
+\end{prop}
+
+\begin{proof}
+	$(\Longrightarrow)$は明らか. $\varphi^{-1}(P')=P$と仮定する. $S=\varphi(A-P)$とおくと, $P'\cap S=\emptyset$である.すると$S^{-1}B$において$P'$は真のイデアルとなり,それを含む極大イデアル$\ideal{m}$がとれる. $Q=\ideal{m}\cap B$とおくと, $\varphi^{-1}(Q)=P$である.実際, $P'\subset Q$であるから$P\subset\varphi^{-1}(Q)$は明らかで, $x\in\varphi^{-1}(Q)$をとると$Q\cap S=\emptyset$より$x\not\in P$ならば$\varphi(x)=Q\cap S$となってしまうので$x\in P$でなければならない.
+\end{proof}
+
+素イデアルによる局所化のほかに,元による局所化（局所環になるとは限らない）があり,こちらも代数幾何で特に大切である（すでに\ref{lem:イデアルの根基と素イデアル}で登場している）.
+\begin{defi}
+	$f\in A$に対し, $S=\mkset{f^n}{n\in\N}$は積閉集合である.ただし$f^0=1$と定義する.このとき, $S^{-1}A$を$A_f$と書いて$A$の$f$による局所化という.	
+\end{defi}
+
+いままでは環の局所化を考えていたが, $A$加群$M$について, $A$の積閉集合による局所化$S^{-1}M$を考えることができる.また, $A$加群の準同型$\varphi:M\to N$について,次の局所化の間の準同型;
+\[S^{-1}\varphi:S^{-1}M\to S^{-1}N;x/s\mapsto \varphi(x)/s\]
+が誘導されることに注意しよう.よって,加群の列;
+\[\begin{tikzcd}
+	M_1\nxcell[f]M_2\nxcell[g]M_3
+\end{tikzcd}\]
+について,誘導された列;
+\[\begin{tikzcd}
+S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
+\end{tikzcd}\]
+が得られる.ここでこの操作によって完全性が保たれる（すなわち完全関手になっている）ことが大切である.
+
+\begin{prop}\label{prop:局所化は完全関手}
+	$\begin{tikzcd}
+	M_1\nxcell[f]M_2\nxcell[g]M_3
+	\end{tikzcd}$が完全ならば, $\begin{tikzcd}
+	S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
+	\end{tikzcd}$も完全である.
+\end{prop}
+\begin{proof}
+	$\im S^{-1}f\subset\ker S^{-1}g$は明らかなので,逆を示す.任意の$x/s\in\ker S^{-1}g$をとる.よって$g(x)/s=0$であるので,ある$h\in S$が存在して$hg(x)=0$である.よって$hx\in\ker g=\im f$であるから,ある$y\in M_1$がとれて$f(y)=hx$とかける.すると$S^{-1}(y/hs)=hx/hs=x/s$となる.
+\end{proof}
+
+これによって次の命題が示せる（証明はかんたんである）.
+\begin{prop}\label{prop:局所化はいろんな操作と可換}
+	局所化は有限和,有限個の共通部分,剰余環をとる操作と可換である.すなわち, $A$加群$M$とその部分加群$N,P$について;
+	\begin{sakura}
+		\item $S^{-1}(N+P)=S^{-1}(N)+S^{-1}(P)$
+		\item $S^{-1}(N\cap P)=S^{-1}(N)\cap S^{-1}(P)$
+		\item $S^{-1}(M/N)\cong (S^{-1}M)/(S^{-1}N)$
+	\end{sakura}
+	が成り立つ.
+\end{prop}
+
+ところで,位相的性質,すなわち同相で変化しない性質のように（特に素イデアルによる）局所化で変化しないものを\textbf{局所的性質}(local properties)という.\index{きょくしょてきせいしつ@局所的性質} その例をいくつか見ておこう.
+
+\begin{prop}\label{prop:局所化したら0は局所的}
+	$M$を$A$加群とすると,次の3つ;
+	\begin{sakura}
+		\item $M=0$である.
+		\item 任意の$P\in \spec A$について, $M_P=0$である.
+		\item 任意の$A$の極大イデアル$\ideal{m}$について, $M_{\ideal{m}}=0$である.
+	\end{sakura}
+	は同値である.
+\end{prop}
+
+\begin{proof}
+	$(\text{i})\Longrightarrow(\text{ii})\Longrightarrow(\text{iii})$は明らか. $M\neq0$と仮定する.任意の$0\neq x\in M$をとる. $\ann x$は真のイデアルである. $\ann x$を含む$A$の極大イデアル$\ideal{m}$をとる.このとき$M_{\ideal{m}}=0$であるので$x/1\in M_{\ideal{m}}=0$である.すると,ある$h\not\in\ideal{m}$が存在して$hx=0$である.これは$\ann x$が$\ideal{m}$に含まれることに矛盾.
+\end{proof}
+
+\begin{prop}\label{prop:局所的性質}
+	$\varphi:M\to N$を$A$加群の準同型とする.このとき;
+	\begin{sakura}
+		\item $\varphi$は単射である.
+		\item 任意の$P\in\spec A$について, $\varphi_P:M_P\to N_P$は単射である.
+		\item 任意の$A$の極大イデアル$\ideal{m}$について, 
+		$\varphi_{\ideal{m}}:M_{\ideal{m}}\to N_{\ideal{m}}$は単射である.
+	\end{sakura}
+	これは単射を全射に言い換えても成り立つ.
+\end{prop}
+
+\begin{proof}
+	局所化は平坦であることから(i) $\Longrightarrow$ (ii)が従う. (ii) $\Longrightarrow$ (iii)は明らか. (iii)を仮定する.完全列;
+	\[\begin{tikzcd}
+	0\nxcell\ker\varphi\nxcell M\nxcell[\varphi]N
+	\end{tikzcd}\]
+	に対して,任意の極大イデアル$\ideal{m}$について;
+	\[\begin{tikzcd}
+	0\nxcell(\ker\varphi)_{\ideal{m}}\nxcell M_{\ideal{m}}\nxcell[\varphi_{\ideal{m}}]N_{\ideal{m}}
+	\end{tikzcd}\]
+	は完全.ここで$(\ker\varphi)_{\ideal{m}}=\ker\varphi_{\ideal{m}}=0$であるので, \ref{prop:局所化したら0は局所的}より$\ker\varphi=0$すなわち$\varphi$は単射である.
+\end{proof}
+
+\begin{prop}\label{prop:局所化は平坦}
+	$S^{-1}A$は平坦である.とくに$S^{-1}A\otimes M\cong S^{-1}M$である.
+	が完全である.
+\end{prop}
+
+\begin{proof}
+	\ref{prop:局所化は完全関手}より$S^{-1}A\otimes M\cong S^{-1}M$を示せばよいが,	
+	\[f:S^{-1}A\otimes M\to S^{-1}M;a/s\otimes x\mapsto ax/s,\quad g:S^{-1}M\to S^{-1}M\otimes A;x/s\mapsto 1/s\otimes x\]
+	が互いに逆写像となる.
+\end{proof}
+\section{射影,入射加群}
+
+準同型$\varphi:N_1\to N_2$があったとする.この準同型はHom加群の間の準同型;
+\[\varphi_\ast :\hom_A(M,N_1)\to\hom_A(M,N_2);f\mapsto \varphi\circ f\]
+\[\varphi^\ast :\hom_A(N_2,M)\to\hom_A(N_1,M);f\mapsto f\circ \varphi\]
+を引き起こす.それぞれ次のような状況である.
+
+\begin{minipage}{.45\hsize}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			&N_2\\
+			M\arrow[ur,"\varphi\circ f",dashed]\arrow[r,"f"]&N_1\arrow[u,"\varphi"]
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{.45\hsize}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			&N_1\arrow[d,dashed,"f\circ\varphi"]\arrow[ld,"\varphi",swap]\\
+			N_2\arrow[r,"f"]&M
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+\end{minipage}
+
+下付きの$\ast$は写像の合成について共変的であることを,上付きのものは反変的であることを意味している.すなわち,加群の列;
+\[\begin{tikzcd}
+M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3
+\end{tikzcd}\]
+について,下付きの$\ast$を考えると;
+\[\begin{tikzcd}
+\hom_A(N,M_1)\nxcell[\varphi_\ast]\hom_A(N,M_2)\nxcell[\psi_\ast]\hom_A(N,M_3)
+\end{tikzcd}\]
+が得られ,上付きを考えると;
+\[\begin{tikzcd}
+\hom_A(M_3,N)\nxcell[\varphi^\ast]\hom_A(M_2,N)\nxcell[\psi^\ast]\hom_A(M_1,N)
+\end{tikzcd}\]
+が得られる.
+
+これは圏の言葉を用いれば$\hom(N,-)$は共変関手, $\hom(-,N)$は反変関手であると表現できる.これらは左完全になることが知られている.
+\begin{prop}
+$A$加群の完全列;
+\[\ses[\varphi][\psi]{M_1}{M_2}{M_3}\]
+と,任意の$A$加群$N$に対して;
+\[\begin{tikzcd}
+0\nxcell\hom_A(N,M_1)\nxcell[\varphi_\ast]\hom_A(N,M_2)\nxcell[\psi_\ast]\hom_A(N,M_3)
+\end{tikzcd}\]
+は完全である.
+\end{prop}
+
+同様に完全列;
+\[\begin{tikzcd}
+0\nxcell\hom_A(M_3,N)\nxcell[\varphi^\ast]\hom_A(M_2,N)\nxcell[\psi^\ast]\hom_A(M_1,N)
+\end{tikzcd}\]
+も完全である.証明はほぼ同じであるから,前者のみ示す.
+\begin{proof}
+	まず, $\varphi{}_\ast $が単射であることを確かめよう. $\varphi\circ g=\varphi\circ g'$とする.任意の$\in N$に対し$\varphi(g(x))=\varphi(g'(x))$となり, $\varphi$が単射なので$g(x)=g'(x)$すなわち$g=g'$である.
+	
+	さて, $\im\varphi{}_\ast =\ker\psi_\ast $を示せば良い.
+	\begin{mrkw}
+		\item 
+		任意の$f\in\im\varphi_\ast$を1つとる.ある$g\in\hom_A(N,M_1)$が存在して$f=\varphi\circ g$とかけるので, $\psi_\ast (f)=\psi\circ\varphi\circ g$であり, $\im\varphi=\ker\psi$だからこれは消える.よって$f\in\ker\psi_\ast $である.
+		\item 
+		任意の$f\in\ker\psi_\ast $を1つとる. $\psi\circ f=0$だから任意の$x\in N$に対し$f(x)\in\ker\psi=\im\varphi$となり, $\varphi$が単射だから$f(x)=\varphi(y_x)$となる$y_x\in M_1$が一意に定まる.ゆえに,次の写像;
+		\[g:N\to M_1;x\mapsto y_x\]
+		
+		がwell-definedであることがわかる.このとき$\varphi{}_\ast (g)=f$である.
+	\end{mrkw}
+	以上より,完全である.
+\end{proof}
+
+ここで$\psi_\ast $が全射であるとは限らないことに注意しよう.すなわち,上の命題について$\psi$が全射である仮定は不要である.同様に$\hom(-,N)$については$\varphi$が単射である仮定は不要である.では, $\psi_\ast(\psi^\ast)$が全射になる場合(すなわち$\hom$が完全関手になるとき)について考えよう.
+\begin{defi}[射影加群,入射加群]
+	]\index{しゃえいかぐん@射影加群}\index{にゅうしゃかぐん@入射加群}
+	任意の$A$加群の短完全列;
+	\[\ses{M_1}{M_2}{M_3}\]
+	に対し;
+	\[\ses{\hom_A(M,M_1)}{\hom_A(M,M_2)}{\hom_A(M,M_3)}\]
+	が完全となるような$A$加群$M$を\textbf{射影加群}(projective module)という.双対的に;
+	\[\ses{\hom_A(M_3,M)}{\hom_A(M_3,M)}{\hom_A(M_1,M)}\]
+	が完全になるような$M$を\textbf{入射加群}(injective module)という.
+\end{defi}
+
+先の議論より, $M$が射影加群であることは,任意の全射な$\psi\in\hom_A(M_2,M_3)$と任意の$f\in\hom_A(M,M_3)$に対し$\varphi{}_\ast $が全射,すなわち$\varphi\circ\widetilde{f}=f$となる$\widetilde{f}\in\hom_A(M,M_2)$の存在と同値.この$\widetilde{f}$を$f$の\textbf{持ち上げ}(lifting)という.同様に, $M$が入射加群であることは任意の単射な$\varphi\in\hom_A(M_1,M_2)$と任意の$f\in\hom_A(M_1,N)$に対し$\varphi^\ast $が全射,すなわち$\widetilde{f}\circ\varphi=f$となる$\widetilde{f}$の存在と同値.これを$f$の\textbf{拡張}(expantion)という.それぞれ,下の図式が可換になる$\widetilde{f}$の存在,ということに要約される.
+
+圏論的に言えば,左完全関手$\hom(M,-)$を完全にするものを射影加群,反変左完全関手$\hom(-,M)$を完全にするものを入射加群という,ということになる.
+
+\begin{minipage}{.45\hsize}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			M_2\nxcell[\psi]M_3\nxcell0\\
+			P\arrow[ur,"f",swap]\arrow[u,dashed,"\widetilde{f}"]
+		\end{tikzcd}
+		\caption{射影加群$P$}
+	\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{.45\hsize}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			&&I\\
+			0\nxcell M_1\arrow[ur,"f"]\nxcell[\varphi]M_2\arrow[u,dashed,"\widetilde{f}",swap]
+		\end{tikzcd}
+		\caption{入射加群$I$}
+	\end{figure}
+\end{minipage}
+
+\begin{prop}\label{prop:自由加群は射影加群}
+	自由加群は射影加群である.
+\end{prop}
+\begin{proof}
+	$F=\middleoplus_{i\in I}A_{x_i}$とする. $\psi\in\hom_A(M_2,M_3),f\in\hom_A(F,M_2)$とすると, $\psi$が全射なので$y_i\in\psi^{-1}(f(x_i))$が存在し,それを適当に選んで$\widetilde{f}(x_i)=y_i$とすると,基底の送り先を定めれば十分だから$\widetilde{f}\in\hom_A(F,M_1)$を得る.
+\end{proof}
+
+これは選択公理と同値である. $\psi^{-1}(f(x_i))$の元を選んで$\widetilde{f}$を構成してするときに選択公理を使っている.
+\begin{thm}
+	$A$加群$M$が射影的であることと,ある$A$加群$N$に対して$M\oplus N$が自由であることは同値.
+\end{thm}
+\begin{proof}
+	\begin{eqv}
+		\item 
+		$M$の生成系をとることで,自由$A$加群$F$からの全射$\varphi:F\to M$が定まる. $M$が射影的なので$\id:M\to M$の持ち上げ$f:M\to F$が存在する.すなわち$\varphi\circ f=\id_M$である. $\id$が単射なので$f$も単射となり,これによって$M$を$F$の部分加群とみなす.次の準同型;
+		\[\psi:M\oplus \ker\varphi\to F;(x,y)\mapsto f(x)+y\]
+		が同型を与えることを示す.
+		
+		\begin{mrkw}
+			\item 単射であること.
+			
+			$\psi(x,y)=f(x)+y=0$とする.これを$\varphi$で送ると定義から$x$となるが, 0の像は0なので$x=0$である.すると$\psi(x,y)=y=0$となり, $(x,y)=0$となる.
+			\item 全射であること.
+			
+			任意の$u\in F$をとる.すると定義から$u-f(\varphi(u))\in\ker\varphi$なので, $\psi(\varphi(u),u-f(\varphi(u)))=u$となる.
+		\end{mrkw}
+		\item 
+		$F=M\oplus N$とおく.全射な$\psi:M_2\to M_3$について$f:M\to M_3$の持ち上げがあればよい.
+		\[g:F\to M_3;(x,y)\mapsto f(x)\]
+		を考えると, $F$は射影的なので$g$の持ち上げ$\widetilde{g}:F\to M_2$が定まる.このとき$\widetilde{g}|_M$が$f$の持ち上げとなる.実際, $\psi\circ\widetilde{g}|_M(x)=\psi\circ\widetilde{g}(x)=g(x)=f(x)$となる.
+	\end{eqv}
+\end{proof}
+
+\begin{thm}
+	射影加群は平坦である.
+\end{thm}
+\begin{proof}
+	$P$を射影加群とする. $P$はある自由加群の直和因子だから, $F$を自由として$F=P\otimes N$とする. $F\cong\oplus_\lambda Au_\lambda$とすると
+	\[F\otimes M_i\cong \bigoplus_\lambda (Au_\lambda\otimes M_i)\]
+	より, $\id_{F}\otimes\eta:F\otimes M_i\to F\otimes M_2$も単射.また$F\otimes M_i\cong (P\otimes M_i)\oplus (N\otimes M_i)$より$P\otimes M_1\to P\otimes M_2$に制限しても単射.
+\end{proof}
+
+\section{環の直積}
+
+\begin{defi}[直積環]\index{ちょくせきかん@直積環}
+	$\{A_i\}_{i\in I}$を環の族とする. 集合としての直積$\prod_{i\in I} A_i$には,各成分ごとの和,積を考えることで環構造が入る.これを\textbf{直積環}(product ring)という. $\prod A_i$の元で,第$i$成分が1であり,それ以外の成分は0であるものを$e_i$とかく.
+\end{defi}
+
+単位元はすべての成分が1である元であり,各$A_i$が可換ならば直積も可換になる.また, $e_i$たちはベキ等元であることに注意しよう.第$i$成分が$a_i\in A_i$であり,それ以外の成分が1である元を$a_i$と同一視することで,自然な単射$A_i\to\prod A_i$が存在する.
+
+\begin{lem}
+	直積環$\prod A_i$は整域になり得ない.
+\end{lem}
+
+\begin{proof}
+	$x=(1,0,\dots,0),y=(0,1,0,\dots,0)$とするとどちらも0でなく, $xy=0$である.
+\end{proof}
+
+主に有限直積,とくに2つの環の直積であるときを考えよう(3つ以上のときは$A_1\times A_2\times A_3=(A_1\times A_2)\times A_3$であるから同様に議論できる).
+
+
+\begin{prop}
+	$A$を環とすると,次は同値である.
+	\begin{sakura}
+		\item $A$は環の直積$A_1\times A_2$と同型である.
+		\item $e_1,e_2\in A$が存在して,それぞれ$e_i^2=e_i$であり, $e_1+e_2=1,e_1e_2=0$を満たす.
+	\end{sakura}
+\end{prop}
+
+\begin{proof}
+	$(\Longrightarrow)$は明らか. (ii)を仮定しよう.次の準同型;
+	\[\varphi:A\to A/(e_1)\times A/(e_2);x\mapsto (x+(e_1),x+(e_2))\]
+	が環同型となる.実際$x\in\ker\varphi$とすると$x\in (e_1)$かつ$x\in (e_2)$であるので,ある$a_1,a_2\in A$が存在して$x=a_1e_1=a_2e_2$とかける.すると,各辺に$e_1$を掛けることで$x=a_1e_1=0$が従う.よって$\varphi$は単射であり,また任意の$(x+(e_1),y+(e_2))$について, $xe_2+ye_1$を考えると$xe_2-x=x(1-e_2)=xe_1$より, $xe_2+ye_1-x\in (e_1)$が従う.同様に$xe_2+ye_1-y\in (e_2)$より, $\varphi(xe_2+ye_1)=(x+(e_1),y+(e_2))$であることがわかる.以上より$\varphi$は環同型を与える.
+\end{proof}
+
+また, $A=A_1\times A_2$の素イデアルによる局所化を考えよう. $P\times A_2\in\spec A$について, $A_{P\times A_2}$は${A_1}_{P}$と同型である.これはその局所化が整域でも,局所化する前の環が整域でない例を与えている.
+
+さて,環の直積$\prod A_i$があったとき,自然な射影$\pi_i:\prod A_i\to A_i$が存在する.これは環の全準同型であり,スキームの閉移入$\pi_i^\ast:\spec A_i\to\spec\prod A_i$を与える.これは$P\in\spec A_i$について$\pi_i^{-1}(P)$を与える写像である.これによって有限直積については$\spec$の構造を決定できる.素イデアルの直積は素イデアルにならないことに注意しよう.
+\begin{prop}
+	$A_1,A_2$を環とする. $\spec (A_1\times A_2)$は, $P_1\in\spec A_1$と$P\times \spec A_2$を, $P_2\in\spec A_2$と$A_1\times P_2$を同一視することで$\spec A_1\sqcup\spec A_2$と一致する.
+\end{prop}
+
+\begin{proof}
+	$A=A_1\times A_2$とおく. $P\in\spec A$について, $e_1e_2=0\in P$より, $e_1\in P$または$e_2\in P$である. $e_1+e_2=1$であるので, $e_1,e_2\in P$となることはない. ここでは$e_1\in P$と仮定する.このとき$\pi_2^{-1}(\pi_2(P))=P$であり, $\pi_2(P)\in\spec A_2$であることを示そう.このとき$\pi_2(P)=P_2$とおけば$P=A_1\times P_2$とかける.
+	
+	さて, $P\subset\pi_2^{-1}(\pi_2(P))$は明らかなので,逆を示す. $(a_1,a_2)
+	\in\pi_2^{-1}(\pi_2(P))$とすると, $\pi_2(a_1,a_2)=a_2\in\pi_2(P)$なので,ある$a_1'\in A_1$が存在して$(a_1',a_2)\in P$である.すると$(a_1',0)=a_1'e_1\in P$であるので, $(0,a_2)\in P$である.これは$(a_1,a_2)=a_1e_1+(0,a_2)\in P$を導く.よって$\pi_2^{-1}(\pi_2(P))=P$である.また,次の環の同型;
+	\[A/P=A/\pi_2^{-1}(\pi_2(P))=A_2/\pi_2(P)\]
+	より, $A_2/\pi_2(P)$は整域となり$\pi_2(P)\in\spec A_2$である.
+	
+	$e_2\in P$のときは,同様に$P_1\in\spec A$を用いて$P=P_1\times A_2$とかける.
+\end{proof}
+
+これは有限個の場合に拡張できる.すなわち次が成り立つ(証明は略).
+
+\begin{prop}
+	環の有限直積$A=A_1\times A_2\times\dots\times A_n$について,任意の $P'\in\spec A$は,ある$1\leq i\leq n$と$P\in\spec A_i$により$P'=\pi_i^{-1}(P)$とかける.すなわち;
+	\[\spec A=\spec A_1\sqcup\spec A_2\sqcup\dots\sqcup\spec A_n\]
+	である.
+\end{prop}
+
+では,無限直積の場合はどうだろうか？実は成り立たないことが知られている.そのために補題を考えよう.
+
+\begin{lem}
+	環の無限直積$A=\prod_{i\in I}A_i$について,各$i\in I$に対し, $\{e_i\}_{i\in I}$の生成する$A$のイデアル$I_0$は$A$よりも真に小さい.
+\end{lem}
+
+\begin{proof}
+	任意の$x\in I_0$をとると,有限個の$i_1,\dots,i_s\in I$が存在して;
+	\[x=a_1e_{i_1}+a_2e_{i_2}+\dots+a_se_{i_s}\]
+	とかける.これに$e_{i_j}$をかけると, $x$の$i_j$成分は$a_j$であることがわかる.また, $i_{s+1}$を$i_1,\dots,i_s$のどれとも違うものとすれば, $x$の$i_{s+1}$成分は0である.よって, $A$の単位元$１$は$I_0$に含まれない.
+\end{proof}
+
+\begin{prop}
+	環の無限直積$A=\prod_{i\in I}A_i$について, $P\in\spec A$が存在して, $P$は$\pi^{-1}_i(P_i), P_i\in\spec A_i$の形で表せない.
+\end{prop}
+
+\begin{proof}
+	補題と同じ記号を用いる.イデアル$I_0$を含む極大イデアル$\ideal{m}$をとる.すると,すべての$i\in I$に対し$e_i\in\ideal{m}$である.ここで,任意の$j\in I$に対して,任意の$P_j\in\spec A_j$をとると, $P_j$は$A_j$の単位元を含まないから$e_j\not\in\pi^{-1}_j(P_j)$である.よって$\ideal{m}\neq\pi_j^{-1}(P_j)$となる.
+\end{proof}
+
+\section{素イデアル避け(Prime avoidance)}
+
+\begin{lem}[Prime avoidance]\index{#Prime avoidance@Prime avoidance}\label{lem:Prime avoidance}
+	環$A$のイデアル$P_1,\dots, P_n$で,素イデアルでないものは高々2つしかないとする. $A$のイデアル$I$が$I\subset\bigcup_{i=1}^n P_i$を満たすならば,ある$i$について$I\subset P_i$である.
+\end{lem}
+
+Prime avoidance, 素イデアル避けという名前の由来は対偶;
+\[\{P_i\}\text{に対して,すべての}i\text{について}I\not\subset P_i\text{ならば}I\not\subset\bigcup_{i=1}^n P_i\]
+に由来する.
+\begin{proof}
+	反例$I,P_1,\dots, P_n$があるとする.そのなかでも$n$が最小なものを取ろう. $n=1$ではありえないので$m\geq 2$である.
+	
+	\begin{sakura}
+		\item $n=2$のとき.
+		
+		$I\not\subset P_1,P_2$より$a_1,a_2\in I$を$a_2\not\in P_1,a_1\not\in P_2$となるようにとれる.このとき$I\subset P_1\cup P_2$なので, $a_1\in P_1,a_2\in P_2$である. $a=a_1+a_2$とおくと,もし$a\in P_1$ならば$a_2=a-a_1\in P_1$となり矛盾. $a\in P_2$のときも同様.よって$a\not\in P_1\cup P_2$であるが,これも矛盾である.
+		
+		\item $n\geq3$のとき.
+		
+		$P_i$たちの中に素であるものが少なくとも1つ存在するので,それを並べ替えて$P_1\in\spec A$とする.ここで,各$i$について$I,\{P_i\}_{i\neq j}$は反例になりえないので, $I\not\in\bigcup_{j\neq i}P_j$が成り立つ.よって,ある$a_i\in I$をとって, $a_i\not\in\bigcup_{j\neq i}P_i,a_i\in P_i$となるようにできる. $a=a_1+a_2a_3\dots a_n$とおくと, $a\in I$であって, $a\not\in\bigcup_{i=1}^n P_i$であることを示そう.
+		
+		$a\in P_1$ならば$a_2\dots a_n\in P_1$だが,これは$P_i$が素なので, $i\geq2$について$a_i\not\in P_1$であることに矛盾.また$i\geq2$について$a\in P_i$ならばやはり$a_1\in P_1$となり矛盾する.よって$I\not\subset\bigcup P_i$となり,仮定に反する.
+	\end{sakura}
+\end{proof}
+
+\begin{thm}[Davisの補題]\index{#Davisのほだい@Davisの補題}
+	環$A$の素イデアル$P_1,\dots,P_n$に対して,ある$a\in A$とイデアル$I$が存在して$(a)+I\not\subset\bigcup_{i=1}^n P_i$ならば,ある$x\in I$を選んで$a+x\not\in\bigcup_{i=1}^n P_i$であるようにできる.
+\end{thm}
+
+定義から,ある$c\in A,x\in I$を選べば$ca+x\not\in\bigcup P_i$とでき, $c=0$で$a$が消えてしまうこともありえるが,この定理は$c=1$とすることができる,と主張しているところが強力である.
+
+\begin{proof}
+	$n$についての帰納法で示す.
+	
+	\begin{step}
+		\item $n=1$のとき.
+		
+		対偶を考える.任意の$x\in I$について$a+x\in P_i$ならば, $x=0$とすると$a\in P_i$となり, $(a)+I\subset P_1$である.
+		
+		\item $n-1$まで正しいとする.
+		
+		任意の$1\leq i\leq n-1$について, $P_i\not\subset P_n$としてよい.よって$\prod_{i=1}^{n-1}P_i\not\subset P_n$である.さて, $(a)+I\not\subset\bigcup_{i=1}^{n-1}P_i$より,帰納法の仮定からある$y\in I$をとって$a+y\not\in\bigcup_{i=1}^{n-1}P_i$とできる.もし$a+y\not\in P_n$ならば$y$が求める元となり証明が終了する. $a+y\in P_n$だったとき, $a+x\not\in \bigcup_{i=1}^n P_i$となる$x\in I$を構成しよう.ここで, $I\not\subset P_n$である.もし$I\subset P_n$ならば$a+y\in P_n$より$a\in P_n$ｔなり$(a)+I\subset P_n$となるので,これは仮定に反する.また, $\prod_{i=1}^{n-1}P_i\not\subset P_n$であったので, $P_n$は素だから$I\prod_{i=1}^{n-1}P_i\not\subset P_n$である.そこで, $z\in I\prod_{i=1}^{n-1}P_i$を$z\not\in P_n$であるようにとれる. $x=y+z$とおくと, $a+x\not\in\bigcup_{i=1}^n P_i$である.実際,任意の$1\leq i\leq n-1$について$a+y\not\in P_i$であって, $z\in P_i$なので, $a+x\not\in P_i$である.また$a+y\in P_n$で$z\not\in P_n$なので$a+x\in P_n$である.	
+	\end{step}
+\end{proof}

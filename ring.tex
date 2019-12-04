@@ -1,0 +1,64 @@
+\documentclass[autodetect-engine,dvi=dvipdfmx,ja=standard,japaram={units}]{bxjsarticle} %%%every thing OK!  
+%\setpagelayout{showframe}	%%%margin可視化
+\usepackage{fancyhdr}
+\usepackage{graphicx,float}
+\usepackage{tikz,tikz-cd}
+\usepackage[hyperfigures]{hyperref}
+\usepackage[links,thmnumthrice,dottedtoc,sectionmark]{askw}
+\input{adjustmentforme}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage[longnamesfirst]{natbib}
+\makeindex
+\let\bar\overline
+
+\begin{document}
+	\nocite{*}
+	\mytitle{可換環論}
+	\newpage
+	\part*{はじめに}
+	代数幾何学を学ぶには,多様な前提知識が必要になる.特に可換環論,スキーム論,複素多様体（Riemann面）論が大切である.そこで,筆者のこれらの分野の学習ノートという形も兼ねて,各分野についてのPDFを作成することにした.これはそのうち可換環論についての分冊で,松村英之「復刊~可換環論」\cite{matsu},~堀田良之「可換環と体」\cite{hota2}などの内容をまとめる.とはいえ,最低限の基礎的なこと,例えばテンソル積や中山の補題などについては主に結果のみを第１章にまとめておくことにする.ただし,ホモロジー代数において活躍する射影,単射加群については証明付きでまとめてある.
+	
+	\textbf{このノートでは,環といえば単位元を持つ可換環のこととする.}
+	
+	\hspace*{\fill}最終更新日~\dots~\today
+	
+	\part*{記号}
+	
+	\symlist{$\N$}{自然数全体の集合（本書では0を含む）.}
+	\symlist{$\Z,\Q,\R,\Co$}{それぞれ整数,有理数,実数,複素数全体の集合.}
+	\symlist{$\Z_+$}{正の整数全体の集合.$\Q,\R$などに対しても同様.}
+	\symlist{$\#A$}{集合$A$に対し,$A$の元の個数またはその濃度.}
+	\symlist{$\subset$}{本書では等号の可能性を除外しない.真の包含関係は$\subsetneq$を用いる.}
+	
+	また,写像$f:A\to B$が全射のとき,~$f:A\twoheadrightarrow B$とかくことがある.また,単射のときは$f:A\hookrightarrow B$とすることがある.
+	\newpage
+	
+	\tableofcontents
+	
+	\input{ring1} %準備
+	\input{ring2} %Noether
+	\input{ring3} %整拡大
+	\input{ring4} %完備化
+	\input{ring5} %次元論
+	\input{ring6} %Homology algebra
+	\input{ring7} %Homology代数的手法
+	
+	\def\prepartname{付録}
+	\def\postpartname{}
+	\thepartchange
+	\input{ringApe1} %例
+	\input{ringApe2} %圏
+%	\input{ringApe3} 
+	\input{ring@temp}
+	
+	\addcontentsline{toc}{part}{索引}%
+	\printindex
+	
+	\newpage
+	\bibliographystyle{askw-jecon-no-sort} %%hyperref，natbib必須
+	\addcontentsline{toc}{part}{参考文献} %bookのときは切る
+	\bibliography{ring}
+	
+\end{document}
+ref
