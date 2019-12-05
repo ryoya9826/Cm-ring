@@ -26,12 +26,6 @@ $A$が非可換の時,作用が左（右）作用のとき左（右）加群と�
 
 証明は線形空間と同様.
 
-$A$加群の族$\{M_\lambda\}_{\lambda\in\Lambda}$に対して,直積$\prod M_\lambda$に$A$の作用を;
-\[a(x_\lambda)_{\lambda\in\Lambda}=(ax_\lambda)_{\lambda\in\Lambda}\]
-とすると, $\prod M_\lambda$は$A$加群になる.同様に,直和
-\[\bigoplus_{\lambda\in\Lambda}M_{\lambda}=\mkset{(x_\lambda)_{\lambda\in\Lambda}\in\prod M_\lambda}{\text{有限個の}\lambda\text{を除いて}x_\lambda=0\text{である}.}\]
-も加群になる.特に$\Lambda$が有限のとき,直積と一致する.
-
 \begin{defi}[準同型]
 	$M,N$を$A$加群とする. $\varphi:M\to N$が,任意の$a,b\in A$と$x,y\in M$に対し;
 	\[\varphi(ax+by)=a\varphi(x)+b\varphi(y)\]
@@ -83,13 +77,25 @@ $A$自身を$A$加群とみなすとき, $A$の部分加群とはまさに$A$の
 
 証明は簡単なので省略する.
 
-線形空間の\quo{基底}に対応して,加群の基底について触れる.以下, $M$を$A$加群とし, $(u_\lambda)_{\lambda\in\Lambda}$（しばしば略して$(u_\lambda)$とかく）を$M$の元の族とする.
+最初の定義の時点で気付いているかもしれないが, $A$加群の議論は$A$が体の場合,線形空間の場合にほかならない（$A$加群は$A$線形空間にほかならない）.よって,線形空間の定義に並行して次のような定義をするのは自然である.
+
+\begin{defi}[加群の直積,直和]\label{defi:直和,直積の存在}\index{ちょくせき@直積}\index{ちょくわ@直和}
+	$A$加群の族$\{M_\lambda\}_{\lambda\in\Lambda}$に対して,直積$\prod M_\lambda$に$A$の作用を;
+	\[a(x_\lambda)_{\lambda\in\Lambda}=(ax_\lambda)_{\lambda\in\Lambda}\]
+	と定めると$\prod M_\lambda$は$A$加群になる.同様の作用によって;
+	\[\bigoplus_{\lambda\in\Lambda}M_{\lambda}=\mkset{(x_\lambda)_{\lambda\in\Lambda}\in\prod M_\lambda}{\text{有限個の}\lambda\text{を除いて}x_\lambda=0\text{である}.}\]
+	も$A$加群になる.特に$\Lambda$が有限のとき$\prod M_\lambda$と一致する.これらをそれぞれ$\{M_\lambda\}$の\textbf{直積}(direct product), \textbf{直和}(direct sum)という.
+\end{defi}
+
+線形空間の\quo{基底}に対応して,加群の基底について触れる.以下, $M$を$A$加群とし, $(u_\lambda)_{\lambda\in\Lambda}$（しばしば略して$(u_\lambda)$とかく）を$M$の元の族とする.また, $\Lambda$が無限集合である場合, $\Lambda$を走る和$\sum_{\lambda\in\Lambda} u_\lambda$は次の条件;
+\[\text{有限個の}\lambda\text{を除いて}u_\lambda\text{が0である.}\tag{$\ast$}\]
+を満たす場合に限って定義される.
 
 \begin{defi}[生成系]\index{せいせいけい@生成系}
 	$M$の任意の元が$\sum_{\lambda\in\Lambda}a_\lambda u_\lambda ~(a_\lambda\in A)$とかけるとき, $(u_\lambda)$を$M$の\textbf{生成系}{system of generator}という.
 \end{defi}
 \begin{defi}[一次独立]\index{いちじどくりつ@一次独立}
-	$\sum a_\lambda u_\lambda=0$なら,任意の$\lambda\in\Lambda$に対し$a_\lambda=0$となるとき, $(u_\lambda)$は\textbf{一次独立}(linearly independent)であるという.無限集合$S$については$S$の任意の有限部分集合が一次独立のとき, $S$が一次独立であるという.
+	$\sum a_\lambda u_\lambda=0$なら,任意の$\lambda\in\Lambda$に対し$a_\lambda=0$となるとき, $(u_\lambda)$は\textbf{一次独立}(linearly independent)であるという. $(x_\lambda)$について$(\ast)$を満たさない場合, $(x_\lambda)$の任意の有限部分集合が一次独立のとき, $(x_\lambda)$が一次独立であるという.
 \end{defi}
 \begin{defi}[基底]\index{きてい@基底}
 	$M$の任意の元が$\sum a_\lambda u_\lambda$の形に一意に書けるとき, $(u_\lambda)$は$M$の\textbf{基底}(basis)であるという.	
@@ -97,13 +103,13 @@ $A$自身を$A$加群とみなすとき, $A$の部分加群とはまさに$A$の
 
 それぞれ,準同型;
 \[\bigoplus_{\lambda\in\Lambda} A\to M;(a_\lambda)\mapsto\sum a_\lambda u_\lambda\]
-が,全射,単射,全単射であることとそれぞれ同値.特に, $(u_\lambda)$が基底であることは$(u_\lambda)$が一次独立な生成系であることと同値.
+が,全射,単射,全単射であることとそれぞれ同値.特に, $(u_\lambda)$が基底であることは$(u_\lambda)$が一次独立な生成系であることと同値.また, $A$加群$M$について,有限個の$A$の直和からの全射が存在するとき, $M$は\textbf{有限生成}(finitely generated)であるという.\index{ゆうげんせいせい@有限生成}
 
 \begin{defi}[自由加群]\index{じゆうかぐん@自由加群}
 	$M$が基底を持つとき, $M$を\textbf{自由加群}(free module)という.
 \end{defi}
 
-線形代数の復習として,基底の存在は保証されていること,その濃度は一意的であることを思い出そう.
+線形代数の復習として,線形空間基底の存在は保証されていること,その濃度は一意的であることを思い出そう.
 \begin{thm}
 	体$K$上の加群$V$は自由加群であり,その基底の濃度は一定である.
 \end{thm}
@@ -313,9 +319,7 @@ $S_d$の元を$S$の斉次元という.わかりやすい例として,多項式�
 
 \section{準同型と普遍性}
 
-代数学（加群の理論）においては,いろいろな概念についてその構成に\textbf{自然に付随する準同型}が
-\section{テンソル積}
-
+代数学（加群の理論）においては,いろいろな概念についてその構成に\textbf{自然に付随する準同型}が重要な働きをする.まずは準同型そのものに関連する定義について紹介しておこう.
 \begin{defi}[Hom加群]
 	環$A$上の加群$M,N$において;
 	\[\hom_A(M,N)=\mkset{\varphi:M\to N}{\varphi:\text{準同型}}\]
@@ -346,7 +350,84 @@ M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3\nxcell0
 \end{tikzcd}\]
 はそれぞれ（短）右完全列,左完全列という.
 
-次にテンソル積を定義する.
+さて,自然に付随する準同型とはどういうものかを説明しよう.まず$A$加群$M$とその部分加群$N$について,剰余加群$M/N$を考えよう.このとき,次が成り立つ.
+
+\begin{prop}[剰余加群の普遍性]
+\textbf{自然な}全射$\varphi:M\to M/N$と,包含$\iota:N\to M$が存在する.このとき,任意の$A$加群$L$について,準同型$\psi:M\to L$で$N\subset\ker\psi$となるものに対し, $f:M/N\to L$で$f\circ\varphi=\psi$となるものが\textbf{一意的に}存在する.
+\end{prop}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+		N\arrow[bend left=30,rr,"0"]\nxcell[\iota]M\darrow[\varphi]\nxcell[\psi]L\\
+		&M/N\arrow[ru,dashed,"f"]
+	\end{tikzcd}
+	\caption{剰余加群の普遍性}
+\end{figure}
+
+このように,自然な準同型$\varphi$について,ある条件を満たした準同型（この例では$\psi$）に対して可換になるような\textbf{$f$が一意に存在する}という性質を\textbf{普遍性}(universality)という.以後紹介していくテンソル積や極限といった概念では,普遍性が重要な働きをする.それどころか圏論では普遍性に完全に依存した議論をすることも珍しくない.具体的には射の一意性が大切である.そこに着目した上で,\textbf{ある概念の普遍性を満たすものをそれ自身と定義する}という特徴づけを考える.具体的に説明しよう.ある対象が普遍性を持つことがわかっている（あるいは持ってほしい）場合は,次のように定義するのである.
+
+\begin{defi}[普遍性による剰余加群の定義]
+	$A$加群$M$とその部分加群$N$に対して,ある$A$加群$K$と$\varphi:M\to K$で$N\subset\ker\varphi$となるものが存在して,任意の$A$加群$L$と準同型$\psi:M\to L$で$N\ker\psi$となるものについて$f:K\to L$が一意に存在するとき, $(K,\varphi)$を$M$の$N$による\textbf{剰余加群}といい, $M/N$とかく.
+\end{defi}
+
+普遍性から$K$は（同型を除いて）一意的に定まることが保証されるので,実際に普遍性をみたす$M/N=\mkset{x+N}{x\in M}$という加群で$K$を表すことが正当化されている.一意に定まることを見よう.剰余加群の普遍性を満たす$K,K'$を考える.次の図式のように,それぞれの普遍性から$f:M\to K',f':M\to K$が存在する（$\iota$と合成すると$0$になることを表す$0$射は省略した）;
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+		&K\\
+		N\nxcell[\iota]M\darrow[\varphi]\arrow[u,"\varphi"]\nxcell[\varphi']K'\arrow[lu,dashed,"f'",swap]\\
+		&K\arrow[ru,dashed,"f",swap]\arrow[uu,bend left=50,"\id_K",crossing over,near end]
+	\end{tikzcd}
+	\caption{}
+\end{figure}
+
+このとき, $f'\circ f=\id_K$となり,\textbf{射の一意性から}$f'\circ f=\id_K$となる.同様に$f\circ f'=\id_{K'}$が確かめられ, $f,f'$によって$K$と$K'$は同型である.
+
+この議論の本質は,射の一意性から普遍性で得られる射の合成と恒等写像が等しくなる、というところにある.よって,まったく同様の証明で普遍性を持つ対象は必ず（同型を除いて）一意に定まることがわかる.このようにある概念を普遍性を満たすもの,と定義して実際にこの加群（対象）が普遍性を満たす,という主張をすることでwell-definedに定義を行うことができる（もちろん,普遍性を満たす加群が存在しないような定義をすることも可能であるが,それは加群の理論では役に立たない）.
+
+\ref{defi:直和,直積の存在}で定義した直積,直和についても普遍性を用いた定義が可能である.
+
+\begin{defi}[普遍性を用いた直積の定義]
+	$A$加群の族$\{M_\lambda\}$について,ある加群$L$と準同型の族$p_\lambda:L\to M_\lambda$が存在して,任意の$A$加群$N$と準同型の族$q_\lambda:N\to M_\lambda$に対し, $f:N\to L$で$p_\lambda\circ f=q_\lambda$となるものが一意的に存在するとき, $(L,p_\lambda)$を$\{M_\lambda\}$の\textbf{直積}といい, $\prod_\lambda M_\lambda$とかく.
+\end{defi}
+
+\begin{defi}[普遍性を用いた直和の定義]
+	$A$加群の族$\{M_\lambda\}$について,ある加群$L$と準同型の族$\iota_\lambda: M_\lambda\to L$が存在して,任意の$A$加群$N$と準同型の族$\kappa_\lambda: M_\lambda\to N$に対し, $f:L\to N$で$f\circ\iota_\lambda=\kappa_\lambda$となるものが一意的に存在するとき, $(L,\iota_\lambda)$を$\{M_\lambda\}$の\textbf{直和}といい, $\bigoplus_\lambda M_\lambda$とかく.
+\end{defi}
+
+\begin{minipage}{.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			&\prod M_\lambda\arrow[dr,"p_\lambda"]\\
+			N\arrow[ur,dashed,"f"]\arrow[rr,"q_\lambda"]&&M_\lambda
+		\end{tikzcd}
+		\caption{直積の普遍性}
+	\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			&\bigoplus M_\lambda\arrow[rd,"f",dashed]\\
+			M_\lambda\arrow[ur,"\iota_\lambda"]\arrow[rr,"\kappa_\lambda"]&&N
+		\end{tikzcd}
+		\caption{直和の普遍性}
+	\end{figure}
+\end{minipage}
+
+誤解の恐れがない限り添字が省略されることはいつもと同じである.また$p_\lambda$は\textbf{標準的射影}, $\iota_\lambda$は\textbf{標準的単射}と呼ばれる.
+
+\begin{exer}
+\ref{defi:直和,直積の存在}で定義された加群たちがそれぞれ直積,直和の普遍性を満たすことを確認せよ.また,普遍性の標準的な結果から同型を除いて一意的に定まることも確かめよ.
+\end{exer}
+
+早速次節では普遍性を使って\textbf{テンソル積}を定義していこう.
+
+\section{テンソル積}
+
 \begin{defi}[双線型写像]\index{そうせんけいしゃぞう@双線型写像}
 	$M,N,L$を$A$加群とする. $\varphi:M\times N\to L$が次の3つ;
 	\begin{defiterm}{BM}
@@ -357,26 +438,22 @@ M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3\nxcell0
 	を満たすとき, $\varphi$を$A$双線型写像という.
 \end{defi}
 
-双線型写像$M\times N\to L$の全体を$\bil_A(M,N;L)$で表すとすると,ある$A$加群$X$と$\tau\in\bil_A(M,N;L)$が存在して$\hom_A(X,L)\to\bil_A(M,N;L);f\mapsto f\circ\tau$を同型となるようにできることが知られている.この$X$と$\tau$を, $N$と$M$の$A$上の\textbf{テンソル積}(tensor product)という.%実際の証明は煩雑である上にあまりに多くの成書があるのでそちらに譲る（例えば\cite{atimac},命題2.12）.
+双線型写像$M\times N\to L$の全体を$\bil_A(M,N;L)$で表すとすると,ある$A$加群$K$と$\tau\in\bil_A(M,N;L)$が存在して$\hom_A(K,L)\to\bil_A(M,N;L);f\mapsto f\circ\tau$を同型となるようにできることが知られている.この$K$と$\tau$を, $N$と$M$の$A$上の\textbf{テンソル積}という.
 
-\begin{thm}[テンソル積]\index{テンソル積}
-	$M,N$を$A$加群とすると,任意の$A$加群$L$に対して,Figure.\ref{fig:tensor}を可換にする$A$加群$M\otimes_A N$と$\tau\in\bil_A(M,N;M\otimes_AN)$が同型を除いて一意的に存在する.
-\end{thm}
+\begin{defi}[テンソル積]\index{テンソル積}
+	$M,N$を$A$加群とする.ある$A$加群$K$と$\tau\in\bil_A(M,N;K)$が存在して,任意の$A$加群$L$と$\varphi\in\bil(M,N;L)$に対して$f\circ\tau=\varphi$となる$f$が一意的に存在する. $(K,\tau)$を$M\otimes_A N$とかき, $M,N$の$A$上の\textbf{テンソル積}(tonsor product)という.
+\end{defi}
 
-すなわち,任意の双線型写像$\varphi:M\times N\to L$に対して,準同型$f:M\otimes_AN\to L$で$f\circ\tau=\varphi$となるものが一意的に存在する.この性質をテンソル積の\textbf{普遍性}(universaliy)という.
 \begin{figure}[H]
 	\centering
 	\begin{tikzcd}
 	M\times N\arrow[r,"\varphi"]\arrow[d,"\tau"]&L\\
 	M\otimes_A N\arrow[ur,"f",dashed]
 	\end{tikzcd}
-	\caption{}\label{fig:tensor}
+	\caption{テンソル積の普遍性}\label{fig:tensor}
 \end{figure}
 
-\begin{proof}
-	\begin{step}
-		\item 存在すること.
-		
+\begin{proof}[\textbf{テンソル積の存在証明}.]
 		直積$M\times N$が生成する$A$加群;
 		\[\mathcal{T}=\mkset{\sum_{\text{有限和}}a_i(x_i,y_i)}{a_i\in A,(x_i,y_i)\in M\times N}\]
 		を考える.ここで,~$a\in A,x,x_1,x_2\in M,y,y_1,y_2\in N$として,次の形の元
@@ -389,34 +466,11 @@ M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3\nxcell0
 		がwell-definedであることがわかるので,同型$\mathcal{T}/\ker\widetilde{\varphi}\to L$と合成して,準同型;
 		\[f:\mathcal{T}/\mathcal{I}\to L;(x,y)+\mathcal{I}\mapsto\varphi(x,y)\]
 		を得る.これは$\tau$の全射性から一意に定まる.
-		\item 一意であること.
 		
-		$\tau:M\times N\to T,\tau':M\times N\to T'$とし,~$T$と$T'$がそれぞれテンソル積であるとする.すると,~Figure.\ref{fig:tensor-proof1}のように$f\circ f'\circ\tau=\tau',f'\circ\tau'=\tau$とできる.よって,~$f\circ f'\circ\tau'=\tau',f'\circ f\circ\tau=\tau$であって,~Figure.\ref{fig:tensor-proof2}において,~$f$の一意性から$f=\id_{T}$しかありえないから,~$f'\circ f=\id_{T'},f'\circ f=\id_{T}$となり$T$と$T'$は同型である.
-		
-		\begin{minipage}[c]{.45\textwidth}%
-			\begin{figure}[H]%
-				\centering
-				\begin{tikzcd}
-				M\times N\arrow[r,"\tau'"]\arrow[d,"\tau"]&T'\arrow[dl,"f'",shift left=.5ex]\\
-				T\arrow[ur,"f",shift left=.5ex]
-				\end{tikzcd}
-				\caption{}\label{fig:tensor-proof1}
-			\end{figure}
-		\end{minipage}%
-		\hfill
-		\begin{minipage}[c]{.45\textwidth}%
-			\begin{figure}[H]%
-				\centering
-				\begin{tikzcd}
-				M\times N\arrow[r,"\tau"]\arrow[d,"\tau"]&T\\
-				T\arrow[ur,"f"]
-				\end{tikzcd}
-				\caption{}\label{fig:tensor-proof2}
-			\end{figure}%
-		\end{minipage}
-	\end{step}
+		同型を除いて一意であることは普遍性の標準的な結果である.
+
 \end{proof}
-$x\in M,y\in N$に対し$\tau(x,y)=x\otimes y$ともかき,これを元のテンソル積という.
+$x\in M,y\in N$に対し$\tau(x,y)=x\otimes y$ともかき,これを\textbf{元のテンソル積}という.
 テンソル積は$M\otimes_A N$は$x\otimes y$を生成元とし;
 \[(x_1+x_2)\otimes y=x_1\otimes y+x_2\otimes y\]
 \[x\otimes(y_1+y_2)=x\otimes y_1+x\otimes y_2\]
@@ -614,7 +668,8 @@ $S$を$A$の非零因子全体の集合とすると,上の$\varphi$は単射で�
 局所化$S^{-1}A$は自然に$A$代数になっていることに注意しよう.さきは$A_P$について素イデアルを考えたが,一般に$A$代数$B$があったときに(素)イデアルの対応を考えることは大切である. たとえば$\varphi:A\to B$があったとき, $P\in\spec A$について必ずしも$\varphi(P)$は$B$のイデアルになるかどうかすらわからない.そこで, $A$のイデアル$I$に対応する$B$のイデアルについては$\varphi(I)$が$B$で生成するイデアルを考えることが自然である.また, $Q\in\spec B$について$\varphi^{-1}(Q)$は必ず素イデアルになることを確かめることができる.これは自然な射$\spec B\to\spec A$
 に他ならないが,それについては代数幾何についての教科書を見てほしい. $A\to S^{-1}A$などの自然な準同型による$Q\in\spec S^{-1}A$の引き戻しは$Q\cap A$と書いたりする.
 
-\begin{defi}[剰余体]\index{じょうよたい@剰余体}\index{じょうよたい@剰余体}
+$A$について, $P$による局所化を施すと$P$に含まれていない素イデアルは取り除かれる.また, $P$による剰余を施すと$P$を含んでいない素イデアルは取り除かれていた.これを組み合わせることによって, $A$の$P$以外の素イデアルを取り除くことができる.
+\begin{defi}[剰余体]\index{じょうよたい@剰余体}\index{じょうよたい@剰余体}\label{defi:剰余体}
 	環$A$と素イデアル$P$について, 体$A_P/PA_P$を$K(P)$とかいて, $A$の$P$における\textbf{剰余体}(residue field)という.
 \end{defi}
 
@@ -664,6 +719,8 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 	\end{sakura}
 	が成り立つ.
 \end{prop}
+
+\ref{defi:剰余体}で説明した素イデアルの取り除きについて, $Q\subset P$を素イデアルとしたときに, $P$による局所化と$Q$による剰余を組み合わせることで$A$の$Q$と$P$の間にある素イデアル以外をすべて取り除くことができることがわかるが,この命題によって$A_P/QA_P$と$(A/Q)_P$が同型であるからその順序が関係ないことがわかる.
 
 ところで,位相的性質,すなわち同相で変化しない性質のように（特に素イデアルによる）局所化で変化しないものを\textbf{局所的性質}(local properties)という.\index{きょくしょてきせいしつ@局所的性質} その例をいくつか見ておこう.
 

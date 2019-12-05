@@ -9,3 +9,4 @@
 *.synctex.gz
 *.toc
 *.ffs_db
+*.synctex(busy)
