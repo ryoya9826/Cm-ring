@@ -1,8 +1,9 @@
 \part[Preliminaries]{準備}
-この章では,基礎的なことを主に結果のみ集める.
+この章では,基礎的なことを集める.
+
+
 \section{加群}
 
-この節では,基礎事項のさらに基礎として簡単な定義をする.
 \begin{defi}[加群]\index{かぐん@加群}
 	$A$を環とし, $M$をAbel群とする. $A$の作用$A\times M\to M;(a,x)\mapsto ax$が存在して;
 	\begin{defiterm}{M}
@@ -14,9 +15,9 @@
 	をみたすとき, $M$と作用の組を$A$\textbf{加群}(module)という.
 \end{defi}
 
-$A$が非可換の時,作用が左（右）作用のとき左（右）加群という. $A$が可換のときは単に$A$加群という.右加群では(M2)の代わりに
+環$R$が非可換の時,作用が左（右）作用のとき左（右）加群という. $A$が可換のときは単に$A$加群という.右加群では(M2)の代わりに
 \[\textrm{(M2)}'\quad a(bx)=b(ax)\]
-を要請する必要がある.また, $A$が体のときは線形空間に他ならない.
+を要請する必要がある.また, $A$が体のときは線形空間に他ならない. $A$の作用のことを\textbf{スカラー}(scalar)ということもある.
 
 最初に注意しておいたとおり,以後すべて$A$は可換環として進める.
 \begin{prop}
@@ -35,10 +36,11 @@ $A$が非可換の時,作用が左（右）作用のとき左（右）加群と�
 もちろん, $\varphi$が全単射の時$A$同型という.
 
 \begin{defi}[部分加群]
-	$A$加群$M$の部分集合$N$が,Abel群として$M$の部分群であり,任意の$a\in A$と$x\in N$に対して$ax\in N, $すなわち$A$の作用で閉じているとき$N$を部分加群であるという.
+	$A$加群$M$の部分集合$N$がAbel群として$M$の部分群であり,任意の$a\in A$と$x\in N$に対して$ax\in N, $すなわち$A$の作用で閉じているとき$N$を部分加群であるという.
 \end{defi}
 
-$A$自身を$A$加群とみなすとき, $A$の部分加群とはまさに$A$のイデアルにほかならない.すると次の定義も自然だろう.
+$A$自身を,環の積を作用として$A$加群とみなすとき, $A$の部分加群とはまさに$A$のイデアルにほかならない.このとき, $A$準同型は環の準同型とは異なることに注意しよう（単位元の行き先を定めることと$A$準同型を定めることは同値）.
+
 \begin{defi}[剰余加群]\index{じょうよかぐん@剰余加群}
 	$M$を$A$加群とし, $N$をその部分加群とする.Abel群としての剰余群$M/N$に$A$作用を次のようにして定義する;
 	\[a(x+y)=ax+N\]
@@ -109,34 +111,10 @@ $A$自身を$A$加群とみなすとき, $A$の部分加群とはまさに$A$の
 	$M$が基底を持つとき, $M$を\textbf{自由加群}(free module)という.
 \end{defi}
 
-線形代数の復習として,線形空間基底の存在は保証されていること,その濃度は一意的であることを思い出そう.
+線形代数の復習として,線形空間基底の存在は保証されていること,その濃度は一意的であることを思い出そう（証明はしない）.
 \begin{thm}
 	体$K$上の加群$V$は自由加群であり,その基底の濃度は一定である.
 \end{thm}
-%\begin{proof}
-%	\begin{mrkw}
-%		\item 基底が存在すること.
-%		
-%		$V=0$のときは示すことがない. $V\neq0$とする. $V$の部分集合の族
-%		\[\mathscr{S}=\mkset{S\subset V}{S\text{は}K\text{上一次独立}}\]
-%		が,包含関係による帰納的順序集合になることを示す.まず, $x\neq0$なら$\{x\}\in\mathscr{S}$より$\mathscr{S}\neq\emptyset$である. $\{S_\alpha\}_{\alpha\in A}$を$\mathscr{S}$の全順序部分集合とする. $S_\infty=\bigcup_{\alpha\in A}S_\alpha$とすると,任意の$S_\infty$の有限部分集合$S'\subset S_\infty$に対し,ある$\alpha$を選べば$S'\subset S_\alpha$となり, $S_\alpha$の一次独立性から$S'$も一次独立.よって$S_\infty$は一次独立となり, $S_\infty \in\mathscr{S}$である.よって, $S_\infty$は$\{S_\alpha\}$の上界を与えるので, $\mathscr{S}$は帰納的である.よって,Zornの補題より$\mathscr{S}$は極大元$\mathcal{B}$を持つ. $\mathcal{B}$は一次独立なので,これが生成系になることを示せば良い. $\mathcal{B}$が生成する部分加群を, $\mathcal{B}=(b_\lambda)_{\lambda\in\Lambda}$とおいて, $KB=\mkset{\sum a_\lambda b_\lambda}{a_\lambda\in K}$とする. $V\setminus KB\neq\emptyset$と仮定して, $x\in V\setminus KB$をとる.すると, $\mathcal{B}\cup \{x\}$は$\mathcal{B}$を含むので,一次独立ではありえない.よって,すべてが0でない$a,a_i(1\leq i\leq n)$があって;
-%		\[ax+\sum_{i=1}^n a_ib_i=0\]
-%		となる.ここで$a=0$とすると$(b_\lambda)$が一次独立でなくなり矛盾するので$a\neq0$である. $K$が体なので$x=-a^{-1}\sum_{\lambda\in\Lambda}a_\lambda b_\lambda\in KB$となり矛盾.よって, $V=KB$である.
-%		\item 濃度が一定であること.
-%		\begin{sakura}
-%			\item $\mathcal{B}$が有限のとき.
-%			
-%			$V$の任意の一次独立な$S$について, $\#S\leq\#B$を示せば良い. $\#B=n$として, $B=\{b_1,\dots,b_n\}$としよう. $n<\#S$と仮定すると, $\nitem{y}\in S$は基底の延長定理より$V$の基底をなす.よって, $S$は一次独立でなくなり,矛盾する.
-%			\item $\mathcal{B}$が無限のとき.
-%			
-%			$\mathcal{B}=(x_\lambda)_{\lambda\in\Lambda}$のほかに$\mathcal{B'}=(y_\omega)_{\omega\in\Omega}$が$M$の基底をなすとする.対称性から$\#\Omega\leq\#\Lambda$なら逆も成立するので,これを示せば良い.さて
-%			\[x_\lambda =\sum_{\omega\in\Omega_\lambda}a_\omega y_\omega~(a_\omega\neq0)\]
-%			となるように$\Omega_\lambda$を定義する.基底の定義から$\bigcup_{\lambda\in\Lambda}\Omega_\lambda=\Omega$であり, $\Omega_\lambda$は有限である.すると,濃度の計算をして
-%			\[\#\Omega\leq\sum_{\lambda\in\Lambda}\#\Omega_\lambda\leq\#\Lambda\times\max\mkset{\#\Omega_\lambda}{\lambda\in\Lambda}\leq\#\Lambda\times\aleph_0=\#\Lambda\]
-%			となるので,示された.
-%		\end{sakura}
-%	\end{mrkw}
-%\end{proof}
 
 可換環上の自由加群についても,濃度は一定である（非可換環については,基底が有限なとき一般には成立しない）.
 
@@ -165,7 +143,7 @@ $A$自身を$A$加群とみなすとき, $A$の部分加群とはまさに$A$の
 
 \section{Noether環}
 
-\begin{defi}[Noether環]\index{#Noetherかん@Noether環}
+\begin{defi}[Noether環]\index{#Noetherかん@Noether環}\label{defi:Noether環}
 		環$A$の任意のイデアルが有限生成であるとき, $A$をNoether\textbf{環}という.
 \end{defi}
 	
@@ -215,7 +193,7 @@ Noether環は次の同値条件を持つので,どれを定義にしても良い
 	イデアルの対応を考えればわかる.
 \end{proof}
 
-Noether環の部分環が必ずしもNoetherではないことに注意しよう.例えば, Noetherでない整域は商体に含まれる.
+Noether環の部分環が必ずしもNoetherではないことに注意しよう.例えば, Noetherでない整域は商体に含まれる（\ref{defi:商環}をみよ）.
 
 次の定理から,有限生成を確かめるのは素イデアルだけでよいことがわかる.
 \begin{thm}[I.S.Cohen]
@@ -240,7 +218,7 @@ Noether環の部分環が必ずしもNoetherではないことに注意しよう
 	$f:A\to B$により$B$を$A$代数とみる.ある$n\in\N$が存在して,全射準同型$\varphi:A[\nitem{X}]\to B$が存在するとき, $f$は\textbf{有限型}(finite type)であるという.
 \end{defi}
 
-このとき, $S=\{\varphi(X_1),\dots,\varphi(X_n)\}$を$B$の代数としての生成元といい, $B$は$A$\textbf{代数として有限生成}(finitely generated as $A$ algebla)という. $B$が$A$加群として有限生成であることとは異なる定義であるので,注意が必要である.なお,注意として単にfinite $A$-algebraと書かれた場合,これはfinite type を\textbf{意味しない.} これは$A$代数として自然に入る加群構造で有限生成であることを意味する.
+このとき, $S=\{\varphi(X_1),\dots,\varphi(X_n)\}$を$B$の代数としての生成元といい, $B$は$A$\textbf{代数として有限生成}(finitely generated as $A$ algebla)という. $X_i$の$B$における像を$\alpha_i$としたとき, $B=A[\nitem{\alpha}]$とかく. $B$が$A$加群として有限生成であることとは異なる定義であるので,注意が必要である.なお,注意として単にfinite $A$-algebraと書かれた場合,これはfinite type を\textbf{意味しない.} これは$A$代数として自然に入る加群構造で有限生成であることを意味する. 
 
 Hilbertの基底定理について述べておこう.
 \begin{thm}[Hilbertの基底定理]\index{#Hilbertのきていていり@Hilbertの基底定理}\label{thm:Hilbertの基底定理}
@@ -285,7 +263,8 @@ $S_d$の元を$S$の斉次元という.わかりやすい例として,多項式�
 
 \section{中山の補題}
 
-線形代数で習ったCayley-Hamiltonの定理を拡張できる（\textbf{行列式のトリック}とも呼ばれる）.
+
+線形代数で習ったCayley-Hamiltonの定理を加群に対して拡張できる（\textbf{行列式のトリック}とも呼ばれる）.
 \begin{thm}[Cayley-Hamilton]\index{#Cayler-Hamiltonのていり@Cayley-Hamiltonの定理}
 	\label{thm:Cayley-Hamilton}
 	$M$を$n$個の元で生成される有限生成な$A$加群とし, $\varphi\in\text{End}_A(M)$が,ある$A$のイデアル$I$に対して$\varphi(M)\subset IM$であると仮定する.このとき, $\nitem{a}\in I$が存在して
@@ -298,7 +277,8 @@ $S_d$の元を$S$の斉次元という.わかりやすい例として,多項式�
 	とできる.よってKroneckerのデルタ$\delta_{ij}$を用いると$\sum_j(\delta_{ij}\varphi-a_{ij})u_j=0$である.行列$(\delta_{ij}\varphi-a_{ij})_{i,j}$に対し余因子行列をかけて, $\det(\delta_{ij}\varphi-a_{ij})$は$M$の自己準同型となるが,これはすべての$x_i$を消すので零射にほかならない.行列式を展開すれば求める式が得られる.
 \end{proof}
 
-これを利用して,つぎの有名な補題が証明できる.これは普段\textbf{中山の補題}と呼ばれている.
+これを利用して,\textbf{中山の補題}と呼ばれる強力な定理を証明できる.	
+
 \begin{thm}[中山の補題]\index{なかやまのほだい@中山の補題(NAK)}\label{thm:NAK}
 	$M$を有限生成$A$加群, $I$を$A$のイデアルとする. $M=IM$であるとき, $aM=0$かつ$a\equiv1\pmod{I}$を満たす$a\in A$が存在する.とくに$I\subset\rad(A)$ならば$M=0$である.
 \end{thm}
@@ -314,7 +294,7 @@ $S_d$の元を$S$の斉次元という.わかりやすい例として,多項式�
 \end{cor}
 
 \begin{proof}
-	$M/N\cong IM$より$M/N=0$である.
+	$M/N\cong I(M/N)$より$M/N=0$である.
 \end{proof}
 
 \section{準同型と普遍性}
@@ -501,7 +481,7 @@ $x\in M,y\in N$に対し$\tau(x,y)=x\otimes y$ともかき,これを\textbf{元�
 これは$f\times g:M\times N\to M'\times N';(x,y)\mapsto (f(x),g(x))$をテンソル積に誘導したものにほかならない.
 
 テンソル積を演算と見ると次が基本的である.
-\begin{prop}
+\begin{prop}\label{prop:テンソル積は直和と可換}
 	テンソル積は可換なモノイドをなす.つまり次の3つが成り立つ.
 	\[A\otimes M\cong M, M\otimes N\cong N\otimes M, (M\otimes N)\otimes L\cong M\otimes (N\otimes L)\]
 	また,テンソル積は直和と可換である.すなわち;
@@ -584,6 +564,10 @@ $x\in M,y\in N$に対し$\tau(x,y)=x\otimes y$ともかき,これを\textbf{元�
 
 \section{素イデアルと局所化}
 
+\begin{defi}[積閉集合]\index{せきへいしゅうごう@積閉集合}
+	環$A$の部分集合$S$について$1\in S,x,y\in S$ならば$xy\in　S$が成り立つとき, $S$は\textbf{積閉}(multiplicatively closed)であるという.
+\end{defi}
+
 \begin{defi}[局所化]\index{きょくしょか@局所化}
 	$A$を環とし, $S$を$A$の積閉な部分集合とする. $S$の元を分母に許すような環$S^{-1}A$を, $A$の$S$による\textbf{局所化}(localization)または\textbf{分数環}(fractional ring)という.
 \end{defi}
@@ -596,7 +580,10 @@ $S^{-1}A$の正確な定義を与えておこう.直積$A\times S$に次の関�
 \[\ker\varphi=\mkset{a}{sa=0\text{となる}s\in S\text{がある}}\]
 であるから, $S$が零因子を持たなければ$\varphi$が単射となり, $A$を$S^{-1}A$に埋め込める.
 
-$S$を$A$の非零因子全体の集合とすると,上の$\varphi$は単射であって, $S^{-1}A$を$A$の\textbf{全商環}(total fractional ring)\index{ぜんしょうかん@全商環}という. $A$が整域のとき,これは商体にほかならならない.
+\begin{defi}[全商環]\label{defi:商環}\index{しょうかん@商環}
+$S$を$A$の非零因子全体の集合とすると,上の$\varphi$は単射であって, $S^{-1}A$を$A$の\textbf{全商環}(total fractional ring)\index{ぜんしょうかん@全商環}という. $A$が整域のとき,これは体になり\textbf{商体}(quotient field)という.
+\end{defi}
+
 \begin{prop}[分数環の普遍性]
 	$S$を$A$の積閉集合とする.このとき$f:A\to B$で$f(S)\subset B^\times$となる$A$代数$B$に対し,準同型$g:S^{-1}A\to B$で$g\circ\varphi=f$となるものが同型を除いて一意的に存在する.
 \end{prop}
@@ -631,6 +618,8 @@ $S$を$A$の非零因子全体の集合とすると,上の$\varphi$は単射で�
 	\item $\bigcap_{\lambda}V(I_\lambda)=V(\sum_\lambda I_\lambda)$である.
 \end{sakura}
 
+この定義の動機は, week nullstellensatz（\ref{thm:week nullstellensatz}）により代数閉体の組$K^n$と$K[\nitem{X}]$の極大イデアル全体が１対１対応を持つということにある.極大でない素イデアルをそこに合わせることで$K^n$の点以上の構造をもった$\spec K[\nitem{X}]$を考えよう,としたのがGrothendieckのスキーム論の始まりである.
+
 \begin{lem}\label{lem:イデアルの根基と素イデアル}
 	$A$のイデアル$I$に対し $\sqrt{I}=\bigcap_{P\in V(I)} P$である.
 \end{lem}
@@ -647,7 +636,7 @@ $S$を$A$の非零因子全体の集合とすると,上の$\varphi$は単射で�
 	$ P\in\spec A$に対し, $S=A\setminus P$は素イデアルの定義から積閉で,これによる局所化を$A_P$とかいて$A$の$P$による局所化という.
 \end{defi}
 
-環$A$で,唯1つの極大イデアル$\ideal{m}$を持つものを\textbf{局所環}(local ring)というのであった.次の判定条件を思い出そう.
+環$A$で,唯1つの極大イデアル$\ideal{m}$を持つものを\textbf{局所環}(local ring)といい,次の判定条件が知られている.\index{きょくしょかん@局所環}
 
 \begin{prop}\label{prop:local ring equiv}
 	$(A,\ideal{m})$が局所環であることと, $\ideal{m}=A\setminus A^\times$がイデアルであることは同値.
@@ -763,7 +752,6 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 
 \begin{prop}\label{prop:局所化は平坦}
 	$S^{-1}A$は平坦である.とくに$S^{-1}A\otimes M\cong S^{-1}M$である.
-	が完全である.
 \end{prop}
 
 \begin{proof}
@@ -771,6 +759,7 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 	\[f:S^{-1}A\otimes M\to S^{-1}M;a/s\otimes x\mapsto ax/s,\quad g:S^{-1}M\to S^{-1}M\otimes A;x/s\mapsto 1/s\otimes x\]
 	が互いに逆写像となる.
 \end{proof}
+
 \section{射影,入射加群}
 
 準同型$\varphi:N_1\to N_2$があったとする.この準同型はHom加群の間の準同型;
@@ -838,10 +827,7 @@ $A$加群の完全列;
 		\item 
 		任意の$f\in\im\varphi_\ast$を1つとる.ある$g\in\hom_A(N,M_1)$が存在して$f=\varphi\circ g$とかけるので, $\psi_\ast (f)=\psi\circ\varphi\circ g$であり, $\im\varphi=\ker\psi$だからこれは消える.よって$f\in\ker\psi_\ast $である.
 		\item 
-		任意の$f\in\ker\psi_\ast $を1つとる. $\psi\circ f=0$だから任意の$x\in N$に対し$f(x)\in\ker\psi=\im\varphi$となり, $\varphi$が単射だから$f(x)=\varphi(y_x)$となる$y_x\in M_1$が一意に定まる.ゆえに,次の写像;
-		\[g:N\to M_1;x\mapsto y_x\]
-		
-		がwell-definedであることがわかる.このとき$\varphi{}_\ast (g)=f$である.
+		任意の$f\in\ker\psi_\ast $を1つとる. $\psi\circ f=0$だから任意の$x\in N$に対し$f(x)\in\ker\psi=\im\varphi$となり, $\varphi$が単射だから$f(x)=\varphi(y_x)$となる$y_x\in M_1$が一意に定まる.ゆえに$g:N\to M_1;x\mapsto y_x$がwell-definedであることがわかる.このとき$\varphi{}_\ast (g)=f$である.
 	\end{mrkw}
 	以上より,完全である.
 \end{proof}
@@ -910,6 +896,7 @@ $A$加群の完全列;
 			
 			任意の$u\in F$をとる.すると定義から$u-f(\varphi(u))\in\ker\varphi$なので, $\psi(\varphi(u),u-f(\varphi(u)))=u$となる.
 		\end{mrkw}
+		よって全単射となり,同型を与える.
 		\item 
 		$F=M\oplus N$とおく.全射な$\psi:M_2\to M_3$について$f:M\to M_3$の持ち上げがあればよい.
 		\[g:F\to M_3;(x,y)\mapsto f(x)\]
@@ -1005,6 +992,76 @@ $A$加群の完全列;
 	補題と同じ記号を用いる.イデアル$I_0$を含む極大イデアル$\ideal{m}$をとる.すると,すべての$i\in I$に対し$e_i\in\ideal{m}$である.ここで,任意の$j\in I$に対して,任意の$P_j\in\spec A_j$をとると, $P_j$は$A_j$の単位元を含まないから$e_j\not\in\pi^{-1}_j(P_j)$である.よって$\ideal{m}\neq\pi_j^{-1}(P_j)$となる.
 \end{proof}
 
+\section{GCD整域と原始多項式}
+体上の多変数多項式はPIDではなかったが, UFDであることを示すことができる.そのために次の定義を導入しよう.
+
+\begin{defi}[GCD整域]\index{#GCD整域@GCD整域}
+	整域$A$であって,任意の２つの$x,y\in A$が最大公約元を必ず持つとき, $A$をGCD\textbf{整域}(GCD domain)という.
+\end{defi}
+
+既約分解することでUFDはGCD整域であることがわかる.
+
+\begin{defi}[内容,原始多項式]\index{げんしたこうしき@原始多項式}\index{ないよう@内容}
+	$A$をGCD整域とする. $f(X)=a_nX^n+\dots+a_0\in A[X]$について$a_n,\dots,a_0$の最大公約元を$c(f)$とかき, $f$の\textbf{内容}(content)という. $c(f)$が単元であるとき, $f$は\textbf{原始的}(primitive)であるという.
+\end{defi}
+
+$x,y\in A$について,ある$u\in A^\times$が存在して$x=uy$とかけるとき$x,y$は同伴である,と定義したことを思い出そう.この節ではこのことを$x\sim y$と書くことにする.
+\begin{lem}[Gaussの補題]
+	$A$をGCD整域とする. $f,g\in A[X]$について$c(fg)\sim c(f)c(g)$が成り立つ.
+\end{lem}
+
+\begin{proof}
+	$f=c(f)f_0,g=c(g)g_0$と分解すると$f_0,g_0$は原始的である.また$c(fg)\sim c(c(f)c(g)f_0g_0)\sim c(f)c(g)c(f_0g_0)$であるので$f,g$は原始的であると仮定してよい. $f=a_nX^n+\dots+a_0,g=b_mX^m+\dots+b_0$とおく. $fg=c_{n+m}X^{n+m}+\dots+c_0$とおき, $n+m$についての帰納法で示す. $c(fg)=\gcd(c_{n+m},\dots,c_0)$であるが,これは;
+	\[\gcd(a_n,c_{n+m-1},\dots, c_0)\gcd(b_n,c_{n+m-1},\dots,c_0)\]
+	を割り切る.ここで, GCD整域において$\gcd(x,y_1,\dots,y_n)\sim\gcd(x,y_1+zx_1,\dots y_n+zx_n)$であることから;
+	\[\gcd(a_n,c_{n+m-1},\dots,c_0)\sim\gcd(a_n,c_{n+m-1}-a_nb_{m-1},\dots,c_n-a_nb_0,c_{n-1},\dots,c_0)\sim\gcd(a_n, c((f-a_nX^n)g))\]
+	である. $\deg(f-a_nX^n)g<n+m$であるから,帰納法の仮定より;
+	\[c((f-a_nX^n)g)\sim c(f-a_nX^n)c(g)\sim c(f-a_nX^n)=\gcd(a_{n-1},\dots,a_0)\]
+	であるので, $\gcd(a_n,c_{n+m-1},\dots,c_0)\sim c(f)$である.同様に$\gcd(b_m,c_{n+m-1},\dots,c_0)\sim c(g)$であるので, $c(fg)$は単元の約元である.よって$c(fg)$も単元である.
+\end{proof}
+
+%\begin{cor}
+%	$A$をGCD整域, $A$の商体を$K$とする.定数でない$f\in A[X]$に対し, $f$が$A[X]$の既約元であることと, $f$は原始的かつ$K[X]$において既約であるこは同値.
+%\end{cor}
+%
+%\begin{proof}
+%	$f$は$A[X]$の既約元とする. $f=c(f)f_0$とすると, $c(f)$または$f_0$は単元である. $f$は定数でないので$c(f)$は単元,すなわち$f$は原始的である.次に, $K[X]$において$f=gh$とかけたとする.分母を払うように0でない$a,b\in A$をとることで$ag,bh\in A[X]$とできる. このとき$abf=c(ag)c(bh)g_0h_0~(g_0,h_0$は原始的)であり, Gaussの補題から$ab\sim c(ag)c(bh)$である.よって$A[X]$は整域だから$f\sim g_0h_0$である. $f$は既約なので$g_0$または$h_0$が単元である. $(A[X])^\times=A^\times$なので$ag$または$bh$は単元である.よって$ag$または$bh$が$A$の元である.よって$g\in K$または$h\in K$である.逆は明らかであろう.
+%\end{proof}
+
+\begin{prop}
+	$A$はGCD整域とする. $p\in A$が$A$で素元であることと, $A[X]$において素元であることは同値.
+\end{prop}
+
+\begin{proof}
+	$p$は$A$の素元とする. $f,g\in A[X]$をとり, $fg\in pA[X]$であるとする.ある$h\in A[X]$が存在して$fg=ph$となるので, Gaussの補題より$pc(h)\sim c(f)c(g)$となる. $p$は$A$の素元なので$c(f)\in pA$または$c(g)\in pA$であり,これは$f\in pA[X]$または$g\in pA[X]$を意味する.
+\end{proof}
+
+\begin{lem}
+	$A$をGCD整域とし, $K$をその商体とする. $f\in A[X]$が原始的であるとき, $f$が$A[X]$で素元であることと$K[X]$において素元であることは同値.
+\end{lem}
+\begin{proof}
+	\begin{eqv}
+		\item $g,h\in K[X], gh\in fK[X]$とする.ある$q\in K[X]$が存在して$gh=fq$である. $g,h,q$の分母を払い$ag,bh,dg\in A[X]$とする. $ag=c(ag)g_0,bh=c(bh)h_0,dq=c(dq)q_0$とすると, Gaussの補題から$d c(ag)c(bh)\sim ab c(dq)$であるので, $g_0h_0\sim q_0f$である. $f$は$A[X]$で素元なので$g_0\in fA[X]$または$h_0\in fA[X]$である.よって$g\in fK[X]$または$h\in fK[X]$が従う.
+		
+		\item $g,h\in A[X], gh\in fA[X]$とする. $K[X]$の元とみなせば素元であるので, $g\in fK[X]$または$h\in fK[X]$が成り立つ. $g\in fK[X]$としよう.ある$\varphi\in K[X]$が存在して$g=\varphi f$となる.分母を払い$a\varphi\in A[X]$とすると,内容をとって$ag=c(a\varphi)\varphi_0f$となる. Gaussの補題より$c(ag)=ac(g)\sim c(a\varphi)$となる.よって$a\varphi=c(a\varphi)\varphi_0\sim ac(g)\varphi_0$より$\varphi\sim c(g)\varphi_0$であるので, $\varphi\in A[X]$である.よって$g\in fA[X]$である. $h\in fk[X]$のときも同様.
+	\end{eqv}
+\end{proof}
+
+これらの準備によって次が示される.
+
+\begin{thm}
+	$A$がUFDであることと$A[X]$がUFDであることは同値である.
+\end{thm}
+
+\begin{proof}
+	$A$がUFDなら$A[X]$もそうであることを示せばよい. $f=c(f)f_0\in A[X]$をとる. $A$の商体を$K$とおき, $K[X]$で$f_1=p_1\dots p_n$と素元分解する.分母を払って$a_ip_i=c(a_ip_i)p_{i,0}$とかける.ここで$p_{i,0}$は原始的で, $K[X]$において$p_i$と同伴なので素元である.よって補題から$A[X]$でも素元.積をとって$a_1\dots a_n f_1=c(a_1p_1)\dots c(a_np_n)p_{1,0}\dots p_{n,0}$となるから,内容をとって$f_1\sim p_{1,0}\dots p_{n,0}$となる.これは$A[X]$における$f_1$の素元分解を与える. $A$はUFDだから$c(f)$も素元分解でき,よって$f$を分解できる.よって$A[X]$はUFDである.
+\end{proof}
+
+\begin{cor}\label{cor:多変数もUFD}
+	UDF上の$n$変数多項式環はUFDである.
+\end{cor}
+
+
 \section{素イデアル避け(Prime avoidance)}
 
 \begin{lem}[Prime avoidance]\index{#Prime avoidance@Prime avoidance}\label{lem:Prime avoidance}
@@ -1030,7 +1087,7 @@ Prime avoidance, 素イデアル避けという名前の由来は対偶;
 	\end{sakura}
 \end{proof}
 
-\begin{thm}[Davisの補題]\index{#Davisのほだい@Davisの補題}
+\begin{thm}[Davisの補題]\index{#Davisのほだい@Davisの補題}\label{thm:Davisの補題}
 	環$A$の素イデアル$P_1,\dots,P_n$に対して,ある$a\in A$とイデアル$I$が存在して$(a)+I\not\subset\bigcup_{i=1}^n P_i$ならば,ある$x\in I$を選んで$a+x\not\in\bigcup_{i=1}^n P_i$であるようにできる.
 \end{thm}
 
@@ -1048,4 +1105,20 @@ Prime avoidance, 素イデアル避けという名前の由来は対偶;
 		
 		任意の$1\leq i\leq n-1$について, $P_i\not\subset P_n$としてよい.よって$\prod_{i=1}^{n-1}P_i\not\subset P_n$である.さて, $(a)+I\not\subset\bigcup_{i=1}^{n-1}P_i$より,帰納法の仮定からある$y\in I$をとって$a+y\not\in\bigcup_{i=1}^{n-1}P_i$とできる.もし$a+y\not\in P_n$ならば$y$が求める元となり証明が終了する. $a+y\in P_n$だったとき, $a+x\not\in \bigcup_{i=1}^n P_i$となる$x\in I$を構成しよう.ここで, $I\not\subset P_n$である.もし$I\subset P_n$ならば$a+y\in P_n$より$a\in P_n$ｔなり$(a)+I\subset P_n$となるので,これは仮定に反する.また, $\prod_{i=1}^{n-1}P_i\not\subset P_n$であったので, $P_n$は素だから$I\prod_{i=1}^{n-1}P_i\not\subset P_n$である.そこで, $z\in I\prod_{i=1}^{n-1}P_i$を$z\not\in P_n$であるようにとれる. $x=y+z$とおくと, $a+x\not\in\bigcup_{i=1}^n P_i$である.実際,任意の$1\leq i\leq n-1$について$a+y\not\in P_i$であって, $z\in P_i$なので, $a+x\not\in P_i$である.また$a+y\in P_n$で$z\not\in P_n$なので$a+x\in P_n$である.	
 	\end{step}
+\end{proof}
+
+Davisの補題を指してPrime avoidanceということもある.使用例として,次の事実;
+\[A\text{が整域なら}(x)=(y)\text{であることと}x\text{と}y\text{が同伴であることは同値.}\]
+について, $A$について整域以外の条件を課して成り立つかどうかを考えてみよう.端的に言えば,次に定義する\textbf{半局所環}で成り立つことを示せる.
+
+\begin{defi}[半局所環]\index{はんきょくしょかん@半局所環}\label{defi:半局所環}
+	環$A$が有限個の極大イデアルしか持たないとき, $A$を\textbf{半局所環}(semi local ring)であるという.
+\end{defi}
+
+\begin{prop}\label{prop:半局所環と同伴関係}
+	$A$を半局所環とすると, $(x)=(y)$であることと$x$と$y$が同伴であることは同値である.
+\end{prop}
+
+\begin{proof}
+	ある$a\in A$が存在して$y=ax$とかける.また$A$が半局所環なので$\specm A=\{\nitem{\ideal{m}}\}$とおくことができる. $(a)\subset\ideal{m}_i$となる極大イデアルについて,局所環$A_{\ideal{m}_i}$を考える. $A$のイデアルとして$(x)=(a)(x)$であり, $(x)A_{\ideal{m}_i}=(a)A_{\ideal{m}_i}(x)A_{\ideal{m}_i}$かつ$(x)A_{\ideal{m}_i}$は有限生成$A_{\ideal{m}_i}$加群である.また$\rad A_{\ideal{m}_i}=\ideal{m}_iA_{\ideal{m}_i}$であるので, $(a)A_{\ideal{m}_i}$は$A_{\ideal{m}_i}$のJacobson根基に含まれるイデアルである.よって中山の補題（\ref{thm:NAK}）より$(x)A_{\ideal{m}_i}=0$である.よって$\ann (x)\not\subset\ideal{m}_i$である.ゆえに$(a)+\ann (x)\not\subset\ideal{m}_i$が成り立つ.また, $(a)\not\subset\ideal{m}_j$となる$\ideal{m}_j$に対して明らかに$(a)+\ann (x)\not\subset\ideal{m}_j$である.よってDavisの補題（\ref{thm:Davisの補題}）から,ある$b\in\ann(x)$が存在して$a+b\not\in\bigcup_{i=1}^n\ideal{m}_i$である.よって$a+b$は$A$の単元である.また, $x(a+b)=ax=y$であるので, $x$と$y$は同伴である.
 \end{proof}

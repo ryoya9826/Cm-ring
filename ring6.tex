@@ -814,7 +814,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 		\centering
 		\begin{tikzcd}
 			T_{i+1}(A_3)\arrow[d]\nxcell[\partial_i]T_i(A_1)\arrow[d]\\
-			T_{i+1}(B_3)\nxcell[\delta_i]\nxcell T_i(B_1)
+			T_{i+1}(B_3)\nxcell[\delta_i] T_i(B_1)
 		\end{tikzcd}
 	\end{figure}
 	が可換.
@@ -830,7 +830,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 			F(P_1)\nxcell[F(d_1)]F(P_0)\nxcell[F(\varepsilon)]F(A)\nxcell0
 		\end{tikzcd}$は完全.よって$\im F(d_1)=\ker F(d_1)$であるので, $L_0F(A)=F(P_0)/\ker F(d_1)=F(A)$である.
 		
-		\item $A_1,A_2,A_3$の射影分解からなる複体の完全列で,分裂しているものを作りたい. $A_1,A_3$の射影分解の初項を$P_{0,1},P_{0,3}$とする.ここで, $P_{0,2}=P_{0,1}\midoplus P_{0,3}$とおくと,これは射影的である.また,自然な単射,全射があって次の図式が考えられる;
+		\item $A_1,A_2,A_3$の射影分解からなる複体の完全列で,分裂しているものを作りたい（これ自身はHorseshoe\textbf{の補題}と呼ばれる\index{#Horseshoeのほだい@Horseshoeの補題}）. $A_1,A_3$の射影分解の初項を$P_{0,1},P_{0,3}$とする.ここで, $P_{0,2}=P_{0,1}\midoplus P_{0,3}$とおくと,これは射影的である.また,自然な単射,全射があって次の図式が考えられる;
 		\begin{figure}[H]
 			\centering
 			\begin{tikzcd}
@@ -892,7 +892,6 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 		\item $I$を単射的対象とすると,~$i>0$について$R^iF(I)=0$である.
 	\end{defiterm}
 \end{thm}
-
 \section{二重複体}
 導来関手の例として$\Tor,\Ext$を定義したいのだが,計算の必要性から\textbf{二重複体}についての知識が必要となる.
 
@@ -949,7 +948,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 
 \begin{figure}[H]
 	\centering
-	\begin{tikzcd}
+	\begin{tikzcd}[row sep=scriptsize]
 		&&&&\vdots\arrow[d]&\vdots\arrow[d]&\vdots\arrow[d]\\
 		&&&\cdots\nxcell X_{1,q}\arrow[d,"d_{1,q}''"]\nxcell[d_{1,q}'] X_{0,q}\darrow[d_{0,q}'']\nxcell[\varepsilon_q']A_q\darrow[d_q^A]\nxcell0\\
 		&&&\cdots\nxcell X_{1,q-1}\darrow\nxcell[d_{1,q-1}'] X_{0,q-1}\darrow\nxcell[\varepsilon_{q-1}']A_{q-1}\darrow\nxcell0\\
@@ -1001,7 +1000,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 全複体,辺複体の定義と\ref{thm:辺複体のhomologyは同型}は余鎖複体についても双対的に行うことができる.
 
 満を持して$\Tor$と$\Ext$の登場である.
-\begin{defi}[$\Tor$]\index{#Tor@$\Tor$}
+\begin{defi}[$\Tor$関手]\index{#Tor@$\Tor$}
 	加群$M$について,関手$M\otimes -$は右完全である.これによる左導来関手を$\Tor_n(M,-)$とかく.これをTor\textbf{関手}(Tor functor, torsion functor)という. 
 \end{defi}
 
@@ -1026,20 +1025,53 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 	よって,辺複体が$M\otimes P_\bullet,N\otimes Q_\bullet$である二重複体$P_\bullet\otimes Q_\ast$で,各行,列が完全なものができる.これに\ref{thm:辺複体のhomologyは同型}を適用して$\Tor(M,N)\cong\Tor(N,M)$を得る.
 \end{proof}
 
-\begin{defi}[$\Ext$]\index{#Ext@$\Ext$}
+\begin{defi}[$\Ext$関手]\index{#Ext@$\Ext$}
 	加群$M$について,関手$\hom(M,-)$は左完全である.これによる右導来関手を$\Ext^n(M,-)$とかき, $\Ext$\textbf{関手}(Ext functor, extension functor)という.
 \end{defi}
 
 $\Tor$と同様に, $\Ext(M,N)$の計算は$N$の\textbf{単射}分解と$M$の\textbf{射影}分解のどちらを計算しても良い（$\hom(-,N)$は反変左完全であるから）.
 
+ここで普遍性と\ref{prop:テンソル積は直和と可換}より,次が成り立っている.
 
+\begin{prop}
+	$A$加群の圏において,以下が成り立つ.
+	\begin{sakura}
+		\item $\hom(\bigoplus_{\lambda\in\Lambda} M_\lambda,N)\cong\prod_{\lambda\in\Lambda}\hom(M_\lambda,N)$
+		\item $\hom(M,\prod_{\lambda\in\Lambda}N_\lambda)\cong\prod_{\lambda\in\Lambda}\hom(M,N_\lambda)$
+		\item $M\otimes\bigoplus_{\lambda\in\Lambda}N_\lambda\cong\bigoplus_{\lambda\in\Lambda}(M\otimes N_\lambda)$
+	\end{sakura}
+	$M$が有限生成なら次も正しい.
+	\begin{sakura}\setcounter{enumi}{3}
+		\item $\hom(M,\bigoplus_{\lambda\in\Lambda}N_\lambda)\cong\bigoplus_{\lambda\in\Lambda}\hom(M,N_\lambda)$
+	\end{sakura}
+\end{prop}
 
+\begin{proof}
+	(i)$\sim$(iii)についてはまさに直積,直和の普遍性と\ref{prop:テンソル積は直和と可換}による. (iv)は, $M$が有限生成なら$f\in\hom(M,\bigoplus N_\lambda)$について有限部分集合$I\subset\Lambda$が存在して, $f(M)\subset\bigoplus_{i\in I} N_i$が成り立つ.
+\end{proof}
 
+ここから,導来関手たちにも次が言えることがわかる.
 
+\begin{prop}\label{prop:Tor,Extと直和,直積}
+	$A$加群の圏において,以下が成り立つ.
+	\begin{sakura}
+		\item $\Ext(\bigoplus_{\lambda\in\Lambda} M_\lambda,N)\cong\prod_{\lambda\in\Lambda}\Ext(M_\lambda,N)$
+		\item $\Ext(M,\prod_{\lambda\in\Lambda}N_\lambda)\cong\prod_{\lambda\in\Lambda}\Ext(M,N_\lambda)$
+		\item $\Tor(M,\bigoplus_{\lambda\in\Lambda}N_\lambda)\cong\bigoplus_{\lambda\in\Lambda}\Tor(M\otimes N_\lambda)$
+	\end{sakura}
+	$M$が有限生成なら次も正しい.
+	\begin{sakura}\setcounter{enumi}{3}
+		\item $\Ext(M,\bigoplus_{\lambda\in\Lambda}N_\lambda)\cong\bigoplus_{\lambda\in\Lambda}\Ext(M,N_\lambda)$
+	\end{sakura}
+\end{prop}
 
-
-
-
+\begin{proof}
+	(i)だけ示す. $M_\lambda$の射影分解を$P_{\bullet,\lambda}$とすると, $\bigoplus_{\lambda\in\Lambda} P_{\bullet,\lambda}$は$\bigoplus M_\lambda$の射影分解になる.すると$\hom(-,N)$によって次の余鎖複体;
+	\[\begin{tikzcd}
+		\nxcell\bigoplus \hom(P_{n,\lambda},N)\nxcell\bigoplus\hom(P_{n+1,\lambda},N)\nxcell
+	\end{tikzcd}\]
+	を得るが,これの各成分は$\prod\hom(P_{n,\lambda},N)$と同型である.よって主張が従う.
+\end{proof}
 
 %%---archive これいらなかった気がする・・・。
 %ここで$\Tor$の計算に使うため,平坦性の同値条件を示しておく.

@@ -87,7 +87,7 @@ Noether加群とArtin加群について例を見てみよう.
 
 Artin環の特殊性を見よう.
 \begin{prop}\label{prop:Artinの素イデアル}
-	Artin環の素イデアルは極大イデアルであり,それは有限個しかない.
+	Artin環の素イデアルは極大イデアルであり,それは有限個しかない（半局所環である）.
 \end{prop}
 \begin{proof}
 	$A$をArtin環とし,~$ P$を$A$の素イデアルとする.~$\bar{A}=A/ P$とおき,これが体であることを示す.~$0\neq x\in\bar{A}$をとる.すると
@@ -108,23 +108,17 @@ Artin環の特殊性を見よう.
 \end{lem}
 
 \begin{proof}
-	$M=A^{\oplus n}$とし, $n$についての帰納法を用いる.
+	$M$の生成元の個数$n$についての帰納法を用いる.
 	\begin{step}
 		\item $n=1$のとき.
 		
-		$I=\ann M$とおくと, $A/I\cong M$である. \ref{prop:局所化はいろんな操作と可換}から$S^{-1}M=(S^{-1}A)/(S^{-1}I)$だから, $\ann (S^{-1}M)=S^{-1}(I)=S^{-1}(\ann M)$である.
+		$I=\ann M$とおくと, $A/I\cong M$である. \ref{prop:局所化はいろんな操作と可換}から$S^{-1}M=(S^{-1}A)/(S^{-1}I)$だから$\ann (S^{-1}M)=S^{-1}(I)=S^{-1}(\ann M)$である.
 		
 		\item $n-1$まで正しいとする.
 		
-		$M=A^{\oplus n-1}\oplus A$なので,帰納法の仮定と\ref{prop:局所化はいろんな操作と可換}から;
-		
-		\[\begin{aligned}
-		S^{-1}(\ann (M))&=S^{-1}(\ann(A^{\oplus n-1})\cap\ann A)\\
-		&=S^{-1}(\ann (A^{\oplus n-1}))\cap S^{-1}(\ann A)\\
-		&=\ann (S^{-1}A^{\oplus n-1})\cap\ann(S^{-1}A)\\
-		&=\ann (S^{-1}A^{\oplus n-1}+S^{-1}A)\\
-		&=\ann (S^{-1}M)  
-		\end{aligned}\]
+		$M$の生成系を$\{u_1,\dots,u_n\}$とする.このとき帰納法の仮定と\ref{prop:局所化はいろんな操作と可換}から;
+		\[\begin{aligned}S^{-1}(\ann (M))=S^{-1}(\ann(Au_1)\cap\ann (Au_2+\dots+Au_n)=S^{-1}(\ann (Au_1))\cap S^{-1}(\ann (Au_2+\dots+Au_n))\\
+		=\ann (S^{-1}Au_1)\cap\ann(S^{-1}Au_2+\dots+Au_n)=\ann (S^{-1}Au_1+Au_2+\dots+Au_n)=\ann (S^{-1}M)\end{aligned}\]
 		となり,主張が従う.
 	\end{step} 
 \end{proof}

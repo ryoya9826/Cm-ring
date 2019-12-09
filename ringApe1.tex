@@ -2,6 +2,8 @@
 
 Counter example of Commutative Algebra を目指したい.
 
+多項式環$A[X]$について, $A$が整域なら$A^\times=(A[X])^\times$である.環$A$が冪零元$a^n=0$を持つとすると, $A[X]$において$(1-aX)(a^{n-1}X^{n-1}+\dots+aX-1)=1$となる.
+
 \section{加群の同型と相等}
 
 加群について,全単射準同型の存在,すなわち同型$M\cong N$と,集合としての相等$M=N$は区別しなければならない.例えば中山の補題で大変なことになる.次の例を見てみよう.
@@ -23,6 +25,9 @@ Counter example of Commutative Algebra を目指したい.
 	体$K$について, $K[X,Y]$はUFDだがPIDではない.
 \end{surex}
 
+\begin{proof}
+	\ref{cor:多変数もUFD}.
+\end{proof}
 \begin{surex}[PIDだがEDでない環]
 	$\Z[(1+\sqrt{-19})/2]$はPIDだがEDではない.
 \end{surex}
