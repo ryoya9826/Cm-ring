@@ -17,7 +17,7 @@
 		\end{figure}
 	\end{minipage}
 	\hfill
-	\begin{minipage}{.55\textwidth}
+	\begin{minipage}{.70\textwidth}
 		\begin{figure}[H]
 			\centering
 			\begin{tikzcd}[row sep=scriptsize, column sep=scriptsize]
@@ -183,15 +183,15 @@
 この節ではAbel圏$\mathscr{A}$で考えていく（付録Bもみよ）が,埋め込み定理（\ref{thm:埋め込み定理}）により加群だとおもって話を進めていく.つまり核,余核は今までどおりの見知った対象であると考え,元についての操作を行う.圏論的な考え方で議論を押し切って行くことを「アブストラクト・ナンセンス(abstract nonsense)」とよく言うが,これはごちゃごちゃした計算に頼ることなく,いわば考えている対象を\quo{上に}あげて,コホモロジーやスペクトル系列などの道具で計算してから地上に戻してみると証明したかったことがわかっている,といった状況のことをいう. \cite{kato}によれば「使われているすべてのコホモロジーは,みな導来関手」である.まずは導来関手を考えるためにホモロジー代数の基礎知識を集め,定義していこう.
 	
 \begin{defi}[複体]\index{ふくたい@複体}
-	Abel圏$\mathscr{A}$の対象の族$\{A_i\}_{i\in\Z}$と,射$d_i:A_{i+1}\to A_i$の族$\{d_i\}$で, $d_{i}\circ d_{i+1}=0$を満たすものを\textbf{（鎖）複体}(chain complex)という.これらをまとめて$A_\bullet$とかく.また, $\mathscr{A}$の対象の族$\{A^i\}_{i\in\Z}$と,射$d^i:A^i\to A^{i+1}$の族$\{d^i\}$で,~$d^i\circ d^{i-1}=0$を満たすものを\textbf{余鎖複体}(cochain complex)という.これらを$A^\bullet$とかく.
+	Abel圏$\mathscr{A}$の対象の族$\{A_i\}_{i\in\N}$と,射$d_i:A_{i}\to A_{i-1}$の族$\{d_i\}$で, $d_{i}\circ d_{i+1}=0$を満たすものを\textbf{（鎖）複体}(chain complex)という.これらをまとめて$A_\bullet$とかく.また, $\mathscr{A}$の対象の族$\{A^i\}_{i\in\N}$と,射$d^i:A^i\to A^{i+1}$の族$\{d^i\}$で,~$d^i\circ d^{i-1}=0$を満たすものを\textbf{余鎖複体}(cochain complex)という.これらを$A^\bullet$とかく.
 \end{defi}
 
 射$d_i$を$i$次\textbf{境界作用素}(boundary operator)ともいう.\index{きょうかいさようそ@境界作用素} この定義の意味を考えてみよう.列（鎖）;
 \[\begin{tikzcd}
-\cdots\nxcell[d_{i+2}]A_{i+1}\nxcell[d_{i+1}]A_i\nxcell[d_i]A_{i-1}\nxcell[d_{i-1}]\cdots\nxcell A_0\nxcell[d_0]0
+\cdots\nxcell[d_{i+2}]A_{i+1}\nxcell[d_{i+1}]A_i\nxcell[d_i]A_{i-1}\nxcell[d_{i-1}]\cdots\nxcell[d_1] A_0\nxcell[]0
 \end{tikzcd}\]
 \[\begin{tikzcd}
-0\nxcell[d^0]A_0\nxcell\cdots\nxcell A^{i-1}\nxcell[d^{i-1}]A^i\nxcell[d^i]A^{i+1}\nxcell[d^{i+1}]\cdots
+0\nxcell[]A_0\nxcell[d^0]\cdots\nxcell A^{i-1}\nxcell[d^{i-1}]A^i\nxcell[d^i]A^{i+1}\nxcell[d^{i+1}]\cdots
 \end{tikzcd}\]
 があったとき,ここから情報としてホモロジー,コホモロジーを取りたいわけだが,先の節ですこし口走ったように,その定義は$\ker$を$\im$で割ったものであるので,この定義が意味を持つのは$\im d_{i+1}\subset\ker d_i$であるとき,つまり$d_i\circ d_{i+1}=0$であるときである.これが複体の意味である.以後,単に複体といえば鎖複体を表すものとする.
 \begin{defi}[ホモロジー群,コホモロジー群]\index{ほもろじーぐん@ホモロジー群}\index{こほもろじーぐん@コホモロジー群}

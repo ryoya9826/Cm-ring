@@ -9,11 +9,11 @@
 		\item $R$は$+$についてAbel群である.
 		\item 任意の$x,y,z\in R$に対し,~$x*(y*z)=(x*y)*z$が成立する.
 		\item ある$1\in R$が存在して,任意の$x\in R$に対し,~$x*1=1*x=x$が成立する.
-		\item 任意の$x,y,z\in R$に対し,~$x*(y+z)=x*y+x*z,(x+y)*z=x*z+y*z$が成立する.
+		\item 任意の$x,y,z\in R$に対し,~$x*(y+z)=x*y+x*z,(x+y)*z=x*z+y*\z$が成立する.
 	\end{defiterm}
 \end{defi}
 
-このとき,演算$+$を加法,~$*$を乗法という.ここでは乗法の可換性を仮定していないことに注意しよう.乗法が可換な環は\textbf{可換環}(commutative ring)と呼ばれ,本ノートの主題である.これ以後\textbf{環の乗法は可換であるとする.}\footnote{非可換環に対するイデアルの定義などは,必要なら適宜環の入門書を見てほしい.}すなわち$x*y=y*x$が常に成り立つとする.環の定義では$R$を記号として使用していたが,以後は可換環のみを取り扱うという気持ちで,またBourbakiに敬意を評して\footnote{7000ページ以上に及ぶ「数学原論」(Éléments de mathématique)を出版し,数学の公理的基礎づけを行った.今使われている記号,概念の多く--- 例えば単射,全射--- はBourbakiが導入したものである.},フランス語で環を表すAnneauの頭文字をとって$A$で表すことにする.
+このとき,演算$+$を加法,~$*$を乗法という.ここでは乗法の可換性を仮定していないことに注意しよう.乗法が可換な環は\textbf{可換環}(commutative ring)と呼ばれ,本ノートの主題である.これ以後\textbf{環の乗法は可換であるとする.}\footnote{非可換環に対するイデアルの定義などは,必要なら適宜環の入門書を見てほしい.}すなわち$x*y=y*x$が常に成り立つとする.環の定義では$R$を記号として使用していたが,以後は可換環のみを取り扱うという気持ちで,またBourbakiに敬意を評して\footnote{７０００ページ以上に及ぶ「数学原論」(Él\'ements de math\'ematique)を出版し,数学の公理的基礎づけを行った.今使われている記号,概念の多く--- 例えば単射,全射--- はBourbakiが導入したものである.},フランス語で環を表すAnneauの頭文字をとって$A$で表すことにする.
 
 加法の単位元を$0$で表し\textbf{零元}(zero element), $1$を単に\textbf{単位元}という.$0,1,-x$(加法の逆元)は一意的に存在する.零元,単位元については実数などで馴染み深い次の性質がある.
 
@@ -140,7 +140,7 @@ $A$が整域であるとき, $(x)=(y)$であることと, $A$の単元$a$が存�
 	\begin{sakura}
 		\item $\deg(fg)=\deg f+\deg g$である.
 		\item $A[X]$は整域である.
-		\item $A[X]$の単元は$A$の単元である.
+		\item $A[X]$の単元全体は$A^\times$である.
 	\end{sakura}
 \end{prop}
 
@@ -319,7 +319,7 @@ $\Z/n\Z$の例からわかるように,剰余環$A/I$は$I$の元を0とみな�
 
 整域については次のような結果がある.
 
-\begin{prop}
+\begin{prop}\label{prop:整域の標数}
 	$A$を整域とすると, $A$の標数は$0$か素数$p$に限る.
 \end{prop}
 
@@ -327,6 +327,58 @@ $\Z/n\Z$の例からわかるように,剰余環$A/I$は$I$の元を0とみな�
 	次の準同型;
 	\[f:\Z\to A;n\mapsto n1\]
 	を考える.準同型定理から$\Z/\ker f$は$A$の部分環$\im f$に同型であり, $A$は整域なので$\Z/\ker f$は整域.よって$\ker f$は$\Z$の素イデアルなので$(0)$か$(p)$でなければならない.標数は$\ker f$の生成元にほかならないので, $0$または素数$p$である.
+\end{proof}
+
+任意の環$A$について, $\Z$からの準同型は$n\mapsto n1$に限ることに注意しよう.
+
+先にも少し述べたが,零因子のなかで自分自身のいくつかの積が0になってしまうようなものを\textbf{冪零元}という.
+
+\begin{defi}[被約環]\index{ひやくかん@被約環}
+	環$A$が$0$以外の冪零元をもたないとき, $A$を\textbf{被約環}(reduced ring)という.
+\end{defi}
+
+整域は明らかに被約である.一般に環$A$の冪零元全体を$\nil A$とおくと,これはイデアルとなる（２項定理を用いる）.
+
+\begin{defi}[冪零根基]\index{べきれいこんき@冪零根基}
+	環$A$の冪零元全体がなすイデアル$\nil A$を, $A$の\textbf{冪零根基}(nilradical)という.
+\end{defi}
+
+環$A$について$A/\nil A$は必ず被約になる.ここで一般的なイデアルの根基について説明する.
+
+\begin{defi}[根基]\index{こんき@根基}
+	環$A$のイデアル$I$について;
+	\[\sqrt{I}=\mkset{x\in A}{\text{ある}n\text{が存在して,}x^n=I}\]
+	はイデアルをなす.これをイデアル$I$の\textbf{根基}(radical)という.
+\end{defi}
+
+この記法により$\nil (A)=\sqrt{(0)}$とかけることに注意しよう.環$A$の素イデアル全体を$\spec A$, イデアル$I$を含む素イデアル全体を$V(I)$と書くことを思い出そう.一般に次が成り立つ.
+
+\begin{prop}
+	環$A$のイデアル$I$について, $\sqrt{I}=\bigcap_{P\in V(I)}P$が成り立つ.
+\end{prop}
+
+\begin{cor}
+	環$A$について,冪零根基$\nil (A)$は$A$のすべての素イデアルの共通部分である.
+\end{cor}
+
+この命題の証明は積閉集合と局所化という考え方を用いた簡明なものがある（\ref{lem:イデアルの根基と素イデアル}）ので、そちらを見よ（ここまでの道具で証明する方法もあるが,選択公理（Zornの補題）を用いるスマートでない証明しか筆者は知らない）.
+
+冪零根基が素イデアルの共通部分であるので,極大イデアルの共通部分についても考えてみよう.
+\begin{defi}[Jacobson根基]\index{#Jacobsonこんき@Jacobson根基}
+	環$A$のすべての極大イデアルの共通部分をJacobson\textbf{根基}(Jacobson radical)といい,~$\rad(A)$で表す.
+\end{defi}
+
+すなわち$\rad(A)=\bigcap_{P\in\specm A}P$である.極大イデアルは素イデアルであるから,~$\nil(A)\subset\rad(A)$となっている.~Jacobson根基については次の特徴づけがある.
+\begin{prop}
+	任意の$y\in A$に対し,~$1-xy$が可逆となるような$x$全体の集合を$\mathfrak{A}$とすると,これは$\rad(A)$と一致する.
+\end{prop}
+\begin{proof}
+	\begin{mrkw}
+		\item 
+		任意の$x\in\mathfrak{A}$を1つとる.背理法で示す.ある極大イデアル$\ideal{m}$が存在して$x\not\in\ideal{m}$であると仮定しよう.すると$\ideal{m}+Ax=A$であるから,ある$m\in\ideal{m}$と$y\in A$とが存在して$m+xy=1$とできる.すると$1-xy=m$となるが,これは可逆でない.よって$x\in\mathfrak{A}$に矛盾する.よって$x$は任意の極大イデアルに含まれるので,~$x\in\rad(A)$である.
+		\item 
+		任意の$x\in\rad(A)$を1つとる.背理法で示す.ある$y\in A$が存在して,~$1-xy$が非可逆であると仮定しよう.ここで$1-xy\in\ideal{m}$となる極大イデアル$\ideal{m}$が存在する.一方$x\in\rad(A)\subset\ideal{m}$より$xy\in\ideal{m}$である.よって$(1-xy)+xy=1\in\ideal{m}$となり,矛盾する.
+	\end{mrkw}
 \end{proof}
 
 \section{ED,PID,UFD}
@@ -405,7 +457,7 @@ $z\in A$が$x,y$の共通の約元であるとき $z$は$x,y$の\textbf{公約�
 
 約数の一般化として約元を定義したのと同様に,素数の一般化を考えてみよう.
 
-\begin{defi}[既約元]\index{きやくげん@既約元}
+\begin{defi}[既約元]\index{きやくげん@既約元}\label{defi:既約元}
 	$A$を環とし, $x\in A$を単元でないとする.ここで$a,b\in A$を用いて$x=ab$とかけるとき,必ず$a$または$b$が単元であるとき, $x$を\textbf{既約}(irreducible)であるという.
 \end{defi}
 
@@ -466,4 +518,186 @@ $(\Longleftarrow)$は一般の整域でも成り立つ.整域において, $(f)$
 
 体上の多変数多項式はPIDではなかったが, UFDであることを示すことができる（\ref{cor:多変数もUFD}）. これはUFDだがPIDでない例を与える.
 
+\section{体の拡大}
 
+この節では,体の拡大（例えば$\Q\to\R\to\Co$）について,\textbf{代数的数}や\textbf{超越数}などに触れながら概説しよう.
+
+体$L$の部分環$K$がまた体になっているとき, $K$を$L$の\textbf{部分体}(sub field)であるという.このとき,自然な単射$K\hookrightarrow L$を体の\textbf{拡大}(extension)という.このとき$L/K$とかく.
+
+整域$A$があったとき,ちょうど整数$\Z$から有理数$\Q$を作ることと全く同じように,体を作る自然な方法がある.直積$A\times(A-\{0\})$に次のような同値関係を入れよう;
+\[(a,b)\sim(c,d)\Longleftrightarrow ad-bc=0\]
+$(a,b)$を$a/b,(c,d)$を$c/d$をみなせば, $a/b=c/d$は$ad=bc$と同値だから,この定義は整数における分数の定義を一般の整域に拡張したものとなる.直積$A\times(A-\{0\})$をこの同値関係で割った商集合を$\Frac (A)$とかく(fraction). $\Frac (A)$は分数と同様の演算で体になる.
+
+\begin{defi}[商体]\index{しょうたい@商体}
+	整域$A$について, $\Frac (A)$の元$(x,s)$を$x/s$とかき;
+	\[\frac{x}{s}+\frac{y}{t}=\frac{xt+ys}{st},\quad \frac{x}{s}\cdot\frac{y}{t}=\frac{xy}{st}\]
+	と定めると体となる.これを$A$の\textbf{商体}(field of quotients), \textbf{分数体}(field of fractions)という.
+\end{defi}
+
+次の命題の証明からもわかることだが,整域$A$の商体$\Frac (A)$は$A$を含む最小の体となる（ある体$K$について$A\subset K$ならば$\Frac (A)\subset K$となる）.
+\begin{prop}
+	$K$を体とする. $K$の標数が0であることと, $K$が$\Q$（と同型な体）を部分体として含むことは同値. $K$の標数が$p\neq0$であることは$K$が$\F_p$を部分体として含むことと同値.
+\end{prop}
+
+\begin{proof}
+	\begin{mrkw}
+		\item $\Char K=0$について.
+		
+		\begin{eqv}
+			\item $\Z$からの自然な準同型$\varphi$の核が$0$であるので, $K$は$\Z$と同型な環$\im\varphi$を部分環にもつ.このとき$\Frac(\im\varphi)\cong\Q$である.さて任意の$a,b\in\im\varphi$について$b\neq0$とすると, $b\in K^\times$である.ゆえに$ab^{-1}\in K$となるので, $a/b\in\Frac(\im\varphi)$を$ab^{-1}$と同一視して, $\Frac(\im\varphi)\cong\Q$は$K$の部分体である.
+			
+			\item $\varphi:\Z\to K;n\to n1$は$\Q$を経由する準同型に分解する.すなわち$\psi:\Z\to\Q$（単射）と自然な単射$\iota:\Q\to K$を考えると, 2つの準同型$\varphi,\iota\circ\psi:\Z\to K$が定まる.しかし, $\Z$からの準同型は$\varphi$に限るので, $\varphi=\iota\circ\psi$となる.よって$\varphi$は単射ある.
+		\end{eqv}
+	
+		\item $\Char K=p$なら$\Z/\ker\varphi=\Z/p\Z=\F_p$が$K$の部分環になる.また, $\F_p$が部分環ならば$\psi:\Z\to\F_p;\iota:\F_p\to K$の合成$\iota\circ\psi:\Z\to K$が定まる. $K$が$\Q$を部分体として含む場合と同様にして, $\iota\circ\psi:\Z\to K$の核が$(p)$であるから$\Char K=p$である.
+	\end{mrkw}
+\end{proof}
+
+この命題より,すべての体は$\Q, \F_p$のいずれかを含む.
+
+\begin{defi}[素体]\index{そたい@素体}
+	体$\Q,\F_p$をそれぞれ標数$0,p$の\textbf{素体}(prime field)という.
+\end{defi}
+
+ここから体の拡大について見ていく.例えば体$\Co$について,拡大$\Co/\Q$は$\Co/\R,\R/\Q$に分解する.このように体の拡大$L/K$について,ある体$M$が存在して$L/M,M/K$が体の拡大になっているとき, $M$を拡大$L/K$の\textbf{中間体}(intermediate field)という.\index{ちゅうかんたい@中間体} 一般に$M_1,M_2$が$L/K$の中間体なら体$M_1\cap M_2$も$L/K$の中間体になる.拡大$\Co/\Q$の中間体は$\R$以外にも$\Q(\sqrt{2})=\mkset{a+b\sqrt{2}}{a,b\in\Q}$などがある（これが体であることを示せ）.
+
+E. Artin により導入された次の捉え方により,線形代数的な手法で体の拡大について考えることができるようになった.
+
+\begin{prop}
+	体の拡大$L/K$について, $L$は$K$上のベクトル空間とみなすことができる.
+\end{prop}
+
+\begin{proof}
+	$L$はそれ自身の演算によりAbel群である.また,任意の$x\in L$について, $K$の元$y$によるスカラー倍を, $L$の情報によって$xy$と考えることで$L$は$K$ベクトル空間になる.
+\end{proof}
+
+例えば,拡大$\Co/\R$について$\Co$は基底$\{1,i\}$をもつ$2$次元の$\R$ベクトル空間になる.
+
+\begin{defi}[拡大次数]\index{かくだいじすう@拡大次数}
+	体の拡大$L/K$について, $\dim_K L$を$L/K$の\textbf{拡大次数}(extension degree)といい, $[L:K]$とかく.
+\end{defi}
+
+$[L:K]$が有限のとき$L/K$を有限次拡大,無限次拡大という.有限次拡大$L/K$の中間体$M$について, $L/M,M/K$も有限次拡大になる.ここから次の結果が従う（証明は線形代数なので省略する）.
+
+\begin{prop}
+	$L/K$を有限次拡大とし, $M$をその中間体とする.このとき$[L:K]=[L:M][M:K]$となる.
+\end{prop}
+
+次に,体の拡大について\quo{代数的}とはどういうことであるかについて考察する.まず,体に元を\textbf{添加}することについて述べよう.体の拡大$L/K$について, $\alpha\in L$に対して;
+\[K(\alpha)=\mkset{\frac{f(\alpha)}{g(\alpha)}\in L}{f,g\in K[X],g(\alpha)\neq0}\]
+とおく.これを$K$に$\alpha$を\textbf{添加}(adjunction)した体という. $K(\alpha)$は$L/K$の中間体となり,また$M$が$L/K$の中間体で$\alpha\in M$を満たすなら$K(\alpha)\subset M$となる.さらに$\beta\in L$を$K(\alpha)$に添加した体$(K(\alpha))(\beta)$を$K(\alpha,\beta)$とかく.
+
+一般に$K$に異なる元$\alpha,\beta\in L$を添加したとしても$K(\alpha)=K(\beta)$となることがあるので注意が必要である.例えば$i,1+i$を$\Q$に添加した体を考えてみよ（$\Q(i)=\mkset{a+bi}{a,b\in\Q}$である）.
+
+いくつか例を見てみよう. $\R(i)=\Co$であり$[\Co:\R]=2$である（基底は$\{1,i\}$）. また;
+\[\Q(\sqrt{2},\sqrt{3})=\mkset{a+b\sqrt{3}}{a,b\in\Q(\sqrt{2})}=\mkset{x+y\sqrt{2}+z\sqrt{3}+w\sqrt{6}}{x,y,z,w\in\Q}\]
+であり$[\Q(\sqrt{2},\sqrt{3}):\Q]=4$である（一次独立を確かめよ）.
+
+既約元の定義（\ref{defi:既約元}）を思い出そう.体$K$上の定数でない多項式$f\in K[X]$で, $f=gh (g,h\in K[X])$なら$g,h$のどちらかは定数であるようなもの（定数でない多項式の積に分解できないもの）を\textbf{既約多項式}(irreducible polymonial)という.例えば$\R[X]$において$X^2+1$は既約であり, $\Co[X]$では$X^2+1=(X-i)(X+i)$となり既約ではない.このように体を拡大すると多項式が既約でなくなることがある.逆に,ある既約多項式を分解できるように体を拡大することを考えよう. $\Co/\R$の例をみると, $\Co=\R(i)$となっている.これは$\R$に$X^2+1$の\quo{根}を添加するように拡大したと考えることができる.しかし,定義を見ればわかるように根を添加するには, $\R$の拡大体$L$で$f(\alpha)=0$となる$\alpha\in L$が見つかっていなければならない（この例では$\Co$という$X^2+1$の根の居場所がわかっているので問題がない）.  そこで$\Co\cong\R[X]/(X^2+1)$であったことを思い出そう.ここから類推できるのは$K[X]$を既約元で割ることで,根を添加したような拡大体が作れないか？ということである.
+
+\begin{prop}
+	体$K$上の多項式環$K[X]$について, $f$が既約多項式であることと$K[X]/(f)$が体であることは同値.
+\end{prop}
+
+\begin{proof}
+	$f$が既約であることと$(f)$が極大イデアルであることが同値なことを示せばよい.
+	
+	\begin{eqv}
+		\item $(f)\subset I$となるイデアル$I$があるとする. $K[X]$はPIDなので, $I=(g)$となる$g\in K[X]$がある.すると$f=hg (h\in K[X])$とかけるが, $f$が既約なので$g,h$のどちらかは定数である.もし$g$が定数なら$(g)=K[X]$であり, $h$が定数なら$f,g$は同伴なので$(f)=(g)$となる.よって$(f)$は極大である.
+		\item $f=gh$としよう. $g$が定数でないとすると, $(f)\subset(g)\neq K[X]$であるので$(f)=(g)$となり$f$と$g$は同伴.よって$h$は定数であり$f$は既約.
+	\end{eqv}
+\end{proof}
+
+よって$f\in K[X]$が既約なら$L=K[X]/(f)$は$K$の拡大体となる.ここで;
+\[f(X)=a_nX^n+a_{n-1}X^{n-1}+\dots+a_0\]
+とおいておく. $g$の$L$における像を$[g]$とかくことにすると, $[g]=0$であることと$g\in (f)$であることは同値である.すると$L$において;
+\[a_n[x]^n+a_{n-1}[x]^{n-1}+\dots+a_0=[a_nX^n+\dots+a_0]=[f]=0\]
+であるので, $f$を$L$上の多項式とみなしたとき, $[x]=\alpha$とおくと$f(\alpha)=0$が言えることになる（$\R[X]/(X^2+1)\cong\Co$で考えてみよ. $i$は$[X]$に対応する元であった）. $L=K[X]/(f)=K(\alpha)$が成り立つことを示そう.
+
+\begin{prop}\label{prop:既約多項式の商による拡大}
+	$f\in K[X]$が$K$上既約であり, $\deg f=n$とする. $L=K[X]/(f),\alpha=[X]\in L$とおくと, $[L:K]=n$であり,その基底は$\{1,\alpha,\dots,\alpha^{n-1}\}$である.
+\end{prop}
+
+\begin{proof}
+	$\{1,\alpha,\dots,\alpha^{n-1}\}$が一次独立であることを示す. $\nitem<0>[n-1]{a}\in K$をとり$a_0+a_1\alpha+\dots+a_{n-1}\alpha_{n-1}=0$と仮定する.これは$g=a_{n-1}X^{n-1}+\dots+a_0$とおくと$g\in (f)$を意味する.よって$g$は$f$の定数倍または定数だが, $\deg g<\deg f$なので$g$は定数でなければならない.よって$a_1=\dots=a_{n-1}=0$となる.すると$a_i$たちの定義から$a_0=0$でなければならず,一次独立であることが従う.
+\end{proof}
+
+この系として$L= K(\alpha)$が従う. $f(\alpha)=0$となる$\alpha$を添加することで$K$から拡大体$L$を作ることを見たので,次は$\alpha\in L$について$f(\alpha)=0$となる$f\in K[X]$があるかどうかを考えよう.
+
+\begin{defi}[代数的]\index{だいすうてき@代数的}
+	$L/K$を体の拡大とする. $\alpha\in L$で,ある$f\in K[X]$が存在して$f(\alpha)=0$となるとき$\alpha$は$K$上\textbf{代数的}(algebraic)であるという.そのような$f$が存在しないときは$\alpha$は$K$上\textbf{超越的}(transcendental)であるという.
+\end{defi}
+
+拡大$\Co/\Q$における代数的な元を\textbf{代数的数},超越的な元を\textbf{超越数}という.有名な超越数では$e,\pi,\pi+e^\pi$がある（$e+\pi$が超越的かは未解決）.一方で$\sqrt[n]{2}$や$i$などは代数的数である.
+
+\begin{defi}[最小多項式]\index{さいしょうたこうしき@最小多項式}
+	$\alpha$を$K$上代数的とする.このとき$f\in K[X]$であって, $f(\alpha)=0$かつ$f$はモニックなものが存在し,かつ次数が最小なものは一意的である.これを$\alpha$の$K$上の\textbf{最小多項式}(minimal polymonial)といい, $F_\alpha$で表す.
+\end{defi}
+
+存在し,一意なことを示そう.
+\begin{proof}
+	\begin{step}
+		\item 存在すること.
+		
+		$\alpha$は代数的なので,ある$f\in K[X]$がとれて$f(\alpha)=0$となる. $f$の最高次の係数が$a_n$であるとすると$1/a_n\cdot f$は$\alpha$を根にもつ$K$上のモニック多項式であるので,存在することがわかる.
+		
+		\item 次数最小のものが一意的であること.
+		
+		$f\neq g$が条件を満たすとする.定義から$\deg f=\deg g$で,どちらもモニックなので$f-g\neq0 $は$f$より次数が真に小さくなる.明らかに$f(\alpha)-g(\alpha)=0$なので,これを最高次の係数で割ったものも$\alpha$を根にもつモニック多項式だが,これは次数の最小性に矛盾.
+	\end{step}
+\end{proof}
+
+体（整域）上の最小多項式は次数の最小性から既約である.また, $f\in K[X]$について$f(\alpha)=0$であることと$f$が$F_\alpha$で割り切れることは同値であり,更に$f$がモニックで既約なら$f=F_\alpha$であることが簡単にわかる（演習問題とする）.
+
+体の拡大$L/K$において$\alpha,\beta\in L$はどちらも$K$上代数的であるとする. $F_\alpha=F_\beta$となっているとき, $\alpha$と$\beta$は$K$上\textbf{共役}(conjugate)\index{きょうえき@共役}であるという.この定義は複素数の共役の拡張になっていることを確かめよ($\Co/\R$を考えよ）.
+
+
+\begin{defi}[代数拡大,超越拡大]\index{だいすうかくだい@代数拡大}\index{ちょうえつかくだい@超越拡大}
+	$L/K$を体の拡大とする.任意の$\alpha\in L$に対し$\alpha$が$K$上代数的であるとき$L/K$は\textbf{代数拡大}(algebraic extension)といい,そうでないとき\textbf{超越拡大}(transcendental extension)という.
+\end{defi}
+
+\begin{prop}
+	$L/K$を体の拡大とする. $\alpha\in L$が$K$上代数的であることと, $K(\alpha)/K$が有限次であることは同値.
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item $\alpha$の最小多項式$F_\alpha$は既約である. $L=K[X]/(F_\alpha)$は体であり, \ref{prop:既約多項式の商による拡大}より$L/K$は有限次拡大,また$L=K(\alpha)$であるので題意が従う.
+		
+		\item $[K(\alpha):K]=n$とすると, $\{1,\alpha,\dots,\alpha^n\}$は一次独立ではない.よって;
+		\[a_n\alpha^n+\dots+a_1\alpha+a_0=0\]
+		となる$a_i\in K$について,少なくとも1つは0でない.よって$f(X)=a_nX^n+\dots+a_1X+a_0$とおけば$f$は$\alpha$を根にもつ$K$上の多項式となる.
+	\end{eqv}
+\end{proof}
+
+系として$\nitem{\alpha}$が$K$上代数的なら$K(\nitem{\alpha})/K$は代数拡大.また$L/K$が有限次なら代数拡大である.これまでの結果から,代数的数の（有限個の）和,積,商はすべて代数的である.
+
+$K$を係数とする既約多項式の根を$K$に添加することで体を拡大する手法をみたが,これは$K$内で「解けない」多項式の存在を仮定するものだった.具体的には$X^2+1$は$\R$では解けないが, $\Co$では$X^2+1=(X-i)(X+i)$と解くことができる.では, $\Co[X]$には解けない多項式は存在しない（すべての多項式は$1$次式の積に分解できる.代数学の基本定理）. このような体を更に代数拡大することはできるのだろうか？答えは No である.
+
+\begin{defi}[代数閉体]\index{だいすうへいたい@代数閉体}
+	体$K$であって, $K[X]$の既約多項式がすべて$1$次であるとき$K$を\textbf{代数閉体}(algebraically closed field)であるという.
+\end{defi}
+
+$\Co$は代数閉体である.定義から$K$が代数閉体のとき,任意の$f\in K[X]$に対し$\deg f\geq1$ならばある$\alpha\in K$が存在して$f(\alpha)=0$となる.逆に体$K$でこの条件が成り立つとき, $f(X)=(X-\alpha)f_1(X)$と分解され（因数定理）,  $f_1$に同様の操作を繰り返すことで$K$が代数閉体であることを示すことができる.よって$K$が代数閉であることと,任意の$1$次以上の多項式が$K$内に根を持つことは同値である.
+
+\begin{prop}
+	体$K$が代数閉体であることと, $L/K$が体の代数拡大ならば$L=K$となることは同値.
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item $L/K$を代数拡大とする.任意の$\alpha\in L$について$\alpha$は$K$上代数的なので$f(\alpha)=0$となる$f\in K[X]$が存在する.仮定から$f=g_1g_2\dots g_n (\deg g_i=1)$と既約分解できる.このときある$i$について$g_i(\alpha)=0$となる（体は整域）.そこで$g_i(X)=aX+B (a,b\in K, a\neq0)$とおくと, $a\alpha+b=0$より$\alpha=-b/a\in K$である.よって$L=K$となる.
+	
+	\item 任意の$f\in K[X],\deg f\geq1$をとる. $g$を$f$を割り切る既約多項式とすると, $K[X]/(g)$は$K$の拡大体となり,ある$\alpha\in K[X]/(g)$が存在して$K[X]/(g)=K(\alpha),K(\alpha)/K$は代数拡大となる.すると$K(\alpha)=K$なので$\alpha\in K$だから$f$は$K$内に根を持つ.よって$K$は代数閉体である.
+	\end{eqv}
+\end{proof}
+
+明らかに素体は代数閉ではない.どんな体についても,それを含むような代数閉体が存在する.
+
+\begin{defi}[代数閉包]\index{だいすうへいほう@代数閉包}
+	$K$を体とすると,代数閉体$L$が存在して$L/K$が代数拡大となる.このとき$L$を$K$の\textbf{代数閉包}(algebraic closure)という.
+\end{defi}
+
+\begin{proof}[\textbf{存在することの証明.}]
+	$K$の代数拡大全体のなす族を$\Sigma$とすると, $\Sigma$は包含関係によって帰納的順序集合をなす. Zornの補題により極大元が存在し,それが$K$の代数閉包になる.
+\end{proof}

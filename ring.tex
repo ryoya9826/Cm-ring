@@ -6,18 +6,21 @@
 \usepackage[hyperfigures]{hyperref}
 \usepackage[links,thmnumthrice,dottedtoc,sectionmark]{askw}
 \input{adjustmentforme}
+\usepackage{masyufont}
 \usepackage{mathrsfs}
 \usepackage{makeidx}
 \usepackage[longnamesfirst]{natbib}
 \makeindex
 \let\bar\overline
-
+\ifluatex
+\masyufont[xits]{BIZUD}
+\fi
 \begin{document}
 	\nocite{*}
 	\mytitle{可換環論}
 	\newpage
 	\part*{はじめに}
-	代数幾何学を学ぶには,多様な前提知識が必要になる.特に可換環論,スキーム論,複素多様体（Riemann面）論が大切である.そこで,筆者のこれらの分野の学習ノートという形も兼ねて,各分野についてのPDFを作成することにした.これはそのうち可換環論についての分冊で,松村英之「復刊~可換環論」\cite{matsu},~堀田良之「可換環と体」\cite{hota2}などの内容をまとめる.とはいえ,最低限の基礎的なこと,環の定義などを圧縮したものを第0章として,またテンソル積や中山の補題などについてを第１章にまとめておくことにする.\textbf{また,このノートでは環といえば単位元を持つ可換環のこととする.}
+	代数幾何学を学ぶには,多様な前提知識が必要になる.特に可換環論,スキーム論,複素多様体（Riemann面）論が大切である.そこで,筆者のこれらの分野の学習ノートという形も兼ねて,各分野についてのPDFを作成することにした.これはそのうち可換環論についての分冊である.とはいえ,最低限の基礎的なこと,環の定義などを圧縮したものを第0章として,またテンソル積や中山の補題などについてを第１章にまとめておくことにする.\textbf{また,このノートでは環といえば単位元を持つ可換環のこととする.}
 	
 	\hspace*{\fill}最終更新日~\dots~\today
 	
