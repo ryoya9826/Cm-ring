@@ -44,7 +44,7 @@ $H$を用いて位相群$G$がHausdorffであることの判定条件を与え�
 	\end{eqv}
 \end{proof}
 
-以降簡単のため$G$は第1可算公理を満たす,すなわち$0$は可算個の近傍を持つと仮定する.解析的な完備化はCauchy列によって与えられていたことを思い出そう.まずは位相群についてもCauchy列を定義する.
+以降極限を扱うため$G$は第1可算公理を満たす,すなわち$0$は可算個の近傍を持つと仮定する.解析的な完備化はCauchy列によって与えられていたことを思い出そう.まずは位相群についてもCauchy列を定義する.
 
 \begin{defi}[Cauchy列]\index{#Cauchyれつ@Cauchy列}
 	$G$の元の族$\{x_i\}$であって, $0$の任意の近傍$U$について,ある整数$n$が存在して;
@@ -287,7 +287,7 @@ Hilbertの基底定理より, $A$がNoetherなら$R_A(I)$もNoetherである.
 	は完全である.
 \end{thm}
 
-\section{Krullの定理}
+\section{Krullの交叉定理}
 
 この節では,自然な準同型$A\to\widehat{A}$により, $\widehat{A}$を$A$代数としてみて,完備化についての考察を続けよう.まずはテンソル積$\widehat{A}\otimes_A \widehat{M}$が$\widehat{M}$と一致する条件を調べよう.$A$加群の準同型$M\to\widehat{M}$が誘導する準同型;
 \[\begin{tikzcd}
@@ -354,9 +354,9 @@ Hilbertの基底定理より, $A$がNoetherなら$R_A(I)$もNoetherである.
 	まず, \ref{lem:完備化に関してのもろもろの補題}(iii)より, $\widehat{A}/\widehat{\ideal{m}}\cong A/\ideal{m}$なので, $\widehat{\ideal{m}}$は極大イデアルである.また, $\widehat{\ideal{m}}'$を$\widehat{A}$の別の極大イデアルとすると, \ref{lem:完備化に関してのもろもろの補題}(iv)より$\widehat{\ideal{m}}$は$\widehat{A}$のJacobson根基に含まれ,定義より$\widehat{\ideal{m}}\subset\widehat{\ideal{m}}'$がわかる.よって$\widehat{\ideal{m}}=\widehat{\ideal{m}}'$であり,局所環である.
 \end{proof}
 
-環$A$とそのイデアル$I$による完備化への自然な写像$M\to\widehat{M}$は,一般に単射とは限らず,それは$\bigcap I^nM$により決定されるのだった.その構造について（条件付きではあるが）次のKrullの定理が知られている.
+環$A$とそのイデアル$I$による完備化への自然な写像$M\to\widehat{M}$は,一般に単射とは限らず,それは$\bigcap I^nM$により決定されるのだった.その構造について（条件付きではあるが）次のKrullの交叉定理が知られている.
 
-\begin{thm}[Krullの定理]
+\begin{thm}[Krullの交叉定理]\index{#Krullのこうさていり@Krullの交叉定理}
 	$A$をNoether, $I$をそのイデアルとする.有限生成$A$加群$M$について, $L=\bigcap I^nM$とおくとき,ある$a\in I$が存在して, $(1-a)L=0$である.すなわち;
 	\[x\in L\Longleftrightarrow (1-a)x=0\]
 	が成り立つ.
@@ -372,8 +372,8 @@ Hilbertの基底定理より, $A$がNoetherなら$R_A(I)$もNoetherである.
 	$A$をNoether整域とし, $I\neq A$をイデアルとすると, $\bigcap I^n=0$である.
 \end{cor}
 
-\begin{cor}
-	$A$をNoether, $I$を$A$のJacobson根基に含まれるイデアルとする.有限生成$A$加群$M$について, $I$進位相はHausdorffである.
+\begin{cor}\label{cor:Krullの交叉定理の系}
+	$A$をNoether, $I$を$A$のJacobson根基に含まれるイデアルとする.有限生成$A$加群$M$について, $I$進位相はHausdorffである.すなわち$\bigcap I^nM=0$である.
 \end{cor}
 
 \begin{cor}

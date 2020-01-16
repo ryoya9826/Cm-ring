@@ -9,7 +9,7 @@
 	$A$を整域とし, $K=\Frac A$とする.任意の$0\neq x\in K$について, $x\in A$か$x^{-1}\in A$のどちらかが成り立つとき, $A$を$K$の\textbf{付値環}であるという.
 \end{defi}
 
-\quo{付値}の意味は後々明らかになるだろう.定義から付値環$A$は$K$上整閉であることがすぐにわかる.よって付値環は整閉整域である.
+定義から付値環$A$は$K$上整閉であることがすぐにわかる.よって付値環は整閉整域である.
 
 \begin{prop}
 	$A$を$K$の付値環とする.このとき, $A$は局所環である.
@@ -22,7 +22,7 @@
 次に付値環の定義のもととなった,付値と呼ばれる関数について説明しよう.
 
 \begin{defi}[付値]\index{ふち@付値}
-	$K$を体とし,~$G$を全順序なAbel群とする.関数$v:k^\times\to G$が,全射であり,すべての$x,y\in K^\times$に対して;
+	$K$を体とし,~$G$を全順序なAbel群とする.関数$v:K^\times\to G$が,全射であり,すべての$a,b\in K^\times$に対して;
 	\begin{sakura}
 		\item $v(ab)=v(a)+v(b)$
 		\item $v(a+b)\geq\min (v(a),v(b))$
@@ -33,17 +33,17 @@
 まず,自明な性質として$v(1)=0$であり, $v(x^{-1})=-v(x)$である.
 
 \begin{defi}
-	集合$A=\mkset{x\in K}{v(x)\geq0}\cup\{0\}$は$k$の部分環で,これを$v$の\textbf{付値環}(valuation ring)という.
+	集合$A=\mkset{x\in K}{v(x)\geq0}\cup\{0\}$は$K$の部分環で,これを$v$の\textbf{付値環}(valuation ring)という.
 \end{defi}
 
-$A$を付値環とすると, $\Frac A=K$となることに注意しよう.これは$K$の付値環をなす.その極大イデアルは$\ideal{m}=\mkset{x\in K}{v(x)>0}$で与えられる.
+体の部分環であるから付値環は必ず整域である.また付値環$A$について$\Frac A=K$となることに注意しよう.これは$K$の付値環をなす.その極大イデアルは$\ideal{m}=\mkset{x\in K}{v(x)>0}$で与えられる.
 
 次の離散付値環が特に大切である.
 \begin{defi}[離散付値]\index{りさんふち@離散付値}\index{#DVR@DVR,離散付値環}\index{りさんふちかん@離散付値環}
 	$G=\Z$としたときの付値$v$を\textbf{離散付値}(discrete valuation)といい,対応する付値環を\textbf{離散付値環}(discrete valuation ring)といい,~DVRと略す.このとき,便宜上$v(0)=\infty$とする.
 \end{defi}
 
-離散付値環についていくつかの性質を示しておこう.
+付値環についていくつかの性質を示しておこう.
 
 \begin{lem}
 	$x,y\in A$について$v(x)\geq v(y)$ならば$x\in (y)$である.特に$v(x)=v(y)$ならば$(x)=(y)$である.
@@ -108,15 +108,13 @@ $A$を付値環とすると, $\Frac A=K$となることに注意しよう.これ
 \end{proof}
 
 \begin{prop}\label{lem:DVR-B}
-	$(A,\ideal{m})$をArtin局所環とすると, $A$のすべてのイデアルが単項であることと$\dim_k(\ideal{m}/\ideal{m}^2)\geq1$であることは同値である.
+	$(A,\ideal{m})$をArtin局所環とすると, $A$のすべてのイデアルが単項であることと$\dim_k(\ideal{m}/\ideal{m}^2)\leq1$であることは同値である.
 \end{prop}
 
 \begin{proof}
 	$(\Longrightarrow)$は明らかなので,逆を示す. $\dim_k \ideal{m}/\ideal{m}^2=0$なら$\ideal{m}=\ideal{m}^2$となり中山の補題から$\ideal{m}=0$すなわち$A$は体となるので,示すことはない.
 	
-	$\dim_k \ideal{m}/\ideal{m}^2=1$と仮定する.その基底を与える$x\in\ideal{m}$をとると, $x+\ideal{m}^2=\ideal{m}$である.よって中山の補題(\ref{cor:NAK})より$\ideal{m}=(x)$である.
-	
-	$I$を$0$でも$A$でもない$A$のイデアルとする. Artin環において冪零根基とJacobson根基(極大イデアルの共通部分)は等しいので, $\nil A=\ideal{m}$である. \ref{lem:Artinならnil Aは冪零}より$I\subset(\nil A)^k,I\not\subset(\nil A)^{k+1}$となる$k\in\N$がとれる.よってある$y\in I$と$a\in A$がとれて$y=ax^k,y\not\in(x^{k+1})$とできる.よって$a\not\in(x)$でなければならないので$a$は可逆である.よって$x^k\in I$となり, $I=(x^k)$となることがわかった.
+	$\dim_k \ideal{m}/\ideal{m}^2=1$と仮定すると\ref{prop:Atimac_prop_2.8}より$\ideal{m}$は単項生成である. $\ideal{m}=(x)$とする. $I$を$0$でも$A$でもない$A$のイデアルとすると, Artin環において冪零根基とJacobson根基(極大イデアルの共通部分)は等しいので, $\nil A=\ideal{m}$である. \ref{lem:Artinならnil Aは冪零}より$I\subset(\nil A)^k,I\not\subset(\nil A)^{k+1}$となる$k\in\N$がとれる.よってある$y\in I$と$a\in A$がとれて$y=ax^k,y\not\in(x^{k+1})$とできる.よって$a\not\in(x)$でなければならないので$a$は可逆である.よって$x^k\in I$となり, $I=(x^k)$となることがわかった.
 \end{proof}
 
 \begin{lem}\label{lem:DVR-C}
@@ -396,7 +394,7 @@ $\chi_I(n)$の次数は$I$の極小の生成系の個数以下であることに
 	である.右辺と左辺の次数は等しいので題意が成り立つ.
 \end{proof}
 
-$\deg\chi_I(n)=d(A)$とかく.また,先程まで$s$とかいていた$I$の極小の生成系の個数を$\delta(A)$とかくことにする.この節の残りの目標はNoether局所環$(A,\ideal{m})$について,次のKrullの次元定理;
+$\deg\chi_I(n)=d(A)$とかく.また,先程まで$s$とかいていた$I$の極小の生成系の個数を$\delta(A)$とかくことにする. $d(A)$を$A$のHilbert-Samuel次元, $\delta(A)$を$A$の座標次元と呼ぶ.この節の残りの目標はNoether局所環$(A,\ideal{m})$について,次のKrullの次元定理;
 \begin{thm}[Krullの次元定理]\index{#Krullのじげんていり@Krullの次元定理}\label{thm:Krullの次元定理}
 	$(A,\ideal{m})$をNoether局所環とする. $\chi_{\ideal{m}}(n)=l(A/\ideal{m}^n)$の次数を$d(A),A$の$\ideal{m}$準素イデアルの極小の生成系の個数を$\delta(A)$とおくと;
 	\[\dim A=d(A)=\delta(A)\]
@@ -480,7 +478,7 @@ $\deg\chi_I(n)=d(A)$とかく.また,先程まで$s$とかいていた$I$の極�
 \[\Min_A A/I=\mkset{P\in V(I)}{P\text{は}V(I)\text{で極小である}}=\mkset{P\in\spec A}{P\text{は}I\text{の随伴素イデアルのなかで極小}}\]
 となる.
 \begin{thm}[Krullの標高定理]\index{#Krullのひょうこうていり@Krullの標高定理}
-	$A$をNoether環とし, $\nitem{f}\in A$とする.イデアル$(\nitem{f})$の極小素イデアル$P$について$\idht P\leq n$が成り立つ.特に$\idht I\leq n$である.
+	$A$をNoether環とし, $\nitem{f}\in A$とする.イデアル$(\nitem{f})$の極小素イデアル$P$について$\idht P\leq n$が成り立つ.
 \end{thm}
 
 \begin{proof}
@@ -493,6 +491,24 @@ $\deg\chi_I(n)=d(A)$とかく.また,先程まで$s$とかいていた$I$の極�
 
 \begin{proof}
 	標高定理より$\idht P\leq1$である. $\idht P=0$であるとすると, $\spec A_P=\{P\}$であるので, $\nil A_P=PA_P$である. $x\in P$であるので, $x$は零因子でないことに矛盾する.よって$\idht P=1$である.
+\end{proof}
+
+\begin{thm}[Krullの標高定理の逆]
+	$A$をNoether環とし, $P\in\spec A$が$\idht P=n$であったとすると,ある$a_1,\dots,a_n\in A$が存在して$P$は$(a_1,\dots,a_n)$の極小素イデアルとなる.
+\end{thm}
+
+\begin{proof}
+	$A_P$は$n$次元局所環なので, $n$個の元で生成される$PA_P$準素イデアル$(x_1/s_1,\dots,x_n/s_n)$が存在する.このとき$PA_P$は$(x_1/s_1,\dots,x_n/s_n)$の極小素イデアルになる.ここで$a_i=s_1\dots s_n(x_i/s_i)\in A$とおくと, $s_1\dots s_n$は$A_P$の単元なので,イデアルとして$(a_1,\dots,a_n)A_P=(x_1/s_1,\dots,x_n/s_n)$である.よって$P$は$(a_1,\dots,a_n)$の極小素イデアルとなる.
+\end{proof}
+
+\begin{prop}\label{prop:標高定理の系}
+	$A$をNoether環とし, $P\in\spec A$が$(a_1,\dots,a_n)$の極小素イデアルなら$\idht (P/(a_1,\dots,a_i))=n-i (1\leq i\leq n)$である.
+\end{prop}
+
+\begin{proof}
+	$P$の$\bar{A}=A/(a_1,\dots,a_n)$における像を$\bar{P}$とおく. $\idht \bar{P}=r$としよう. $\bar{A}$において$\bar{P}$は$(\bar{a_{i+1}},\dots,\bar{a_n})$の極小素イデアルである.よってKrullの標高定理から$r\leq n-i$である.
+	
+	また, Krullの標高定理の逆より$\bar{x_1},\dots,\bar{x_r}\in\bar{A}$が存在して$\bar{P}$は$(\bar{x_1},\dots,\bar{x_r})$の極小素イデアルである.よって$P$は$(a_1,\dots,a_i,x_1,\dots,x_r)$の極小素イデアルとなり, $n\leq r+i$である.よって$r=n-i$が示された.
 \end{proof}
 
 \begin{prop}
@@ -544,3 +560,88 @@ $\deg\chi_I(n)=d(A)$とかく.また,先程まで$s$とかいていた$I$の極�
 	
 	すると, $A$の素イデアル鎖$P_0'\subset\dots\subset P_d'$において$\idht P_d'=\idht P_d'[X]$であり, $P_d'[X]\cap A=P_d\cap A$であるので, $P_d'[X]\subset P_d$でありかつ前定理の議論からその間に素イデアルはない.よって$d-1\leq\idht P_d'[X]=\idht P_d'\leq\dim A$である.よって$d\leq\dim A+1$が従う.
 \end{proof}
+
+Noether局所環$(A,\ideal{m})$上の有限生成加群$M$についても環の場合の自然な拡張としてHilbert-Samuel次元$d(M)$を定義でき,座標次元$\delta(A)$を$a_1,\dots,a_r\in\ideal{m}$で$l(M/(a_1,\dots,a_r)M)$が有限になる最小の$r$で定義する. Krull次元を$\dim M=\dim(A/\ann M)$と定義すれば,これらは環の場合への帰着により次元定理が成り立つ.
+
+\section{正則局所環}
+
+Nother局所環$(A,\ideal{m},k)$について, $\dim A=d$とすると$A$の$\ideal{m}$準素イデアルは少なくとも$d$個の元で生成される.ちょうど$d$個の元で$\ideal{m}$準素イデアルが生成されているときを考えよう.
+\begin{defi}[巴系]\index{ぱけい@巴系}
+	$(A,\ideal{m})$を$d$次元Noether局所環とする. $x_1,\dots,x_d\in\ideal{m}$が$\ideal{m}$準素イデアルを生成するとき$x_1,\dots,x_d$を$A$の\textbf{巴系}(system of parameters)という.
+\end{defi}
+
+また\ref{prop:Atimac_prop_2.8}より, $\ideal{m}$を生成するのに必要な元の個数は$\dim_k\ideal{m}/\ideal{m}^2$である. $\dim_k\ideal{m}/\ideal{m}^2$を$A$の\textbf{埋め込み次元}(embedding dimension)といい$\emdim A$と表す.次元定理より$\dim A\leq\emdim A$が成り立つ.等号が成り立つとき,すなわち$\ideal{m}$が$\dim A$個の元で生成されているとき$A$を\textbf{正則局所環}という.
+
+\begin{defi}[正則局所環]\index{せいそくきょくしょかん@正則局所環}
+	$(A,\ideal{m})$を局所環とする. $d=\dim A$個の元$x_1,\dots,x_d\in A$が存在して$\ideal{m}=(\nitem[d]{x})$となっているとき$A$を\textbf{正則局所環}(regular local ring)といい, $\ideal{m}$を生成する巴系を\textbf{正則巴系}という..
+\end{defi}
+
+\begin{prop}
+$d$次元Noether局所環$(A,\ideal{m})$について, $x_1,\dots,x_i$が$A$の正則巴系の１部分であることと$A/(x_1,\dots,x_i)$が$d-i$次の正則局所環であることは同値.
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item $A/(x_1,\dots,x_i)$の極大イデアルは$x_{i+1},\dots,x_n$の像で生成されており, \ref{prop:標高定理の系}より$\dim A/(x_1,\dots,x_i)=d-i$である.よって正則局所環となる.
+		
+		\item $A/(x_1,\dots,x_i)$の極大イデアル$\ideal{m}'=\ideal{m}/(x_1,\dots,x_i)$が$y_1,\dots,y_{n-i}$の像で生成されているとすると$\ideal{m}=(x_1,\dots,x_i,y_1,\dots,y_{n-i})$である.
+	\end{eqv}
+\end{proof}
+
+\begin{thm}
+	正則局所環$(A,\ideal{m})$は整域である.
+\end{thm}
+
+\begin{proof}
+	$\dim A$についての帰納法で示す. $\dim A=0$のときは$A$が体であるので明らか. $\dim A\geq 1$とし, $\dim A-1$次までの正則局所環は整域であると仮定する. $A$の高さ$0$の素イデアルを$P_1,\dots,P_r$とする. \ref{prop:局所環がm^n=0ならArtin}より$\ideal{m}\not\subset\ideal{m}^2$であり$\ideal{m}\not\subset P_i$であるので, Prime avoidanceよりある$x\in\ideal{m}$が存在して$x\not\in\ideal{m},P_1,\dots,P_r$が成り立つ.すると$x$の$\ideal{m}/\ideal{m}^2$における像$\bar{x}$は$0$でないので延長して$\{\bar{x},\bar{y_1},\dots,\bar{y_{n-1}}\}$を$\ideal{m}/\ideal{m}^2$の基底にできる.このとき$x,y_1,\dots,y_{n-1}$は$A$の正則巴系となるので,前命題より$A/xA$は$n-1$次元の正則局所環である.仮定より整域なので$(x)$は素イデアル.すると$P_i$たちは極小なので$P_i\subset(x)$となる$i$がある.すると任意の$y\in P_i$について$y=ax\in P_i$となる$a\in A$が存在し, $x\not\in P_i$なので$a\in P_i$である.よって$P_i=xP_i$となり,中山の補題から$P_i=0$である.よって$A$は整域である.
+\end{proof}
+
+\ref{thm:DVRの特徴づけ}より次の結果が従う.
+
+\begin{cor}
+	$(A,\ideal{m})$が$1$次元の正則局所環であることとDVRであることは同値.
+\end{cor}
+
+DVRは整閉なので, 1次元の正則局所環は整閉である.またより強くDVRはUFDでもあるが,次の結果が知られている.
+
+\begin{thm}[Auslander-Bachsbaumの定理]\index{#Auslander-Bachsbaumのていり@Auslander-Bachsbaumの定理}
+	正則局所環はUFDである.
+\end{thm}
+
+特にすべての正則局所環は整閉整域である.この結果の証明にはホモロジー代数的手法を本質的に必要とするため,ホモロジー代数を導入した後に証明を与える.
+
+\section{Cohen-Macaulay 環}
+
+重要な局所環のクラスの１つにCohen-Macaulay\textbf{環}（略してCM\textbf{環}と書くことも多い）がある. Cohen-Macaulay環は現在の可換環論で中心的な存在の１つであり,この節ではホモロジー代数を要しない範囲で性質をまとめておこう.
+
+\begin{defi}[正則列]\index{せいそくれつ@正則列}
+	$A$をNoether環とし, $M$を有限生成$A$加群とする. $a_1,\dots,a_r\in A$が任意の$1\leq i\leq r$について$a_i$が$M/(a_1,\dots,a_{i-1})M$に非零因子として作用するとき, $a_1,\dots,a_r$を$M$\textbf{正則列}(regular sequence)という.
+\end{defi}
+
+例えば体上の多項式$A=K[X_1,X_2,X_3]$において$f_1=X_1(X_2-1),f_2=X_2,f_3=X_3(X_1-1)$とすると$f_1,f_2,f_3$は$A$正則列をなす.ところが$X_1$は$A/(f_1)$において$0$ではないが, $f_3X_3$は$0$であるので$f_1,f_3,f_2$は$A$正則列ではない.このように正則列は順序を考慮する必要があるが,局所環においては極大イデアルの元について順序によらないことが知られている.ここではより強く$\rad A$の元においてそのことを示そう.
+
+\begin{lem}
+	Noether環$A$上の加群$M$において$a\in A$が$M$上の非零因子で$\bigcap a^nM=0$であるものとする.このとき$M$の素因子$P\in\ass M$について$P+(a)\subset Q$となる$Q\in\ass (M/aM)$が存在する.
+\end{lem}
+
+この補題の仮定はKrullの交叉定理（\ref{cor:Krullの交叉定理の系}）より$a\in\rad A$のとき満たされる.
+
+\begin{proof}
+	$x\in M$によって$P=\ann (x)$とかける.ここで$\bigcap a^nM=0$より,ある$k\geq0$が存在して$x\in a^kM$かつ$x\not\in a^{k+1}M$である.このとき$y\in M$によって$x=a^ky$と書けているとすると$y\not\in aM$である.ここで$\bar{y}$を$y$の$M/aM$における像とすると, $a$が非零因子なので$(P+(a))\bar{y}=0$が成り立つ.これは$P+(a)\subset\ann (\bar{y})$を意味するが,\ref{prop:素因子の存在}よりある$Q\in\ass (M/aM)$が存在する.
+\end{proof}
+
+\begin{prop}
+	Noether環$A$上の有限生成加群$M$において$a_1,\dots,a_r\in\rad A$とする.このとき$a_1,\dots,a_r$が$M$正則列ならその並べ替えも$M$正則である.
+\end{prop}
+
+\begin{proof}
+	まず２つの場合に帰着できることをみよう. $a_1,\dots,a_i,a_{i+1},\dots,a_r$が$M$正則列であるとする. $N=M/(a_1,\dots,a_{i-1})M$とおくと$a_i$は$N$の非零因子であり, $a_{i+1}$は$N/a_iN=M/(a_1,\dots,a_i)M$の非零因子である.このとき$a_1,\dots,a_{i+1},a_i,\dots,a_r$が$M$正則列であることをみるには$a_{i+1}$が$N$の, $a_i$が$N/a_{i+1}N=M/(a_1,\dots,a_{i-1},a_{i+1})M$の非零因子であることを示せばよい.
+	
+	よって$a_1$が$M$の, $a_2$が$M/a_1M$の非零因子なら$a_2$が$M$の, $a_1$が$M/a_2M$の非零因子であることを示せば十分である.まず$a_2$が$M$の零因子とすると, \ref{prop:素因子の存在}よりある$P\in\ass M$に対して$a_2\in P$である.ここで$a_1\in\rad A$より, Krullの交叉定理から$\bigcap a_1^nM=0$となるので,補題から$P+(a_1)\subset Q$となる$Q\in\ass (M/a_1M)$がある.すると$a_2\in P\subset Q$だから$a_2$が$M/a_1M$の零因子でないことに矛盾する.よって$a_2$は$M$の非零因子.また$a_1$が$M/a_2M$の零因子とすると,ある$x\not\in a_2M,y\in M$について$a_1x=a_2y$だが,このとき$a_2y\in a_1M$より$a_2$が$M/a_1M$の非零因子だから$y\in a_1M$である. $y=a_1z$とおくと$a_1(x-a_2z)=0$となり, $a_1$は$M$の非零因子なので$x=a_2z$となって矛盾する.よって$a_1$は$M/a_2M$の非零因子.
+\end{proof}
+
+\begin{cor}
+	Noether局所環$(A,\ideal{m})$上の有限生成加群$M$について, $a_1,\dots,a_r\in\ideal{m}$が$M$正則列であるとき,その並べ替えも$M$正則である.
+\end{cor}
+
+\showme{subsectionmark}

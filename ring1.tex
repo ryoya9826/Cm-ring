@@ -1,8 +1,9 @@
 \part[Preliminaries]{準備}
-この章では,基礎的なことを集める.
-
+この章では基礎的なことを集める.
 
 \section{加群}
+
+線形空間の拡張として\textbf{加群}というものを考えると,環$A$の構造だけを観るのではなく加群も合わせて考えることで表現論的な考察が可能になる.
 
 \begin{defi}[加群]\index{かぐん@加群}
 	$A$を環とし, $M$をAbel群とする. $A$の作用$A\times M\to M;(a,x)\mapsto ax$が存在して;
@@ -12,20 +13,16 @@
 		\item $(a+b)x=ax+bx$
 		\item $a(x+y)=ax+ay$
 	\end{defiterm}
-	をみたすとき, $M$と作用の組を$A$\textbf{加群}(module)という.
+	をみたすとき, $M$（と作用の組）を$A$\textbf{加群}(module)という.
 \end{defi}
 
 環$R$が非可換の時,作用が左（右）作用のとき左（右）加群という. $A$が可換のときは単に$A$加群という.右加群では(M2)の代わりに
 \[\textrm{(M2)}'\quad a(bx)=b(ax)\]
-を要請する必要がある.また, $A$が体のときは線形空間に他ならない. $A$の作用のことを\textbf{スカラー}(scalar)ということもある.
+を要請する必要がある（最初に注意しておいたとおり,以後すべて$A$は可換環として進める.）. また, $A$が体のときは線形空間に他ならない. $A$の作用のことを\textbf{スカラー}(scalar)ということもある.
 
-最初に注意しておいたとおり,以後すべて$A$は可換環として進める.
-\begin{prop}
-	任意の$a\in A$と$x\in M$に対して次が成立.
-	\[a0=0,0x=0,(-a)x=-ax\]
-\end{prop}
-
-証明は線形空間と同様.
+以後線形代数の模倣としていくつかの性質と定義を述べる.例えば任意の$a\in A$と$x\in M$に対して;
+\[a0=0,0x=0,(-a)x=-ax\]
+が成り立つ.
 
 \begin{defi}[準同型]
 	$M,N$を$A$加群とする. $\varphi:M\to N$が,任意の$a,b\in A$と$x,y\in M$に対し;
@@ -56,31 +53,6 @@ $A$自身を,環の積を作用として$A$加群とみなすとき, $A$の部�
 	群の準同型定理により引き起こされる同型写像に対して, $A$の作用のそれぞれの定義から明らか.
 \end{proof}
 
-\begin{defi}[イデアル商]\index{いであるしょう@イデアル商}
-	$A$を環とし, $\ideal{a},\ideal{b}$をイデアルとする.
-	\[(\ideal{a}:\ideal{b})=\mkset{x\in A}{x\ideal{b}\subset a}\]
-	を$\ideal{a}$と$\ideal{b}$の\textbf{イデアル商}(ideal quotient)という.
-\end{defi}
-
-これは$A$加群$M$に対しても,その部分加群について考えることができる.また,イデアル$(0:M)$を$M$の\textbf{零化イデアル}(anihilator)といい$\ann(M)$とかく. $\ann(M)=0$となる加群を\textbf{忠実}(faithful)であるという.
-
-次が基本的である.
-\begin{prop}\label{prop:加群商}
-	\begin{sakura}
-		\item $M\subset(M:N)$
-		\item $(M:N)N\subset M$
-		\item $((M:N):P)=(\ideal{ab}:P)=((M:P):N)$
-		\item $(\bigcap_\lambda M_\lambda:N)=\bigcap_\lambda (M_\lambda:N)$
-		\item $(M:\sum_\lambda N_\lambda)=\bigcap_\lambda (M:N_\lambda)$
-		\item $\ann (M+N)=\ann (M)\cap\ann (N)$
-		\item $(M:N)=\ann((M+N)/M)$
-	\end{sakura}
-\end{prop}
-
-証明は簡単なので省略する.
-
-最初の定義の時点で気付いているかもしれないが, $A$加群の議論は$A$が体の場合,線形空間の場合にほかならない（$A$加群は$A$線形空間にほかならない）.よって,線形空間の定義に並行して次のような定義をするのは自然である.
-
 \begin{defi}[加群の直積,直和]\label{defi:直和,直積の存在}\index{ちょくせき@直積}\index{ちょくわ@直和}
 	$A$加群の族$\{M_\lambda\}_{\lambda\in\Lambda}$に対して,直積$\prod M_\lambda$に$A$の作用を;
 	\[a(x_\lambda)_{\lambda\in\Lambda}=(ax_\lambda)_{\lambda\in\Lambda}\]
@@ -97,14 +69,14 @@ $A$自身を,環の積を作用として$A$加群とみなすとき, $A$の部�
 	$M$の任意の元が$\sum_{\lambda\in\Lambda}a_\lambda u_\lambda ~(a_\lambda\in A)$とかけるとき, $(u_\lambda)$を$M$の\textbf{生成系}{system of generator}という.
 \end{defi}
 \begin{defi}[一次独立]\index{いちじどくりつ@一次独立}
-	$\sum a_\lambda u_\lambda=0$なら,任意の$\lambda\in\Lambda$に対し$a_\lambda=0$となるとき, $(u_\lambda)$は\textbf{一次独立}(linearly independent)であるという. $(x_\lambda)$について$(\ast)$を満たさない場合, $(x_\lambda)$の任意の有限部分集合が一次独立のとき, $(x_\lambda)$が一次独立であるという.
+	$\sum a_\lambda u_\lambda=0$なら,任意の$\lambda\in\Lambda$に対し$a_\lambda=0$となるとき, $(u_\lambda)$は\textbf{一次独立}(linearly independent)であるという. $(x_\lambda)$について$(\ast)$を満たさない場合, $(x_\lambda)$の任意の有限部分集合が一次独立のとき$(x_\lambda)$が一次独立であるという.
 \end{defi}
 \begin{defi}[基底]\index{きてい@基底}
 	$M$の任意の元が$\sum a_\lambda u_\lambda$の形に一意に書けるとき, $(u_\lambda)$は$M$の\textbf{基底}(basis)であるという.	
 \end{defi}
 
 それぞれ,準同型;
-\[\bigoplus_{\lambda\in\Lambda} A\to M;(a_\lambda)\mapsto\sum a_\lambda u_\lambda\]
+\[\bigoplus_{\lambda\in\Lambda} A\to M;(a_\lambda)\mapsto\sum_{\lambda\in\Lambda} a_\lambda u_\lambda\]
 が,全射,単射,全単射であることとそれぞれ同値.特に, $(u_\lambda)$が基底であることは$(u_\lambda)$が一次独立な生成系であることと同値.また, $A$加群$M$について,有限個の$A$の直和からの全射が存在するとき, $M$は\textbf{有限生成}(finitely generated)であるという.\index{ゆうげんせいせい@有限生成}
 
 \begin{defi}[自由加群]\index{じゆうかぐん@自由加群}
@@ -118,30 +90,51 @@ $A$自身を,環の積を作用として$A$加群とみなすとき, $A$の部�
 
 可換環上の自由加群についても,濃度は一定である（非可換環については,基底が有限なとき一般には成立しない）.
 
-\begin{thm}
+\begin{thm}\label{thm:可換環上の自由加群のrankは一定}
 	可換環上の自由加群の基底の濃度は一定である.
 \end{thm}
 
 \begin{proof}
 	$A$を可換環とし, $M$を$A$上の自由加群とする.その基底を$\{u_\lambda\}_{\lambda\in\Lambda},\{v_\omega\}_{\omega\in\Omega}$とする.すると
 	\[M=\bigoplus_{\lambda\in\Lambda}Au_{\lambda}=\bigoplus_{\omega\in\Omega}Av_\omega\]
-	とかける. Krullの定理より, $A$は極大イデアル$\ideal{m}$を持つ.また, $A/\ideal{m}$は体である.ここで;
-	\[\ideal{m}M=\mkset{\sum_{\text{有限和}}a_k x_k}{a_k\in\ideal{m},v_k\in M}\]
+	とかける. Krullの定理より, $A$は極大イデアル$\ideal{m}$を持つ.また, $k=A/\ideal{m}$は体である.ここで;
+	\[\ideal{m}M=\mkset{\sum_{\text{有限和}}a_k x_k}{a_k\in\ideal{m},x_k\in M}\]
 	とすると,これは$M$の部分加群で, $\{u_\lambda\}_{\lambda\in\Lambda}$が$M$の基底なので;
 	\[\begin{aligned}
 	\ideal{m}M&=\mkset{\sum_{\lambda\in\Lambda} c_\lambda u_\lambda}{c_i\in\ideal{m}\text{は有限個を除いて}0}\\
 	&=\bigoplus_{\lambda\in\Lambda}\ideal{m}u_\lambda
 	\end{aligned}\]
-	となる.よって$M/\ideal{m}M\cong\middleoplus_{\lambda\in\Lambda} Au_\lambda/\ideal{m} u_\lambda$となる.ここで$M/\ideal{m}M$は$A/\ideal{m}$上の加群とみなすことができる.実際,作用;
-	\[M/\ideal{m}\times A/\ideal{m}\to M/\ideal{m}M;(x+\ideal{m}M,r+\ideal{m})\mapsto rx+\ideal{m}M\]
-	はwell-definedである.それを確かめよう. $x+\ideal{m}M=x'+\ideal{m}M,r+\ideal{m}=r'+\ideal{m}$とする.このとき, $rx+\ideal{m}M=r'x'+\ideal{m}M$,すなわち$rx-r'x'\in\ideal{m}M$が成立すればよい.ここで
-	\[rx-r'x'=rx-r'x+r'x-r'x'=(r-r')x+r'(x-x')\]
-	であり, $r-r'\in\ideal{m}$より$(r-r')x\in\ideal{m}M,x-x'\in\ideal{m}M$より$r'(x-x')\in\ideal{m}M$である.よって,well-definedであることがわかった.また$Au_\lambda/\ideal{m}u_\lambda$の元を考えると, $au_\lambda-bu_\lambda\in\ideal{m}u_\lambda$であることは$a-b\in\ideal{m}$であることと同値だから, $Au_\lambda/\ideal{m}u_\lambda=(A/\ideal{m})u_\lambda$とかける.よって;
+	となる.よって$M/\ideal{m}M\cong\middleoplus_{\lambda\in\Lambda} Au_\lambda/\ideal{m} u_\lambda$となる.また$Au_\lambda/\ideal{m}u_\lambda$の元を考えると, $au_\lambda-bu_\lambda\in\ideal{m}u_\lambda$であることは$a-b\in\ideal{m}$であることと同値だから, $Au_\lambda/\ideal{m}u_\lambda=(A/\ideal{m})u_\lambda$とかける.ここで$M/\ideal{m}M$は$k$上の加群,すなわち$k$線形空間とみなすことができる.実際,作用;
+	\[k\times M/\ideal{m}\to M/\ideal{m}M;(a+\ideal{m},x+\ideal{m}M)\mapsto ax+\ideal{m}M\]
+	はwell-definedである（確かめよ）.以上より$k$線形空間として;
 	\[M/\ideal{m}M\cong\bigoplus_{\lambda\in\Lambda}(A/\ideal{m})u_\lambda\]
-	となり, $\{u_\lambda\}_{\lambda\in\Lambda}$を$A/\ideal{m}$上の加群として基底に持つことがわかる.同様に, $\{v_\omega\}_{\omega\in\Omega}$も$M/\ideal{m}M$の基底となっていて, $\ideal{m}M$は体$A/\ideal{m}$上の加群であるから,その基底の濃度は一定であるので$\#\Lambda=\#\Omega$である.
+	となり, $\{u_\lambda\}_{\lambda\in\Lambda}$を$k$線形空間として基底に持つことがわかる.同様に$\{v_\omega\}_{\omega\in\Omega}$も$M/\ideal{m}M$の基底となっていて,線形空間の基底の濃度は一定であるので$\#\Lambda=\#\Omega$である.
 \end{proof}
 
+\begin{defi}[イデアル商]\index{いであるしょう@イデアル商}
+	$M$を$A$加群, $L,N$をその部分加群とする.
+	\[(L:N)=\mkset{a\in A}{aN\subset L}\]
+	は$A$のイデアルになり,これを$L$と$N$の\textbf{イデアル商}(ideal quotient)という.
+\end{defi}
+
+また,イデアル$(0:M)$を$M$の\textbf{零化イデアル}(anihilator)といい$\ann(M)$とかく. $\ann(M)=0$となる加群を\textbf{忠実}(faithful)であるという. $A$の部分加群はイデアルであるから,これはイデアルについて考えることもできる.イデアル商の計算は次が基本的である（証明は簡単なので省略する）.
+
+\begin{prop}\label{prop:加群商}
+	$I,J,K$を$A$のイデアルとし, $L,N$は$A$加群$M$の部分加群であるとすると,次が成り立つ.
+	\begin{sakura}
+		\item $I\subset(I:J)$
+		\item $(I:J)J\subset I$
+		\item $((I:J):K)=(I:JK)=((I:K):J)$
+		\item $(\bigcap_\lambda I_\lambda:J)=\bigcap_\lambda (I_\lambda:J)$
+		\item $(I:\sum_\lambda J_\lambda)=\bigcap_\lambda (I:J_\lambda)$
+		\item $\ann (N+L)=\ann (N)\cap\ann (L)$
+		\item $(L:N)=\ann((L+N)/L)$
+	\end{sakura}
+\end{prop}
+
 \section{Noether環}
+
+一般の環ではその構造が抽象的なため扱いが難しいことが多々あるが,ある種の\quo{有限性}を持つ環はそれを手がかりにいろいろな考察が進められている.そのなかで最も頻出するものが次に述べるNoether\textbf{環}である.
 
 \begin{defi}[Noether環]\index{#Noetherかん@Noether環}\label{defi:Noether環}
 		環$A$の任意のイデアルが有限生成であるとき, $A$をNoether\textbf{環}という.
@@ -244,6 +237,10 @@ Hilbertの基底定理について述べておこう.
 	$A[X]$がNoetherのとき, $A$はNoetherとなるか？
 \end{exer}
 
+\begin{exer}
+	$A$がNoetherのとき, $n$変数多項式環$A[X_1,\dots,X_n]$は必ずNoetherか？変数が加算個な多項式環$A[X_1,\dots,X_n,\cdots]$はどうか？
+\end{exer}
+
 \begin{defi}[次数付き環]\index{じすうつきかん@次数付き環}
 	$S_0$は環, $d>0$について$S_d$は$S_0$加群になっているとする. $s=\middleoplus_{i=0}^\infty S_i$に積が定義でき, $S_0$の元による積はスカラーの作用と一致し,かつ$S_nS_m\subset S_{n+m}$が成立するとき$S$を\textbf{次数付き環}(graded ring)という.
 \end{defi}
@@ -297,6 +294,15 @@ $S_d$の元を$S$の斉次元という.わかりやすい例として,多項式�
 	$M/N\cong I(M/N)$より$M/N=0$である.
 \end{proof}
 
+$(A,\ideal{m})$を局所環とする.剰余環$k=A/\ideal{m}$は体になる. $A$加群$\ideal{m}$について$M/\ideal{m}M$は自然な演算（\ref{thm:可換環上の自由加群のrankは一定}の証明中で定義したもの）で$k=A/\ideal{m}$加群,すなわち$k$線形空間になる. $M$が有限生成$A$加群なら中山の補題を使うことで次が言える.
+
+\begin{prop}\label{prop:Atimac_prop_2.8}
+	$(A,\ideal{m})$を局所環とし, $M$を有限生成$A$加群とする. $\dim_k M/\ideal{m}M=r$ならば$M$は$r$個の元で生成される.
+\end{prop}
+
+\begin{proof}
+	$x_1,\dots,x_r\in M$を$M/\ideal{m}M$での像が$k$線形空間としての基底になる元とする.ここで$x_1,\dots,x_r$が生成する$A$加群を$N$とおくと, $N$は$M$の部分加群であって$N+\ideal{m}M=M$が成り立つ.よって\ref{cor:NAK}より$N=M$である.
+\end{proof}
 \section{準同型と普遍性}
 
 代数学（加群の理論）においては,いろいろな概念についてその構成に\textbf{自然に付随する準同型}が重要な働きをする.まずは準同型そのものに関連する定義について紹介しておこう.
@@ -306,7 +312,7 @@ $S_d$の元を$S$の斉次元という.わかりやすい例として,多項式�
 	は$f,g\in\hom_A(M,N)$に対し$f+g$を$x\mapsto f(x)+g(x)$で定めることで加法群をなす.また, $A$によるスカラーを$af$は$x\mapsto f(ax)$となる準同型として定めることで定義できる.
 \end{defi}
 
-加群の間の準同型を考えることで,圏論的に言えば関手的な取り扱いが可能になる.とはいえ,この節では圏論の知識を仮定せずとも良いように配慮した.圏論を学んでから,具体例として検討してもらいたい.その手助けとなるように,断った上で圏論的記述を加えたところもある.
+例えば,自然に$\hom_A(A,M)\cong M$である.加群の間の準同型を考えることで,圏論的に言えば関手的な取り扱いが可能になる.とはいえ,この節では圏論の知識を仮定せずとも良いように配慮した.圏論を学んでから,具体例として検討してもらいたい.その手助けとなるように,断った上で圏論的記述を加えたところもある.
 
 準同型を考えると,自然に出てくるものが完全列である.これについて復習しておこう.
 \begin{defi}[完全列]\index{かんぜんれつ@完全列}
@@ -345,13 +351,13 @@ M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3\nxcell0
 	\caption{剰余加群の普遍性}
 \end{figure}
 
-このように,自然な準同型$\varphi$について,ある条件を満たした準同型（この例では$\psi$）に対して可換になるような\textbf{$f$が一意に存在する}という性質を\textbf{普遍性}(universality)という.以後紹介していくテンソル積や極限といった概念では,普遍性が重要な働きをする.それどころか圏論では普遍性に完全に依存した議論をすることも珍しくない.具体的には射の一意性が大切である.そこに着目した上で,\textbf{ある概念の普遍性を満たすものをそれ自身と定義する}という特徴づけを考える.具体的に説明しよう.ある対象が普遍性を持つことがわかっている（あるいは持ってほしい）場合は,次のように定義するのである.
+このように,自然な準同型$\varphi$について,ある条件を満たした準同型（この例では$\psi$）に対して可換になるような\textbf{$f$が一意に存在する}という性質を\textbf{普遍性}(universality)という.以後紹介していくテンソル積や極限といった概念では,普遍性が重要な働きをする.それどころか圏論では普遍性に完全に依存した議論をすることも珍しくない.具体的には準同型（射）の一意性が大切である.そこに着目した上で,\textbf{ある概念の普遍性を満たすものをそれ自身と定義する}という特徴づけを考える.具体的に説明しよう.ある対象が普遍性を持つことがわかっている（あるいは持ってほしい）場合は,次のように定義するのである.
 
 \begin{defi}[普遍性による剰余加群の定義]
-	$A$加群$M$とその部分加群$N$に対して,ある$A$加群$K$と$\varphi:M\to K$で$N\subset\ker\varphi$となるものが存在して,任意の$A$加群$L$と準同型$\psi:M\to L$で$N\ker\psi$となるものについて$f:K\to L$が一意に存在するとき, $(K,\varphi)$を$M$の$N$による\textbf{剰余加群}といい, $M/N$とかく.
+	$A$加群$M$とその部分加群$N$に対して,ある$A$加群$K$と$\varphi:M\to K$で$N\subset\ker\varphi$となるものが存在して,任意の$A$加群$L$と準同型$\psi:M\to L$で$N\subset\ker\psi$となるものについて$f:K\to L$が一意に存在するとき, $(K,\varphi)$を$M$の$N$による\textbf{剰余加群}といい, $M/N$とかく.
 \end{defi}
 
-普遍性から$K$は（同型を除いて）一意的に定まることが保証されるので,実際に普遍性をみたす$M/N=\mkset{x+N}{x\in M}$という加群で$K$を表すことが正当化されている.一意に定まることを見よう.剰余加群の普遍性を満たす$K,K'$を考える.次の図式のように,それぞれの普遍性から$f:M\to K',f':M\to K$が存在する（$\iota$と合成すると$0$になることを表す$0$射は省略した）;
+普遍性から$K$は（同型を除いて）一意的に定まることが保証されるので,実際に普遍性をみたす$M/N=\mkset{x+N}{x\in M}$という加群で$K$を表すことが正当化されている.一意に定まることを見よう.剰余加群の普遍性を満たす$K,K'$を考える.次の図式のように,それぞれの普遍性から$f:M\to K',f':M\to K$が存在する（$\iota$と合成すると$0$になることを表す$0$は省略した）;
 \begin{figure}[H]
 	\centering
 	\begin{tikzcd}
@@ -362,9 +368,9 @@ M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3\nxcell0
 	\caption{}
 \end{figure}
 
-このとき, $f'\circ f=\id_K$となり,\textbf{射の一意性から}$f'\circ f=\id_K$となる.同様に$f\circ f'=\id_{K'}$が確かめられ, $f,f'$によって$K$と$K'$は同型である.
+このとき, $f'\circ f=\id_K$となり,\textbf{準同型の一意性から}$f'\circ f=\id_K$となる.同様に$f\circ f'=\id_{K'}$が確かめられ, $f,f'$によって$K$と$K'$は同型である.
 
-この議論の本質は,射の一意性から普遍性で得られる射の合成と恒等写像が等しくなる、というところにある.よって,まったく同様の証明で普遍性を持つ対象は必ず（同型を除いて）一意に定まることがわかる.このようにある概念を普遍性を満たすもの,と定義して実際にこの加群（対象）が普遍性を満たす,という主張をすることでwell-definedに定義を行うことができる（もちろん,普遍性を満たす加群が存在しないような定義をすることも可能であるが,それは加群の理論では役に立たない）.
+この議論の本質は,準同型の一意性から普遍性で得られる準同型の合成と恒等写像が等しくなる、というところにある.よって,まったく同様の証明で普遍性を持つ対象は必ず（同型を除いて）一意に定まることがわかる.このようにある概念を普遍性を満たすもの,と定義して実際にこの加群（対象）が普遍性を満たす,という主張をすることでwell-definedに定義を行うことができる.
 
 \ref{defi:直和,直積の存在}で定義した直積,直和についても普遍性を用いた定義が可能である.
 
@@ -565,7 +571,7 @@ $x\in M,y\in N$に対し$\tau(x,y)=x\otimes y$ともかき,これを\textbf{元�
 \section{素イデアルと局所化}
 
 \begin{defi}[積閉集合]\index{せきへいしゅうごう@積閉集合}
-	環$A$の部分集合$S$について$1\in S,x,y\in S$ならば$xy\in　S$が成り立つとき, $S$は\textbf{積閉}(multiplicatively closed)であるという.
+	環$A$の部分集合$S$について$1\in S,x,y\in S$ならば$xy\in S$が成り立つとき, $S$は\textbf{積閉}(multiplicatively closed)であるという.
 \end{defi}
 
 \begin{defi}[局所化]\index{きょくしょか@局所化}
@@ -574,9 +580,7 @@ $x\in M,y\in N$に対し$\tau(x,y)=x\otimes y$ともかき,これを\textbf{元�
 
 $S^{-1}A$の正確な定義を与えておこう.直積$A\times S$に次の関係を入れる.
 \[(a,s)\sim(a',s')\Longleftrightarrow t(sa'-s'a)=0\text{となる}t\in S\text{が存在する.}\]
-これによる同値類を$a/s$とかき,その集合に自然な加法と乗法を定めたものを$S^{-1}A$とかく.
-
-写像$\varphi:A\to S^{-1}A;a\mapsto a/1$により, $S^{-1}A$には自然な$A$代数としての構造が入る.また
+これによる同値類を$a/s$とかき,その集合に自然な加法と乗法を定めたものを$S^{-1}A$とかく.写像$\varphi:A\to S^{-1}A;a\mapsto a/1$により, $S^{-1}A$には自然な$A$代数としての構造が入る.また;
 \[\ker\varphi=\mkset{a}{sa=0\text{となる}s\in S\text{がある}}\]
 であるから, $S$が零因子を持たなければ$\varphi$が単射となり, $A$を$S^{-1}A$に埋め込める.
 
@@ -606,20 +610,23 @@ $A$が整域のとき,これは商体にほかならない.
 	以上より, $P$と$\varphi^{-1}(P)$は一対一に対応する.また$Q\in\spec A$が$Q\cap S\neq\emptyset$ならば$S^{-1}Q$は単元を含み,$\varphi^{-1}(P)\cap S=\emptyset$となることもわかる.
 \end{proof}
 
-というのも,可換環論においては素イデアルが非常に重要な働きをする.環$A$の素イデアル全体を$\spec A$とかき,そこには位相構造が入ることが知られている.
+可換環論においては素イデアルが非常に重要な働きをする.環$A$の素イデアル全体を$\spec A$とかき,そこには位相構造が入ることが知られている.
 
 \begin{defi}[Zariski位相]\label{defi:Zariski位相}\index{#Zariskiいそう@Zariski位相}
 	環$A$のイデアル$I\subset A$に対し, $V(I)=\mkset{ P\in\spec A}{I\subset P}$は$\spec A$の閉集合系としての位相を定める.これを$A$のZariski位相という.
 \end{defi}
 
-それぞれ確認しよう.
+\begin{exer}
+	$\mathscr{V}=\mkset{V(I)}{I:A\text{のイデアル}}$が閉集合系をなすこと,すなわち;
 \begin{sakura}
-	\item $V(A)=\emptyset,V(0)=\spec A$である.
+	\item $\emptyset,\spec A\in\mathscr{V}$である.
 	\item $V(I)\cup V(J)=V(I\cap J)$である.
 	\item $\bigcap_{\lambda}V(I_\lambda)=V(\sum_\lambda I_\lambda)$である.
 \end{sakura}
+	を確認せよ.
+\end{exer}
 
-この定義の動機は, week nullstellensatz（\ref{thm:week nullstellensatz}）により代数閉体の組$K^n$と$K[\nitem{X}]$の極大イデアル全体が１対１対応を持つということにある.極大でない素イデアルをそこに合わせることで$K^n$の点以上の構造をもった$\spec K[\nitem{X}]$を考えよう,としたのがGrothendieckのスキーム論の始まりである.
+この定義の動機は, week nullstellensatz（\ref{thm:week nullstellensatz}）により代数閉体の組$K^n$と$K[\nitem{X}]$の極大イデアル全体が１対１対応を持つということにある.極大でない素イデアルをそこに合わせることで$K^n$の点以上の構造をもった$\spec K[\nitem{X}]$を考えよう,としたのがGrothendieckのスキーム論の始まりである（可換環論と幾何の繋がり）.
 
 \begin{lem}\label{lem:イデアルの根基と素イデアル}
 	$A$のイデアル$I$に対し $\sqrt{I}=\bigcap_{P\in V(I)} P$である.
@@ -637,23 +644,7 @@ $A$が整域のとき,これは商体にほかならない.
 	$ P\in\spec A$に対し, $S=A\setminus P$は素イデアルの定義から積閉で,これによる局所化を$A_P$とかいて$A$の$P$による局所化という.
 \end{defi}
 
-環$A$で,唯1つの極大イデアル$\ideal{m}$を持つものを\textbf{局所環}(local ring)といい,次の判定条件が知られている.\index{きょくしょかん@局所環}
-
-\begin{prop}\label{prop:local ring equiv}
-	$(A,\ideal{m})$が局所環であることと, $\ideal{m}=A\setminus A^\times$がイデアルであることは同値.
-\end{prop}
-
-\begin{proof}
-	\begin{eqv}
-		\item $\ideal{m}_0$を$A$の極大イデアルとする. $\ideal{m}_0\subset\ideal{m}$は明らかなので,逆を示す.任意の$x\in\ideal{m}$をとる.すると, $x\not\in A^\times$より$(x)\subsetneq A$である. $(x)$を含む極大イデアルが存在するが, $A$は局所環なのでそれは$\ideal{m}_0$に一致する.すなわち$(x)\subset\ideal{m}_0$となり, $x\in\ideal{m}_0$すなわち$\ideal{m}\subset\ideal{m}_0$である.よって$\ideal{m}=\ideal{m}_0$となり, $\ideal{m}$はイデアルである.
-		\item 任意の真のイデアル$I$を考えると, $I\cap A^\times=\emptyset$より$I\subset\ideal{m}$となり, $\ideal{m}$が唯一の極大イデアルである. 
-	\end{eqv}
-\end{proof}
-
-局所化,という名前はつぎの系から来ている.
-\begin{cor}
-	$A_P$は局所環である.
-\end{cor}
+局所化という名前の通り$A_P$は局所環である（\ref{prop:local ring equiv}を用いる）.しかしながら一般の積閉集合$S$による局所化は局所環になるとは限らないことに注意しなければならない（分数化,と呼べばよいだろうか？）.
 
 局所化$S^{-1}A$は自然に$A$代数になっていることに注意しよう.さきは$A_P$について素イデアルを考えたが,一般に$A$代数$B$があったときに(素)イデアルの対応を考えることは大切である. たとえば$\varphi:A\to B$があったとき, $P\in\spec A$について必ずしも$\varphi(P)$は$B$のイデアルになるかどうかすらわからない.そこで, $A$のイデアル$I$に対応する$B$のイデアルについては$\varphi(I)$が$B$で生成するイデアルを考えることが自然である.また, $Q\in\spec B$について$\varphi^{-1}(Q)$は必ず素イデアルになることを確かめることができる.これは自然な射$\spec B\to\spec A$
 に他ならないが,それについては代数幾何についての教科書を見てほしい. $A\to S^{-1}A$などの自然な準同型による$Q\in\spec S^{-1}A$の引き戻しは$Q\cap A$と書いたりする.
@@ -662,6 +653,7 @@ $A$について, $P$による局所化を施すと$P$に含まれていない素
 \begin{defi}[剰余体]\index{じょうよたい@剰余体}\index{じょうよたい@剰余体}\label{defi:剰余体}
 	環$A$と素イデアル$P$について, 体$A_P/PA_P$を$K(P)$とかいて, $A$の$P$における\textbf{剰余体}(residue field)という.
 \end{defi}
+
 
 \begin{prop}\label{prop:上にイデアルがあることの同値条件}
 	$\varphi:A\to B$を準同型とし, $P\in\spec A$とする. $\varphi(P)$が$B$で生成するイデアルを$B'$とかく.ある$Q\in\spec B$が存在して$\varphi^{-1}(Q)=P$となることと, $\varphi^{-1}(P')=P$となることは同値である.
@@ -712,6 +704,17 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 
 \ref{defi:剰余体}で説明した素イデアルの取り除きについて, $Q\subset P$を素イデアルとしたときに, $P$による局所化と$Q$による剰余を組み合わせることで$A$の$Q$と$P$の間にある素イデアル以外をすべて取り除くことができることがわかるが,この命題によって$A_P/QA_P$と$(A/Q)_P$が同型であるからその順序が関係ないことがわかる.
 
+また,局所化は平坦な加群の例を与える.
+\begin{prop}\label{prop:局所化は平坦}
+	$S^{-1}A$は平坦である.とくに$S^{-1}A\otimes M\cong S^{-1}M$である.
+\end{prop}
+
+\begin{proof}
+	\ref{prop:局所化は完全関手}より$S^{-1}A\otimes M\cong S^{-1}M$を示せばよいが,	
+	\[f:S^{-1}A\otimes M\to S^{-1}M;a/s\otimes x\mapsto ax/s,\quad g:S^{-1}M\to S^{-1}M\otimes A;x/s\mapsto 1/s\otimes x\]
+	が互いに逆写像となる.
+\end{proof}
+
 ところで,位相的性質,すなわち同相で変化しない性質のように（特に素イデアルによる）局所化で変化しないものを\textbf{局所的性質}(local properties)という.\index{きょくしょてきせいしつ@局所的性質} その例をいくつか見ておこう.
 
 \begin{prop}\label{prop:局所化したら0は局所的}
@@ -749,16 +752,6 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 	0\nxcell(\ker\varphi)_{\ideal{m}}\nxcell M_{\ideal{m}}\nxcell[\varphi_{\ideal{m}}]N_{\ideal{m}}
 	\end{tikzcd}\]
 	は完全.ここで$(\ker\varphi)_{\ideal{m}}=\ker\varphi_{\ideal{m}}=0$であるので, \ref{prop:局所化したら0は局所的}より$\ker\varphi=0$すなわち$\varphi$は単射である.
-\end{proof}
-
-\begin{prop}\label{prop:局所化は平坦}
-	$S^{-1}A$は平坦である.とくに$S^{-1}A\otimes M\cong S^{-1}M$である.
-\end{prop}
-
-\begin{proof}
-	\ref{prop:局所化は完全関手}より$S^{-1}A\otimes M\cong S^{-1}M$を示せばよいが,	
-	\[f:S^{-1}A\otimes M\to S^{-1}M;a/s\otimes x\mapsto ax/s,\quad g:S^{-1}M\to S^{-1}M\otimes A;x/s\mapsto 1/s\otimes x\]
-	が互いに逆写像となる.
 \end{proof}
 
 \section{射影,入射加群}
@@ -996,7 +989,7 @@ $A$加群の完全列;
 \section{GCD整域と原始多項式}
 体上の多変数多項式はPIDではなかったが, UFDであることを示すことができる.そのために次の定義を導入しよう.
 
-\begin{defi}[GCD整域]\index{#GCD整域@GCD整域}
+\begin{defi}[GCD整域]\index{#GCD整域@GCD整域}\label{defi:GCDdomain}
 	整域$A$であって,任意の２つの$x,y\in A$が最大公約元を必ず持つとき, $A$をGCD\textbf{整域}(GCD domain)という.
 \end{defi}
 
@@ -1012,7 +1005,7 @@ $x,y\in A$について,ある$u\in A^\times$が存在して$x=uy$とかけると
 \end{lem}
 
 \begin{proof}
-	$f=c(f)f_0,g=c(g)g_0$と分解すると$f_0,g_0$は原始的である.また$c(fg)\sim c(c(f)c(g)f_0g_0)\sim c(f)c(g)c(f_0g_0)$であるので$f,g$は原始的であると仮定してよい. $f=a_nX^n+\dots+a_0,g=b_mX^m+\dots+b_0$とおく. $fg=c_{n+m}X^{n+m}+\dots+c_0$とおき, $n+m$についての帰納法で示す. $c(fg)=\gcd(c_{n+m},\dots,c_0)$であるが,これは;
+	$f=c(f)f_0, g=c(g)g_0$と分解すると$f_0,g_0$は原始的である.また$c(fg)\sim c(c(f)c(g)f_0g_0)\sim c(f)c(g)c(f_0g_0)$であるので$f,g$は原始的であると仮定してよい. $f=a_nX^n+\dots+a_0,g=b_mX^m+\dots+b_0$とおく. $fg=c_{n+m}X^{n+m}+\dots+c_0$とおき, $n+m$についての帰納法で示す. $c(fg)=\gcd(c_{n+m},\dots,c_0)$であるが,これは;
 	\[\gcd(a_n,c_{n+m-1},\dots, c_0)\gcd(b_n,c_{n+m-1},\dots,c_0)\]
 	を割り切る.ここで, GCD整域において$\gcd(x,y_1,\dots,y_n)\sim\gcd(x,y_1+zx_1,\dots y_n+zx_n)$であることから;
 	\[\gcd(a_n,c_{n+m-1},\dots,c_0)\sim\gcd(a_n,c_{n+m-1}-a_nb_{m-1},\dots,c_n-a_nb_0,c_{n-1},\dots,c_0)\sim\gcd(a_n, c((f-a_nX^n)g))\]
@@ -1108,13 +1101,9 @@ Prime avoidance, 素イデアル避けという名前の由来は対偶;
 	\end{step}
 \end{proof}
 
-Davisの補題を指してPrime avoidanceということもある.使用例として,次の事実;
+Davisの補題を指してPrime avoidanceということもある.応用例として,次の事実;
 \[A\text{が整域なら}(x)=(y)\text{であることと}x\text{と}y\text{が同伴であることは同値.}\]
-について, $A$について整域以外の条件を課して成り立つかどうかを考えてみよう.端的に言えば,次に定義する\textbf{半局所環}で成り立つことを示せる.
-
-\begin{defi}[半局所環]\index{はんきょくしょかん@半局所環}\label{defi:半局所環}
-	環$A$が有限個の極大イデアルしか持たないとき, $A$を\textbf{半局所環}(semi local ring)であるという.
-\end{defi}
+について, $A$について整域以外の条件を課して成り立つかどうかを考えてみよう.端的に言えば半局所環で成り立つことを示せる.
 
 \begin{prop}\label{prop:半局所環と同伴関係}
 	$A$を半局所環とすると, $(x)=(y)$であることと$x$と$y$が同伴であることは同値である.
@@ -1123,3 +1112,4 @@ Davisの補題を指してPrime avoidanceということもある.使用例と�
 \begin{proof}
 	ある$a\in A$が存在して$y=ax$とかける.また$A$が半局所環なので$\specm A=\{\nitem{\ideal{m}}\}$とおくことができる. $(a)\subset\ideal{m}_i$となる極大イデアルについて,局所環$A_{\ideal{m}_i}$を考える. $A$のイデアルとして$(x)=(a)(x)$であり, $(x)A_{\ideal{m}_i}=(a)A_{\ideal{m}_i}(x)A_{\ideal{m}_i}$かつ$(x)A_{\ideal{m}_i}$は有限生成$A_{\ideal{m}_i}$加群である.また$\rad A_{\ideal{m}_i}=\ideal{m}_iA_{\ideal{m}_i}$であるので, $(a)A_{\ideal{m}_i}$は$A_{\ideal{m}_i}$のJacobson根基に含まれるイデアルである.よって中山の補題（\ref{thm:NAK}）より$(x)A_{\ideal{m}_i}=0$である.よって$\ann (x)\not\subset\ideal{m}_i$である.ゆえに$(a)+\ann (x)\not\subset\ideal{m}_i$が成り立つ.また, $(a)\not\subset\ideal{m}_j$となる$\ideal{m}_j$に対して明らかに$(a)+\ann (x)\not\subset\ideal{m}_j$である.よってDavisの補題（\ref{thm:Davisの補題}）から,ある$b\in\ann(x)$が存在して$a+b\not\in\bigcup_{i=1}^n\ideal{m}_i$である.よって$a+b$は$A$の単元である.また, $x(a+b)=ax=y$であるので, $x$と$y$は同伴である.
 \end{proof}
+

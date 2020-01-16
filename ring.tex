@@ -6,15 +6,21 @@
 \usepackage[hyperfigures]{hyperref}
 \usepackage[links,thmnumthrice,dottedtoc,sectionmark]{askw}
 \input{adjustmentforme}
-\usepackage{masyufont}
 \usepackage{mathrsfs}
 \usepackage{makeidx}
+\usepackage{masyufont}
 \usepackage[longnamesfirst]{natbib}
 \makeindex
 \let\bar\overline
+
 \ifluatex
-\masyufont[xits]{BIZUD}
+	\masyufont[xits]{BIZUD}
+\else
+	\usepackage{newtxtext,newtxmath}
+	\masyufont{BIZUD}
+	
 \fi
+
 \begin{document}
 	\nocite{*}
 	\mytitle{可換環論}
@@ -63,12 +69,3 @@
 	\bibliography{ring}
 	
 \end{document}
- TODO List!
- 
- K[X_1,\dots,X_n]はUFD
- 
- 代数的独立とか.
- 
- Prime avoidanceの応用として同伴とイデアルの一致が同値か？
- 
- 射影被覆の話（極小射影分解）

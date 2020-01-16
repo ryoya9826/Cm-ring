@@ -1,0 +1,72 @@
+This is LuaTeX, Version 1.10.0 (TeX Live 2019/W32TeX)  (format=lualatex 2019.12.25)  3 JAN 2020 20:39
+ restricted system commands enabled.
+**\relax
+Lua module: luaotfload-main 2019-11-10 3.11 luaotfload entry point
+Lua module: luaotfload-init 2019-11-10 3.11 luaotfload submodule / initialization
+Lua module: lualibs 2019-11-06 2.69 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2019-11-06 2.69 ConTeXt Lua libraries -- extended collection.
+Lua module: luaotfload-log 2019-11-10 3.11 luaotfload submodule / logging
+Lua module: luaotfload-parsers 2019-11-10 3.11 luaotfload submodule / filelist
+Lua module: luaotfload-configuration 2019-11-10 3.11 luaotfload submodule / config file reader
+luaotfload | conf : Root cache directory is C:/Users/ryoya/.texlive2019/texmf-var/luatex-cache/generic/names.
+luaotfload | init : Loading fontloader “fontloader-2019-10-29.lua” from kpse-resolved path “c:/texlive/2019/texmf-dist/tex/luatex/luaotfload/fontloader-2019-10-29.lua”.
+Lua-only attribute luaotfload@state = 2
+Lua-only attribute luaotfload@noligature = 3
+Lua-only attribute luaotfload@syllabe = 4
+luaotfload | init : Context OpenType loader version “3.11”
+Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
+Lua module: luaotfload-loaders 2019-11-10 3.11 luaotfload submodule / callback handling
+Inserting `luaotfload.define_font' at position 1 in `define_font'.
+Lua module: luaotfload-database 2019-11-10 3.11 luaotfload submodule / database
+Lua module: luaotfload-unicode 2019-11-10 3.11 luaotfload submodule / Unicode helpers
+Lua module: luaotfload-colors 2019-11-10 3.11 luaotfload submodule / color
+Lua-only attribute luaotfload_color_attribute = 5
+Lua module: luaotfload-resolvers 2019-11-10 3.11 luaotfload submodule / resolvers
+luaotfload | conf : Root cache directory is C:/Users/ryoya/.texlive2019/texmf-var/luatex-cache/generic/names.
+Lua module: luaotfload-features 2019-11-10 3.11 luaotfload submodule / features
+Lua module: luaotfload-letterspace 2019-11-10 3.11 luaotfload submodule / color
+Lua module: luaotfload-embolden 2019-11-10 3.11 luaotfload submodule / color
+Lua module: luaotfload-notdef 2019-11-10 3.11 luaotfload submodule / color
+Lua module: luaotfload-auxiliary 2019-11-10 3.11 luaotfload submodule / auxiliary functions
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_font_index' at position 2 in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 3 in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_font_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font'.
+Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
+Lua module: luaotfload-multiscript 2019-11-10 3.11 luaotfload submodule / multiscript
+Lua module: luaotfload-tounicode 2019-11-10 3.11 luaotfload submodule / tounicode
+Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'.
+luaotfload | main : initialization completed in 0.908 seconds
+
+
+*\aa
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+<*> \aa
+    
+? X
+
+
+Here is how much of LuaTeX's memory you used:
+ 6 strings out of 493856
+ 100000,106986 words of node,token memory allocated 296 words of node memory still in use:
+   1 hlist, 1 local_par, 1 dir, 1 glue, 3 kern, 1 glyph, 1 attribute, 35 glue_sp
+ec, 1 attribute_list, 1 temp nodes
+   avail lists: 2:9,3:1,4:1,7:1
+ 4803 multiletter control sequences out of 65536+600000
+ 14 fonts using 418443 bytes
+ 6i,0n,7p,7b,15s stack positions out of 5000i,500n,10000p,200000b,100000s
+
+warning  (pdf backend): no pages of output.
+
+PDF statistics: 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 1 words of extra memory for PDF output out of 10000 (max. 100000000)
+

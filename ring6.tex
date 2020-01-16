@@ -140,7 +140,7 @@
 \begin{lem}[分裂補題]\index{ぶんれつほだい@分裂補題}
 	完全列$\ses[\iota][\pi]{M_1}{M}{M_2}$について,以下の3つ;
 	\begin{sakura}
-		\item $M$は$M_1\oplus M_2$と同型.
+		\item $M$は$M_1\oplus M_2$と同型で, $\iota,\pi$はそれぞれ自然な移入と射影に一致する.
 			
 		\item $i:M_2\to M$が存在して$\pi\circ i=\id_{M_2}$が成り立つ.
 		
@@ -305,9 +305,9 @@
 	は複体になる.
 \end{proof}
 
-とはいえこの構成はあまりに自然すぎて,ここに加法的関手を施しても,たかだか$A$の前後でしか完全性は乱れない（加法的関手は0を0に移すからである）.そこで$A$を分解してみるのである.とはいえ,その分解はあくまで$A$の代わりであるので, （移す前の）ホモロジーは($\ast$)と一致することを要求する.それを実現してくれるのがここから話す\textbf{射影分解}である.コホモロジーでは\textbf{単射的分解}を用いる.
+とはいえこの構成はあまりに自然すぎて,ここに加法的関手を施しても,たかだか$A$の前後でしか完全性は乱れない（加法的関手は0を0に移すからである）.そこで$A$を分解してみるのである.とはいえ,その分解はあくまで$A$の代わりであるので, （移す前の）ホモロジーは($\ast$)と一致することを要求する.それを実現してくれるのがここから話す\textbf{射影分解}である.コホモロジーでは\textbf{入射的分解}を用いる.
 
-\section{射影分解と単射的分解}
+\section{射影分解と入射的分解}
 前節の最後に話したことを図式で書いてみよう;
 \begin{figure}[H]
 	\centering
@@ -338,7 +338,7 @@
 射影加群(injective module)の定義を思い出そう.一般のAbel圏でも関手$\hom(N,-)$は左完全関手になる.射影加群の定義はこの関手を完全にする$M$のことであったが,射影対象も$\hom_{\mathscr{A}}(P,-)$が（$0\to A'\to A\to A''\to0$に対して）完全になる関手のことである,といってよい.これを用いて$A$の都合の良い分解を与える.
 
 \begin{defi}[射影分解]\index{しゃえいてきぶんかい@射影分解}
-	Abel圏$\mathscr{A}$の対象$A$について,単射的対象$P^i~(i\geq0)$がとれて;
+	Abel圏$\mathscr{A}$の対象$A$について,入射的対象$P^i~(i\geq0)$がとれて;
 	\[\begin{tikzcd}
 	\cdots\nxcell[d_2]P_1\nxcell[d_1]P_0\nxcell[\varepsilon]A\nxcell0
 	\end{tikzcd}\]
@@ -371,7 +371,7 @@
 	$A$加群$M$について,自由加群$F$からの全射$\varepsilon:F\to M$が存在する.自由加群は射影加群（\ref{prop:自由加群は射影加群}）なので,題意は満たされる.
 \end{proof}
 
-次に単射的分解について考えよう. Figure.\ref{fig:射影分解したい}の余鎖複体バージョンを考えると,次のようになる;
+次に入射的分解について考えよう. Figure.\ref{fig:射影分解したい}の余鎖複体バージョンを考えると,次のようになる;
 
 \begin{figure}[H]
 	\centering
@@ -384,12 +384,12 @@
 
 となる複体$I^\bullet$で,コホモロジーを取ると$H^0(I^\bullet)=\ker d^0=A,H^i(I^\bullet)=\ker d^i/\im d^{i-1}=0~(i\geq1)$となるものをうまく取りたい.
 
-\begin{defi}[単射的対象]\index{たんしゃてきたいしょう@単射的対象}
+\begin{defi}[入射的対象]\index{にゅうしゃてきたいしょう@入射的対象}
 	Abel圏の対象$I$で,任意の完全列;
 	\[\begin{tikzcd}
 	0\nxcell A'\nxcell[\varepsilon]A
 	\end{tikzcd}\]
-	と$f':A'\to I$が与えられたとき,~$f\circ\varepsilon=f'$となる$f:A\to I$が必ず存在するとき,~$I$を\textbf{単射的対象}(injective object)という.
+	と$f':A'\to I$が与えられたとき,~$f\circ\varepsilon=f'$となる$f:A\to I$が必ず存在するとき,~$I$を\textbf{入射的対象}(injective object)という.
 \end{defi}
 
 これは次の図式が可換になる$f$の存在といえる.
@@ -402,8 +402,8 @@
 	\caption{}
 \end{figure}
 
-\begin{defi}[単射的分解]\index{たんしゃてきぶんかい@単射的分解}
-	Abel圏$\mathscr{A}$の対象$A$について,単射的対象$I^i~(i\geq0)$がとれて;
+\begin{defi}[入射的分解]\index{にゅうしゃてきぶんかい@入射的分解}
+	Abel圏$\mathscr{A}$の対象$A$について,入射的対象$I^i~(i\geq0)$がとれて;
 	\[\begin{tikzcd}
 	0\nxcell A\nxcell[\varepsilon]I^0\nxcell[d^0] I^1\nxcell[d^1]\cdots
 	\end{tikzcd}\]
@@ -411,47 +411,62 @@
 	\[\begin{tikzcd}
 		0\nxcell I^0\nxcell[d^0] I^1\nxcell[d^1]I^2\nxcell[d^2]\cdots
 	\end{tikzcd}\]
-	を$I^\bullet$と書いて,~$A$の\textbf{単射的分解}(injective resolution)という.
+	を$I^\bullet$と書いて,~$A$の\textbf{入射的分解}(injective resolution)という.
 \end{defi}
 
 同様に, $H^0(I^\bullet)=\ker d^0=\im\varepsilon=A$であることに注意しよう.
 
-射影分解と同様に, \textbf{単射的対象を十分に持つ}なら単射的分解が必ずできる.
+射影分解と同様に, \textbf{入射的対象を十分に持つ}なら入射的分解が必ずできる.
 
 \begin{defi}
-	Abel圏$\mathscr{A}$の任意の対象$A$について, $\mathscr{A}$の単射的対象$I$が存在して;
+	Abel圏$\mathscr{A}$の任意の対象$A$について, $\mathscr{A}$の入射的対象$I$が存在して;
 	\[\begin{tikzcd}
 		0\nxcell A\nxcell[\varepsilon]I
 	\end{tikzcd}\]
-	が完全になるような$\varepsilon$が存在するとき, $\mathscr{A}$は\textbf{単射的対象を十分に持つ}(has enough injectives)という.
+	が完全になるような$\varepsilon$が存在するとき, $\mathscr{A}$は\textbf{入射的対象を十分に持つ}(has enough injectives)という.
 \end{defi}
 
-$A$加群の圏$\operatorname{Mod}(A)$が単射的対象を十分に持つことを示すには,射影加群の場合と違って多少手間がかかる.
+$A$加群の圏$\operatorname{Mod}(A)$が入射的対象を十分に持つことを示すには,射影加群の場合と違って多少手間がかかる.
 
-\begin{prop}[Baer's Criterion]
-	$A$加群$I$が単射的であることと,すべての$A$のイデアル$\ideal{a}$に対して$\ideal{a}\to I$が$A\to I$に拡張できることは同値である.
-\end{prop}
+\begin{thm}[Baer's Criterion]
+	$A$加群$I$が入射的であることと,すべての$A$のイデアル$\ideal{a}$に対して$\ideal{a}\to I$が$A\to I$に拡張できることは同値である.
+\end{thm}
 
 \begin{proof}
 	片方の矢印は明らか.~$M\subset N$を$A$加群とし,~$\varphi:M\to I$とする.ここで,~Zornの補題から$N'$を$M\subset N'\subset N$なる加群のうちで,~$\varphi$を拡張できる極大のものとしてとれる.ここで$N'\neq N$を仮定する.任意の$x\in N-N'$をとる.ここで$\ideal{a}=\mkset{a\in A}{ax\in N'}$は$A$のイデアルとなる.このとき$\ideal{a}\to N';a\mapsto ax$と$\varphi':N'\to A$の合成は,仮定より$\psi:A\to I$に持ち上がる.ここで;
 	\[\varphi'':N'+Ax\to I:n'+an\mapsto \varphi'(n')+\psi(a)\]
-	は,その構成から$N'$に制限すると$\varphi$に一致する.これは$N'$の極大性に矛盾.よって$I$は単射的となる. 
+	は,その構成から$N'$に制限すると$\varphi$に一致する.これは$N'$の極大性に矛盾.よって$I$は入射的となる. 
 \end{proof}
 
-\begin{cor}
-	$\Z$加群$\Q/\Z$は単射的である.
-\end{cor}
+この定理から直ちに整域$A$の商体$K$は入射的$A$加群である.実際$f:\ideal{a}\to K$を$A$のイデアルからの$A$準同型とすると,任意の$x,y\in \ideal{a}$について$yf(x)=xf(y)$が成り立つ.すなわち固定された1つの元$x_0\in \ideal{a}$について$f(x)=x\cdot f(x_0)/x_0$が常に成り立つ.よって$f':A\to K;x\mapsto xf(x_0)/x_0$が$f$の拡張になる.
 
-$A$加群$M$に対し,~$T$を$\Z$加群とすると,~$M$の$T$双対$M^\ast=\hom_{\Z}(M,T)$は$a\cdot f:x\mapsto f(ax)$と定めることで$A$加群になる.
+$A$がPIDという特殊な場合には入射加群はよりわかりやすい表示を持つ.
+\begin{defi}[可除加群]
+	$A$を環, $M$を$A$加群とする.任意の$x\in M$と$a\neq0\in A$について$ay=x$となる$y\in M$が存在するような$M$を\textbf{可除加群}(divisible)という.\index{かじょかぐん@可除加群}
+\end{defi}
+
+\begin{prop}
+	$A$をPIDとする. $A$加群$I$が可除加群であることと,入射加群であることは同値.
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item $A$のイデアルはすべて$(a)$の形をしている.このとき$A$準同型$f':(a)\to I$は$f(a)$で決まる. $I$が可除なのである$y\in I$が存在して$ay=f(a)$とかけるから, $f:A\to I;x\mapsto xy$が$f'$の延長になる.よって$I$は入射的.
+		
+		\item 任意の$x\in I,a\neq0\in A$をとる. $f':(a)\to I;a\mapsto x$は$f:A\to I$に延びる.すると$1\in A$より$x=f(a)=af(1)$となるので$I$は可除加群である.
+	\end{eqv}
+\end{proof}
+
+この命題と商体の場合を組み合わせて$\Z$加群$\Q/\Z$が入射的であることがわかる.この加群は以下の議論で黒子的な活躍をする. $A$加群$M$に対し,~$T$を$\Z$加群とすると,~$M$の$T$双対$M^\ast=\hom_{\Z}(M,T)$は$a\cdot f:x\mapsto f(ax)$と定めることで$A$加群になる.
 \begin{lem}
-	$I$を単射的$\Z$加群とすると,射影加群$P$に対し,その$I$双対$P^\ast$は単射的である.
+	$I$を入射的$\Z$加群とすると,射影加群$P$に対し,その$I$双対$P^\ast$は入射的である.
 \end{lem}
 \begin{proof}
 	$M\subset N$と$\varphi:M\to P^\ast$をとると;
 	\[M\times P\to I;(m,y)\mapsto \varphi(m)(y)\]
-	が$A$双線形になり,テンソル積の普遍性から$\psi:M\otimes P\to I$がある.ここで$P$は射影加群なので,平坦だから単射$M\otimes P\to N\otimes P$が存在する.このとき$I$の単射性から$\hat\psi:N\otimes P\to I$が存在し,これにより;
+	が$A$双線形になり,テンソル積の普遍性から$\psi:M\otimes P\to I$がある.ここで$P$は射影加群なので,平坦だから単射$M\otimes P\to N\otimes P$が存在する.このとき$I$が入射的なので$\hat\psi:N\otimes P\to I$が存在し,これにより;
 	\[\hat\varphi:N\to P^\ast; x\mapsto (y\mapsto \hat\psi(x\otimes y))\]
-	が定まるが,これは構成から$x\in M$ならば$\hat\psi(x\otimes y)=\psi(x\otimes y)=\varphi(x)(y)$となり,~$\hat\varphi(x)=\varphi(x)$となる.よって$P^\ast$は単射的である.
+	が定まるが,これは構成から$x\in M$ならば$\hat\psi(x\otimes y)=\psi(x\otimes y)=\varphi(x)(y)$となり,~$\hat\varphi(x)=\varphi(x)$となる.よって$P^\ast$は入射的である.
 \end{proof}
 \begin{lem}
 	$A$加群$M$に対して,~$T=\Q/\Z$双対$M^\ast$の双対$M^{\ast\ast}$を考えると,単射$M\to M^{\ast\ast}$が存在する.
@@ -463,11 +478,12 @@ $A$加群$M$に対し,~$T$を$\Z$加群とすると,~$M$の$T$双対$M^\ast=\hom
 	
 	$x$の$M$の位数が$n$ならば$f(x)=1/n+\Z$,~位数が無限なら$f(x)=1/2+\Z$と定義すると$\Z$準同型$m\Z\to T$が定まる.~$T$の単射性からこれは$M\to T$に持ち上がり,~$f(x)\neq0$である.
 \end{proof}
-\begin{thm}
-	$A$加群の圏は単射的対象を充分に持つ.
+
+\begin{thm}\label{thm:加群の圏はhas enough injectives}
+	$A$加群の圏は入射的対象を充分に持つ.
 \end{thm}
 \begin{proof}
-	$M$を$A$加群とする.~$M$の$T$双対$M^\ast$は生成系をとると,自由加群$P$からの全射$s:P\to M^\ast$が存在する.~$T$双対をとって$s^\ast:M^{\ast\ast}\to P^\ast;\varphi\mapsto\varphi\circ s$を考える.これは$s$が全射なので単射である.上の補題たちより$P^\ast$は単射的で,単射$M\hookrightarrow M^{\ast\ast}$が存在するので,~$M\hookrightarrow P^\ast=I$が存在する.
+	$M$を$A$加群とする.~$M$の$T$双対$M^\ast$は生成系をとると,自由加群$P$からの全射$s:P\to M^\ast$が存在する.~$T$双対をとって$s^\ast:M^{\ast\ast}\to P^\ast;\varphi\mapsto\varphi\circ s$を考える.これは$s$が全射なので単射である.上の補題たちより$P^\ast$は入射的で,単射$M\hookrightarrow M^{\ast\ast}$が存在するので,~$M\hookrightarrow P^\ast=I$が存在する.
 \end{proof}
 
 \section{導来関手}
@@ -566,16 +582,16 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 これにより,左導来関手は射影分解のとり方によらない.次に右導来関手を考えよう.
 
 \begin{defi}[右導来関手]\index{みぎどうらいかんしゅ@右導来関手}
-	$\mathscr{A,B}$をAbel圏とし,対象$A\in\mathscr{A}$と加法的左完全関手$F:\mathscr{A}\to\mathscr{B}$を考える.~$A$の単射的分解$I^\bullet$について,~$F I^\bullet$も複体になる.これに対する$\mathscr{B}$の中でのコホモロジー$H^i(F I^\bullet)$を$R^i F (A)$とかいて,~$F$の$A$における$i$次\textbf{右導来関手}(right derived functor)という.
+	$\mathscr{A,B}$をAbel圏とし,対象$A\in\mathscr{A}$と加法的左完全関手$F:\mathscr{A}\to\mathscr{B}$を考える.~$A$の入射的分解$I^\bullet$について,~$F I^\bullet$も複体になる.これに対する$\mathscr{B}$の中でのコホモロジー$H^i(F I^\bullet)$を$R^i F (A)$とかいて,~$F$の$A$における$i$次\textbf{右導来関手}(right derived functor)という.
 \end{defi}
 
-右導来関手も単射的分解のとり方によらない.
+右導来関手も入射的分解のとり方によらない.
 
 \begin{prop}\label{prop:右導来関手のwell-definedness}
-	$I^\bullet,J^\bullet$を$A$の単射的分解とすると,~$F I^\bullet$と$F J^\bullet$は擬同型である.
+	$I^\bullet,J^\bullet$を$A$の入射的分解とすると,~$F I^\bullet$と$F J^\bullet$は擬同型である.
 \end{prop}
 \begin{proof}
-	単射$\varepsilon:A\to I^0,\varepsilon':A\to J^0$を考える.このとき$J^0$が単射的対象なので$f^0:I^0\to J^0$が存在する.
+	単射$\varepsilon:A\to I^0,\varepsilon':A\to J^0$を考える.このとき$J^0$が入射的対象なので$f^0:I^0\to J^0$が存在する.
 	\begin{figure}[H]
 		\centering
 		\begin{tikzcd}
@@ -586,7 +602,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 		\caption{}
 	\end{figure}
 
-	$\ker d^0\subset\ker(d'^0\circ f^0)$（たしかめよ）であるので, $\varphi:\im d^0\to \im (d'\circ f^0)\subset J^1$が$\varphi\circ d^0=d'^0\circ f^0$となるように定まる.これを$J^1$の単射性から持ち上げて$f^1$を得る.
+	$\ker d^0\subset\ker(d'^0\circ f^0)$（たしかめよ）であるので, $\varphi:\im d^0\to \im (d'\circ f^0)\subset J^1$が$\varphi\circ d^0=d'^0\circ f^0$となるように定まる.これを$J^1$の入射性から持ち上げて$f^1$を得る.
 	
 	\begin{figure}[H]
 		\centering
@@ -603,7 +619,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 	
 	$h_n=\id_{I^n}-(g^n\circ f^n)$とおき, $s^n\circ d^{n-1}=h_{n-1}-(d^{n-1}\circ s^{n-1})$となるような$\{s^n\}$を帰納的に作ろう.左導来関手と違い$n=1$からの議論なことに注意する.
 	
-	まず$n=1$のとき, $\ker d^0\subset\ker h^0$なので, $\varphi:\im d^0\to\im h^0\subset I$が$\varphi\circ d^0=h^0$となるように定まる.これを$I^1$の単射性から持ち上げて$s^1$を得る.
+	まず$n=1$のとき, $\ker d^0\subset\ker h^0$なので, $\varphi:\im d^0\to\im h^0\subset I$が$\varphi\circ d^0=h^0$となるように定まる.これを$I^1$の入射性から持ち上げて$s^1$を得る.
 	
 	\begin{figure}[H]
 		\centering
@@ -628,10 +644,10 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 	 これを繰り返して$\id_{I^\bullet}$と$g^\bullet\circ f^\bullet$がホモトピックであることを得る.よって$H^i(FI^\bullet)=H^i(FJ^\bullet)$であることがわかった.
 \end{proof}
 
-ここでは共変関手のみ考えていたが,加法的反変右完全関手は単射分解から左導来関手を導き,加法的反変左完全関手は射影分解から右導来関手を導く.以後証明は共変関手のことしか考えない.また,これらの証明における$f_\bullet,f^\bullet$の構成を真似することで次の補題を得る.
+ここでは共変関手のみ考えていたが,加法的反変右完全関手は入射分解から左導来関手を導き,加法的反変左完全関手は射影分解から右導来関手を導く.以後証明は共変関手のことしか考えない.また,これらの証明における$f_\bullet,f^\bullet$の構成を真似することで次の補題を得る.
 
 \begin{lem}\label{lem:分解への持ち上げ}
-	任意の射$\varphi:A\to B$と$A,B$の射影分解$P_\bullet,Q_\bullet$について,複体の射$\varphi_\bullet:P_\bullet\to Q_\bullet$を次の図式が可換になるようにとれる（単射分解についても同様）;
+	任意の射$\varphi:A\to B$と$A,B$の射影分解$P_\bullet,Q_\bullet$について,複体の射$\varphi_\bullet:P_\bullet\to Q_\bullet$を次の図式が可換になるようにとれる（入射分解についても同様）;
 	\begin{figure}[H]
 		\centering
 		\begin{tikzcd}
@@ -889,7 +905,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 		\end{tikzcd}\]
 		が可換である.
 		
-		\item $I$を単射的対象とすると,~$i>0$について$R^iF(I)=0$である.
+		\item $I$を入射的対象とすると,~$i>0$について$R^iF(I)=0$である.
 	\end{defiterm}
 \end{thm}
 \section{二重複体}
@@ -1029,7 +1045,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき, $d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_n
 	加群$M$について,関手$\hom(M,-)$は左完全である.これによる右導来関手を$\Ext^n(M,-)$とかき, $\Ext$\textbf{関手}(Ext functor, extension functor)という.
 \end{defi}
 
-$\Tor$と同様に, $\Ext(M,N)$の計算は$N$の\textbf{単射}分解と$M$の\textbf{射影}分解のどちらを計算しても良い（$\hom(-,N)$は反変左完全であるから）.
+$\Tor$と同様に, $\Ext(M,N)$の計算は$N$の単射分解と$M$の射影分解のどちらを計算しても良い（$\hom(-,N)$は反変左完全であるから）.
 
 ここで普遍性と\ref{prop:テンソル積は直和と可換}より,次が成り立っている.
 
