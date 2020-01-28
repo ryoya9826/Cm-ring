@@ -1,241 +1,326 @@
 \newpage
 \part[Noetherian properties]{Noether性}
 \section{極大条件と極小条件}
-Noether環の定義は先に述べたとおりだが,まずはそれを加群についても考えてみよう.
+Noether環の定義は先に述べたとおりだが，まずはそれを加群についても考えてみよう．
 \begin{prop}
-	$A$加群$M$について,次は同値である.
+	$A$加群$M$について次は同値である．
 	\begin{sakura}
-		\item $M$の任意の部分加群は有限生成である.
-		\item $M$の任意の部分加群の増大列
+		\item $M$の任意の部分加群は有限生成である．
+		\item $M$の任意の部分加群の増大列；
 		\[N_1\subset N_2\subset\dots\subset N_i\subset\cdots\]
-		は必ず停まる.
-		\item $M$の部分加群からなる空でない族は,包含に関する極大元を持つ.
+		は必ず停まる．
+		\item $M$の部分加群からなる空でない族は，包含に関する極大元を持つ．
 	\end{sakura}
 \end{prop} 
 
-証明は環の場合を適切に修正すれば良いので省略する.これらの条件を満たす加群をNoether加群という.環$A$を$A$加群とみなすと,~$A$がNoether加群なら$A$はNoether環である.
+証明は環の場合を適切に修正すれば良いので省略する．これらの条件を満たす加群をNoether加群という．環$A$の部分$A$加群はイデアルにほかならないので，この定義はNoether環の自然な拡張である（$A$を$A$加群とみなすと，$A$がNoether加群なら$A$はNoether環，$A$がNoether環なら$A$はNoether加群である）．
 
-(ii)の条件を\textbf{昇鎖条件}(ascending chain condition)といい,~ACCと略す.包含の大小を逆にして
+(ii)の条件を\textbf{昇鎖条件}(ascending chain condition)といい，ACCと略す．包含の大小を逆にして；
 \[N_1\supset N_2\supset\dots\supset N_i\supset\cdots\]
-が停まるような$M$をArtin加群という.これを\textbf{降鎖条件}(descending chain condition, DCC)といい,~$M$の部分加群の空でない族は包含に関する極小元を持つことと同値.\index{#Artinかぐん@Artin加群}
+が停まるような$M$をArtin加群という．これを\textbf{降鎖条件}(descending chain condition，DCC)といい，$M$の部分加群の空でない族は包含に関する極小元を持つことと同値である．\index{#Artinかぐん@Artin加群}
 
-Noether性,~Artin性は環とは違って部分加群に遺伝する.これは明らかであろう.
+Noether性，Artin性は環とは違って部分加群に遺伝する．これは明らかであろう．
 
 \begin{prop}
-	短完全列
+	短完全列；
 	\[0\longrightarrow M_1\overset{f}{\longrightarrow}M_2\overset{g}{\longrightarrow}M_3\longrightarrow0\]
-	について,~$M_2$がNoether加群であることと,~$M_1$と$M_3$がNoether加群であることは同値.
+	について，$M_2$がNoether加群であることと，$M_1$と$M_3$がNoether加群であることは同値．
 \end{prop}
 \begin{proof}
 	\begin{eqv}
-		\item 準同型は包含関係を保存するからわかる.
-		\item $M_2$の部分加群による増大列
+		\item 準同型は包含関係を保存するからわかる（$f$の単射性と$g$の全射性に気をつける）．
+		\item $M_2$の部分加群による増大列；
 		\[N_1\subset N_2\subset\dots\subset N_i\subset\cdots\]
-		を考える.単射$f$によって$M_1$を$M_2$の部分加群とみなし,制限の列
-		\[M_1\cap N_1\subset M_1\cap N_2\subset\dots\subset M_1\cap N_i\subset\cdots\]
-		と,全射$g$による像の列
+		を考える．$M_1，M_3$の部分加群の列；
+		\[f^{-1}(N_1)\subset f^{-1}(N_2)\subset\dots\subset f^{-1}(N_i)\subset\cdots\]
 		\[g(N_1)\subset g(N_2)\subset\dots\subset g(N_i)\subset\dots\]
-		を考えると,~$M_1,M_3$のACCから,ある共通の$n$がとれて,~$i\geq n$に対し
-		\begin{equation}\label{eq:短完全列とNoether加群}
-			M_1\cap N_n=M_1\cap N_i,g(N_n)=g(N_i)
-		\end{equation}
-		となる.また,~$M_2/M_1\cong M_3$であり,~$g$がその射影となっていることから
-		\[N_i/(M_1\cap N_i)=g(N_i)\]
-		であり,~\fref{eq:短完全列とNoether加群}と組み合わせて
-		\[N_i/(M_1\cap N_n)=N_i/(M_1\cap N_i)=g(N_i)=g(N_n)=N_n/(M_1\cap N_n)\]
-		となり,~$N_i=N_n$である.すなわち$M_2$のACCが導かれる.
+		を考えると，$M_1，M_3$のACCからある共通の$n$がとれて，$n\leq i$に対し；
+		\[	f^{-1}(N_n)=f^{-1}(N_i)，g(N_n)=g(N_i)\]
+		となる．$N_i\subset N_n$を示せば十分である．$x\in N_i$とすると，$g(x)=g(N_i)=g(N_n)$よりある$y\in N_n$が存在して$g(x)=g(y)$なので，$x-y\in\ker g=\im f$だからある$z\in M_1$により$x-y=f(z)$とできる．ここで$N_n\subset N_i$だから$x-y\in N_i$すなわち$z\in f^{-1}(N_i)=f^{-1}(N_n)$なので，$x-y=f(z)\in N_n$である．ゆえに$x\in N_n$となる．
 	\end{eqv}
 \end{proof}
 
-適切に置き換えることでArtin環についても同様の性質が成り立つ.
+適切に置き換えることでArtin環についても同様の性質が成り立つ．
 \begin{prop}
-	$A$がNoether環であることと,任意の有限生成$A$加群がNoether的であることは同値.
+	$A$がNoether環であることと，任意の有限生成$A$加群がNoetherであることは同値．
 \end{prop}
 \begin{proof}
-	($\Longleftarrow$)は明らか.~($\Longrightarrow$)を示す.~$M$が$A$上有限生成な加群であるとすると,ある$n\in\N$に対し,完全列$A^n\overset{f}{\longrightarrow}M\longrightarrow0$がとれる.すると
-	\begin{equation}\label{eq:有限生成A加群がNoether的}
-		0\longrightarrow\ker f\longrightarrow A^n\overset{f}{\longrightarrow}M\longrightarrow 0
-	\end{equation}
-	も完全であり,~$A$がNoether加群なので
-	\[0\longrightarrow A\longrightarrow A^n\longrightarrow A^{n-1}\longrightarrow0\]
-	を帰納的に用いることで$A^n$はNoether加群であることがわかり,~\fref{eq:有限生成A加群がNoether的}と合わせて$M$がNoether加群であることがわかる.
+		片方は明らかなので，($\Longrightarrow$)を示す．まず完全列；
+		\[\ses{A}{A^n}{A^{n-1}}\]
+		において，$n=2$のときを考えると先の命題から$A^2$はNoetherである．帰納的にすべての$A^n$がNoetherであることが従う．さて$M$が$A$上有限生成な加群であるとすると，ある$n\in\N$に対し全射$f:A^n\to M$が存在する．すると；
+		\[\ses[][f]{\ker f}{A^n}{M}\]
+		が完全であり，$A^n$がNoetherなので再び先の命題から$M$はNoetherである．
 \end{proof}
 
-Noether加群とArtin加群について例を見てみよう.
+Noether加群とArtin加群について例を見てみよう．
 
 \begin{ex}
-	$\Z$加群として$\Z$はNoether的だが,~Artin的でない.
-	
-	実際,~$\Z$はPIDだからNoether環なので,~$\Z$加群としてもNoether的.また
+	$\Z$加群として$\Z$はNoetherだがArtinでない．実際$\Z$はPIDだからNoether環なので，$\Z$加群としてもNoether．一方；
 	\[2\Z\supset4\Z\supset\dots\supset2^i\Z\supset\cdots\]
-	は停止しない減少列をなす.
+	は停止しない減少列をなす．
 \end{ex}	
-\begin{ex}
-	$\Z[1/p]=\mkset{x/p^n}{x\in\Z,n\in\Z_+}$に自然な演算を入れて$\Z$加群とみる.ここで$\Z[1/p]/\Z$を考えると,これはArtin的だがNoether的でない.~$\Z[1/p]$の部分加群の列を考えよう;
-	\[\Z\subset\frac{\Z}{p}\subset\frac{\Z}{p^2}\subset\dots\subset\frac{\Z}{p^n}\subset\cdots\tag{$\ast$}\]
-	このとき$x/p^n-y/p^n\in\Z$であることは$x-y\in p^n\Z$と同値なので$(\Z/p^n)/\Z=(\Z/p^n\Z)/p^n$となる.このことから$\Z[1/p]/\Z$の部分加群の列;
-	\[0\subset\frac{\Z/p\Z}{p}\subset\frac{\Z/p^2\Z}{p^2}\subset\dots\subset\frac{\Z/p^n\Z}{p^n}\subset\cdots\]
-	ができ,これは停まらない増大列をなす.よってNoetherではない.
-	
-	ここで$N$を$\Z[1/p]$の部分加群とする.すると,列($\ast$)のどれか隣り合う項の間に$N$が存在する.ここで$\Z/p^n\subset N\subset\Z/p^{n+1}$としよう.~$\Z$の部分加群は$k\Z$に限るので,~$N=k\Z/p^{n+1}$とかける.もし$k$と$p$が互いに素でないなら分母の次数が退化するので$(k,p)=1$のときに考えれば十分である.
-	
-	このとき$(k\Z/p^{n+1})/\Z=(\Z/p^{n+1}\Z)/p^{n+1}$を示す.先と同様に$(k\Z/p^{n+1})/\Z=(k\cdot\Z/p^{n+1}\Z)/p^{n+1}$が言える.ここで,次の準同型;
-	\[\varphi:\Z/p^{n+1}\Z\to k\cdot\Z/p^{n+1}\Z;\bar{i}\mapsto\bar{ki}\]
-	を考えると$(k,p)=1$よりこれは全単射である.よって$k\cdot\Z/p^{n+1}\Z=\Z/p^{n+1}\Z$が言えるので,~$\Z[1/p]/\Z$の部分加群はすべて$(\Z/p^{n+1}\Z)/p^{n+1}$の形をしていることがわかった.ゆえに部分加群の減少列は必ず停止するのでArtin加群である.
-\end{ex}	
-逆に,環についてはArtin環はNoether環となる.そのことは\ref{sec:Noether環続論}で示している.
 
-Artin環の特殊性を見よう.
-\begin{prop}\label{prop:Artinの素イデアル}
-	Artin環の素イデアルは極大イデアルであり,それは有限個しかない（半局所環である）.
+\begin{ex}
+	$\Z[1/p]=\mkset{x/p^n}{x\in\Z，n\in\Z_+}$に自然な演算を入れて$\Z$加群とみる．ここで$\Z[1/p]/\Z$を考えると，これはArtinだがNoetherでない．次の$\Z[1/p]$の部分加群の列；
+	\[\Z\subset\frac{\Z}{p}\subset\frac{\Z}{p^2}\subset\dots\subset\frac{\Z}{p^n}\subset\cdots\tag{$\ast$}\]
+	を考えよう．このとき$x/p^n-y/p^n\in\Z$であることは$x-y\in p^n\Z$と同値なので$(\Z/p^n)/\Z=(\Z/p^n\Z)/p^n$となる．このことから$\Z[1/p]/\Z$の部分加群の列；
+	\[0\subset\frac{\Z/p\Z}{p}\subset\frac{\Z/p^2\Z}{p^2}\subset\dots\subset\frac{\Z/p^n\Z}{p^n}\subset\cdots\]
+	ができ，これは停まらない増大列をなす．よってNoetherではない．
+	
+	ここで$N$を$\Z[1/p]$の部分加群とする．すると列($\ast$)のどれか隣り合う項の間に$N$が存在する．ここで$\Z/p^n\subset N\subset\Z/p^{n+1}$としよう．$\Z$の部分加群は$k\Z$に限るので$N=k\Z/p^{n+1}$とかける．もし$k$と$p$が互いに素でないなら分母の次数が退化するので$(k，p)=1$のときに考えれば十分である．
+	
+	このとき$(k\Z/p^{n+1})/\Z=(\Z/p^{n+1}\Z)/p^{n+1}$を示す．先と同様に$(k\Z/p^{n+1})/\Z=(k\cdot\Z/p^{n+1}\Z)/p^{n+1}$が言える．ここで次の準同型；
+	\[\varphi:\Z/p^{n+1}\Z\to k\cdot\Z/p^{n+1}\Z;\bar{i}\mapsto\bar{ki}\]
+	を考えると$(k，p)=1$よりこれは全単射である．よって$k\cdot\Z/p^{n+1}\Z=\Z/p^{n+1}\Z$が言えるので，$\Z[1/p]/\Z$の部分加群はすべて$(\Z/p^{n+1}\Z)/p^{n+1}$の形をしていることがわかった．ゆえに部分加群の減少列は必ず停止するのでArtin加群である．
+\end{ex}	
+逆に，環についてはArtin環はNoether環となる．そのことは次の節で示すことにして，Noether性についてもうすこし考察しよう．
+
+
+\begin{prop}\label{prop:faithfulでNoetherな加群があればNoether環}
+	忠実かつNoetherな加群を持つ環はNoether環である．
 \end{prop}
 \begin{proof}
-	$A$をArtin環とし,~$ P$を$A$の素イデアルとする.~$\bar{A}=A/ P$とおき,これが体であることを示す.~$0\neq x\in\bar{A}$をとる.すると
-	\[0\neq(x)\supset(x^2)\supset\cdots\]
-	はイデアルの降鎖列をなし,~$\bar{A}$はArtin的なので,これは停まる.すると,ある$n$が存在して$(x^n)=(x^{n+1})$であるから,ある$y\in\bar{A}$があって$x^n=yx^{n+1}$である.よって$x^n(1-xy)=0$であり,~$\bar{A}$は整域で$x\neq0$なので$xy=1$となり,~$x$は可逆.よって示された.
-	
-	次に有限個であることを見る.~$\operatorname{Spm}A$を$A$の極大イデアル全体のなす集合とする.
-	\[S=\mkset{\ideal{m}_1\cap\dots\cap\ideal{m}_n}{n\in\Z_+,\ideal{m}\in\operatorname{Specm}A}\]
-	とおくと,これは$A$のイデアルの族となるので,極小元$I=\ideal{m}_1\cap\dots\cap\ideal{m}_r$を持つ.このとき,任意の$\ideal{m}\in\operatorname{Spm}A$に対し$\ideal{m}\cap I\in S$であるので,~$M\cap I=I$となり$I\subset\ideal{m}$である.ここで,各$1\leq i\leq r$に対し$\ideal{m}_i\not\subset\ideal{m}$であると仮定すると,それぞれ$x_i\in\ideal{m}_i\cap\ideal{m}^c$が存在して,~$\ideal{m}$が素イデアルなので$x_1x_2\dots x_r\not\in\ideal{m}$であるが,~$x_1x_2\dots x_r\in I\subset\ideal{m}$なので,矛盾.よって,少なくとも1つの$1\leq j\leq r$が存在して$\ideal{m}_j\subset\ideal{m}$である.すると$\ideal{m}_j$は極大なので$\ideal{m}=\ideal{m}_j$である.よって,~$\operatorname{Spm}A$は$I$の成分に現れる有限個の素イデアルのみからなる.
+	$M$を忠実なNoether加群とする．特に$M$は有限生成で，$u_1,\dots,u_n$をその生成系とする．このとき準同型；
+	\[\varphi:A\longrightarrow M^n;a\longmapsto(ax_1，\dots，ax_n)\]
+	について$\ker\varphi=\ann(M)$であるので$\ker\varphi=0$となり，$\varphi$は単射．よって$A$はNoether加群$M^n$の部分加群と同型なので，$A$はNoether加群である．
 \end{proof}
+
+この定理において忠実という条件を外すと，次の命題が同様の手法で得られる．
+\begin{prop}
+	$A$加群$M$がNoether加群ならば$A/\ann (M)$もNoetherである．
+\end{prop}
+
+\begin{thm}[\citealp{formanek}]
+	$A$を環とし，$B$を有限生成かつ忠実な$A$加群とする．$A$のイデアル$I$に対し，$IB$の形の部分加群のなす集合が極大条件を満足すれば，$A$はNoether環である．
+\end{thm}
+\begin{proof}
+	背理法で示す．\ref{prop:faithfulでNoetherな加群があればNoether環}より$B$がNoetherであればよいので，$B$がNoetherでないと仮定しよう．すると；
+	\[0\in\Sigma=\mkset{IB}{I\text{は}A\text{のイデアルで，}B/IB\text{はNoetherでない}}\neq\emptyset\]
+	より，仮定から極大元$IB$がとれる．$\bar{B}=B/IB，\bar{A}=A/\ann(\bar{B})$とすると，対応定理から0でない$\bar{A}$の任意のイデアル$\bar{J}$に対し$\bar{B}/\bar{J}\bar{B}$は$\bar{A}$加群としてNoetherである（$\bar{J}$は$\bar{A}$のイデアルなので$I\subset J$より$B/JB$がNoether）．また，$\bar{A},\bar{B}$は定理の仮定を満たす（$\bar{A},\bar{B}$は$\Sigma$の極大元を$0$になるように潰したものと考えることができる）．
+	
+	次に，$\Gamma=\mkset{N}{N\text{は} \bar{B} \text{の部分加群，} \bar{B}/N\text{は忠実}}$とおくと，$\bar{B}/N$が忠実であることは，$\bar{B}$の生成系$\{\nitem{u}\}$に対し，任意の0でない$x\in A$が$xu_i\not\in N$を満たすことであるので，$\Gamma$は帰納的順序集合をなす．Zornの補題から極大元$N_0$がとれる．ここで，$\bar{B}/N_0$がNoetherであるとすると，\ref{prop:faithfulでNoetherな加群があればNoether環}から$\bar{A}$はNoetherとなる．よって$\bar{B}$は有限生成だからNoetherとなり，仮定に反するので$\bar{B}/N_0$はNoetherでない．$\bar{B}'=\bar{B}/N_0$とおくと，次の性質を満たす（これも$\Gamma$の極大元を0にすることに相当する）．
+	\begin{sakura}
+		\item $\bar{B}'$は$\bar{A}$加群としてNoetherでない．
+		\item $I$が0でない$\bar{A}$のイデアルなら，$\bar{B}'/I\bar{B}'$はNoether．
+		\item $N$が0でない$\bar{B}'$の部分加群なら，$\bar{B}'/N$は$A$加群として忠実でない．
+	\end{sakura}
+	
+	ここで，$N$を任意の$\bar{B}'$の部分加群とする．(iii)より，ある0でない$x\in\bar{A}$が存在して$x(\bar{B}'/N)=0，$すなわち$x\bar{B}'\subset N$である．すると，(ii)より$\bar{B}'/x\bar{B}'$はNoetherだから，その部分加群$N/x\bar{B}'$は有限生成で，$x\bar{B}'$も有限生成なので$N$も有限生成．よって$\bar{B}'$はNoether加群となるが，これは(i)に矛盾している．
+\end{proof}
+\begin{cor}[Eakin-永田，1968]\index{#Eakinながた@Eakin-永田の定理}
+	$B$はNoether環，$A$をその部分加群とする．$B$が$A$上有限生成なら，$A$はNoether環である．
+\end{cor}
+%\begin{cor}[\citealp{bjork}]
+%	\begin{sakura}
+%		\item $B$を右イデアルについてACCが成り立つ非可換環，$A$を$B$の可換な部分加群とする．$B$が左$A$加群として有限生成なら，$A$はNoether環である．
+%		\item $B$を両側イデアルについて極大条件をみたす非可換環，$A$を$B$の中心に含まれる部分環とする．$B$が$A$加群として有限生成ならば，$A$はNoether環である．
+%	\end{sakura}
+%\end{cor}
+\section{Artin性}
+
+この節ではArtin性について，特にArtin環がNoether環であることを示そう．
+\begin{prop}\label{prop:Artinの素イデアル}
+	Artin環の素イデアルは極大イデアルであり，それは有限個しかない（半局所環である）．
+\end{prop}
+\begin{proof}
+	$A$をArtin環とし，$P$を$A$の素イデアルとする．$A/P$が体であることを示そう．$0\neq x\in A/P$をとる．すると；
+	\[0\neq(x)\supset(x^2)\supset\cdots\]
+	はイデアルの降鎖列をなし，$A/P$はArtinなのでこれは停まる．するとある$n$が存在して$(x^n)=(x^{n+1})$であるから，ある$y\in\bar{A}$があって$x^n=yx^{n+1}$である．よって$x^n(1-xy)=0$であり，$A/P$は整域で$x\neq0$なので$xy=1$となり$x$は可逆．よって体である．
+	
+	次に有限個であることを見よう．$\specm A$を$A$の極大イデアル全体のなす集合とする．
+	\[S=\mkset{\ideal{m}_1\cap\dots\cap\ideal{m}_n}{n\in\Z_+,\ideal{m}\in\specm A}\]
+	とおくと，これは$A$のイデアルの族となるので極小元$I=\ideal{m}_1\cap\dots\cap\ideal{m}_r$が存在する。このとき任意の$\ideal{m}\in\spm A$に対し$\ideal{m}\cap I\in S$であるので，$\ideal{m}\cap I=I$となり$I\subset\ideal{m}$である．ここで各$1\leq i\leq r$に対し$\ideal{m}_i\not\subset\ideal{m}$であると仮定すると，それぞれ$x_i\in\ideal{m}_i\cap\ideal{m}^c$が存在して$\ideal{m}$が素イデアルなので$x_1x_2\dots x_r\not\in\ideal{m}$であるが，$x_1x_2\dots x_r\in I\subset\ideal{m}$なので矛盾．よって少なくとも1つの$1\leq j\leq r$が存在して$\ideal{m}_j\subset\ideal{m}$である．すると$\ideal{m}_j$は極大なので$\ideal{m}=\ideal{m}_j$である．よって$\spm A$は$I$の成分に現れる有限個の素イデアルのみからなる．
+\end{proof}
+
+Noether,Artin性は\quo{鎖}についての性質である．ここである種の極大性を満たす鎖について考察しよう．
+
+\begin{defi}[組成列]\index{そせいれつ@組成列}
+	$A$加群$M$の部分加群の有限列；
+	\[M=M_0\supsetneq M_1\supsetneq\dots\supsetneq M_r=0\]
+	において各$M_i,M_{i+1}$の間に他の部分加群が存在しないとき，この列を$M$の\textbf{組成列}(composition series)といい，各$M_i/M_{i+1}$を組成列の\textbf{組成因子}(composition factors)という．
+\end{defi}
+
+この条件は各$M_i/M_{i+1}$が自明でない部分加群を持たないことと言い換えることができる．
+
+\begin{defi}[単純加群]\index{たんじゅんかぐん@単純加群}
+	$A$加群$M\neq0$が$M$と0以外に部分加群を持たないとき，\textbf{単純}(simple)であるという．
+\end{defi}
+
+この用語のもとで，組成列とは$M_i/M_{i+1}$がすべて単純であるような$M$の部分加群の減少列のことである．
+
+有限群については部分加群を正規部分群と読み替えることで同様の定義ができ，組成列についてはJordan-H\uml{o}lderの定理という大定理が知られている．全く同様のことが加群でも成り立つ．
+
+\begin{thm}[Jordan-H\uml{o}lder]\index{#Jordan-Holderのていり@Jordan-H\uml{o}lderの定理}
+	加群$M$が組成列を持つなら，任意の組成列は長さが等しく，組成因子も順序と同系の違いを除いて等しい．
+\end{thm}
+
+ここでは長さが一定であることのみ示そう（組成因子の同型については有限群の場合の証明が適応できる）．
+
+\begin{proof}
+	$M$の組成列の長さの最小値を$\ell(M)$とする．
+	\begin{step}
+		\item $M$の真の部分加群$N$に対し，$\ell(N)<\ell(M)$であること．
+		
+		$\ell(M)=r$とおく．$M$の組成列$M=M_0\supset M_1\supset\dots\supset M_r=0$に対し，$N_i=M_i\cap N$とおく．
+		\[N_i/N_{i+1}=(M_i\cap N)/(M_{i+1}\cap N)\subset M_i/M_{i+1}\]
+		より，$M_i/M_{i+1}$が単純だから$N_i/N_{i+1}=0~(N_i=N_{i+1})$または$N_i/N_{i+1}=M_i/M_{i+1}$である．すなわち$N_i$の重複を除けば，それは$N$の組成列となる．よって，$\ell(N)\leq\ell(M)$である．また，$\ell(N)=\ell(M)$とすると，任意の$i$に対し$N_i\neq N_{i+1}$であるから$N_i/N_{i+1}=M_i/M_{i+1}$となるので，$N_{r-1}=M_{r-1}$であり，帰納的にすべての$i$について$N_i=M_i$を得る．よって$N=M$である．
+		
+		\item 任意の組成列の長さが$\ell(M)$であること．
+		
+		$M={M_0}'\supset{M_1}'\supset\dots\supset{M_k}'=0$を$M$の組成列とする．Step 1より$\ell(M)>\ell({M_1}')>\dots>\ell({M_k}')=0$より$\ell(M)\geq k$である．よって，$\ell(M)$の定義から，$\ell(M)=k$となるので，任意の組成列の長さは等しい．
+	\end{step}
+\end{proof}
+
+一般に$M$の部分加群のなす減少列；
+\[M=M_0\supset M_1\supset\dots\supset M_s=0\]
+について，隣り合う成分の間に部分加群が存在する（ある$i$について$M_i/M_{i+1}$が単純でない）ならそれを挿入することで（番号を付け替えて）
+$M_i/M_{i+1}$が単純になるように鎖を延長することができるが，一般には長さが有限になるとは限らない（Artin性を満たさない）．しかしJordan-H\uml{o}lderの定理から組成列が存在することがわかっていれば，全ての鎖は組成列に延長できる．このことから次の命題が成り立つ．
+
+\begin{prop}\label{prop:有限な組成列の同値条件}
+	$M$が組成列を持つことと，ArtinかつNoetherであることは同値．
+\end{prop}
+\begin{proof}
+	\begin{eqv}
+		\item 
+		$M_1\subset M_2\subset\dots\subset M_i\subset\cdots$を$M$の増大列とする．各$M_i$について$\ell(M_i)\leq\ell(M_{i+1})\leq\ell(M)$で，$\ell(M)$が有限なので，これは必ず停まる．減少列については延長すれば組成列となるので明らかである．
+		\item 
+		$M_0=M$とし，$M$の真部分加群の中で極大なものを$M_1$とする．同様に$M_i$を$M_{i-1}$の真部分加群で極大なものとしてとる．$M$のDCCから，これは必ずある$n$で$M_n=0$となり停まる．よって；
+		\[M=M_0\supset M_1\supset\dots\supset M_i\supset\dots\supset M_n=0\]
+		は組成列．
+	\end{eqv}
+\end{proof}
+
+\begin{prop}\label{prop:Artinなベクトル空間はNoether}
+	体$K$上のベクトル空間$V$について，ArtinであることとNoetherであることは同値である．
+\end{prop}
+\begin{proof}
+	まず，$V$が有限次元であると仮定すると，$V$の基底$\{\nitem{u}\}$に対して$V_i=\bigoplus_{j=1}^i Ku_i$とするとこれは組成列をなすから，\ref{prop:有限な組成列の同値条件}より$V$はArtinかつNoetherである．よってArtin (resp. Noether)ならば$V$が有限次元であることを示せば，$V$はNoether (resp. Artin)であることが従う．
+	
+	背理法で示す．$V$がArtin (resp. Noether)かつ無限次元であるとする．$V$の一次独立な元の無限列$\{x_i\}_{i\in\N}$が存在する．このとき，$V_n=(x_n,x_{n+1},\dots)~(\text{resp.~} U_n=(x_{1},x_{2},\dots,x_n))$はそれぞれ無限な真減少列 (resp. 真増加列) をなすので，$V$がArtin (resp. Noether)であることに矛盾．よって示された．
+\end{proof}
+\begin{thm}[秋月，1935]\label{thm:秋月}
+	Artin環はNoether環である．
+\end{thm}
+\begin{proof}
+	$A$をArtin環とする．まず$A$の極大イデアルは有限個であった（\ref{prop:Artinの素イデアル}）．$\ideal{m}_1,\dots,\ideal{m}_r$を$A$のすべての極大イデアルとし，$I= \ideal{m}_1\ideal{m}_2\dots \ideal{m}_r=\rad(A)$とおく．DCCより$I\supset I^2\supset\cdots$は有限で停まるので，ある$r$がとれて$I^s=I^{s+1}$となる．$J=\ann(I^s)=(0:I^s)$とおくと；
+	\[(J:I)=((0:I^s):I)=(0:I^{s+1})=J\]
+	である．ここで$I^s=0$すなわち$J=A$を示す．
+	
+	$J\subsetneq A$と仮定する．すると$J$より真に大きいイデアルのなかで極小な$J'$がとれる．ここで$x\in J'\setminus J$とすると$Ax+J$は$J$より真に大きいイデアルであり$Ax+J\subset J'$となる．よって$J'$の作り方から$J'=Ax+J$である．すると$J'/J=Ax$であるので，中山の補題（\ref{cor:NAK}）より$J'\neq Ix+J$である．すると極小性から$Ix+J=J$である．ゆえに$Ix\subset J$であるが，これは$x\in(J:I)=J$を意味し，$x\in J'-J$に矛盾．よって$J=A$である．
+	
+	よって$I^s=0$となり，イデアルの減少列；
+	\[
+	A\supset \ideal{m}_1\supset \ideal{m}_1 \ideal{m}_2\supset\dots\supset \ideal{m}_1 \ideal{m}_2\dots \ideal{m}_{r-1}\supset I\supset I \ideal{m}_1\supset\dots\supset I^2\supset\dots\supset I^s=0\tag{$\ast$}\]
+	を考える．加群としての短完全列；
+	\[0\longrightarrow \ideal{m}_1\longrightarrow A\longrightarrow A/ \ideal{m}_1\longrightarrow 0\]
+	を考えると，$A$がArtinなので$A/ \ideal{m}_1$と$ \ideal{m}_1$もArtin．同様に($\ast$)の隣り合う2項をそれぞれ$M,M\ideal{m}_1$とすると，$M/M \ideal{m}_1$がArtinで体$A/ \ideal{m}_1$上のベクトル空間なので\ref{prop:Artinなベクトル空間はNoether}より$M/M \ideal{m}_1$はNoether．すると，特に$M=I^{s-1} \ideal{m}_1 \ideal{m}_2\dots \ideal{m}_{r-1}$に対し$M/M \ideal{m}_r=M$がNoetherなので，帰納的に$A$もNoetherであることがわかる．
+\end{proof}
+
+可換環について示したのは秋月(1935)であり，Hopkins(1939)は非可換環に対して証明した．加群については，秋月-Hopkins-Levitzkiの定理などが知られている（前述のように，ArtinだがNoetherでない加群は存在するが，ある環上の加群ではACCとDCCが同値であることを示している）．
+
+
 
 \section{加群の素因子}
 
-\textbf{以下,この章の終わりまで環$A$はNoether環とする.} 素因子,準素イデアルの議論においてはNoether性が本質的に効いてくるため,これらの概念を使った議論にはNoether性が必要である.これはNoether環の仮定が外しにくいことの一因となっている.
-
-\begin{lem}
-	有限生成$A$加群$M$に対し, $S^{-1}(\ann M))=\ann(S^{-1}M)$が成り立つ. 
-\end{lem}
-
-\begin{proof}
-	$M$の生成元の個数$n$についての帰納法を用いる.
-	\begin{step}
-		\item $n=1$のとき.
-		
-		$I=\ann M$とおくと, $A/I\cong M$である. \ref{prop:局所化はいろんな操作と可換}から$S^{-1}M=(S^{-1}A)/(S^{-1}I)$だから$\ann (S^{-1}M)=S^{-1}(I)=S^{-1}(\ann M)$である.
-		
-		\item $n-1$まで正しいとする.
-		
-		$M$の生成系を$\{u_1,\dots,u_n\}$とする.このとき帰納法の仮定と\ref{prop:局所化はいろんな操作と可換}から;
-		\[\begin{aligned}S^{-1}(\ann (M))=S^{-1}(\ann(Au_1)\cap\ann (Au_2+\dots+Au_n)=S^{-1}(\ann (Au_1))\cap S^{-1}(\ann (Au_2+\dots+Au_n))\\
-		=\ann (S^{-1}Au_1)\cap\ann(S^{-1}Au_2+\dots+Au_n)=\ann (S^{-1}Au_1+Au_2+\dots+Au_n)=\ann (S^{-1}M)\end{aligned}\]
-		となり,主張が従う.
-	\end{step} 
-\end{proof}
-
-\begin{cor}\label{prop:イデアル商は局所化と可換}
-	$N,P$を$A$加群$M$の部分加群で$P$が有限生成であるとすると,積閉集合$S$について $S^{-1}(N:P)=(S^{-1}N:S^{-1}P)$が成り立つ.
-\end{cor}
-\begin{proof}	
-	\ref{prop:加群商}より$(N:P)=\ann((N+P)/N)$であって,補題から$S^{-1}(N:P)=\ann ((S^{-1}N+S^{-1}P)/S^{-1}N)=(S^{-1}N:S^{-1}P)$である.	
-\end{proof}
+\textbf{以下，この章の終わりまで環$A$はNoether環とする．} 素因子，準素イデアルの議論においてはNoether性が本質的に効いてくるため，これらの概念を使った議論にはNoether性が必要である．これはNoether環の仮定が外しにくいことの一因となっている（Noetherという仮定を外すとこの章の終わりまでにおける殆どの命題に反例がある）．
 
 \begin{defi}[素因子]\index{そいんし@素因子(加群)}
-	$A$加群$M$に対し,~$\ann x=\mkset{a\in A}{ax=0}$が$A$の素イデアルであるとき,これを$M$の\textbf{素因子}(prime ideal associated to $M$)または,~$M$に\textbf{属する素イデアル}(associated prime ideal)という.
+	$A$加群$M$に対し，$\ann x=\mkset{a\in A}{ax=0}$が$A$の素イデアルであるとき，これを$M$の\textbf{素因子}(prime ideal associated to $M$)または，$M$に\textbf{属する素イデアル}(associated prime ideal)という．
 	
 	それらの全体を
-	\[\ass M(=\ass_A M)=\mkset{ P\in\spec A}{\text{ある}x\in M\text{に対して} P=\ann x\text{を満たす.}}\]
-	とかく.
+	\[\ass M(=\ass_A M)=\mkset{ P\in\spec A}{\text{ある}x\in M\text{に対して} P=\ann x\text{を満たす．}}\]
+	とかく．
 \end{defi}
 
-$M$の素因子がしっかり存在することを確認しておこう.
+$M$の素因子がしっかり存在することを確認しておこう．
 
 \begin{prop}\label{prop:素因子の存在}
-	$\mkset{\ann x}{0\neq x\in M}$の極大元\footnotemark は素イデアル,すなわち$\ass M$の元である.
-\end{prop}\footnotetext{$A$はNoether環なので極大条件を満たす.}
-
+	$\mkset{\ann x}{0\neq x\in M}$の極大元（$A$はNoether環なので極大条件を満たす）は素イデアル，すなわち$\ass M$の元である．
+\end{prop}
 \begin{proof}
-	$\ann x$が極大元であるとする.~$ab\in\ann x,a\not\in\ann x$と仮定すると,~$ax\neq0$かつ$abx=b(ax)=0$なので$b\in\ann(ax)$である.すると,定義から$\ann x\subset\ann(ax)$であるが,~$\ann x$の極大性より$\ann x=\ann(ax)$である.よって,~$b\in\ann x$となることがわかり,~$\ann x$は素イデアルである.
+	$\ann x$が極大元であるとする．$ab\in\ann x，a\not\in\ann x$と仮定すると，$ax\neq0$かつ$abx=b(ax)=0$なので$b\in\ann(ax)$である．すると，定義から$\ann x\subset\ann(ax)$であるが，$\ann x$の極大性より$\ann x=\ann(ax)$である．よって，$b\in\ann x$となることがわかり，$\ann x$は素イデアルである．
 \end{proof}
 
 \begin{cor}\label{cor:Mneq0ならass Mは空でない}
-	$M\neq0$ならば$\ass M\neq\emptyset$である.
+	$M\neq0$ならば$\ass M\neq\emptyset$である．
 \end{cor}
 
-\begin{defi}[台]\index{だい@台(加群)}
-	$A$加群$M$の素イデアル$ P$による局所化$M_ P$が0にならない$ P$の集まりを
-	\[\supp M=\mkset{ P\in\spec A}{M_ P\neq 0}\]
-	とかき,~$M$の\textbf{台}(support)という.
-\end{defi}
+素因子について１つ補題を用意しておく．
 
-\begin{lem}\label{lem:M_p=0との同値条件}
-	$M_ P=0$であることと,任意の$x\in M$に対して,ある$a\not\in P(a\in S_ P)$が存在して$ax=0$となることは同値.
+\begin{lem}\label{lem:素因子と局所化}
+	$M$を$A$加群とし，$S$を$A$の積閉集合とする．$S^{-1}P\in\ass_{S^{-1}A} S^{-1}M$ならば$P\in\ass_A M$である．
 \end{lem}
 
 \begin{proof}
-	明らか.
+	$S^{-1}P\in\ass_{S^{-1}A}$とすると，$S^{-1}P\in\spec S^{-1}A$より$P\in\spec A,P\cap S=\emptyset$に注意しよう．
+	
+	ある$x/s\in S^{-1}M$について$S^{-1}P=\ann x/s$とかける．$A$はNoetherなので$P=(a_1,\dots,a_r)$としよう．各$a_i$について$a_1/1\cdot x/s=0$より，ある$h_i\in S$が存在して$h_ia_ix=0$である．$h_i$たちの積を$h=h_1\cdots h_r$とすると$h\in S$であり，$Phx=0$が成り立つ．よって$P\subset\ann hx$である．逆に$y\in\ann hx$とすると，$S^{-1}M$において$y/1\cdot x/s=0$であるので$y/1\in S^{-1}P$であるから，あとは形式的な計算によって$y\in P$であることがわかる．よって$P=\ann hx\in\ass_A M$である．
 \end{proof}
 
+ここで加群$M$のsupportについて思い出そう（\ref{defi:support}）．次の結果が知られている．
 \begin{thm}\label{thm:assとsuppの極小元}
-	$\ass M\subset\supp M$であり,それぞれの極小元のなす集合は一致する.
+	$\ass M\subset\supp M$であり，それぞれの極小元のなす集合は一致する．
 \end{thm}
 
 \begin{proof}
-	$ P=\ann x$とする.すると,任意の$x\not\in P$に対して$sx\neq0$である.よって$x=x/1$は$M_ P$の零元でない.よって$M_ P\neq0$,すなわち$ P\in\supp M$である.
+	$ P=\ann x$とする．すると，任意の$x\not\in P$に対して$sx\neq0$である．よって$x=x/1$は$M_ P$の零元でない．よって$M_ P\neq0$，すなわち$ P\in\supp M$である．よって，極小元が一致することを見るには$P\in\supp M$が極小なら$P\in\ass M$であることを示せばよい．
 	
-	次に$ P$を$\supp M$の極小元とする.~$ PA_ P$が$\supp  M_ P$の極小元であることを見る.~$ q\subsetneq  PA_ P=\mkset{a/x}{a\in P,x\not\in P}$とする.自然な準同型$f:A\twoheadrightarrow A_ P$による引き戻し$f^{-1}( q)$は$ P$の部分イデアルで,~$M_{f^{-1}( q)}=0$である.ここで,任意の$a/s\in M_ P$に対し,~$a\in M$であるので,~\ref{lem:M_p=0との同値条件}よりある$t\not\in f^{-1}( q)$が存在して$ta=0$である.このとき$f(t)\not\in q$で,~$f(t)\cdot a/s=0/1$となるので,再び補題から$(M_ P)_ q=0$である.
+	まず$M_P$は$0$でない$A_P$加群であり，$\supp_{A_P} M_P=\{PA_P\}$を示す．それには$Q\subsetneq P$となる$Q\in\spec A$について$QA_P$による$M_P$の局所化が$0$であることを示せばよい．$P$が$\supp M$で極小なので$M_Q=0$だから，\ref{lem:M_p=0との同値条件}より任意の$x\in M$に対してある$a\not\in Q$が存在して$ax=0$である．すると$a/1\not\in QA_P$であり，任意の$x/s\in M_P$に対して$a/1\cdot x/s=0$である．よって再び\ref{lem:M_p=0との同値条件}から$M_P$の$QA_P$による局所化は$0$である．よって$\supp_{A_P} M_P=\{PA_P\}$がわかった．
 	
-	また,~$ PA_ P$は$\spec A_ P$の極大元なので,~$\supp M_ P=\{ PA_ P\}$である.~$M_ P\neq\emptyset$なので
-	\[\emptyset\neq\ass_{A_ P}M_ P\subset\supp M_ P=\{ PA_ P\}\]
-	となり,~$\ass_{A_ P}M_ P=\{ PA_ P\}$がわかる.ここで$ PA_ P=\ann_{A_ P}x/s$とかこう.すると,明らかに$ P=\ann_A x/s$である.これは$ P\in\ass_A M_ P$を意味する.~$ P\in\ass_A M$を示せば証明は完了である.いま$A$はNoether環なので$ P$は有限生成である.~$ P=(a_1,\dots,a_n)$とすると,各$a_i$に対して$a_i\cdot x/s=0$なので,~$h_i\not\in P$がとれて$a_ih_ix=0$である.ここで$h=h_1h_2\cdots h_n$とおくと,各$i$について$a_ihx=0$であるので$ P\subset\ann_A hx$である.また,~$h_i\not\in P$より$h\not\in P$であるから$\ann_Ahx\subset\ann_Ax/s$が従う.よって$ P=\ann_Ahx\in\ass_AM$となり,証明が完了した.
+	ここで$M_P\neq0$なら$\ass_{A_P}M_P\neq\emptyset$なので，$\ass_{A_P}M_P\subset\supp_{A_P}M_P=\{PA_P\}$であるから$\ass_{A_P}M_P=\{PA_P\}$である．よって\ref{lem:素因子と局所化}から$P\in\ass_A M$であることがわかる．
 \end{proof}
 
-Zariski位相(\ref{defi:Zariski位相})を思い出そう.
-\begin{prop}\label{prop:Zariskiの閉集合とsupp}
-	$A$加群$M$が$A$上有限生成ならば,~$V(\ann M)=\supp M$である.
-\end{prop}
-\begin{proof}
-	\ref{lem:M_p=0との同値条件}より,~$M_ P\neq0$と,ある$x\in M$が存在して,任意の$a\not\in P$に対し$ax\neq0$となることが同値なので,これと$ P\in V(\ann M)$が同値であることを示す.
-	
-	$ P\in V(\ann M)$ならば$\ann M\subset P$なので,~$a\not\in P$ならば$a\not\in\ann M$,~すなわち任意の$x\in M$に対して$ax\neq0$である.逆も全く同様であるので,示された.
-\end{proof}
-\begin{cor}\label{cor:supp A/I}
-	$A$のイデアル$I$に対して,~$\supp A/I=V(I)$である.
+\begin{cor}\label{cor:min V(I)はass(A/I)の元}
+	環$A$のイデアル$I$について，$V(I)$の極小元すなわち$I\subset P$となる$P\in\spec A$で極小なものは$A/I$の素因子である．
 \end{cor}
 
-\begin{defi}\index{うめこまれたそいんし@埋め込まれた素因子}
-	極小な$\ass M$の元を\textbf{孤立}(isolated)素因子といい,そうでないものを\textbf{埋め込まれた}(embedded)素因子という.
-\end{defi}
+\begin{proof}
+	\ref{cor:supp A/I}よりわかる．
+\end{proof}
 
-ここで,埋め込まれた素因子のイメージをつかもう.
+%\begin{defi}\index{うめこまれたそいんし@埋め込まれた素因子}\index{こりつそいんし@孤立素因子}
+%	極小な$\ass M$の元（supportの元でもある）を\textbf{孤立}(isolated)素因子といい，そうでないものを\textbf{埋め込まれた}(embedded)素因子という．
+%\end{defi}
+%
+%ここで，埋め込まれた素因子のイメージをつかもう．
+%
+%\[\sqrt{I}=\bigcap_{P\in V(I)} P=\bigcap_{I\subset P:\text{極小}} P\]
+%であるから
+%\[V(I)=V(\sqrt{I})=\bigcup_{I\subset P:\text{極小}} V( P)\]
+%となる．いずれも包含は簡単に確かめられる．これを$V(I)$の既約分解という．ここで，このような$ P$は\ref{cor:supp A/I}より$\supp A/I$の極小元であり，それは$\ass A/I$の極小元である．よって$\ass A/I$の埋め込まれた素因子$ q\supseteq P$は$V( q)\subset V( P)$なので，$V(I)$の分解には現れない．これが埋め込まれていることのイメージである．
 
-\[\sqrt{I}=\bigcap_{P\in V(I)} P=\bigcap_{I\subset P:\text{極小}} P\]
-であるから
-\[V(I)=V(\sqrt{I})=\bigcup_{I\subset P:\text{極小}} V( P)\]
-となる.いずれも包含は簡単に確かめられる.これを既約分解という.ここで,このような$ P$は\ref{cor:supp A/I}より$\supp A/I$の極小元であり,それは$\ass A/I$の極小元である.よって$\ass A/I$の埋め込まれた素因子$ q\supseteq P$は$V( q)\subset V( P)$なので,~$V(I)$の分解には現れない.これが埋め込まれていることのイメージである.
-
+$P\in\ass M$であることと単射$\iota:A/P\to M$が存在することが同値であることに注意する（$P=\ann \iota(1)$となる）と，次の命題が示せる．
 \begin{prop}\label{prop:完全列とass}
-	$A$加群の完全列
-	\[0\longrightarrow M_1\longrightarrow M_2\longrightarrow M_3\longrightarrow0\]
-	に対して,~$\ass M_1\subset\ass M_2$であり,~$\ass M_2\subset \ass M_1\cup\ass M_3$が成立する.
+	$A$加群の完全列；
+	\[\ses[\varphi][\psi]{M_1}{M_2}{M_3}\]
+	に対して$\ass M_2\subset \ass M_1\cup\ass M_3$が成立する．
 \end{prop}
 \begin{proof}
-	$ P\in\ass M_1$とすると,単射$A/ P\hookrightarrow M_1\hookrightarrow M_2$が存在するから,~$ P\in\ass M_2$がわかる.
-	
-	次に,~$ P\in\ass M_2$とし,~$N$を$A/ P$と同型な$M_2$の部分加群とする.~$x_0\in M_2$をとり,~$ P=\ann x_0$とすると,~$N$は単射$A/ P\hookrightarrow M_2;a+\ann x_0\longmapsto ax_0$の像だから,~$N=\mkset{ax_0}{a\in A}$とかける.~$M_1$から$M_2$への単射を$\varphi$としよう.
+	$P\in\ass M_2$とし，$P=\ann x$とおこう．このとき単射；
+	\[A/P\to M_2;a+P\mapsto ax\]
+	の像を$N$としよう．
 	
 	\begin{sakura}
-		\item $\varphi(M_1)\cap N\neq0$のとき.
+		\item $\im\varphi\cap N=0$のとき．
 		
-		0でない任意の$x\in \varphi(M_1)\cap N$を1つとる.~$x\in N$より,ある$a\in A$が存在して$x=ax_0$とかける.ここで$\ann ax_0=\ann x_0= P$を示す.~$\ann x_0\subset\ann ax_0$は明らかである.~$b\in\ann ax_0$とすると,~$ab\in\ann x_0$であり,~$ax_0=x\neq0$なので$a\not\in\ann x_0$だから$\ann x_0$は素イデアルなので$b\in\ann x_0$である.よって$ P=\ann x_0$である.また$x\in \varphi(M_1)$なので$x_1\in M_1$を用いて$x=\varphi(x_1)$とかける.すると明らかに$\ann \varphi(x_1)=\ann x_1$であるので$p\in\ass M_1$である.
+		完全性から$\ker\psi=\im\varphi$なので，$A/P\to M_3;a+P\mapsto a\psi(x)$が単射である．よって$P\in\ass M_3$となる．
 		
-		\item $\varphi(M_1)\cap N=0$のとき.
+		\item $\im\varphi\cap N\neq0$のとき．
 		
-		$N\subset M_2/M_1=M_3$より,~$ P\in\ann M_3$である.
+		任意の$0\neq x'\in\im\varphi\cap N$をとる．$x\in N$かつ$x\neq0$より，ある$a\not\in P$が存在して$x'=ax$である．ここで$P=\ann x$が素イデアルであることに注意すると$\ann x=\ann x'$である．また$x'\in\im\varphi$であり$\varphi$は単射なので，$0$でない$y\in M_1$が存在して$x'=\varphi(y)$である．すると$P=\ann y$であることが$\varphi$の単射性からわかる．よって$P\in\ass M_1$となる．
 	\end{sakura}
 \end{proof}
 \begin{thm}
-	有限生成$A$加群の素因子の集合$\ass M$は有限である.
+	有限生成$A$加群の素因子の集合$\ass M$は有限である．
 \end{thm}
 \begin{proof}
-	$M=0$ならば$\ann M=\emptyset$なので$M\neq0$の時を考えればよい.~$ P_1\in\ann M$
-	とすると,~$A/ P_1$と同型な$M$の部分加群$M_1$が存在する.~$M_1\neq M$のとき,~$M/M_1\neq0$だから,~$ P_2\in\ass M/M_1$が存在して,~$A/ P_2\cong\bar{M_2}\subset M/M_1$とできる.~$M_2$を$M_2/M_1=\bar{M_2}$なる$M$の部分加群とすると,~$M_1\subset M_2\subset M$となる.同様に,~$M_2\neq M$ならば操作を続けると,部分加群の増大列
+	$M\neq0$としてよい．$ P_1\in\ass M$とすると，$A/ P_1$と同型な$M$の部分加群$M_1$が存在する．$M_1\neq M$のとき，$M/M_1\neq0$だから，$ P_2\in\ass M/M_1$が存在して，$A/ P_2\cong\bar{M_2}\subset M/M_1$とできる．$M_2$を$M_2/M_1=\bar{M_2}$なる$M$の部分加群とすると，$M_1\subset M_2\subset M$となる．同様に，$M_2\neq M$ならば操作を続けると，部分加群の増大列；
 	\[0\neq M_1\subset M_2\subset\dots\subset M_i\subset\cdots\]
-	と$M_i/M_{i-1}\cong A/ P_i$となる素イデアル$ P_i$がとれる.~$M$はNoether環上有限生成なので,この増大列は停まる.よって,ある$n$が存在して$M_n=M$としてよい.すると,短完全列
+	と$M_i/M_{i-1}\cong A/ P_i$となる素イデアル$ P_i$がとれる．$M$は有限生成で$A$はNoetherなのでNoetherであり，この増大列は停まる．よって，ある$n$が存在して$M_n=M$としてよい．すると，短完全列；
 	\[0\longrightarrow M_1\longrightarrow M\longrightarrow M/M_1\longrightarrow0\]
-	に対し,~\ref{prop:完全列とass}から$\ass M\subset \ass M_1\cup \ass M/M_1$となる.また
+	に対し，\ref{prop:完全列とass}から$\ass M\subset \ass M_1\cup \ass M/M_1$となる．また；
 	\[0\longrightarrow \bar{M_2}=M_2/M_1\longrightarrow M/M_1\longrightarrow (M/M_1)/(M_2/M_1)=M/M_2\longrightarrow0\]
-	に対して\ref{prop:完全列とass}を用いて,~$\ass M/M_1\subset \ass M_2/M_1\cup \ass M/M_2$となる.以下同様に続けると
+	に対して\ref{prop:完全列とass}を用いて，$\ass M/M_1\subset \ass M_2/M_1\cup \ass M/M_2$となる．以下同様に続けると；
 	\[\begin{aligned}
 		\ass M&\subset\ass M_1\cup \ass M/M_1\\
 		&\subset \ass M_1\cup \ass M_2/M_1\cup \ass M/M_2\\
@@ -244,275 +329,161 @@ Zariski位相(\ref{defi:Zariski位相})を思い出そう.
 		&=\bigcup_{i=1}^n\ass A/ P_i\\
 		&=\{\nitem{ P}\}
 	\end{aligned}\]
-	である.最後の等号は,任意の0でない$x\in A/ P_i$に対し$\ann x= P_i$であることを用いた.
+	である．最後の等号は，任意の0でない$x\in A/ P_i$に対し$\ann x= P_i$であることを用いた．
 \end{proof}
+
+\begin{cor}\label{cor:Noether環の極小素イデアルは有限個}
+	$A$をNoether環とすると，イデアル$I$について$V(I)$の極小元は有限個である．
+\end{cor}
+
+\begin{proof}
+	$V(I)=\supp(A/I)$で極小なものは\ref{thm:assとsuppの極小元}より$\ass A/I$の元なので，上の定理より$I$を含む素イデアルで極小なもの（極小素イデアルということもある）は有限個しかないことがわかる．
+\end{proof}
+
 \section{準素イデアル}
+
+加群の素因子たちが活躍する例の１つに素イデアルの一般化である準素イデアルがある．
+
 \begin{defi}[準素イデアル]
-	環$A$のイデアル$ q\neq0$に対し,~$ab\in q$かつ$a\not\in q$のとき,ある$n\in\Z_+$が存在して$b^n\in q$となるとき,~$ q$を\textbf{準素イデアル}(primary ideal)という.\index{じゅんそいである@準素イデアル}
+	環$A$のイデアル$q\neq0$に対し，$P=\sqrt{q}$とおく．$ab\in q$かつ$a\not\in q$ならば$b\in P$が成り立つとき，$q$を$P$\textbf{準素イデアル}(primary ideal)という．\index{じゅんそいである@準素イデアル}
 \end{defi}
 
-明らかに素イデアルは準素である.この条件は;
-\[A/q\text{のすべての零因子は冪零である.}\]
-と同値であることに注意しよう.
+明らかに素イデアルは準素である．この条件は;
+\[A/q\text{のすべての零因子は冪零である．}\]
+と同値であることに注意しよう．$\sqrt{q}$を$P$と書くからには，$P$が素イデアルであるべきだろう．
 
 \begin{prop}
-	準素イデアル$ q$の根基は$ q$を含む最小の素イデアルである.
+	準素イデアル$q$の根基は$q$を含む最小の素イデアルである．
 \end{prop}
 
 \begin{proof}
-	イデアルの根基はそのイデアルを含む全ての素イデアルの共通部分であるから,素イデアルであることを示せば十分. $ab\in\sqrt{ q},a\not\in\sqrt{ q}$とする.~$ab\in\sqrt{ q}$なので,ある$n$が存在して$a^nb^n\in q$である.~$a\not\in\sqrt{ q}$だから,この$n$に対して$a^n\not\in q$である.~$ q$が準素なので,ある$m$が存在して$b^{nm}\in q$である.よって$b\in\sqrt{ q}$である.
+	イデアルの根基はそのイデアルを含む全ての素イデアルの共通部分であるから，素イデアルであることを示せば十分．$ab\in\sqrt{ q}，a\not\in\sqrt{ q}$とする．$ab\in\sqrt{ q}$なので，ある$n$が存在して$a^nb^n\in q$である．$a\not\in\sqrt{ q}$だから，この$n$に対して$a^n\not\in q$である．$ q$が準素なので，ある$m$が存在して$b^{nm}\in q$である．よって$b\in\sqrt{ q}$である．
 \end{proof}
-
-$\sqrt{ q}= P$であるとき, $ q$は$ P$準素であるという.この記号は準素加群の定義（\ref{defi:準素加群}）と整合性がある（\ref{cor:準素イデアルと準素加群の整合性}）.
 
 \begin{prop}\label{prop:sqrt{I}が極大なら準素}
-	環$A$のイデアル$I$について, $\sqrt{I}$が極大なら$I$は準素である.
+	環$A$のイデアル$I$について，$\sqrt{I}$が極大なら$I$は準素である．
 \end{prop}
 
 \begin{proof}
-	$I$が素のときは示すことはないので,素でないとしてよい. $\sqrt{I}=\ideal{m}$とおく. $I$を含む$A$の素イデアルは$\ideal{m}$のみなので, $\spec A/I=\{\bar{\ideal{m}}\}$となる.すると$\nil A/I=\bar{\ideal{m}}$となり,任意の$x\in A/I$について$x\in\nil A/I$または$x\in (A/I)^\times$が成り立つ.よって$I$は準素である.
+	$I$が素のときは示すことはないので，素でないとしてよい．$\sqrt{I}=\ideal{m}$とおく．$I$を含む$A$の素イデアルは$\ideal{m}$のみなので，$\spec A/I=\{\bar{\ideal{m}}\}$となる．すると$\nil A/I=\bar{\ideal{m}}$となり，任意の$x\in A/I$について$x\in\nil A/I$または$x\in (A/I)^\times$が成り立つ．よって$I$は準素である．
+\end{proof}
+
+一般の$A$加群$M$については，準素部分加群を次のように定義しよう．
+
+\begin{defi}\label{defi:準素加群}
+	$A$加群$M$の部分加群$N$について，$a\in A$について，ある$x+N\in M/N$について$ax+N=0$ならば$a\in\sqrt{\ann (M/N)}$であるとき$N$を$M$の\textbf{準素部分加群}(primary submodule)という．
+%	$A$加群$M$の部分加群$N$について，$\ass M/N=\{P\}$となっているとき，$N$を$ P$\textbf{準素}($P$primary)という．
+\end{defi}
+
+この定義を言い換えると，$a\in A$がある$x\in M\setminus N$について$ax\in N$ならば，ある$n\in\N$について$a^n M\subset N$である，ということになる．この定義のもとで準素イデアルとは$A$加群の準素部分加群のことである．
+
+\begin{prop}\label{prop:準素部分加群とass}
+	$M$を有限生成$A$加群とし，$N$をその部分加群とする．$N$が準素部分加群であることと，$\ass (M/N)$が一点集合であることは同値．
+\end{prop}
+
+\begin{proof}
+	証明を通して$I=\ann(M/N)$とおく．
+	\begin{eqv}
+		\item $P\in\ass (M/N)$とする．ある$0\neq x+N\in M/N$によって$P=\ann (x+N)$となる．任意の$a\in P$について$ax\in N$なので，仮定より$a\in\sqrt{I}$となるから$P\subset\sqrt{I}$である．一方で素因子の定義から$\sqrt{I}\subset P$なので$P=\sqrt{I}$となり，$\ass (M/N)=\{\sqrt{I}\}$である．
+		
+		\item $\ass(M/N)=\{P\}$とする．\ref{thm:assとsuppの極小元}より$\supp M/N$の極小元は$P$のみであり，\ref{prop:Zariskiの閉集合とsupp}より$V(\ann M/N)=\supp M/N$である．よって$\ann M/N$を含む素イデアルで極小なものは$P$だけなので$\sqrt{I}=P$が成り立つ．また$a\in\ann (x+N)~(x+N\neq0)$ならば\ref{prop:素因子の存在}より$a\in P=\sqrt{I}$が成り立つ．
+	\end{eqv}
 \end{proof}
 
 \begin{prop}
-	$ q$が$ P$準素イデアルなら, $ qA_ P\cap A= q$である.
+	$M$を有限生成$A$加群とし，$N$を準素部分加群とする．$\ass (M/N)=\{P\},\ann M/N=I$とおくと$\sqrt{I}=P$であって，$I$は$P$準素イデアルである．
 \end{prop}
 
 \begin{proof}
-	$a/s\in  qA_{ P}$が$x\in A$を用いて$a/s=x/1$となっているとすると,ある$h\not\in P$がとれて$ha=xhs$が成り立つ.ここで$a\in q$より$xhs\in q$で, $hs\not\in P=\sqrt{q}$なので$x\in q$でなければならない.
+	$ab\in I,a\not\in I$とする．これは$abM\subset N,aM\not\subset N$を意味するので，ある$x+N\neq0$について$bx+N\neq0$であり$a\in\ann (bx+N)\subset P$となる．よって$I$は$P$準素．
 \end{proof}
 
-\begin{defi}\label{defi:準素加群}
-	$A$加群$M$の部分加群$N$について,~$\ass M/N$が一点集合$\{ P\}$になっているとき,~$N$を$ P$\textbf{準素}($ P$primary)という.
-\end{defi}
-
-\begin{prop}\label{prop:準素加群の同値条件}
-	Noether環$A$上の加群$M$について,次は同値.
-	\begin{sakura}
-		\item 0が$M$の準素部分加群である,すなわち$\ass M$は一点である.
-		\item $M\neq0$で,~$a$が$M$の零因子ならば,任意の$y\in M$に対して$a^ny=0$となる$n\in\Z_+$がある.~(このことを$a$は\textbf{局所的に冪零}であるという.\index{きょくしょてきにべきれい@局所的に冪零}
-	\end{sakura}
-\end{prop}
-\begin{proof}
-	\begin{eqv}
-		\item $\ass M=\{ P_0\}$とおく.すると,~\ref{prop:素因子の存在}より,~$ P_0$は任意の$x\in M$に対し$\ann x$の極大元であるので
-		\[\bigcup_{x\neq0}\ann x= P_0\]である.また,~$\bigcup_{x\neq0}\ann x$は$M$の零因子全体のなる集合と等しいので,~$a\in P_0$とできる.ここで,零でない$y\in M$を任意にとり,~$Ay\neq0$を部分$A$加群としてみると,~$\ass Ay\neq\emptyset$であり$Ay\subset M$なので\ref{prop:完全列とass}から$\ass Ay=\{ P_0\}$である.すると,~$ P_0$は\ref{thm:assとsuppの極小元}より$\supp Ay$の唯一の極小元である.また,~\ref{prop:Zariskiの閉集合とsupp}より$V(\ann Ay)=\supp Ay$であるので,~$V(\ann Ay)$の極小元は$ P_0$のみだから
-		\[\sqrt{\ann Ay}=\bigcap_{ P\in V(\ann Ay)} P= P_0\]
-		である.よって,~$a\in P_0$だったから,ある$n\in\Z_+$に対し$a^n\in\ann Ay$である.よって,~$a^n y=0$であることがわかる.
-		\item $M$上局所冪零な元全体を$I$とおく.仮定より$I$は$M$の零因子全体の集合と一致する.すると$I=\bigcup_{x\neq0}\ann x$であるから,~$I$は$M$の素因子を含む.~$ P$を$M$の素因子とする.~$I\subset  P$を示せばよい.~$ P=\ann x_0$とする.~$a\in I$ならば,ある$n$が存在して$a^nx_0=0$である.よって~$a^n\in P$であり,~$ P$が素なので$a\in P$である.すなわち$I\subset P$であり,~$I$のみが$M$の素因子である.
-	\end{eqv}
-\end{proof}
-\begin{cor}\label{cor:準素イデアルと準素加群の整合性}
-	$A$のイデアル$ q$について,~$q$が準素イデアルであることと,~$q$が$A$の準素部分加群であることは同値.
-\end{cor}
-\begin{proof}
-	\begin{eqv}
-		\item $a$を$M$の零因子とする.ある$0\neq x+ q\in A/ q$に対して$a(a+ q)=0,~$すなわち$ax\in q$である.~$x\not\in q$より,~$ q$が準素かつ$x\not\in q$だから,ある$n\in\Z_+$があって$a^n\in q$である.ゆえに任意の$y\in A$に対し$a^n y\in q$である.よって$a^n(y+ q)=0$だから\ref{prop:準素加群の同値条件}より,~$\ass A/ q$は一点である.すなわち$ q$は$A$の準素部分加群である.
-		\item $ab\in q$とし,~$b\not\in q$とする.すると$A/ q$において$b+ q\neq0$であって$a$は$b+ q$を零化するので$a$は$A/ q$の零因子となる.\ref{prop:準素加群の同値条件}から$a$は局所冪零で,特に$1+ q\in A/ q$に対して$a^n(1+ q)=0$となる$n\in\Z_+$がある.よって$a^n\in q$である.
-	\end{eqv}
-\end{proof}
-
-\begin{defi}[準素分解]\index{じゅんそぶんかい@準素分解}
-	$M$を$A$加群とする.~$M$の部分加群$N$を,~$M$の有限個の部分加群の交わりとして
-	\[N=N_1\cap\dots\cap N_r\]
-	と表すことを$N$の\textbf{分解}(decomposition)という.各$N_i$が既約なら\textbf{既約分解},準素なら\textbf{準素分解}という.
-\end{defi}
-
-分解$N=\bigcap_{i}^r N_i$に対して,各$1\leq j\leq r$について$N\neq \bigcap_{i\neq j}N_i$であるとき,この分解は\textbf{むだがない}(irredundant)という.\index{むだがない}
-
-次の定理を当面の目標としよう.その後,分解の一意性について考察していく.
-
-\begin{thm}[Laker-Noetherの分解定理]\index{#Laker-Noehterのぶんかいていり@Laker-Noetherの分解定理}\label{thm:Laker-Noetherの分解定理}
-	Noether環$A$上の有限生成加群$M$の任意の部分加群$N$は準素分解を持つ.特に,任意の$A$のイデアル$I$は準素分解を持つ.
-\end{thm}
+\ref{prop:準素部分加群とass}の証明において($\Longrightarrow$)の証明には$M$が有限生成である必要はなかったことに注意すると，準素部分加群の定義を次のように拡張できる．
 
 \begin{defi}
-	$A$加群$M$の部分加群$N$について,~$N_1,N_2$を部分加群として$N=N_1\cap N_2$ならば$N=N_1$または$N=N_2$が成り立つとき,~$N$を\textbf{既約}といい,そうでないときに\textbf{可約}という.~(\cite{matsu},~p.51)\index{きやくぶぶんかぐん@既約(部分加群)}\index{かやくぶぶんかぐん@可約(部分加群)}
+	$M$を$A$加群とし，$N$をその準素部分加群とする．$\ass(M/N)=\{P\}$であるとき，$N$を$P$\textbf{準素部分加群}という．
 \end{defi}
 
+紛らわしい用語だが，$N$が準素部分加群という定義を外してしまうと$P$準素だが準素でない部分加群が存在することになり，もはや\ref{defi:準素加群}とは同値でない．以後単に\textbf{準素部分加群}といった場合には\ref{defi:準素加群}の意味とし，$\ass(M/N)$の元を明示したい場合にのみ$P$準素という用語を用いることにする．
+
+準素加群を考えることの嬉しさの１つに，加群の分解のある種の一意性がある．これは加群に対応する幾何的な対象を考えることでその対象を分解（分割）することに対応し，応用が広い．そのために部分加群の既約性（\ref{defi:既約部分加群}）を思い出そう．
+
+\begin{defi}[既約分解，準素分解]\index{じゅんそぶんかい@準素分解}\index{きやくぶんかい@既約分解}
+	$M$を$A$加群とする．$M$の部分加群$N$を，$M$の有限個の部分加群の交わりとして
+	\[N=N_1\cap\dots\cap N_r\]
+	と表すことを$N$の\textbf{分解}(decomposition)という．各$N_i$が既約なら\textbf{既約分解}，準素なら\textbf{準素分解}という．
+\end{defi}
+
+分解$N=\bigcap_{i}^r N_i$に対して，各$1\leq j\leq r$について$N\neq \bigcap_{i\neq j}N_i$であるとき，この分解は\textbf{むだがない}(irredundant)という．\index{むだがない}
+
+次の定理を当面の目標としよう．その後，分解の一意性について考察していく．
+
+\begin{thm}[Laker-Noetherの分解定理]\index{#Laker-Noehterのぶんかいていり@Laker-Noetherの分解定理}\label{thm:Laker-Noetherの分解定理}
+	Noether環$A$上の有限生成加群$M$の任意の部分加群$N$は準素分解を持つ．特に，任意の$A$のイデアル$I$は準素分解を持つ．
+\end{thm}
+
 \begin{lem}\label{lem:既約分解できる}
-	$M$がNoether加群ならば,任意の部分加群は既約部分加群の有限個の交わりとしてかける.
+	$M$がNoether加群ならば，任意の部分加群は既約部分加群の有限個の交わりとしてかける．
 \end{lem}
 \begin{proof}
-	そのように分解できない部分加群の集まりを$S$とする.~$M$のNoether性より$S$の極大元がとれるので,それを$N$とする.~$N$は可約なので,~$N_1,N_2\neq N$を用いて$N=N_1\cap N_2$とできる.すると$N\subset N
-	_1,N_2$なので,~$N$の極大性から$N_1,N_2\not\in S$であるから,~$N_1$と$N_2$は既約な部分加群の交わりでかける.よって,~$N$も既約な部分加群の有限個の交わりとなり,矛盾.
+	そのように分解できない部分加群の集まりを$S$とする．$M$のNoether性より$S$の極大元がとれるので，それを$N$とする．$N$は可約なので，$N_1，N_2\neq N$を用いて$N=N_1\cap N_2$とできる．すると$N\subset N
+	_1，N_2$なので，$N$の極大性から$N_1，N_2\not\in S$であるから，$N_1$と$N_2$は既約な部分加群の交わりでかける．よって，$N$も既約な部分加群の有限個の交わりとなり，矛盾．
 \end{proof}
 \begin{lem}\label{lem:既約なら準素}
-	既約な真部分加群は準素である.
+	既約な真部分加群は準素である．
 \end{lem}
 \begin{proof}
-	対偶である,~$N\subsetneq M$が準素でなければ可約であることを示す.~$\ass M/N$は少なくとも2つの異なる素因子を持つので,それを$ P_1\neq P_2$とする.~$A/ P_i\cong\bar{N_i}\subset M/N$とすると,~$0\neq x\in\bar{N_i}$ならば$\ann x= P_i$となるので,~$\bar{N_1}\cap\bar{N_2}=0$でなければならない.さて,~$N_i$を$N_i/N=\bar{N_i}$となるようにとると,自然な全射$\pi:M\twoheadrightarrow M/N$に対し$N_1\cap N_2=\pi^{-1}(\bar{N_1}\cap\bar{N_2})=\pi^{-1}(0)=N$であって,~$N\subsetneq N_i$なので,~$N$は可約である.
+	対偶である，$M$の部分加群$N$が準素でなければ可約であることを示す．$\ass (M/N)$は少なくとも2つの異なる素因子を持つので，それを$ P_1\neq P_2$とする．$A/ P_i\cong\bar{N_i}\subset M/N$とすると，$0\neq x\in\bar{N_i}$ならば$\ann x= P_i$となるので，$\bar{N_1}\cap\bar{N_2}=0$でなければならない．さて，$N_i$を$N_i/N=\bar{N_i}$となるようにとると，自然な全射$\pi:M\to M/N$に対し$N_1\cap N_2=\pi^{-1}(\bar{N_1}\cap\bar{N_2})=\pi^{-1}(0)=N$であって，$N\subsetneq N_i$なので$N$は可約である．
 \end{proof}
 
-2つの補題により\ref{thm:Laker-Noetherの分解定理}が示された.
-
-では,分解の一意性について見ていこう.素イデアル分解のように綺麗には行かず,埋め込まれた素因子がややこしい影響を及ぼしてくる.
+2つの補題により準素分解できること\ref{thm:Laker-Noetherの分解定理}が示された．では，分解の一意性について見ていこう．
 \begin{lem}
-	$N_1$と$N_2$が$M$の$ P-$準素部分加群ならば,~$N_1\cap N_2$も$ P-$準素である.
+	$N_1$と$N_2$が$M$の$ P$準素部分加群ならば，$N_1\cap N_2$も$ P$準素である．
 \end{lem}
 \begin{proof}
 	\[\iota:M/(N_1\cap N_2)\longrightarrow M/N_1\oplus M/N_2;x+N_1\cap N_2\longmapsto(x+N_1,x+N_2)\]
-	は単射であるので,短完全列
+	は単射であるので，短完全列；
 	\[0\longrightarrow M/N_1\longrightarrow M/N_1\oplus M/N_2\longrightarrow M/N_2\longrightarrow0\]
-	とあわせて,~\ref{prop:完全列とass}から$\emptyset\neq\ass M/(N_1\cap N_2)\subset\ass M/N_1\cup\ann M/N_2=\{ P\}$であるから$N_1\cap N_2$は$ P-$準素.
+	とあわせて，\ref{prop:完全列とass}から$\emptyset\neq\ass M/(N_1\cap N_2)\subset\ass M/N_1\cup\ann M/N_2=\{P\}$であるから$N_1\cap N_2$は$P$準素．
 \end{proof}
 
-これより,準素分解$N=\bigcap_i^r N_i$がむだのない分解であるとき,~$N_{i_1}$と$N_{i_2}$がともに$ P-$準素なら$N_{i_1}\cap N_{i_2}$も$ P-$準素なので,~$N_j=N_{i_1}\cap N_{i_2}$とおくと,分解の長さを短くできる.このように,すべての$i$に対し$\ass M/N_i$が異なるようにすることで\textbf{最短準素分解}が得られる.\index{さいたんじゅんそぶんかい@最短準素分解}
+これより，準素分解$N=\bigcap_i^r N_i$がむだのない分解であるとき，$N_{i_1}$と$N_{i_2}$がともに$ P$準素なら$N_{i_1}\cap N_{i_2}$も$ P$準素なので，$N_j=N_{i_1}\cap N_{i_2}$とおくと，分解の長さを短くできる．このように，すべての$i$に対し$\ass (M/N_i)$が異なるようにすることで\textbf{最短準素分解}が得られる．\index{さいたんじゅんそぶんかい@最短準素分解}
 \begin{thm}
-	Noether環上の加群$M$の真部分加群$N$について$N=N_1\cap\dots\cap N_r$を無駄のない準素分解とし,~$ P_i$を$N_i$の素因子とすると$\ass M/N=\{\nitem[r]{ P}\}$となる.
+	Noether環上の加群$M$の真部分加群$N$について$N=N_1\cap\dots\cap N_r$を無駄のない準素分解とし，$ P_i$を$N_i$の素因子とすると$\ass (M/N)=\{\nitem[r]{ P}\}$となる．
 \end{thm}
 \begin{proof}
-	埋め込み$M/N\subset\midoplus_{i=1}^rM/N_i$と,\ref{prop:完全列とass}により$\ass M/N\subset \bigcup_{i=1}^r\ass M/N_i=\{\nitem[r]{ P}\}$を得る.また,むだのないことから$0\neq\bigcap_{i=2}^r N_i/N$であり
-	\[\iota:\bigcap_{i=2}^rN_i/N\longrightarrow M/N_i;x+N\longmapsto x+N_i\]
-	は単射.実際,~$\iota(x+N)=\iota(y+N)$とすると,~$x-y\in N_1$である.一方,~$x,y\in\bigcap_{i=2}^rN_i$より$x-y\in\bigcap_{i=1}^rN_i=N$となり,~$x+N=y+N$がわかる.よって,~$\emptyset\neq\ass(\bigcap_{i=2}^r N_i/N)\subset\ass M/N_1=\{ P_1\}$すなわち$\ass(\bigcap_{i=2}^r N_i/N)=\{ P_1\}$である.また,~$\bigcap_{i=2}^r N_i/N\subset M/N$でもあるので,~$ P_1\in\ass M/N$である.他の$ P_i$についても同様.
-\end{proof}
-\begin{thm}
-	$M$を有限生成なNoether環上の加群とする.~$N=N_1\cap\dots\cap N_r$をむだのない最短準素分解とする.このとき,~$ P_i$が孤立素因子なら,~$f_{ P_i}:M\longrightarrow M_{ P_i}$を$ P_i$における局所化とすると,~$N_i=f^{-1}_{ P_i}(N_{ P_i})$となり,~$N_{ P_i}$は$N$と$ P_i$から一意に定まる.
-\end{thm}
-\begin{proof}
-	$ P_1$が極小であるときに示す.~$ P_1= P$とする.すると,~$i\neq1$に対して$N_i$が準素だから,~$\ass M/N_i=\{ P_i\}$であり,~$M$が有限生成なので$M/N_i$もそうである.このとき$\sqrt{\ann M/N_i}= P_i$が成立する.まずこれを示す.
-	\begin{step}
-		\item $\sqrt{\ann M/N_i}\subset P_i$であること.任意の$x\in\sqrt{\ann M/N_i}$を1つとる.すると,ある$n\in\Z_+$があって$x^n\in\ann M/N_i$であるので,~$x^n$は$M/N_i$の零因子であるので$x^n\in P_i$である.これは素なので,~$x\in P_i$である.
-		
-		\item その逆を示す.任意の$x\in P_i$を１つとり,~$M/N_i$の生成系を$(\nitem[k]{u})$とする.~$x$は零因子だから局所冪零なので,各$u_i$に対し$x^{n_i}u_i=0$となる$n_i\in\Z_+$がある.よって,それらの最大元を$n$とすると,~$x^n(M/N_i)=0$であるので,~$x\in\sqrt{\ann M/N_i}$である.
-	\end{step}
-	
-	さて,~$ P$が極小なので$ P_i\not\subset P$である.よって,~$y\not\in P$かつ$y\in P_i$となる$y\in A$が存在する.すると$(M/N_i)_ P$は$A_ P$加群で,~$y\in A_ P$は可逆.また,~$y\in P_i=\sqrt{\ann M/N_i}$だから,ある$n$があって$y^n(M/N_i)=0$である.よって$y^n(M/N_i)_ P=0$で,~$y$は可逆なので$(M/N_i)_ P=0$である.すると,局所化は平坦だから,完全列
-	\[0\longrightarrow N_i\longrightarrow M\longrightarrow M/N_i\longrightarrow0\]
-	に対し
-	\[0\longrightarrow (N_i)_ P\longrightarrow M_ P\longrightarrow (M/N_i)_ P=0\longrightarrow0\]
-	も完全であるので$(N_i)_ P=M_ P$である.ここで$N_ P=\bigcap_i^r (N_i)_ P$であるから,~$N_ P=(N_1)_ P$であるので$f^{-1}_ P(N_ P)=f^{-1}_ P((N_1)_ P)=N_1$であることがわかった.
+	埋め込み$M/N\subset\bigoplus_{i=1}^rM/N_i$と，\ref{prop:完全列とass}により$\ass M/N\subset \bigcup_{i=1}^r\ass M/N_i=\{\nitem[r]{ P}\}$を得る．また，むだのないことから$0\neq\bigcap_{i=2}^r N_i/N$であり
+	\[\iota:\bigcap_{i=2}^rN_i/N\longrightarrow M/N_1;x+N\longmapsto x+N_1\]
+	は単射．実際$x+N_i=0$とすると$x\in N_1$である．一方$x\in\bigcap_{i=2}^r N_i$より$x\in N$となり$x+N=0$である．よって，$\emptyset\neq\ass(\bigcap_{i=2}^r N_i/N)\subset\ass (M/N_1)=\{ P_1\}$すなわち$\ass(\bigcap_{i=2}^r N_i/N)=\{ P_1\}$である．また，$\bigcap_{i=2}^r N_i/N\subset M/N$でもあるので，$ P_1\in\ass (M/N)$である．他の$ P_i$についても同様．
 \end{proof}
 
-これをイデアルに関して述べ返すと,次のようになる.
+準素分解の一意性については，極小素因子に対応する成分は一意的に定まることがわかる（後に見るように，極小でない素因子に対応する成分については一意性が言えない）．
+\begin{thm}
+	$M$を有限生成な$A$加群とし，$N=N_1\cap\dots\cap N_r$をむだのない最短準素分解，$\ass(M/N)=\{P_1,\dots,P_r\}$とおく．$P_i$が$\ass(M/N)$で極小なら$f_{P_i}:M\longrightarrow M_{P_i}$を$P_i$における局所化とすると，$N_i=f^{-1}_{P_i}(N_{P_i})$となり，$P_i$準素成分は$N$と$P_i$から一意に定まる．
+\end{thm}
+\begin{proof}
+	適当に並べ替えて$P_1$が極小であるとする．$P_i\not\subset P_1~(i\neq1)$である．よって$y\not\in P_1$かつ$y\in P_i$となる$y\in A$が存在する．このとき$(M/N_i)_{P_1}$において$y/1\in A_ P$は可逆．また，$y\in P_i=\sqrt{\ann M/N_i}$だから，ある$n$があって$y^n(M/N_i)=0$である．よって$y^n/1\cdot (M/N_i)_{P_1}=0$で，$y/1$は可逆なので$(M/N_i)_{P_1}=0$である．すると完全列；
+	\[\ses{N_i}{M}{M/N_i}\]
+	に対し；
+	\[\ses{(N_i)_{P_1}}{M_{P_1}}{(M/N_i)_{P_1}}\]
+	も完全であるので$(N_i)_{P_1}=M_{P_1}$である．ここで$N_{P_1}=\bigcap_i^r (N_i)_{P_1}=(N_1)_{P_1}$であるので，$f^{-1}_ P(N_ P)=f^{-1}_ P((N_1)_ P)=N_1$であることがわかった．
+\end{proof}
+
+これをイデアルに関して述べ返すと，次のようになる．
 \begin{cor}\label{cor:イデアルの準素分解}
-	Noether環$A$上のイデアル$I$は,有限個の準素分解$I= q_1\cap\dots\cap q_r$を持つ.この分解に無駄がなければ$P_i=\sqrt{ q_i}$は素であって,~$\ass A/I=\{\nitem[r]{P}\}$である.さらに,これが最短ならば極小素因子$P_i$に対応する準素イデアル$ q_i$は$I$と$ P_i$から一意に定まる.
+	Noether環$A$上のイデアル$I$は，有限個の準素分解$I= q_1\cap\dots\cap q_r$を持つ．この分解に無駄がなければ$P_i=\sqrt{q_i}$は素であって，$\ass (A/I)=\{\nitem[r]{P}\}$である．さらに，これが最短ならば極小素因子$P_i$に対応する準素イデアル$ q_i$は$I$と$ P_i$から一意に定まる．
 \end{cor}
 
-これより, $P\in\ass A/I$であることと, $I$の無駄のない準素分解$I=\bigcap q_i$において$\sqrt{q_i}=P$となる$i$が存在することは同値である.そこで,次のように定義しておく.
+これより，$P\in\ass (A/I)$であることと，$I$の無駄のない準素分解$I=\bigcap q_i$において$\sqrt{q_i}=P$となる$i$が存在することは同値である．そこで，次のように定義しておく．
 
 \begin{defi}[随伴素イデアル]\index{ずいはんそいである@随伴素イデアル}
-	$P\in\spec A$について$P\in\ass A/I$であるとき, $P$は$I$の\textbf{随伴素イデアル}(associated prime ideal)という. $I$に\textbf{属する素イデアル}\index{ぞくするそいである@属する素イデアル}(prime ideal belong to $I$)ともいうことがある.
+	$P\in\spec A$について$P\in\ass (A/I)$であるとき，$P$は$I$の\textbf{随伴素イデアル}(associated prime ideal)という．$I$に\textbf{属する素イデアル}\index{ぞくするそいである@属する素イデアル}(prime ideal belong to $I$)ともいうことがある．
 \end{defi}
 
-\ref{thm:assとsuppの極小元}より,随伴素イデアルのなかで極小なものは$\supp A/I=V(I)$で極小なものなので, $I$の極小素イデアルは$I$の随伴素イデアルであることに注意する.そこで$A$加群$M$については$\Min _AM=\mkset{P\in\supp_A M}{P\text{は}\supp_A M\text{で極小である}}$と定義すると;
+そこで$A$加群$M$について；
+\[\Min_A M=\mkset{P\in\supp_A M}{P\text{は}\supp_A M\text{で極小である}}\subset\ass_A M\]
+と定義すると；
 \[\Min_A A/I=\mkset{P\in V(I)}{P\text{は}V(I)\text{で極小である}}=\mkset{P\in\spec A}{P\text{は}I\text{の随伴素イデアルのなかで極小}}\]
-となる.
+となる．よって$V(I)$の極小元は$I$の準素分解に現れることがわかる．
 
-これらから次が従う.
-
-\begin{prop}\label{prop:Noether環の極小素イデアルは有限個}
-	$A$をNoether環とすると,イデアル$I$の極小素イデアルは有限個である.
-\end{prop}
-\section{Noether環続論}
-
-\label{sec:Noether環続論}
-
-Noether環がそれなりに広いクラスをなすこと,~Artin環は特殊なNoether環であることなどを見よう.
-\begin{defi}[単純]\index{たんじゅん@単純(加群)}
-	$A$加群$M\neq0$が,~$M$と0以外に部分加群を持たないとき,\textbf{単純}(simple)であるという.
-\end{defi}
-
-加群を群,部分加群を正規部分群でおきかえたとき,そのような群を単純群という.
-\begin{defi}
-	$A$加群$M$の部分加群の列
-	\[M=M_0\supset M_1\supset\dots\supset M_r=0\]
-	が,各$M_i/M_{i+1}$が単純であるとき,この列を$M$の組成列という.
-\end{defi}
-
-組成列については,~Jordan-H\uml{o}lderの定理という大定理が知られている.
-\begin{thm}[Jordan-H\uml{o}lder]\index{#Jordan-Holder@Jordan-H\uml{o}lderの定理}
-	加群$M$の任意の2つの組成列は長さが等しく,各成分も順序と同系の違いを除いて等しい.
-\end{thm}
-
-ここでは,その一部分である長さについてのみ示す.
-\begin{prop}
-	$M$が組成列を持てば,その長さは一定である.
-\end{prop}
-\begin{proof}
-	$M$の組成列の長さの最小値を$\ell(M)$とする.もし,~$M$が組成列を持たないなら$\ell(M)=\infty$とする.
-	\begin{step}
-		\item $M$の真の部分加群$N$に対し,~$\ell(N)<\ell(M)$であること.
-		
-		$M$の組成列$M=M_0\supset M_1\supset\dots\supset M_r=0$に対し,~$N_i=M_i\cap N$とおく.
-		\[N_i/N_{i+1}=(M_i\cap N_i)/(M_{i+1}\cap N)\subset M_i/M_{i+1}\]
-		より,~$M_i/M_{i+1}$が単純だから$N_i/N_{i+1}=0$または$N_i/N_{i+1}=M_i/M_{i+1}$である.すなわち$N_i$の重複を除けば,それは$N$の組成列となる.よって,~$\ell(N)\leq\ell(M)$である.また,~$\ell(N)=\ell(M)$とすると,任意の$i$に対し$N_i\neq N_{i+1}$であるから$N_i/N_{i+1}=M_i/M_{i+1}$となるので,帰納的に$N_i=M_i$を得る.よって$N=M$である.
-		
-		\item 
-		$M={M_0}'\supset{M_1}'\supset\dots\supset{M_k}'=0$を$M$の組成列とする.~Step1より$\ell(M)>\ell({M_1}')>\dots>\ell({M_k}')=0$より$\ell(M)\geq k$である.よって,~$\ell(M)$の定義から,~$\ell(M)=k$となるので,任意の組成列の長さは等しい.
-	\end{step}
-\end{proof}
-\begin{prop}\label{prop:有限な組成列の同値条件}
-	$\ell(M)$が有限であることと,~ArtinかつNoether的であることは同値.
-\end{prop}
-\begin{proof}
-	\begin{eqv}
-		\item 
-		$M_1\subset M_2\subset\dots\subset M_i\subset\cdots$を$M$の増大列とする.各$M_i$について$\ell(M_i)<\ell(M_{i+1})<\ell(M)$で,~$\ell(M)$が有限なので,これは必ず停まる.減少列は明らかである.
-		\item 
-		$M_0=M$とし,~$M$の真部分加群の中で極大なものを$M_1$とする.同様に$M_i$を$M_{i-1}$の真部分加群で極大なものとしてとる.~$M$のDCCから,これは必ずある$n$で$M_n=0$となり停まる.ここで
-		\[M=M_0\supset M_1\supset\dots\supset M_i\supset\dots\supset M_n=0\]
-		は組成列.実際,~$N\subset M_i/M_{i+1}$がとれるとすると$M_{i+1}\subset N\oplus M_{i+1}\subset M_i$となり,~$N=0$または$N=M_i/M_{i+1}$である.よって,~$M_i/M_{i+1}$は単純である.
-	\end{eqv}
-\end{proof}
-\begin{prop}\label{prop:Artin的なベクトル空間はNoether}
-	体$K$上のベクトル空間$V$について, Artin的であることとNoether的であることは同値である.
-\end{prop}
-\begin{proof}
-	まず,~$V$が有限次元であると仮定すると,~$V$の基底$\{\nitem{u}\}$に対して$V_n=\sum Ku_i$とすると,これは組成列をなすから,\ref{prop:有限な組成列の同値条件}より,~$V$はArtinかつNoether的である.よって,~Noether的(resp.Artin的)ならば$V$が有限次元であることを示せば,~$V$はArtin的(resp.Noether的)であることが従う.
-	
-	背理法で示す.~$V$が無限次元であるとすると, $V$の一次独立な元の無限列$\{x_i\}_{i\in\N}$が存在する.このとき,~$U_n=(x_1,x_2,\dots,x_n),V_n=(x_{n+1},x_{n+2},\dots)$によって生成される部分空間とすると,それぞれ無限な真増加列と減少列をなすので,~$V$がArtin的(Noether的)であることに矛盾.よって示された.
-\end{proof}
-\begin{thm}[秋月,1935]\label{thm:秋月}
-	Artin環はNoether環である.
-\end{thm}
-\begin{proof}
-	$A$をArtin環とする.まず,~$A$の極大イデアルは有限個であった(\ref{prop:Artinの素イデアル}).~$ P_1,\dots, P_r$を$A$のすべての極大イデアルとする.~$I= P_1 P_2\dots P_r=\rad(A)$とおく.~DCCより$I\supset I^2\supset\cdots$は有限で停まるので,ある$s$がとれて$I^s=I^{s+1}$となる.~$J=\ann(I^s)$とおくと	
-	\[(J:I)=((0:I^s):I)=(0:I^{s+1})=J\]
-	である.ここで$J=A$を示す.
-	
-	$J\neq A$と仮定する.すると,~$J$より真に大きいイデアルのなかで極小な$J'$がとれる.ここで$x\in J'-J$とすると$Ax\subset J'$であり,~$Ax+J$は$J$より真に大きいイデアルとなる.よって$J'$の作り方から$J'=Ax+J$である.いま,~$(J:I)=J$より$IJ=J$である.~$J'\neq 0$なので,~NAKから$IJ'=Ix+IJ=Ix+J\neq J$となり,~$J\subset IJ'\subsetneq J'$より,極小性から$Ix+J=J$である.ゆえに$Ix\subset J$であるが,これは$x\in(J:I)=J$を意味し,~$x\in J'-J$に矛盾.よって$J=A$である.
-	
-	ここで,イデアルの減少列;\displaystar
-	\[\label{eq:秋月}
-	A\supset P_1\supset P_1 P_2\supset\dots\supset P_1 P_2\dots P_{r-1}\supset I\supset I P_1\supset\dots\supset I^2\supset\dots\supset I^s=0\]
-	を考える.短完全列
-	\[0\longrightarrow P_1\longrightarrow A\longrightarrow A/ P_1\longrightarrow 0\]
-	を考えると,~$A$がArtin的なので$A/ P_1$と$ P_1$もArtin的.同様に,~(\ref{eq:秋月})の隣り合う2項をそれぞれ$M,M P_1$とすると$M/M P_1$がArtin的で,体$A/ P_1$上のベクトル空間なので,~\ref{prop:Artin的なベクトル空間はNoether}より$M/M P_1$はNoether的.すると,特に$M=I^{s-1} P_1 P_2\dots P_{r-1}$に対し$M/M P_r=M$がNoether的なので,帰納的に$A$もNoether的であることがわかる.
-\end{proof}
-
-可換環について示したのは秋月(1935)であり,~Hopkins(1939)は非可換環に対して証明した.加群については,秋月-Hopkins-Levitzkiの定理などが知られている（前述のように,~Artin的だがNoether的でない加群は存在するが,ある環上の加群ではACCとDCCが同値であることを示している）.
-
-\begin{prop}\label{prop:faithfulでNoetherな加群があればNoether環}
-	忠実かつNoether的な加群を持つ環はNoether環である.
-\end{prop}
-\begin{proof}
-	$M$を忠実なNoether加群とする.特に$M$は有限生成で,ある$n\in\N$が存在して$M=Ax_1+\dots+Ax_n$とかける.すると
-	\[\varphi:A\longrightarrow M^n;a\longmapsto(ax_1,\dots,ax_n)\]
-	は準同型で,~$\ker\varphi=\ann(M)$であるので,~$\ker\varphi=0$となり,~$\varphi$は単射.よって$A$はNoether加群$M^n$の部分加群と同型なので,~$A$はNoether加群である.
-\end{proof}
-\begin{thm}[\citealp{formanek}]
-	$A$を環とし,~$B$を有限生成かつ忠実な$A$加群とする.~$A$のイデアル$I$に対し,~$IB$の形の部分加群のなす集合が極大条件を満足すれば,~$A$はNoether環である.
-\end{thm}
-\begin{proof}
-	背理法で示す.~$B$がNoether的でないとする.すると
-	\[0\in\Sigma=\mkset{IB}{I\text{は}A\text{のイデアルで,~}B/IB\text{はNoether的でない}}\neq\emptyset\]
-	より,仮定から極大元$IB$がとれる.~$\bar{B}=B/IB,\bar{A}=A/\ann(\bar{B})$とすると,対応定理から0でない$\bar{A}$の任意のイデアル$\bar{J}$に対し$\bar{B}/\bar{J}\bar{B}$は$\bar{A}$加群としてNoether的である（$\bar{J}$は$\bar{A}$のイデアルなので$I\subset J$より$B/JB$がNoether）.また,~$\bar{A},\bar{B}$は定理の仮定を満たす（$\bar{A},\bar{B}$は$\Sigma$の極大元を$0$になるように潰したものと考えることができる）.
-	
-	次に,~$\Gamma=\mkset{N}{N\text{は}\bar{B}\text{の部分加群,~}\bar{B}/N\text{は忠実}}$とおくと,~$\bar{B}/N$が忠実であることは,~$\bar{B}$の生成系$\{\nitem{u}\}$に対し,任意の0でない$x\in A$が$xu_i\not\in N$を満たすことであるので,~$\Gamma$は帰納的順序集合をなす.~Zornの補題から極大元$N_0$がとれる.ここで,~$\bar{B}/N_0$がNoether的であるとすると,~\ref{prop:faithfulでNoetherな加群があればNoether環}から$\bar{A}$はNoether的となる.よって$\bar{B}$は有限生成だからNoether的となり,仮定に反するので$\bar{B}/N_0$はNoether的でない.~$\bar{B}'=\bar{B}/N_0$とおくと,次の性質を満たす（これも$\Gamma$の極大元を0にすることに相当する）.
-	\begin{sakura}
-		\item $\bar{B}'$は$\bar{A}$加群としてNoether的でない.
-		\item $I$が0でない$\bar{A}$のイデアルなら,~$\bar{B}'/I\bar{B}'$はNoether的.
-		\item $N$が0でない$\bar{B}'$の部分加群なら,~$\bar{B}'/N$は$A$加群として忠実でない.
-	\end{sakura}
-	
-	ここで,~$N$を任意の$\bar{B}'$の部分加群とする.~(iii)より,ある0でない$x\in\bar{A}$が存在して$x(\bar{B}'/N)=0,~$すなわち$x\bar{B}'\subset N$である.すると,~(ii)より$\bar{B}'/x\bar{B}'$はNoether的だから,その部分加群$N/x\bar{B}'$は有限生成で,~$x\bar{B}'$も有限生成なので$N$も有限生成.よって$\bar{B}'$はNoether加群となるが,これは(i)に矛盾している.
-\end{proof}
-\begin{cor}[Eakin-永田,1968]\index{#Eakinながた@Eakin-永田の定理}
-	$B$はNoether環,~$A$をその部分加群とする.~$B$が$A$上有限生成なら,~$A$はNoether環である.
-\end{cor}
-\begin{cor}[\citealp{bjork}]
-	\begin{sakura}
-		\item $B$を右イデアルについてACCが成り立つ非可換環,~$A$を$B$の可換な部分加群とする.~$B$が左$A$加群として有限生成なら,~$A$はNoether環である.
-		\item $B$を両側イデアルについて極大条件をみたす非可換環,~$A$を$B$の中心に含まれる部分環とする.~$B$が$A$加群として有限生成ならば,~$A$はNoether環である.
-	\end{sakura}
-\end{cor}
+これら素因子の概念は環の素イデアルの挙動，特に\textbf{次元論}において目覚ましい活躍を見せる．次の章では環の拡大を考察し，環の\textbf{次元}を定義しよう．

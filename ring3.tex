@@ -38,7 +38,7 @@
 		\item	$x\in B$は$A$上で整である.
 		\item	$A[x]$は$A$加群として有限生成である.
 		\item	有限生成$A$加群$C\subset B$が存在して, $A[x]\subset C$が成り立つ.
-		\item	$A$上有限生成な$A[x]$加群$M$であって,任意の$f\in A[x]$について, 任意の$m\in M$に対し$fm=0$ならば$f=0$を満たすものが存在する.
+		\item	$A$上有限生成な$A[x]$加群$M$であって,任意の$f\in A[x]$について, 任意の$m\in M$に対し$fm=0$ならば$f=0$を満たすものが存在する（有限生成で忠実な$A[X]$加群が存在する）.
 	\end{sakura}
 \end{prop}
 \begin{proof}
@@ -148,12 +148,14 @@
 
 以下の命題より整閉整域は正規環である.
 \begin{prop}\label{prop:整域の整閉性はlocal}
-	$A$を整域とすると, $A$が整閉であることと,任意の$P\in\spec A$について$A_P$が整閉であることは同値.
+	$A$を整域とすると, $A$が整閉であることと,$A$が正規環であることは同値.
 \end{prop}
 
 \begin{proof}
 	$\bar{A}_{\Frac A}=A$であることは,自然な包含射$\iota:A\to \bar{A}_{\Frac A}$が全射であることと同値である.さて\ref{lem:整閉包の局所化}より$S^{-1}\bar{A}_{\Frac A}=\bar{S^{-1}A}_{\Frac A}$である.\ref{prop:局所的性質}より$\iota$が全射であることと$\iota$の局所化$A_P\to (\bar{S^{-1}A}_{\Frac A})_P$が全射であることは同値だから主張が従う.
 \end{proof}
+
+整域においては整閉性と正規性は同値だが，整域でない正規環が存在することに注意が必要である．$A_1,A_2$を整閉整域とし，直積$A=A_1\times A_2$の素イデアルによる局所化を考えよう．$P\times A_2\in\spec A$について，$A_{P\times A_2}$は${A_1}_{P}$と同型である．$\spec A$は$P_1\times A_2~(P_1\in\spec A_1), A_1\times P_2~(P_2\in\spec A_2)$のみからなるので，$A$は整域でない正規環である．\TODO[正規環は有限この整閉整域の直積らしいよ]
 
 \section{超越次数}
 体の理論において,拡大の次数を考えることができたことを思い出そう.一般の環拡大について同様の概念を考えたい.少し条件を制限して,整域$A$について全商環を考えるとこれは体になる.これを使って整域の拡大,とくに体上の有限型の代数について考えよう.
@@ -281,7 +283,7 @@ Zariskiの補題の直接の応用の一つとして, Hilbertの零点定理（\
 		\[A\supset P_1\supset P_1P_2\supset\dots\supset P_1P_2\dots P_n=0\]
 		を考えると,~$A$がNoether的なので\ref{thm:秋月}の証明と同様に,隣り合う2項の剰余加群;
 		\[M_i=P_1\dots P_i/P_1\dots P_{i-1}\]
-		はNoether的. $M_i$は体$A/P_i$上の加群なので,\ref{prop:Artin的なベクトル空間はNoether}より$M_i$はArtin的である.帰納的に$A$もArtin的である.
+		はNoether的. $M_i$は体$A/P_i$上の加群なので,\ref{prop:Artinなベクトル空間はNoether}より$M_i$はArtin的である.帰納的に$A$もArtin的である.
 	\end{proof}
 	
 	ここで,次元と関連したイデアルの情報を定義しておこう.
