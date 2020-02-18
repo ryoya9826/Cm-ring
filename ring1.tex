@@ -226,7 +226,7 @@ Noether環は次の同値条件を持つので，どれを定義にしても良�
 	を満たす環をArtin\textbf{環}という．
 \end{defi}
 
-昇鎖条件，降鎖条件はそれぞれACC (Ascending Chain Condition)，DCC (Dscending Chain Condition)と略される．
+昇鎖条件，降鎖条件はそれぞれACC (Ascending Chain Condition), DCC (Dscending Chain Condition)と略される．
 
 \begin{prop}
 	$A$がNoether (Artin)なら，任意のイデアル$I$について$A/I$もNoether (Artin)である．
@@ -433,7 +433,7 @@ M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3\nxcell0
 	M\times N\arrow[r,"\varphi"]\arrow[d,"\tau"]&L\\
 	M\otimes_A N\arrow[ur,"f",dashed]
 	\end{tikzcd}
-	\caption{テンソル積の普遍性}\label{fig:tensor}
+	\caption{テンソル積の普遍性}
 \end{figure}
 
 \begin{proof}[\textbf{テンソル積の存在証明}]
@@ -640,29 +640,18 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 
 これによって次の命題が示せる（証明はかんたんである）．
 \begin{prop}\label{prop:局所化はいろんな操作と可換}
-	局所化は有限和，有限個の共通部分，剰余環をとる操作と可換である．すなわち，$A$加群$M$とその部分加群$N，P$について；
+	局所化は有限の和，共通部分，剰余環，根基をとる操作と可換である．すなわち，$A$加群$M$とその部分加群$N，P$またイデアル$I$について；
 	\begin{sakura}
 		\item $S^{-1}(N+P)=S^{-1}(N)+S^{-1}(P)$
 		\item $S^{-1}(N\cap P)=S^{-1}(N)\cap S^{-1}(P)$
 		\item $S^{-1}(M/N)\cong (S^{-1}M)/(S^{-1}N)$
-		\item $M$が有限生成ならば$S^{-1}(\ann M))=\ann(S^{-1}M)$が成り立つ．
+		\item $S^{-1}(\sqrt{I})=\sqrt{S^{-1}I}$
+		\item $M$が有限生成ならば$S^{-1}(\ann M)=\ann(S^{-1}M)$が成り立つ．
 	\end{sakura}
 	が成り立つ．
 \end{prop}
 \begin{proof}
-	(iv)のみ示す．$M$の生成元の個数$n$についての帰納法を用いる．
-	\begin{step}
-		\item $n=1$のとき．
-		
-		$I=\ann M$とおくと，$A/I\cong M$である．\ref{prop:局所化はいろんな操作と可換}から$S^{-1}M=(S^{-1}A)/(S^{-1}I)$だから$\ann (S^{-1}M)=S^{-1}(I)=S^{-1}(\ann M)$である．
-		
-		\item $n-1$まで正しいとする．
-		
-		$M$の生成系を$\{u_1，\dots，u_n\}$とする．このとき帰納法の仮定と\ref{prop:局所化はいろんな操作と可換}から;
-		\[\begin{aligned}S^{-1}(\ann (M))=S^{-1}(\ann(Au_1)\cap\ann (Au_2+\dots+Au_n)=S^{-1}(\ann (Au_1))\cap S^{-1}(\ann (Au_2+\dots+Au_n))\\
-		=\ann (S^{-1}Au_1)\cap\ann(S^{-1}Au_2+\dots+Au_n)=\ann (S^{-1}Au_1+Au_2+\dots+Au_n)=\ann (S^{-1}M)\end{aligned}\]
-		となり，主張が従う．
-	\end{step} 
+	(i)から(iv)はかんたんであり，(v)については$M$の生成元の個数$n$についての帰納法を用いる．
 \end{proof}
 
 \begin{cor}\label{prop:イデアル商は局所化と可換}
@@ -673,7 +662,7 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 \end{proof}
 
 また，局所化は平坦な加群の例を与える（自然な$A\to S^{-1}A$により$S^{-1}A$を$A$加群と見ている）．
-\begin{prop}\label{prop:局所化は平坦}
+\begin{prop}
 	$S^{-1}A$は平坦である．とくに$S^{-1}A\otimes_A M\cong S^{-1}M$である．
 \end{prop}
 
@@ -722,7 +711,7 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 	は完全．ここで$(\ker\varphi)_{\ideal{m}}=\ker\varphi_{\ideal{m}}=0$であるので，\ref{prop:局所化したら0は局所的}より$\ker\varphi=0$すなわち$\varphi$は単射である．
 \end{proof}
 
-\section{$\spec A$の幾何構造の概略}
+\section{Spec Aの幾何構造の概略}
 
 可換環論においては素イデアルが非常に重要な働きをする．というのも素イデアル全体のなす集合$\spec A$を幾何的な対象として捉えることができるからである．そこでこの節ではある程度の$\spec A$の幾何的な意味について説明する．
 
@@ -783,7 +772,7 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 \end{proof}
 
 環$A$と$P\in\spec A$について$P$による局所化を施すと$P$に含まれていない素イデアルは取り除かれる．また，$P$による剰余を施すと$P$を含んでいない素イデアルは取り除かれていた．これを組み合わせることによって，$A$の$P$以外の素イデアルを取り除くことができる．
-\begin{defi}[剰余体]\index{じょうよたい@剰余体}\index{じょうよたい@剰余体}\label{defi:剰余体}
+\begin{defi}[剰余体]\index{じょうよたい@剰余体}\index{じょうよたい@剰余体}
 	環$A$と素イデアル$P$について，体$A_P/PA_P$を$K(P)$とかいて，$A$の$P$における\textbf{剰余体}(residue field)という．
 \end{defi}
 
@@ -981,18 +970,33 @@ $A$加群の完全列；
 	$\{A_i\}_{i\in I}$を環の族とする．集合としての直積$\prod_{i\in I} A_i$には，各成分ごとの和，積を考えることで環構造が入る．これを\textbf{直積環}(product ring)という．$\prod A_i$の元で，第$i$成分が$1$であり，それ以外の成分は$0$であるものを$e_i$とかく．
 \end{defi}
 
-単位元はすべての成分が$1$である元であり，各$A_i$が可換ならば直積も可換になる．また，$e_i$たちはベキ等元であることに注意しよう．第$i$成分が$a_i\in A_i$であり，それ以外の成分が$1$である元を$a_i$と同一視することで，自然な単射$A_i\to\prod A_i$が存在する．
+単位元はすべての成分が$1$である元であり，各$A_i$が可換ならば直積も可換になる．また，$e_i$たちはベキ等元であることに注意しよう．この元を考えることで，直積について次が成り立つことがわかる．
 
-\begin{lem}
+\begin{prop}
 	直積環$\prod A_i$は整域になり得ない．
-\end{lem}
+\end{prop}
 
 \begin{proof}
-	$x=(1,0,\dots,0),y=(0,1,0,\dots,0)$とするとどちらも0でなく，$xy=0$である．
+	$i\neq j$とすると$e_i,e_j$はどちらも0でなく，$e_ie_j=0$である．
 \end{proof}
 
-主に有限直積，とくに2つの環の直積であるときを考えよう(3つ以上のときは$A_1\times A_2\times A_3=(A_1\times A_2)\times A_3$であるから同様に議論できる)．
+実際にある環が直積であることを与える例として（それだけでなく，初等整数論における定理の一般化として）つぎの\textbf{中国剰余定理}(Chinese Remainder Theorem)が有名である．
 
+\begin{thm}[中国剰余定理]\index{ちゅうごくじょうよていり@中国剰余定理}\label{thm:中国剰余定理}
+	$A$を環とし，$I_1,\dots,I_r$を$A$のイデアルとする．どの$k\neq l$についても$I_k,I_l$が互いに素，すなわち$I_k+I_l=A$を満たすならば，次の準同型；
+	\[\varphi:A/\cap_{k=1}^rI_k\to A/I_1\times\dots\times A/I_r;a+\bigcap I_k\mapsto (a+I_1,\dots,a+I_r)\]
+	は環同型である．
+\end{thm}
+
+\begin{proof}
+	まず$r=2$のときに示す．$\varphi$の単射性は明らかなので，全射性について議論しよう．任意の$(a+I_1,b+I_2)\in A/I_1\times A/I_2$をとる．$I_1+I_2=A$なので，ある$x_1\in I_1,x_2\in I_2$が存在して$x_1+x_2=1$である．このとき$(bx_1+ax_2)+I_1=ax_2+I_1=a(1-x_1)+I_1=a+I_1$である．$I_2$についても同様．よって$\varphi(bx_1+ax_2+I_1\cap I_2)=(a+I_1,b+I_2)$である．これより同型$A/(I_1\cap I_2)=A/I_1\times A/I_2$が示された．
+	
+	イデアルが３つ以上の場合には，$I_1\cap I_2$と$I_3$も互いに素になる．実際$x_1+x_3=1,x_2+x_3'=1$となる$x_1\in I_1,x_2\in I_2,x_3,x_3'\in I_3$をとると；
+	\[x_1x_2+(x_2x_3+x_1x_3'+x_3x_3')=1\quad(x_1x_2\in I_1\cap I_2, (x_2x_3+x_1x_3'+x_3x_3')\in I_3)\]
+	である．よって$A/(I_1\cap I_2\cap I_3)\cong A/I_1\times A/I_2\times A/I_3$となり，以下帰納的に続ければよい．
+\end{proof}
+
+主に有限直積，とくに2つの環の直積であるときを考えよう（3つ以上のときは$A_1\times A_2\times A_3=(A_1\times A_2)\times A_3$であるから同様に議論できる）．
 
 \begin{prop}
 	$A$を環とすると，次は同値である．
@@ -1009,7 +1013,7 @@ $A$加群の完全列；
 \end{proof}
 
 さて，環の直積$\prod A_i$があったとき，自然な射影$\pi_i:\prod A_i\to A_i$が存在する．これは環の全準同型であり，スキームの閉移入$\pi_i^\ast:\spec A_i\to\spec\prod A_i;P\mapsto \pi^{-1}(P)$を与える（幾何的にはこれはスキームの閉移入になる）．これによって有限直積については$\spec$の構造を決定できる．素イデアルの直積は素イデアルにならないことに注意しよう．
-\begin{prop}
+\begin{prop}\label{prop:直積環のspec}
 	$A_1,A_2$を環とする．$\spec (A_1\times A_2)$は，$P_1\in\spec A_1$と$P\times \spec A_2$を，$P_2\in\spec A_2$と$A_1\times P_2$を同一視することで$\spec A_1\sqcup\spec A_2$と一致する．
 \end{prop}
 
@@ -1134,7 +1138,7 @@ Prime avoidance，素イデアル避けという名前の由来は対偶；
 \[\{P_i\}\text{に対して，すべての}i\text{について}I\not\subset P_i\text{ならば}I\not\subset\bigcup_{i=1}^n P_i\]
 に由来する．
 \begin{proof}
-	反例$I,P_1,\dots, P_n$があるとする．そのなかでも$n$が最小なものを取ろう．$n=1$ではありえないので$m\geq 2$である．
+	反例$I,P_1,\dots, P_n$があるとする．そのなかでも$n$が最小なものを取ろう．$n=1$ではありえないので$n\geq 2$である．
 	
 	\begin{sakura}
 		\item $n=2$のとき．

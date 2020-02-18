@@ -1,134 +1,131 @@
 \part[Homological method to ring theory]{可換環論のホモロジー代数的手法}
-前章で定義した射影分解, $\Tor,\Ext$などの道具を使って,可換環の理論にホモロジー代数的手法を持ち込もう.
-\section{射影次元と射影被覆}
+前章で定義した射影分解，$\Tor,\Ext$などの道具を使って可換環の理論にホモロジー代数的手法を持ち込もう．
+\section{射影被覆と入射包絡}
 \begin{defi}[射影次元]\index{しゃえいじげん@射影次元}
-	$M$を$A$加群とする. $M$の射影分解の長さの最小値を$M$の\textbf{射影次元}(projective dimension)といい, $\prjdim_A M$とかく.
+	$M$を$A$加群とする．$M$の射影分解の長さの最小値を$M$の\textbf{射影次元}(projective dimension)といい，$\prjdim_A M$とかく．
 \end{defi}
 
-$\dim A$は素イデアル鎖の長さの$\sup$で定義したが,射影次元は最小の長さと定義する. $\prjdim M=0$であることと$M$が射影的であることは同値.
+$\dim A$は素イデアル鎖の長さの$\sup$で定義したが，射影次元は最小の長さと定義する．$\prjdim M=0$であることと$M$が射影的であることは同値．
 
 \begin{ex}
-	$x\in A$を単元でも零因子でもないとする. $M=A/Ax$とおくと;
+	$x\in A$を単元でも零因子でもないとする．$M=A/Ax$とおくと；
 	\[\ses[x]{A}{A}{M}\]
-	が射影分解となり$\prjdim M=1$である.
+	が射影分解となり$\prjdim M=1$である．
 \end{ex}
 
-この例で$x$が冪零,特に$x^2=0$なら$x$倍写像$A\to A$の核が$Ax\cong M$であるので;
+この例で$x$が冪零，例えば$A=\R[X]/(X^2),x=X+(X^2)$なら$x$倍写像$A\to A$の核が$Ax\cong M$であるので；
 \[\begin{tikzcd}
 	\dots\nxcell A\nxcell[x]A\nxcell[x] A\nxcell M\nxcell0
 \end{tikzcd}\]
-が無限に続く射影分解となる.ここから$\projdim M=\infty$を言えるかというと,そうではない.長さが極小になるような（本質的な）射影分解を考えよう.
+が無限に続く射影分解となる．ここから$\projdim M=\infty$を言えるかというと，そうではない．長さが極小になるような（本質的な）射影分解を考えよう．
 
 \begin{defi}[射影被覆]\index{しゃえいひふく@射影被覆}\index{よじょうかぐん@余剰加群}
-	$A$加群$M$の部分加群$N$が;
-	\[\text{任意の$M$の部分加群$L$について$N+L=M$なら$L=M$.}\]
-	を満たすとき, $N$を$M$の\textbf{余剰部分加群}(superfluous submodule)という. $A$加群$M$について射影加群$P$と全射$\varepsilon:P\to M$が存在して$\ker\varepsilon$が$P$の余剰加群のとき, $P,\varepsilon$は$M$の\textbf{射影被覆}(projective cover)であるという. 
+	$A$加群$M$の部分加群$N$が；
+	\[\text{任意の$M$の部分加群$L$について$N+L=M$なら$L=M$．}\]
+	を満たすとき，$N$を$M$の\textbf{余剰部分加群}(superfluous submodule)という．$A$加群$M$について射影加群$P$と全射$\varepsilon:P\to M$が存在して$\ker\varepsilon$が$P$の余剰加群のとき，$P,\varepsilon$は$M$の\textbf{射影被覆}(projective cover)であるという．
 \end{defi}
-
-余剰加群の定義における$+$は$M/N$の元を$a+N$と書くことがあるのと同様の意味である.すなわち$N+L=\mkset{x+y}{x\in N,y\in L}$である.
 
 \begin{lem}\label{lem:余剰加群の補題}
 	加群の準同型の列（完全性は仮定しない）$\begin{tikzcd}
 	M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3
-	\end{tikzcd}$について, $\psi\circ\varphi$が全射であるとする. $\ker\psi $が$M_2$の余剰加群なら$\varphi$も全射である.
+	\end{tikzcd}$について, $\psi\circ\varphi$が全射であるとする． $\ker\psi $が$M_2$の余剰加群なら$\varphi$も全射である．
 \end{lem}
 
 \begin{proof}
-	任意の$x\in M_2$についてある$x_1\in M_1$が存在して$\psi(\varphi(x_1))=\psi(x)$である.このとき$\varphi(x_1)-x\in\ker\psi$なので$M_2=\varphi(M_1)+\ker\psi$である.よって仮定から$M_2=\varphi(M_1)$となる.
+	任意の$x\in M_2$についてある$x_1\in M_1$が存在して$\psi(\varphi(x_1))=\psi(x)$である．このとき$\varphi(x_1)-x\in\ker\psi$なので$M_2=\varphi(M_1)+\ker\psi$である．よって仮定から$M_2=\varphi(M_1)$となる．
 \end{proof}
 
 \begin{prop}
-	$M$を$A$加群とし, $M$の射影被覆$\varepsilon:P\to M$が存在したとする. 射影加群$P'$への全射$\varepsilon':P'\to M$に対して分裂全射$f:P'\to P$が存在して,次の図式;
+	$M$を$A$加群とし，$M$の射影被覆$\varepsilon:P\to M$が存在したとする．射影加群$P'$への全射$\varepsilon':P'\to M$に対して分裂全射$f:P'\to P$が存在して，次の図式；
 	\[\begin{tikzcd}
 		P'\arrow[dd,"f",swap]\arrow[dr,"\varepsilon'"]\\[-1.5em]
 		&M\nxcell0\\[-1.5em]
 		P\arrow[ur,"\varepsilon"]
 	\end{tikzcd}\]
-	が可換（$P'$は$P$と同型な直和因子を持つ）.
+	が可換（$P'$は$P$と同型な直和因子を持つ）．
 \end{prop}
 
 \begin{proof}
-	可換になる$f$の存在は$P'$が射影的であることから従う.いま$\varepsilon\circ f$が全射で$\ker\varepsilon$が余剰加群なので,補題より$f$も全射である.また$P$も射影的であるから,次の図式;
+	可換になる$f$の存在は$P'$が射影的であることから従う．いま$\varepsilon\circ f$が全射で$\ker\varepsilon$が余剰加群なので，補題より$f$も全射である．また$P$も射影的であるから，次の図式；
 	\[\begin{tikzcd}
 		P\arrow[d,"g"]\arrow[rd,"\id"]\\
 		P'\nxcell[f]P\nxcell0
 	\end{tikzcd}\]
-	が可換になる$g:P\to P'$が存在し$f$は分裂全射である.
+	が可換になる$g:P\to P'$が存在し$f$は分裂全射である．
 \end{proof}
 
-この命題より射影被覆は\textbf{存在すれば}同型を除いて一意である.また,同様の議論で$M\cong M'$であり$P,P'$がそれぞれ$M,M'$の射影被覆なら$P\cong P'$である.
+この命題より射影被覆は\textbf{存在すれば}同型を除いて一意である．また，同様の議論で$M\cong M'$であり$P,P'$がそれぞれ$M,M'$の射影被覆なら$P\cong P'$である．
 
 \begin{defi}[極小射影分解]\index{きょくしょうしゃえいぶんかい@極小射影分解}
-	$A$加群$M$の射影分解;
+	$A$加群$M$の射影分解；
 	\[\begin{tikzcd}
 		\dots\nxcell P_2\nxcell[d_2]P_1\nxcell[d_1]P_0\nxcell[d_0]0
 	\end{tikzcd}\]
-	について,各$d_i:P_i\to\ker d_{i-1}$が射影被覆であるとき\textbf{極小射影分解}(minimal projective resolution)であるという.
+	について，各$d_i:P_i\to\ker d_{i-1}$が射影被覆であるとき\textbf{極小射影分解}(minimal projective resolution)であるという．
 \end{defi}
 
-極小射影分解は存在すれば同型を除いて一意である.よって冒頭の２つめの例に戻ると,この分解が極小射影分解を与えていることを見ればよい.それには$Ax$が$A$の余剰部分加群であることを示せば十分である. $A$のイデアル$I$について$Ax+I=A$であるとすると, $x$は冪零なので$Ax\subset\nil (A)\subset\rad(A)$であるので,中山の補題から$I=A$である.よって$\projdim M=\infty$が示された.
+極小射影分解は存在すれば同型を除いて一意である．よって冒頭の２つめの例に戻ると，この分解が極小射影分解を与えていることを見ればよい．それには$Ax$が$A$の余剰部分加群であることを示せば十分である．$A$のイデアル$I$について$Ax+I=A$であるとすると，$x$は冪零なので$Ax\subset\nil (A)\subset\rad(A)$であるので，中山の補題から$I=A$である．よって$\projdim M=\infty$が示された．
 
-しかし一般には極小射影分解（射影被覆）が存在するとは限らないことに注意しなければならない.例えば$\Z/m\Z$について;
+しかし一般には極小射影分解（射影被覆）が存在するとは限らないことに注意しなければならない.例えば$\Z/m\Z$について；
 \[\ses[m]{\Z}{\Z}{\Z/m\Z}\]
-は$\Z/m\Z$の射影分解を与えるが,これは$m\Z$が$\Z$の余剰部分加群でないので極小射影分解ではない.これより$\projdim \Z/m\Z=1$である（$\Z/m\Z$は射影$\Z$加群でない）.するともし極小射影分解が存在すれば;
+は$\Z/m\Z$の射影分解を与えるが，これは$m\Z$が$\Z$の余剰部分加群でないので極小射影分解ではない．これより$\projdim \Z/m\Z=1$である（$\Z/m\Z$は射影$\Z$加群でない）．するともし極小射影分解が存在すれば；
 \[\ses[d_1][\varepsilon]{P_1}{P_0}{\Z/m\Z}\]
-という形をしているが,このとき$\varepsilon$は分裂全射なので$P_0$は$P_1\oplus\Z/m\Z$と同型である.すると$P_1$は$\ker\varepsilon$と同型で,これは余剰加群であるから$\Z/m\Z=P_0$となり, $\Z/m\Z$が射影的となって矛盾する.
+という形をしているが，このとき$\varepsilon$は分裂全射なので$P_0$は$P_1\oplus\Z/m\Z$と同型である．すると$P_1$は$\ker\varepsilon$と同型で，これは余剰加群であるから$\Z/m\Z=P_0$となり$\Z/m\Z$が射影的となって矛盾する．
 
-双対的に入射加群について考えたものが\textbf{入射包絡}であり,こちらは必ず存在する.
+双対的に入射加群について考えたものが\textbf{入射包絡}であり，こちらは必ず存在する．
 
-\section{入射次元と入射包絡}
 \begin{defi}[入射次元]\index{にゅうしゃじげん@入射次元}
-	$M$を$A$加群とする. $M$の入射分解の長さの最小値を$M$の\textbf{入射次元}(injective dimension)といい, $\injdim_A M$とかく.
+	$M$を$A$加群とする． $M$の入射分解の長さの最小値を$M$の\textbf{入射次元}(injective dimension)といい，$\injdim_A M$とかく．
 \end{defi}
 
 \begin{defi}[入射包絡]\index{ほんしつてきかぐん@本質的加群}\index{にゅうしゃほうらく@入射包絡}
-	$A$加群$M$の部分加群$N$が;
-	\[\text{任意の$M$の部分加群$L$について$N\cap L=0$なら$L=0$}\]
-	を満たすとき, $N$を$M$の\textbf{本質部分加群}(essential submodule)という. $A$加群$M$について入射加群$I$と単射$\varepsilon:M\to I$が存在して$\im\varepsilon$が$I$の本質加群のとき, $I,\varepsilon$は$M$の\textbf{入射包絡}(injective hull)であるという.
+	$A$加群$M$の部分加群$N$が；
+	\[\text{任意の$M$の部分加群$L$について$N\cap L=0$なら$L=0$．}\]
+	を満たすとき，$N$を$M$の\textbf{本質部分加群}(essential submodule)という．$A$加群$M$について入射加群$I$と単射$\varepsilon:M\to I$が存在して$\im\varepsilon$が$I$の本質加群のとき，$I,\varepsilon$は$M$の\textbf{入射包絡}(injective hull)であるという．
 \end{defi}
 
-本質部分加群については次の判定条件が強力である.
+本質部分加群については次の判定条件が強力である．
 \begin{prop}\label{prop:本質的加群の判定条件}
-	$A$加群$M$の部分加群$N$が本質的であることと,任意の$x\neq0\in M$について$Ax\cap N\neq0$であることは同値.
+	$A$加群$M$の部分加群$N$が本質的であることと，任意の$x\neq0\in M$について$Ax\cap N\neq0$であることは同値．
 \end{prop}
 
 \begin{proof}
-	$(\Longleftarrow)$のみ示す. $N\cap L$かつ$L\neq0$とすると, $x\neq0\in L$がとれ,このとき$Ax\subset L$より$Ax\cap N\subset L\cap N=0$であるので$Ax\cap N=0$だがこれは矛盾.よって$L=0$である.
+	$(\Longleftarrow)$のみ示す．$N\cap L=0$かつ$L\neq0$とすると，$x\neq0\in L$がとれ，このとき$Ax\subset L$より$Ax\cap N\subset L\cap N=0$であるので$Ax\cap N=0$だがこれは矛盾．よって$L=0$である．
 \end{proof}
 
-\ref{lem:余剰加群の補題}の双対版を示しておこう.
+\ref{lem:余剰加群の補題}の双対版を示しておこう．
 
-\begin{lem}\label{lem:余剰加群の補題の双対}
+\begin{lem}
 	加群の準同型の列$\begin{tikzcd}
 	M_1\nxcell[\varphi]M_2\nxcell[\psi]M_3
-	\end{tikzcd}$について, $\psi\circ\varphi$が単射であるとする. $\im\varphi$が$M_2$の本質加群なら$\psi$も単射である.
+	\end{tikzcd}$について，$\psi\circ\varphi$が単射であるとする．$\im\varphi$が$M_2$の本質加群なら$\psi$も単射である．
 \end{lem}
 
 \begin{proof}
-	任意の$x\neq0\in M_2$について$\psi(x)\neq0$を言えばよい.このとき$Ax\cap\im\varphi\neq0$であるので,ある$a\in A$が存在して$0\neq ax\in\im\varphi$である.すると,ある$x_1\in M_1$が存在して$ax=\varphi(x_1)$とできる. $\psi(x)=0$と仮定すると, $0=a\psi(x)=\psi(ax)=\psi(\varphi(x_1))=0$であり$\psi\circ\varphi$が単射なので$x_1=0$となる.よって$ax=\varphi(0)=0$となりこれは矛盾.よって$\psi(x)\neq0$である.
+	任意の$x\neq0\in M_2$について$\psi(x)\neq0$を言えばよい．このとき$Ax\cap\im\varphi\neq0$であるので，ある$a\in A$が存在して$0\neq ax\in\im\varphi$である．すると，ある$x_1\in M_1$が存在して$ax=\varphi(x_1)$とできる．$\psi(x)=0$と仮定すると，$0=a\psi(x)=\psi(ax)=\psi(\varphi(x_1))$であり$\psi\circ\varphi$が単射なので$x_1=0$となる．よって$ax=\varphi(0)=0$となりこれは矛盾．よって$\psi(x)\neq0$である．
 \end{proof}
 
-これをつかって,射影被覆と双対的に次が示される.
+これをつかって，射影被覆と双対的に次が示される．
 
 \begin{prop}\label{prop:入射包絡の一意性}
-	$M$を$A$加群とし,入射包絡$\varepsilon:M\to I$が存在したとする.入射加群$I'$と単射$\varepsilon':M\to I'$について分裂単射$f:I\to I'$が存在して,次の図式;
+	$M$を$A$加群とし，入射包絡$\varepsilon:M\to I$が存在したとする．入射加群$I'$と単射$\varepsilon':M\to I'$について分裂単射$f:I\to I'$が存在して，次の図式；
 	\[\begin{tikzcd}
 		&&I\arrow[dd,"f"]\\[-1.5em]
 		0\nxcell M\arrow[ur,"\varepsilon"]\arrow[dr,"\varepsilon'"]\\[-1.5em]
 		&&I'
 	\end{tikzcd}\]
-	が可換（$I'$は$I$と同系な直和因子を持つ）.
+	が可換（$I'$は$I$と同系な直和因子を持つ）．
 \end{prop}
 
 \begin{defi}[極小入射分解]\index{きょくしょうにゅうしゃぶんかい@極小入射分解}
-	$A$加群$M$の射影分解;
+	$A$加群$M$の入射分解；
 	\[\begin{tikzcd}
-		0\nxcell I_0\nxcell[d_0]I_1\nxcell[d_1] I_2\nxcell\cdots 
+		0\nxcell I^0\nxcell[d^0]I^1\nxcell[d^1] I^2\nxcell\cdots 
 	\end{tikzcd}\]
-	について,各移入$d_i(I_i)\hookrightarrow I_{i+1}$が入射包絡のとき\textbf{極小入射分解}(minimal inductive resolution)であるという.
+	について，各移入$\im d^i\hookrightarrow I^{i+1}$が入射包絡のとき\textbf{極小入射分解}(minimal inductive resolution)であるという．
 \end{defi}
 
-極小射影分解と同様に同系を除いて一意に定まる.射影被覆と異なるのは入射包絡が必ず存在することである.
+極小射影分解と同様に同型を除いて一意に定まる．射影被覆と異なるのは入射包絡が必ず存在することである．
 
 %\begin{defi}[補部分加群]\index{ほぶぶんかぐん@補部分加群}
 %	$A$加群$M$の部分加群$N$について, $M$の部分加群$L$であって$N\cap L=0$かつ$N\oplus L$が$M$の本質部分加群になるものを$N$の\textbf{補部分加群}(complement)という.
@@ -140,30 +137,29 @@ $\dim A$は素イデアル鎖の長さの$\sup$で定義したが,射影次元�
 %\end{prop}
 %
 %\begin{proof}
-%	$M$の部分加群の族;
+%	$M$の部分加群の族；
 %	\[\mathscr{L}=\mkset{L:M\text{の部分加群}}{N\cap L=0}\]
 %	は$0\in\mathscr{L}$なので空ではなく,帰納的順序集合をなす. Zornの補題よりとれる極大元を$L$としよう.任意の$M$の部分加群$K$について, $(L+N)\cap K=0$と仮定すると, $N\cap (K+L)=0$である.すると$L$の極大性より$K+L=L$であり, $L\cap K=0$なので$K=0$である.よって$N+L$は$M$の本質部分加群である.
 %\end{proof}
 
 \begin{thm}[入射包絡の存在]
-	$A$加群$M$について,入射包絡が必ず存在する.
+	$A$加群$M$について入射包絡が必ず存在する．
 \end{thm}
 
 \begin{proof}
-	$A$加群の圏は入射的対象を十分に持つ（\ref{thm:加群の圏はhas enough injectives}）ので,入射加群$I$と単射$\varepsilon:M\to I$が存在する.次の集合;
+	$A$加群の圏は入射的対象を十分に持つ（\ref{thm:加群の圏はhas enough injectives}）ので，入射加群$I$と単射$\varepsilon:M\to I$が存在する．次の集合；
 	\[\mathscr{E}=\mkset{E:I\text{の部分加群}}{M\subset E, M\text{は}E\text{の本質部分加群}}\]
-	は$M\in\mathscr{E}$なので空ではなく,帰納的順序集合をなす.よってZornの補題から極大元がとれ,それを$E$としよう.次に;
+	は$M\in\mathscr{E}$なので空ではなく，帰納的順序集合をなす．よってZornの補題から極大元がとれ，それを$E$としよう．次に；
 	\[\mathscr{L}=\mkset{L:I\text{の部分加群}}{L\cap E=0}\]
-	は$0\in\mathscr{L}$より空でなく,帰納的順序集合なので極大元を$L$とおく.埋め込み$\iota:E\to I$と自然な全射$\pi:I\to I/L$を考える.合成$\pi\circ\iota$は単射であり, $\pi(E)$は$I/L$で本質的.実際$L\subset N\subset I$を$I$の部分加群とすると, $\pi(E)\cap N/L=0$なら$E\cap N\subset L$だが, $E\cap L=0$より$E\cap N=0$となり, $L$の極大性より$N=L$である.
+	は$0\in\mathscr{L}$より空でなく，帰納的順序集合をなすなので極大元を$L$とおく．埋め込み$\iota:E\to I$と自然な全射$\pi:I\to I/L$を考える．合成$\pi\circ\iota$は単射であり，$\pi(E)$は$I/L$で本質的．実際$L\subset N\subset I$を$I$の部分加群とすると，$\pi(E)\cap N/L=0$なら$E\cap N\subset L$だが$E\cap L=0$より$E\cap N=0$となり，$L$の極大性より$N=L$である．
 	
-	次に$E$は$\varphi(I/L)$の本質部分加群であることを示そう. $I$が入射的なので,次の図式;
+	次に$E$は$\varphi(I/L)$の本質部分加群であることを示そう．$I$が入射的なので，次の図式；
 	\[\begin{tikzcd}
 	&&I\\
 	0\nxcell E\arrow[ur,"\iota",hookrightarrow]\nxcell[\pi\circ\iota]I/L\arrow[u,dashed,"\varphi"]
 	\end{tikzcd}\]
-	が可換になる$\varphi:I/L\to I$が存在する. $\varphi(I/L)$の部分加群$N$について$E\cap N=0$であるとする.このとき$\pi(E)\cap\varphi^{-1}(N)=0$である.実際$x\in\pi(E)\cap\varphi^{-1}(N)$とすると,ある$y\in E$が存在して$\pi(y)=x$である.このとき$\varphi(\pi(y))=y\in N\cap E$より$y=0$である.ゆえに$x=0$となる.すると$\pi(E)$は$I/L$の本質部分加群なので$\varphi^{-1}(N)=0$である. $N\subset\im\varphi$だから$N=0$となる.すると$E$は$M$の本質拡大で, $\varphi(I/L)$は$E$の本質拡大なので$\varphi(I/L)$は$M$の本質拡大だから$E$の極大性より$E=\varphi(I/L)$である.よって$\iota:E\to I$は分裂単射となる.ゆえに$E$は入射加群であり,これが$M$の入射包絡にほかならない.
-
+	が可換になる$\varphi:I/L\to I$が存在する．$\varphi(I/L)$の部分加群$N$について$E\cap N=0$であるとする．このとき$\pi(E)\cap\varphi^{-1}(N)=0$である．実際$x\in\pi(E)\cap\varphi^{-1}(N)$とすると，ある$y\in E$が存在して$\pi(y)=x$である．このとき$\varphi(\pi(y))=y\in N\cap E$より$y=0$であり，ゆえに$x=0$となる．すると$\pi(E)$は$I/L$の本質部分加群なので$\varphi^{-1}(N)=0$となり$N\subset\im\varphi$だから$N=0$となる．すると$E$は$M$の本質拡大で，$\varphi(I/L)$は$E$の本質拡大なので$\varphi(I/L)$は$M$の本質拡大だから（\ref{prop:本質的加群の判定条件}を用いて確かめよ）$E$の極大性より$E=\varphi(I/L)$である．よって$\iota:E\to I$は分裂単射となる．ゆえに$E$は入射加群であり，これが$M$の入射包絡にほかならない．
 \end{proof}
 
-この定理と\ref{prop:入射包絡の一意性}より$A$加群$M$の入射包絡は同型を除いて必ず一意に存在するので$\E(M)$とかくことにしよう.
+この定理と\ref{prop:入射包絡の一意性}より$A$加群$M$の入射包絡は同型を除いて必ず一意に存在するので$\E(M)$とかくことにしよう．
 
