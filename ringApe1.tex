@@ -41,6 +41,17 @@ PIDだがEDでない環はこのように2次体の整数環についてよく�
 \end{proof}
 
 \section{次元論}
+\begin{surex}[鎖状だが$\idht P+\coht P=\dim A$が成りたたない例]\label{ex:鎖状だがht P+coht P<dim P}
+	$(R,\ideal{m})$をDVR（すなわち$1$次元Noether局所整域）とする．$A=R[X]$とすればこれは鎖状だが，$\idht P+\coht P=\dim A$を満たさない$P\in\spec A$が存在する．
+\end{surex}
+
+\begin{proof}
+	$\ideal{m}$は単項なので，$\ideal{m}=(a)$とおこう．\ref{cor:Noether多項式の次元}より$\dim A=2$である（次元論についての結果を用いることができないなら，$(0)\subsetneq (a)\subsetneq (a,X)$により$2\leq\dim A$と考えても構わない）．$P=(aX-1)$とおくと，これは$A$の極大イデアルであるが，高さ$1$である．よって；
+	\[\idht P+\coht P=1+0=1\neq 2\]
+	となり，成り立たない．
+	
+	また，DVRはDedekind整域であり，Dedekind整域はCohen--Macaulayである．Cohen--Macaulayならば強鎖状であるから，$A$は鎖状である．
+\end{proof}
 \begin{surex}[無限次元のNoether整域の例（\citealp{nagatakan}）]\label{ex:無限次元Noether環}
 	$k$を体とし，$A=k[x_1,\dots,x_n，\dots]$を可算無限個の変数をもつ多項式環とする．自然数の増加列$\{n_i\}$を，$n_i-n_{i-1}<n_{i+1}-n_i$が成り立つように取る．$P_i=(x_{n_i},\dots,x_{n_{i+1}-1})$とおく．これらは素イデアルであるから，$\bigcup P_i$の$A$における補集合を$S$とすると，これは積閉である．$S^{-1}A$は無限次元のNoether整域となる．
 \end{surex}

@@ -45,7 +45,7 @@
 		
 		\item 明らか．
 		\item $M=C$とすればよい．
-		\item $\varphi:M\to M=m\mapsto xm$は$A$加群としての自己準同型になり，$\varphi(M)=x\cdot M\subset M$より，Cayley-Hamiltonの定理（\ref{thm:Cayley-Hamilton}）を$I=A$として使うことができる．すると；
+		\item $\varphi:M\to M=m\mapsto xm$は$A$加群としての自己準同型になり，$\varphi(M)=x\cdot M\subset M$より，Cayley--Hamiltonの定理（\ref{thm:Cayley-Hamilton}）を$I=A$として使うことができる．すると；
 		\[\varphi^n+a_1\varphi^{n-1}+\dots+a_n=0\]
 		となるから，この式の左辺は$x^n+a_1x^{n-1}+\dots+a_n$倍写像であるので，忠実性から従う．
 	\end{eqv}
@@ -329,6 +329,8 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 \end{thm}
 \begin{proof}
 	Artin環$A$は$\dim A=0$のNoether環であることは見た（\ref{thm:秋月}）．$A$を次元0のNoether環とする．\ref{cor:Noether環の極小素イデアルは有限個}より$A$の極小素イデアルは有限個である．それを$\nitem[r]{P}$とする．また，$A$の次元は0なので$P_i$が$A$の素イデアルのすべてである．$\sqrt{0}=\bigcap_{i=1}^rP_i$であり，$\sqrt{0}$は$A$のイデアルだから有限生成なのである$k\in\Z_+$に対して$\sqrt{0}^k=0$である．よって，$P_1^kP_2^k\dots P_r^k\subset(\bigcap P_i)^k=\sqrt{0}^k=0$なので$P_1^kP_2^k\dots P_r^k=0$である．よって，\textbf{重複を許すことで}極大イデアル$P_1,\dots,P_n$を$P_1\dots P_n=0$となるようにできる（最大でこの中には$P_i$が$k$回ずつ現れる）．ここで，イデアルの減少列；
+
+
 	\[A\supset P_1\supset P_1P_2\supset\dots\supset P_1P_2\dots P_n=0\]
 	を考えると，$A$がNoether的なので\ref{thm:秋月}の証明と同様に，隣り合う2項の剰余加群；
 	\[M_i=P_1\dots P_i/P_1\dots P_{i-1}\]
@@ -336,11 +338,11 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 \end{proof}
 	
 ここで，次元と関連したイデアルの情報を定義しておこう．
-\begin{defi}[高さ]\index{しんど@深度(イデアル)}\index{たかさ@高さ(イデアル)}
+\begin{defi}[高さ]\index{たかさ@高さ(イデアル)}
 	$A$を環，$P$を素イデアルとする．
 	\[\idht P=\sup\mkset{r\in\Z}{P=P_0\supsetneq P_1\supsetneq\dots\supsetneq P_r:\text{素イデアルの真減少列}}\]
 	\[\coht P=\sup\mkset{r\in\Z}{P=P_0\subsetneq P_1\subsetneq\dots\subsetneq P_r:\text{素イデアルの真増大列}}\]
-	を，それぞれ素イデアル$P$の\textbf{高さ（高度）}，\textbf{余高度}(height，coheight)という．coheightのことを\textbf{深度}(depth)ということもある．一般のイデアル$I$については；
+	を，それぞれ素イデアル$P$の\textbf{高さ（高度）}，\textbf{余高度}(height，coheight)という．coheightのことを\textbf{深さ}(depth)ということもある．一般のイデアル$I$については；
 	\[\idht I=\min\mkset{\idht P}{P\in V(I)}\]
 	で$I$の高さを定義する．
 \end{defi}
@@ -367,7 +369,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	\end{sakura}
 \end{proof}
 	
-この命題の(iii)の不等式がいつ成り立つか，というのは重要な命題である．それについての一つの結果が\ref{thm:次元公式}である．
+この命題の(iii)の不等式がいつ成り立つか，というのは重要な命題である．それについての一つの結果が\ref{prop:DIM}である．
 
 ここでは次の定理により，具体的な環の次元を計算する方法の１つを紹介しよう．
 
@@ -396,6 +398,23 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 \begin{cor}\label{cor:多項式環の次元}
 	$\dim K[\nitem{X}]=n$である．また，$n\neq m$なら$K[\nitem{X}]$と$K[\nitem[m]{X}]$は同型ではない．
 \end{cor}
+
+環の次元$\dim A$は幾何的には$\spec A$の次元である．加群の次元については$\supp M$の（幾何的な）次元をもって定義しよう．$A$加群$M$が有限生成なら$V(\ann M)=\supp M$である（\ref{prop:Zariskiの閉集合とsupp}）．そこで一般の加群についても$\dim M=\dim (A/\ann M)$と定義する．
+
+\begin{defi}[加群のKrull次元]\index{#Krullじげんかぐん@Krull次元（加群）}
+	$A$加群$M$について$\dim (A/\ann M)$を$M$のKrull\textbf{次元}と定め，$\dim M$とかく．
+\end{defi}
+
+簡単な計算により次の言い換えができることがわかる．
+
+\begin{prop}
+	Noether環$A$上の有限生成加群$M$について；
+	\[\dim M=\sup\mkset{\dim A/P}{P\in\ass M}\]
+	が成り立つ．
+\end{prop}
+\begin{proof}
+	まず$\dim M=r$とし，素イデアルの昇鎖$\ann M P\subsetneq P_1\subsetneq\dots\subsetneq P_r$を考える．次元の定義から$P$は$\ann M$の極小素イデアルとなる．ここで$V(\ann M)=\supp M$であり，$P$は\ref{thm:assとsuppの極小元}より$\ass M$の元である．また$r\leq \dim A/P$であるから，$r\leq\sup\mkset{\dim A/P}{P\in\ass M}$が示された．次に$P\in\ass M$を$\dim A/P$を最大にするものとすれば$P$は極小なので$\supp M$の元，つまり$\dim A/P\leq\dim A/(\ann M)$である．
+\end{proof}
 
 \section{上昇定理と下降定理}
 この節では，次節でNoetherの正規化定理（\ref{thm:正規化定理}）を証明する際に有力な道具となる\textbf{上昇定理}（going up theorem，\ref{thm:going up}）と\textbf{下降定理}（going down theorem，\ref{thm:going down}）を示そう．
@@ -481,7 +500,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	\[x^n+a_1x^{n-1}+\dots+a_n=0\]
 	となる．すると$x^n=-(a_1x^{n-1}+\dots+a_n)$であるので，$x\in\bar{A}_B$であるから$x^n\in I'$すなわち$x\in\sqrt{I'}$である．
 	
-	一方，$x\in\sqrt{I'}$とすると，$x^n\in I'$となる$n$が存在する．よって，$c_i\in\bar{A}_B$と$x_i\in I$によって$x^n=\sum_{i=1}^m c_ix_i$とかける．\ref{prop:整な元で生成される代数はfinite}より，$\varphi:A[c_1,\dots,c_m]\to A[c_1,\dots,c_1];y\mapsto x^ny$に対してCayley-Hamiltonの定理（\ref{thm:Cayley-Hamilton}）を適用できる．これにより$x^n$は$I$上整であり，$x\in\bar{I}_B$である．
+	一方，$x\in\sqrt{I'}$とすると，$x^n\in I'$となる$n$が存在する．よって，$c_i\in\bar{A}_B$と$x_i\in I$によって$x^n=\sum_{i=1}^m c_ix_i$とかける．\ref{prop:整な元で生成される代数はfinite}より，$\varphi:A[c_1,\dots,c_m]\to A[c_1,\dots,c_1];y\mapsto x^ny$に対してCayley--Hamiltonの定理（\ref{thm:Cayley-Hamilton}）を適用できる．これにより$x^n$は$I$上整であり，$x\in\bar{I}_B$である．
 \end{proof}
 
 \begin{prop}\label{prop:整なら最小多項式が根基からとれる}
@@ -530,11 +549,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 \end{proof}
 
 \section{Noetherの正規化定理}
-この節ではNoetherの正規化定理（\ref{thm:正規化定理}）を証明し，体上の有限生成整域について\ref{prop:htとcohtの定義} (iii)の不等式で等号が成り立つことをみよう．すなわち，この節では次の定理；
-\begin{thm}\label{thm:次元公式}
-	体$K$上有限生成な整域$A$に対して$\idht P +\coht P =\dim A$が成り立つ．
-\end{thm}
-を示すことを目標とする．
+この節ではNoetherの正規化定理（\ref{thm:正規化定理}）を証明し，体上の有限生成代数について考察しよう．
 %これを定式化すると；
 %
 %\begin{defi}[次元公式]\index{じげんこうしき@次元公式}
@@ -582,28 +597,49 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	$A$が有限生成$K$代数であるから，全準同型$\varphi:K[\nitem{X}]\to A$が存在する．$I=\ker\varphi, \idht I=r$とおき，前定理を適用して$\nitem{y}$を得る．$y_{r+j}$の$\varphi$による像を$z_j$とすると，$K[\nitem{X}]$は$K[\nitem{y}]$上整なので，$A=\varphi(K[\nitem{X}])$は$K[\nitem[n-r]{z}]=\varphi(K[\nitem{y}])$上整である．よって$\nitem[n-r]{z}$が$K$上代数的に独立ならばよい．$z_i$についての関係式があったとすると，それの$z_i$を$y_{r+i}$に置き換えたものは$I=\ker\varphi$の元であるが，$I\cap K[\nitem{y}]=(\nitem[r]{y})$なので係数は0である．よって代数的に独立となり，主張が従う．
 \end{proof}
 
-Noetherの正規化定理によって，体上有限生成な整域$A$が$\idht P +\coht P =\dim A$を満たすことが証明できる．その本質は$A$が\textbf{鎖状環}になる，というところにあるので，それについて説明しよう．
+Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf{鎖状環}と呼ばれる環になることがわかる．
 \begin{defi}[鎖状環]\index{さじょうかん@鎖状環}
 	環$A$の素イデアルの真増大列$P_0\subset P_1\subset\cdots$についてどの隣接した2項の間にも素イデアルが存在しないとき，その鎖は飽和しているという．任意の$P\subset P'$となる素イデアルについて，次の飽和したイデアルの鎖；
 	\[P=P_0\subsetneq\dots\subsetneq P_n= P'\]
 	の長さがすべて同一の有限値であるとき，$A$を\textbf{鎖状環}(catenary ring)という．
 \end{defi}
 
-明らかに$A$が鎖状環ならば，任意の$P\in\spec A$について$\idht P +\coht P =\dim A$が成り立つ．よって体$K$上有限生成な整域が鎖状環であることを示せばこの節の目標は果たされる．
-
-\begin{thm}
-	体$K$上有限生成な整域$A$に対して，飽和した素イデアル鎖$P_0\subset\dots\subset P_t$について；
+\begin{thm}\label{thm:体上有限生成整域は鎖状環}
+	体$K$上有限生成な整域$A$に対して，飽和した素イデアル鎖$P_0\subsetneq\dots\subsetneq P_t$について；
 	\[t=\dim A/P_0-\dim A/P_t\]
 	である．つまり$A$は鎖状環である．
 \end{thm}
 
 \begin{proof}
-		$0=P_0\subset\dots\subset P_t$が飽和していて，$P_t$が極大であるとする．環を適当に割ることで上の状態に帰着できるので，これについて$t$についての帰納法を用いて，$t=\dim A$を示せばよい．
+	$0=P_0\subset\dots\subset P_t$が飽和していて，$P_t$が極大であるとする．環を適当に割ることで上の状態に帰着できるので，これについて$t$についての帰納法を用いて，$t=\dim A$を示せばよい．
 		
-		$t=0$のとき，$A$は体であるので明らか．$t-1$まで正しいとする．$\dim A=\trdeg A=d$とおくと，Noetherの正規化定理より，$\nitem[d]{z}\in A$が存在して$A$は$K[\nitem[d]{z}]$上整である．ここで，任意の$i$について$z_i\not\in P_1$と仮定する．このとき$P_1\cap K[\nitem[d]{z}]\subset K$なので，$P_1\cap K[\nitem[d]{z}]=0$である．ところが\ref{cor:上にあるイデアルの高さ}より$1=\idht P_1=\idht (P_1\cap K[\nitem[d]{z}])$であるので矛盾．よって$z_1\in P_1$としてよい．このとき$z_j\not\in P_1 (j\neq1)$に注意して，$A/P_1$と$K[\nitem[d]{z}]/(P_1\cap K[\nitem[d]{z}])=K[\nitem<2>[d]{z}]$について帰納法の仮定から$t-1=d-1$である．よって$t=d$である．
+	$t=0$のとき，$A$は体であるので明らか．$t-1$まで正しいとする．$\dim A=\trdeg A=d$とおくと，Noetherの正規化定理より，$\nitem[d]{z}\in A$が存在して$A$は$K[\nitem[d]{z}]$上整である．ここで，任意の$i$について$z_i\not\in P_1$と仮定する．このとき$P_1\cap K[\nitem[d]{z}]\subset K$なので，$P_1\cap K[\nitem[d]{z}]=0$である．ところが\ref{cor:上にあるイデアルの高さ}より$1=\idht P_1=\idht (P_1\cap K[\nitem[d]{z}])$であるので矛盾．よって$z_1\in P_1$としてよい．このとき$z_j\not\in P_1 (j\neq1)$に注意して，$A/P_1$と$K[\nitem[d]{z}]/(P_1\cap K[\nitem[d]{z}])=K[\nitem<2>[d]{z}]$について帰納法の仮定から$t-1=d-1$である．よって$t=d$である．
 \end{proof}
 
-これにより\ref{thm:次元公式}が示された．ではその逆，任意の素イデアル$P$について$\idht P +\coht P =\dim A$が成り立つならば$A$が鎖状環である，は成り立つだろうか？これは$A$がNoether局所整域ならば正しい(Ratliff，1972)がその証明は難しい（\cite{matsu}，定理31.4.）．実際のNoether環はほとんどが鎖状環であることが知られているが，その証明はCohen-Macaulay環の登場を待たなければならない．また，鎖状でないNoether環の例は\cite{Nag73}で与えられている．
+鎖状環の準同型像はまた鎖状環であることに注意すると，体上の有限生成代数はすべて鎖状環である．そこで次の定義をする．
+
+\begin{defi}[強鎖状環]\index{きょうさじょうかん@強鎖状環}
+	Noether環$A$であって，任意の有限生成$A$代数が鎖状であるものを\textbf{強鎖状環}(univarsally catenary ring)であるという．
+\end{defi}
+
+先に述べたことから$A$が強鎖状であることと，すべての$n$について$A[X_1,\dots,X_n]$が鎖状であることは同値であり，体$K$は強鎖状である．
+
+鎖状環というトピックは\ref{prop:htとcohtの定義} (iii)の不等式と関係している．明らかに$A$が局所整域（極大イデアルと極小イデアルが一意的）で鎖状ならば，等号が成り立つ．すなわち，任意の$P\in\spec A$について；
+\[\idht P +\coht P =\dim A\tag{($\ast$)}\]
+が成り立つ．ではその逆，任意の素イデアル$P$について$\idht P +\coht P =\dim A$が成り立つならば$A$が鎖状環である，は成り立つだろうか？これは$A$がNoether局所整域ならば正しい(Ratliff, 1972)がその証明は難しい（\cite{matsu}，定理31.4.）．一方で，式($\ast$)は鎖状どころか強鎖状環ですら成り立たない例が存在する（\ref{ex:鎖状だがht P+coht P<dim P}）．しかし，実用の面では\ref{thm:体上有限生成整域は鎖状環}により次の結果が従う．
+
+\begin{prop}\label{prop:DIM}
+	体$K$上の有限生成整域$A$について，任意の$P\in\spec A$に対して；
+	\[\idht P +\coht P =\dim A\]
+	が成り立つ．
+\end{prop}
+
+\begin{proof}
+	\ref{thm:体上有限生成整域は鎖状環}より任意の極大イデアル$\ideal{m}$について，極大イデアルで終わる飽和した鎖は$\dim A-\dim A/\ideal{m}=\dim A$個の素イデアルからなる．
+\end{proof}
+実際のNoether環はほとんどが鎖状環であることが知られているが，その証明はCohen--Macaulay環の登場を待たなければならない．また，鎖状でないNoether環の例は\cite{Nag73}で与えられている．また鎖状であるが強鎖状でないNoether環の例も永田によって与えられている．
+
+
 \section{Hilbertの零点定理}
 
 この節では，（古典的）代数幾何学の基礎を成す零点集合について紹介しよう．

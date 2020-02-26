@@ -1,185 +1,5 @@
 \part[Preliminaries]{準備}
-この章では基礎的なことを集める．
-
-\section{加群}
-
-線形空間の拡張として\textbf{加群}というものを考えると，環$A$の構造だけを観るのではなく加群も合わせて考えることで表現論的な考察が可能になる．
-
-\begin{defi}[加群]\index{かぐん@加群}
-	$A$を環とし，$M$をAbel群とする．$A$の作用$A\times M\to M;(a,x)\mapsto ax$が存在して；
-	\begin{defiterm}{M}
-		\item $1x=x$
-		\item $a(bx)=(ab)x$
-		\item $(a+b)x=ax+bx$
-		\item $a(x+y)=ax+ay$
-	\end{defiterm}
-	をみたすとき，$M$（と作用の組）を$A$\textbf{加群}(module)という．
-\end{defi}
-
-環$R$が非可換の時，作用が左（右）作用のとき左（右）加群という．$A$が可換のときは単に$A$加群という．右加群では(M2)の代わりに
-\[\textrm{(M2)}'\quad a(bx)=b(ax)\]
-を要請する必要がある（最初に注意しておいたとおり，以後すべて$A$は可換環として進める）．また，$A$が体のときは線形空間に他ならない．$A$の作用のことを\textbf{スカラー}(scalar)ということもある．
-
-以後線形代数の模倣としていくつかの性質と定義を述べる．例えば任意の$a\in A$と$x\in M$に対して；
-\[a0=0,0x=0,(-a)x=-ax\]
-が成り立つ．
-
-\begin{defi}[準同型]
-	$M,N$を$A$加群とする．$\varphi:M\to N$が，任意の$a,b\in A$と$x,y\in M$に対し；
-	\[\varphi(ax+by)=a\varphi(x)+b\varphi(y)\]
-	を満たす時，$\varphi$を$A$準同型という．
-\end{defi}
-
-もちろん，$\varphi$が全単射の時$A$同型という．
-
-\begin{defi}[部分加群]
-	$A$加群$M$の部分集合$N$がAbel群として$M$の部分群であり，任意の$a\in A$と$x\in N$に対して$ax\in N，$すなわち$A$の作用で閉じているとき$N$を部分加群であるという．
-\end{defi}
-
-$A$自身を，環の積を作用として$A$加群とみなすとき，$A$の部分加群とはまさに$A$のイデアルにほかならない．このとき，$A$準同型は環の準同型とは異なることに注意しよう（単位元の行き先を定めることと$A$準同型を定めることは同値）．
-
-\begin{defi}[剰余加群]\index{じょうよかぐん@剰余加群}
-	$M$を$A$加群とし，$N$をその部分加群とする．Abel群としての剰余群$M/N$に$A$作用を次のようにして定義する;
-	\[a(x+N)=ax+N\]
-	これを剰余加群という．
-\end{defi}
-
-\begin{thm}[準同型定理]
-	$\varphi:M\to N$を$A$加群の$A$準同型とすると，$\ker\varphi,\im\varphi$はそれぞれ$M,N$の部分加群で，同型；
-	\[M/\ker\varphi\cong\im\varphi\]
-	が成立する．
-\end{thm}
-\begin{proof}
-	群の準同型定理により引き起こされる同型写像に対して，$A$の作用のそれぞれの定義から明らか．
-\end{proof}
-
-加群の分解に関する文脈（幾何で言う既約分解に対応する）で，部分加群の既約性が大切となるのでここで紹介しておく．
-
-\begin{defi}\label{defi:既約部分加群}
-	$A$加群$M$の部分加群$N$について，$N_1，N_2$を$M$の部分加群として$N=N_1\cap N_2$ならば$N=N_1$または$N=N_2$が成り立つとき，$N$を\textbf{既約}といい，そうでないときに\textbf{可約}という．\index{きやくぶぶんかぐん@既約部分加群}\index{かやくぶぶんかぐん@可約部分加群}
-\end{defi}
-
-\begin{defi}[加群の直積，直和]\label{defi:直和，直積の存在}\index{ちょくせき@直積}\index{ちょくわ@直和}
-	$A$加群の族$\{M_\lambda\}_{\lambda\in\Lambda}$に対して，直積$\prod M_\lambda$に$A$の作用を；
-	\[a(x_\lambda)_{\lambda\in\Lambda}=(ax_\lambda)_{\lambda\in\Lambda}\]
-	と定めると$\prod M_\lambda$は$A$加群になる．同様の作用によって；
-	\[\bigoplus_{\lambda\in\Lambda}M_{\lambda}=\mkset{(x_\lambda)_{\lambda\in\Lambda}\in\prod M_\lambda}{\text{有限個の}\lambda\text{を除いて}x_\lambda=0\text{である}．}\]
-	も$A$加群になる．特に$\Lambda$が有限のとき$\prod M_\lambda$と一致する．これらをそれぞれ$\{M_\lambda\}$の\textbf{直積}(direct product)，\textbf{直和}(direct sum)という．
-\end{defi}
-
-線形空間の\quo{基底}に対応して，加群の基底について触れる．以下，$M$を$A$加群とし，$(u_\lambda)_{\lambda\in\Lambda}$（しばしば略して$(u_\lambda)$とかく）を$M$の元の族とする．また，$\Lambda$が無限集合である場合，$\Lambda$を走る和$\sum_{\lambda\in\Lambda} u_\lambda$は次の条件；
-\[\text{有限個の}\lambda\text{を除いて}u_\lambda\text{が0である．}\tag{$\ast$}\]
-を満たす場合に限って定義される．
-
-\begin{defi}[生成系]\index{せいせいけい@生成系}
-	$M$の任意の元が$\sum_{\lambda\in\Lambda}a_\lambda u_\lambda ~(a_\lambda\in A)$とかけるとき，$(u_\lambda)$を$M$の\textbf{生成系}{system of generator}という．
-\end{defi}
-\begin{defi}[一次独立]\index{いちじどくりつ@一次独立}
-	$\sum a_\lambda u_\lambda=0$なら，任意の$\lambda\in\Lambda$に対し$a_\lambda=0$となるとき，$(u_\lambda)$は\textbf{一次独立}(linearly independent)であるという．$(x_\lambda)$について$(\ast)$を満たさない場合，$(x_\lambda)$の任意の有限部分集合が一次独立のとき$(x_\lambda)$が一次独立であるという．
-\end{defi}
-\begin{defi}[基底]\index{きてい@基底}
-	$M$の任意の元が$\sum a_\lambda u_\lambda$の形に一意に書けるとき，$(u_\lambda)$は$M$の\textbf{基底}(basis)であるという．	
-\end{defi}
-
-それぞれ，準同型；
-\[\bigoplus_{\lambda\in\Lambda} A\to M;(a_\lambda)\mapsto\sum_{\lambda\in\Lambda} a_\lambda u_\lambda\]
-が，全射，単射，全単射であることとそれぞれ同値．特に，$(u_\lambda)$が基底であることは$(u_\lambda)$が一次独立な生成系であることと同値．また，$A$加群$M$について，有限個の$A$の直和からの全射が存在するとき，$M$は\textbf{有限生成}(finitely generated)であるという．\index{ゆうげんせいせい@有限生成}
-
-\begin{defi}[自由加群]\index{じゆうかぐん@自由加群}
-	$M$が基底を持つとき，$M$を\textbf{自由加群}(free module)という．
-\end{defi}
-
-線形代数の復習として，線形空間基底の存在は保証されていること，その濃度は一意的であることを思い出そう（証明はしない）．
-\begin{thm}
-	体$K$上の加群$V$は自由加群であり，その基底の濃度は一定である．
-\end{thm}
-
-可換環上の自由加群についても，濃度は一定である（非可換環については，基底が有限なとき一般には成立しない）．
-
-\begin{thm}\label{thm:可換環上の自由加群のrankは一定}
-	可換環上の自由加群の基底の濃度は一定である．
-\end{thm}
-
-\begin{proof}
-	$A$を可換環とし，$M$を$A$上の自由加群とする．その基底を$\{u_\lambda\}_{\lambda\in\Lambda}，\{v_\omega\}_{\omega\in\Omega}$とする．すると
-	\[M=\bigoplus_{\lambda\in\Lambda}Au_{\lambda}=\bigoplus_{\omega\in\Omega}Av_\omega\]
-	とかける．Krullの定理より，$A$は極大イデアル$\ideal{m}$を持つ．また，$k=A/\ideal{m}$は体である．ここで；
-	\[\ideal{m}M=\mkset{\sum_{\text{有限和}}a_k x_k}{a_k\in\ideal{m},x_k\in M}\]
-	とすると，これは$M$の部分加群で，$\{u_\lambda\}_{\lambda\in\Lambda}$が$M$の基底なので；
-	\[\begin{aligned}
-	\ideal{m}M&=\mkset{\sum_{\lambda\in\Lambda} c_\lambda u_\lambda}{c_i\in\ideal{m}\text{は有限個を除いて}0}\\
-	&=\bigoplus_{\lambda\in\Lambda}\ideal{m}u_\lambda
-	\end{aligned}\]
-	となる．よって$M/\ideal{m}M\cong\middleoplus_{\lambda\in\Lambda} Au_\lambda/\ideal{m} u_\lambda$となる．また$Au_\lambda/\ideal{m}u_\lambda$の元を考えると，$au_\lambda-bu_\lambda\in\ideal{m}u_\lambda$であることは$a-b\in\ideal{m}$であることと同値だから，$Au_\lambda/\ideal{m}u_\lambda=(A/\ideal{m})u_\lambda$とかける．ここで$M/\ideal{m}M$は$k$上の加群，すなわち$k$線形空間とみなすことができる．実際，作用；
-	\[k\times M/\ideal{m}\to M/\ideal{m}M;(a+\ideal{m},x+\ideal{m}M)\mapsto ax+\ideal{m}M\]
-	はwell-definedである（確かめよ）．以上より$k$線形空間として；
-	\[M/\ideal{m}M\cong\bigoplus_{\lambda\in\Lambda}(A/\ideal{m})u_\lambda\]
-	となり，$\{u_\lambda\}_{\lambda\in\Lambda}$を$k$線形空間として基底に持つことがわかる．同様に$\{v_\omega\}_{\omega\in\Omega}$も$M/\ideal{m}M$の基底となっていて，線形空間の基底の濃度は一定であるので$\#\Lambda=\#\Omega$である．
-\end{proof}
-
-\begin{defi}[イデアル商]\index{いであるしょう@イデアル商}
-	$M$を$A$加群，$L,N$をその部分加群とする．
-	\[(L:N)=\mkset{a\in A}{aN\subset L}\]
-	は$A$のイデアルになり，これを$L$と$N$の\textbf{イデアル商}(ideal quotient)という．
-\end{defi}
-
-また，イデアル$(0:M)$を$M$の\textbf{零化イデアル}(anihilator)といい$\ann(M)$とかく．$\ann(M)=0$となる加群を\textbf{忠実}(faithful)であるという．$A$の部分加群はイデアルであるから，これはイデアルについて考えることもできる．イデアル商の計算は次が基本的である（証明は簡単なので省略する）．
-
-\begin{prop}\label{prop:加群商}
-	$I,J,K$を$A$のイデアルとし，$L,N$は$A$加群$M$の部分加群であるとすると，次が成り立つ．
-	\begin{sakura}
-		\item $I\subset(I:J)$
-		\item $(I:J)J\subset I$
-		\item $((I:J):K)=(I:JK)=((I:K):J)$
-		\item $(\bigcap_\lambda I_\lambda:J)=\bigcap_\lambda (I_\lambda:J)$
-		\item $(I:\sum_\lambda J_\lambda)=\bigcap_\lambda (I:J_\lambda)$
-		\item $\ann (N+L)=\ann (N)\cap\ann (L)$
-		\item $(L:N)=\ann((L+N)/L)$
-	\end{sakura}
-\end{prop}
-
-線形代数で習ったCayley-Hamiltonの定理を加群に対して拡張できる（\textbf{行列式のトリック}とも呼ばれる）．
-\begin{thm}[Cayley-Hamilton]\index{#Cayler-Hamiltonのていり@Cayley-Hamiltonの定理}
-	\label{thm:Cayley-Hamilton}
-	$M$を$n$個の元で生成される有限生成な$A$加群とし，$\varphi\in\text{End}_A(M)$が，ある$A$のイデアル$I$に対して$\varphi(M)\subset IM$であると仮定する．このとき，$\nitem{a}\in I$が存在して
-	\[\varphi^n+a_1\varphi^{n-1}+\dots+a_n=0\]
-	を満たす．
-\end{thm}
-\begin{proof}
-	$M$の生成系を$\{\nitem{u}\}$とすると，$\varphi(M)\subset IM$より
-	\[\varphi(u_i)=\sum_{j=1}^n a_{ij}u_j\quad(a_{ij}\in I)\]
-	とできる．よってKroneckerのデルタ$\delta_{ij}$を用いると$\sum_j(\delta_{ij}\varphi-a_{ij})u_j=0$である．行列$(\delta_{ij}\varphi-a_{ij})_{i，j}$に対し余因子行列をかけて，$\det(\delta_{ij}\varphi-a_{ij})$は$M$の自己準同型となるが，これはすべての$x_i$を消すので零射にほかならない．行列式を展開すれば求める式が得られる．
-\end{proof}
-
-これを利用して，\textbf{中山の補題}と呼ばれる強力な定理を証明できる．	
-
-\begin{thm}[中山の補題]\index{なかやまのほだい@中山の補題(NAK)}\label{thm:NAK}
-	$M$を有限生成$A$加群，$I$を$A$のイデアルとする．$M=IM$であるとき，$aM=0$かつ$a\equiv1\pmod{I}$を満たす$a\in A$が存在する．とくに$I\subset\rad(A)$ならば$M=0$である．
-\end{thm}
-
-\begin{proof}
-	Cayley-Hamiltonの定理で$\varphi=\id_{M}$とすれば
-	\[a=1+a_1+\dots a_n\]
-	がそれを満たす．また$I\subset\rad(A)$ならば，$a$は可逆なので$M=0$である．
-\end{proof}
-
-\begin{cor}\label{cor:NAK}
-	$I$を$\rad(A)$に含まれるイデアルとする．$A$加群$M$と，その部分加群$N$について$M/N$が有限生成かつ$M=N+IM$であるとすると，$M=N$である．
-\end{cor}
-
-\begin{proof}
-	$M/N\cong I(M/N)$より$M/N=0$である．
-\end{proof}
-
-$(A,\ideal{m})$を局所環とする．剰余環$k=A/\ideal{m}$は体になる．$A$加群$\ideal{m}$について$M/\ideal{m}M$は自然な演算（\ref{thm:可換環上の自由加群のrankは一定}の証明中で定義したもの）で$k=A/\ideal{m}$加群，すなわち$k$ベクトル空間になる．$M$が有限生成$A$加群なら中山の補題を使うことで次が言える．
-
-\begin{prop}\label{prop:Atimac_prop_2.8}
-	$(A,\ideal{m})$を局所環とし，$M$を有限生成$A$加群とする．$\dim_k M/\ideal{m}M=r$ならば$M$は$r$個の元で生成される．
-\end{prop}
-
-\begin{proof}
-	$x_1,\dots,x_r\in M$を$M/\ideal{m}M$での像が$k$線形空間としての基底になる元とする．ここで$x_1,\dots,x_r$が生成する$A$加群を$N$とおくと，$N$は$M$の部分加群であって$N+\ideal{m}M=M$が成り立つ．よって\ref{cor:NAK}より$N=M$である．
-\end{proof}
+この章では可換環論における基礎的なこと，すなわちNoether環，加群の定義，テンソル積，局所化，射影，入射加群などを集める．第２章以降に学習を続けていくにつれて，本書で展開される議論はこの章でおこなった準備に根付いていることがわかるだろう．
 
 \section{Noether環とHilbertの基底定理}
 
@@ -244,7 +64,7 @@ Noether環の部分環が必ずしもNoetherではないことに注意しよう
 \begin{proof}
 	$A$のイデアルで，有限生成でないもの全体を$\Sigma$とする．$\Sigma\neq\emptyset$と仮定すると，Zornの補題から極大元$I$が存在する．仮定から$I$は素イデアルでないので，$x,y\in A$で$xy\in I,x,y\not\in I$を満たすものが存在する．すると，$I+Ax$は$I$より真に大きいから，有限生成で，ある$\nitem{u}\in I$を；
 	\[I+Ax=(\nitem{u},x)\]
-	となるようにとれる．$y\in (I:x)=\mkset{a\in A}{ax\in I}$より$I\subsetneq(I:x)$だからこれも有限生成で，$(I:x)=(\nitem[m]{v})$とできる．
+	となるようにとれる．$(I:x)=\mkset{a\in A}{ax\in I}$とおく（この記号はイデアル商，\ref{defi:イデアル商}と整合性がある）と，これは$A$のイデアルをなす．$y\in (I:x)$より$I\subsetneq(I:x)$だからこれも有限生成で，$(I:x)=(\nitem[m]{v})$とできる．
 	
 	よって，$I=(\nitem{u},v_1x,\dots,v_mx)$となり，$I\in\Sigma$に矛盾．よって$\Sigma=\emptyset$である．
 \end{proof}
@@ -300,6 +120,186 @@ $S_d$の元を$S$の斉次元という．わかりやすい例として，多項
 %\begin{prop}
 %	$I$を次数付き環$S$の斉次イデアルとする．このとき$I$が素であること，任意の\textbf{斉次元}$x，y$について$xy\in I$なら$x\in I$または$y\in I$が成り立つことは同値である．
 %\end{prop}
+
+\section{加群の定義}
+
+線形空間の拡張として\textbf{加群}というものを考えると，環$A$の構造だけを観るのではなく加群も合わせて考えることで表現論的な考察が可能になる．
+
+\begin{defi}[加群]\index{かぐん@加群}
+	$A$を環とし，$M$をAbel群とする．$A$の作用$A\times M\to M;(a,x)\mapsto ax$が存在して；
+	\begin{defiterm}{M}
+		\item $1x=x$
+		\item $a(bx)=(ab)x$
+		\item $(a+b)x=ax+bx$
+		\item $a(x+y)=ax+ay$
+	\end{defiterm}
+	をみたすとき，$M$（と作用の組）を$A$\textbf{加群}(module)という．
+\end{defi}
+
+環$R$が非可換の時，作用が左（右）作用のとき左（右）加群という．$A$が可換のときは単に$A$加群という．右加群では(M2)の代わりに
+\[\textrm{(M2)}'\quad a(bx)=b(ax)\]
+を要請する必要がある（最初に注意しておいたとおり，以後すべて$A$は可換環として進める）．また，$A$が体のときは線形空間に他ならない．$A$の作用のことを\textbf{スカラー}(scalar)ということもある．
+
+以後線形代数の模倣としていくつかの性質と定義を述べる．例えば任意の$a\in A$と$x\in M$に対して；
+\[a0=0,0x=0,(-a)x=-ax\]
+が成り立つ．
+
+\begin{defi}[準同型]
+	$M,N$を$A$加群とする．$\varphi:M\to N$が，任意の$a,b\in A$と$x,y\in M$に対し；
+	\[\varphi(ax+by)=a\varphi(x)+b\varphi(y)\]
+	を満たす時，$\varphi$を$A$準同型という．
+\end{defi}
+
+もちろん，$\varphi$が全単射の時$A$同型という．
+
+\begin{defi}[部分加群]
+	$A$加群$M$の部分集合$N$がAbel群として$M$の部分群であり，任意の$a\in A$と$x\in N$に対して$ax\in N，$すなわち$A$の作用で閉じているとき$N$を部分加群であるという．
+\end{defi}
+
+$A$自身を，環の積を作用として$A$加群とみなすとき，$A$の部分加群とはまさに$A$のイデアルにほかならない．このとき，$A$準同型は環の準同型とは異なることに注意しよう（単位元の行き先を定めることと$A$準同型を定めることは同値）．
+
+\begin{defi}[剰余加群]\index{じょうよかぐん@剰余加群}
+	$M$を$A$加群とし，$N$をその部分加群とする．次の$M$上の同値関係；
+	\[x\sim y\Longleftrightarrow x-y\in N\]
+	による$M$の商集合を$M/N$とし，その代表元を$x+N$と表す．そこに$A$の作用を$a(x+N)=ax+N$で定めるとこれは$A$加群になる．これを$M$の$N$による\textbf{剰余加群}(residue module)という．
+\end{defi}
+
+定義から$x+N=0$と$x\in N$は同値である．剰余環と同様に準同型定理とよばれる定理が成り立つ．
+
+\begin{thm}[準同型定理]
+	$\varphi:M\to N$を$A$加群の$A$準同型とすると，$\ker\varphi,\im\varphi$はそれぞれ$M,N$の部分加群で，同型；
+	\[M/\ker\varphi\cong\im\varphi\]
+	が成立する．
+\end{thm}
+
+証明は環の場合を適切に拡張すれば良いから省略する．加群の分解に関する文脈（幾何で言う既約分解に対応する）で，部分加群の既約性が大切となるのでここで紹介しておく．
+
+\begin{defi}\label{defi:既約部分加群}
+	$A$加群$M$の部分加群$N$について，$N_1，N_2$を$M$の部分加群として$N=N_1\cap N_2$ならば$N=N_1$または$N=N_2$が成り立つとき，$N$を\textbf{既約}といい，そうでないときに\textbf{可約}という．\index{きやくぶぶんかぐん@既約部分加群}\index{かやくぶぶんかぐん@可約部分加群}
+\end{defi}
+
+\begin{defi}[加群の直積，直和]\label{defi:直和，直積の存在}\index{ちょくせき@直積}\index{ちょくわ@直和}
+	$A$加群の族$\{M_\lambda\}_{\lambda\in\Lambda}$に対して，直積$\prod M_\lambda$に$A$の作用を；
+	\[a(x_\lambda)_{\lambda\in\Lambda}=(ax_\lambda)_{\lambda\in\Lambda}\]
+	と定めると$\prod M_\lambda$は$A$加群になる．同様の作用によって；
+	\[\bigoplus_{\lambda\in\Lambda}M_{\lambda}=\mkset{(x_\lambda)_{\lambda\in\Lambda}\in\prod M_\lambda}{\text{有限個の}\lambda\text{を除いて}x_\lambda=0\text{である}．}\]
+	も$A$加群になる．特に$\Lambda$が有限のとき$\prod M_\lambda$と一致する．これらをそれぞれ$\{M_\lambda\}$の\textbf{直積}(direct product)，\textbf{直和}(direct sum)という．
+\end{defi}
+
+線形空間の\quo{基底}に対応して，加群の基底について触れる．以下，$M$を$A$加群とし，$(u_\lambda)_{\lambda\in\Lambda}$（しばしば略して$(u_\lambda)$とかく）を$M$の元の族とする．また，$\Lambda$が無限集合である場合，$\Lambda$を走る和$\sum_{\lambda\in\Lambda} u_\lambda$は次の条件；
+\[\text{有限個の}\lambda\text{を除いて}u_\lambda\text{が0である．}\tag{$\ast$}\]
+を満たす場合に限って定義される．
+
+\begin{defi}[生成系]\index{せいせいけい@生成系}
+	$M$の任意の元が$\sum_{\lambda\in\Lambda}a_\lambda u_\lambda ~(a_\lambda\in A)$とかけるとき，$(u_\lambda)$を$M$の\textbf{生成系}{system of generator}という．
+\end{defi}
+\begin{defi}[一次独立]\index{いちじどくりつ@一次独立}
+	$\sum a_\lambda u_\lambda=0$なら，任意の$\lambda\in\Lambda$に対し$a_\lambda=0$となるとき，$(u_\lambda)$は\textbf{一次独立}(linearly independent)であるという．$(x_\lambda)$について$(\ast)$を満たさない場合，$(x_\lambda)$の任意の有限部分集合が一次独立のとき$(x_\lambda)$が一次独立であるという．
+\end{defi}
+\begin{defi}[基底]\index{きてい@基底}
+	$M$の任意の元が$\sum a_\lambda u_\lambda$の形に一意に書けるとき，$(u_\lambda)$は$M$の\textbf{基底}(basis)であるという．	
+\end{defi}
+
+それぞれ，準同型；
+\[\bigoplus_{\lambda\in\Lambda} A\to M;(a_\lambda)\mapsto\sum_{\lambda\in\Lambda} a_\lambda u_\lambda\]
+が，全射，単射，全単射であることとそれぞれ同値．特に，$(u_\lambda)$が基底であることは$(u_\lambda)$が一次独立な生成系であることと同値．また，$A$加群$M$について，有限個の$A$の直和からの全射が存在するとき，$M$は\textbf{有限生成}(finitely generated)であるという．\index{ゆうげんせいせい@有限生成}
+
+\begin{defi}[自由加群]\index{じゆうかぐん@自由加群}
+	$M$が基底を持つとき，$M$を\textbf{自由加群}(free module)という．
+\end{defi}
+
+線形代数の復習として，線形空間基底の存在は保証されていること，その濃度は一意的であることを思い出そう（証明はしない）．
+\begin{thm}
+	体$K$上の加群$V$は自由加群であり，その基底の濃度は一定である．
+\end{thm}
+
+可換環上の自由加群についても，濃度は一定である（非可換環については，基底が有限なとき一般には成立しない）．
+
+\begin{thm}\label{thm:可換環上の自由加群のrankは一定}
+	可換環上の自由加群の基底の濃度は一定である．
+\end{thm}
+
+\begin{proof}
+	$A$を可換環とし，$M$を$A$上の自由加群とする．その基底を$\{u_\lambda\}_{\lambda\in\Lambda}，\{v_\omega\}_{\omega\in\Omega}$とする．すると
+	\[M=\bigoplus_{\lambda\in\Lambda}Au_{\lambda}=\bigoplus_{\omega\in\Omega}Av_\omega\]
+	とかける．Krullの定理より，$A$は極大イデアル$\ideal{m}$を持つ．また，$k=A/\ideal{m}$は体である．ここで；
+	\[\ideal{m}M=\mkset{\sum_{\text{有限和}}a_k x_k}{a_k\in\ideal{m},x_k\in M}\]
+	とすると，これは$M$の部分加群で，$\{u_\lambda\}_{\lambda\in\Lambda}$が$M$の基底なので；
+	\[\begin{aligned}
+	\ideal{m}M&=\mkset{\sum_{\lambda\in\Lambda} c_\lambda u_\lambda}{c_i\in\ideal{m}\text{は有限個を除いて}0}\\
+	&=\bigoplus_{\lambda\in\Lambda}\ideal{m}u_\lambda
+	\end{aligned}\]
+	となる．よって$M/\ideal{m}M\cong\middleoplus_{\lambda\in\Lambda} Au_\lambda/\ideal{m} u_\lambda$となる．また$Au_\lambda/\ideal{m}u_\lambda$の元を考えると，$au_\lambda-bu_\lambda\in\ideal{m}u_\lambda$であることは$a-b\in\ideal{m}$であることと同値だから，$Au_\lambda/\ideal{m}u_\lambda=(A/\ideal{m})u_\lambda$とかける．ここで$M/\ideal{m}M$は$k$上の加群，すなわち$k$線形空間とみなすことができる．実際，作用；
+	\[k\times M/\ideal{m}\to M/\ideal{m}M;(a+\ideal{m},x+\ideal{m}M)\mapsto ax+\ideal{m}M\]
+	はwell-definedである（確かめよ）．以上より$k$線形空間として；
+	\[M/\ideal{m}M\cong\bigoplus_{\lambda\in\Lambda}(A/\ideal{m})u_\lambda\]
+	となり，$\{u_\lambda\}_{\lambda\in\Lambda}$を$k$線形空間として基底に持つことがわかる．同様に$\{v_\omega\}_{\omega\in\Omega}$も$M/\ideal{m}M$の基底となっていて，線形空間の基底の濃度は一定であるので$\#\Lambda=\#\Omega$である．
+\end{proof}
+
+\begin{defi}[イデアル商]\index{いであるしょう@イデアル商}\label{defi:イデアル商}
+	$M$を$A$加群，$L,N$をその部分加群とする．
+	\[(L:N)=\mkset{a\in A}{aN\subset L}\]
+	は$A$のイデアルになり，これを$L$と$N$の\textbf{イデアル商}(ideal quotient)という．
+\end{defi}
+
+また，イデアル$(0:M)=\mkset{a\in A}{aM=0}$を$M$の\textbf{零化イデアル}(anihilator)といい$\ann(M)$とかく．$\ann(M)=0$となる加群を\textbf{忠実}(faithful)であるという．$A$の部分加群はイデアルであるから，これはイデアルについて考えることもできる．イデアル商の計算は次が基本的である（証明は簡単なので省略する）．
+
+\begin{prop}\label{prop:加群商}
+	$I,J,K$を$A$のイデアルとし，$L,N$は$A$加群$M$の部分加群であるとすると，次が成り立つ．
+	\begin{sakura}
+		\item $I\subset(I:J)$
+		\item $(I:J)J\subset I$
+		\item $((I:J):K)=(I:JK)=((I:K):J)$
+		\item $(\bigcap_\lambda I_\lambda:J)=\bigcap_\lambda (I_\lambda:J)$
+		\item $(I:\sum_\lambda J_\lambda)=\bigcap_\lambda (I:J_\lambda)$
+		\item $\ann (N+L)=\ann (N)\cap\ann (L)$
+		\item $(L:N)=\ann((L+N)/L)$
+	\end{sakura}
+\end{prop}
+
+線形代数で習ったCayley--Hamiltonの定理を加群に対して拡張できる（\textbf{行列式のトリック}とも呼ばれる）．
+\begin{thm}[Cayley--Hamilton]\index{#Cayler-Hamiltonのていり@Cayley--Hamiltonの定理}
+	\label{thm:Cayley-Hamilton}
+	$M$を$n$個の元で生成される有限生成な$A$加群とし，$\varphi\in\text{End}_A(M)$が，ある$A$のイデアル$I$に対して$\varphi(M)\subset IM$であると仮定する．このとき，$\nitem{a}\in I$が存在して
+	\[\varphi^n+a_1\varphi^{n-1}+\dots+a_n=0\]
+	を満たす．
+\end{thm}
+\begin{proof}
+	$M$の生成系を$\{\nitem{u}\}$とすると，$\varphi(M)\subset IM$より
+	\[\varphi(u_i)=\sum_{j=1}^n a_{ij}u_j\quad(a_{ij}\in I)\]
+	とできる．よってKroneckerのデルタ$\delta_{ij}$を用いると$\sum_j(\delta_{ij}\varphi-a_{ij})u_j=0$である．行列$(\delta_{ij}\varphi-a_{ij})_{i，j}$に対し余因子行列をかけて，$\det(\delta_{ij}\varphi-a_{ij})$は$M$の自己準同型となるが，これはすべての$x_i$を消すので零射にほかならない．行列式を展開すれば求める式が得られる．
+\end{proof}
+
+これを利用して，\textbf{中山の補題}と呼ばれる強力な定理を証明できる．	
+
+\begin{thm}[中山の補題]\index{なかやまのほだい@中山の補題(NAK)}\label{thm:NAK}
+	$M$を有限生成$A$加群，$I$を$A$のイデアルとする．$M=IM$であるとき，$aM=0$かつ$a\equiv1\pmod{I}$を満たす$a\in A$が存在する．とくに$I\subset\rad(A)$ならば$M=0$である．
+\end{thm}
+
+\begin{proof}
+	Cayley--Hamiltonの定理で$\varphi=\id_{M}$とすれば
+	\[a=1+a_1+\dots a_n\]
+	がそれを満たす．また$I\subset\rad(A)$ならば，$a$は可逆なので$M=0$である．
+\end{proof}
+
+\begin{cor}\label{cor:NAK}
+	$I$を$\rad(A)$に含まれるイデアルとする．$A$加群$M$と，その部分加群$N$について$M/N$が有限生成かつ$M=N+IM$であるとすると，$M=N$である．
+\end{cor}
+
+\begin{proof}
+	$M/N\cong I(M/N)$より$M/N=0$である．
+\end{proof}
+
+$(A,\ideal{m})$を局所環とする．剰余環$k=A/\ideal{m}$は体になる．$A$加群$\ideal{m}$について$M/\ideal{m}M$は自然な演算（\ref{thm:可換環上の自由加群のrankは一定}の証明中で定義したもの）で$k=A/\ideal{m}$加群，すなわち$k$ベクトル空間になる．$M$が有限生成$A$加群なら中山の補題を使うことで次が言える．
+
+\begin{prop}\label{prop:Atimac_prop_2.8}
+	$(A,\ideal{m})$を局所環とし，$M$を有限生成$A$加群とする．$\dim_k M/\ideal{m}M=r$ならば$M$は$r$個の元で生成される．
+\end{prop}
+
+\begin{proof}
+	$x_1,\dots,x_r\in M$を$M/\ideal{m}M$での像が$k$線形空間としての基底になる元とする．ここで$x_1,\dots,x_r$が生成する$A$加群を$N$とおくと，$N$は$M$の部分加群であって$N+\ideal{m}M=M$が成り立つ．よって\ref{cor:NAK}より$N=M$である．
+\end{proof}
+
 \section{準同型と普遍性}
 
 代数学（加群の理論）においては，いろいろな概念についてその構成に\textbf{自然に付随する準同型}が重要な働きをする．まずは準同型そのものに関連する定義について紹介しておこう．
@@ -726,9 +726,9 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 \end{defi}
 
 \begin{exer}
-	$\mathscr{V}=\mkset{V(I)}{I:A\text{のイデアル}}$が閉集合系をなすこと，すなわち；
+	$\mathscr{A}=\mkset{V(I)}{I:A\text{のイデアル}}$が閉集合系をなすこと，すなわち；
 	\begin{sakura}
-		\item $\emptyset，\spec A\in\mathscr{V}$である．
+		\item $\emptyset,\spec A\in\mathscr{A}$である．
 		\item $V(I)\cup V(J)=V(I\cap J)$である．
 		\item $\bigcap_{\lambda}V(I_\lambda)=V(\sum_\lambda I_\lambda)$である．
 	\end{sakura}
@@ -785,26 +785,27 @@ $Q\subset P$を素イデアルとしたときに，$P$による局所化と$Q$�
 \end{tightcurve}
 
 \begin{defi}[サポート]\index{#support@support}\index{サポート}\label{defi:support}
-	$A$加群$M$の素イデアル$ P$による局所化$M_P$が0にならない$ P$の集まりを
+	$A$加群$M$の素イデアル$P$による局所化$M_P$が0にならない$P$の集まりを；
 	\[\supp M=\mkset{ P\in\spec A}{M_ P\neq 0}\]
 	とかき，$M$の\textbf{サポート}(support)という．
 \end{defi}
 
-まずは$P\not\in\supp M$となることの簡単な判別方法を述べる（証明は明らかなので省略する）．
+まずは$P\in\supp M$となることの簡単な言い換えを述べておく（証明は定義から明らかなので省略する）．
 
 \begin{lem}\label{lem:M_p=0との同値条件}
-	$M_P=0$であることと，任意の$x\in M$に対してある$a\not\in P$が存在して$ax=0$となることは同値．
+	$M_P\neq0$であることと，ある$x\in M$が存在して，任意の$h\not\in P$について$hx\neq 0$となることは同値．
 \end{lem}
 
-$M$が有限生成なら，その生成系$u_1,\dots,u_r$について$au_i=0$となる$a\not\in P$が存在するかだけ確かめれば十分である．
+$M$が有限生成なら，その生成系$u_1,\dots,u_r$について$hu_i=0$となる$h\not\in P$が存在するかだけ確かめれば十分であることに注意すると，次の形に整理できる．
 
 \begin{prop}\label{prop:Zariskiの閉集合とsupp}
 	$A$加群$M$が$A$上有限生成ならば，$V(\ann M)=\supp M$である．
 \end{prop}
 
 \begin{proof}
-	$M$の生成系を$u_1,\dots,u_r$とする．補題より$P\not\in V(\ann M)$と，任意の$u_1,\dots,u_r$について$a_iu_i=0$となる$a_i\not\in P$が存在することが同値であることを示せばよい．($\Longrightarrow$)は明らかであり，逆は$P$が素イデアルなので積$a_1\cdots a_r\not\in P$でありこれは$\ann M$の元となることからわかる．
+	$M$の生成系を$u_1,\dots,u_r$とする．対偶を考えて$\ann M\not\subset P$と$M_P=0$が同値であることを示せばよい．もし$\ann M\not\subset P$なら$h\not\in P$でありかつ$hM=0$となる$h$が存在するため，$M_P=0$である．また$M_P=0$とすると，特に$u_i$について$h_i\not\in P$が存在して$h_iu_i=0$である．すると$h=h_1\dots h_r$とおけば$h\not\in P$であって$h\in\ann M$となる．
 \end{proof}
+
 \begin{cor}\label{cor:supp A/I}
 	$A$のイデアル$I$に対して，$\supp (A/I)=V(I)$である．
 \end{cor}

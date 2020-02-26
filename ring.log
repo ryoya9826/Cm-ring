@@ -1,13 +1,13 @@
-This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.17)  17 FEB 2020 16:38
+This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.2.26)  26 FEB 2020 14:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **ring.tex
 (./ring.tex
-pLaTeX2e <2020-02-02u03>+2 (based on LaTeX2e <2020-02-02> patch level 2)
-L3 programming layer <2020-02-14>
+pLaTeX2e <2020-02-02u03>+2 (based on LaTeX2e <2020-02-02> patch level 3)
+L3 programming layer <2020-02-21>
 (c:/texlive/2019/texmf-dist/tex/latex/bxjscls/bxjsarticle.cls
-Document Class: bxjsarticle 2020/02/05 v1.9j BXJS document classes
+Document Class: bxjsarticle 2020/02/15 v1.9k BXJS document classes
 (c:/texlive/2019/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count166
@@ -26,7 +26,7 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
 (c:/texlive/2019/texmf-dist/tex/latex/bxjscls/bxjscompat.sty
-Package: bxjscompat 2020/02/05 v1.9j BXJS document classes
+Package: bxjscompat 2020/02/15 v1.9k BXJS document classes
 )
 (c:/texlive/2019/texmf-dist/tex/generic/iftex/ifpdf.sty
 Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
@@ -41,9 +41,9 @@ Package: iftex 2019/11/07 v1.0c TeX engine tests
 \jsZw=\dimen156
 \jsc@smallskipamount=\skip50
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 976.
+(Font)              scaled to size 9.6222pt on input line 978.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 976.
+(Font)              scaled to size 9.6222pt on input line 978.
 \fullwidth=\dimen157
 
 (c:/texlive/2019/texmf-dist/tex/latex/geometry/geometry.sty
@@ -88,10 +88,10 @@ Package: bxwareki 2019/06/01 v0.6
 File: bxwareki-cd.def 2019/06/01 v0.6
 ))
 (c:/texlive/2019/texmf-dist/tex/latex/bxjscls/bxjsja-standard.def
-File: bxjsja-standard.def 2020/02/05 v1.9j BXJS document classes
+File: bxjsja-standard.def 2020/02/15 v1.9k BXJS document classes
 
 (c:/texlive/2019/texmf-dist/tex/latex/bxjscls/bxjsja-minimal.def
-File: bxjsja-minimal.def 2020/02/05 v1.9j BXJS document classes
+File: bxjsja-minimal.def 2020/02/15 v1.9k BXJS document classes
 LaTeX Info: Redefining \textmc on input line 228.
 LaTeX Info: Redefining \textgt on input line 229.
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
@@ -919,7 +919,7 @@ Package askw.sty Warning: Title data are already setted, but I updated them. on
  input line 29.
 
 (c:/texlive/2019/texmf-dist/tex/latex/l3backend/l3backend-dvipdfmx.def
-File: l3backend-dvipdfmx.def 2020-02-03 L3 backend support: dvipdfmx
+File: l3backend-dvipdfmx.def 2020-02-23 L3 backend support: dvipdfmx
 \g__graphics_track_int=\count319
 \l__pdf_internal_box=\box87
 \g__pdf_backend_object_int=\count320
@@ -1256,25 +1256,29 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 [36] [37] [38] [39] [40] [41] [42] (I search kanjifont definition file: . . )
 [43] [44] [45] [46] [47]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 909.
+(Font)              scaled to size 9.0pt on input line 910.
  [48] [49] [50] [51] [52] [53] [54] [55]) (./ring2.tex
 [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68] [69])
 (./ring3.tex [70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81]
-[82] [83] [84] [85] [86] [87] [88] [89] [90]) (./ring4.tex [91] [92] [93]
-[94] [95] [96] [97] [98] [99] [100] [101] [102] [103]) (./ring5.tex [104]
-[105] [106] [107]
+[82] [83] [84] [85] [86] [87] [88] [89] [90] [91]) (./ring4.tex [92] [93]
+[94] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104]) (./ring5.tex
+[105] [106] [107] [108]
 
 Package askw.sty Warning: TODO! 補題5.1.14を使わずにKrullの交叉定理
 からなんとかできないかな？証明見直そう？ on input line 139.
 
 
-[108] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119]
-[120] [121] [122]) (./ring6.tex [123] [124] [125] [126] [127] [128] [129]
-[130] [131] [132] [133] [134] [135] [136] [137] [138] [139] [140] [141]
-[142] [143] [144] [145] [146] [147] [148]) (./ring7.tex [149] [150] [151]
-[152] [153])
+[109] [110] [111] [112] [113] [114] [115] [116] [117] [118] [119] [120]
+[121] [122] [123] [124]) (./ring6.tex [125] [126] [127] [128] [129] [130]
+[131] [132] [133] [134] [135] [136] [137] [138] [139] [140] [141] [142]
+[143] [144] [145] [146] [147] [148] [149] [150]) (./ring7.tex [151] [152]
+[153] [154] [155])
+Underfull \hbox (badness 10000) in paragraph at lines 178--60
+
+ []
+
 \m@syu@part@save=\count325
- (./ringApe1.tex [154] [155] [156]) (./ringApe2.tex [157]
+(./ringApe1.tex [156] [157] [158]) (./ringApe2.tex [159]
 LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input lin
 e 7.
 
@@ -1293,7 +1297,7 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 6.7504pt on input line 23.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 5.08592pt on input line 23.
- [158] [159] [160]
+ [160] [161] [162]
 LaTeX Font Info:    Font shape `JT2/mc/b/n' in size <8> not available
 (Font)              Font shape `JT2/mc/bx/n' tried instead on input line 105.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <8> not available
@@ -1309,7 +1313,7 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 8.0pt on input line 105.
 
-[161] [162] [163] [164] [165] [166]) (./ring@temp.tex) (./ring.ind [167]
+[163] [164] [165] [166] [167] [168]) (./ring@temp.tex) (./ring.ind [169]
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 (Font)              scaled to size 7.19995pt on input line 3.
 LaTeX Font Info:    Font shape `JT2/gt/b/n' in size <8> not available
@@ -1341,22 +1345,22 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 LaTeX Font Info:    Font shape `T1/qhv/b/n' will be
 (Font)              scaled to size 8.09995pt on input line 3.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 18.
+(Font)              scaled to size 8.0pt on input line 20.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 18.
+(Font)              scaled to size 6.2pt on input line 20.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 18.
+(Font)              scaled to size 8.0pt on input line 20.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.2pt on input line 18.
+(Font)              scaled to size 6.2pt on input line 20.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 5.73322pt on input line 18.
+(Font)              scaled to size 5.73322pt on input line 20.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 5.73322pt on input line 18.
+(Font)              scaled to size 5.73322pt on input line 20.
 
-[168
+[170
 
 
-] [169]) (./ring.bbl) [170
+] [171]) (./ring.bbl) [172
 
 
 ]
@@ -1366,7 +1370,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 77.
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 77.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 77.
 Package rerunfilecheck Info: File `ring.out' has not changed.
-(rerunfilecheck)             Checksum: EE79A8C047BB5143941842629FC58D5F;3867.
+(rerunfilecheck)             Checksum: C82AA4BA54D7E6BA4B1D29A24D2DA8B5;3938.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1375,12 +1379,12 @@ LaTeX Font Warning: Size substitutions with differences
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 77.
  ) 
 Here is how much of TeX's memory you used:
- 33968 strings out of 481768
- 697412 string characters out of 5934902
- 890031 words of memory out of 5000000
- 48806 multiletter control sequences out of 15000+600000
+ 33977 strings out of 481757
+ 697652 string characters out of 5934521
+ 890491 words of memory out of 5000000
+ 48826 multiletter control sequences out of 15000+600000
  693791 words of font info for 252 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  60i,29n,84p,1563b,1355s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ring.dvi (171 pages, 2271968 bytes).
+Output written on ring.dvi (173 pages, 2290708 bytes).

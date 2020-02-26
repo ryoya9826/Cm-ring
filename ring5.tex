@@ -509,7 +509,7 @@ $\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の
 	また，Krullの標高定理の逆より$\bar{x_1},\dots,\bar{x_r}\in\bar{A}$が存在して$\bar{P}$は$(\bar{x_1},\dots,\bar{x_r})$の極小素イデアルである．よって$P$は$(a_1,\dots,a_i，x_1,\dots,x_r)$の極小素イデアルとなり，$n\leq r+i$である．よって$r=n-i$が示された．
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{prop:dim A/xA=dim A-1}
 	Noether局所環$(A,\ideal{m})$と$A$の零因子でない$x\in\ideal{m}$について，$\dim A/(x)=\dim A-1$が成り立つ．
 \end{prop}
 
@@ -547,7 +547,7 @@ $\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の
 
 次の結果は\ref{cor:多項式環の次元}の拡張である．
 
-\begin{cor}
+\begin{cor}\label{cor:Noether多項式の次元}
 	$A$がNoether環ならば，$\dim A[X]=\dim A+1$が成り立つ．帰納的に$\dim A[X_1,\dots,X_n]=\dim A+n$である．
 \end{cor}
 
@@ -559,7 +559,9 @@ $\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の
 	すると，$A$の素イデアル鎖$P_0'\subset\dots\subset P_d'$において$\idht P_d'=\idht P_d'[X]$であり，$P_d'[X]\cap A=P_d\cap A$であるので，$P_d'[X]\subset P_d$でありかつ前定理の議論からその間に素イデアルはない．よって$d-1\leq\idht P_d'[X]=\idht P_d'\leq\dim A$である．よって$d\leq\dim A+1$が従う．
 \end{proof}
 
-\section{正則局所環}
+\section{正則環}
+
+以後２つの節，正則環とCohen--Macaulay環については，深い結果を証明するにはホモロジー代数の考え方が不可分なので，定義とそこから予見される性質を紹介するに留める．
 
 Noether局所環$(A,\ideal{m},k)$について，$\dim A=d$とすると$A$の$\ideal{m}$準素イデアルは少なくとも$d$個の元で生成される．ちょうど$d$個の元で$\ideal{m}$準素イデアルが生成されているときを考えよう．
 \begin{defi}[巴系]\index{ぱけい@巴系}
@@ -572,6 +574,7 @@ Noether局所環$(A,\ideal{m},k)$について，$\dim A=d$とすると$A$の$\id
 	$(A,\ideal{m})$を局所環とする．$d=\dim A$個の元$x_1,\dots,x_d\in A$が存在して$\ideal{m}=(\nitem[d]{x})$となっているとき$A$を\textbf{正則局所環}(regular local ring)といい，$\ideal{m}$を生成する巴系を\textbf{正則巴系}という．
 \end{defi}
 
+環$A$のすべての素イデアル$P$による局所化$A_P$が正則局所環であるような$A$を，\textbf{正則環}(regular ring)という．\index{せいそくかん@正則環}
 \begin{prop}
 $d$次元Noether局所環$(A,\ideal{m})$について，$x_1,\dots,x_i$が$A$の正則巴系の１部分であることと$A/(x_1,\dots,x_i)$が$d-i$次の正則局所環であることは同値．
 \end{prop}
@@ -600,30 +603,34 @@ $d$次元Noether局所環$(A,\ideal{m})$について，$x_1,\dots,x_i$が$A$の�
 
 DVRは整閉なので，1次元の正則局所環は整閉である．またより強くDVRはUFDでもあるが，次の結果が知られている．
 
-\begin{thm}[Auslander-Bachsbaumの定理]\index{#Auslander-Bachsbaumのていり@Auslander-Bachsbaumの定理}
+\begin{thm}[Auslander--Bachsbaumの定理]\index{#Auslander--Bachsbaumのていり@Auslander--Bachsbaumの定理}
 	正則局所環はUFDである．
 \end{thm}
 
 特にすべての正則局所環は整閉整域である．この結果の証明にはホモロジー代数的手法を本質的に必要とするため，ホモロジー代数を導入した後に証明を与える．
 
-\section{Cohen-Macaulay 環}
+\section{Cohen--Macaulay 環}
 
-重要な局所環のクラスの１つにCohen-Macaulay\textbf{環}（略してCM\textbf{環}と書くことも多い）がある．Cohen-Macaulay環は現在の可換環論で中心的な存在の１つであり，この節ではホモロジー代数を要しない範囲で性質をまとめておこう．
+重要な局所環のクラスの１つにCohen--Macaulay\textbf{環}（略してCM\textbf{環}と書くことも多い）がある．Cohen--Macaulay環は現在の可換環論で中心的な存在の１つであり，この節ではホモロジー代数を要しない範囲で性質をまとめておこう．まずそのために\textbf{正則列}と\textbf{深さ}を導入する．
+
+\begin{defi}[正則元]
+	$A$加群$M$について，$a\in A$が$M$に非例因子として作用する，すなわち任意の$0\neq x\in M$について$ax\neq0$であるとき，$a$は$M$\textbf{正則}(regular)であるという．
+\end{defi}
 
 \begin{defi}[正則列]\index{せいそくれつ@正則列}
-	$A$をNoether環とし，$M$を有限生成$A$加群とする．$a_1,\dots,a_r\in A$が任意の$1\leq i\leq r$について$a_i$が$M/(a_1,\dots,a_{i-1})M$に非零因子として作用するとき，$a_1,\dots,a_r$を$M$\textbf{正則列}(regular sequence)という．
+	$A$をNoether環とし，$M$を有限生成$A$加群とする．$a_1,\dots,a_r\in A$が任意の$1\leq i\leq r$について$a_i$が$M/(a_1,\dots,a_{i-1})M$正則であるとき，$a_1,\dots,a_r$を$M$\textbf{正則列}(regular sequence)という．
 \end{defi}
 
 例えば体上の多項式$A=K[X_1,X_2,X_3]$において$f_1=X_1(X_2-1),f_2=X_2,f_3=X_3(X_1-1)$とすると$f_1,f_2,f_3$は$A$正則列をなす．ところが$X_1$は$A/(f_1)$において$0$ではないが，$f_3X_3$は$0$であるので$f_1,f_3,f_2$は$A$正則列ではない．このように正則列は順序を考慮する必要があるが，局所環においては極大イデアルの元について順序によらないことが知られている．ここではより強く$\rad A$の元においてそのことを示そう．
 
-\begin{lem}
-	Noether環$A$上の加群$M$において$a\in A$が$M$上の非零因子で$\bigcap a^nM=0$であるものとする．このとき$M$の素因子$P\in\ass M$について$P+(a)\subset Q$となる$Q\in\ass (M/aM)$が存在する．
+\begin{lem}\label{lem:正則元と素因子}
+	Noether環$A$上の加群$M$において$a\in A$が$M$正則でありかつ$\bigcap a^nM=0$であるものとする．このとき$M$の素因子$P\in\ass M$について$P+(a)\subset Q$となる$Q\in\ass (M/aM)$が存在する．
 \end{lem}
 
 この補題の仮定はKrullの交叉定理（\ref{cor:Krullの交叉定理の系}）より$a\in\rad A$のとき満たされる．
 
 \begin{proof}
-	$x\in M$によって$P=\ann (x)$とかける．ここで$\bigcap a^nM=0$より，ある$k\geq0$が存在して$x\in a^kM$かつ$x\not\in a^{k+1}M$である．このとき$y\in M$によって$x=a^ky$と書けているとすると$y\not\in aM$である．ここで$\bar{y}$を$y$の$M/aM$における像とすると，$a$が非零因子なので$(P+(a))\bar{y}=0$が成り立つ．これは$P+(a)\subset\ann (\bar{y})$を意味するが，\ref{prop:素因子の存在}よりある$Q\in\ass (M/aM)$が存在する．
+	$x\in M$によって$P=\ann (x)$とかける．ここで$\bigcap a^nM=0$より，ある$k\geq0$が存在して$x\in a^kM$かつ$x\not\in a^{k+1}M$である．このとき$y\in M$によって$x=a^ky$と書けているとすると$y\not\in aM$である．ここで$\bar{y}$を$y$の$M/aM$における像とすると，$a$が$M$正則なので$(P+(a))\bar{y}=0$が成り立つ．これは$P+(a)\subset\ann (\bar{y})$を意味するが，\ref{prop:素因子の存在}よりある$Q\in\ass (M/aM)$が存在する．
 \end{proof}
 
 \begin{prop}
@@ -631,19 +638,62 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 \end{prop}
 
 \begin{proof}
-	まず２つの場合に帰着できることをみよう．$a_1,\dots,a_i,a_{i+1},\dots,a_r$が$M$正則列であるとする．$N=M/(a_1,\dots,a_{i-1})M$とおくと$a_i$は$N$の非零因子であり，$a_{i+1}$は$N/a_iN=M/(a_1,\dots,a_i)M$の非零因子である．このとき$a_1,\dots,a_{i+1},a_i,\dots,a_r$が$M$正則列であることをみるには$a_{i+1}$が$N$の，$a_i$が$N/a_{i+1}N=M/(a_1,\dots,a_{i-1},a_{i+1})M$の非零因子であることを示せばよい．
+	まず２つの場合に帰着できることをみよう．$a_1,\dots,a_i,a_{i+1},\dots,a_r$が$M$正則列であるとする．$N=M/(a_1,\dots,a_{i-1})M$とおくと$a_i$は$N$正則であり，$a_{i+1}$は$N/a_iN=M/(a_1,\dots,a_i)M$正則である．このとき$a_1,\dots,a_{i+1},a_i,\dots,a_r$が$M$正則列であることをみるには$a_{i+1}$が$N$の，$a_i$が$N/a_{i+1}N=M/(a_1,\dots,a_{i-1},a_{i+1})M$正則であることを示せばよい．
 	
-	よって$a_1$が$M$の，$a_2$が$M/a_1M$の非零因子なら$a_2$が$M$の，$a_1$が$M/a_2M$の非零因子であることを示せば十分である．まず$a_2$が$M$の零因子とすると，\ref{prop:素因子の存在}よりある$P\in\ass M$に対して$a_2\in P$である．ここで$a_1\in\rad A$より，Krullの交叉定理から$\bigcap a_1^nM=0$となるので，補題から$P+(a_1)\subset Q$となる$Q\in\ass (M/a_1M)$がある．すると$a_2\in P\subset Q$だから$a_2$が$M/a_1M$の零因子でないことに矛盾する．よって$a_2$は$M$の非零因子．また$a_1$が$M/a_2M$の零因子とすると，ある$x\not\in a_2M,y\in M$について$a_1x=a_2y$だが，このとき$a_2y\in a_1M$より$a_2$が$M/a_1M$の非零因子だから$y\in a_1M$である．$y=a_1z$とおくと$a_1(x-a_2z)=0$となり，$a_1$は$M$の非零因子なので$x=a_2z$となって矛盾する．よって$a_1$は$M/a_2M$の非零因子である．
+	よって$a_1$が$M$の，$a_2$が$M/a_1M$正則なら$a_2$が$M$の，$a_1$が$M/a_2M$正則であることを示せば十分である．まず$a_2$が$M$の零因子とすると，\ref{prop:素因子の存在}よりある$P\in\ass M$に対して$a_2\in P$である．ここで$a_1\in\rad A$より，Krullの交叉定理から$\bigcap a_1^nM=0$となるので，補題から$P+(a_1)\subset Q$となる$Q\in\ass (M/a_1M)$がある．すると$a_2\in P\subset Q$だから$a_2$が$M/a_1M$正則であることに矛盾する．よって$a_2$は$M$正則．また$a_1$が$M/a_2M$の零因子とすると，ある$x\not\in a_2M,y\in M$について$a_1x=a_2y$だが，このとき$a_2y\in a_1M$より$a_2$が$M/a_1M$正則だから$y\in a_1M$である．$y=a_1z$とおくと$a_1(x-a_2z)=0$となり，$a_1$は$M$正則なので$x=a_2z$となって矛盾する．よって$a_1$は$M/a_2M$正則である．
 \end{proof}
 
 \begin{cor}
-	Noether局所環$(A,\ideal{m})$上の有限生成加群$M$について，$a_1,\dots,a_r\in\ideal{m}$が$M$正則列であるとき，その並べ替えも$M$正則である．
+	Noether局所環$(A,\ideal{m})$上の有限生成加群$M$について，$a_1,\dots,a_r\in\ideal{m}$が$M$正則列であるとき，その並べ替えも$M$正則列である．
 \end{cor}
 
-環の次元$\dim A$は幾何的には$\spec A$の次元である．加群の次元については$\supp M$の（幾何的な）次元をもって定義しよう．$A$加群$M$が有限生成なら$V(\ann M)=\supp M$である（\ref{prop:Zariskiの閉集合とsupp}）．そこで一般の加群についても$\dim M=\dim (A/\ann M)$と定義する．Noether局所環$(A,\ideal{m})$上の有限生成加群$M$についても環の場合の自然な拡張としてHilbert-Samuel次元$d(M)$を定義でき，座標次元$\delta(A)$を$a_1,\dots,a_r\in\ideal{m}$で$l(M/(a_1,\dots,a_r)M)$が有限になる最小の$r$で定義する．これらは環の場合への帰着により次元定理が成り立つ．
+次元と関連して，加群の\textbf{深さ}というものを導入しよう．
 
-\begin{defi}[加群のKrull次元]\index{#Krullじげんかぐん@Krull次元（加群）}
-	$A$加群$M$について$\dim (A/\ann M)$を$M$のKrull\textbf{次元}と定め，$\dim M$とかく．
+\begin{defi}[深さ]\index{ふかさ@深さ}
+	$A$をNoether環とし，$M$を有限生成$A$加群とする．$A$のイデアル$I$の元からなる$M$正則列の長さの最大値を$M$の$I$における\textbf{深さ}(depth)といい，$\mdepth_I M$とかく．特に$A$が極大イデアルが$\ideal{m}$である局所環のとき，$\ideal{m}$における$M$の深さを$\mdepth M$とかいて単に$M$に\textbf{深さ}という．
 \end{defi}
 
-次元と関連して，加群の\textbf{深度}というものを導入しよう．
+Noether局所環$(A,\ideal{m})$について$\dim A\leq \emdim A=\dim_k\ideal{m}/\ideal{m}^2$であり，これの等号が成り立つものを正則局所環というのであった．深さは環の次元を下から抑えるものとなっている．そのことを示そう．
+
+%\begin{lem}
+%	$(A,\ideal{m})$をNoether局所環とし、$M\neq0$を有限生成$A$加群とする．$a\in\ideal{m}$が$M$正則元であるとき，$\dim M/aM=\dim M-1$が成り立つ．
+%\end{lem}
+%
+%\begin{proof}
+%%	まず$\leq $を示す．$P\in \supp M/aM$が極小であるとする．このとき$P\in\ass M/aM$だから$\ann M\subset P$となるので，$P\in\supp M$である．一方で$P$が$\supp M$で極小，つまり$P\in\ass M$なら$a$が$M$正則だから$a\not\in P$であるから，$P$は$\supp M$で極小ではない．よって$P'\subsetneq P$となる$P'\in\supp M$が存在する．よって$\supp M/aM$の極大な鎖よりも長い$\supp M$の鎖がとれることになり，$\dim M/aM\leq \dim M-1$である．
+%	
+%	$a$は$A/\ann M$の非零因子なので，\ref{prop:dim A/xA=dim A-1}より$\dim M-1=\dim A/\ann M-1=\dim A/(\ann M+(a))$が成り立つ．また$\dim M/aM=\dim A/\ann(M/aM)$であるので，$\dim A/(\ann M+(a))=\dim A/\ann(M/aM)$であることを示せばよい．それには$P\in\spec A$が$\ann M+(a)\subset P$であることと$\ann(M/aM)\subset P$であることが同値であることを示せば十分である．
+%	
+%	容易に$\ann(M/aM)\subset P$なら$\ann M\subset P$かつ$a\in P$であることがわかる．一方で$\ann M\subset P$かつ$a\in P$ならば$M_P\neq0$であり，また$a/1\in A_P$は$M_P$正則であるから$(M/aM)_P=M_P/aM_P$である．ここで$M_P/aM_P=0$すなわち$M_P\subset aM_P$と仮定すると，任意の$0\neq x\in M_P$についてある$y_1\in M_P$が存在して$x=ay_1$とかけ，また$y_1\neq0$である．$y_1$について同様に$y_1=ay_2$とかける$0\neq y_2\in M_P$が存在するから，$x=a^2y_2$である．繰り返して$0\neq x\in\bigcap_{n\in\N}a^nM_P$となり特にこれは$0$でないが，$a/1\in\rad(A_P)=PA_P$であるからKrullの交叉定理（\ref{cor:Krullの交叉定理の系}）に矛盾している．よって$(M/aM)_P\neq0$となり，$P\in\supp M/aM$すなわち$\ann(M/aM)\subset P$である．よって求める等式が示された．
+%\end{proof}
+
+\begin{prop}
+	Noether局所環$(A,\ideal{m})$と，有限生成$A$加群$M\neq0$について，任意の$P\in\ass M$に対し；
+	\[\mdepth M\leq\dim A/P\]
+	が成り立つ．
+\end{prop}
+
+\begin{proof}
+	$\mdepth M$についての帰納法で示す．まず$\mdepth M=0$のときは明らかに成り立っている．$\mdepth M=r$とおき，$\mdepth M'\leq r-1$となる$M'$について成り立っていると仮定しよう．$M$正則列$a_1,\dots,a_r$を考える．このとき$\mdepth (M/a_1M)=r-1$である．また任意の$P\in\ass M$について，\ref{lem:正則元と素因子}から$P+(a_1)\subset Q$となる$Q\in\ass (M/a_1M)$が存在し，$a_1\not\in P,a_1\in Q$であるから$P\subsetneq Q$である．よって$\dim A/Q<\dim A/P$が成り立つ．帰納法の仮定から$r-1=\mdepth (M/a_1M)\leq\dim A/Q<\dim A/P$であるので，$r\leq\dim A/P$であることがわかる． 
+\end{proof}
+
+\begin{cor}
+	Noether局所環$(A,\ideal{m})$と，有限生成$A$加群$M\neq0$について，$\mdepth M\leq\dim M$である．
+\end{cor}
+
+これにより次の定義を導入する．
+
+\begin{defi}[Cohen--Macaulay加群]\index{#Cohen--Macaulayかぐん@Cohen--Macaulay加群}
+	Noether局所環$(A,\ideal{m})$上の有限生成加群$M$について，$\dim M=\mdepth M$であるとき$M$をCohen--Macaulay\textbf{加群}という．
+\end{defi}
+
+\begin{defi}[Cohen--Macaulay環]\index{#Cohen-Macaulayかん@Cohen--Macaulay環}
+	Noether環$A$について，任意の$P\in\spec A$による局所化$A_P$が$A_P$加群としてCohen--Macaulay加群のとき，$A$をCohen--Macaulay\textbf{環}という．
+\end{defi}
+
+これからCohen--Macaulay性についての考察を進めていきたいところではあるが，加群の深さについては Ext と呼ばれる関手を使った言い換えがあり，それにより扱いが簡明になるところがある．よってここでは，次の補題；
+
+\begin{lem}\label{lem:depth M/aM=depth M-1}
+	$(A,\ideal{m})$をNoether
+\end{lem}
+（証明は\ref{lem:depth M/aMについての証明}で与える）を仮定して，

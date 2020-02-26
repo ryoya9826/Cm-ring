@@ -1,5 +1,6 @@
 \part[Homological method to ring theory]{可換環論のホモロジー代数的手法}
 前章で定義した射影分解，$\Tor,\Ext$などの道具を使って可換環の理論にホモロジー代数的手法を持ち込もう．
+
 \section{射影被覆と入射包絡}
 \begin{defi}[射影次元]\index{しゃえいじげん@射影次元}
 	$M$を$A$加群とする．$M$の射影分解の長さの最小値を$M$の\textbf{射影次元}(projective dimension)といい，$\prjdim_A M$とかく．
@@ -163,3 +164,15 @@ $\dim A$は素イデアル鎖の長さの$\sup$で定義したが，射影次元
 
 この定理と\ref{prop:入射包絡の一意性}より$A$加群$M$の入射包絡は同型を除いて必ず一意に存在するので$\E(M)$とかくことにしよう．
 
+\section{Ext と加群の深さ}
+この節では，Cohen--Macaulay性を議論するために必要不可欠な深さの概念について，Extを使った言い換えを与え，ホモロジー代数の道具を用いて考察していく．まずは\ref{lem:depth M/aM=depth M-1}の証明を与えるために，深さをExtを用いた形で言い換える．
+
+\begin{thm}
+	$(A,\ideal{m})$をNoether局所環とし，$M$を有限生成$A$加群とする．このとき，次の等式；
+	\[\mdepth M=\min\mkset{i\geq0}{\Ext^i_A(A/\ideal{m},M)\neq0}\]
+	が成り立つ．
+\end{thm}
+
+\begin{lem}[\ref{lem:depth M/aM=depth M-1}の証明]\label{lem:depth M/aMについての証明}
+	content
+\end{lem}
