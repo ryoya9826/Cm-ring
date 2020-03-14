@@ -136,7 +136,6 @@
 		\item ある$x\in A$が存在して，すべての0でないイデアルは$(x^k) (k\geq0)$とかける．
 	\end{sakura}
 	の同値性である．
-	\TODO[補題5.1.14を使わずにKrullの交叉定理からなんとかできないかな？証明見直そう？]
 	\begin{eqv}[6]
 		\item 明らか．
 		\item $0\neq a\in\ideal{m}$をとる．\ref{lem:DVR-C}より$\ideal{m}^n\subset(a),\ideal{m}^{n-1}\not\subset(a)$となる$n>0$がとれる．$b\in\ideal{m}^{n-1}$かつ$b\not\in(a)$となる$b$をとる．$x=a/b\in K$とおくと，$b\not\in(a)$より$x^{-1}\not\in A$である．$A$は整閉なので$x^{-1}$は整ではなく，\ref{prop:整拡大の特徴づけ}より$x^{-1}\ideal{m}\not\subset\ideal{m}$である．いま$x$の構成から$x^{-1}\ideal{m}\subset A$なので，$x^{-1}\ideal{m}=A$が成り立ち，$\ideal{m}=(x)$である．
@@ -475,7 +474,7 @@ $\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の
 \section{Krullの次元定理の系たち}
 
 準素イデアルの節で注意しておいたことだが，極小素イデアルについてもう一度注意しておこう．Noether環$A$とそのイデアル$I$について$V(I)$の極小元，つまり$I$を含む素イデアルで極小なものは$\ass(A/I)$の元であるから有限個である．また$I=\bigcap q_i$と準素分解したとき，$P=\sqrt{q_i}$となる$i$が存在する．
-\begin{thm}[Krullの標高定理]\index{#Krullのひょうこうていり@Krullの標高定理}
+\begin{thm}[Krullの標高定理]\index{#Krullのひょうこうていり@Krullの標高定理}\label{thm:Krullの標高定理}
 	$A$をNoether環とし，$\nitem{f}\in A$とする．イデアル$(\nitem{f})$の極小素イデアル$P$について$\idht P\leq n$が成り立つ．
 \end{thm}
 
@@ -492,7 +491,7 @@ $\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の
 \end{proof}
 
 \begin{thm}[Krullの標高定理の逆]
-	$A$をNoether環とし，$P\in\spec A$が$\idht P=n$であったとすると，ある$a_1,\dots,a_n\in A$が存在して$P$は$(a_1,\dots,a_n)$の極小素イデアルとなる．
+	$A$をNoether環とし，$P\in\spec A$が$\idht P=n$であったとすると，ある$a_1,\dots,a_n\in P$が存在して$P$は$(a_1,\dots,a_n)$の極小素イデアルとなる．
 \end{thm}
 
 \begin{proof}
@@ -525,12 +524,12 @@ $\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の
 	\ref{lem:完備化に関してのもろもろの補題}より$A/\ideal{m}^n=\widehat{A}/{\widehat{\ideal{m}}}^n$であるので，$\chi_{\ideal{m}}(n)=\chi_{\widehat{\ideal{m}}}(n)$が成り立つ
 \end{proof}
 
-\begin{prop}
-	Noether環$A$のイデアル$I$について，$\idht I=n$ならばある$\nitem{f}\in I$が存在して，任意の$1\leq k\leq n$について$\idht (\nitem[k]{f})=k$が成り立つ．
+\begin{prop}\label{prop:イデアルの高さと生成系の個数}
+	Noether環$A$のイデアル$I$について，$\idht I=r$ならばある$\nitem[r]{f}\in I$が存在して，任意の$1\leq i\leq r$について$\idht (\nitem[i]{f})=i$が成り立つ．
 \end{prop}
 
 \begin{proof}
-	まず，$f_1$を$A$の零因子で単元でもない元とすると，Krullの単項イデアル定理より$\idht (f_1)=1$である．そこで，ある$l$について$\nitem[l]{f}$がすべての$1\leq j\leq l$について$\idht (\nitem[j]{f})=j$となるように選ばれているとする．素イデアル$P\in V(\nitem[l]{f})$について$\idht P=l$であるものは$(\nitem[l]{f})$の極小素因子なので\ref{cor:Noether環の極小素イデアルは有限個}より有限個しかない．また，$I\subset\neq P$であるので，Prime avoidance（\ref{lem:Prime avoidance}）より$f_{l+1}\in I$を$f_{i+1}\not\in\bigcup_{P\in V(\nitem[l]{f}),\idht P=l} P$となるようにとることができる．すると$\idht (\nitem[l+1]{f})=l+1$が成り立つ．
+	まず，$f_1$を$A$の零因子で単元でもない元とすると，Krullの単項イデアル定理より$\idht (f_1)=1$である．そこで，ある$i<r$について$\nitem[i]{f}$がすべての$1\leq j\leq i$について$\idht (\nitem[j]{f})=j$となるように選ばれているとする．素イデアル$P\in V(\nitem[i]{f})$について$\idht P=i$であるものは$(\nitem[i]{f})$の極小素因子なので\ref{cor:Noether環の極小素イデアルは有限個}より有限個しかない．また，$I\subsetneq P$であるので，Prime avoidance（\ref{lem:Prime avoidance}）より$f_{i+1}\in I$を$f_{i+1}\not\in\bigcup_{P\in V(\nitem[i]{j}),\idht P=j} P$となるようにとることができる．すると$\idht (\nitem[i+1]{f})=i+1$が成り立つ．よって帰納的に主張が従う．
 \end{proof}
 
 \begin{thm}
@@ -554,9 +553,9 @@ $\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の
 \begin{proof}
 	$d=\dim A[X]$としたとき，$A[X]$の素イデアル鎖$P_0\subsetneq P_1\subsetneq\dots\subsetneq P_d$について，先の定理と同様に$A$の素イデアル鎖$P_0'\subset\dots\subset P_d'$を考える．このとき$d-1\leq\idht P_d'$を示したい．
 	
-	$P'\in\spec A$について，$P'[X]$を係数がすべて$P'$の元である多項式全体とすると，これは$A[X]$の素イデアルになる．$\idht P'=r$とし，$A$の素イデアル鎖$Q_0'\subsetneq Q_1'\subsetneq\dots\subsetneq Q_r'=P'$を考えよう．このとき$Q_0'[X]\subsetneq Q_1'[X]\subsetneq\dots\subsetneq Q_r'[X]$は$A[X]$の素イデアル鎖になるので$r\leq\idht P'[X]$が成り立つ．また$\idht P'=r$より，$P$はある$f_1,\dots,f_r$について$I=(\nitem[r]{f})$の極小素イデアルである．このとき$P'[X]$は$I[X]$の極小素イデアルになるので，Krullの標高定理より$\idht P'[X]\leq r$である．
+	$P'\in\spec A$について，$P'A[X]$を係数がすべて$P'$の元である多項式全体とすると，これは$A[X]$の素イデアルになる．$\idht P'=r$とし，$A$の素イデアル鎖$Q_0'\subsetneq Q_1'\subsetneq\dots\subsetneq Q_r'=P'$を考えよう．このとき$Q_0'A[X]\subsetneq Q_1'A[X]\subsetneq\dots\subsetneq Q_r'A[X]$は$A[X]$の素イデアル鎖になるので$r\leq\idht P'A[X]$が成り立つ．また$\idht P'=r$より，$P$はある$f_1,\dots,f_r$について$I=(\nitem[r]{f})$の極小素イデアルである．このとき$P'A[X]$は$I[X]$の極小素イデアルになるので，Krullの標高定理より$\idht P'A[X]\leq r$である．
 	
-	すると，$A$の素イデアル鎖$P_0'\subset\dots\subset P_d'$において$\idht P_d'=\idht P_d'[X]$であり，$P_d'[X]\cap A=P_d\cap A$であるので，$P_d'[X]\subset P_d$でありかつ前定理の議論からその間に素イデアルはない．よって$d-1\leq\idht P_d'[X]=\idht P_d'\leq\dim A$である．よって$d\leq\dim A+1$が従う．
+	すると，$A$の素イデアル鎖$P_0'\subset\dots\subset P_d'$において$\idht P_d'=\idht P_d'A[X]$であり，$P_d'A[X]\cap A=P_d\cap A$であるので，$P_d'A[X]\subset P_d$でありかつ前定理の議論からその間に素イデアルはない．よって$d-1\leq\idht P_d'A[X]=\idht P_d'\leq\dim A$である．よって$d\leq\dim A+1$が従う．
 \end{proof}
 
 \section{正則環}
@@ -575,7 +574,7 @@ Noether局所環$(A,\ideal{m},k)$について，$\dim A=d$とすると$A$の$\id
 \end{defi}
 
 環$A$のすべての素イデアル$P$による局所化$A_P$が正則局所環であるような$A$を，\textbf{正則環}(regular ring)という．\index{せいそくかん@正則環}
-\begin{prop}
+\begin{prop}\label{prop:正則局所環は落ちる}
 $d$次元Noether局所環$(A,\ideal{m})$について，$x_1,\dots,x_i$が$A$の正則巴系の１部分であることと$A/(x_1,\dots,x_i)$が$d-i$次の正則局所環であることは同値．
 \end{prop}
 
@@ -587,7 +586,7 @@ $d$次元Noether局所環$(A,\ideal{m})$について，$x_1,\dots,x_i$が$A$の�
 	\end{eqv}
 \end{proof}
 
-\begin{thm}
+\begin{thm}\label{thm:正則局所環は整域}
 	正則局所環$(A,\ideal{m})$は整域である．
 \end{thm}
 
@@ -609,7 +608,7 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 
 特にすべての正則局所環は整閉整域である．この結果の証明にはホモロジー代数的手法を本質的に必要とするため，ホモロジー代数を導入した後に証明を与える．
 
-\section{Cohen--Macaulay 環}
+\section{Cohen--Macaulay 加群}
 
 重要な局所環のクラスの１つにCohen--Macaulay\textbf{環}（略してCM\textbf{環}と書くことも多い）がある．Cohen--Macaulay環は現在の可換環論で中心的な存在の１つであり，この節ではホモロジー代数を要しない範囲で性質をまとめておこう．まずそのために\textbf{正則列}と\textbf{深さ}を導入する．
 
@@ -650,22 +649,12 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 次元と関連して，加群の\textbf{深さ}というものを導入しよう．
 
 \begin{defi}[深さ]\index{ふかさ@深さ}
-	$A$をNoether環とし，$M$を有限生成$A$加群とする．$A$のイデアル$I$の元からなる$M$正則列の長さの最大値を$M$の$I$における\textbf{深さ}(depth)といい，$\mdepth_I M$とかく．特に$A$が極大イデアルが$\ideal{m}$である局所環のとき，$\ideal{m}$における$M$の深さを$\mdepth M$とかいて単に$M$に\textbf{深さ}という．
+	$A$をNoether環とし，$M$を有限生成$A$加群とする．$A$のイデアル$I$について$IM\neq M$であるとき，$I$の元からなる$M$正則列の長さの最大値を$M$の$I$における\textbf{深さ}(depth)といい，$\mdepth_I M$とかく．$IM=M$であるときは$\mdepth_I M=\infty$と定義する．特に$A$が極大イデアルが$\ideal{m}$である局所環のとき，$\ideal{m}$における$M$の深さを$\mdepth M$とかいて単に$M$に\textbf{深さ}という．
 \end{defi}
 
-Noether局所環$(A,\ideal{m})$について$\dim A\leq \emdim A=\dim_k\ideal{m}/\ideal{m}^2$であり，これの等号が成り立つものを正則局所環というのであった．深さは環の次元を下から抑えるものとなっている．そのことを示そう．
+この定義における$M\neq IM$という条件は，$M\neq0$のとき$(A,\ideal{m})$が局所環ということと中山の補題から$I\subset\ideal{m}$と同値である．
 
-%\begin{lem}
-%	$(A,\ideal{m})$をNoether局所環とし、$M\neq0$を有限生成$A$加群とする．$a\in\ideal{m}$が$M$正則元であるとき，$\dim M/aM=\dim M-1$が成り立つ．
-%\end{lem}
-%
-%\begin{proof}
-%%	まず$\leq $を示す．$P\in \supp M/aM$が極小であるとする．このとき$P\in\ass M/aM$だから$\ann M\subset P$となるので，$P\in\supp M$である．一方で$P$が$\supp M$で極小，つまり$P\in\ass M$なら$a$が$M$正則だから$a\not\in P$であるから，$P$は$\supp M$で極小ではない．よって$P'\subsetneq P$となる$P'\in\supp M$が存在する．よって$\supp M/aM$の極大な鎖よりも長い$\supp M$の鎖がとれることになり，$\dim M/aM\leq \dim M-1$である．
-%	
-%	$a$は$A/\ann M$の非零因子なので，\ref{prop:dim A/xA=dim A-1}より$\dim M-1=\dim A/\ann M-1=\dim A/(\ann M+(a))$が成り立つ．また$\dim M/aM=\dim A/\ann(M/aM)$であるので，$\dim A/(\ann M+(a))=\dim A/\ann(M/aM)$であることを示せばよい．それには$P\in\spec A$が$\ann M+(a)\subset P$であることと$\ann(M/aM)\subset P$であることが同値であることを示せば十分である．
-%	
-%	容易に$\ann(M/aM)\subset P$なら$\ann M\subset P$かつ$a\in P$であることがわかる．一方で$\ann M\subset P$かつ$a\in P$ならば$M_P\neq0$であり，また$a/1\in A_P$は$M_P$正則であるから$(M/aM)_P=M_P/aM_P$である．ここで$M_P/aM_P=0$すなわち$M_P\subset aM_P$と仮定すると，任意の$0\neq x\in M_P$についてある$y_1\in M_P$が存在して$x=ay_1$とかけ，また$y_1\neq0$である．$y_1$について同様に$y_1=ay_2$とかける$0\neq y_2\in M_P$が存在するから，$x=a^2y_2$である．繰り返して$0\neq x\in\bigcap_{n\in\N}a^nM_P$となり特にこれは$0$でないが，$a/1\in\rad(A_P)=PA_P$であるからKrullの交叉定理（\ref{cor:Krullの交叉定理の系}）に矛盾している．よって$(M/aM)_P\neq0$となり，$P\in\supp M/aM$すなわち$\ann(M/aM)\subset P$である．よって求める等式が示された．
-%\end{proof}
+さて，Noether局所環$(A,\ideal{m})$について$\dim A\leq \emdim A=\dim_k\ideal{m}/\ideal{m}^2$であり，これの等号が成り立つものを正則局所環というのであった．深さは環の次元を下から抑えるものとなっている．そのことを示そう．
 
 \begin{prop}
 	Noether局所環$(A,\ideal{m})$と，有限生成$A$加群$M\neq0$について，任意の$P\in\ass M$に対し；
@@ -684,16 +673,181 @@ Noether局所環$(A,\ideal{m})$について$\dim A\leq \emdim A=\dim_k\ideal{m}/
 これにより次の定義を導入する．
 
 \begin{defi}[Cohen--Macaulay加群]\index{#Cohen--Macaulayかぐん@Cohen--Macaulay加群}
-	Noether局所環$(A,\ideal{m})$上の有限生成加群$M$について，$\dim M=\mdepth M$であるとき$M$をCohen--Macaulay\textbf{加群}という．
+	Noether局所環$(A,\ideal{m})$上の有限生成加群$M$について，$\dim M=\mdepth M$であるとき$M$をCohen--Macaulay\textbf{加群}という．以後単にCM加群とかく．
 \end{defi}
 
+まず，わかりやすいご利益として定義から次が従う．
+
+\begin{prop}\label{prop:CM加群は非孤立素因子を持たない}
+	$M$をNoether局所環$(A,\ideal{m})$上のCM加群とすると，$M$は非孤立素因子を持たない．
+\end{prop}
+
+\begin{proof}
+	一般に$P\in\ass M$なら$\mdepth M\leq\dim A/P\leq\dim M$だが，$M$がCMなので$\dim A/P$は$P$によらず$\mdepth M=\dim M$に等しい．
+\end{proof}
+これからCM性についての考察を進めていきたいところではあるが，加群の深さについては Ext と呼ばれる関手を使った言い換えがあり，それにより扱いが簡明になるところがある．ホモロジー代数を仮定しないここでは，次の補題；
+
+\begin{lem}\label{lem:depth M/aM=depth M-1}
+	$(A,\ideal{m})$をNoether局所環とし，$M$を$A$上の有限生成加群とする．$a\in I$が$M$正則ならば，イデアル$I\subset\ideal{m}$について；
+	\[\mdepth_I (M/aM)=\mdepth_I M-1\]
+	が成り立つ．
+\end{lem}
+
+を仮定して（証明は\ref{lem:depth M/aMについての証明}で与える），CM性のご利益について見ていくことにしよう．まず補題を用意する．
+
+\begin{lem}\label{lem:dim M/aM=dim M-1}
+	$(A,\ideal{m})$をNoether局所環とし、$M\neq0$を有限生成$A$加群とする．$a\in\ideal{m}$が$M$正則元であるとき，$\dim M/aM=\dim M-1$が成り立つ．
+\end{lem}
+
+\begin{proof}
+	$a$は$A/\ann M$の非零因子なので，\ref{prop:dim A/xA=dim A-1}より$\dim M-1=\dim A/\ann M-1=\dim A/(\ann M+(a))$が成り立つ．また$\dim M/aM=\dim A/\ann(M/aM)$であるので，$\dim A/(\ann M+(a))=\dim A/\ann(M/aM)$であることを示せばよい．それには$P\in\spec A$が$\ann M+(a)\subset P$であることと$\ann(M/aM)\subset P$であることが同値であることを示せば十分である．
+	
+	容易に$\ann(M/aM)\subset P$なら$\ann M\subset P$かつ$a\in P$であることがわかる．一方で$\ann M\subset P$かつ$a\in P$ならば$M_P\neq0$であり，また$a\in P$だから$(M/aM)_P=M_P/aM_P$であり，$a/1\in\rad (A_P)=PA_P$だから中山の補題より$M_P/aM_P\neq0$である．よって$P\in\supp M/aM$すなわち$\ann(M/aM)\subset P$となり，求める等式が示された．
+\end{proof}
+
+この２つの補題から帰納法により容易に次が従う．
+\begin{cor}\label{cor:CMの正則列による商もCM}
+	$M$をNoether局所環$(A,\ideal{m})$上のCM加群とする．$a_1,\dots,a_r\in\ideal{m}$が$M$正則列なら（$r$は$\mdepth M$と一致しているとは限らない），$M/(a_1,\dots,a_r)M$も次元が$\dim M-r$のCM加群である．
+\end{cor}
+
+最後に技術的な命題たちを述べておこう．
+
+\begin{lem}\label{lem:depth 0とass}
+	$A$をNoether環，$M$を$A$のイデアルとし$I$を$IM\neq M$となる$A$のイデアルとする．$\mdepth_I M=0$，すなわち任意の$x\in I$が$M$の零因子であることと，ある$P\in\ass M$が存在して$I\subset P$であることは同値．
+\end{lem}
+
+\begin{proof}
+	$(\Longleftarrow)$は明らか．$(\Longrightarrow)$は対偶を示す．任意の$P\in\ass M$について$I\subsetneq P$であると仮定する．$\ass M$は有限だからPrime avoidance より$I\subsetneq\bigcup_{P\in\ass M}P$であり，\ref{cor:加群の零因子は素因子と等しい}より$x\in I$で$M$正則元となるものが存在する．
+\end{proof}
+
+\begin{prop}\label{prop:CMの局所化もCM}
+	$M$をNoether局所環$(A,\ideal{m})$上のCM加群とすると，任意の$P\in\supp M$について；
+	\[\mdepth_P M=\mdepth_{PA_P} M_P=\dim M_P\]
+	が成り立つ．特に$M_P$もCM $A_P$加群である．
+\end{prop}
+
+\begin{proof}
+	一般に$\mdepth_P M\leq\mdepth_{PA_P}M_P\leq\dim M_P$であることを容易に確かめることができる．よって$\dim M_P\leq\mdepth_P M$であることを示せばよい．
+	
+	$\mdepth_P M$についての帰納法で示そう．まず$\mdepth_P M=0$ならば，
+	補題よりある$\in\ass M$が存在して$P\subset Q$である．ここで\ref{lem:素因子と局所化}より$V(\ann (M_P))=\ass M_P=\mkset{Q\in\ass M}{Q\subset P}\neq\emptyset$であり，$M$がCM加群だから非孤立素因子を持たないので$V(\ann(M_P))=PA_P$となり，$\dim M_P=\dim A_P/PA_P=0$である．さて$\mdepth_P M=r>0$として，$r-1$まで正しいとする．定義より$a\in P$で$M$正則なものがある．ここで\ref{lem:depth M/aM=depth M-1}より$\mdepth_P M/aM=\mdepth_P M-1$であり，帰納法の仮定と\ref{lem:dim M/aM=dim M-1}から$\mdepth_P M/aM=\dim (M/aM)_P=\dim M_P/aM_P=\dim M_P-1$である．よって$\mdepth_P M=\dim M_P$であることがわかり，証明が完了する．	
+\end{proof}
+
+この命題によりCM局所環$(A,\ideal{m})$の局所化$A_P$もまた$\mdepth A_P=\idht P$となるCM局所環である．
+\section{Cohen--Macaulay環と鎖状環}
+
+正則環と同様に，局所環でない環は局所化により局所環とできることから次の定義をする．
 \begin{defi}[Cohen--Macaulay環]\index{#Cohen-Macaulayかん@Cohen--Macaulay環}
 	Noether環$A$について，任意の$P\in\spec A$による局所化$A_P$が$A_P$加群としてCohen--Macaulay加群のとき，$A$をCohen--Macaulay\textbf{環}という．
 \end{defi}
 
-これからCohen--Macaulay性についての考察を進めていきたいところではあるが，加群の深さについては Ext と呼ばれる関手を使った言い換えがあり，それにより扱いが簡明になるところがある．よってここでは，次の補題；
+明らかに体はCM環である．また簡単な計算により１次元Noether整域はCM環であることがわかる．特にPID，Dedekind整域などはCM環である．この節では，CM環の簡単な性質を見るとともに，正則局所環やCM環上の有限生成代数がCM環であること，またすべてのCM環が強鎖状環であることを示そう．
 
-\begin{lem}\label{lem:depth M/aM=depth M-1}
-	$(A,\ideal{m})$をNoether
-\end{lem}
-（証明は\ref{lem:depth M/aMについての証明}で与える）を仮定して，
+\begin{prop}
+	環$A$について，鎖状性は局所的な性質である．すなわち$A$が鎖状環であることと，任意の$P\in\spec A$について$A_P$が鎖状環であることは同値．
+\end{prop}
+
+証明は定義から明らかであろう．この性質によりCM局所環に帰着することができる．
+
+\begin{thm}
+	$(A,\ideal{m})$をCM局所環とする．$A$において弱次元公式（\ref{defi:弱次元公式}）が成り立ち，また$A$は鎖状環である．
+\end{thm}
+
+\begin{proof}
+	まず弱次元公式が成り立つことを示そう．任意の$P\in\spec A$をとり，$\idht P=n$とする．\ref{prop:CMの局所化もCM}より$A_P$もCM局所環で$\idht P=\mdepth_{PA_P} A_P=\mdepth_P A$であるので，$A$正則列$a_1,\dots,a_n\in P$が存在する．$I=(a_1,\dots,a_n)$とおくと，\ref{cor:CMの正則列による商もCM}より$A/I$は$\dim A/I=\dim A-n$となるCM局所環である．また$a_1,\dots,a_n$は$A$正則なので$0<\idht(a_1)<\idht(a_1,a_2)<\cdots$であるから，$n\leq\idht I$が成り立つ．また$\idht I\leq\idht P=n$より$\idht I=\idht P$となり，$P$は$I$の極小素イデアルである．よって$P$は$A/I$の素因子なので，$\dim A/P=\dim A/I=\dim A-n$が成り立つ．よって$\dim A/P=\coht P$だから$\idht P+\coht P=\dim A$である．
+	
+	次に鎖状であることを示す．任意の素イデアル鎖$P\subsetneq Q$をとる．局所化$A_Q$もCM局所環なので，弱次元公式が成り立つから$\idht Q-\idht P=\dim A_Q/PA_Q$
+	が成り立つ．そこで$P\subsetneq P_1\subsetneq \dots\subsetneq P_s=Q$を飽和した素イデアル鎖とすると，$P_i\subsetneq P_{i+1}$について同様に$\idht P_{i+1}=\idht P_i+\dim A_{P_i}/P_{i-1}A_{P_i}=\idht P_i+1$が成り立つ．よって$\idht Q=\idht P+s$であり，$s=\dim A_Q/PA_Q$がわかるので$A$は鎖状である．
+\end{proof}
+
+\begin{cor}
+	CM環は鎖状環である．
+\end{cor}
+
+次にCM環においては巴系と正則列の間に相互に良い関係があることを見よう．まず一般に正則局所環はCM環であることを確認しておく．
+
+\begin{prop}[Cohen]
+	正則局所環はCM環である．
+\end{prop}
+
+\begin{proof}
+	$(A,\ideal{m})$を正則局所環とし，$\dim A=n$とおく．$x_1,\dots,x_n\in\ideal{m}$を正則巴系としよう．このとき\ref{prop:正則局所環は落ちる}，\ref{thm:正則局所環は整域}によりこれらが$A$正則列をなすことがわかる．
+\end{proof}
+
+CM環という条件を仮定すると，正則列と巴系の概念が一致する．
+
+\begin{prop}\label{prop:CM局所環での正則列と巴系}
+	$(A,\ideal{m})$をCM局所環とすると，$a_1,\dots,a_r\in\ideal{m}$について，以下の命題；
+	\begin{sakura}
+		\item $a_1,\dots,a_r$は$A$正則列をなす．
+		\item 任意の$1\leq i\leq r$について$\idht (a_1,\dots,a_i)=i$である．
+		\item $\idht (a_1,\dots,a_r)=r$である．
+		\item $a_1,\dots,a_r$は$A$の巴系の一部分をなす．
+	\end{sakura}
+	は同値である．	
+\end{prop}
+
+\begin{proof}	
+	CM性が必要になるのは(iv)$\Longrightarrow$(i)のみであることを注意しておく．
+	\begin{eqv}[4]
+		\item 
+		$a_1,\dots,a_r\in\ideal{m}$を$A$正則列とすると，$0<\idht(a_1)<\idht(a_1,a_2)<\cdots$よりKrullの標高定理（\ref{thm:Krullの標高定理}）から$1\leq i\leq r$について$\idht (a_1,\dots,a_i)=i$である．
+		\item 自明．
+		\item もし$\dim A=r$なら，$(a_1,\dots,a_r)$の極小素イデアルは$\ideal{m}$のなので$\sqrt{(a_1,\dots,a_r)}=\ideal{m}$となり$(a_1,\dots,a_r)$は$\ideal{m}$準素だから$\nitem[r]{a}$は巴系をなす．また$r<\dim A$なら$\ideal{m}$は$(a_1,\dots,a_r)$の極小素イデアルではないので，Prime avoidanceから$a_{r+1}\in\ideal{m}$を$(a_1,\dots,a_r)$のすべての極小素イデアルに含まれないようにとれる．このとき$\idht(a_1,\dots,a_r,a_{r+1})>r$なので，高さが$\dim A$と一致するまで続けることで$a_1,\dots,a_r$は$A$の巴系の一部分であることがわかる．
+		\item $\dim A=n$として，$a_1,\dots,a_n$が巴系なら$A$正則であることを示せばよい．$n$についての帰納法を用いる．まず$n=1$のとき，$a_1$が巴系であるとする．ここで$a_1$が$A$正則でない，すなわち$a_1x=0$となる$x\neq0\in A$が存在するとすると，\ref{prop:素因子の存在}から$a_1\in P$となる$P\in\ass A$が存在するが，\ref{prop:CM加群は非孤立素因子を持たない}の証明からわかるように$\dim A/P=1$であるので，$P\subsetneq\ideal{m}$を意味する．これは$(a_1)$が$\ideal{m}$準素であることに矛盾する．よって$a_1$は$A$正則である．
+		
+		次に$n-1$まで正しいとする．$A$の巴系$a_1,\dots,a_n$について，$a_1$が$A$正則元でないと仮定すると，$n=1$の場合と同様に$a_1\in P$となる$P\in\ass A$が存在して$\dim A/P=n$である．一方で$\sqrt{(a_1,\dots,a_n)}=\ideal{m}$であるので，$A/P$において$\sqrt{(\bar{a_2},\dots,\bar{a_n})}=\ideal{m}$であり，次元定理から$\dim A/P\leq n-1$が言えるがこれは矛盾である．ゆえに$a_1$は$A$正則で，$A/a_1A$は$a_2,\dots,a_n$の像を巴系とする$n-1$次のCM局所環である．よって帰納法の仮定から$a_2,\dots,a_n$の像は$A/a_1A$の正則列であり，$a_1,\dots,a_n$は$A$の正則列をなす．
+	\end{eqv}
+\end{proof}
+
+次にCM環上の多項式環もCM環になることを示そう．そのために，CM環についてMacaulay,Cohenらが考察していた当時の定義を紹介しよう．
+
+\begin{defi}[純性定理]\index{じゅんせいていり@純性定理}\index{じゅんいである@純（イデアル）}
+	Noether環$A$のイデアル$I$について，任意の$P\in\ass A/I$の高さが$\idht I$に等しいとき，$I$は\textbf{純}(unmixied)であるという．特にNoether環$A$について$r$個の元で生成されるイデアル$I=(a_1,\dots,a_r)$について$\idht I=r$ならば$I$は必ず純であるとき，$A$において\textbf{純性定理}(unmixedness theorem)が成り立つという．
+\end{defi}
+
+Krullの標高定理（\ref{thm:Krullの標高定理}）より，$r$個の元で生成され高さが$r$のイデアル$I$の極小素イデアルの高さはすべて$r$であるので，$I$が純であるということは非孤立素因子を持たないということを意味する．Macaulay (1916)は体上の多項式環について純性定理が成り立つことを，Cohen (1946)は正則局所環について純性定理が成り立つことを証明した．Noether環$A$について純性定理が成り立つことと，（本書の意味で）CM環であることは同値である．これがCM環の由来である．正則局所環がCM環であることは確かめたとおりである（Cohenは純性定理が成り立つことを証明したため道筋はだいぶ異なる）．CM環の定義と純性定理が成り立つことを同値であることを確かめておこう．
+
+\begin{thm}
+	Noether環$A$について，純性定理が成り立つこととCM環であることは同値である．
+\end{thm}
+
+\begin{proof}
+	\begin{eqv}
+		\item 任意の$P\in\spec A$をとり，$\idht P=r$とする．\ref{prop:イデアルの高さと生成系の個数}より$a_1,\dots,a_r\in P$を$\idht(a_1,\dots,a_i)=i$がすべての$1\leq i\leq r$で成り立つようにとれる．このとき$a_1,\dots,a_r$が$A_P$正則列になる．各$i$について純性定理により$(a_1,\dots,a_i)$の素因子の高さはすべて$i$であるので，特に$a_{i+1}$を含まない．すると\ref{cor:加群の零因子は素因子と等しい}により$a_{i+1}$は$A/(a_1,\dots,a_i)$で正則である．よって$\mdepth A_P=r=\dim A_P$であり$A_P$はCM局所環である．すなわち$A$はCM環．
+		\item $I=(a_1,\dots,a_r)$が$\idht I=r$であるとする．$P\in\ass A/I$をとり，$P$が極小でないと仮定する．$P$を含む極大イデアル$\ideal{m}$で局所化して考える．このとき$IA_{\ideal{m}}$はすくなくとも素因子$P'A_{\ideal{m}}\subsetneq PA_{\ideal{m}}$を持つ．ところが\ref{prop:CM局所環での正則列と巴系}より$a_1,\dots,a_r$は$A_{\ideal{m}}$の正則列であり，\ref{cor:CMの正則列による商もCM}より$A_{\ideal{m}}/IA_{\ideal{m}}$もCM局所環である．よって$IA_{\ideal{m}}$の素因子はすべて極小でなければならないので矛盾である．よって純性定理が成り立つ．
+	\end{eqv}
+\end{proof}
+
+この証明の$(\Longleftarrow)$に注目すると，$A$の極大イデアルによる局所化がCM局所環でありさえすれば純性定理が成り立つ．よって次の系が従う．
+
+\begin{cor}
+	Noether環$A$がCM環かどうかを確かめるには任意の極大イデアルによる局所化がCM局所環であるかどうかを確かめれば十分である．
+\end{cor}
+
+CM環上の多項式環がCM環であること，そしてCM環は強鎖状環であることを証明してこの節を締めくくろう．
+
+\begin{thm}
+	$A$をCM環とすると，$A$上の多項式$A[X_1,\dots,X_n]$もCM環である．
+\end{thm}
+
+\begin{proof}
+	先の系により$A[X]$の極大イデアル$\ideal{m}'$による局所化がCM局所環であることを示せば十分である．まずは$A$が局所環の場合に帰着できることを見る．$A\cap\ideal{m}'=\ideal{m}\in\spec A$とおくと，自然な対応で；
+	\[A[X]_{\ideal{m}'}=(A_{\ideal{m}}[X])_{\ideal{m}'A_{\ideal{m}}[X]}, A_{\ideal{m}}[X]/(\ideal{m}'A_{\ideal{m}}[X])=A[X]/\ideal{m}'\]であり，$A$を局所環と仮定してよいことがわかる．また$\ideal{m}'A_{\ideal{m}}[X]\cap A_{\ideal{m}}=\ideal{m}A_{\ideal{m}}$であるので，$\ideal{m}$も極大と仮定してよい．
+	
+	以上より，$A$が局所環であって，$A[X]$の極大イデアル$\ideal{m}'$が$\ideal{m}'\cap A=\ideal{m}\in\spm A$を満たすときに$A[X]_{\ideal{m}'}$がCM局所環であることを示せばよい．体$A/\ideal{m}$を$k$とおくと，準同型；
+	\[\varphi:A[X]\to K[X];a_nX^n+\dots+a_0\mapsto \bar{a_n}X^n+\dots+\bar{a_0}\quad\text{（ $\bar{a_i}$は$a_i$の$A/\ideal{m}$における像．）}\]
+	により環同型$A[X]/\ideal{m}A[X]\cong K[X]$がある．いま$\ideal{m}A[X]\subset\ideal{m}'$であり，$A[X]/\ideal{m}A[X]$は１次元の整域であることに注意すると$\ideal{m}'$の像は極大イデアルである．よってモニックで既約な$f'\in K[X]$によって生成されている．$f\in\ideal{m}'$を$\varphi(f)=f'$となるようにとると，$\ideal{m}'=\ideal{m}A[X]+(f)$である．よって$\ideal{m}=(a_1,\dots,a_r)$とすれば$A[X]$上$\ideal{m}'$は$a_1,\dots,a_r,f$で生成されている．またこれらは$A[X]$正則列をなす．$a_i$たちについては\ref{prop:CM局所環での正則列と巴系}から$A$正則列をなすことから従い，$f$は$A[X]/(a_1,\dots,a_r)A[X]=K[X]$でモニックなので正則である．よって$r+1\leq\mdepth_{\ideal{m}'}A[X]$であることがわかる．また$\ideal{m}'$は$r+1$個の元で生成されているからKrullの標高定理により$\dim A[X]_{\ideal{m}'}\leq r+1$である．これらに\ref{prop:CMの局所化もCM}をあわせて；
+	\[\dim A[X]_{\ideal{m}'}\leq r+1\leq\mdepth_{\ideal{m}'}A[X]=\mdepth A[X]_{\ideal{m}'}\]
+	がわかり，$A[X]_{\ideal{m}'}$はCM局所環である．	
+\end{proof}
+
+\begin{cor}[Macaulay]
+	体上の多項式環$K[X_1,\dots,X_n]$はCM環である．
+\end{cor}
+
+\begin{cor}\label{cor:CM環は強鎖状}
+	CM環は強鎖状環である．
+\end{cor}
+
+それでは，いよいよ次の章からは圏論とホモロジー代数を導入し，より現代的な手法を用いた可換環の考察についてみていこう．

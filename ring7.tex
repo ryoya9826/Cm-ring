@@ -1,12 +1,85 @@
 \part[Homological method to ring theory]{可換環論のホモロジー代数的手法}
 前章で定義した射影分解，$\Tor,\Ext$などの道具を使って可換環の理論にホモロジー代数的手法を持ち込もう．
 
+\section{Ext と加群の深さ}
+この節では，Cohen--Macaulay性を議論するために必要不可欠な深さの概念について，Extを使った言い換えを与え，ホモロジー代数の道具を用いて考察していく．まずは\ref{lem:depth M/aM=depth M-1}の証明を与えるために，深さとExtの関係，最初は簡単な場合として正則元とHomのつながりについて調べてみる．以後の命題たちの証明に\ref{lem:depth M/aM=depth M-1}は必要ないことに注意しよう．
+
+\begin{lem}
+	$A$をNoether環とし，$M$を有限生成$A$加群，$I$を$IM\neq M$となる$A$のイデアルとする．このとき，次の条件；
+	\begin{sakura}
+		\item $M$正則元である$a\in I$が存在する．
+		\item 任意の有限生成$A$加群$N$について，$\supp N\subset V(I)$ならば$\hom(N,M)=0$である．
+		\item ある有限生成$A$加群$N$が存在して，$\supp N=V(I)$かつ$\hom(N,M)=0$となる．
+	\end{sakura}
+	は同値である．
+\end{lem}
+
+\begin{proof}
+	\begin{eqv}[3]
+		\item $a$倍写像$a\cdot:M\to M$は単射である．すると，これを合成する準同型$a\cdot_ \ast:\hom(N,M)\to\hom(N,M)$も単射である．任意の$\varphi\in\hom(N,M)$をとると，$a\cdot_\ast(\varphi)$は$x\mapsto \varphi(ax)$という準同型であることに注意する．ここで$\supp N=V(\ann N)\subset V(I)$なので，\ref{prop:V(I)の包含}より$I\subset \sqrt{\ann N}$である．よってある$n>0$が存在して$a^nN=0$である．すると$\varphi$に$a\cdot_\ast$を$n$回施すとそれは$0$になり，これは単射なので$\varphi$は$0$でなければならない．
+		\item $N=A/I$とすればよい．
+		\item $I$は$M$正則元を持たないとする．すると\ref{lem:depth 0とass}より$P\in\ass M\cap V(I)$となる$P\in\spec A$が存在する．このとき単射$A/P\to M$が存在する（$P=\ann x$とするとき，$A/P\to M;a+P\mapsto ax$とすればよい）．これを$P$で局所化して$K(P)\to M_P$が存在する．また，$P\in V(I)=\supp N$であるので$N_P\neq 0$であり，中山の補題より$N_P/PN_P=N\otimes_A K(P)$は$0$でない$K(P)$ベクトル空間である．よって$0$でない$N_P/PN_P\to K(P)$がある．以上のことを組み合わせて$\hom_{A_P}(N_P,M_P)=\hom(N,M)_P\neq0$である．すると\ref{prop:局所化したら0は局所的}より$\hom (N,M)\neq0$であるので矛盾である．
+	\end{eqv}
+\end{proof}
+
+これを正則列について一般化しよう．
+
+\begin{prop}\label{prop:正則列とExt}
+	$A$をNoether環とし，$M$を有限生成$A$加群，$I$を$IM\neq M$となる$A$のイデアルとする．任意の$n>0$について，次の条件；
+	\begin{sakura}
+		\item $n\leq\mdepth_I M$である．
+		\item 任意の有限生成$A$加群について，$\supp N\subset V(I)$ならば任意の$0\leq i<n$について$\Ext^i(N,M)=0$である．
+		\item ある有限生成$A$加群$N$が存在して，$\supp N=V(I)$かつ任意の$0\leq i<n$について$\Ext^i(N,M)=0$である．
+		\item 任意の$0<i<n$について，$a_1,\dots,a_i\in I$が$M$正則列であるならば，ある$a_{i+1},\dots,a_n\in I$が存在して$a_1,\dots,a_n$が$M$正則列をなす．
+	\end{sakura}
+	は同値である．
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}[4]
+		\item $n$についての帰納法で示す．$n=1$のときは先の補題でみたので，$n>1$とする．$a_1,\dots,a_n\in I$を$M$正則列とする．完全列；
+		\[\ses[a_1\cdot]{M}{M}{M/a_1M}\]
+		についてExtが導く完全列を考えて；
+		\[\begin{tikzcd}{\Ext^{i-1}(N,M/a_1M)}\nxcell[\partial^{i-1}]{\Ext^i(N,M)}\nxcell[a_1\cdot]{\Ext^i(N,M)}\end{tikzcd}\]
+		が完全である（$\Ext^i(N,M)$の間の準同型は$a_1\cdot$が誘導するコホモロジーの間の準同型だが，これは$a_1\in A$なので$a_1\cdot$のまま変わらない）．ここで$a_2,\dots,a_n$が$M/a_1M$正則列なので$n-1\leq\mdepth_I M/a_1M$だから，帰納法の仮定より$a_1\cdot:\Ext^i(N,M)\to\Ext^i(N,M)$は単射である．またExtの定義から$\ann N\subset\ann(\Ext^i(N,M))$であるので，補題と同様の議論で$\Ext^i(N,M)=0$である．
+		\item $N=A/I$とすればよい．
+		\item これも$n$についての帰納法で示す．$n=1$のときは見た．$n>1$とし，$i<n$について$a_1,\dots,a_i\in I$が$M$正則列であるとする．(iii)の条件を満たす有限生成$A$加群$N$と$a_1$倍写像についての完全列が導くExtの完全列；
+		\[\begin{tikzcd}
+		\Ext^{j}(N,M)\nxcell\Ext^{j}(N,M/a_1M)\nxcell[\partial^i]\Ext^{j+1}(N,M)
+		\end{tikzcd}\]
+		を考える．$j+1<n$のとき，仮定から完全列の両端は$0$となり，任意の$j<n-1$について$\Ext^j(N,M/a_1M)=0$である．$\supp N=V(I)$であるから，帰納法の仮定から$M/a_1M$正則列$a_2,\dots,a_i\in I$を長さ$n-1$に延長できる．よって，番号のズレに気をつけて$a_1,\dots,a_n\in I$を$M$正則列となるようにできることがわかった．
+	\end{eqv}
+\end{proof}
+
+この命題から即座に次の定理が従う．
+\begin{thm}
+	$A$をNoether環とし，$M$を有限生成$A$加群，$I$を$IM\neq M$となる$A$のイデアルとする．$I$の元からなる極大な$M$正則列の長さは一定であり，また；
+	\[\mdepth_I M=\inf\mkset{i\in\N}{\Ext^i(A/I,M)\neq0}\]
+	である．
+\end{thm}
+
+\ref{prop:正則列とExt}によって，最初の目的が達成できる．
+\begin{lem}[\ref{lem:depth M/aM=depth M-1}の証明]\label{lem:depth M/aMについての証明}
+	$A$をNoether環とし，$M$を有限生成$A$加群，$I$を$IM\neq M$となる$A$のイデアルとする．$a\in I$が$M$正則ならば；
+	\[\mdepth_I (M/aM)=\mdepth_I M-1\]
+	が成り立つ．
+\end{lem}
+
+\begin{proof}
+	$a_1,\dots,a_n\in I$が$M/aM$正則列ならば$a,a_1,\dots,a_n$は$M$正則であり，$\mdepth_I(M/aM)\leq\mdepth_I M-1$であることはすぐにわかる．また$\mdepth_I M=r$とすると，\ref{prop:正則列とExt}より$a,a_2,\dots,a_r\in I$を$M$正則列であるようにできる．このとき$a_2,\dots,a_r$は$M/aM$正則列をなすので$\mdepth_I M-1\leq\mdepth_I(M/aM)$であることがわかった．
+\end{proof}
+
+CM局所環とは$\dim A=\mdepth A$となっている環のことであったことを思い出すと，この定義はKrull次元がホモロジカルな量で与えられている局所環のことである，と言い換えることができる．Krull次元をホモロジカルな量に翻訳することで可換環論に新たな視点が持ち込まれ．\textbf{ホモロジカル予想}と呼ばれる一連の予想群が生まれることとなった．これらの予想については本書のところどころで目にすることになるだろう．
+
 \section{射影被覆と入射包絡}
+
+異なるホモロジカルな量として\textbf{ホモロジー次元}とも呼ばれる\textbf{射影次元}と，その双対概念であるところの\textbf{入射次元}を定義しよう．
+
 \begin{defi}[射影次元]\index{しゃえいじげん@射影次元}
-	$M$を$A$加群とする．$M$の射影分解の長さの最小値を$M$の\textbf{射影次元}(projective dimension)といい，$\prjdim_A M$とかく．
+	$A$を環とし，$M$を$A$加群とする．$M$の射影分解の長さの最小値を$M$の\textbf{射影次元}(projective dimension)といい，$\prjdim_A M$とかく．$M=0$のときは$\prjdim M=-1$とする．
 \end{defi}
 
-$\dim A$は素イデアル鎖の長さの$\sup$で定義したが，射影次元は最小の長さと定義する．$\prjdim M=0$であることと$M$が射影的であることは同値．
+$\prjdim M=0$であることと$M$が射影的であることは同値である．例を見てみよう．
 
 \begin{ex}
 	$x\in A$を単元でも零因子でもないとする．$M=A/Ax$とおくと；
@@ -18,7 +91,7 @@ $\dim A$は素イデアル鎖の長さの$\sup$で定義したが，射影次元
 \[\begin{tikzcd}
 	\dots\nxcell A\nxcell[x]A\nxcell[x] A\nxcell M\nxcell0
 \end{tikzcd}\]
-が無限に続く射影分解となる．ここから$\projdim M=\infty$を言えるかというと，そうではない．長さが極小になるような（本質的な）射影分解を考えよう．
+が無限に続く射影分解となる．だがここから$\projdim M=\infty$を言えるかというと，そうではない．そのためには長さが極小になるような（本質的な）射影分解を考える必要がある．
 
 \begin{defi}[射影被覆]\index{しゃえいひふく@射影被覆}\index{よじょうかぐん@余剰加群}
 	$A$加群$M$の部分加群$N$が；
@@ -74,9 +147,8 @@ $\dim A$は素イデアル鎖の長さの$\sup$で定義したが，射影次元
 という形をしているが，このとき$\varepsilon$は分裂全射なので$P_0$は$P_1\oplus\Z/m\Z$と同型である．すると$P_1$は$\ker\varepsilon$と同型で，これは余剰加群であるから$\Z/m\Z=P_0$となり$\Z/m\Z$が射影的となって矛盾する．
 
 双対的に入射加群について考えたものが\textbf{入射包絡}であり，こちらは必ず存在する．
-
 \begin{defi}[入射次元]\index{にゅうしゃじげん@入射次元}
-	$M$を$A$加群とする． $M$の入射分解の長さの最小値を$M$の\textbf{入射次元}(injective dimension)といい，$\injdim_A M$とかく．
+	$M$を$A$加群とする． $M$の入射分解の長さの最小値を$M$の\textbf{入射次元}(injective dimension)といい，$\injdim_A M$とかく．$M=0$のときは$\injdim M=-1$とする．
 \end{defi}
 
 \begin{defi}[入射包絡]\index{ほんしつてきかぐん@本質的加群}\index{にゅうしゃほうらく@入射包絡}
@@ -128,21 +200,6 @@ $\dim A$は素イデアル鎖の長さの$\sup$で定義したが，射影次元
 
 極小射影分解と同様に同型を除いて一意に定まる．射影被覆と異なるのは入射包絡が必ず存在することである．
 
-%\begin{defi}[補部分加群]\index{ほぶぶんかぐん@補部分加群}
-%	$A$加群$M$の部分加群$N$について, $M$の部分加群$L$であって$N\cap L=0$かつ$N\oplus L$が$M$の本質部分加群になるものを$N$の\textbf{補部分加群}(complement)という.
-%\end{defi}
-%
-%$N\cap L=0$なら$N\oplus L$は$(x_1,x_2)\mapsto x_1+x_2$によって$N+L$と同型になることに注意しよう.
-%\begin{prop}
-%	$A$加群$M$の任意の部分加群$N$について補部分加群は必ず存在する.
-%\end{prop}
-%
-%\begin{proof}
-%	$M$の部分加群の族；
-%	\[\mathscr{L}=\mkset{L:M\text{の部分加群}}{N\cap L=0}\]
-%	は$0\in\mathscr{L}$なので空ではなく,帰納的順序集合をなす. Zornの補題よりとれる極大元を$L$としよう.任意の$M$の部分加群$K$について, $(L+N)\cap K=0$と仮定すると, $N\cap (K+L)=0$である.すると$L$の極大性より$K+L=L$であり, $L\cap K=0$なので$K=0$である.よって$N+L$は$M$の本質部分加群である.
-%\end{proof}
-
 \begin{thm}[入射包絡の存在]
 	$A$加群$M$について入射包絡が必ず存在する．
 \end{thm}
@@ -164,15 +221,90 @@ $\dim A$は素イデアル鎖の長さの$\sup$で定義したが，射影次元
 
 この定理と\ref{prop:入射包絡の一意性}より$A$加群$M$の入射包絡は同型を除いて必ず一意に存在するので$\E(M)$とかくことにしよう．
 
-\section{Ext と加群の深さ}
-この節では，Cohen--Macaulay性を議論するために必要不可欠な深さの概念について，Extを使った言い換えを与え，ホモロジー代数の道具を用いて考察していく．まずは\ref{lem:depth M/aM=depth M-1}の証明を与えるために，深さをExtを用いた形で言い換える．
+\section{ホモロジー次元}
+定義からホモロジー次元について次が従う．
+
+\begin{lem}
+	$A$を環，$M$を$A$加群とする．このとき；
+	\begin{sakura}
+		\item $\prjdim M\leq n$であるとき，任意の$i>n$と$A$加群$N$について$\Ext^{i}(M,N)=0$である.
+		\item $\injdim M\leq n$であるとき，任意の$i>n$と$A$加群$N$について$\Ext^{i}(N,M)=0$であることは同値．
+	\end{sakura}
+\end{lem}
+
+この逆が成り立つだけでなく，\ref{prop:ホモロジー次元を抑える}により$n+1$についてのみ確かめればよいことがわかる．まず$\Ext$の長完全列を考えることにより次の補題が従うことを注意しておこう．
+
+\begin{lem}
+	$A$加群$P$が射影的であることと，任意の$A$加群$N$について$\Ext^1(P,N)=0$であることは同値．また$I$が入射的であることは任意の$N$について$\Ext^1(N,I)=0$であることと同値．
+\end{lem}
+
+\begin{proof}
+	$P$についてのみ示す．$A$加群の完全列；
+	\[\ses{M_1}{M_2}{M_3}\]
+	から得られる$\Ext$の長完全列；
+	\[\begin{tikzcd}
+	0\nxcell\hom(P,M_1)\nxcell\hom(P,M_2)\nxcell\hom(P,M_3)\nxcell\\&\Ext^1(P,M_1)\nxcell\Ext^1(P,M_2)\nxcell\cdots
+	\end{tikzcd}\]
+	を考えれば$\hom(P,-)$が完全関手であることと$\Ext^1(P,M_1)=0$が同値であることがわかる．
+\end{proof}
+\begin{prop}\label{prop:ホモロジー次元を抑える}
+	$A$を環，$M$を$A$加群とする．このとき；
+	\begin{sakura}
+		\item $\prjdim M\leq n$であることと，任意の$A$加群$N$について$\Ext^{n+1}(M,N)=0$であることは同値．
+		\item $\injdim M\leq n$であることと，任意の$A$加群$N$について$\Ext^{n+1}(N,M)=0$であることは同値．
+	\end{sakura}
+	が成り立つ．
+\end{prop}
+
+\begin{proof}
+	(i)のみ示す．$(\Longrightarrow)$は明らかなので，逆を見れば良い．$M$の射影分解$P_\bullet$を考える．$P=\im d_n~(d_n:P_n\to P_{n-1})$とおくと，次の２つの完全列；
+	\[\begin{tikzcd}
+	0\nxcell P\nxcell P_{n-1}\nxcell[d_{n-1}]P_{n-1}\nxcell\cdots\nxcell P_0\nxcell M\nxcell0\end{tikzcd};\]
+	\[\begin{tikzcd}
+	\cdots\nxcell P_{n+1}\nxcell[d_{n+1}]P_n\nxcell[d_n]P\nxcell0
+	\end{tikzcd}\]
+	がある．１つめの完全列より，$P$が射影的ならば$\prjdim M\leq n$が従うので，これを示そう．２つめの完全列を$P$の射影分解とみなすと，$\Ext^1(P,N)=\Ext^{n+1}(M,N)=0$となっており，$P$は射影的である．
+\end{proof}
+
+同様にExtの長完全列を考えることで次の２つの命題がわかる．
+\begin{cor}
+	$A$加群の完全列；
+	\[\ses{M_1}{M_2}{M_3}\]
+	について，２つの加群の射影元が有限なら残りの１つの射影次元も有限．
+\end{cor}
+
+\begin{cor}
+	$A$加群の完全列；
+	\[\ses{M_1}{M_2}{M_3}\]
+	について，$\prjdim M_2<\infty$であるとき，$\prjdim M_1=\prjdim M_2$ならば$\prjdim M_3\leq\prjdim M_1+1$であり，$\prjdim M_1>\prjdim M_2$ならば$\prjdim M_3=\prjdim M_1+1$である．
+\end{cor}
+
+以後簡単のために局所環という条件を課すことにしよう．これにより様々な恩恵が得られることは局所環の章でみてきた通りである．ホモロジカルなご利益としては，例えばNoether局所環$(A,\ideal{m})$のもとでは射影被覆が存在し，かつ扱いやすいものとなる．
+
+\begin{defi}[極小自由分解]\index{きょくしょうじゆうぶんかい@極小自由分解}
+	Noether局所環$(A,\ideal{m})$上の有限生成加群$M\neq0$の射影分解$P_\bullet$であって，次の条件；
+	\begin{sakura}
+		\item $P_\bullet$は極小射影分解である．
+		\item 各$P_i$は自由$A$加群である．
+		\item $P_0\otimes(A/\ideal{m})=M/\ideal{m}M=M\otimes(A/\ideal m)$である．
+	\end{sakura}
+	をみたすものを$M$の\textbf{極小自由分解}(minimal free resolution)という．
+\end{defi}
+
+\begin{proof}[\textbf{存在証明}]
+	$M/\ideal{m}M$の（有限次元）$A/\ideal{m}$ベクトル空間としての生成系$\{e_i\}$をとり，各$e_i$の代表元$f_i\in M$を固定する．$\{e_i\}$が生成する自由$A$加群$\oplus Ae_i$を$P_0$とおく．このとき，次の$A$準同型；
+	\[\varepsilon:P_0\to M;e_i\mapsto f_i\]
+	を考えると，これは全射である．実際$M=\im\varepsilon+\ideal{m}M$であることが容易に確かめられ，中山の補題より$M=\im\varepsilon$であることがわかる．またこれは射影被覆になる．これも$\ker\varepsilon\subset\ideal{m}P_0$であることに注意して中山の補題から従う．同様に$\ker\varepsilon$について射影被覆$d_1:P_1\to\ker\varepsilon$がとれる．これを繰り返して完全列；
+	\[\begin{tikzcd}
+	\cdots\nxcell P_2\nxcell[d_2]P_1\nxcell[d_1]P_0\nxcell[\varepsilon]M\nxcell0
+	\end{tikzcd}\]
+	を得，各$\ker d_i$は$P_i$の余剰部分加群である．よって$P_\bullet$を各$P_i$が自由でありかつ極小射影分解となっているようにとることができた．
+\end{proof}
+
+ここから射影次元を次のように言い換えることができる．
 
 \begin{thm}
-	$(A,\ideal{m})$をNoether局所環とし，$M$を有限生成$A$加群とする．このとき，次の等式；
-	\[\mdepth M=\min\mkset{i\geq0}{\Ext^i_A(A/\ideal{m},M)\neq0}\]
-	が成り立つ．
+	$(A,\ideal{m})$をNoether局所環とし，$M\neq0$をその上の有限生成加群とする．このとき；
+	\[\prjdim M=\sup\mkset{i\in N}{\Tor_i(A/\ideal{m},M)\neq0}\]
+	である．
 \end{thm}
-
-\begin{lem}[\ref{lem:depth M/aM=depth M-1}の証明]\label{lem:depth M/aMについての証明}
-	content
-\end{lem}

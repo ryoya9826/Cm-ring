@@ -224,7 +224,7 @@ $M_i/M_{i+1}$が単純になるように鎖を延長することができるが�
 
 \textbf{以下，この章の終わりまで環$A$はNoether環とする．} 素因子，準素イデアルの議論においてはNoether性が本質的に効いてくるため，これらの概念を使った議論にはNoether性が必要である．これはNoether環の仮定が外しにくいことの一因となっている（Noetherという仮定を外すとこの章の終わりまでにおける殆どの命題に反例がある）．
 
-\begin{defi}[素因子]\index{そいんし@素因子(加群)}
+\begin{defi}[素因子]\index{そいんし@素因子}
 	$A$加群$M$に対し，$\ann x=\mkset{a\in A}{ax=0}$が$A$の素イデアルであるとき，これを$M$の\textbf{素因子}(prime ideal associated to $M$)または，$M$に\textbf{属する素イデアル}(associated prime ideal)という．
 	
 	それらの全体を
@@ -245,16 +245,28 @@ $M$の素因子がしっかり存在することを確認しておこう．
 	$M\neq0$ならば$\ass M\neq\emptyset$である．
 \end{cor}
 
+\begin{cor}\label{cor:加群の零因子は素因子と等しい}
+	$A$加群$M$の零因子全体は素因子全体と一致する．すなわち；
+	\[\mkset{a\in A}{\text{ある}x\neq0\in M\text{について}ax=0}=\bigcup_{P\in\ass M}P\]
+	である．
+\end{cor}
+
 素因子について１つ補題を用意しておく．
 
 \begin{lem}\label{lem:素因子と局所化}
-	$M$を$A$加群とし，$S$を$A$の積閉集合とする．$S^{-1}P\in\ass_{S^{-1}A} S^{-1}M$ならば$P\in\ass_A M$である．
+	$M$を$A$加群とし，$S$を$A$の積閉集合とする．$P\in\spec A$について，$P\in\ass_A M$かつ$P\cap S=\emptyset$であることと，$S^{-1}P\in\ass_{S^{-1}A} S^{-1}M$であることは同値．
 \end{lem}
 
 \begin{proof}
-	$S^{-1}P\in\ass_{S^{-1}A}$とすると，$S^{-1}P\in\spec S^{-1}A$より$P\in\spec A,P\cap S=\emptyset$に注意しよう．
+	\begin{eqv}
+		\item 
+		$P=\ann x$となる$x\in M$をとると，$S^{-1}P=\ann x/1$となる．実際$\subset$は明らかで，任意の$a/s\in\ann x/1$をとると，ある$h\in S$が存在して$hax=0$だから$ha\in\ann x=P$だが，$P\cap S=\emptyset$より$h\not\in P$なので$a\in P$となる．
+		
+		\item 
+		$S^{-1}P\in\ass_{S^{-1}A}$とすると，$S^{-1}P\in\spec S^{-1}A$より$P\in\spec A,P\cap S=\emptyset$に注意しよう．
 	
-	ある$x/s\in S^{-1}M$について$S^{-1}P=\ann x/s$とかける．$A$はNoetherなので$P=(a_1,\dots,a_r)$としよう．各$a_i$について$a_1/1\cdot x/s=0$より，ある$h_i\in S$が存在して$h_ia_ix=0$である．$h_i$たちの積を$h=h_1\cdots h_r$とすると$h\in S$であり，$Phx=0$が成り立つ．よって$P\subset\ann hx$である．逆に$y\in\ann hx$とすると，$S^{-1}M$において$y/1\cdot x/s=0$であるので$y/1\in S^{-1}P$であるから，あとは形式的な計算によって$y\in P$であることがわかる．よって$P=\ann hx\in\ass_A M$である．
+		ある$x/s\in S^{-1}M$について$S^{-1}P=\ann x/s$とかける．$A$はNoetherなので$P=(a_1,\dots,a_r)$としよう．各$a_i$について$a_1/1\cdot x/s=0$より，ある$h_i\in S$が存在して$h_ia_ix=0$である．$h_i$たちの積を$h=h_1\cdots h_r$とすると$h\in S$であり，$Phx=0$が成り立つ．よって$P\subset\ann hx$である．逆に$y\in\ann hx$とすると，$S^{-1}M$において$y/1\cdot x/s=0$であるので$y/1\in S^{-1}P$であるから，あとは形式的な計算によって$y\in P$であることがわかる．よって$P=\ann hx\in\ass_A M$である．
+	\end{eqv}
 \end{proof}
 
 ここで加群$M$のsupportについて思い出そう（\ref{defi:support}）．次の結果が知られている．
@@ -436,7 +448,7 @@ $P\in\ass M$であることと単射$\iota:A/P\to M$が存在することが同�
 	対偶である，$M$の部分加群$N$が準素でなければ可約であることを示す．$\ass (M/N)$は少なくとも2つの異なる素因子を持つので，それを$ P_1\neq P_2$とする．$A/ P_i\cong\bar{N_i}\subset M/N$とすると，$0\neq x\in\bar{N_i}$ならば$\ann x= P_i$となるので，$\bar{N_1}\cap\bar{N_2}=0$でなければならない．さて，$N_i$を$N_i/N=\bar{N_i}$となるようにとると，自然な全射$\pi:M\to M/N$に対し$N_1\cap N_2=\pi^{-1}(\bar{N_1}\cap\bar{N_2})=\pi^{-1}(0)=N$であって，$N\subsetneq N_i$なので$N$は可約である．
 \end{proof}
 
-2つの補題により準素分解できること\ref{thm:Laker-Noetherの分解定理}が示された．では，分解の一意性について見ていこう．
+2つの補題により準素分解できること（\ref{thm:Laker-Noetherの分解定理}）が示された．では，分解の一意性について見ていこう．
 \begin{lem}
 	$N_1$と$N_2$が$M$の$ P$準素部分加群ならば，$N_1\cap N_2$も$ P$準素である．
 \end{lem}
@@ -457,7 +469,7 @@ $P\in\ass M$であることと単射$\iota:A/P\to M$が存在することが同�
 	は単射．実際$x+N_i=0$とすると$x\in N_1$である．一方$x\in\bigcap_{i=2}^r N_i$より$x\in N$となり$x+N=0$である．よって，$\emptyset\neq\ass(\bigcap_{i=2}^r N_i/N)\subset\ass (M/N_1)=\{ P_1\}$すなわち$\ass(\bigcap_{i=2}^r N_i/N)=\{ P_1\}$である．また，$\bigcap_{i=2}^r N_i/N\subset M/N$でもあるので，$ P_1\in\ass (M/N)$である．他の$ P_i$についても同様．
 \end{proof}
 
-準素分解の一意性については，極小素因子に対応する成分は一意的に定まることがわかる（後に見るように，極小でない素因子に対応する成分については一意性が言えない）．
+準素分解の一意性については，極小素因子に対応する成分は一意的に定まることがわかる．
 \begin{thm}
 	$M$を有限生成な$A$加群とし，$N=N_1\cap\dots\cap N_r$をむだのない最短準素分解，$\ass(M/N)=\{P_1,\dots,P_r\}$とおく．$P_i$が$\ass(M/N)$で極小なら$f_{P_i}:M\longrightarrow M_{P_i}$を$P_i$における局所化とすると，$N_i=f^{-1}_{P_i}(N_{P_i})$となり，$P_i$準素成分は$N$と$P_i$から一意に定まる．
 \end{thm}
@@ -471,19 +483,11 @@ $P\in\ass M$であることと単射$\iota:A/P\to M$が存在することが同�
 
 これをイデアルに関して述べ返すと，次のようになる．
 \begin{cor}\label{cor:イデアルの準素分解}
-	Noether環$A$上のイデアル$I$は，有限個の準素分解$I= q_1\cap\dots\cap q_r$を持つ．この分解に無駄がなければ$P_i=\sqrt{q_i}$は素であって，$\ass (A/I)=\{\nitem[r]{P}\}$である．さらに，これが最短ならば極小素因子$P_i$に対応する準素イデアル$ q_i$は$I$と$ P_i$から一意に定まる．
+	Noether環$A$上のイデアル$I$は，有限個の準素分解$I= q_1\cap\dots\cap q_r$を持つ．この分解に無駄がなければ$P_i=\sqrt{q_i}$は素であって，$\ass (A/I)=\{\nitem[r]{P}\}$である．さらに，これが最短ならば極小素因子$P_i$に対応する準素イデアル$q_i$は$I$と$ P_i$から一意に定まる．
 \end{cor}
 
-これより，$P\in\ass (A/I)$であることと，$I$の無駄のない準素分解$I=\bigcap q_i$において$\sqrt{q_i}=P$となる$i$が存在することは同値である．そこで，次のように定義しておく．
+この結果により，極小な素因子に対応する準素イデアルの一意性が言えるが，極小でない素因子を持つときを考えてみよう．$k$を体として，$A=k[X_1,X_2],I=(X_1^2,X_1X_2)$とおく．ここで素イデアル鎖$(0)\subsetneq (X_1)\subsetneq(X_1,X_2)$を考えると；
+\[I=(X_1)\cap (X_1^2,X_2)=(X_1)\cap (X_1,X_2)^2\]
+が最短準素分解であり，$(X_1^2,X_2)\neq(X_1,X_2)^2$である．さて$\ass A/I=V(I)=\{(X_1),(X_1,X_2)\}$であるので$(X_1,X_2)$は極小でない素因子であり，$(X_1^2,X_2),(X_1,X_2)^2$はどちらも$(X_1,X_2)$に対応する準素イデアルである．このように極小でない素因子はいろいろと技術的に問題を引き起こすことがある．極小でない素イデアルを\textbf{非孤立素因子}(embedded associated prime ideal)ともいう．\index{ひこりつそいんし@非孤立素因子}
 
-\begin{defi}[随伴素イデアル]\index{ずいはんそいである@随伴素イデアル}
-	$P\in\spec A$について$P\in\ass (A/I)$であるとき，$P$は$I$の\textbf{随伴素イデアル}(associated prime ideal)という．$I$に\textbf{属する素イデアル}\index{ぞくするそいである@属する素イデアル}(prime ideal belong to $I$)ともいうことがある．
-\end{defi}
-
-そこで$A$加群$M$について；
-\[\Min_A M=\mkset{P\in\supp_A M}{P\text{は}\supp_A M\text{で極小である}}\subset\ass_A M\]
-と定義すると；
-\[\Min_A A/I=\mkset{P\in V(I)}{P\text{は}V(I)\text{で極小である}}=\mkset{P\in\spec A}{P\text{は}I\text{の随伴素イデアルのなかで極小}}\]
-となる．よって$V(I)$の極小元は$I$の準素分解に現れることがわかる．
-
-これら素因子の概念は環の素イデアルの挙動，特に\textbf{次元論}において目覚ましい活躍を見せる．次の章では環の拡大を考察し，環の\textbf{次元}を定義しよう．
+とはいえ，$P\in\ass (A/I)$であることと，$I$の無駄のない準素分解$I=\bigcap q_i$において$\sqrt{q_i}=P$となる$i$が存在することは同値である．これら素因子の概念は環の素イデアルの挙動，特に\textbf{次元論}において目覚ましい活躍を見せる．次の章では環の拡大を考察し，環の\textbf{次元}を定義しよう．

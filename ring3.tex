@@ -338,7 +338,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 \end{proof}
 	
 ここで，次元と関連したイデアルの情報を定義しておこう．
-\begin{defi}[高さ]\index{たかさ@高さ(イデアル)}
+\begin{defi}[高さ]\index{たかさ@高さ（イデアル）}
 	$A$を環，$P$を素イデアルとする．
 	\[\idht P=\sup\mkset{r\in\Z}{P=P_0\supsetneq P_1\supsetneq\dots\supsetneq P_r:\text{素イデアルの真減少列}}\]
 	\[\coht P=\sup\mkset{r\in\Z}{P=P_0\subsetneq P_1\subsetneq\dots\subsetneq P_r:\text{素イデアルの真増大列}}\]
@@ -625,20 +625,30 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 先に述べたことから$A$が強鎖状であることと，すべての$n$について$A[X_1,\dots,X_n]$が鎖状であることは同値であり，体$K$は強鎖状である．
 
 鎖状環というトピックは\ref{prop:htとcohtの定義} (iii)の不等式と関係している．明らかに$A$が局所整域（極大イデアルと極小イデアルが一意的）で鎖状ならば，等号が成り立つ．すなわち，任意の$P\in\spec A$について；
-\[\idht P +\coht P =\dim A\tag{($\ast$)}\]
-が成り立つ．ではその逆，任意の素イデアル$P$について$\idht P +\coht P =\dim A$が成り立つならば$A$が鎖状環である，は成り立つだろうか？これは$A$がNoether局所整域ならば正しい(Ratliff, 1972)がその証明は難しい（\cite{matsu}，定理31.4.）．一方で，式($\ast$)は鎖状どころか強鎖状環ですら成り立たない例が存在する（\ref{ex:鎖状だがht P+coht P<dim P}）．しかし，実用の面では\ref{thm:体上有限生成整域は鎖状環}により次の結果が従う．
+\[\idht P +\coht P =\dim A\]
+が成り立つ．そこで，この性質のことを本書では\textbf{弱次元公式}が成り立つ，ということにしよう．
+
+\begin{defi}[弱次元公式]\index{じゃくじげんこうしき@弱次元公式}\label{defi:弱次元公式}
+	環$A$について，任意の$P\in\spec A$について；
+	\[\idht P+\coht P=\dim A\]
+	が成り立つとき，$A$において\textbf{弱次元公式}(week dimension formula)が成り立つという．
+\end{defi}
+
+この表現のもとで，先に述べたことは局所整域である鎖状環において弱次元公式が成り立つ，と言い換えることができる．ではその逆，弱次元公式が成り立つ局所整域$A$は鎖状環である，は成り立つだろうか？これは$A$がNoether局所整域ならば正しい(Ratliff,1972)がその証明は難しい（\cite{matsu}，定理31.4.）．一方で，鎖状どころか強鎖状環ですら弱次元公式が成り立たない例が存在する（\ref{ex:鎖状だがht P+coht P<dim P}）．しかし，実用の面では\ref{thm:体上有限生成整域は鎖状環}により次の結果が従う．
 
 \begin{prop}\label{prop:DIM}
-	体$K$上の有限生成整域$A$について，任意の$P\in\spec A$に対して；
-	\[\idht P +\coht P =\dim A\]
-	が成り立つ．
+	体$K$上の有限生成整域$A$において弱次元公式が成り立つ．
 \end{prop}
 
 \begin{proof}
 	\ref{thm:体上有限生成整域は鎖状環}より任意の極大イデアル$\ideal{m}$について，極大イデアルで終わる飽和した鎖は$\dim A-\dim A/\ideal{m}=\dim A$個の素イデアルからなる．
 \end{proof}
-実際のNoether環はほとんどが鎖状環であることが知られているが，その証明はCohen--Macaulay環の登場を待たなければならない．また，鎖状でないNoether環の例は\cite{Nag73}で与えられている．また鎖状であるが強鎖状でないNoether環の例も永田によって与えられている．
 
+ところで，\textbf{次元公式}と呼ばれる等式も存在する．$A$をNoether整域，$B$を$A$上の有限生成整域とする．任意の$P\in\spec B$と$P'=P\cap A$について；
+\[\idht P+\trdeg_{K(P')} K(P)=\idht P'+\trdeg_{\Frac(A)} \Frac(B)\]
+が成り立つとき，$A$と$B$の間で\textbf{次元公式}(dimension formula)\index{じげんこうしき@次元公式}が成り立つという．$A$が体のときこれは体上有限生成整域についての弱次元公式にほかならない．
+
+実際のNoether環はほとんどが鎖状環であることが知られているが，その証明はCohen--Macaulay環の登場を待たなければならない．また，鎖状でないNoether環の例は\cite{Nag73}で与えられている．また鎖状であるが強鎖状でないNoether環の例も永田によって与えられている．
 
 \section{Hilbertの零点定理}
 
@@ -682,7 +692,7 @@ $ I $を$T$によって生成される$A$のイデアルとすると，$Z(T)=Z( 
 	\end{step}
 \end{proof}
 
-\begin{defi}[Zariski位相]\index{#Zariskiいそうだいすうたようたい@Zariski位相(代数多様体)}
+\begin{defi}[Zariski位相]\index{#Zariskiいそうだいすうたようたい@Zariski位相（代数多様体）}
 	$\A^n$に代数的集合全体を閉集合系とする位相を定める．これをZariski位相という．
 \end{defi}
 
