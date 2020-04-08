@@ -4,60 +4,60 @@
 
 環について，非常に圧縮してではあるが基礎事項を説明しておこう．本書では\textbf{環に可換性を仮定する}．可換でない環は\textbf{非可換環}と呼ばれ，これは\textbf{作用素環}(operator algebra)などが有名で，こちらも活発な研究が行われている．
 \begin{defi}[環]\index{かん@環}
-	集合$R$に対し2つの演算$x+y,x*y$が備わっていて，次の性質を満たすとき，代数構造$(R,+,*)$を\textbf{環}(ring)という．
+	集合$R$に対し2つの演算$a+b,a\cdot b$が備わっていて，次の性質を満たすとき，代数構造$(R,+,\cdot)$を\textbf{環}(ring)という．
 	\begin{defiterm}{R}
 		\item $R$は$+$についてAbel群である．
-		\item 任意の$x,y,z\in R$に対し$x*(y*z)=(x*y)*z$が成立する．
-		\item ある$1\in R$が存在して，任意の$x\in R$に対し$x*1=1*x=x$が成立する．
-		\item 任意の$x,y,z\in R$に対し$x*(y+z)=x*y+x*z, (x+y)*z=x*z+y*z$が成立する．
+		\item 任意の$a,b,c\in R$に対し$a\cdot (b\cdot c)=(a\cdot b)\cdot c$が成立する．
+		\item ある$1\in R$が存在して，任意の$a\in R$に対し$a\cdot 1=1\cdot a=a$が成立する．
+		\item 任意の$a,b,c\in R$に対し$a\cdot (b+c)=a\cdot b+a\cdot c, (a+b)\cdot c=a\cdot c+b\cdot c$が成立する．
 	\end{defiterm}
 \end{defi}
 
-このとき，演算$+$を加法，$*$を乗法という．乗法の記号はよく省略される．ここでは乗法の可換性を仮定していないことに注意しよう．乗法が可換な環は\textbf{可換環}(commutative ring)と呼ばれ，本ノートの主題である．これ以後\textbf{環の乗法は可換である（すなわち$x*y=y*x$が常に成り立つ）とする\footnote{非可換環に対するイデアルの定義などは，必要なら適宜環の入門書を見てほしい．}．}環の定義では$R$を記号として使用していたが，以後は可換環のみを取り扱うという気持ちで，またBourbakiに敬意を評して\footnote{７０００ページ以上に及ぶ「数学原論」(\'el\'ements de math\'ematique)を出版し，数学の公理的基礎づけを行った．今使われている記号，概念の多く --- 例えば単射，全射 --- はBourbakiが導入したものである．}，フランス語で環を表すAnneauの頭文字をとって$A$で表すことにする．環の定義における(R2)を\textbf{結合法則}(associative property)，(R4)を\textbf{分配法則}(distributive property)という．
+このとき，演算$+$を加法，$\cdot$を乗法という．乗法の記号はよく省略される．ここでは乗法の可換性を仮定していないことに注意しよう．乗法が可換な環は\textbf{可換環}(commutative ring)と呼ばれ，本ノートの主題である．これ以後\textbf{環の乗法は可換である（すなわち$a\cdot b=b\cdot a$が常に成り立つ）とする\footnote{非可換環に対するイデアルの定義などは，必要なら適宜環の入門書を見てほしい．}．}環の定義では$R$を記号として使用していたが，以後は可換環のみを取り扱うという気持ちで，またBourbakiに敬意を評して\footnote{７０００ページ以上に及ぶ「数学原論」(\'el\'ements de math\'ematique)を出版し，数学の公理的基礎づけを行った．今使われている記号，概念の多く --- 例えば単射，全射 --- はBourbakiが導入したものである．}，フランス語で環を表すAnneauの頭文字をとって$A$で表すことにする．環の定義における(R2)を\textbf{結合法則}(associative property)，(R4)を\textbf{分配法則}(distributive property)という．
 
-加法の単位元を$0$で表し\textbf{零元}(zero element)，$1$を単に\textbf{単位元}(identity element)という．$0,1$は一意的に存在する．また同様に，任意の$x\in A$について$-x$（加法逆元）も一意的に存在する．零元，単位元については実数などで馴染み深い次の性質；
+加法の単位元を$0$で表し\textbf{零元}(zero element)，$1$を単に\textbf{単位元}(identity element)という．$0,1$は一意的に存在する．また同様に，任意の$a\in A$について$-a$（加法逆元）も一意的に存在する．零元，単位元については実数などで馴染み深い次の性質；
 
-\[\text{任意の }x\in A\text{ に対し }0x=0, (-1)x=-x\text{ が成立する．}\]
+\[\text{任意の} a\in A\text{に対し} 0\cdot a=0, (-1)a=-a\text{が成立する．}\]
 
-が成り立っている（示せ）．$x\in A$が\textbf{単元}(unit)であるとは，ある$x^{-1}\in A$が存在して$x^{-1}x=1$が成立することをいう．$x^{-1}$を$x$の（乗法）\textbf{逆元}(inverse element)という．単元のことを\textbf{可逆元}(invertible element)ともいう（意味からはこの名称のほうが直感的である）．その意味で，$x$が単元であることを\textbf{可逆である}と表現することもある．$A$の単元全体は群になり，$A^\times$とかく．これを\textbf{単元群}(group of units)\index{たんげんぐん@単元群}\index{たんげん@単元}，または\textbf{乗法群}という．どれくらい$A$が単元を持つかというのは大切な問題であって，単元になりえない$0$以外がすべて単元である環を\textbf{体}という．
+が成り立っている（示せ）．$a\in A$が\textbf{単元}(unit)であるとは，ある$a^{-1}\in A$が存在して$a^{-1}a=1$が成立することをいう．$a^{-1}$を$a$の（乗法）\textbf{逆元}(inverse element)という．単元のことを\textbf{可逆元}(invertible element)ともいう（意味からはこの名称のほうが直感的である）．その意味で，$a$が単元であることを\textbf{可逆である}と表現することもある．$A$の単元全体は群になり，$A^\times$とかく．これを\textbf{単元群}(group of units)\index{たんげんぐん@単元群}\index{たんげん@単元}，または\textbf{乗法群}という．どれくらい$A$が単元を持つかというのは大切な問題であって，単元になりえない$0$以外がすべて単元である環を\textbf{体}という．
 
 \begin{defi}[体]\index{たい@体}
 	環$A$の0以外の元がすべて単元であるとき，$A$を\textbf{体}(field)という．
 \end{defi}
 
-体という日本語はドイツ語のK\uml{o}perに由来し，体はよく$K$でかかれる．体でない環の例として$\Z$を，体の例として$\Q,\R,\Co$を挙げておこう．
+体という日本語はドイツ語のK\uml{o}perに由来し，体はよく$k$でかかれる．体でない環の例として$\Z$を，体の例として$\Q, \R, \Co$を挙げておこう．
 
 環の間の写像の中で代数構造と整合性があるもの，すなわち次の構造を持つものを重要視する．
 
 \begin{defi}[環準同型]\index{かんじゅんどうけい@環準同型}
 	$A，B$を環とし，$f$を$f:A\to B$なる写像とする．以下の条件；
 	\begin{defiterm}{RH}
-		\item 任意の$x,y\in A$に対し，$f(x+y)=f(x)+f(y), f(xy)=f(x)f(y)$が成立する．
+		\item 任意の$a,b\in A$に対し，$f(a+b)=f(a)+f(b), f(ab)=f(a)f(b)$が成立する．
 		\item 単位元について$f(1)=1$が成立する．
 	\end{defiterm}
 	
 	を満たすとき，$f$を\textbf{環準同型}(ring homomorphism)であるという．
 \end{defi}
 
-さらに$f$が全単射であるとき$A$と$B$は\textbf{同型}(isomophic)であるといい，~$A\cong B$で表す．環準同型写像$f$について；
+さらに$f$が全単射であるとき$A$と$B$は\textbf{同型}(isomophic)であるといい，$A\cong B$で表す．環準同型写像$f$について；
 
 \begin{sakura}
 	\item 零元について$f(0)=0$．
-	\item 任意の$x\in A$に対し$f(-x)=-f(x)$である．
-	\item 任意の$x\in A$に対し，もし$x^{-1}\in A$が存在するならば$f(x^{-1})=f(x)^{-1}$である．
+	\item 任意の$a\in A$に対し$f(-a)=-f(a)$である．
+	\item 任意の$a\in A$に対し，もし$a^{-1}\in A$が存在するならば$f(a^{-1})=f(a)^{-1}$である．
 \end{sakura}
 が成り立つ．
 
 $A$を環とし，集合として$A'\subset A$とする．$A'$が$A$の単位元を含み，和，積，逆元をとる操作で閉じているとき，$A'$を$A$の\textbf{部分環}(sub ring)であるという．環準同型$f:A\to B$があるとき；
-\[\im f=\mkset{f(x)}{x\in A}\]
+\[\im f=\mkset{f(a)}{a\in A}\]
 は$B$の部分環になる．これを$f$の\textbf{像}(image)という．もう１つ部分集合に定義する構造で，部分環と同じくらい（それ以上？）に大切なものに\textbf{イデアル}がある．
 
 \begin{defi}[イデアル]\index{イデアル}
 	$A$の部分集合$I$が次の条件；
 	\begin{defiterm}{I}
 		\item $I$は空でない．
-		\item 任意の$x,y\in I$に対し$x+y\in I$である．
-		\item 任意の$x\in I$と$a\in A$に対し$ax\in I$である．
+		\item 任意の$a,b\in I$に対し$a+b\in I$である．
+		\item 任意の$a\in I$と$r\in A$に対し$ra\in I$である．
 	\end{defiterm}
 	をみたすとき，$I$を$A$の\textbf{イデアル}(ideal)という．
 \end{defi}
@@ -67,25 +67,25 @@ $\{0\},A$は明らかに$A$のイデアルをなす．$\{0\}$を\textbf{零イ�
 イデアルの簡単な性質をまとめておく．
 \begin{sakura}
 	\item $0\in I$である．
-	\item $x\in I$ならば$-x\in I$である．
+	\item $a\in I$ならば$-a\in I$である．
 	\item $1\in I$であることと$I=A$であることは同値．特に$I$は可逆元を含むなら$I=A$である．
 \end{sakura}
 
 イデアルの中でも，次に与えられる\textbf{有限生成}なイデアルが扱いやすいだけでなく大切な役割を果たす．
 
 \begin{defi}[有限生成イデアル]\index{ゆうげんせいせいいである@有限生成イデアル}
-	$x_1,\dots,x_n\in A$について；
-	\[(x_1,\dots,x_m)=\mkset{a_1x_1+\dots+a_nx_n}{a_i\in A}\]
-	とおくと，$(x_1,\dots,x_n)$は$A$のイデアルになる．
+	$a_1,\dots,a_n\in A$について；
+	\[(a_1,\dots,a_n)=\mkset{r_1a_1+\dots+r_na_n}{r_i\in A}\]
+	とおくと，$(a_1,\dots,a_n)$は$A$のイデアルになる．これを$a_1,\dots,a_n$で生成されたイデアルという．また，イデアル$I$について有限個の$a_1,\dots,a_n\in I$が存在して$I=(a_1,\dots,a_n)$とかけるとき$I$は\textbf{有限生成}(finitely generated)であるといい，$a_1,\dots,a_n$を$I$の\textbf{生成元}(generator)という．
 \end{defi}
 
-この記号のもとに自明なイデアルは$(0),(1)$とかかれる．特に１つの元$x$で生成されるイデアル$(x)$を\textbf{単項イデアル}(principal ideal)ないし\textbf{主イデアル}という（主イデアルは古い用語）．有限生成イデアルを$Ax_1+\dots+Ax_n$とかくこともある．イデアル$I$について$a_1,\dots,a_n\in I$なら$(a_1,\dots,a_n)\subset I$である．また単項イデアル$(x)，(y)$について，$(x)\subset (y)$であることと，ある$a\in A$が存在して$x=ay$であることは同値．有限生成イデアル$(a_1,\dots,a_n)$について，$u$を$A$の単元とすると$(a_1,\dots,a_r)=(ua_1,\dots,ua_n)$が成り立つ．
+この記号のもとに自明なイデアルは$(0),(1)$とかかれる．特に１つの元$a$で生成されるイデアル$(a)$を\textbf{単項イデアル}(principal ideal)ないし\textbf{主イデアル}という（主イデアルは古い用語）．有限生成イデアルを$Aa_1+\dots+Aa_n$とかくこともある．イデアル$I$について$a_1,\dots,a_n\in I$なら$(a_1,\dots,a_n)\subset I$である．また単項イデアル$(a)，(b)$について，$(a)\subset (b)$であることと，ある$r\in A$が存在して$a=rb$であることは同値．有限生成イデアル$(a_1,\dots,a_n)$について，$u$を$A$の単元とすると$(a_1,\dots,a_r)=(ua_1,\dots,ua_n)$が成り立つ．
 
 いくつかのイデアルについて，和と積を次のように定義できる．
 \begin{defi}[イデアルの和，積]
 	$I，J$を$A$のイデアルとする．次の定義により，イデアルの和と積が定まる．
-	\[I+J=\mkset{x+y}{x\in I,y\in J}\]
-	\[IJ=\mkset{\sum_{\text{有限和}}x_iy_i}{x_i\in I,y_j\in I}\]
+	\[I+J=\mkset{a+b}{a\in I, b\in J}\]
+	\[IJ=\mkset{\sum_{\text{有限和}}a_ib_i}{a_i\in I, b_j\in I}\]
 \end{defi}
 
 また，イデアルの族$\{I_\lambda\}$について，共通部分$\bigcap I_\lambda$もまたイデアルとなる．集合としては；
@@ -101,14 +101,14 @@ $\{0\},A$は明らかに$A$のイデアルをなす．$\{0\}$を\textbf{零イ�
 
 \begin{defi}[多項式環]\index{たこうしきかん@多項式環}
 	$A$を環とする．$A$の元を係数とする（変数$X$の）多項式；
-	\[f(X)=a_nX^n+a_{n-1}X^{n-1}+\dots+a_0\quad(n\in\N,a_n\neq0)\]
+	\[f(X)=a_nX^n+a_{n-1}X^{n-1}+\dots+a_0\quad(a_i\in A, a_n\neq0)\]
 	全体のなす集合$A[X]$は自然な演算によって環になる．これを$A$の（１変数）\textbf{多項式環}という．
 \end{defi}
 誤解の恐れがない場合，変数はよく省略されて多項式は単に$f$とかかれる．多項式についての用語をいくつか定義しておこう．$a_i$を$f$の$i$次の\textbf{係数}(coeffieient)といい，$a_0$を\textbf{定数項}(constant term)という．$a_n\neq0$となる最大の$n$を$f$の\textbf{次数}(degree)といい，$\deg f$で表す．多項式$f$について，最高次の係数が1，すなわち$f(X)=X^n+a_{n-1}X^{n-1}+\cdots+a_0$となっているとき$f$は\textbf{モニック}(monic)であるという．\index{モニック} 次数については明らかに；
 \[\deg (f+g)\leq\max\{\deg f,\deg g\}\]
 が成り立つ．
 
-多変数多項式についても同様に考えることができ，２変数多項式環$A[X,Y]$とは$A[X]$を係数とする変数$Y$の多項式環，すなわち$A[X,Y]=A[X][Y]$のことである．帰納的に$A[X_1,\dots,X_n]$は１変数多項式環をとる操作を繰り返して得られる．ここから，任意の$f\in A[\nitem{X}]$は単項式$X_1^{k_1}\dots X_n^{k_n} (k_i\geq0)$の$A$係数の線形和である（いままでの数学で考えてきた２変数多項式の全体は$A[X,Y]$とこの定義のもとで一致する）．
+多変数多項式についても同様に考えることができ，２変数多項式環$A[X,Y]$とは$A[X]$を係数とする変数$Y$の多項式環，すなわち$A[X,Y]=A[X][Y]$のことである．帰納的に$A[X_1,\dots,X_n]$は１変数多項式環をとる操作を繰り返して得られる．ここから，任意の$f\in A[\nitem{X}]$は単項式$X_1^{l_1}\dots X_n^{l_n} (l_i\geq0)$の$A$係数の線形和である（いままでの数学で考えてきた２変数多項式の全体は$A[X,Y]$とこの定義のもとで一致する）．
 
 多項式環の強力さはだんだん学習が進むにつれ身にしみてくることであろうから，次の定義に進もう．通常の計算で当たり前のように用いる$ab=0$なら$a=0$または$b=0$は，一般の環では\textbf{成り立たない．}
 
@@ -119,7 +119,7 @@ $\{0\},A$は明らかに$A$のイデアルをなす．$\{0\}$を\textbf{零イ�
 一般の環については次のような定義ができ，いわゆる\quo{悪い元}の代表格である．
 
 \begin{defi}[零因子]
-	環$A$について，ある$x,y\in A$が存在して$xy=0$かつ$x,y\neq0$となるとき$x,y$を\textbf{零因子}(zero divisor)という．
+	環$A$について，ある$a,b\in A$が存在して$ab=0$かつ$a,b\neq0$となるとき$a,b$を\textbf{零因子}(zero divisor)という．
 \end{defi}
 
 逆に，通常の計算のような零因子を持たない環には特別な名前がついている．
@@ -128,10 +128,10 @@ $\{0\},A$は明らかに$A$のイデアルをなす．$\{0\}$を\textbf{零イ�
 	可換環$A$が零因子を持たないとき，\textbf{整域}(integral domain)であるという．
 \end{defi}
 
-明らかに体は整域である．また整域の部分環も整域である．よく知られた環$\Z$はもちろん整域であり，$\Q,\R,\Co$も体なのでそうである．
+明らかに体は整域である．また整域の部分環も整域である．よく知られた環$\Z$はもちろん整域であり，$\Q, \R, \Co$も体なのでそうである．
 
-$A$が整域であるとき，$(x)=(y)$であることと，$A$の単元$a$が存在して$x=ay$となることが同値である．一般の環において，$x,y$に対して$A$の単元$a$
-が存在して$x=ay$となることは同値関係となる．このことを$x,y$は\textbf{同伴}(associated)であるという．同伴関係と単項イデアルが一致することはすべての環で同値になるわけではないが，整域だけでなく例えば半局所環で成り立つことが知られている（\ref{defi:半局所環}，\ref{prop:半局所環と同伴関係}）．
+$A$が整域であるとき，$(a)=(b)$であることと，$A$の単元$u$が存在して$a=ub$となることが同値である．一般の環において，$a,b$に対して$A$の単元$u$
+が存在して$a=ub$となることは同値関係となる．このことを$a,b$は\textbf{同伴}(associated)であるという．同伴関係と単項イデアルが一致することはすべての環で同値になるわけではないが，整域だけでなく例えば半局所環で成り立つことが知られている（\ref{defi:半局所環}，\ref{prop:半局所環と同伴関係}）．\index{どうはん@同伴}
 
 多項式環については次が成り立つ．
 
@@ -150,56 +150,54 @@ $A$が整域であるとき，$(x)=(y)$であることと，$A$の単元$a$が�
 
 \section{剰余環}
 
-環$A$とそのイデアル$I$を考える．$x,y\in A$に対し$x-y\in I$となることを$x\equiv y \pmod I$とかくと，これは同値関係になる．整数$\Z$における\textbf{合同式}を思い出そう．$n$を法とする合同式は，イデアル$n\Z$による同値関係と対応している．その意味でこれは合同式の一般化である．とすると，次の演算も自然だろう．$x\equiv x',y\equiv y'\pmod I$なら；
-\[x+y\equiv x'+y'\pmod I,\quad xy\equiv x'y'\pmod I\]
-が成り立つ．
-
-これにより，$A$を$I$が定める同値関係で割った商集合$A/I$に次の演算を入れることができる．
+環$A$とそのイデアル$I$を考える．$a,b\in A$に対し$a-b\in I$となることを$a\equiv b \pmod I$とかくと，これは同値関係になる．整数$\Z$における\textbf{合同式}を思い出そう．$n$を法とする合同式は，イデアル$n\Z$による同値関係と対応している．その意味でこれは合同式の一般化である．とすると，次の演算も自然だろう．$a\equiv a',b\equiv b'\pmod I$なら；
+\[a+b\equiv a'+b'\pmod I,\quad ab\equiv a'b'\pmod I\]
+が成り立つ．これにより，$A$を$I$が定める同値関係で割った商集合$A/I$に次の演算を入れることができる．
 
 \begin{defi}[剰余環]\index{じょうよかん@剰余環}
-	$A/I$の元$\bar{x}$すなわち$x$の同値類を$x+I$と表す．演算を；
-	\[(x+I)+(y+I)=(x+y)+I,\quad (x+I)(y+I)=xy+I\]
+	$A/I$の元$\bar{a}$，すなわち$a$の同値類を$a+I$と表す．演算を；
+	\[(a+I)+(b+I)=(a+b)+I,\quad (a+I)(b+I)=ab+I\]
 	と定義すると$A/I$は環になる．これを$A$の$I$による\textbf{剰余環}(residue ring)という．
 \end{defi}
 
 $A/(0)=A, A/A=0$であることを簡単に確かめられる．
 
-剰余環を用いると，整域でない簡単な例を与えることができる．$\Z$と$n\in\Z$を考える．剰余環$\Z/n\Z$は，$n$が素数のときに限り整域になり，そうでないとき$\Z/n\Z$は非整域になる．例えば$\Z/4\Z$において$2*2=4=0$である．
+剰余環を用いると，整域でない簡単な例を与えることができる．$\Z$と$n\in\Z$を考える．剰余環$\Z/n\Z$は，$n$が素数のときに限り整域になり，そうでないとき$\Z/n\Z$は非整域になる．例えば$\Z/4\Z$において$2\cdot 2=4=0$である．
 
 \begin{exer}
-	$\Z/5\Z,\Z/6\Z$の演算表をかけ．
+	$\Z/5\Z, \Z/6\Z$の演算表をかけ．
 \end{exer}
 
 $p$が素数のとき$\Z/p\Z$は整域だけでなく体になる．この体を特に$\F_p$とかく．またに$\Z/n\Z$が体であることと$n$が素数であることは同値である．
 
-$\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみなしてできる環である．例えば$\Z/3\Z=\{0,1,2\}$であるが，これは一般の$n\in\Z$が$n=a+3b~(a=0,1,2, b\in\Z)$とかけるので，$\Z/3\Z$では$3b=0$となるからである．
+$\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみなしてできる環である．例えば$\Z/3\Z=\{0,1,2\}$であるが，これは一般の$n\in\Z$が$n=a+3b~(a,b\in\Z, 0\leq a\leq 2)$とかけるので，$\Z/3\Z$では$3b=0$となるからである．
 
 これと同様の考えで，たとえば$\R[X]/(X^2+1)$を考えると，$\R[X]$のなかで$X^2=1=0$とみなす環なので$X^2=-1$すなわち$X$は$i$と同一視できる．よって標準的な同型$\R[X]/(X^2+1)\cong\Co$がある．
 
 次に環準同型について着目していこう．$A,B$の間の環準同型$f:A\to B$を考える．集合；
-\[\ker f=\mkset{x\in A}{f(x)=0}\]
-を$f$の\textbf{核}(kernel)という．$\ker f$は$A$のイデアルをなすことが簡単に確かめられる．よって剰余環$A\ker f$が定義できる．これが$\im f$と同型になるというのが\textbf{準同型定理}であり，息をするように用いる．
+\[\ker f=\mkset{a\in A}{f(a)=0}\]
+を$f$の\textbf{核}(kernel)という．$\ker f$は$A$のイデアルをなすことが簡単に確かめられる．よって剰余環$A/\ker f$が定義できる．これが$\im f$と同型になるというのが\textbf{準同型定理}であり，息をするように用いる．
 
-\begin{thm}[準同型定理]
+\begin{thm}[準同型定理]\index{じゅんどうけいていり@準同型定理}
 	$A，B$を環とし，準同型$f:A\to B$を考えると，同型$A/\ker f\cong\im f$が存在する．
 \end{thm}
 
 \begin{proof}
 	剰余環に誘導される準同型；
-	\[f':A/\ker f\to\im f;x+\ker f\mapsto f(x)\]
+	\[\widetilde f:A/\ker f\to\im f;a+\ker f\mapsto f(a)\]
 	が環同型を与える．
 	\begin{step}
-		\item well-definedness．
+		\item well-definedness.
 		
-		$x+\ker f=y+\ker f$とすると$x-y\in\ker f$であるので，$f(x-y)=f(x)-f(y)=0$すなわち$f(x)=f(y)$である．
+		$a+\ker f=b+\ker f$とすると$a-b\in\ker f$であるので，$f(a)-f(b)=f(a-b)=0$すなわち$f(a)=f(b)$である．
 		
 		\item 単射性．
 		
-		$f'(x+\ker f)=0$とすると，$f(x)=0$すなわち$x\in\ker f$である．よって$x+\ker f=0$である．
+		$\widetilde f(a+\ker f)=0$とすると，$f(a)=0$すなわち$a\in\ker f$である．よって$a+\ker f=0$である．
 		
 		\item 全射性．
 		
-		任意の$y\in \im f$をとると，定義からある$x\in A$が存在して$f(x)=y$である．よって$f'(x+\ker f)=y$である．
+		任意の$b\in \im f$をとると，定義からある$a\in A$が存在して$f(a)=b$である．よって$\widetilde f(a+\ker f)=b$である．
 	\end{step}
 \end{proof}
 
@@ -214,7 +212,7 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 	上の命題を示せ．
 \end{exer}
 
-体の特徴づけについて，イデアルが自明なものしかない環ということを述べた．この命題から，体$K$からの$0$でない準同型$f:K\to A$は必ず単射に限ることがわかる．
+体の特徴づけについて，イデアルが自明なものしかない環ということを述べた．この命題から体$k$からの$0$でない準同型$f:k\to A$は必ず単射に限ることがわかる．
 
 もともとの環と剰余環の間にはイデアルの対応関係がある．
 
@@ -225,13 +223,13 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 \end{prop}
 
 \begin{proof}
-	$\pi:A\to A/I;x\mapsto x+I$を自然な全射とする．$J$を$I$を含む$A$のイデアルとすると，$\pi(J)$は$A/I$のイデアルになることを確かめることができる．よって；
+	$\pi:A\to A/I;a\mapsto a+I$を自然な全射とする．$J$を$I$を含む$A$のイデアルとすると，$\pi(J)$は$A/I$のイデアルになることを確かめることができる．よって；
 	\[\varphi:X\to Y;J\mapsto\pi(J)\]
-	が全単射であることを示せば良い．
+	が全単射であることを示せばよい．
 	\begin{step}
 		\item 単射性．
 		
-		$\pi(J)=\pi(J')$であるとする．任意の$x\in J$をとる．このとき$\pi(x)\in\pi(J)=\pi(J')$であるので，ある$x'\in J'$が存在して$x-x'\in I$となる．すると$I\subset J'$であるので$x'\in J'$となる．ゆえに$J\subset J'$であり，逆も同様．
+		$\pi(J)=\pi(J')$であるとする．任意の$a\in J$をとる．このとき$\pi(a)\in\pi(J)=\pi(J')$であるので，ある$a'\in J'$が存在して$a-a'\in I$となる．すると$I\subset J'$であるので$a'\in J'$となる．ゆえに$J\subset J'$であり，逆も同様．
 		
 		\item 全射性．
 		
@@ -242,10 +240,10 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 特別なイデアルについて，次のような定義をする．
 
 \begin{defi}[素イデアル]\index{そいである@素イデアル}
-	環$A$の真のイデアル$P$について，任意の$x,y\in A$に対して$xy\in P$ならば，$x\in P$または$y\in P$が成り立つとき，$P$を\textbf{素イデアル}(prime ideal)という．
+	環$A$の真のイデアル$P$について，任意の$a,b\in A$に対して$ab\in P$ならば，$a\in P$または$b\in P$が成り立つとき，$P$を\textbf{素イデアル}(prime ideal)という．
 \end{defi}
 
-環$A$の素イデアル全体を$\spec A$とかく．例えば$\spec \Z=\mkset{(p)}{p=0\text{ または }p\text{ は素数}}$である．素イデアルという言葉を用いると，環$A$が整域であることと$(0)$が素イデアルであることは同値である．
+環$A$の素イデアル全体を$\spec A$とかく．例えば$\spec \Z=\mkset{(p)}{p=0\text{または}p\text{は素数．}}$である．素イデアルという言葉を用いると，環$A$が整域であることと$(0)$が素イデアルであることは同値である．
 
 \begin{defi}[極大イデアル]\index{きょくだいいである@極大イデアル}
 	環$A$の真のイデアル$\ideal{m}$について，$\ideal{m}\subset I\subset A$となる真のイデアル$I$は$\ideal{m}$に限るとき，$\ideal{m}$を\textbf{極大イデアル}(maximal ideal)という．
@@ -287,11 +285,11 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 	\begin{step}
 		\item $\pi(P)$が$A/I$の素イデアルであること．
 		
-		 $(x+I)(y+I)\in\pi(P)$とする．ある$z\in P$が存在して$xy-z\in I\subset P$であるので，$xy\in P$である．$P$は素イデアルだから$x\in P$または$y\in P$すなわち$x+I\in\pi(P)$または$y+I\in\pi(P)$である．
+		 $(a+I)(b+I)=ab+I\in\pi(P)$とする．ある$c\in P$が存在して$ab-c\in I\subset P$であるので，$ab\in P$である．$P$は素イデアルだから$a\in P$または$b\in P$すなわち$a+I\in\pi(P)$または$b+I\in\pi(P)$である．
 		
 		\item $\pi^{-1}(\bar{P})$が素イデアルであること．
 		
-		$xy\in\pi^{-1}(\bar{P})$とすると，$\pi(xy)=\pi(x)\pi(y)\in\bar{P}$なので$\pi(x)\in \bar{P}$または$\pi(y)\in \bar{P}$である．すなわち$x\in\pi^{-1}(\bar{P})$または$y\in\pi^{-1}(\bar{P})$となる．
+		$ab\in\pi^{-1}(\bar{P})$とすると，$\pi(ab)=\pi(a)\pi(b)\in\bar{P}$なので$\pi(a)\in\bar{P}$または$\pi(b)\in\bar{P}$である．すなわち$a\in\pi^{-1}(\bar{P})$または$b\in\pi^{-1}(\bar{P})$となる．
 	\end{step}
 \end{proof}
 
@@ -316,28 +314,26 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 ．少し広く$A$が極大イデアルを有限個しか持たないとき$A$を\textbf{半局所環}(semi local ring)という．
 \end{defi}
 
-局所環は環論全体で重要であり，次の判定条件は有用である．
+環$A$が唯１つの極大イデアル$\ideal{m}$を持つ局所環であることを明示する意味で$(A,\ideal{m})$とかく．また体$k=A/\ideal{m}$を明示して$(A,\ideal m,k)$とかくこともある．局所環は環論全体で重要であり，次の判定条件は有用である．
 
 \begin{prop}\label{prop:local ring equiv}
-	$(A，\ideal{m})$が局所環であることと，$A-A^\times$がイデアルであることは同値．特に$\ideal{m}=A-A^\times$となる．
+	$(A,\ideal{m})$が局所環であることと，$A\setminus A^\times$がイデアルであることは同値．特に$\ideal{m}=A\setminus A^\times$となる．
 \end{prop}
 
 \begin{proof}
 	\begin{eqv}
-		\item $\ideal{m}_0=A-A^\times$とおく．$\ideal{m}\subset\ideal{m}_0$は明らかなので，逆を示す．任意の$x\in\ideal{m}_0$をとる．すると，$x\not\in A^\times$より$(x)\subsetneq A$である．$(x)$を含む極大イデアルが存在するが，$A$は局所環なのでそれは$\ideal{m}$に一致する．すなわち$(x)\subset\ideal{m}$となり，$x\in\ideal{m}_0$である．よって$\ideal{m}_0\subset\ideal{m}$である．よって$\ideal{m}_0=\ideal{m}$となる．
-		\item 任意の真のイデアル$I$を考えると，$I\cap A^\times=\emptyset$より$I\subset A-A^\times$となり，$A-A^\times$が唯一の極大イデアルである．
+		\item $\ideal{m}\subset A\setminus A^\times$は明らかなので，逆を示す．任意の$a\in A\setminus A^\times$をとる．すると，$a\not\in A^\times$より$(a)\subsetneq A$である．$(a)$を含む極大イデアルが存在するが，$A$は局所環なのでそれは$\ideal{m}$に一致する．すなわち$(a)\subset\ideal{m}$となり，$a\in \ideal m$である．よって$A\setminus A^\times\subset\ideal{m}$となり，$\ideal m=A\setminus A^\times$である．
+		\item 任意の真のイデアル$I$について$I\subset A\setminus A^\times$となり，$A\setminus A^\times$が唯一の極大イデアルである．
 	\end{eqv}
 \end{proof}
 
-次に，環の\textbf{標数}と呼ばれる概念について説明しよう．一般の環についても，元$x\in A$の整数倍を$x$を何回足したかどうかによって定義することができる．例えば$3x=x+x+x,-5x=-(x+x+x+x+x)$である．これを用いて次の定義を行う．
+次に，環の\textbf{標数}と呼ばれる概念について説明しよう．一般の環についても，元$a\in A$の整数倍を$a$を何回足したかどうかによって定義することができる．例えば$3a=a+a+a,-5a=-(a+a+a+a+a)$である．これを用いて次の定義を行う．
 
 \begin{defi}[標数]\index{ひょうすう@標数}
-	$A$を環とする．単位元$1$について，$n1=0$となる$n\in\Z_+$が存在するとき，そのような$n$で最小のものを$A$の\textbf{標数}(characteristic number)であるといい，$\Char(A)=n$とかく．そのような$n$が存在しない場合$\Char(A)=0$という．
+	$A$を環とする．単位元$1$について，$n\cdot 1=0$となる$n\in\Z_+$が存在するとき，そのような$n$で最小のものを$A$の\textbf{標数}(characteristic number)であるといい，$\Char(A)=n$とかく．そのような$n$が存在しない場合$\Char(A)=0$とする．
 \end{defi}
 
-例えば$\Char \Z=0，\Char(\Z/n\Z)=n$である．
-
-整域については次のような結果がある．
+例えば$\Char \Z=0，\Char(\Z/n\Z)=n$である．整域については次のような結果がある．
 
 \begin{prop}
 	$A$を整域とすると，$A$の標数は$0$か素数$p$に限る．
@@ -345,11 +341,11 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 
 \begin{proof}
 	次の準同型；
-	\[f:\Z\to A;n\mapsto n1\]
+	\[f:\Z\to A;n\mapsto n\cdot 1\]
 	を考える．準同型定理から$\Z/\ker f$は$A$の部分環$\im f$に同型であり，$A$は整域なので$\Z/\ker f$は整域．よって$\ker f$は$\Z$の素イデアルなので$(0)$か$(p)$でなければならない．標数は$\ker f$の生成元にほかならないので，$0$または素数$p$である．
 \end{proof}
 
-任意の環$A$について，$\Z$からの準同型は$n\mapsto n1$に限ることに注意しよう．
+任意の環$A$について，$\Z$からの準同型は$n\mapsto n\cdot 1$に限ることに注意しよう．
 
 先にも少し述べたが，零因子のなかで自分自身のいくつかの積が0になってしまうようなものを\textbf{冪零元}(nilpotent element)という．
 
@@ -367,7 +363,7 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 
 \begin{defi}[根基]\index{こんき@根基}
 	環$A$のイデアル$I$について；
-	\[\sqrt{I}=\mkset{x\in A}{\text{ ある }n\text{ が存在して，}x^n=I}\]
+	\[\sqrt{I}=\mkset{a\in A}{\text{ ある }n\text{ が存在して，}a^n=I}\]
 	はイデアルをなす．これをイデアル$I$の\textbf{根基}(radical)という．
 \end{defi}
 
@@ -390,14 +386,15 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 
 すなわち$\rad(A)=\bigcap_{\ideal{m}\in\specm A}\ideal{m}$である．極大イデアルは素イデアルであるから，$\nil(A)\subset\rad(A)$となっている．Jacobson根基については次の特徴づけがある．
 \begin{prop}
-	任意の$y\in A$に対し，$1-xy$が可逆となるような$x$全体の集合を$\mathfrak{A}$とすると，これは$\rad(A)$と一致する．
+	$\rad(A)=\mkset{a\in A}{\text{任意の}b\in A\text{について}1-ab\in A^\times}$が成り立つ．
 \end{prop}
 \begin{proof}
+	示すべき等式の右辺を$\mathfrak{A}$とおく．
 	\begin{mrkw}
 		\item 
-		任意の$x\in\mathfrak{A}$を1つとる．背理法で示す．ある極大イデアル$\ideal{m}$が存在して$x\not\in\ideal{m}$であると仮定しよう．すると$\ideal{m}+Ax=A$であるから，ある$m\in\ideal{m}$と$y\in A$とが存在して$m+xy=1$とできる．すると$1-xy=m$となるが，これは可逆でない．よって$x\in\mathfrak{A}$に矛盾する．よって$x$は任意の極大イデアルに含まれるので，$x\in\rad(A)$である．
+		任意の$a\in\mathfrak{A}$を1つとる．背理法で示す．ある極大イデアル$\ideal{m}$が存在して$a\not\in\ideal{m}$であると仮定しよう．すると$\ideal{m}+Aa=A$であるから，ある$m\in\ideal{m}$と$b\in A$とが存在して$m+ab=1$とできる．すると$1-ab=m\in\ideal m$となり，$1-ab$は可逆でない．これは$a\in\mathfrak{A}$に矛盾する．よって$a\in\rad(A)$である．
 		\item 
-		任意の$x\in\rad(A)$を1つとる．背理法で示す．ある$y\in A$が存在して，$1-xy$が非可逆であると仮定しよう．ここで$1-xy\in\ideal{m}$となる極大イデアル$\ideal{m}$が存在する．一方$x\in\rad(A)\subset\ideal{m}$より$xy\in\ideal{m}$である．よって$(1-xy)+xy=1\in\ideal{m}$となり，矛盾する．
+		任意の$a\in\rad(A)$を1つとる．背理法で示す．ある$b\in A$が存在して，$1-ab$が非可逆であると仮定しよう．ここで$1-ab\in\ideal{m}$となる極大イデアル$\ideal{m}$が存在する．一方$a\in\rad(A)\subset\ideal{m}$より$ab\in\ideal{m}$である．よって$(1-ab)+ab=1\in\ideal{m}$となり，矛盾する．
 	\end{mrkw}
 \end{proof}
 
@@ -409,14 +406,14 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 		，主環\footnotemark}(principal ring)という．特に$A$が整域のとき，\textbf{単項イデアル整域}(principal ideal domain)という．頭文字をとってPIDと略する．
 \end{defi}\footnotetext{主環は古い単語．}
 
-$\Z$はPIDである．実際，任意のイデアル$I$について，$n\in I$を$I$の元でもっとも絶対値が小さいものとする．イデアルの定義から$n\in\N$としてよい．このとき，除法の原理から任意の$x\in I$は$x=qn+r~(q\in\Z,0\leq r<n)$と一意にかける．すると$r=x-qn\in I$であり，$n$の最小性から$r=0$となり$m\in n\Z$である．よって$I=n\Z$である．この証明で本質的なのは\textbf{除法の原理}である．これを一般化することでPIDの判定条件を１つ与えよう．
+$\Z$はPIDである．実際，任意のイデアル$I$について，$n\in I$を$I$の元でもっとも絶対値が小さいものとする．イデアルの定義から$n\in\N$としてよい．このとき，除法の原理から任意の$m\in I$は$m=qn+r~(q\in\Z,0\leq r<n)$と一意にかける．すると$r=m-qn\in I$であり，$n$の最小性から$r=0$となり$m\in n\Z$である．よって$I=n\Z$である．この証明で本質的なのは\textbf{除法の原理}である．これを一般化することでPIDの判定条件を１つ与えよう．
 
 \begin{defi}[Euclid整域]\index{#Euclid せいいき@Euclid整域，ED}
 	$A$を整域とする．写像$\rho:A\to\N$で，次の条件；
 	\begin{defiterm}{EF}
-		\item 任意の$0$でない$x\in A$について，$\rho(0)<\rho(x)$が成り立つ．
-		\item 任意の$x,y\in A$について，$x\neq0$のときある$q,r\in A$が存在して；
-		\[y=xq+r,\quad \rho(r)<\rho(x)\]
+		\item 任意の$0$でない$a\in A$について，$\rho(0)<\rho(a)$が成り立つ．
+		\item 任意の$a,b\in A$について，$a\neq0$のときある$q,r\in A$が存在して；
+		\[b=aq+r,\quad \rho(r)<\rho(a)\]
 		となる．
 	\end{defiterm}
 	を満たすものが存在するとき，$\rho$をEulcid\textbf{関数}(Euclid function)，$A$をEuclid\textbf{整域}，ED (Euclid domain)という．
@@ -433,36 +430,36 @@ $\Z$はPIDである．実際，任意のイデアル$I$について，$n\in I$�
 \end{thm}
 \begin{proof}
 	$A$をEDとし，$\rho:A\to\N$をEuclid関数とする．任意のイデアル$I$をとる．$I-\{0\}$の$\rho$による像；
-	\[I'=\mkset{\rho(x)}{0\neq x\in I}\]
-	を考える．$I'\subset\N$であり，$\N$は整列集合なので最小元$m'=\min I'$が存在する．$m'\in I'$より，ある$0\neq m\in I$が存在して$\rho(m)=m'$である．$I=Am$を示そう．任意の$x\in I$をとる．$A$はEDなので，$m\neq0$だからある$q，r\in A$が存在して；
-	\[x=qm+r,\quad \rho(r)<\rho(m)=m'\]
-	とかける．ここで$r=x-qm\in I$であり，$\rho(r)<m'$であるから$\rho(r)\not\in I'$である．ゆえに$r=0$でなければならない．よって$x\in Am$である．ゆえに$I=Am$が示された．
+	\[I'=\mkset{\rho(x)}{0\neq a\in I}\]
+	を考える．$I'\subset\N$であり，$\N$は整列集合なので最小元$m'=\min I'$が存在する．$m'\in I'$より，ある$0\neq m\in I$が存在して$\rho(m)=m'$である．$I=Am$を示そう．任意の$a\in I$をとる．$A$はEDなので，$m\neq0$だからある$q，r\in A$が存在して；
+	\[a=qm+r,\quad \rho(r)<\rho(m)=m'\]
+	とかける．ここで$r=a-qm\in I$であり，$\rho(r)<m'$であるから$\rho(r)\not\in I'$である．ゆえに$r=0$でなければならない．よって$a\in Am$である．ゆえに$I=Am$が示された．
 \end{proof}
 
 よって$K[X]$がPIDであることがわかる．PIDは１変数特有の現象で，２変数以上ではPIDにならない（例えば$(X,Y)$が単項ではない）．
 
 PIDの素イデアルについては次の命題が知られている．
 \begin{prop}
-	$A$をPIPとする．$P$を$A$の素イデアルとすると，$P$は$(0)$または極大イデアルである．
+	$A$をPIDとする．$P\in\spec A$とすると，$P$は$(0)$または極大イデアルである．
 \end{prop}
 \begin{proof}
-	$P=(p)$とする．$p=0$なら示すことはない．$p\neq0$としよう．もし$(p)\subset (x)$となる$x\in A$が存在したとする．$p=ax$とかける．すると$ax\in (p)$より$a\in (p)$または$x\in (p)$である． $x\in (p)$なら$(x)=(p)$である．また$a\in (p)$とすると，$a=a'p$となる$a'\in A$が存在する．よって$p=aa'p$となり，$p\neq0$より$aa'=1$である．よって$p$と$x$は同伴であり$(p)=(x)$である．以上より$(p)$は極大である．
+	$P=(p)$とする．$p=0$なら示すことはない．$p\neq0$としよう．もし$(p)\subset (a)$となる$a\in A$が存在したとする．ある$r\in A$によって$p=ra$とかける．すると$ra\in (p)$より$r\in (p)$または$a\in (p)$である．$a\in (p)$なら$(a)=(p)$である．また$r\in (p)$とすると，$r=r'p$となる$r'\in A$が存在する．よって$p=ar'p$となり，$p\neq0$より$ar'=1$である．よって$a$は単元だから$(a)=A$となる．以上より$P$が極大イデアルであることがわかる．
 \end{proof}
 
 PIDは$\Z$における最大公約数の議論を行えるように抽象化した環になっている．もちろん一般の環でも約数，倍数といった概念は定義できるが，PIDでは嬉しい性質があることを見ていこう．
 
 \begin{defi}[約元，倍元]
-	$A$を環とする．$x,y\in A$について，ある$a\in A$が存在して$x=ya$となるとき$x$は$y$の\textbf{約元}(divisor)，$y$は$x$の\textbf{倍元}(multiple)であるという．
+	$A$を環とする．$a,b\in A$について，ある$r\in A$が存在して$a=rb$となるとき$a$は$b$の\textbf{約元}(divisor)，$b$は$a$の\textbf{倍元}(multiple)であるという．
 \end{defi}
 
-$z\in A$が$x,y$の共通の約元であるとき $z$は$x,y$の\textbf{公約元}(common divisor)であるといい，$g$が$x,y$の公約元であって，任意の$x,y$の公約元の倍元であるとき$g$を$x,y$の\textbf{最大公約元}(greatest common divisor)であるという．$\Z$ですら最大公約元は一意に決まらない（例えば$12$と$18$の最大公約数は$6,-6$）し，一般の整域では存在するかもわからない．最大公約元が必ず存在する整域をGCD整域という（\ref{defi:GCDdomain}）．
+$c\in A$が$a,b$の共通の約元であるとき $c$は$a,b$の\textbf{公約元}(common divisor)であるといい，$g$が$a,b$の公約元であって，任意の$a,b$の公約元の倍元であるとき$g$を$a,b$の\textbf{最大公約元}(greatest common divisor)であるという．$\Z$ですら最大公約元は一意に決まらない（例えば$12$と$18$の最大公約数は$6,-6$）し，一般の整域では存在するかもわからない．最大公約元が必ず存在する整域をGCD整域という（\ref{defi:GCDdomain}）．
 
-\begin{prop}
-	$A$がPIDであるとき，任意の$x,y\in A$について最大公約元$g$が少なくとも1つ存在する．
+\begin{prop}\label{prop:PIDはGCD}
+	$A$がPIDであるとき，任意の$a,b\in A$について最大公約元$g$が少なくとも1つ存在する．
 \end{prop}
 
 \begin{proof}
-	イデアル$(x,y)$を考えると，$A$はPIDなので$(x,y)=(g)$となる$g\in A$が存在する．この$g$が$x,y$の最大公約元になる．公約元になることは$x,y\in(g)$からわかる．次に$z$を$x,y$の公約元とすると，定義から$x,y\in (z)$なので$(g)=(x,y)\subset (z)$である．ゆえに$z$は$g$の約元である．
+	イデアル$(a,b)$を考えると$A$はPIDなので$(a,b)=(g)$となる$g\in A$が存在する．この$g$が$a,b$の最大公約元になる．公約元になることは$a,b\in(g)$からわかる．次に$c$を$a,b$の公約元とすると，定義から$a,b\in (c)$なので$(g)=(a,b)\subset (c)$である．ゆえに$c$は$g$の約元である．
 \end{proof}
 
 このアイデアから次の強力な定理を証明できる．
@@ -479,7 +476,7 @@ $z\in A$が$x,y$の共通の約元であるとき $z$は$x,y$の\textbf{公約�
 約数の一般化として約元を定義したのと同様に，素数の一般化を考えてみよう．
 
 \begin{defi}[既約元]\index{きやくげん@既約元}\label{defi:既約元}
-	$A$を環とし，$x\in A$を単元でないとする．ここで$a,b\in A$を用いて$x=ab$とかけるとき，必ず$a$または$b$が単元であるとき，$x$を\textbf{既約}(irreducible)であるという．
+	$A$を環とし，$c\in A$を単元でないとする．ここで$a,b\in A$を用いて$c=ab$と表したとき必ず$a$または$b$が単元であるとき，$c$を\textbf{既約}(irreducible)であるという．
 \end{defi}
 
 $\Z$の単元は$1,-1$のみであるので，$\Z$の既約元はまさに素数（の単元倍）である．$\Z$においては，単元倍を除いて一意的に素因数分解できる．一般の整域では既約元分解は必ずできるが，一意性は成り立つとは限らない．例えば$\Z[X]$に$\sqrt{-5}$を代入して得られる（$\Z[X]/(X^2+5)$と表現してもよい）；
@@ -512,8 +509,8 @@ $(\Longleftarrow)$は一般の整域でも成り立つ．整域において，$(
 
 実は次が成り立つ．
 \begin{prop}
-	$A$を整域とする．$x\in A$が素元の２通りの積；
-	\[x=up_1\dots p_n=tp_1'\dots p_m'~(u,t\in A^\times)\]
+	$A$を整域とする．$a\in A$が素元の２通りの積；
+	\[a=up_1\dots p_n=tp_1'\dots p_m'~(u,t\in A^\times)\]
 	にかけたとすると，$n=m$であり適当に並べ替えると$(p_i)=(p_i')$が必ず成立する（$p_i'$は$p_i$の単元倍である）．
 \end{prop}
 
@@ -527,7 +524,7 @@ $(\Longleftarrow)$は一般の整域でも成り立つ．整域において，$(
 \end{thm}
 
 \begin{proof}
-	$A$をPIDとし，$x\neq0$を単元でないとする．このとき真のイデアル$(x)$を含む極大イデアル$\ideal{m}$が存在する（Krullの極大イデアル存在定理を使ってもよいが，PIDはNoether環と呼ばれる環（\ref{defi:Noether環}）であることに注意すると，選択公理は不要である）．$A$はPIDなので，$\ideal{m}=(p_1)$となる$p_1\in A$が存在する．$x\in(p_1)$であるから$x=a_1p_1$となる$a_1\in A$が存在する．$a_1$が単元ならば$x$は素元であり証明が終了する．$a_1$が単元でないならば，同様の操作により$x=a_2p_1p_2$となる素元$p_2$が見つかる．この操作が有限回で終了することを示そう．この操作が無限回続いたとすると，無限に続く非単元の族$\{a_i\}$で，$(a_i)\subsetneq (a_{i+1})$となるものがとれる．すると；
+	$A$をPIDとし，$a\neq0$を単元でないとする．このとき真のイデアル$(a)$を含む極大イデアル$\ideal{m}$が存在する（Krullの極大イデアル存在定理を使ってもよいが，PIDはNoether環と呼ばれる環（\ref{defi:Noether環}）であることに注意すると，選択公理は不要である）．$A$はPIDなので，$\ideal{m}=(p_1)$となる$p_1\in A$が存在する．$a\in(p_1)$であるから$a=a_1p_1$となる$a_1\in A$が存在する．$a_1$が単元ならば$a$は素元であり証明が終了する．$a_1$が単元でないならば，同様の操作により$a=a_2p_1p_2$となる素元$p_2$が見つかる．この操作が有限回で終了することを示そう．この操作が無限回続いたとすると，無限に続く非単元の族$\{a_i\}$で，$(a_i)\subsetneq (a_{i+1})$となるものがとれる．すると；
 	\[I=\bigcup_{i=1}^\infty (a_i)\]
 	もまた$A$のイデアルになる．すると$A$はPIDなので$I=(a_\infty)$となる$a_\infty\in A$が存在する．構成より$a_\infty\in (a_n)$となる$n$が存在するが，これは$I=(a_n)=(a_{n+1})=\cdots$を導くので矛盾．よってこの操作は有限回で終了する．
 \end{proof}
@@ -547,16 +544,16 @@ $(\Longleftarrow)$は一般の整域でも成り立つ．整域において，$(
 体$L$の部分環$K$がまた体になっているとき，$K$を$L$の\textbf{部分体}(sub field)であるという．このとき，自然な単射$K\hookrightarrow L$を体の\textbf{拡大}(extension)という．このとき$L/K$とかく．
 
 整域$A$があったとき，ちょうど整数$\Z$から有理数$\Q$を作ることと全く同じように，体を作る自然な方法がある．直積$A\times(A-\{0\})$に；
-\[(a,b)\sim(c,d)\Longleftrightarrow ad-bc=0\]
-のような同値関係を入れよう．$(a,b)$を$a/b,(c,d)$を$c/d$とみなせば，$a/b=c/d$は$ad=bc$と同値だから，この定義は整数における分数の定義を一般の整域に拡張したものとなる．直積$A\times(A-\{0\})$をこの同値関係で割った商集合を$\Frac (A)$とかく．$\Frac (A)$は分数と同様の演算で体になる．
+\[(a,s)\sim(b,t)\Longleftrightarrow at-bs=0\]
+のような同値関係を入れよう．$(a,s)$を$a/s,(b,t)$を$b/t$とみなせば，$a/s=b/t$は$at=bs$と同値だから，この定義は整数における分数の定義を一般の整域に拡張したものとなる．直積$A\times(A-\{0\})$をこの同値関係で割った商集合を$\Frac (A)$とかく．$\Frac (A)$は分数と同様の演算で体になる．
 
 \begin{defi}[商体]\index{しょうたい@商体}
-	整域$A$について，$\Frac (A)$の元$(x,s)$を$x/s$とかき；
-	\[\frac{x}{s}+\frac{y}{t}=\frac{xt+ys}{st},\quad \frac{x}{s}\cdot\frac{y}{t}=\frac{xy}{st}\]
+	整域$A$について，$\Frac (A)$の元$(a,s)$を$a/s$とかき；
+	\[\frac{a}{s}+\frac{b}{t}=\frac{at+bs}{st},\quad \frac{a}{s}\cdot\frac{b}{t}=\frac{ab}{st}\]
 	と定めると体となる．これを$A$の\textbf{商体}(field of quotients)，\textbf{分数体}(field of fractions)という．
 \end{defi}
 
-次の命題の証明からもわかることだが，整域$A$の商体$\Frac (A)$は$A$を含む最小の体となる（ある体$K$について$A\subset K$ならば$\Frac (A)\subset K$となる）．
+次の命題の証明からもわかることだが，整域$A$の商体$\Frac (A)$は$A$を含む最小の体となる（ある体$k$について$A\subset K$ならば$\Frac (A)\subset K$となる）．
 \begin{prop}
 	$K$を体とする．$K$の標数が0であることと，$K$が$\Q$（と同型な体）を部分体として含むことは同値．$K$の標数が$p\neq0$であることは$K$が$\F_p$を部分体として含むことと同値．
 \end{prop}
@@ -568,10 +565,10 @@ $(\Longleftarrow)$は一般の整域でも成り立つ．整域において，$(
 		\begin{eqv}
 			\item $\Z$からの自然な準同型$\varphi$の核が$0$であるので，$K$は$\Z$と同型な環$\im\varphi$を部分環にもつ．このとき$\Frac(\im\varphi)\cong\Q$である．さて任意の$a,b\in\im\varphi$について$b\neq0$とすると，$b\in K^\times$である．ゆえに$ab^{-1}\in K$となるので，$a/b\in\Frac(\im\varphi)$を$ab^{-1}$と同一視して，$\Frac(\im\varphi)\cong\Q$は$K$の部分体である．
 			
-			\item $\varphi:\Z\to K;n\to n1$は$\Q$を経由する準同型に分解する．すなわち$\psi:\Z\to\Q$（単射）と自然な単射$\iota:\Q\to K$を考えると，2つの準同型$\varphi，\iota\circ\psi:\Z\to K$が定まる．しかし，$\Z$からの準同型は$\varphi$に限るので，$\varphi=\iota\circ\psi$となる．よって$\varphi$は単射ある．
+			\item $\varphi:\Z\to K;n\to n\cdot1$は$\Q$を経由する準同型に分解する．すなわち$\psi:\Z\to\Q$（単射）と自然な単射$\iota:\Q\to K$を考えると，2つの準同型$\varphi，\iota\circ\psi:\Z\to K$が定まる．しかし，$\Z$からの準同型は$\varphi$に限るので，$\varphi=\iota\circ\psi$となる．よって$\varphi$は単射ある．
 		\end{eqv}
 	
-		\item $\Char K=p$なら$\Z/\ker\varphi=\Z/p\Z=\F_p$が$K$の部分環になる．また，$\F_p$が部分環ならば$\psi:\Z\to\F_p;\iota:\F_p\to K$の合成$\iota\circ\psi:\Z\to K$が定まる．$K$が$\Q$を部分体として含む場合と同様にして，$\iota\circ\psi:\Z\to K$の核が$(p)$であるから$\Char K=p$である．
+		\item $\Char K=p$なら$\Z/\ker\varphi=\Z/p\Z=\F_p$が$K$の部分環になる．また，$\F_p$が部分環ならば$\psi:\Z\to\F_p, \iota:\F_p\to K$の合成$\iota\circ\psi:\Z\to K$が定まる．$K$が$\Q$を部分体として含む場合と同様にして，$\iota\circ\psi:\Z\to K$の核が$(p)$であるから$\Char K=p$である．
 	\end{mrkw}
 \end{proof}
 

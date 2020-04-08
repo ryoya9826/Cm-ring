@@ -6,23 +6,23 @@
 局所環の例の１つに付値環というものがある．そのなかでも特に離散付値環は，後に見るように1次元Noether局所環の特徴付を与えている，重要なクラスの１つである．
 
 \begin{defi}[付値環]\index{ふちかん@付値環}
-	$A$を整域とし，$K=\Frac A$とする．任意の$0\neq x\in K$について，$x\in A$か$x^{-1}\in A$のどちらかが成り立つとき，$A$を$K$の\textbf{付値環}であるという．
+	$A$を整域とし，$k=\Frac A$とする．任意の$0\neq x\in k$について，$x\in A$か$x^{-1}\in A$のどちらかが成り立つとき，$A$を$k$の\textbf{付値環}であるという．
 \end{defi}
 
-定義から付値環$A$は$K$上整閉であることがすぐにわかる．よって付値環は整閉整域である．
+定義から付値環$A$は$k$上整閉であることがすぐにわかる．よって付値環は整閉整域である．
 
 \begin{prop}
-	$A$を$K$の付値環とする．このとき，$A$は局所環である．
+	$A$を$k$の付値環とする．このとき，$A$は局所環である．
 \end{prop}
 
 \begin{proof}
-	$A$の可逆でない元全体を$\ideal{m}$とおく．これがイデアルをなすことを示そう．任意の$a\in A$と$0\neq x\in\ideal{m}$をとる．$ax\not\in\ideal{m}$と仮定すると$(ax)^{-1}\in A$となり，$x^{-1}=a(ax)^{-1}\in A$となるので矛盾する．よって$ax\in \ideal{m}$である．また$0$でない$x,y\in\ideal{m}$について，$xy^{-1}\in K$に対して仮定から$xy^{-1}\in A$または$x^{-1}y\in A$が成り立つ．$xy^{-1}\in A$のとき$x+y=(1+xy^{-1})y\in \ideal{m}$が成り立ち，$x^{-1}y\in A$のときも同様である．よって$\ideal{m}$はイデアルとなり，$A$は局所環である．
+	$A$の可逆でない元全体を$\ideal{m}$とおく．これがイデアルをなすことを示そう．任意の$a\in A$と$0\neq x\in\ideal{m}$をとる．$ax\not\in\ideal{m}$と仮定すると$(ax)^{-1}\in A$となり，$x^{-1}=a(ax)^{-1}\in A$となるので矛盾する．よって$ax\in \ideal{m}$である．また$0$でない$x,y\in\ideal{m}$について，$xy^{-1}\in k$に対して仮定から$xy^{-1}\in A$または$x^{-1}y\in A$が成り立つ．$xy^{-1}\in A$のとき$x+y=(1+xy^{-1})y\in \ideal{m}$が成り立ち，$x^{-1}y\in A$のときも同様である．よって$\ideal{m}$はイデアルとなり，$A$は局所環である．
 \end{proof}
 
 次に付値環の定義のもととなった，付値と呼ばれる関数について説明しよう．
 
 \begin{defi}[付値]\index{ふち@付値}
-	$K$を体とし，$G$を全順序なAbel群とする．関数$v:K^\times\to G$が，全射であり，すべての$a，b\in K^\times$に対して；
+	$k$を体とし，$G$を全順序なAbel群とする．関数$v:k^\times\to G$が，全射であり，すべての$a，b\in k^\times$に対して；
 	\begin{sakura}
 		\item $v(ab)=v(a)+v(b)$
 		\item $v(a+b)\geq\min (v(a),v(b))$
@@ -33,10 +33,10 @@
 まず，自明な性質として$v(1)=0$であり，$v(x^{-1})=-v(x)$である．
 
 \begin{defi}
-	集合$A=\mkset{x\in K}{v(x)\geq0}\cup\{0\}$は$K$の部分環で，これを$v$の\textbf{付値環}(valuation ring)という．
+	集合$A=\mkset{x\in k}{v(x)\geq0}\cup\{0\}$は$k$の部分環で，これを$v$の\textbf{付値環}(valuation ring)という．
 \end{defi}
 
-体の部分環であるから付値環は必ず整域である．また付値環$A$について$\Frac A=K$となることに注意しよう．これは$K$の付値環をなす．その極大イデアルは$\ideal{m}=\mkset{x\in K}{v(x)>0}$で与えられる．
+体の部分環であるから付値環は必ず整域である．また付値環$A$について$\Frac A=k$となることに注意しよう．これは$k$の付値環をなす．その極大イデアルは$\ideal{m}=\mkset{x\in k}{v(x)>0}$で与えられる．
 
 次の離散付値環が特に大切である．
 \begin{defi}[離散付値]\index{りさんふち@離散付値}\index{#DVR@DVR（離散付値環）}\index{りさんふちかん@離散付値環}
@@ -75,7 +75,7 @@
 		\item $A$は離散付値環である．
 		\item $A$は整閉である．
 		\item $\ideal{m}$は単項イデアルである．
-		\item $\dim_K (\ideal{m}/\ideal{m}^2)=1$である．
+		\item $\dim_k (\ideal{m}/\ideal{m}^2)=1$である．
 		\item すべての$A$の0でないイデアルは$\ideal{m}$の冪である．
 		\item ある$x\in A$が存在して，すべての0でないイデアルは$(x^k) (k\geq0)$とかける．
 	\end{sakura}
@@ -131,14 +131,14 @@
 		\item $A$は離散付値環である．
 		\item $A$は整閉である．
 		\item $\ideal{m}$は単項イデアルである．
-		\item $\dim_K (\ideal{m}/\ideal{m}^2)=1$である．
+		\item $\dim_k (\ideal{m}/\ideal{m}^2)=1$である．
 		\item すべての$A$の0でないイデアルは$\ideal{m}$の冪である．
 		\item ある$x\in A$が存在して，すべての0でないイデアルは$(x^k) (k\geq0)$とかける．
 	\end{sakura}
 	の同値性である．
 	\begin{eqv}[6]
 		\item 明らか．
-		\item $0\neq a\in\ideal{m}$をとる．\ref{lem:DVR-C}より$\ideal{m}^n\subset(a),\ideal{m}^{n-1}\not\subset(a)$となる$n>0$がとれる．$b\in\ideal{m}^{n-1}$かつ$b\not\in(a)$となる$b$をとる．$x=a/b\in K$とおくと，$b\not\in(a)$より$x^{-1}\not\in A$である．$A$は整閉なので$x^{-1}$は整ではなく，\ref{prop:整拡大の特徴づけ}より$x^{-1}\ideal{m}\not\subset\ideal{m}$である．いま$x$の構成から$x^{-1}\ideal{m}\subset A$なので，$x^{-1}\ideal{m}=A$が成り立ち，$\ideal{m}=(x)$である．
+		\item $0\neq a\in\ideal{m}$をとる．\ref{lem:DVR-C}より$\ideal{m}^n\subset(a),\ideal{m}^{n-1}\not\subset(a)$となる$n>0$がとれる．$b\in\ideal{m}^{n-1}$かつ$b\not\in(a)$となる$b$をとる．$x=a/b\in k$とおくと，$b\not\in(a)$より$x^{-1}\not\in A$である．$A$は整閉なので$x^{-1}$は整ではなく，\ref{prop:整拡大の特徴づけ}より$x^{-1}\ideal{m}\not\subset\ideal{m}$である．いま$x$の構成から$x^{-1}\ideal{m}\subset A$なので，$x^{-1}\ideal{m}=A$が成り立ち，$\ideal{m}=(x)$である．
 		
 		\item \ref{lem:DVR-A}よりわかる．
 		
@@ -146,7 +146,7 @@
 		
 		\item \ref{lem:DVR-A}より$\ideal{m}\neq\ideal{m}^2$であるので，$x\not\in\ideal{m}^2$となる$x\in\ideal{m}$がとれる．仮定より$(x)=\ideal{m}^r$となる$r$がとれるが，$x$のとりかたから$r=1$でなければならない．よって$\ideal{m}=(x)$とできるので，すべてのイデアルは$(x^k)$の形に書ける．
 		
-		\item $(x)=\ideal{m}$なので，\ref{lem:DVR-A}より$(x^k)\neq(x^{k+1})$である．よって0でない任意の$a\in A$について，唯１つ$(a)=(x^k)$となる$k$が定まる．$v(a)=k$とし，$v(ab^{-1})=v(a)-v(b)$として$v$を$K$全体に定義することで離散付値環となる．
+		\item $(x)=\ideal{m}$なので，\ref{lem:DVR-A}より$(x^k)\neq(x^{k+1})$である．よって0でない任意の$a\in A$について，唯１つ$(a)=(x^k)$となる$k$が定まる．$v(a)=k$とし，$v(ab^{-1})=v(a)-v(b)$として$v$を$k$全体に定義することで離散付値環となる．
 	\end{eqv}
 \end{proof}
 
@@ -192,17 +192,17 @@
 逆向きの証明を行うために，分数イデアルという概念を導入しよう．
 
 \begin{defi}[分数イデアル]\index{ぶんすういである@分数イデアル}
-	$A$を整域とし，$K$をその商体とする．$K$の0でない$A$部分加群$M$で，ある$0\neq x\in A$が存在して$xM\subset A$となっているとき，$M$を$A$の\textbf{分数イデアル}(fractional ideal)という．
+	$A$を整域とし，$k$をその商体とする．$k$の0でない$A$部分加群$M$で，ある$0\neq x\in A$が存在して$xM\subset A$となっているとき，$M$を$A$の\textbf{分数イデアル}(fractional ideal)という．
 \end{defi}
 
 通常の$A$のイデアルは分数イデアルであることに注意せよ．ここでは$A$の通常のイデアルを区別する目的で\textbf{整イデアル}と呼ぶことがある．
 
-$K$の有限生成$A$部分加群$M$は分数イデアルである．なぜならば，生成元たちを\quo{通分}して，その分母をかければよいからである．
+$k$の有限生成$A$部分加群$M$は分数イデアルである．なぜならば，生成元たちを\quo{通分}して，その分母をかければよいからである．
 
 \begin{defi}[可逆イデアル]\index{かぎゃくいである@可逆イデアル}
-	$M,N$を$K$の$A$部分加群とする．$MN=A$となっているとき，$M,N$を\textbf{可逆イデアル}(invertible ideal)という．
+	$M,N$を$k$の$A$部分加群とする．$MN=A$となっているとき，$M,N$を\textbf{可逆イデアル}(invertible ideal)という．
 \end{defi}
-	実際には，$M$が可逆イデアルであるとき，$MN=A$となる$N$は$(A:M)=\mkset{u\in K}{uM\subset A}$に一致する．実際$N\subset (A:M)=(A:M)MN\subset AN=N$が成り立つ．特に$(A:M)=M^{-1}$と略記する．
+	実際には，$M$が可逆イデアルであるとき，$MN=A$となる$N$は$(A:M)=\mkset{u\in k}{uM\subset A}$に一致する．実際$N\subset (A:M)=(A:M)MN\subset AN=N$が成り立つ．特に$(A:M)=M^{-1}$と略記する．
 	
 	一般の分数イデアル$M$について同様に$M^{-1}$を考えると$MM^{-1}$は$A$の整イデアルになる．次の補題から可逆イデアルは分数イデアルであるから，分数イデアル$M$が可逆であることは$M(A:M)=A$となること，と定式化できる．
 
@@ -288,7 +288,7 @@ $K$の有限生成$A$部分加群$M$は分数イデアルである．なぜな�
 \end{proof}
 
 \section{Krullの次元定理}
-\ref{defi:Kurll次元}で環のKrull次元を定義した．素イデアルの長さをもってして環の大きさを計ったわけであるが，この節ではPoincar\'e\textbf{級数}を用いた別の\quo{計りかた}を，次数付きNoether環に，そして\ref{defi:随伴次数環}で定義した随伴次数環を用いてNoether局所環に対して考えよう．
+\ref{defi:Krull次元}で環のKrull次元を定義した．素イデアルの長さをもってして環の大きさを計ったわけであるが，この節ではPoincar\'e\textbf{級数}を用いた別の\quo{計りかた}を，次数付きNoether環に，そして\ref{defi:随伴次数環}で定義した随伴次数環を用いてNoether局所環に対して考えよう．
 まず，一般に\textbf{加法的関数}というものを定義する．
 \begin{defi}[加法的関数]\index{かほうてきかんすう@加法的関数}
 	ある加群の族$\{M_i\}$上定義された$\Z$への関数$\lambda$で，任意の短完全列；
@@ -434,7 +434,7 @@ $\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の
 \end{cor}
 
 \begin{proof}
-	Noether局所環$(A',\ideal{m})$について，$\delta(A')<\infty$が明らかに成り立つ．よって$\dim A'<\infty$である．よって，Noether環$A$とその素イデアル$P$について，$A_P$は局所環となるので，$\idht P=\dim A_P<\infty$である．
+	Noether局所環$(B,\ideal{m})$について，$\delta(B)<\infty$が明らかに成り立つ．よって$\dim B<\infty$である．よって，Noether環$A$とその素イデアル$P$について，$A_P$は局所環となるので，$\idht P=\dim A_P<\infty$である．
 \end{proof}
 
 しかしながら，無限次元のNoether環（整域）が存在することに注意しなければならない（\ref{ex:無限次元Noether環}）．
@@ -539,7 +539,7 @@ $\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の
 \begin{proof}
 	$\dim A+1\leq\dim A[X]$は明らかである．$\dim A[X]=d$とおこう．$A[X]$の素イデアル鎖$P_0\subsetneq P_1\subsetneq\dots\subsetneq P_d$について，$P_i'=P_i\cap A$とおいて$A$の素イデアル鎖$P_0'\subset P_1'\subset\dots\subset P_d'$を考える．この鎖の長さの取りうる値の最小値を求めよう．
 	
-	$P\in\spec A[X]$と$P'=P\cap A\in\spec A$を考える．積閉集合$A-P'$による$A，A[X]$の局所化はそれぞれ$A_P',A_P'[X]$である．特に$\spec A_P'[X]$は$\mkset{Q\in\spec A[X]}{(Q\cap A)\subset P'}$と対応する．また，$A_P'[X]$において$V(P'A_P'[X])$は$\spec (A_P'[X]/P'A_P'[X])=\spec (K(P)[X])$と対応するので，これらから$P$について$\mkset{Q\in\spec A[X]}{Q\cap A=P'}$からなる$A[X]$の素イデアル鎖の長さは高々1である．
+	$P\in\spec A[X]$と$P'=P\cap A\in\spec A$を考える．積閉集合$A-P'$による$A，A[X]$の局所化はそれぞれ$A_P',A_P'[X]$である．特に$\spec A_P'[X]$は$\mkset{Q\in\spec A[X]}{(Q\cap A)\subset P'}$と対応する．また，$A_P'[X]$において$V(P'A_P'[X])$は$\spec (A_P'[X]/P'A_P'[X])=\spec (k(P)[X])$と対応するので，これらから$P$について$\mkset{Q\in\spec A[X]}{Q\cap A=P'}$からなる$A[X]$の素イデアル鎖の長さは高々1である．
 	
 	さて，$A$の素イデアル鎖$P_0'\subset\dots\subset P_d'$にもどると，もし$P_{i-1}'=P_i'$ならば先の議論より$P_{i-2}',P_{i+1}'$は$P_i'$と異なる．よってこの鎖は最短でも長さが$d$が偶数なら$d/2$，奇数なら$(d-1)/2$である．よって$(d-1)/2\leq \dim A$すなわち$d\leq 2\dim A+1$が成り立つ．
 \end{proof}
@@ -570,7 +570,7 @@ Noether局所環$(A,\ideal{m},k)$について，$\dim A=d$とすると$A$の$\id
 また\ref{prop:Atimac_prop_2.8}より，$\ideal{m}$を生成するのに必要な元の個数は$\dim_k\ideal{m}/\ideal{m}^2$である．$\dim_k\ideal{m}/\ideal{m}^2$を$A$の\textbf{埋め込み次元}(embedding dimension)といい$\emdim A$と表す．次元定理より$\dim A\leq\emdim A$が成り立つ．等号が成り立つとき，すなわち$\ideal{m}$が$\dim A$個の元で生成されているとき$A$を\textbf{正則局所環}という．
 
 \begin{defi}[正則局所環]\index{せいそくきょくしょかん@正則局所環}
-	$(A,\ideal{m})$を局所環とする．$d=\dim A$個の元$x_1,\dots,x_d\in A$が存在して$\ideal{m}=(\nitem[d]{x})$となっているとき$A$を\textbf{正則局所環}(regular local ring)といい，$\ideal{m}$を生成する巴系を\textbf{正則巴系}という．
+	$(A,\ideal{m})$をNoether局所環とする．$d=\dim A$個の元$x_1,\dots,x_d\in A$が存在して$\ideal{m}=(\nitem[d]{x})$となっているとき$A$を\textbf{正則局所環}(regular local ring)といい，$\ideal{m}$を生成する巴系を\textbf{正則巴系}という．
 \end{defi}
 
 環$A$のすべての素イデアル$P$による局所化$A_P$が正則局所環であるような$A$を，\textbf{正則環}(regular ring)という．\index{せいそくかん@正則環}
@@ -602,15 +602,22 @@ $d$次元Noether局所環$(A,\ideal{m})$について，$x_1,\dots,x_i$が$A$の�
 
 DVRは整閉なので，1次元の正則局所環は整閉である．またより強くDVRはUFDでもあるが，次の結果が知られている．
 
-\begin{thm}[Auslander--Bachsbaumの定理]\index{#Auslander--Bachsbaumのていり@Auslander--Bachsbaumの定理}
+\begin{thm}[Auslander--Bachsbaumの定理]\index{#Auslander--Bachsbaumのていり@Auslander--Bachsbaumの定理}\label{prethm:Auslander-Bachusbaum}
 	正則局所環はUFDである．
 \end{thm}
 
-特にすべての正則局所環は整閉整域である．この結果の証明にはホモロジー代数的手法を本質的に必要とするため，ホモロジー代数を導入した後に証明を与える．
+特にすべての正則局所環は整閉整域である．この結果の証明にはホモロジー代数的手法を本質的に必要とするため，ホモロジー代数を導入した後に証明を与える（\ref{thm:Auslander--Bachusbaumの定理}）．また，一見するとイデアル論の範疇で（ひょっとすると簡単に？）示せそうに見えるが，ホモロジー代数を要する結果として；
+
+\begin{thm}[Serreの定理]\index{#Serreのていり@Serreの定理}\label{prethm:Serre}
+	$A$を正則局所環とすると，任意の$P\in\spec A$について$A_P$も正則局所環である．
+\end{thm}
+がある（証明は\ref{thm:Serreの定理}）．この定理の証明はSerreによる方法以外には証明法が知られていない（\cite{goto}）．このように1960年代は，Serre, Auslander, Bachsbaum, Bass, Grothendieck らによってホモロジー的な手法が本格的に導入され，可換環論は大規模に発展することとなった．
+
+次の節ではホモロジー代数を導入する前に，現在の可換環論の中心をなすCohen--Macaulay性について紹介することにする．
 
 \section{Cohen--Macaulay 加群}
 
-重要な局所環のクラスの１つにCohen--Macaulay\textbf{環}（略してCM\textbf{環}と書くことも多い）がある．Cohen--Macaulay環は現在の可換環論で中心的な存在の１つであり，この節ではホモロジー代数を要しない範囲で性質をまとめておこう．まずそのために\textbf{正則列}と\textbf{深さ}を導入する．
+重要な局所環のクラスの１つにCohen--Macaulay\textbf{環}（略してCM\textbf{環}と書くことも多い）がある．Cohen--Macaulay環は現在の可換環論で中心的な存在の１つであり，この節と続くもう１つの節（Cohen--Macaulay環について述べる）ではホモロジー代数を（ほとんど）要しない範囲で性質をまとめておこう．まずそのために\textbf{正則列}と\textbf{深さ}を導入する．
 
 \begin{defi}[正則元]
 	$A$加群$M$について，$a\in A$が$M$に非例因子として作用する，すなわち任意の$0\neq x\in M$について$ax\neq0$であるとき，$a$は$M$\textbf{正則}(regular)であるという．
@@ -620,7 +627,7 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 	$A$をNoether環とし，$M$を有限生成$A$加群とする．$a_1,\dots,a_r\in A$が任意の$1\leq i\leq r$について$a_i$が$M/(a_1,\dots,a_{i-1})M$正則であるとき，$a_1,\dots,a_r$を$M$\textbf{正則列}(regular sequence)という．
 \end{defi}
 
-例えば体上の多項式$A=K[X_1,X_2,X_3]$において$f_1=X_1(X_2-1),f_2=X_2,f_3=X_3(X_1-1)$とすると$f_1,f_2,f_3$は$A$正則列をなす．ところが$X_1$は$A/(f_1)$において$0$ではないが，$f_3X_3$は$0$であるので$f_1,f_3,f_2$は$A$正則列ではない．このように正則列は順序を考慮する必要があるが，局所環においては極大イデアルの元について順序によらないことが知られている．ここではより強く$\rad A$の元においてそのことを示そう．
+例えば体上の多項式$A=k[X_1,X_2,X_3]$において$f_1=X_1(X_2-1),f_2=X_2,f_3=X_3(X_1-1)$とすると$f_1,f_2,f_3$は$A$正則列をなす．ところが$X_1$は$A/(f_1)$において$0$ではないが，$f_3X_3$は$0$であるので$f_1,f_3,f_2$は$A$正則列ではない．このように正則列は順序を考慮する必要があるが，局所環においては極大イデアルの元について順序によらないことが知られている．ここではより強く$\rad A$の元においてそのことを示そう．
 
 \begin{lem}\label{lem:正則元と素因子}
 	Noether環$A$上の加群$M$において$a\in A$が$M$正則でありかつ$\bigcap a^nM=0$であるものとする．このとき$M$の素因子$P\in\ass M$について$P+(a)\subset Q$となる$Q\in\ass (M/aM)$が存在する．
@@ -717,7 +724,7 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 \end{lem}
 
 \begin{proof}
-	$(\Longleftarrow)$は明らか．$(\Longrightarrow)$は対偶を示す．任意の$P\in\ass M$について$I\subsetneq P$であると仮定する．$\ass M$は有限だからPrime avoidance より$I\subsetneq\bigcup_{P\in\ass M}P$であり，\ref{cor:加群の零因子は素因子と等しい}より$x\in I$で$M$正則元となるものが存在する．
+	$(\Longleftarrow)$は明らか．$(\Longrightarrow)$は対偶を示す．任意の$P\in\ass M$について$I\not\subset P$であると仮定する．$\ass M$は有限だからPrime avoidance より$I\subsetneq\bigcup_{P\in\ass M}P$であり，\ref{cor:加群の零因子は素因子と等しい}より$x\in I$で$M$正則元となるものが存在する．
 \end{proof}
 
 \begin{prop}\label{prop:CMの局所化もCM}
@@ -741,7 +748,7 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 	Noether環$A$について，任意の$P\in\spec A$による局所化$A_P$が$A_P$加群としてCohen--Macaulay加群のとき，$A$をCohen--Macaulay\textbf{環}という．
 \end{defi}
 
-明らかに体はCM環である．また簡単な計算により１次元Noether整域はCM環であることがわかる．特にPID，Dedekind整域などはCM環である．この節では，CM環の簡単な性質を見るとともに，正則局所環やCM環上の有限生成代数がCM環であること，またすべてのCM環が強鎖状環であることを示そう．
+明らかに体はCM環である．また簡単な計算により１次元Noether整域はCM環であることがわかる．特にPID，Dedekind整域などはCM環である．この節では，CM環の簡単な性質を見るとともに，正則局所環やCM環上の多項式環がCM環であること，またすべてのCM環が強鎖状環であることを示そう．
 
 \begin{prop}
 	環$A$について，鎖状性は局所的な性質である．すなわち$A$が鎖状環であることと，任意の$P\in\spec A$について$A_P$が鎖状環であることは同値．
@@ -764,14 +771,14 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 	CM環は鎖状環である．
 \end{cor}
 
-次にCM環においては巴系と正則列の間に相互に良い関係があることを見よう．まず一般に正則局所環はCM環であることを確認しておく．
+次にCM環においては巴系と正則列の間に相互によい関係があることを見よう．まず一般に正則局所環はCM環であることを確認しておく．
 
 \begin{prop}[Cohen]
 	正則局所環はCM環である．
 \end{prop}
 
 \begin{proof}
-	$(A,\ideal{m})$を正則局所環とし，$\dim A=n$とおく．$x_1,\dots,x_n\in\ideal{m}$を正則巴系としよう．このとき\ref{prop:正則局所環は落ちる}，\ref{thm:正則局所環は整域}によりこれらが$A$正則列をなすことがわかる．
+	$(A,\ideal{m})$を正則局所環とし，$\dim A=n$とおく．$x_1,\dots,x_d\in\ideal{m}$を正則巴系としよう．このとき\ref{prop:正則局所環は落ちる}，\ref{thm:正則局所環は整域}によりこれらが$A$正則列をなすことがわかる．
 \end{proof}
 
 CM環という条件を仮定すると，正則列と巴系の概念が一致する．
@@ -806,7 +813,7 @@ CM環という条件を仮定すると，正則列と巴系の概念が一致す
 	Noether環$A$のイデアル$I$について，任意の$P\in\ass A/I$の高さが$\idht I$に等しいとき，$I$は\textbf{純}(unmixied)であるという．特にNoether環$A$について$r$個の元で生成されるイデアル$I=(a_1,\dots,a_r)$について$\idht I=r$ならば$I$は必ず純であるとき，$A$において\textbf{純性定理}(unmixedness theorem)が成り立つという．
 \end{defi}
 
-Krullの標高定理（\ref{thm:Krullの標高定理}）より，$r$個の元で生成され高さが$r$のイデアル$I$の極小素イデアルの高さはすべて$r$であるので，$I$が純であるということは非孤立素因子を持たないということを意味する．Macaulay (1916)は体上の多項式環について純性定理が成り立つことを，Cohen (1946)は正則局所環について純性定理が成り立つことを証明した．Noether環$A$について純性定理が成り立つことと，（本書の意味で）CM環であることは同値である．これがCM環の由来である．正則局所環がCM環であることは確かめたとおりである（Cohenは純性定理が成り立つことを証明したため道筋はだいぶ異なる）．CM環の定義と純性定理が成り立つことを同値であることを確かめておこう．
+Krullの標高定理（\ref{thm:Krullの標高定理}）より，$r$個の元で生成され高さが$r$のイデアル$I$の極小素イデアルの高さはすべて$r$であるので，$I$が純であるということは非孤立素因子を持たないということを意味する．Macaulay (1916)は体上の多項式環について純性定理が成り立つことを，Cohen (1946)は正則局所環について純性定理が成り立つことを証明した．Noether環$A$について純性定理が成り立つことと，（本書の意味で）CM環であることは同値であり，これがCM環の由来である．正則局所環がCM環であることは（Cohenは純性定理が成り立つことを証明したためだいぶ異なる道筋で）上に示した通り．CM環の定義と純性定理が成り立つことを同値であることを確かめておこう．
 
 \begin{thm}
 	Noether環$A$について，純性定理が成り立つこととCM環であることは同値である．
@@ -836,14 +843,14 @@ CM環上の多項式環がCM環であること，そしてCM環は強鎖状環�
 	\[A[X]_{\ideal{m}'}=(A_{\ideal{m}}[X])_{\ideal{m}'A_{\ideal{m}}[X]}, A_{\ideal{m}}[X]/(\ideal{m}'A_{\ideal{m}}[X])=A[X]/\ideal{m}'\]であり，$A$を局所環と仮定してよいことがわかる．また$\ideal{m}'A_{\ideal{m}}[X]\cap A_{\ideal{m}}=\ideal{m}A_{\ideal{m}}$であるので，$\ideal{m}$も極大と仮定してよい．
 	
 	以上より，$A$が局所環であって，$A[X]$の極大イデアル$\ideal{m}'$が$\ideal{m}'\cap A=\ideal{m}\in\spm A$を満たすときに$A[X]_{\ideal{m}'}$がCM局所環であることを示せばよい．体$A/\ideal{m}$を$k$とおくと，準同型；
-	\[\varphi:A[X]\to K[X];a_nX^n+\dots+a_0\mapsto \bar{a_n}X^n+\dots+\bar{a_0}\quad\text{（ $\bar{a_i}$は$a_i$の$A/\ideal{m}$における像．）}\]
-	により環同型$A[X]/\ideal{m}A[X]\cong K[X]$がある．いま$\ideal{m}A[X]\subset\ideal{m}'$であり，$A[X]/\ideal{m}A[X]$は１次元の整域であることに注意すると$\ideal{m}'$の像は極大イデアルである．よってモニックで既約な$f'\in K[X]$によって生成されている．$f\in\ideal{m}'$を$\varphi(f)=f'$となるようにとると，$\ideal{m}'=\ideal{m}A[X]+(f)$である．よって$\ideal{m}=(a_1,\dots,a_r)$とすれば$A[X]$上$\ideal{m}'$は$a_1,\dots,a_r,f$で生成されている．またこれらは$A[X]$正則列をなす．$a_i$たちについては\ref{prop:CM局所環での正則列と巴系}から$A$正則列をなすことから従い，$f$は$A[X]/(a_1,\dots,a_r)A[X]=K[X]$でモニックなので正則である．よって$r+1\leq\mdepth_{\ideal{m}'}A[X]$であることがわかる．また$\ideal{m}'$は$r+1$個の元で生成されているからKrullの標高定理により$\dim A[X]_{\ideal{m}'}\leq r+1$である．これらに\ref{prop:CMの局所化もCM}をあわせて；
+	\[\varphi:A[X]\to k[X];a_nX^n+\dots+a_0\mapsto \bar{a_n}X^n+\dots+\bar{a_0}\quad\text{（ $\bar{a_i}$は$a_i$の$A/\ideal{m}$における像．）}\]
+	により環同型$A[X]/\ideal{m}A[X]\cong k[X]$がある．いま$\ideal{m}A[X]\subset\ideal{m}'$であり，$A[X]/\ideal{m}A[X]$は１次元の整域であることに注意すると$\ideal{m}'$の像は極大イデアルである．よってモニックで既約な$f'\in k[X]$によって生成されている．$f\in\ideal{m}'$を$\varphi(f)=f'$となるようにとると，$\ideal{m}'=\ideal{m}A[X]+(f)$である．よって$\ideal{m}=(a_1,\dots,a_r)$とすれば$A[X]$上$\ideal{m}'$は$a_1,\dots,a_r,f$で生成されている．またこれらは$A[X]$正則列をなす．$a_i$たちについては\ref{prop:CM局所環での正則列と巴系}から$A$正則列をなすことから従い，$f$は$A[X]/(a_1,\dots,a_r)A[X]=k[X]$でモニックなので正則である．よって$r+1\leq\mdepth_{\ideal{m}'}A[X]$であることがわかる．また$\ideal{m}'$は$r+1$個の元で生成されているからKrullの標高定理により$\dim A[X]_{\ideal{m}'}\leq r+1$である．これらに\ref{prop:CMの局所化もCM}をあわせて；
 	\[\dim A[X]_{\ideal{m}'}\leq r+1\leq\mdepth_{\ideal{m}'}A[X]=\mdepth A[X]_{\ideal{m}'}\]
 	がわかり，$A[X]_{\ideal{m}'}$はCM局所環である．	
 \end{proof}
 
 \begin{cor}[Macaulay]
-	体上の多項式環$K[X_1,\dots,X_n]$はCM環である．
+	体上の多項式環$k[X_1,\dots,X_n]$はCM環である．
 \end{cor}
 
 \begin{cor}\label{cor:CM環は強鎖状}

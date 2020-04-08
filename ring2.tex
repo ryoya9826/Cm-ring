@@ -13,7 +13,7 @@ Noether環の定義は先に述べたとおりだが，まずはそれを加群�
 	\end{sakura}
 \end{prop} 
 
-証明は環の場合を適切に修正すれば良いので省略する．これらの条件を満たす加群をNoether加群という．環$A$の部分$A$加群はイデアルにほかならないので，この定義はNoether環の自然な拡張である（$A$を$A$加群とみなすと，$A$がNoether加群なら$A$はNoether環，$A$がNoether環なら$A$はNoether加群である）．
+証明は環の場合を適切に修正すればよいので省略する．これらの条件を満たす加群をNoether加群という．環$A$の部分$A$加群はイデアルにほかならないので，この定義はNoether環の自然な拡張である（$A$を$A$加群とみなすと，$A$がNoether加群なら$A$はNoether環，$A$がNoether環なら$A$はNoether加群である）．
 
 (ii)の条件を\textbf{昇鎖条件}(ascending chain condition)といい，ACCと略す．包含の大小を逆にして；
 \[N_1\supset N_2\supset\dots\supset N_i\supset\cdots\]
@@ -87,7 +87,7 @@ Noether加群とArtin加群について例を見てみよう．
 
 この定理において忠実という条件を外すと，次の命題が同様の手法で得られる．
 \begin{prop}
-	$A$加群$M$がNoether加群ならば$A/\ann (M)$もNoetherである．
+	$A$加群$M$がNoether加群ならば$A/\ann (M)$はNoether環である．
 \end{prop}
 
 \begin{thm}[\citealp{formanek}]
@@ -107,7 +107,7 @@ Noether加群とArtin加群について例を見てみよう．
 	
 	ここで，$N$を任意の$\bar{B}'$の部分加群とする．(iii)より，ある0でない$x\in\bar{A}$が存在して$x(\bar{B}'/N)=0，$すなわち$x\bar{B}'\subset N$である．すると，(ii)より$\bar{B}'/x\bar{B}'$はNoetherだから，その部分加群$N/x\bar{B}'$は有限生成で，$x\bar{B}'$も有限生成なので$N$も有限生成．よって$\bar{B}'$はNoether加群となるが，これは(i)に矛盾している．
 \end{proof}
-\begin{cor}[Eakin-永田，1968]\index{#Eakinながた@Eakin-永田の定理}
+\begin{cor}[Eakin--永田]\index{#Eakinながた@Eakin--永田の定理}
 	$B$はNoether環，$A$をその部分加群とする．$B$が$A$上有限生成なら，$A$はNoether環である．
 \end{cor}
 %\begin{cor}[\citealp{bjork}]
@@ -148,13 +148,20 @@ Noether, Artin性は\quo{鎖}についての性質である．ここである種
 
 この用語のもとで，組成列とは$M_i/M_{i+1}$がすべて単純であるような$M$の部分加群の減少列のことである．
 
-有限群については部分加群を正規部分群と読み替えることで同様の定義ができ，組成列についてはJordan--H\uml{o}lderの定理という大定理が知られている．全く同様のことが加群でも成り立つ．
+群については部分加群を正規部分群と読み替えることで同様の定義ができる．有限単純群の分類というのは一大トピックであるが，加群においては次のように状況は簡単である．
 
+\begin{prop}\label{prop:単純加群の構造}
+	$A$を環とし，$M\neq 0$を単純な$A$加群とする．このとき，ある$\ideal{m}\in\specm A$について$M\cong A/\ideal{m}$である．
+\end{prop}
+
+\begin{proof}
+	$0\neq x\in M$をとる．このとき$0\neq Ax\subset M$であり，$M$が単純なので$M=Ax$である．すると，準同型$\varphi:A\to M;a\mapsto ax$は全射であり$A/\ker\varphi\cong M$である．ここで$\ker\varphi\subset I$となるイデアル$I$をとると$I/\ker\varphi$は$A/\ker\varphi$の部分加群となり，$0$か$A/\ker\varphi$に等しい．よって$I=\ker\varphi,A$であり$\ker\varphi$は極大である．
+\end{proof}
+
+次のJordan--H\uml{o}lderの定理は群論においてもしられているが，加群についても成り立つ．
 \begin{thm}[Jordan--H\uml{o}lder]\index{#Jordan-Holderのていり@Jordan--H\uml{o}lderの定理}
 	加群$M$が組成列を持つなら，任意の組成列は長さが等しく，組成因子も順序と同系の違いを除いて等しい．
 \end{thm}
-
-ここでは長さが一定であることのみ示そう（組成因子の同型については有限群の場合の証明が適応できる）．
 
 \begin{proof}
 	$M$の組成列の長さの最小値を$\ell(M)$とする．
@@ -216,7 +223,7 @@ $M_i/M_{i+1}$が単純になるように鎖を延長することができるが�
 	を考えると，$A$がArtinなので$A/ \ideal{m}_1$と$ \ideal{m}_1$もArtin．同様に($\ast$)の隣り合う2項をそれぞれ$M,M\ideal{m}_1$とすると，$M/M \ideal{m}_1$がArtinで体$A/ \ideal{m}_1$上のベクトル空間なので\ref{prop:Artinなベクトル空間はNoether}より$M/M \ideal{m}_1$はNoether．すると，特に$M=I^{s-1} \ideal{m}_1 \ideal{m}_2\dots \ideal{m}_{r-1}$に対し$M/M \ideal{m}_r=M$がNoetherなので，帰納的に$A$もNoetherであることがわかる．
 \end{proof}
 
-可換環について示したのは秋月(1935)であり，Hopkins(1939)は非可換環に対して証明した．加群については，秋月-Hopkins-Levitzkiの定理などが知られている（前述のように，ArtinだがNoetherでない加群は存在するが，ある環上の加群ではACCとDCCが同値であることを示している）．
+可換環について示したのは秋月(1935)であり，Hopkins (1939)は非可換環に対して証明した．加群については，秋月--Hopkins--Levitzkiの定理などが知られている（前述のように，ArtinだがNoetherでない加群は存在するが，ある環上の加群ではACCとDCCが同値であることを示している）．
 
 
 

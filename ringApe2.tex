@@ -102,7 +102,7 @@ Abel圏とはホモロジー代数を展開するために必要なエッセン�
 
 この定義は$\hom(Z,\ker f)$は$\hom(Z,X)$の一部と同型だと言っているので，$\hom(Z,\ker f)\to\hom(Z,X)$が定まる．これにより関手の間の射$\hom(-,\ker f)\to\hom(-, X)$があるから$\iota:\ker f\to X$がある．ここで$\coim f=\coker \iota$と定義する．また$\hom(\coker f,Z)\to\hom(Y,Z)$が存在するが，$Z$として$\coker f$をとると$\hom(\coker f,\coker f)\to\ker h_{\coker f}^{op}\subset\hom(Y,\coker f)$がある．これによる$\id$の像を$\pi:Y\to\coker f$とする．ここで$\im f$を$\ker\pi$で定義する．いま$h_{\coker f}^{op}(\pi)=f\circ\pi=0$であるので，$g:X\to\ker\pi=\im f$が存在する．また$\ker h_Z$を形式的に書き下せば；
 \[\ker h_Z=\mkset{\varphi\in\hom(Z,X)}{f\circ\varphi=0}\]
-である．$\hom(Z,\ker f)\cong \ker h_Z$は同型，特に全単射であるから$\hom(Z,\ker f)\to\hom(Z,X)$は集合の間の写像として単射である．これは$\iota$が単射であることを導く\footnote{このあたりのことは核は\textbf{差核}(difference kernel)の特別なものであることに由来しているが，本書ではそこまで述べる余裕はない．\cite{siho}などを参照すると良いかもしれない．}．ここでは$f\circ\iota=0$であるので，$\ker\pi$に対して$\varphi:\ker\pi\to Y$を考えると$f\circ\iota=\varphi\circ(g\circ\iota)=0$であるので，$\varphi$は単射であるから$g\circ\iota=0$を導く．ここから$\coker\iota$の普遍性より$h:\coker\iota\to\im f$が存在する．この$h$が同型であることを要請したい．これは以下のように図式にすると見やすい．これらをまとめてAbel圏を定義しよう．
+である．$\hom(Z,\ker f)\cong \ker h_Z$は同型，特に全単射であるから$\hom(Z,\ker f)\to\hom(Z,X)$は集合の間の写像として単射である．これは$\iota$が単射であることを導く\footnote{このあたりのことは核は\textbf{差核}(difference kernel)の特別なものであることに由来しているが，本書ではそこまで述べる余裕はない．\cite{siho}などを参照するとよいかもしれない．}．ここでは$f\circ\iota=0$であるので，$\ker\pi$に対して$\varphi:\ker\pi\to Y$を考えると$f\circ\iota=\varphi\circ(g\circ\iota)=0$であるので，$\varphi$は単射であるから$g\circ\iota=0$を導く．ここから$\coker\iota$の普遍性より$h:\coker\iota\to\im f$が存在する．この$h$が同型であることを要請したい．これは以下のように図式にすると見やすい．これらをまとめてAbel圏を定義しよう．
 \begin{figure}[H]
 	\centering
 	\begin{tikzcd}[row sep=huge, column sep=huge]

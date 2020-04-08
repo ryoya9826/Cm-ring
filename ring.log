@@ -1,4 +1,4 @@
-This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.3.5)  14 MAR 2020 20:40
+This is e-upTeX, Version 3.14159265-p3.8.2-u1.25-190131-2.6 (utf8.uptex) (TeX Live 2019/W32TeX) (preloaded format=uplatex 2020.3.5)  7 APR 2020 14:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1229,55 +1229,60 @@ LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 5.5pt on input line 20.
  [5] [6] [7] [8]
+[9]
 LaTeX Font Info:    Font shape `JT2/mc/b/it' in size <10> not available
-(Font)              Font shape `JT2/mc/bx/n' tried instead on input line 188.
+(Font)              Font shape `JT2/mc/bx/n' tried instead on input line 186.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 188.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 186.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 188.
+(Font)              scaled to size 9.24713pt on input line 186.
 LaTeX Font Info:    Font shape `JY2/mc/b/it' in size <10> not available
-(Font)              Font shape `JY2/mc/bx/n' tried instead on input line 188.
+(Font)              Font shape `JY2/mc/bx/n' tried instead on input line 186.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 188.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 186.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 9.24713pt on input line 188.
+(Font)              scaled to size 9.24713pt on input line 186.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/it' will be
-(Font)              scaled to size 10.0pt on input line 188.
-
-[9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23])
+(Font)              scaled to size 10.0pt on input line 186.
+ [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23])
 (./ring1.tex [24] [25] [26] [27] [28] [29] [30] [31] [32]
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 348.
+(Font)              scaled to size 8.32242pt on input line 346.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 8.32242pt on input line 348.
+(Font)              scaled to size 8.32242pt on input line 346.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 348.
+(Font)              scaled to size 9.0pt on input line 346.
  [33] [34] [35]
 [36] [37] [38] [39] [40] [41] [42] (I search kanjifont definition file: . . )
 [43] [44] [45] [46] [47]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 910.
+(Font)              scaled to size 9.0pt on input line 908.
  [48] [49] [50] [51] [52] [53] [54] [55]) (./ring2.tex
-[56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68] [69])
-(./ring3.tex [70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81]
-[82] [83] [84] [85] [86] [87] [88] [89] [90] [91] [92]) (./ring4.tex [93]
-[94] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104] [105]) (./ring5.tex
-[106] [107] [108] [109] [110] [111] [112] [113] [114] [115] [116] [117]
-[118] [119] [120] [121] [122] [123] [124] [125] [126] [127] [128] [129]
-[130]) (./ring6.tex [131] [132] [133] [134] [135] [136] [137] [138] [139]
-[140] [141] [142] [143] [144] [145] [146] [147] [148] [149] [150] [151]
-[152] [153] [154] [155] [156]) (./ring7.tex [157] [158] [159] [160] [161]
-[162] [163] [164] [165])
-Underfull \hbox (badness 10000) in paragraph at lines 310--60
+[56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68] [69] [70])
+(./ring3.tex [71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81] [82]
+[83] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93]) (./ring4.tex [94]
+[95] [96] [97] [98] [99] [100] [101] [102] [103] [104] [105] [106])
+(./ring5.tex [107] [108] [109] [110] [111] [112] [113] [114] [115] [116]
+[117] [118] [119] [120] [121] [122] [123] [124]
 
+LaTeX Warning: Reference `thm:Auslander--Bachusbaumの定理' on page 125 undef
+ined on input line 609.
+
+[125] [126] [127] [128] [129] [130] [131]) (./ring6.tex [132] [133] [134]
+[135] [136] [137] [138] [139] [140] [141] [142] [143] [144] [145] [146]
+[147] [148] [149] [150] [151] [152] [153] [154] [155] [156] [157]) (./ring7.tex
+[158] [159] [160] [161] [162] [163] [164] [165] [166] [167] [168]
+Overfull \hbox (6.74942pt too wide) detected at line 370
+[]
  []
 
+[169] [170] [171] [172])
 \m@syu@part@save=\count325
-(./ringApe1.tex [166] [167] [168]) (./ringApe2.tex [169]
+ (./ringApe1.tex [173] [174] [175]) (./ringApe2.tex
+[176]
 LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input lin
 e 7.
-
-(c:/texlive/2019/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
+ (c:/texlive/2019/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
@@ -1292,7 +1297,8 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 6.7504pt on input line 23.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 5.08592pt on input line 23.
- [170] [171] [172]
+ [177] [178]
+[179]
 LaTeX Font Info:    Font shape `JT2/mc/b/n' in size <8> not available
 (Font)              Font shape `JT2/mc/bx/n' tried instead on input line 105.
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <8> not available
@@ -1307,8 +1313,8 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 7.3977pt on input line 105.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 8.0pt on input line 105.
-
-[173] [174] [175] [176] [177] [178]) (./ring@temp.tex) (./ring.ind [179]
+ [180] [181] [182] [183] [184] [185]) (./ring@temp.tex) (./ring.ind
+[186]
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 (Font)              scaled to size 7.19995pt on input line 3.
 LaTeX Font Info:    Font shape `JT2/gt/b/n' in size <8> not available
@@ -1340,22 +1346,21 @@ LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 LaTeX Font Info:    Font shape `T1/qhv/b/n' will be
 (Font)              scaled to size 8.09995pt on input line 3.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 20.
+(Font)              scaled to size 8.0pt on input line 22.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 20.
+(Font)              scaled to size 6.2pt on input line 22.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 20.
+(Font)              scaled to size 8.0pt on input line 22.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.2pt on input line 20.
+(Font)              scaled to size 6.2pt on input line 22.
 LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
-(Font)              scaled to size 5.73322pt on input line 20.
+(Font)              scaled to size 5.73322pt on input line 22.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 5.73322pt on input line 20.
+(Font)              scaled to size 5.73322pt on input line 22.
+ [187
 
-[180
 
-
-] [181]) (./ring.bbl) [182
+] [188]) (./ring.bbl) [189
 
 
 ]
@@ -1365,21 +1370,24 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 77.
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 77.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 77.
 Package rerunfilecheck Info: File `ring.out' has not changed.
-(rerunfilecheck)             Checksum: F94E64CA084A87EAA8F880B1B75C460C;4099.
+(rerunfilecheck)             Checksum: 2799D6DD39D857FD8E6D936761A5D766;4172.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.97499pt have occurred.
 
+
+LaTeX Warning: There were undefined references.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 77.
  ) 
 Here is how much of TeX's memory you used:
- 34532 strings out of 481525
- 712638 string characters out of 5929177
- 900431 words of memory out of 5000000
- 49613 multiletter control sequences out of 15000+600000
+ 35560 strings out of 481525
+ 740140 string characters out of 5929177
+ 919209 words of memory out of 5000000
+ 50641 multiletter control sequences out of 15000+600000
  693791 words of font info for 252 fonts, out of 8000000 for 9000
  934 hyphenation exceptions out of 8191
  60i,29n,84p,1563b,1355s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ring.dvi (183 pages, 2411384 bytes).
+Output written on ring.dvi (190 pages, 2551012 bytes).

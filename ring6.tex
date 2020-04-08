@@ -107,7 +107,7 @@
 		
 			$d:\ker f_3\to\coker f_1$を次のように定めよう．$x\in\ker f_3$に対し$\psi$が全射なので$\psi(x_2)=x$となる$x_2\in M_2$がとれる．このとき$f_2(x_2)\in\ker\psi'=\im\varphi'$となり，ただ１つの$y_1\in N_1$が存在して$f_2(x_2)=\varphi'(y_1)$である． $d(x)=\bar{y_1}\in\coker f_1$と定義する．
 			
-			この定義においてwell-deinfednessを確かめるには，$x_2$のとり方によらないことを見れば良い．$\psi(x_2)=\psi(x_2')=x$となっているとしよう．このとき$\varphi'(y_1')=f_2(x_2')$となる$y_1'$をとると， $\varphi'(y_1'-y_1)=f_2(x_2'-x_2)$であり， $x_2'-x_2\in\ker\psi=\im\varphi$より$\varphi(x_1)=x_2'-x_2$となる$x_i\in M_1$がとれる．すると$\varphi'(f_1(x_1))=f_2(x_2'-x_2)=\varpi'(y_1'-y_1)$となり， $\varphi'$は単射だから$y_1'-y_1=f_1(x_1)\in\im f_1$である．
+			この定義においてwell-deinfednessを確かめるには，$x_2$のとり方によらないことを見ればよい．$\psi(x_2)=\psi(x_2')=x$となっているとしよう．このとき$\varphi'(y_1')=f_2(x_2')$となる$y_1'$をとると， $\varphi'(y_1'-y_1)=f_2(x_2'-x_2)$であり， $x_2'-x_2\in\ker\psi=\im\varphi$より$\varphi(x_1)=x_2'-x_2$となる$x_i\in M_1$がとれる．すると$\varphi'(f_1(x_1))=f_2(x_2'-x_2)=\varpi'(y_1'-y_1)$となり， $\varphi'$は単射だから$y_1'-y_1=f_1(x_1)\in\im f_1$である．
 			
 		\item $d$の完全性のみ確認しておこう．
 		
@@ -335,7 +335,7 @@
 	\end{tikzcd}
 	\caption{}
 \end{figure}
-射影加群(injective module)の定義を思い出そう．一般のAbel圏でも関手$\hom(N,-)$は左完全関手になる．射影加群の定義はこの関手を完全にする$M$のことであったが，射影対象も$\hom_{\mathscr{A}}(P,-)$が（$0\to A'\to A\to A''\to0$に対して）完全になる関手のことである，といってよい．これを用いて$A$の都合の良い分解を与える．
+射影加群(injective module)の定義を思い出そう．一般のAbel圏でも関手$\hom(N,-)$は左完全関手になる．射影加群の定義はこの関手を完全にする$M$のことであったが，射影対象も$\hom_{\mathscr{A}}(P,-)$が（$0\to A'\to A\to A''\to0$に対して）完全になる関手のことである，といってよい．これを用いて$A$の都合のよい分解を与える．
 
 \begin{defi}[射影分解]\index{しゃえいてきぶんかい@射影分解}
 	Abel圏$\mathscr{A}$の対象$A$について，入射的対象$P^i~(i\geq0)$がとれて；
@@ -424,7 +424,7 @@
 
 $A$加群の圏$\operatorname{Mod}(A)$が入射的対象を十分に持つことを示すには，射影加群の場合と違って多少手間がかかる．
 
-\begin{thm}[Baer's Criterion]
+\begin{thm}[Baerの基準]\index{#Bearのきじゅん@Bearの基準}\label{thm:Bear's Criterion}
 	$A$加群$I$が入射的であることと，すべての$A$のイデアル$\ideal{a}$に対して$\ideal{a}\to I$が$A\to I$に拡張できることは同値である．
 \end{thm}
 
@@ -470,7 +470,7 @@ $A$がPIDという特殊な場合には入射加群はよりわかりやすい�
 \begin{proof}
 	次の準同型；
 	\[i:M\to M^{\ast\ast};x\mapsto (f\mapsto f(x))\]
-	が単射になる．$i(x)=0$と仮定しよう．このとき$x=0$を示したいので，$x\neq0$ならばある$f\in M^\ast$が存在して$f(x)\neq0$を示せば良い．
+	が単射になる．$i(x)=0$と仮定しよう．このとき$x=0$を示したいので，$x\neq0$ならばある$f\in M^\ast$が存在して$f(x)\neq0$を示せばよい．
 	
 	$x$の$M$での位数が$n$ならば$f(x)=1/n+\Z$，位数が無限なら$f(x)=1/2+\Z$と定義すると$\Z$準同型$m\Z\to T$が定まる．$T$の単射性からこれは$M\to T$に持ち上がり$f(x)\neq0$である．
 \end{proof}
@@ -1038,7 +1038,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき，$d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_
 	加群$M$について，関手$\hom(M,-)$は左完全である．これによる右導来関手を$\Ext^n(M,-)$とかき，$\Ext$\textbf{関手}(Ext functor, extension functor)という．
 \end{defi}
 
-$\Tor$と同様に，$\Ext(M,N)$の計算は$N$の単射分解と$M$の射影分解のどちらを計算しても良い（$\hom(-,N)$は反変左完全であるから）．
+$\Tor$と同様に，$\Ext(M,N)$の計算は$N$の単射分解と$M$の射影分解のどちらを計算してもよい（$\hom(-,N)$は反変左完全であるから）．
 
 ここで普遍性と\ref{prop:テンソル積は直和と可換}より次が成り立っている．
 

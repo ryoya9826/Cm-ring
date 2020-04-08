@@ -9,7 +9,7 @@
 	環$A$の任意のイデアルが有限生成であるとき，$A$をNoether\textbf{環}という．
 \end{defi}
 
-Noether環は次の同値条件を持つので，どれを定義にしても良い．
+Noether環は次の同値条件を持つので，どれを定義にしてもよい．
 
 \begin{prop}
 	次は同値である．
@@ -25,13 +25,13 @@ Noether環は次の同値条件を持つので，どれを定義にしても良�
 		\item 
 		$A$のイデアルの増大列を；
 		\[I_1\subset I_2\subset\dots\subset I_i\subset\cdots\]
-		とする．ここで$I=\bigcup_{i=1}^\infty I_i$とおくと，これはイデアルである．仮定から有限生成であるので，$I=(\nitem[r]{x})$とおく．任意の$1\leq i\leq r$に対して，定義からある$n_i$が存在して$x_i\in I_{n_i}$である．よって，$n$を$n_1,\dots,n_r$の最大値とすればすべての$i$について$x_i\in I_n$すなわち$I\subset I_{n}$となる．これは$n\leq k$に対して$I_{n}=I_k$であることにほかならない．
+		とする．ここで$I=\bigcup_{i=1}^\infty I_i$とおくと，これはイデアルである．仮定から有限生成であるので，$I=(\nitem[r]{a})$とおく．任意の$1\leq j\leq r$に対して，定義からある$i$が存在して$x_j\in I_i$である．よって，$n$を$n_1,\dots,n_r$の最大値とすればすべての$j$について$x_j\in I_n$すなわち$I\subset I_{n}$となる．これは$n\leq l$に対して$I_{n}=I_l$であることにほかならない．
 		\item
-		$I_{\lambda(\lambda\in\Lambda)}$を$A$のイデアルの空でない族とする．これが極大元を持たないとすると，任意の$\lambda_1\in\Lambda$に対して，ある$\lambda_2\in\Lambda$が存在して$I_{\lambda_1}\subsetneq I_{\lambda_2}$となる．以下同様に，真の増大列
+		$\{I_{\lambda}\}_{\lambda\in\Lambda}$を$A$のイデアルの空でない族とする．これが極大元を持たないとすると，任意の$\lambda_1\in\Lambda$に対して，ある$\lambda_2\in\Lambda$が存在して$I_{\lambda_1}\subsetneq I_{\lambda_2}$となる．以下同様に，真の増大列
 		\[I_{\lambda_1}\subsetneq I_{\lambda_2}\subsetneq\dots\subsetneq I_{\lambda_i}\subsetneq\cdots\]
 		がとれて，これは(ii)に矛盾．
 		\item 
-		$I$を$A$のイデアルとする．$I$の有限部分集合が生成する$A$のイデアル全体の集合を$\Im$とする．$0\in\Im$より$\Im\neq\emptyset$であるので，これは極大元$I_0$を持つ．ここで，$I\neq I_0$とすると$x\in I\setminus I_0$に対し$I_0\subsetneq I_0+(x)\in\Im$となり，極大性に反する．よって$I_0=I$である．よって(i)が言える．
+		$I$を$A$のイデアルとする．$I$の有限部分集合が生成する$A$のイデアル全体の集合を$\Im$とする．$0\in\Im$より$\Im\neq\emptyset$であるので，これは極大元$I_0$を持つ．ここで，$I\neq I_0$とすると$a\in I\setminus I_0$に対し$I_0\subsetneq I_0+(a)\in\Im$となり，極大性に反する．よって$I_0=I$である．よって(i)が言える．
 	\end{eqv}
 \end{proof}
 
@@ -62,24 +62,22 @@ Noether環の部分環が必ずしもNoetherではないことに注意しよう
 	$A$の素イデアルが有限生成なら，$A$はNoether環である．
 \end{thm}
 \begin{proof}
-	$A$のイデアルで，有限生成でないもの全体を$\Sigma$とする．$\Sigma\neq\emptyset$と仮定すると，Zornの補題から極大元$I$が存在する．仮定から$I$は素イデアルでないので，$x,y\in A$で$xy\in I,x,y\not\in I$を満たすものが存在する．すると，$I+Ax$は$I$より真に大きいから，有限生成で，ある$\nitem{u}\in I$を；
-	\[I+Ax=(\nitem{u},x)\]
-	となるようにとれる．$(I:x)=\mkset{a\in A}{ax\in I}$とおく（この記号はイデアル商，\ref{defi:イデアル商}と整合性がある）と，これは$A$のイデアルをなす．$y\in (I:x)$より$I\subsetneq(I:x)$だからこれも有限生成で，$(I:x)=(\nitem[m]{v})$とできる．
+	$A$のイデアルで，有限生成でないもの全体を$\Sigma$とする．$\Sigma\neq\emptyset$と仮定すると，Zornの補題から極大元$I$が存在する．仮定から$I$は素イデアルでないので，$a,b\in A$で$ab\in I,a,b\not\in I$を満たすものが存在する．すると，$I+Aa$は$I$より真に大きいから有限生成なので，ある$\nitem{u}\in I$を；
+	\[I+Aa=(\nitem{u},a)\]
+	となるようにとれる．$(I:a)=\mkset{r\in A}{ra\in I}$とおく（この記号はイデアル商，\ref{defi:イデアル商}と整合性がある）と，これは$A$のイデアルをなす．$b\in (I:a)$より$I\subsetneq(I:a)$だからこれも有限生成で，$(I:a)=(\nitem[m]{v})$とできる．
 	
-	よって，$I=(\nitem{u},v_1x,\dots,v_mx)$となり，$I\in\Sigma$に矛盾．よって$\Sigma=\emptyset$である．
+	よって，$I=(\nitem{u},v_1a,\dots,v_ma)$となり，$I\in\Sigma$に矛盾．よって$\Sigma=\emptyset$である．
 \end{proof}
 
 \begin{defi}[$A$代数]\index{だいすう@($A$)代数}
 	環$A，B$に対し，環準同型$f:A\to B$が定まっているとき$B$は$A$\textbf{代数}(algebra)であるという．
 \end{defi}
 
-このとき$B$は$a\cdot b=f(a)b$により$A$加群とみなせる．
-
 \begin{defi}[有限型]\index{ゆうげんがた@有限型}
 	ある$n\in\N$が存在して，全射準同型$\varphi:A[\nitem{X}]\to B$が存在するとき，$\varphi$は\textbf{有限型}(finite type)であるという．
 \end{defi}
 
-このとき，$S=\{\varphi(X_1),\dots,\varphi(X_n)\}$を$B$の$A$代数としての生成元といい，$B$は$A$\textbf{代数として有限生成}(finitely generated as $A$ algebla)であるという．$X_i$の$B$における像を$\alpha_i$としたとき，$B=A[\nitem{\alpha}]$とかく．$B$が$A$加群として有限生成であることとは異なる定義であるので，注意が必要である．なお，注意として単にfinite $A$-algebraと書かれた場合，これはfinite type を\textbf{意味しない．} これは$A$代数として自然に入る加群構造で有限生成であることを意味する．
+このとき，$S=\{\varphi(X_1),\dots,\varphi(X_n)\}$を$B$の$A$代数としての生成元といい，$B$は$A$\textbf{代数として有限生成}(finitely generated as $A$ algebla)であるという．$X_i$の$B$における像を$\alpha_i$としたとき，$B=A[\nitem{\alpha}]$とかく．
 
 Hilbertの基底定理について述べておこう．
 \begin{thm}[Hilbertの基底定理]\index{#Hilbertのきていていり@Hilbertの基底定理}\label{thm:Hilbertの基底定理}
@@ -88,7 +86,7 @@ Hilbertの基底定理について述べておこう．
 \begin{proof}
 	$A$がNoether環のとき，$A[X]$がNoether環なら帰納的に$A[\nitem{X}]$がNoether環となり，その剰余環である有限生成代数$B$はNoether環である．
 	
-	よって，$A[X]$がNoetherであることを示せば良い．$I\neq0$を$A[X]$のイデアルとする．これが有限生成であることを示す．$f_1\neq0$を，$I$の最小次数の多項式とする．$(f_1)\subsetneq I$ならば，$f_2$を$I\setminus(f_1)$の最小次数の元とする．同様に$(\nitem[i]{f})\subsetneq I$ならば，$f_{i+1}$を$I\setminus(\nitem[i]{f})$の最小次数の多項式とする．ここで，各$f_i$に対し，$f_i$の先頭項を$a_iX^{r_i}$とし，$A$のイデアルの増大列；
+	よって，$A[X]$がNoetherであることを示せばよい．$I\neq0$を$A[X]$のイデアルとする．これが有限生成であることを示す．$f_1\neq0$を，$I$の最小次数の多項式とする．$(f_1)\subsetneq I$ならば，$f_2$を$I\setminus(f_1)$の最小次数の元とする．同様に$(\nitem[i]{f})\subsetneq I$ならば，$f_{i+1}$を$I\setminus(\nitem[i]{f})$の最小次数の多項式とする．ここで，各$f_i$に対し，$f_i$の先頭項を$a_iX^{r_i}$とし，$A$のイデアルの増大列；
 	\[(a_1)\subset(a_1,a_2)\subset\dots\subset(\nitem[i]{a})\subset\cdots\]
 	を考えると，$A$はNoether環なのでこれは停まる．すなわち，ある$n$があって，$j\geq n$に対して$a_j\in(\nitem{a})$となる．この$n$に対して$(\nitem{f})=I$であることを示す．
 	
@@ -106,7 +104,7 @@ Hilbertの基底定理について述べておこう．
 \end{exer}
 
 \begin{defi}[次数付き環]\index{じすうつきかん@次数付き環}
-	$S_0$は環，$d>0$について$S_d$は$S_0$加群になっているとする．$s=\middleoplus_{i=0}^\infty S_i$に積が定義でき，$S_0$の元による積はスカラーの作用と一致し，かつ$S_nS_m\subset S_{n+m}$が成立するとき$S$を\textbf{次数付き環}(graded ring)という．
+	$S_0$は環，$d>0$について$S_d$は$S_0$加群になっているとする．$S=\middleoplus_{i=0}^\infty S_i$に積が定義でき，$S_0$の元による積はスカラーの作用と一致し，かつ$S_nS_m\subset S_{n+m}$が成立するとき$S$を\textbf{次数付き環}(graded ring)という．
 \end{defi}
 
 $S_d$の元を$S$の斉次元という．わかりやすい例として，多項式環は次数付き環である．1変数多項式環$A[X]$は$S_d=AX^d$とすればよく，$n$変数については$d$次元斉次多項式，すなわち各項をなす単項式の総次数がすべて等しいもの（たとえば$X^2+2XY+Y^2$）全体を$S_d$とすると次数付き環になる．また，$S_+=\middleoplus_{d>0}S_d$は$S$のイデアルとなる．これを$S$の\textbf{無縁イデアル}(irrelevant ideal)という．\index{むえんいである@無縁イデアル}
@@ -128,7 +126,7 @@ $S_d$の元を$S$の斉次元という．わかりやすい例として，多項
 \begin{defi}[加群]\index{かぐん@加群}
 	$A$を環とし，$M$をAbel群とする．$A$の作用$A\times M\to M;(a,x)\mapsto ax$が存在して；
 	\begin{defiterm}{M}
-		\item $1x=x$
+		\item $1\cdot x=x$
 		\item $a(bx)=(ab)x$
 		\item $(a+b)x=ax+bx$
 		\item $a(x+y)=ax+ay$
@@ -141,7 +139,7 @@ $S_d$の元を$S$の斉次元という．わかりやすい例として，多項
 を要請する必要がある（最初に注意しておいたとおり，以後すべて$A$は可換環として進める）．また，$A$が体のときは線形空間に他ならない．$A$の作用のことを\textbf{スカラー}(scalar)ということもある．
 
 以後線形代数の模倣としていくつかの性質と定義を述べる．例えば任意の$a\in A$と$x\in M$に対して；
-\[a0=0,0x=0,(-a)x=-ax\]
+\[a\cdot0=0, 0\cdot x=0,(-a)x=-ax\]
 が成り立つ．
 
 \begin{defi}[準同型]
@@ -172,7 +170,7 @@ $A$自身を，環の積を作用として$A$加群とみなすとき，$A$の�
 	が成立する．
 \end{thm}
 
-証明は環の場合を適切に拡張すれば良いから省略する．加群の分解に関する文脈（幾何で言う既約分解に対応する）で，部分加群の既約性が大切となるのでここで紹介しておく．
+証明は環の場合を適切に拡張すればよいから省略する．加群の分解に関する文脈（幾何で言う既約分解に対応する）で，部分加群の既約性が大切となるのでここで紹介しておく．
 
 \begin{defi}\label{defi:既約部分加群}
 	$A$加群$M$の部分加群$N$について，$N_1，N_2$を$M$の部分加群として$N=N_1\cap N_2$ならば$N=N_1$または$N=N_2$が成り立つとき，$N$を\textbf{既約}といい，そうでないときに\textbf{可約}という．\index{きやくぶぶんかぐん@既約部分加群}\index{かやくぶぶんかぐん@可約部分加群}
@@ -186,23 +184,23 @@ $A$自身を，環の積を作用として$A$加群とみなすとき，$A$の�
 	も$A$加群になる．特に$\Lambda$が有限のとき$\prod M_\lambda$と一致する．これらをそれぞれ$\{M_\lambda\}$の\textbf{直積}(direct product)，\textbf{直和}(direct sum)という．
 \end{defi}
 
-線形空間の\quo{基底}に対応して，加群の基底について触れる．以下，$M$を$A$加群とし，$(u_\lambda)_{\lambda\in\Lambda}$（しばしば略して$(u_\lambda)$とかく）を$M$の元の族とする．また，$\Lambda$が無限集合である場合，$\Lambda$を走る和$\sum_{\lambda\in\Lambda} u_\lambda$は次の条件；
+線形空間の\quo{基底}に対応して，加群の基底について触れる．以下，$M$を$A$加群とし，$\{u_\lambda\}_{\lambda\in\Lambda}$（しばしば略して$\{u_\lambda\}$とかく）を$M$の元の族とする．また，$\Lambda$が無限集合である場合，$\Lambda$を走る和$\sum_{\lambda\in\Lambda} u_\lambda$は次の条件；
 \[\text{有限個の}\lambda\text{を除いて}u_\lambda\text{が0である．}\tag{$\ast$}\]
 を満たす場合に限って定義される．
 
 \begin{defi}[生成系]\index{せいせいけい@生成系}
-	$M$の任意の元が$\sum_{\lambda\in\Lambda}a_\lambda u_\lambda ~(a_\lambda\in A)$とかけるとき，$(u_\lambda)$を$M$の\textbf{生成系}{system of generator}という．
+	$M$の任意の元が$\sum_{\lambda\in\Lambda}a_\lambda u_\lambda ~(a_\lambda\in A)$とかけるとき，$\{u_\lambda\}$を$M$の\textbf{生成系}{system of generator}という．
 \end{defi}
 \begin{defi}[一次独立]\index{いちじどくりつ@一次独立}
-	$\sum a_\lambda u_\lambda=0$なら，任意の$\lambda\in\Lambda$に対し$a_\lambda=0$となるとき，$(u_\lambda)$は\textbf{一次独立}(linearly independent)であるという．$(x_\lambda)$について$(\ast)$を満たさない場合，$(x_\lambda)$の任意の有限部分集合が一次独立のとき$(x_\lambda)$が一次独立であるという．
+	$\sum a_\lambda u_\lambda=0$なら，任意の$\lambda\in\Lambda$に対し$a_\lambda=0$となるとき，$\{u_\lambda\}$は\textbf{一次独立}(linearly independent)であるという．$\{x_\lambda\}$について$(\ast)$を満たさない場合，$\{x_\lambda\}$の任意の有限部分集合が一次独立のとき$\{x_\lambda\}$が一次独立であるという．
 \end{defi}
 \begin{defi}[基底]\index{きてい@基底}
-	$M$の任意の元が$\sum a_\lambda u_\lambda$の形に一意に書けるとき，$(u_\lambda)$は$M$の\textbf{基底}(basis)であるという．	
+	$M$の任意の元が$\sum a_\lambda u_\lambda$の形に一意に書けるとき，$\{u_\lambda\}$は$M$の\textbf{基底}(basis)であるという．	
 \end{defi}
 
 それぞれ，準同型；
 \[\bigoplus_{\lambda\in\Lambda} A\to M;(a_\lambda)\mapsto\sum_{\lambda\in\Lambda} a_\lambda u_\lambda\]
-が，全射，単射，全単射であることとそれぞれ同値．特に，$(u_\lambda)$が基底であることは$(u_\lambda)$が一次独立な生成系であることと同値．また，$A$加群$M$について，有限個の$A$の直和からの全射が存在するとき，$M$は\textbf{有限生成}(finitely generated)であるという．\index{ゆうげんせいせい@有限生成}
+が，全射，単射，全単射であることとそれぞれ同値．特に，$\{u_\lambda\}$が基底であることは$\{u_\lambda\}$が一次独立な生成系であることと同値．また，$A$加群$M$について，有限個の$A$の直和からの全射が存在するとき，$M$は\textbf{有限生成}(finitely generated)であるという．\index{ゆうげんせいせい@有限生成}
 
 \begin{defi}[自由加群]\index{じゆうかぐん@自由加群}
 	$M$が基底を持つとき，$M$を\textbf{自由加群}(free module)という．
@@ -290,10 +288,10 @@ $A$自身を，環の積を作用として$A$加群とみなすとき，$A$の�
 	$M/N\cong I(M/N)$より$M/N=0$である．
 \end{proof}
 
-$(A,\ideal{m})$を局所環とする．剰余環$K=A/\ideal{m}$は体になる．$A$加群$\ideal{m}$について$M/\ideal{m}M$は自然な演算（\ref{thm:可換環上の自由加群のrankは一定}の証明中で定義したもの）で$K$加群になる．$M$が有限生成$A$加群なら中山の補題を使うことで次が言える．
+$(A,\ideal{m})$を局所環とする．剰余環$k=A/\ideal{m}$は体になる．$A$加群$\ideal{m}$について$M/\ideal{m}M$は自然な演算（\ref{thm:可換環上の自由加群のrankは一定}の証明中で定義したもの）で$k$加群になる．$M$が有限生成$A$加群なら中山の補題を使うことで次が言える．
 
 \begin{prop}\label{prop:Atimac_prop_2.8}
-	$(A,\ideal{m})$を局所環とし，$M$を有限生成$A$加群とする．$\dim_k M/\ideal{m}M=r$ならば$M$は$r$個の元で生成される．
+	$(A,\ideal{m},k)$を局所環とし，$M$を有限生成$A$加群とする．$\dim_k M/\ideal{m}M=r$ならば$M$は$r$個の元で生成される．
 \end{prop}
 
 \begin{proof}
@@ -309,7 +307,7 @@ $(A,\ideal{m})$を局所環とする．剰余環$K=A/\ideal{m}$は体になる�
 	は$f,g\in\hom_A(M,N)$に対し$f+g$を$x\mapsto f(x)+g(x)$で定めることでAbel群をなす．また，$A$によるスカラーを$af:x\mapsto f(ax)$となる準同型として定めることで$A$加群となる．
 \end{defi}
 
-例えば，自然に$\hom_A(A,M)\cong M$である．加群の間の準同型を考えることで，圏論的に言えば関手的な取り扱いが可能になる．とはいえ，この節では圏論の知識を仮定せずとも良いように配慮した．圏論を学んでから，具体例として検討してもらいたい．その手助けとなるように，断った上で圏論的記述を加えたところもある．
+例えば，自然に$\hom_A(A,M)\cong M$である．加群の間の準同型を考えることで，圏論的に言えば関手的な取り扱いが可能になる．とはいえ，この節では圏論の知識を仮定せずともよいように配慮した．圏論を学んでから，具体例として検討してもらいたい．その手助けとなるように，断った上で圏論的記述を加えたところもある．
 
 準同型を考えると，自然に出てくるものが完全列である．これについて復習しておこう．
 \begin{defi}[完全列]\index{かんぜんれつ@完全列}
@@ -555,7 +553,7 @@ $x\in M,y\in N$に対し$\tau(x,y)=x\otimes y$ともかき，これを\textbf{�
 
 平坦性を確かめるには，実は有限生成な加群についてのみ確かめればよい．
 
-\begin{prop}\label{prop:平坦性は有限生成を調べれば良い}
+\begin{prop}\label{prop:平坦性は有限生成を調べればよい}
 	$A$加群$N$が平坦であることと，$f:M_1\to M_2$が単射で$M_1,M_2$が有限生成ならば$f\otimes\id$が単射になることは同値である．
 \end{prop}
 
@@ -590,7 +588,7 @@ $A$が整域のとき，これは商体にほかならない．
 	$S$を$A$の積閉集合とする．このとき$f:A\to B$で$f(S)\subset B^\times$となる$A$代数$B$に対し，準同型$g:S^{-1}A\to B$で$g\circ\varphi=f$となるものが同型を除いて一意的に存在する．
 \end{prop}
 \begin{proof}
-	$g:S^{-1}A\to B;x/s\mapsto f(x)f(s)^{-1}$により与えられる．
+	$g:S^{-1}A\to B;a/s\mapsto f(a)f(s)^{-1}$により与えられる．
 \end{proof}
 
 次の命題は実際の計算によく用いられる．
@@ -740,7 +738,7 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 	$A$のイデアル$I$に対し $\sqrt{I}=\bigcap_{P\in V(I)} P$である．
 \end{prop}
 \begin{proof}
-	$\subset $は簡単にわかる．逆に$x\in\bigcap_{P\in V(I)}P$をとる．$x\not\in\sqrt{I}$であるとしよう．すると$S=\{x^n\}_{n\in\N}$は$I$と交わらない積閉集合となる．すると$I$は$A_x$の真のイデアルとなり（\ref{defi:元による局所化}），$I$を含む$A$の極大イデアル$\ideal{m}$がとれる．すると$\ideal{m}$は極大であるので，特に素イデアル．一方で$P\cap S\neq\emptyset$であるので$I$を含む素イデアルは存在しない．これは矛盾である．
+	$\subset $は簡単にわかる．逆に$f\in\bigcap_{P\in V(I)}P$をとる．$f\not\in\sqrt{I}$であるとしよう．すると$S=\{f^n\}_{n\in\N}$は$I$と交わらない積閉集合となる．すると$I$は$A_f$の真のイデアルとなり（\ref{defi:元による局所化}），$I$を含む$A$の極大イデアル$\ideal{m}$がとれる．すると$\ideal{m}$は極大であるので，特に素イデアル．一方で$P\cap S\neq\emptyset$であるので$I$を含む素イデアルは存在しない．これは矛盾である．
 \end{proof}
 
 \begin{prop}\label{prop:V(I)の包含}
@@ -751,7 +749,7 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 \begin{tightcurve}
 	
 幾何学では多様体(manifold)とその上の（
-正則，連続）関数について考察するが，代数幾何では多様体(variety)とその上の正則関数について考える．多様体は体$K$からなる空間$K^n$の部分集合に位相を入れたものであるが，week nullstellensatz（\ref{thm:week nullstellensatz}）により代数閉体の組$K^n$と$K[\nitem{X}]$の極大イデアル全体が１対１対応を持つ．そこで$V\subset K^n$と$K[\nitem{X}]$の部分環に対応が無いだろうか，と考えた（実際にはすべての$V\subset K^n$と$K[\nitem{X}]$の部分環が対応するわけではない）．そこで極大でない素イデアルをそこに合わせることで$K^n$の点以上の構造をもった$\spec K[\nitem{X}]$ないし$\spec (K[\nitem{X}]/I)~（I$は$K[\nitem{X}]$のイデアル）を考えよう，としたのがGrothendieckのスキーム論の始まりである（可換環論と幾何の繋がり）．
+正則，連続）関数について考察するが，代数幾何では多様体(variety)とその上の正則関数について考える．多様体は体$k$からなる空間$k^n$の部分集合に位相を入れたものであるが，week nullstellensatz（\ref{thm:week nullstellensatz}）により代数閉体の組$k^n$と$k[\nitem{X}]$の極大イデアル全体が１対１対応を持つ．そこで$V\subset k^n$と$k[\nitem{X}]$の部分環に対応が無いだろうか，と考えた（実際にはすべての$V\subset k^n$と$k[\nitem{X}]$の部分環が対応するわけではない）．そこで極大でない素イデアルをそこに合わせることで$k^n$の点以上の構造をもった$\spec k[\nitem{X}]$ないし$\spec (k[\nitem{X}]/I)~（I$は$k[\nitem{X}]$のイデアル）を考えよう，としたのがGrothendieckのスキーム論の始まりである（可換環論と幾何の繋がり）．
 
 \end{tightcurve}
 
@@ -765,18 +763,18 @@ S^{-1}(M_1)\nxcell[S^{-1}f]S^{-1}M_2\nxcell[S^{-1}g]S^{-1}M_3
 
 \begin{proof}
 	\begin{eqv}
-		\item $P\subset\varphi^{-1}(P')$は明らかなので逆を示そう．$x\in\varphi^{-1}(P')$とすると$\varphi(x)\in P'$である．ここで$\varphi(P)\subset Q$なので$P'\subset Q$だから$\varphi(x)\in Q$である．よって$x\in\varphi^{-1}(Q)=P$である．
+		\item $P\subset\varphi^{-1}(P')$は明らかなので逆を示そう．$a\in\varphi^{-1}(P')$とすると$\varphi(a)\in P'$である．ここで$\varphi(P)\subset Q$なので$P'\subset Q$だから$\varphi(a)\in Q$である．よって$a\in\varphi^{-1}(Q)=P$である．
 		
-		\item 	$\varphi^{-1}(P')=P$と仮定する．$S=\varphi(A-P)$とおくと，$P'\cap S=\emptyset$である．すると$S^{-1}B$において$P'S^{-1}B$は真のイデアルとなり，それを含む極大イデアル$\ideal{m}$がとれる．$Q=\ideal{m}\cap B$とおくと，$\varphi^{-1}(Q)=P$である．実際，$P'\subset Q$であるから$P\subset\varphi^{-1}(Q)$は明らかで，$x\in\varphi^{-1}(Q)$をとると$Q\cap S=\emptyset$より$x\not\in P$ならば$\varphi(x)=Q\cap S$となってしまうので$x\in P$でなければならない．
+		\item 	$\varphi^{-1}(P')=P$と仮定する．$S=\varphi(A\setminus P)$とおくと，$P'\cap S=\emptyset$である．すると$S^{-1}B$において$P'S^{-1}B$は真のイデアルとなり，それを含む極大イデアル$\ideal{m}$がとれる．$Q=\ideal{m}\cap B$とおくと，$\varphi^{-1}(Q)=P$である．実際，$P'\subset Q$であるから$P\subset\varphi^{-1}(Q)$は明らかで，$a\in\varphi^{-1}(Q)$をとると$Q\cap S=\emptyset$より$a\not\in P$ならば$\varphi(a)=Q\cap S$となってしまうので$a\in P$でなければならない．
 	\end{eqv}
 \end{proof}
 
 環$A$と$P\in\spec A$について$P$による局所化を施すと$P$に含まれていない素イデアルは取り除かれる．また，$P$による剰余を施すと$P$を含んでいない素イデアルは取り除かれていた．これを組み合わせることによって，$A$の$P$以外の素イデアルを取り除くことができる．
 \begin{defi}[剰余体]\index{じょうよたい@剰余体}\index{じょうよたい@剰余体}
-	環$A$と素イデアル$P$について，体$A_P/PA_P$を$K(P)$とかいて，$A$の$P$における\textbf{剰余体}(residue field)という．
+	環$A$と素イデアル$P$について，体$A_P/PA_P$を$k(P)$とかいて，$A$の$P$における\textbf{剰余体}(residue field)という．
 \end{defi}
 
-$Q\subset P$を素イデアルとしたときに，$P$による局所化と$Q$による剰余を組み合わせることで$A$の$Q$と$P$の間にある素イデアル以外をすべて取り除くことができることがわかるが，\ref{prop:局所化はいろんな操作と可換}によって$A_P/QA_P$と$(A/Q)_P$が同型であるからその順序が関係ないことがわかる．よって$K(P)$は$\Frac (A/P)$と同型である（$P$の$A/P$における像は零イデアルであるから）．
+$Q\subset P$を素イデアルとしたときに，$P$による局所化と$Q$による剰余を組み合わせることで$A$の$Q$と$P$の間にある素イデアル以外をすべて取り除くことができることがわかるが，\ref{prop:局所化はいろんな操作と可換}によって$A_P/QA_P$と$(A/Q)_P$が同型であるからその順序が関係ないことがわかる．よって$k(P)$は$\Frac (A/P)$と同型である（$P$の$A/P$における像は零イデアルであるから）．
 
 \begin{tightcurve}
 	多様体に対応するものが$\spec A$であると述べたが，代数幾何では関数の情報については\textbf{層}(sheaf)というものを使って考察する．詳細は省略するが，多様体上の層がわかればどういった関数が存在しているのかがわかる．そしてその層は局所的な情報である\textbf{茎}(stalk)を集めることで復元できる．要は局所的なstalk が大切だ，ということだが，$\spec A$上の層についてはまさに素イデアルによる局所化$A_P$がそのstalkである．これで$A_P$について調べることの大切さがなんとなくわかっていただけると思う．
@@ -868,13 +866,13 @@ $A$加群の完全列；
 
 同様に完全列；
 \[\begin{tikzcd}
-0\nxcell\hom_A(M_3,N)\nxcell[\varphi^\ast]\hom_A(M_2,N)\nxcell[\psi^\ast]\hom_A(M_1,N)
+0\nxcell\hom_A(M_3,N)\nxcell[\psi^\ast]\hom_A(M_2,N)\nxcell[\varphi^\ast]\hom_A(M_1,N)
 \end{tikzcd}\]
 も完全である．証明はほぼ同じであるから，前者のみ示す．
 \begin{proof}
 	まず，$\varphi_\ast $が単射であることを確かめよう．$\varphi\circ g=\varphi\circ g'$とする．任意の$\in N$に対し$\varphi(g(x))=\varphi(g'(x))$となり，$\varphi$が単射なので$g(x)=g'(x)$すなわち$g=g'$である．
 	
-	さて，$\im\varphi_\ast =\ker\psi_\ast $を示せば良い．
+	さて，$\im\varphi_\ast =\ker\psi_\ast $を示せばよい．
 	\begin{mrkw}
 		\item 
 		任意の$f\in\im\varphi_\ast$を1つとる．ある$g\in\hom_A(N,M_1)$が存在して$f=\varphi\circ g$とかけるので，$\psi_\ast (f)=\psi\circ\varphi\circ g$であり，$\im\varphi=\ker\psi$だからこれは消える．よって$f\in\ker\psi_\ast $である．
@@ -926,11 +924,12 @@ $A$加群の完全列；
 	自由加群は射影加群である．
 \end{prop}
 \begin{proof}
-	$F=\middleoplus_{i\in I}A_{x_i}$とする．$\psi\in\hom_A(M_2,M_3),f\in\hom_A(F,M_2)$とすると，$\psi$が全射なので$y_i\in\psi^{-1}(f(x_i))$が存在し，それを適当に選んで$\widetilde{f}(x_i)=y_i$とすると，基底の送り先を定めれば十分だから$\widetilde{f}\in\hom_A(F,M_1)$を得る．
+	$F$の基底を$\{u_i\}$とする．$\psi\in\hom_A(M_2,M_3),f\in\hom_A(F,M_2)$とすると，$\psi$が全射なので$x_i\in\psi^{-1}(f(u_i))$が存在し，それを適当に選んで$\widetilde{f}(u_i)=x_i$とすると，基底の送り先を定めれば十分だから$\widetilde{f}\in\hom_A(F,M_1)$を得る．
 \end{proof}
 
-これは選択公理と同値である．$\psi^{-1}(f(x_i))$の元を選んで$\widetilde{f}$を構成してするときに選択公理を使っている．
-\begin{thm}
+これは選択公理と同値である．$\psi^{-1}(f(u_i))$の元を選んで$\widetilde{f}$を構成するときに選択公理を使っている．
+
+\begin{thm}\label{thm:射影的と自由の直和因子は同値}
 	$A$加群$M$が射影的であることと，ある$A$加群$N$に対して$M\oplus N$が自由であることは同値．
 \end{thm}
 \begin{proof}
@@ -990,10 +989,10 @@ $A$加群の完全列；
 \end{thm}
 
 \begin{proof}
-	まず$r=2$のときに示す．$\varphi$の単射性は明らかなので，全射性について議論しよう．任意の$(a+I_1,b+I_2)\in A/I_1\times A/I_2$をとる．$I_1+I_2=A$なので，ある$x_1\in I_1,x_2\in I_2$が存在して$x_1+x_2=1$である．このとき$(bx_1+ax_2)+I_1=ax_2+I_1=a(1-x_1)+I_1=a+I_1$である．$I_2$についても同様．よって$\varphi(bx_1+ax_2+I_1\cap I_2)=(a+I_1,b+I_2)$である．これより同型$A/(I_1\cap I_2)=A/I_1\times A/I_2$が示された．
+	まず$r=2$のときに示す．$\varphi$の単射性は明らかなので，全射性について議論しよう．任意の$(a+I_1,b+I_2)\in A/I_1\times A/I_2$をとる．$I_1+I_2=A$なので，ある$r_1\in I_1,r_2\in I_2$が存在して$r_1+r_2=1$である．このとき$(br_1+ar_2)+I_1=ar_2+I_1=a(1-r_1)+I_1=a+I_1$である．$I_2$についても同様．よって$\varphi(br_1+ar_2+I_1\cap I_2)=(a+I_1,b+I_2)$である．これより同型$A/(I_1\cap I_2)=A/I_1\times A/I_2$が示された．
 	
-	イデアルが３つ以上の場合には，$I_1\cap I_2$と$I_3$も互いに素になる．実際$x_1+x_3=1,x_2+x_3'=1$となる$x_1\in I_1,x_2\in I_2,x_3,x_3'\in I_3$をとると；
-	\[x_1x_2+(x_2x_3+x_1x_3'+x_3x_3')=1\quad(x_1x_2\in I_1\cap I_2, (x_2x_3+x_1x_3'+x_3x_3')\in I_3)\]
+	イデアルが３つ以上の場合には，$I_1\cap I_2$と$I_3$も互いに素になる．実際$r_1+r_3=1,r_2+r_3'=1$となる$r_1\in I_1,r_2\in I_2,r_3,r_3'\in I_3$をとると；
+	\[r_1r_2+(r_2r_3+r_1r_3'+r_3r_3')=1\quad(r_1r_2\in I_1\cap I_2, (r_2r_3+r_1r_3'+r_3r_3')\in I_3)\]
 	である．よって$A/(I_1\cap I_2\cap I_3)\cong A/I_1\times A/I_2\times A/I_3$となり，以下帰納的に続ければよい．
 \end{proof}
 
@@ -1009,8 +1008,8 @@ $A$加群の完全列；
 
 \begin{proof}
 	$(\Longrightarrow)$は明らか．(ii)を仮定しよう．次の準同型；
-	\[\varphi:A\to A/(e_1)\times A/(e_2);x\mapsto (x+(e_1),x+(e_2))\]
-	が環同型となる．実際$x\in\ker\varphi$とすると$x\in (e_1)$かつ$x\in (e_2)$であるので，ある$a_1,a_2\in A$が存在して$x=a_1e_1=a_2e_2$とかける．すると，各辺に$e_1$を掛けることで$x=a_1e_1=0$が従う．よって$\varphi$は単射であり，また任意の$(x+(e_1),y+(e_2))$について，$xe_2+ye_1$を考えると$xe_2+ye_1-x=x(1-e_2)+ye_1=xe_1+ye_1\in (e_1)$である．同様に$xe_2+ye_1-y\in (e_2)$より，$\varphi(xe_2+ye_1)=(x+(e_1),y+(e_2))$であることがわかる．以上より$\varphi$は環同型を与える．
+	\[\varphi:A\to A/(e_1)\times A/(e_2);a\mapsto (a+(e_1),a+(e_2))\]
+	が環同型となる．実際$a\in\ker\varphi$とすると$a\in (e_1)$かつ$a\in (e_2)$であるので，ある$a_1,a_2\in A$が存在して$a=a_1e_1=a_2e_2$とかける．すると，各辺に$e_1$を掛けることで$a=a_1e_1=0$が従う．よって$\varphi$は単射であり，また任意の$(a+(e_1),b+(e_2))$について，$ae_2+be_1$を考えると$ae_2+be_1-a=a(1-e_2)+be_1=ae_1+be_1\in (e_1)$である．同様に$ae_2+be_1-b\in (e_2)$より，$\varphi(ae_2+be_1)=(a+(e_1),b+(e_2))$であることがわかる．以上より$\varphi$は環同型を与える．
 \end{proof}
 
 さて，環の直積$\prod A_i$があったとき，自然な射影$\pi_i:\prod A_i\to A_i$が存在する．これは環の全準同型であり，スキームの閉移入$\pi_i^\ast:\spec A_i\to\spec\prod A_i;P\mapsto \pi^{-1}(P)$を与える（幾何的にはこれはスキームの閉移入になる）．これによって有限直積については$\spec$の構造を決定できる．素イデアルの直積は素イデアルにならないことに注意しよう．
@@ -1040,37 +1039,37 @@ $A$加群の完全列；
 では，無限直積の場合はどうだろうか？実は成り立たないことが知られている．そのために補題を考えよう．
 
 \begin{lem}
-	環の無限直積$A=\prod_{i\in I}A_i$について，各$i\in I$に対し，$\{e_i\}_{i\in I}$の生成する$A$のイデアル$I_0$は$A$よりも真に小さい．
+	環の無限直積$A=\prod_{\lambda\in\Lambda}A_\lambda$について，各$\lambda\in \Lambda$に対し，$\{e_\lambda\}_{\lambda\in\Lambda}$の生成する$A$のイデアル$I$は$A$よりも真に小さい．
 \end{lem}
 
 \begin{proof}
-	任意の$x\in I_0$をとると，有限個の$i_1,\dots,i_s\in I$が存在して；
-	\[x=a_1e_{i_1}+a_2e_{i_2}+\dots+a_se_{i_s}\]
-	とかける．これに$e_{i_j}$をかけると，$x$の$i_j$成分は$a_j$であることがわかる．また，$i_{s+1}$を$i_1,\dots,i_s$のどれとも違うものとすれば，$x$の$i_{s+1}$成分は0である．よって，$A$の単位元$１$は$I_0$に含まれない．
+	任意の$a\in I$をとると，有限個の$\lambda_1,\dots,\lambda_s\in \Lambda$が存在して；
+	\[a=a_1e_{\lambda_1}+a_2e_{\lambda_2}+\dots+a_se_{\lambda_s}\]
+	とかける．各$1\leq j\leq s$について，これに$e_{\lambda_j}$をかけると$a$の$\lambda_j$成分は$a_j$であることがわかる．また，$\lambda_{s+1}$を$\lambda_1,\dots,\lambda_s$のどれとも違うものとすれば，$a$の$\lambda_{s+1}$成分は0である．よって，$A$の単位元$１$は$I$に含まれない．
 \end{proof}
 
 \begin{prop}
-	環の無限直積$A=\prod_{i\in I}A_i$について，$P\in\spec A$が存在して，$P$は$\pi^{-1}_i(P_i),P_i\in\spec A_i$の形で表せない．
+	環の無限直積$A=\prod_{\lambda\in \Lambda}A_\lambda$について，$P\in\spec A$が存在して，$P$は$\pi^{-1}_\lambda(P_i),P_\lambda\in\spec A_\lambda$の形で表せない．
 \end{prop}
 
 \begin{proof}
-	補題と同じ記号を用いる．イデアル$I_0$を含む極大イデアル$\ideal{m}$をとる．すると，すべての$i\in I$に対し$e_i\in\ideal{m}$である．ここで，任意の$j\in I$に対して，任意の$P_j\in\spec A_j$をとると，$P_j$は$A_j$の単位元を含まないから$e_j\not\in\pi^{-1}_j(P_j)$である．よって$\ideal{m}\neq\pi_j^{-1}(P_j)$となる．
+	補題と同じ記号を用いる．イデアル$I$を含む極大イデアル$\ideal{m}$をとる．すると，すべての$\lambda\in \Lambda$に対し$e_\lambda\in\ideal{m}$である．また任意の$\lambda\in \Lambda$に対して，任意の$P_\lambda\in\spec A_\lambda$をとると，$P_\lambda$は$A_\lambda$の単位元を含まないから$e_\lambda\not\in\pi^{-1}_\lambda(P_\lambda)$である．よって$\ideal{m}\neq\pi_\lambda^{-1}(P_\lambda)$となる．
 \end{proof}
 
 \section{GCD整域と原始多項式}
 体上の多変数多項式はPIDではなかったが，UFDであることを示すことができる．そのために次の定義を導入しよう．
 
 \begin{defi}[GCD整域]\index{#GCD整域@GCD整域}\label{defi:GCDdomain}
-	整域$A$であって，任意の２つの$x,y\in A$が最大公約元を必ず持つとき，$A$をGCD\textbf{整域}(GCD domain)という．
+	整域$A$であって，任意の２つの$a,b\in A$が最大公約元を必ず持つものを$A$をGCD\textbf{整域}(GCD domain)という．
 \end{defi}
 
-既約分解することでUFDはGCD整域であることがわかる．
+PIDがGCD整域であることは見たとおり（\ref{prop:PIDはGCD}）であり，さらに強く既約分解することでUFDはGCD整域であることがわかる．
 
 \begin{defi}[内容，原始多項式]\index{げんしたこうしき@原始多項式}\index{ないよう@内容}
 	$A$をGCD整域とする．$f(X)=a_nX^n+\dots+a_0\in A[X]$について$a_n,\dots,a_0$の最大公約元を$c(f)$とかき，$f$の\textbf{内容}(content)という．$c(f)$が単元であるとき，$f$は\textbf{原始的}(primitive)であるという．
 \end{defi}
 
-$x，y\in A$について，ある$u\in A^\times$が存在して$x=uy$とかけるとき$x，y$は同伴である，と定義したことを思い出そう．この節ではこのことを$x\sim y$と書くことにする．
+$a,b\in A$について，ある$u\in A^\times$が存在して$a=ub$とかけるとき$a，b$は同伴である，と定義したことを思い出そう．この節ではこのことを$a\sim b$と書くことにする．
 \begin{lem}[Gaussの補題]
 	$A$をGCD整域とする．$f,g\in A[X]$について$c(fg)\sim c(f)c(g)$が成り立つ．
 \end{lem}

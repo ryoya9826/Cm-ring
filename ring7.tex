@@ -1,5 +1,5 @@
 \part[Homological method to ring theory]{可換環論のホモロジー代数的手法}
-前章で定義した射影分解，$\Tor,\Ext$などの道具を使って可換環の理論にホモロジー代数的手法を持ち込もう．
+前章で定義した射影分解，$\Tor,\Ext$などの道具を使って可換環の理論にホモロジー代数的手法を持ち込もう．以後，$\Tor(M,N)=\Tor(N,M)$であるが$\Ext(M,N)\neq\Ext(N,M)$であることを注意してほしい．
 
 \section{Ext と加群の深さ}
 この節では，Cohen--Macaulay性を議論するために必要不可欠な深さの概念について，Extを使った言い換えを与え，ホモロジー代数の道具を用いて考察していく．まずは\ref{lem:depth M/aM=depth M-1}の証明を与えるために，深さとExtの関係，最初は簡単な場合として正則元とHomのつながりについて調べてみる．以後の命題たちの証明に\ref{lem:depth M/aM=depth M-1}は必要ないことに注意しよう．
@@ -18,7 +18,7 @@
 	\begin{eqv}[3]
 		\item $a$倍写像$a\cdot:M\to M$は単射である．すると，これを合成する準同型$a\cdot_ \ast:\hom(N,M)\to\hom(N,M)$も単射である．任意の$\varphi\in\hom(N,M)$をとると，$a\cdot_\ast(\varphi)$は$x\mapsto \varphi(ax)$という準同型であることに注意する．ここで$\supp N=V(\ann N)\subset V(I)$なので，\ref{prop:V(I)の包含}より$I\subset \sqrt{\ann N}$である．よってある$n>0$が存在して$a^nN=0$である．すると$\varphi$に$a\cdot_\ast$を$n$回施すとそれは$0$になり，これは単射なので$\varphi$は$0$でなければならない．
 		\item $N=A/I$とすればよい．
-		\item $I$は$M$正則元を持たないとする．すると\ref{lem:depth 0とass}より$P\in\ass M\cap V(I)$となる$P\in\spec A$が存在する．このとき単射$A/P\to M$が存在する（$P=\ann x$とするとき，$A/P\to M;a+P\mapsto ax$とすればよい）．これを$P$で局所化して$K(P)\to M_P$が存在する．また，$P\in V(I)=\supp N$であるので$N_P\neq 0$であり，中山の補題より$N_P/PN_P=N\otimes_A K(P)$は$0$でない$K(P)$ベクトル空間である．よって$0$でない$N_P/PN_P\to K(P)$がある．以上のことを組み合わせて$\hom_{A_P}(N_P,M_P)=\hom(N,M)_P\neq0$である．すると\ref{prop:局所化したら0は局所的}より$\hom (N,M)\neq0$であるので矛盾である．
+		\item $I$は$M$正則元を持たないとする．すると\ref{lem:depth 0とass}より$P\in\ass M\cap V(I)$となる$P\in\spec A$が存在する．このとき単射$A/P\to M$が存在する（$P=\ann x$とするとき，$A/P\to M;a+P\mapsto ax$とすればよい）．これを$P$で局所化して$k(P)\to M_P$が存在する．また，$P\in V(I)=\supp N$であるので$N_P\neq 0$であり，中山の補題より$N_P/PN_P=N\otimes_A k(P)$は$0$でない$k(P)$ベクトル空間である．よって$0$でない$N_P/PN_P\to k(P)$がある．以上のことを組み合わせて$\hom_{A_P}(N_P,M_P)=\hom(N,M)_P\neq0$である．すると\ref{prop:局所化したら0は局所的}より$\hom (N,M)\neq0$であるので矛盾である．
 	\end{eqv}
 \end{proof}
 
@@ -52,7 +52,7 @@
 \end{proof}
 
 この命題から即座に次の定理が従う．
-\begin{thm}
+\begin{thm}\label{thm:Extとdepth}
 	$A$をNoether環とし，$M$を有限生成$A$加群，$I$を$IM\neq M$となる$A$のイデアルとする．$I$の元からなる極大な$M$正則列の長さは一定であり，また；
 	\[\mdepth_I M=\inf\mkset{i\in\N}{\Ext^i(A/I,M)\neq0}\]
 	である．
@@ -128,7 +128,7 @@ $\prjdim M=0$であることと$M$が射影的であることは同値である�
 	が可換になる$g:P\to P'$が存在し$f$は分裂全射である．
 \end{proof}
 
-この命題より射影被覆は\textbf{存在すれば}同型を除いて一意である．また，同様の議論で$M\cong M'$であり$P,P'$がそれぞれ$M,M'$の射影被覆なら$P\cong P'$である．
+この命題より射影被覆は\textbf{存在すれば}同型を除いて一意である．また，同様の議論で$M\cong M'$かつ$P,P'$がそれぞれの射影被覆なら$P\cong P'$である．
 
 \begin{defi}[極小射影分解]\index{きょくしょうしゃえいぶんかい@極小射影分解}
 	$A$加群$M$の射影分解；
@@ -138,11 +138,11 @@ $\prjdim M=0$であることと$M$が射影的であることは同値である�
 	について，各$d_i:P_i\to\ker d_{i-1}$が射影被覆であるとき\textbf{極小射影分解}(minimal projective resolution)であるという．
 \end{defi}
 
-極小射影分解は存在すれば同型を除いて一意である．よって冒頭の２つめの例に戻ると，この分解が極小射影分解を与えていることを見ればよい．それには$Ax$が$A$の余剰部分加群であることを示せば十分である．$A$のイデアル$I$について$Ax+I=A$であるとすると，$x$は冪零なので$Ax\subset\nil (A)\subset\rad(A)$であるので，中山の補題から$I=A$である．よって$\projdim M=\infty$が示された．
+極小射影分解は存在すれば同型を除いて一意である．よって冒頭の２つめの例に戻ると，この分解が極小射影分解を与えていることを見ればよい．それには$Ax$が$A$の余剰部分加群であることを示せば十分である．$A$のイデアル$I$について$Ax+I=A$であるとすると，$x$は冪零なので$Ax\subset\nil (A)\subset\rad(A)$であるので，中山の補題から$I=A$である．よって$\prjdim M=\infty$が示された．
 
 しかし一般には極小射影分解（射影被覆）が存在するとは限らないことに注意しなければならない.例えば$\Z/m\Z$について；
 \[\ses[m]{\Z}{\Z}{\Z/m\Z}\]
-は$\Z/m\Z$の射影分解を与えるが，これは$m\Z$が$\Z$の余剰部分加群でないので極小射影分解ではない．これより$\projdim \Z/m\Z=1$である（$\Z/m\Z$は射影$\Z$加群でない）．するともし極小射影分解が存在すれば；
+は$\Z/m\Z$の射影分解を与えるが，これは$m\Z$が$\Z$の余剰部分加群でないので極小射影分解ではない．$\Z/m\Z$は射影$\Z$加群でないので，$\prjdim \Z/m\Z=1$である．するともし極小射影分解が存在すれば；
 \[\ses[d_1][\varepsilon]{P_1}{P_0}{\Z/m\Z}\]
 という形をしているが，このとき$\varepsilon$は分裂全射なので$P_0$は$P_1\oplus\Z/m\Z$と同型である．すると$P_1$は$\ker\varepsilon$と同型で，これは余剰加群であるから$\Z/m\Z=P_0$となり$\Z/m\Z$が射影的となって矛盾する．
 
@@ -227,9 +227,10 @@ $\prjdim M=0$であることと$M$が射影的であることは同値である�
 \begin{lem}
 	$A$を環，$M$を$A$加群とする．このとき；
 	\begin{sakura}
-		\item $\prjdim M\leq n$であるとき，任意の$i>n$と$A$加群$N$について$\Ext^{i}(M,N)=0$である.
-		\item $\injdim M\leq n$であるとき，任意の$i>n$と$A$加群$N$について$\Ext^{i}(N,M)=0$であることは同値．
+		\item $\prjdim M\leq n$であるとき，任意の$i>n$と$A$加群$N$について$\Ext^{i}(M,N)=0$である．
+		\item $\injdim M\leq n$であるとき，任意の$i>n$と$A$加群$N$について$\Ext^{i}(N,M)=0$である．
 	\end{sakura}
+	が成り立つ．
 \end{lem}
 
 この逆が成り立つだけでなく，\ref{prop:ホモロジー次元を抑える}により$n+1$についてのみ確かめればよいことがわかる．まず$\Ext$の長完全列を考えることにより次の補題が従うことを注意しておこう．
@@ -243,10 +244,13 @@ $\prjdim M=0$であることと$M$が射影的であることは同値である�
 	\[\ses{M_1}{M_2}{M_3}\]
 	から得られる$\Ext$の長完全列；
 	\[\begin{tikzcd}
-	0\nxcell\hom(P,M_1)\nxcell\hom(P,M_2)\nxcell\hom(P,M_3)\nxcell\\&\Ext^1(P,M_1)\nxcell\Ext^1(P,M_2)\nxcell\cdots
+	0\nxcell\hom(P,M_1)\nxcell\hom(P,M_2)\nxcell\hom(P,M_3)\nxcell\Ext^1(P,M_1)\nxcell\cdots
 	\end{tikzcd}\]
 	を考えれば$\hom(P,-)$が完全関手であることと$\Ext^1(P,M_1)=0$が同値であることがわかる．
 \end{proof}
+
+これと全く同様にして，$A$加群$M$が平坦であることと，任意の$A$加群$N$について$\Tor_1(M,N)=0$であることが同値だとわかることを注意しておく．
+
 \begin{prop}\label{prop:ホモロジー次元を抑える}
 	$A$を環，$M$を$A$加群とする．このとき；
 	\begin{sakura}
@@ -257,7 +261,7 @@ $\prjdim M=0$であることと$M$が射影的であることは同値である�
 \end{prop}
 
 \begin{proof}
-	(i)のみ示す．$(\Longrightarrow)$は明らかなので，逆を見れば良い．$M$の射影分解$P_\bullet$を考える．$P=\im d_n~(d_n:P_n\to P_{n-1})$とおくと，次の２つの完全列；
+	(i)のみ示す．$(\Longrightarrow)$は明らかなので，逆を見ればよい．$M$の射影分解$P_\bullet$を考える．$P=\im d_n~(d_n:P_n\to P_{n-1})$とおくと，次の２つの完全列；
 	\[\begin{tikzcd}
 	0\nxcell P\nxcell P_{n-1}\nxcell[d_{n-1}]P_{n-1}\nxcell\cdots\nxcell P_0\nxcell M\nxcell0\end{tikzcd};\]
 	\[\begin{tikzcd}
@@ -267,13 +271,13 @@ $\prjdim M=0$であることと$M$が射影的であることは同値である�
 \end{proof}
 
 同様にExtの長完全列を考えることで次の２つの命題がわかる．
-\begin{cor}
+\begin{cor}\label{cor:prjdimの有限性}
 	$A$加群の完全列；
 	\[\ses{M_1}{M_2}{M_3}\]
 	について，２つの加群の射影元が有限なら残りの１つの射影次元も有限．
 \end{cor}
 
-\begin{cor}
+\begin{cor}\label{cor:prjdim lemma}
 	$A$加群の完全列；
 	\[\ses{M_1}{M_2}{M_3}\]
 	について，$\prjdim M_2<\infty$であるとき，$\prjdim M_1=\prjdim M_2$ならば$\prjdim M_3\leq\prjdim M_1+1$であり，$\prjdim M_1>\prjdim M_2$ならば$\prjdim M_3=\prjdim M_1+1$である．
@@ -286,9 +290,9 @@ $\prjdim M=0$であることと$M$が射影的であることは同値である�
 	\begin{sakura}
 		\item $P_\bullet$は極小射影分解である．
 		\item 各$P_i$は自由$A$加群である．
-		\item $P_0\otimes(A/\ideal{m})=M/\ideal{m}M=M\otimes(A/\ideal m)$である．
+		\item $P_0\otimes A/\ideal{m}=M\otimes A/\ideal m=M/\ideal{m}M$である．
 	\end{sakura}
-	をみたすものを$M$の\textbf{極小自由分解}(minimal free resolution)という．
+	をみたすものが存在する．これを$M$の\textbf{極小自由分解}(minimal free resolution)という．
 \end{defi}
 
 \begin{proof}[\textbf{存在証明}]
@@ -303,8 +307,219 @@ $\prjdim M=0$であることと$M$が射影的であることは同値である�
 
 ここから射影次元を次のように言い換えることができる．
 
-\begin{thm}
+\begin{thm}\label{thm:射影次元の言い換え}
 	$(A,\ideal{m})$をNoether局所環とし，$M\neq0$をその上の有限生成加群とする．このとき；
-	\[\prjdim M=\sup\mkset{i\in N}{\Tor_i(A/\ideal{m},M)\neq0}\]
+	\[\prjdim M=\sup\mkset{i\in N}{\Tor_i(M,A/\ideal{m})\neq0}\]
 	である．
 \end{thm}
+
+ここから，ある$n\geq0$を固定したとき，ある$i\geq n$について$\Tor_i(M,A/\ideal m)\neq0$ならば$n\leq i\leq\prjdim M$であることがわかり，対偶をとって$\prjdim M<n$ならばすべての$i\geq n$について$\Tor_i(M,A/\ideal m)=0$である．これを一般化したものがホモロジカル予想の１つ，\textbf{剛性}(rigidty)\textbf{予想}である．
+
+\begin{conj}[剛性予想]
+	$(A,\ideal m)$を局所環とし，$M,N$を有限生成$A$加群とする．$\prjdim M<\infty$かつ$\Tor_n(M,N)=0$となる$n$が存在するならば，任意の$i\geq n$について$\Tor_i(M,N)=0$であろう．
+\end{conj}
+
+$A$が正則局所環のときには\cite{lichtenbaum1966}によって証明されている．その他いくつかの条件のもとでは成り立つことがわかっているが，一般には反例が存在する（\cite{heitmann1993counterexample}）．一方$\prjdim N<\infty$も仮定すると未解決である．
+
+また，次のように驚くべき性質を示すことができる．
+
+
+\begin{prop}
+	$(A,\ideal{m})$をNoether局所環とし，$M$をその上の有限生成加群とする．このとき，次の条件；
+	\begin{sakura}
+		\item $M$は自由である．
+		\item $M$は射影的である．
+		\item $M$は平坦である．
+		\item $\Tor_1(A/\ideal m,M)=0$である．
+	\end{sakura}
+	は同値．
+\end{prop}
+
+\begin{proof}
+	(iv)が(i)を導くことのみ見れば良い．極小自由分解の構成と同じように$\varepsilon:P_0\to M$を構成する．$\varepsilon$は全射であったので，$\Tor_1(A/\ideal m,M)=0$ならば$\ker\varepsilon=0$であることを示す．完全列；
+	\[\ses{\ker\varepsilon}{P_0}{M}\]
+	に$-\otimes A/\ideal m$を作用させて，Torの長完全列；
+	\[\begin{tikzcd}
+	\cdots\nxcell\Tor_1(A/\ideal m,M)\nxcell\ker\varepsilon\otimes A/\ideal{m}\nxcell P_0\otimes A/\ideal{m}\nxcell M\otimes A/\ideal{m}\nxcell0
+	\end{tikzcd}\]
+	を得る．$P_0$の構成から$P_0\otimes A/\ideal{m}=M\otimes A/\ideal{m}$であるので，$\Tor_1(A/\ideal m,M)=0$だから$\ker\varepsilon\otimes A/\ideal{m}=\ker\varepsilon/\ideal{m}\ker\varepsilon=0$である．よって中山の補題から$\ker\varepsilon=0$である．
+\end{proof}
+
+このようにNoether局所環上の有限生成加群では射影的であることと自由であることが同値になるが，Noether性という条件は外すことができる（それだけでなく有限生成である必要すらないが，長くなるのでここでは省く．\cite{matsu}をみよ）．
+
+\begin{thm}
+	$(A,\ideal{m})$を局所環，$M$を有限生成$A$加群とする．このとき，$M$が射影加群であることと自由加群であることは同値である．
+\end{thm}
+
+\begin{proof}
+	$M$を射影加群とする．極小自由分解の構成から，有限生成自由加群$P_0$からの全射$\varepsilon:P_0\to M$が存在する．前命題と同様の議論から$\ker\varepsilon\otimes A/\ideal m=0$である（ここまでNoether性は要らず，$\ker\varepsilon$が有限生成であることにNoether性を使った）．ここで射影的であることと自由加群の直和因子であることは同値であったことと，その証明（\ref{thm:射影的と自由の直和因子は同値}）を思い出すと，$P_0\cong M\oplus\ker\varepsilon$であるので，とくに$\ker\varepsilon\cong P_0/M$であり，$P_0$は有限生成自由加群なので$\ker\varepsilon$も有限生成である．よって中山の補題が使えて$\ker\varepsilon=0$である．
+\end{proof}
+
+\begin{thm}[Auslander--Buchsbaumの公式]\index{#Auslander--Buchsbaumのこうしき@Auslander--Buchsbaumの公式}\label{thm:Auslander--Buchsbaumの公式}
+	$(A,\ideal m)$をNoether局所環とし，$M\neq 0$をその上の射影次元有限な有限生成加群とする．このとき；
+	\[\prjdim M+\mdepth M=\mdepth A\]
+	が成り立つ．
+\end{thm}
+
+\begin{proof}
+	$d=\mdepth A$とおく．$r=\prjdim M$についての帰納法で示す．$r=0$のとき，$M$は前定理より自由加群だから，$\mdepth M=\mdepth A$である．次に$1\leq r$とし，$r-1$まで成立しているとする．適当な$n$について全射$A^n\to M$が存在し，その核を$K$とおけば；
+	\[\ses{K}{A^n}{M}\]
+	が完全である．\ref{cor:prjdim lemma}より$\prjdim K=r-1$である．帰納法の仮定から$\mdepth K=d-r+1$である．よって$\mdepth M=d-r$を示せばよい．\ref{thm:Extとdepth}より$i<d-r+1$なら$\Ext^i(A/\ideal m,K)=0,\Ext^{d-r+1}(A/\ideal m,K)\neq0$である．上の完全列が導く$\Ext$の長完全列；
+	\[\begin{tikzcd}
+	\cdots\nxcell\Ext^i(A/\ideal m,A^n)\nxcell\Ext^i(A/\ideal m,M)\nxcell\Ext^{i+1}(A/\ideal m,K)\nxcell\Ext^{i+1}(A/\ideal m,A^n)\nxcell\cdots
+	\end{tikzcd}\]
+	を考えると，$i<d-r$ならば$i+1<d-r+1\leq d$なので；
+	\[\begin{tikzcd}
+	0\nxcell\Ext^i(A/\ideal m,M)\nxcell\Ext^{i+1}(A/\ideal m,K)\nxcell0
+	\end{tikzcd}\]
+	となり$\Ext^i(A/\ideal m,M)=\Ext^{i+1}(A/\ideal m,K)=0$である．また$i=d-r$のとき；
+	\[\begin{tikzcd}
+	0\nxcell\Ext^{d-r}(A/\ideal m,M)\nxcell\Ext^{d-r+1}(A/\ideal m,K)\nxcell\Ext^{d-r+1}(A/\ideal m,A^n)\nxcell\cdots
+	\end{tikzcd}\]
+	であり，$r>1$ならば$d-r+1<d$となり$\Ext^{d-r}(A/\ideal m,M)=\Ext^{d-r+1}(A/\ideal m,K)\neq0$である．
+	
+	$r=1$のときは別に示す必要がある．$M$の極小自由分解を考えて；
+	\[\ses{P_1}{P_0}{M}\]
+	とする．$\Ext^{d-1}(A/\ideal m,M)\neq0$を示す．
+	\[\begin{tikzcd}
+	0\nxcell\Ext^{d-1}(A/\ideal m,M)\nxcell\Ext^d(A/\ideal m,P_1)\nxcell\Ext^d(A/\ideal m,P_0)\nxcell\cdots
+	\end{tikzcd}\]
+	において$\Ext^d(A/\ideal m,P_1)\to\Ext^d(A/\ideal m,P_0)$を考える．$d_1:P_1\to P_0$において極小自由分解の構成から$\im d_1=\ker \varepsilon\subset\ideal{m}P_0$であったので，$P_1\to P_0$の誘導する$\hom(A/\ideal m,P_1)\to\hom(A/\ideal m,P_0)$は$0$である．ゆえに$\Ext^d(A/\ideal m,P_1)\to\Ext^d(A/\ideal m,P_0)$は$0$であり，上の完全列から$\Ext^{d-1}(A/\ideal m,M)=\Ext^d(A/\ideal m,P_1)\neq0$である．
+	
+	以上を組み合わせて証明が完了した．
+\end{proof}
+
+\section{大域次元とSerreの定理}
+
+この節では，環の\textbf{大域次元}(global dimension)を導入して，Serreによる正則局所環の特徴づけとSerreの定理（\ref{prethm:Serre}）の証明を行おう．まず，\ref{prop:ホモロジー次元を抑える}を入射次元についてより簡単に書き換えるところから始める．
+
+\begin{prop}
+	$A$を環，$M$を$A$加群とする．このとき，与えられた$n$について$\injdim M\leq n$であることと，任意の$A$のイデアル$I$について$\Ext^{n+1}_A(A/I,M)=0$であることは同値．
+\end{prop}
+
+\begin{proof}
+	$A$加群$M$が入射的であることと，任意の$A$のイデアル$I$について$\Ext^1(A/I,M)=0$であることが同値であることを示せば十分である．$M$が入射的なら$\Ext^1$が消えることは明らかなので，逆を見ればよい．Bearの基準（\ref{thm:Bear's Criterion}）より，$\hom(-,M)$が自然な$0\to I\to A$の完全性を保てばよい．それは完全列；
+	\[\ses{I}{A}{A/I}\]
+	に対して$\hom(-,M)$が導く長完全列；
+	\[\begin{tikzcd}
+	0\nxcell \hom(A/I,M)\nxcell\hom(A,M)\nxcell\hom(I,M)\nxcell\Ext^1(A/I,M)=0\nxcell\cdots
+	\end{tikzcd}\]
+	より成り立つことがわかり，$M$は入射的である．
+\end{proof}
+
+\begin{defi}[大域次元]\index{たいいきじげん@大域次元}
+	環$A$について；
+	\[\gldim A=\sup\mkset{\prjdim M}{M:A\text{加群}}\]
+	と定義する．これを$A$の\textbf{大域次元}(global dimension)という．
+\end{defi}
+
+大抵の環は$\gldim A=\infty$なので，大域次元が有限となる環に興味がある．先の命題を用いて大域次元は$A$のイデアルによる商環のみを確かめればよいことを示そう．
+
+\begin{prop}[Auslander]
+	$\gldim A=\sup\mkset{\prjdim A/I}{I:A\text{のイデアル}}$が成り立つ．
+\end{prop}
+
+\begin{proof}
+	右辺を$n$とおく．明らかに$n\leq\gldim A$だから逆をみればよい．$n<\infty$としてよい．任意の$A$加群$N$について，$\Ext^{n+1}(A/I,N)=0$であるので，先の命題から$\injdim N\leq n$である．よって任意の$A$加群$M$について$\Ext^{n+1}(M,N)=0$であり，$\prjdim M\leq n$である．よって示された．
+\end{proof}
+
+Noether性を課すことでさらに話は簡単になる．
+
+\begin{thm}\label{thm:Noether局所環の大域次元}
+	$(A,\ideal{m})$をNoether局所環とする．このとき$\gldim A=\prjdim A/\ideal{m}$である．
+\end{thm}
+
+\begin{proof}
+$\prjdim A/\ideal{m}=\infty$なら明らかであるので，有限であると仮定する．$n=\prjdim A/\ideal m$とおき，任意の$A$加群$M$について$\prjdim M\leq n$であることを，$\dim M$についての帰納法で示す．
+
+$\dim M=0$とする．このとき$M$を$A/\ann M$加群とみると，$M$はNoetherかつArtin加群なので組成列；
+\[0=M_0\subsetneq M_1\subsetneq\dots\subsetneq M_r=M\]
+を持つ（\ref{prop:有限な組成列の同値条件}）．$A/\ann M$は唯一の極大イデアルを$\ideal{m}$とする局所環であるから，\ref{prop:単純加群の構造}により各$1\leq i\leq r$について$M_i/M_{i-1}\cong A/\ideal m$である．よって；
+\[\ses{M_{i-1}}{M_i}{A/\ideal m}\]
+が完全である．任意の$A$加群$N$について$\Ext^{n+1}(A/\ideal m,N)=0$であるので，$i=1$から順に考えて$\Ext^{n+1}(M,N)=0$である．よって$\prjdim M\leq n$である．
+
+次に$d=\dim M>0$とし，$d-1$まで正しいと仮定する．まずは$\mdepth M>0$のときを考えると，$M$正則元$a\in\ideal m$が存在する．このとき$\dim M/aM=\dim M-1$である．よって帰納法の仮定から$\prjdim M/aM\leq n$である．次の完全列；
+\[\ses[a\cdot]{M}{M}{M/aM}\]
+が誘導するExtの長完全列を考えると，任意の$A$加群$N$について$\Ext^{n+1}(M/aM,N)=0$であり；
+\[\begin{tikzcd}
+	\Ext^n(M/aM,N)\nxcell\Ext^n(M,N)\nxcell[a\cdot]\Ext^n(M,N)\nxcell\Ext^{n+1}(M/aM,N)=0
+\end{tikzcd}\]
+から$a\Ext^n(M,N)=\Ext^n(M,N)$であるので，中山の補題から$\Ext^n(M,N)=0$である．よって$\prjdim M\leq n-1$である．
+
+次に$\mdepth M=0$と仮定する．$L=\mkset{x\in M}{\text{ある}i\in\N\text{について}\ideal{m}^ix=0}$とおく．短完全列；
+\[\ses{L}{M}{M/L}\]
+を考えよう．まず$\dim L=0$であることを示す．$L$の生成系$\{u_1,\dots,u_r\}$をとる．各$i$について$\ideal{m}^{n_i}u_i=0$となる$n_i$がある．その最大値を$n$とすれば$\ideal{m}^n\subset\ann L$である．よって\ref{prop:局所環がm^n=0ならArtin}より$A/\ann L$はArtin，すなわち$\dim L=0$である．よって$\prjdim L\leq n$となる．また$M/L$について$\mdepth M/L>0$であることを示す．\ref{lem:depth 0とass}を局所環の場合に考えると$\mdepth M=0$であることと$\ideal m\in\ass M$であることは同値である．よって$\ideal m\not\in\ass M/L$であることを示そう．ある$x\in M$について$\ideal m=\ann (x+L)$であるとする．$\ideal m$の生成系$\{a_i\}$をとれば，任意の$i$について$a_i\ideal{m}^{n_i}x=0$となる$x_i$がとれるので，最大値を$n$として$\ideal{m}\cdot \ideal{m}^nx=\ideal{m}^{n+1}x=0$である．よって$x\in L$となる．ゆえに$\ideal m\not\in\ass M/L$となり，$\mdepth M/L>0$である．よって$\prjdim M/L\leq n-1$である．よって，$\Ext^{n+1}(M/L,N)=\Ext^{n+1}(L,N)=0$であるから$\Ext^{n+1}(M,N)=0$となり$\prjdim M\leq n$である．
+\end{proof}
+
+また，Auslander--Buchsbaumの公式（\ref{thm:Auslander--Buchsbaumの公式}）より容易に次の補題を得る．
+
+\begin{lem}\label{lem:prjdim M/aM}
+	$(A,\ideal{m})$をNoether局所環とし，$M$をそのうえの有限生成$A$加群とする．$M$正則元$a\in\ideal{m}$について；
+	\[\prjdim M/aM=\prjdim M+1\]
+	が成り立つ．
+\end{lem}
+
+\begin{proof}
+	まず$\prjdim M=\infty$のときを考える．もし$\prjdim M/aM=n<\infty$ならば，短完全列；
+	\[\ses[a\cdot]{M}{M}{M/aM}\]
+	を考えて$\Ext^{n+1}(M/aM,N)=0$であるから，先の定理と同様に$\Ext^n(M,N)=0$となり仮定に反する．よって$\prjdim M/aM=\infty$となり仮定は成り立つ．
+	
+	次に有限個の場合を考えよう．$\prjdim M=n<\infty$とおく．\ref{cor:prjdimの有限性}より$\prjdim M/aM$も有限である．よってAuslander--Buchsbaumの公式から；
+	\[\prjdim M/aM=\mdepth A-\mdepth M/aM=\mdepth A-(\mdepth A-1)=\prjdim M+1\]
+	であることがわかる．
+\end{proof}
+
+また，$a\in\ideal m$が$A$正則という条件を足すことで$A/aA$加群としての射影次元を上から抑えることができる．
+
+\begin{lem}\label{lem:prjdim_A/aA M/aM}
+	$(A,\ideal{m})$をNoether局所環とし，$M$をそのうえの有限生成$A$加群とする．$M$正則元$a\in\ideal{m}$について$A$正則でもあるならば；
+	\[\prjdim_{A/aA} M/aM\leq \prjdim_A M\]
+	が成り立つ．
+\end{lem}
+
+\begin{proof}
+	$d=\prjdim_A M$とおく．$d<\infty$と仮定してよい．$d$についての帰納法で示す．$d=0$のとき，$M$は自由なので$M\cong A^n$とすると$M/aM\cong(A/aA)^n$より$A/aA$加群として自由だから$\prjdim_{A/aA}M/aM=0$となり正しい．$d>1$とし，$d-1$まで正しいと仮定する．自由加群からの全射$\varphi:F\to M$を考えよう．次の図式；
+	\[\begin{tikzcd}
+		0\nxcell\ker\varphi\darrow[a\cdot]\nxcell F\darrow[a\cdot]\nxcell[\varphi]M\darrow[a\cdot]\nxcell0\\
+		0\nxcell \ker\varphi\nxcell F\nxcell[\varphi]M\nxcell0
+	\end{tikzcd}\]
+	を考える．$a$は$M$正則だから$a\cdot:M\to M$は単射で，蛇の補題から；
+	\[\ses{\ker\varphi/a\ker\varphi}{F/aF}{M/aM}\]
+	が完全．\ref{cor:prjdim lemma}より$\prjdim\ker\varphi=d-1$だから，帰納法の仮定から$\prjdim_{A/aA}\ker\varphi/a\ker\varphi\leq d-1$である．再び\ref{cor:prjdim lemma}より$\prjdim_{A/aA}\ker\varphi/a\ker\varphi=\prjdim_{A/aA}M/aM-1$なので$\prjdim_{A/aA}M/aM\leq d-1+1=d$である．
+\end{proof}
+\ref{lem:prjdim M/aM}により次の定理が従う．
+
+\begin{thm}[Auslander--Buchsbaum]
+	$(A,\ideal m)$を$d$次元の正則局所環とすると，$\gldim A=d$である．
+\end{thm}
+
+\begin{proof}
+	$x_1,\dots,x_d\in\ideal{m}$を正則巴系とすると，これは$A$正則列をなし$\prjdim A/\ideal m=\prjdim A+d=d$である．よって\ref{thm:Noether局所環の大域次元}より$\gldim A=\prjdim A/\ideal m=d$である．
+\end{proof}
+
+驚くべきはこれの逆が成り立つ．すなわち，局所環の大域次元が有限であることと正則であることは同値である．
+
+\begin{thm}[Serre]
+	$(A,\ideal m,k)$を$\gldim A=d<\infty$となるNoether局所環とする．このとき$A$は$d$次元の正則局所環である．
+\end{thm}
+
+\begin{proof}
+	$d=\gldim A$とおく．また$r=\emdim A=\dim_k\ideal m/\ideal{m}^2$とおこう．まず$r=0$とする．$\ideal m=\ideal{m}^2$であるので，中山の補題から$\ideal m=0$である．よって$A$は体となり，$\gldim A=\prjdim A=0$なので題意が成り立つ．逆に$\gldim A=0$とすると，$\prjdim k=0$となり$k$は自由だから$k\cong A$となり，$A$は体となる．
+	
+	よって$r,d>0$と仮定してよい．$r$についての帰納法で示す．$r-1$まで正しいとしよう．$\ideal m\neq0$であり，中山の補題から$\ideal m\neq\ideal{m}^2$である．まず$x\in\ideal m\setminus\ideal{m}^2$を$A$正則にとれることを示す．任意の$x$が$A$正則でないと仮定する．すると$\ideal{m}\setminus\ideal{m}^2\subset\bigcap_{P\in\ass A}P$である．よって$\ideal m\subset\bigcap_{P\in\ass A}P\subset\ideal{m}^2$であるので，Prime avoidanceからある$P\in\ass A$について$\ideal{m}\subset P$である（$\ideal m\not\subset\ideal{m}^2$であるから）．$\ideal{m}$は極大なので$\ideal m\in\ass A$となり，単射$k\hookrightarrow A$が存在する（$\ideal m=\ann x$としたとき$a+\ideal m\mapsto ax$とすればよい）．よって短完全列；
+	\[\ses{k}{A}{A/k}\]
+	について，$\Tor_d(A,k)=\Tor_{d+1}(A,k)=0,\Tor_d(k,k)\neq0$だからTorの長完全列を考えて；
+	\[\begin{tikzcd}
+		0\nxcell\Tor_{d+1}(A/k,k)\nxcell\Tor_d(k,k)\nxcell0
+	\end{tikzcd}\]
+	が完全であり$\Tor_{d+1}(A/k,k)\neq0$となるので\ref{thm:射影次元の言い換え}より$d+1\leq\prjdim A/k$であるが，これは$d=\gldim A$であるので矛盾．
+\end{proof}
+
+これが可換環論にホモロジー代数を導入したことによる成果のうちで初期の大結果である．この定理により次の定理がほぼ自明と化した．
+\begin{thm}[Serreの定理]\index{#Serreのていり@Serreの定理}\label{thm:Serreの定理}
+	$A$を正則局所環とすると，任意の$P\in\spec A$について$A_P$も正則局所環である．
+\end{thm}
+
+\begin{proof}
+	前定理から$\prjdim_A A/P<\infty$であり，有限な極小自由分解を得る．これを$P$で局所化して$A_P/PA_P$の極小自由分解を得，$\prjdim_{A_P} A_P/PA_P<\infty$である．
+\end{proof}

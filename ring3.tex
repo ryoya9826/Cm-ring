@@ -1,11 +1,11 @@
 \newpage
 \part[Integral extension and The elemnts of dimension theory]{整拡大と次元論初歩}\label{part:整拡大と次元論初歩}
 
-代数曲線，特に古典的な代数多様体論では，曲線をより単純な曲線，特に直線に射影して性質を見る，という方法をとる．それは環の準同型としては$K[X]\to K[X，Y]/I$に対応し，これは\textbf{整拡大}というものになっている．また，多様体(Variety)と環を対応させて調べるという発送において，特に議論の対象となる環は代数閉体$K$上の有限生成代数であることが多い．そこで，一般の環についてある種の\textbf{次元}を定義するとともに，それが代数多様体の自然な次元と一致することを確認することを目標にしよう．すなわち，多項式環$K[\nitem{X}]$の自然な次元$n$を，多項式環の性質によらずに一般の環に拡張する．
+代数曲線，特に古典的な代数多様体論では，曲線をより単純な曲線，特に直線に射影して性質を見る，という方法をとる．それは環の準同型としては$k[X]\to k[X，Y]/I$に対応し，これは\textbf{整拡大}というものになっている．また，多様体(Variety)と環を対応させて調べるという発送において，特に議論の対象となる環は代数閉体$k$上の有限生成代数であることが多い．そこで，一般の環についてある種の\textbf{次元}を定義するとともに，それが代数多様体の自然な次元と一致することを確認することを目標にしよう．すなわち，多項式環$k[\nitem{X}]$の自然な次元$n$を，多項式環の性質によらずに一般の環に拡張する．
 
 \section{環の拡大}
 
-体の拡大の基礎については第０章で少しまとめているが，Galois理論などの入門書を適宜参照のこと．体の拡大$L/K$において，代数的，超越的という概念があった．その概念を環の場合に拡張することを考えてみよう．代数$f:A\to B$を考え，これを環の拡大とみなしたい．体の場合は，体からの任意の準同型が単射なので，任意の準同型を埋め込みとして問題はなかった．そこで，$f:A\to B$が単射であるとき\textbf{環の拡大}という．しばらくは一般の$A$代数$B$について議論をしていこう．まずは代数的という性質を環の拡大の場合に拡張する．
+体の拡大の基礎については第０章で少しまとめているが，Galois理論などの入門書を適宜参照のこと．体の拡大$L/k$において，代数的，超越的という概念があった．その概念を環の場合に拡張することを考えてみよう．代数$f:A\to B$を考え，これを環の拡大とみなしたい．体の場合は，体からの任意の準同型が単射なので，任意の準同型を埋め込みとして問題はなかった．そこで，$f:A\to B$が単射であるとき\textbf{環の拡大}という．しばらくは一般の$A$代数$B$について議論をしていこう．まずは代数的という性質を環の拡大の場合に拡張する．
 
 \begin{defi}[整]\index{せい@整}
 	$B$を$A$代数とする．$x\in B$に対し，$A$係数のモニックな多項式$g\in A[X]$が存在して；
@@ -16,7 +16,7 @@
 任意の$x\in B$が$A$上で整のとき，$B$は$A$上整であるという．$\Z$上で整である複素数のことを\textbf{代数的整数}，$\Q$上で整である複素数のことを\textbf{代数的数}といっていたことを思い出そう．
 
 \begin{ex}\label{ex:Q/Zの整閉包}
-	環の拡大$\Z\subset\Q$を考えよう．ここでは$\Z$上整な元をすべて求める．$r=p/q ~(p,q\text{は互いに素})$が$Z$上整であると仮定すると，適当な$a_i\in\Z$がとれて；
+	環の拡大$\Z\subset\Q$を考えよう．ここでは$\Z$上整な元をすべて求める．$r=p/q ~(p,q\text{は互いに素})$が$\Z$上整であると仮定すると，適当な$a_i\in\Z$がとれて；
 	\[r^n+a_1r^{n-1}+\dots+a_n=0\]
 	が成り立つ．分母を払うと；
 	\[p^n+a_1qp^{n-1}+\dots+a_nq^n=0\]
@@ -204,8 +204,8 @@
 		\item $A/P_i$が整閉整域であること．
 		
 		$\Frac(A/P_i)=A_{P_i}$に注意する．実際，準同型；
-		\[\varphi:\Frac(A/P_i)\to A_{P_i};\frac{x+P_i}{y+P_i}\mapsto x/s\]
-		を考えると，$x/y=0$ならばある$h\not\in P_i$が存在して$xh=0\in P_i$となるので$x+P_i=0$となり，$\varphi$は単射．また任意の$x/s\in A_{P_i}$について$x\not\in P_i$ならば$\varphi((x+P_i)/(y+P_i))=x/s$であり，$x/s\in P_iA_{P_i}$ならば$P_i=\ann y$となる$y\in A$について，$A$が被約なので$y\not\in P_i$だから$xy=0$となり$P_iA_{P_i}=0$，すなわち$\varphi(0)=x/s=0$である．以上より$\varphi$は全単射となり同型である．ここで，自然な準同型$Q(A)\to A_{P_i};x/s\mapsto x/s$を考えると，この核は$P_iQ(A)$であるので，$Q(A)/P_iQ(A)$は$A_{P_i}$の部分体である．一方で自然に$\Frac(A/P_i)\subset Q(A)/P_iQ(A)$であるから，$Q(A)/P_iQ(A)=A_{P_i}$であることがわかる．ゆえに$Q(A)\cong\prod A_{P_i}$である．よって$A\cong\prod A/P_i$は$Q(A)$で整閉であることから，各$A/P_i$は整閉整域である．
+		\[\varphi:\Frac(A/P_i)\to A_{P_i};\frac{x+P_i}{s+P_i}\mapsto x/s\]
+		を考えると，$x/s=0$ならばある$h\not\in P_i$が存在して$xh=0\in P_i$となるので$x+P_i=0$となり，$\varphi$は単射．また任意の$x/s\in A_{P_i}$について$x\not\in P_i$ならば$\varphi((x+P_i)/(s+P_i))=x/s$であり，$x/s\in P_iA_{P_i}$ならば$P_i=\ann y$となる$y\in A$について，$A$が被約なので$y\not\in P_i$だから$xy=0$となり$P_iA_{P_i}=0$，すなわち$\varphi(0)=x/s=0$である．以上より$\varphi$は全単射となり同型である．ここで，自然な準同型$Q(A)\to A_{P_i};x/s\mapsto x/s$を考えると，この核は$P_iQ(A)$であるので，$Q(A)/P_iQ(A)$は$A_{P_i}$の部分体である．一方で自然に$\Frac(A/P_i)\subset Q(A)/P_iQ(A)$であるから，$Q(A)/P_iQ(A)=A_{P_i}$であることがわかる．ゆえに$Q(A)\cong\prod A_{P_i}$である．よって$A\cong\prod A/P_i$は$Q(A)$で整閉であることから，各$A/P_i$は整閉整域である．
 	\end{step}
 	以上より$A$は整閉整域の直積なので正規であることが示された．
 \end{proof}
@@ -213,65 +213,65 @@
 体の理論において，拡大の次数を考えることができたことを思い出そう．一般の環拡大について同様の概念を考えたい．少し条件を制限して，整域$A$について全商環を考えるとこれは体になる．これを使って整域の拡大，とくに体上の有限型の代数について考えよう．まずは次の命題に倣って，元の超越性を複数個の場合に拡張しよう．
 
 \begin{prop}
-	$L/K$を体の拡大とする．$\alpha\in L$が$K$上超越的であることと，次の準同型；
-	\[\varphi:K[X]\longrightarrow L;f(X)\longmapsto f(\alpha)\]
+	$L/k$を体の拡大とする．$\alpha\in L$が$k$上超越的であることと，次の準同型；
+	\[\varphi:k[X]\longrightarrow L;f(X)\longmapsto f(\alpha)\]
 	が単射であることは同値である．
 \end{prop}
 
 \begin{proof}
-	$(\Longleftarrow$)は明らかだろう．$\alpha\in L$が$K$上超越的と仮定する．$\varphi(f)=\varphi(g)$としよう．このとき$\varphi(f-g)=(f-g)(\alpha)=0$となるが，$\alpha$は超越元なので$f-g=0$となり，$f=g$である．
+	$(\Longleftarrow$)は明らかだろう．$\alpha\in L$が$k$上超越的と仮定する．$\varphi(f)=\varphi(g)$としよう．このとき$\varphi(f-g)=(f-g)(\alpha)=0$となるが，$\alpha$は超越元なので$f-g=0$となり，$f=g$である．
 \end{proof}
 
 \begin{defi}[代数的に独立]\index{だいすうてきにどくりつ@代数的に独立}
-	$L/K$を体の拡大とする．$\nitem[r]{\alpha}\in L$に対し，
-	\[\varphi:K[\nitem[r]{X}]\longrightarrow L;f(\nitem[r]{X})\longmapsto f(\nitem[r]{\alpha})\]
-	が単射であるとき，$\nitem[r]{\alpha}$は$K$上\textbf{代数的に独立}(algebraically independent)であるという．また，部分集合$S\subset L$に対し，その任意の有限部分集合が代数的に独立であるとき，$S$を$K$上代数的に独立な集合であるという．
+	$L/k$を体の拡大とする．$\nitem[r]{\alpha}\in L$に対し，
+	\[\varphi:k[\nitem[r]{X}]\longrightarrow L;f(\nitem[r]{X})\longmapsto f(\nitem[r]{\alpha})\]
+	が単射であるとき，$\nitem[r]{\alpha}$は$k$上\textbf{代数的に独立}(algebraically independent)であるという．また，部分集合$S\subset L$に対し，その任意の有限部分集合が代数的に独立であるとき，$S$を$k$上代数的に独立な集合であるという．
 \end{defi}
 
 これを用いて超越次数を定義しよう．
 
 \begin{defi}[超越基底]\index{ちょうえつきてい@超越基底}\index{ちょうえつじすう@超越次数}
-	$L/K$を体の拡大とする．$\{\nitem[r]{\alpha}\}$が$K$上代数的に独立な集合で，$L/K(\nitem[r]{\alpha})$が代数拡大であるとき，$\nitem[r]{\alpha}$を$L/K$の\textbf{超越基底}(transcendental basis)といい，$r=\trdeg_K L$とかいてこれを\textbf{超越次数}(transcendence degree)という．
+	$L/k$を体の拡大とする．$\{\nitem[r]{\alpha}\}$が$k$上代数的に独立な集合で，$L/k(\nitem[r]{\alpha})$が代数拡大であるとき，$\nitem[r]{\alpha}$を$L/k$の\textbf{超越基底}(transcendental basis)といい，$r=\trdeg_k L$とかいてこれを\textbf{超越次数}(transcendence degree)という．
 \end{defi}
 
-$L/K$が代数拡大であるときは$\emptyset$を超越基底とし，$\trdeg_K L=0$と定める．超越次数のwell-definednessを示そう．
+$L/k$が代数拡大であるときは$\emptyset$を超越基底とし，$\trdeg_k L=0$と定める．超越次数のwell-definednessを示そう．
 
 \begin{prop}[超越次数のwell-definedness]
-	拡大$L/K$に対し，超越基底は存在し，その個数(濃度)は一致する．
+	拡大$L/k$に対し，超越基底は存在し，その個数(濃度)は一致する．
 \end{prop}
 \begin{proof}
 	超越基底が有限のときのみ示す．
 	\begin{step}
 		\item まず超越基底が存在することを示す．集合族:
 		\[\Sigma=\mkset{S}{S:\text{代数的に独立な集合}}\]
-		は空ではなく，包含関係により帰納的順序集合をなす．よってZornの補題より極大元$\mathcal{S}$が存在する．このとき，$L/K(\mathcal{S})$を考えると，ある$x\in L$が$K(\mathcal{S})$上代数的でないと仮定したとき，$\mathcal{S}\cup\{x\}$は代数的に独立で，$x\not\in\mathcal{S}$なので$\mathcal{S}$の極大性に反する．よって$L/K(\mathcal{S})$は代数拡大で，$\mathcal{S}$が超越基底となる．
+		は空ではなく，包含関係により帰納的順序集合をなす．よってZornの補題より極大元$\mathcal{S}$が存在する．このとき，$L/k(\mathcal{S})$を考えると，ある$x\in L$が$k(\mathcal{S})$上代数的でないと仮定したとき，$\mathcal{S}\cup\{x\}$は代数的に独立で，$x\not\in\mathcal{S}$なので$\mathcal{S}$の極大性に反する．よって$L/k(\mathcal{S})$は代数拡大で，$\mathcal{S}$が超越基底となる．
 			
-		\item 次数のwell-definednessを示そう．$\{\nitem[r]{\alpha}\}$と$\{\nitem[s]{\beta}\}$がどちらも$L/K$の超越基底であるとする．$s\leq r$を言えばよい．$L/K(\nitem[r]{\alpha})$は代数拡大なので，$\beta_1$は$K(\nitem[r]{\alpha})$上代数的．すなわち，$a_i\in K(\nitem[r]{\alpha})$によって，関係式；
+		\item 次数のwell-definednessを示そう．$\{\nitem[r]{\alpha}\}$と$\{\nitem[s]{\beta}\}$がどちらも$L/k$の超越基底であるとする．$s\leq r$を言えばよい．$L/k(\nitem[r]{\alpha})$は代数拡大なので，$\beta_1$は$k(\nitem[r]{\alpha})$上代数的．すなわち，$a_i\in k(\nitem[r]{\alpha})$によって，関係式；
 		\displaystar
 		\[a_n{\beta_1}^n+a_{n-1}{\beta_1}^{n-1}+\dots+a_1\beta_1+a_0=0\quad(a_n\neq0)\]
-		を満たす．$\beta_1$は$L/K$において超越的なので，少なくとも1つの$\alpha_i$が存在して，$a_0,\dots,a_n$のうち少なくとも1つには$\alpha_i$が表れる．番号を取り替えて，それを$\alpha_1$とすると，$(\ast)$は$\alpha_1$が$K(\alpha_2,\dots,\alpha_r,\beta_1)$上代数的であることを示している．すると，$L$の任意の元は$K(\nitem[r]{\alpha})$上代数的なので，$L/K(\alpha_2,\dots,\alpha_r,\beta_1)$は代数拡大である．すると，$\beta_2$は$K(\alpha_2,\dots,\alpha_r,\beta_1)$上代数的だから，$b_i\in K(\alpha_2,\dots,\alpha_r,\beta_1)$がとれて；
+		を満たす．$\beta_1$は$L/k$において超越的なので，少なくとも1つの$\alpha_i$が存在して，$a_0,\dots,a_n$のうち少なくとも1つには$\alpha_i$が表れる．番号を取り替えて，それを$\alpha_1$とすると，$(\ast)$は$\alpha_1$が$k(\alpha_2,\dots,\alpha_r,\beta_1)$上代数的であることを示している．すると，$L$の任意の元は$k(\nitem[r]{\alpha})$上代数的なので，$L/k(\alpha_2,\dots,\alpha_r,\beta_1)$は代数拡大である．すると，$\beta_2$は$k(\alpha_2,\dots,\alpha_r,\beta_1)$上代数的だから，$b_i\in k(\alpha_2,\dots,\alpha_r,\beta_1)$がとれて；
 		\[b_m{\beta_2}^m+\dots+b_1\beta_2+b_0=0\quad(b_m\neq0)\tag{($\ast\ast$)}\]
-		とできる．ここで，$\beta_1$と$\beta_2$は$K$上で代数的に独立だから，$b_i$の少なくとも1つには，$\alpha_2,\dots,\alpha_r$のうち1つ以上が表れる．番号を取り替えてそれを$\alpha_2$とすると，$(\ast\ast)$は$\alpha_2$の$K(\alpha_3,\dots,\alpha_r,\beta_1,\beta_2)$上の関係式と見ることができる．よって，同様の議論から$L/K(\alpha_3,\dots,\alpha_r,\beta_1，\beta_2)$は代数拡大．これを続けると$L/K(\alpha_{i+1},\dots,\alpha_r,\nitem[i]{\beta})$はすべて代数拡大である．
+		とできる．ここで，$\beta_1$と$\beta_2$は$k$上で代数的に独立だから，$b_i$の少なくとも1つには，$\alpha_2,\dots,\alpha_r$のうち1つ以上が表れる．番号を取り替えてそれを$\alpha_2$とすると，$(\ast\ast)$は$\alpha_2$の$k(\alpha_3,\dots,\alpha_r,\beta_1,\beta_2)$上の関係式と見ることができる．よって，同様の議論から$L/k(\alpha_3,\dots,\alpha_r,\beta_1，\beta_2)$は代数拡大．これを続けると$L/k(\alpha_{i+1},\dots,\alpha_r,\nitem[i]{\beta})$はすべて代数拡大である．
 		
-		ここで$r<s$を仮定する．$L/K(\alpha_r,\beta_1,\dots,\beta_{r-1})$は代数拡大で，$\beta_r$はこの上で代数的になる．いま$\{\nitem[r]{\beta}\}$は代数的に独立なので，先程の議論と同様に$\alpha_r$は$K(\nitem[r]{\beta})$上代数的である．しかし$\alpha_1,\dots,\alpha_{r-1}$は$K(\alpha_r,\nitem[r]{\beta})$上代数的なので，$L/K(\nitem[r]{\beta})$は代数拡大になり矛盾．よって$r\leq s$であることがわかった．
+		ここで$r<s$を仮定する．$L/k(\alpha_r,\beta_1,\dots,\beta_{r-1})$は代数拡大で，$\beta_r$はこの上で代数的になる．いま$\{\nitem[r]{\beta}\}$は代数的に独立なので，先程の議論と同様に$\alpha_r$は$k(\nitem[r]{\beta})$上代数的である．しかし$\alpha_1,\dots,\alpha_{r-1}$は$k(\alpha_r,\nitem[r]{\beta})$上代数的なので，$L/k(\nitem[r]{\beta})$は代数拡大になり矛盾．よって$r\leq s$であることがわかった．
 	\end{step}
 \end{proof}
 
 \begin{defi}
-	$K$を体とする．$K$代数$A$が整域であるとき，体の拡大$\Frac A/K$の超越次数を$A$の($K$上の)超越次数と定義し，$\trdeg_K A$とかく．
+	$k$を体とする．$k$代数$A$が整域であるとき，体の拡大$\Frac A/k$の超越次数を$A$の（$k$上の）超越次数と定義し，$\trdeg_k A$とかく．
 \end{defi}
 
 \begin{prop}\label{prop:weeknullstellensatzの補題}
-	$K$を体とし，$A$を$k$上の有限型整域とすると，0でない$A$の素イデアル$P$に対し，
-	\[\trdeg_K A/P<\trdeg_K A\]
+	$k$を体とし，$A$を$k$上の有限型整域とすると，0でない$A$の素イデアル$P$に対し，
+	\[\trdeg_k A/P<\trdeg_k A\]
 	が成り立つ．
 \end{prop}
 
 \begin{proof}
-	仮定から$K[\nitem{X}]$の0でない素イデアル$P'$が存在して$A=K[\nitem{X}]/P'$とかけている．簡単のため$K[X]=K[\nitem{X}]$と略記しよう．このとき，$P\subset Q$となる素イデアル$Q$について$\trdeg K[X]/Q<\trdeg K[X]/P$を示せば良い．$m=\trdeg A$とし，$m\leq\trdeg K[X]/Q，r=\trdeg K[X]/Q$とおき，$m\leq r$と仮定する．それぞれ$K[X]/P=K[\nitem{\alpha}]，K[X]/Q=K[\nitem\beta]$とし，適切に並べ替えて$\nitem[r]{\beta}$を$K[X]/Q$の超越基とする．また$\nitem[m]{\alpha}\in K[\nitem\alpha]$を自然な準同型$K[\nitem\alpha]\longrightarrow K[\nitem\beta]$において$\nitem[m]{\beta}$に移すものとする．また，$P，Q$はそれぞれ次の代入する写像；
-	\[\varphi:K[\nitem{X}]\longrightarrow K[\nitem\alpha]\]
-	\[\psi:K[\nitem{X}]\longrightarrow K[\nitem\beta]\]
-	の核であるので，$\alpha_i$の組の関係式が存在すれば，それは対応する$\beta_i$の組の関係式でもある．さて，任意の$0$でない$q\in Q$をとると，$\trdeg K[X]/P=m$だから，$p,\nitem[m]{\alpha}$は代数的に独立でない．よって，ある$K$上の多項式$f$が存在して$f(q,\nitem[m]{\alpha})=0$とできる．すると，$f(p,\nitem[m]{X})$は0でない関係式であり，これにより$\nitem[m]{\beta}$が消える．これは矛盾である．
+	仮定から$k[\nitem{X}]$の0でない素イデアル$P'$が存在して$A=k[\nitem{X}]/P'$とかけている．簡単のため$k[X]=k[\nitem{X}]$と略記しよう．このとき，$P\subset Q$となる素イデアル$Q$について$\trdeg k[X]/Q<\trdeg k[X]/P$を示せばよい．$m=\trdeg A$とし，$m\leq\trdeg k[X]/Q，r=\trdeg k[X]/Q$とおき，$m\leq r$と仮定する．それぞれ$k[X]/P=k[\nitem{\alpha}]，k[X]/Q=k[\nitem\beta]$とし，適切に並べ替えて$\nitem[r]{\beta}$を$k[X]/Q$の超越基とする．また$\nitem[m]{\alpha}\in k[\nitem\alpha]$を自然な準同型$k[\nitem\alpha]\longrightarrow k[\nitem\beta]$において$\nitem[m]{\beta}$に移すものとする．また，$P，Q$はそれぞれ次の代入する写像；
+	\[\varphi:k[\nitem{X}]\longrightarrow k[\nitem\alpha]\]
+	\[\psi:k[\nitem{X}]\longrightarrow k[\nitem\beta]\]
+	の核であるので，$\alpha_i$の組の関係式が存在すれば，それは対応する$\beta_i$の組の関係式でもある．さて，任意の$0$でない$q\in Q$をとると，$\trdeg k[X]/P=m$だから，$p,\nitem[m]{\alpha}$は代数的に独立でない．よって，ある$k$上の多項式$f$が存在して$f(q,\nitem[m]{\alpha})=0$とできる．すると，$f(p,\nitem[m]{X})$は0でない関係式であり，これにより$\nitem[m]{\beta}$が消える．これは矛盾である．
 \end{proof}
 
 \begin{lem}[Artin--Tateの補題]\label{lem:Artin-Tateの補題}
@@ -285,39 +285,39 @@ $L/K$が代数拡大であるときは$\emptyset$を超越基底とし，$\trdeg
 \end{proof}
 
 \begin{prop}[Zariskiの補題]\label{prop:Zariskiの補題}
-	$K$を体とし，$L$を$K$上の有限型代数とする．このとき，$L$が体ならば体の拡大$L/K$は有限次拡大である．
+	$k$を体とし，$L$を$k$上の有限型代数とする．このとき，$L$が体ならば体の拡大$L/k$は有限次拡大である．
 \end{prop}
 
 \begin{proof}
-	$L=K[x_1,\dots,x_n]$としよう．$L$が$K$上代数的でないと仮定すると，並び替えることで$x_1，\dots x_r$は$k$上代数的に独立で，$x_{r+1},\dots，x_n$は$F=K(x_1,\dots,x_r)$上代数的であるようにとれる．このとき$L$は$F$の有限次拡大体となるので，$F$加群として有限生成である．
+	$L=k[x_1,\dots,x_n]$としよう．$L$が$k$上代数的でないと仮定すると，並び替えることで$x_1，\dots x_r$は$k$上代数的に独立で，$x_{r+1},\dots，x_n$は$F=k(x_1,\dots,x_r)$上代数的であるようにとれる．このとき$L$は$F$の有限次拡大体となるので，$F$加群として有限生成である．
 	
-	Artin--Tateの補題（\ref{lem:Artin-Tateの補題}）から$F$は有限型$K$代数である．$F=K(x_1,\dots,x_r)$であったので，$f_i,g_i\in K[x_1,\dots,x_r]$が存在して；
-	\[F=K[g_1/f_1,\dots,g_s/f_s]\]
-	とかける．すると$f=f_1\dots f_s$とおくと，$F=K[x_1,\dots,x_r][1/f]$と表せる．さて$1/(f+1)\in K(x_1,\dots,x_r)=F$より，多項式$h\in K[x_1,\dots,x_r][X]$が存在して$1/(f+1)=h(1/f)$となる．よって$N\gg0$をとれば$f^N/(f+1)\in K[x_1,\dots,x_r]$とかける．$N$をこのような条件を満たすものの中で最小のものとしよう．このとき$g\in K[x_1,\dots,x_r]$が存在して$f^N=gf+g$とかけている．$N\geq1$と仮定すると；
-	\[g/f=f^{N-1}+g\in K[x_1,\dots,x_r]\]
-	となるので，$g$は$f$で割り切れる．これは$N$の最小性に矛盾．よって$N=0$である．すなわち$1/(f+1)\in K[x_1,\dots,x_r]$となり，$f\in K$でなければならない．
+	Artin--Tateの補題（\ref{lem:Artin-Tateの補題}）から$F$は有限型$k$代数である．$F=k(x_1,\dots,x_r)$であったので，$f_i,g_i\in k[x_1,\dots,x_r]$が存在して；
+	\[F=k[g_1/f_1,\dots,g_s/f_s]\]
+	とかける．すると$f=f_1\dots f_s$とおくと，$F=k[x_1,\dots,x_r][1/f]$と表せる．さて$1/(f+1)\in k(x_1,\dots,x_r)=F$より，多項式$h\in k[x_1,\dots,x_r][X]$が存在して$1/(f+1)=h(1/f)$となる．よって$N\gg0$をとれば$f^N/(f+1)\in k[x_1,\dots,x_r]$とかける．$N$をこのような条件を満たすものの中で最小のものとしよう．このとき$g\in k[x_1,\dots,x_r]$が存在して$f^N=gf+g$とかけている．$N\geq1$と仮定すると；
+	\[g/f=f^{N-1}+g\in k[x_1,\dots,x_r]\]
+	となるので，$g$は$f$で割り切れる．これは$N$の最小性に矛盾．よって$N=0$である．すなわち$1/(f+1)\in k[x_1,\dots,x_r]$となり，$f\in k$でなければならない．
 	
-	よって$F=K[x_1,\dots,x_r]$とかけるが，$F=K(x_1,\dots,x_r)$であったことに矛盾．よって$L$は$K$上代数的である．
+	よって$F=k[x_1,\dots,x_r]$とかけるが，$F=k(x_1,\dots,x_r)$であったことに矛盾．よって$L$は$k$上代数的である．
 \end{proof}
 
 Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（\ref{thm:Nullstellensatz}）の弱い形である次の定理を示しておこう．
 
 \begin{thm}[弱零点定理，week nullstellensatz]\index{じゃくれいてんていり@弱零点定理}\label{thm:week nullstellensatz}
-	$K$が代数閉体であるとき，$K[\nitem{X}]$のすべての極大イデアル$\ideal{m}$は，ある$\nitem{a}\in K$が存在して；
+	$k$が代数閉体であるとき，$k[\nitem{X}]$のすべての極大イデアル$\ideal{m}$は，ある$\nitem{a}\in k$が存在して；
 	\[\ideal{m}=(X_1-a_1,X_2-a_2,\dots,X_n-a_n)\]
 	と表せる．
 \end{thm}
 \begin{proof}
-	簡単のため$K[\nitem{X}]=K[X]$とかく．$\ideal{m}$が極大であるから，$K[X]/\ideal{m}$は体である．すると，\ref{prop:Zariskiの補題}より$K[X]/\ideal{m}$は$K$代数拡大体であるので，$K$が代数閉体だから$K[X]/\ideal{m}\cong K$である．すると，適当な全準同型写像$\varphi:K[X]/\ideal{m}\twoheadrightarrow K$が存在する．ここで$\varphi(X_i)=a_i$とすれば，明らかに\displaystar
+	簡単のため$k[\nitem{X}]=k[X]$とかく．$\ideal{m}$が極大であるから，$k[X]/\ideal{m}$は体である．すると，\ref{prop:Zariskiの補題}より$k[X]/\ideal{m}$は$k$代数拡大体であるので，$k$が代数閉体だから$k[X]/\ideal{m}\cong k$である．すると，適当な全準同型写像$\varphi:k[X]/\ideal{m}\twoheadrightarrow k$が存在する．ここで$\varphi(X_i)=a_i$とすれば，明らかに\displaystar
 	\[(X_1-a_1,\dots,X_n-a_n)\subset\ker\varphi=\ideal{m}\]
 	である．また，$(X_1-a_1,\dots,X_n-a_n)$は$a=(a_1,\dots,a_n)$とするときの点$a$の代入写像；
-	\[\phi_a:K[\nitem{X}]\longrightarrow K;f\longmapsto f(a)=f(a_1,\dots,a_n)\]
-	の核であるので，同型$K[X]/(X_1-a_1,\dots,X_n-a_n)\cong K$がなりたち，$(X_1-a_1,\dots,X_n-a_n)$は極大イデアルである．よって$(\ast)$において等号が成り立つことがわかる．
+	\[\phi_a:k[\nitem{X}]\longrightarrow k;f\longmapsto f(a)=f(a_1,\dots,a_n)\]
+	の核であるので，同型$k[X]/(X_1-a_1,\dots,X_n-a_n)\cong k$がなりたち，$(X_1-a_1,\dots,X_n-a_n)$は極大イデアルである．よって$(\ast)$において等号が成り立つことがわかる．
 \end{proof}
 \section{Krull次元と超越次元}
 
 まず，環の次元の１つを定義する．環に次元を導入する方法はいくつかあるが，ある仮定のもとでそれらは一致してしまう（Krullの次元定理，\ref{thm:Krullの次元定理}）．ここでは１番初等的に導入が行えるKrull次元というものを紹介しよう．
-\begin{defi}[Krull次元]\index{#Krullじげん@Krull次元}\label{defi:Kurll次元}
+\begin{defi}[Krull次元]\index{#Krullじげん@Krull次元}\label{defi:Krull次元}
 		環$A$に対し，素イデアルの真の増大列
 		\[P_*:P_0\subsetneq P_1\subsetneq\dots\subsetneq P_n\]
 		に対して，$n$を列$ P_*$の\textbf{長さ}という．最長の素イデアルの列の長さを，環$A$のKrull\textbf{次元}といい，$\dim A$とかく．
@@ -369,12 +369,12 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	\end{sakura}
 \end{proof}
 	
-この命題の(iii)の不等式がいつ成り立つか，というのは重要な命題である．それについての一つの結果が\ref{prop:DIM}である．
+この命題の(iii)の不等式がいつ成り立つか，というのは重要な命題であり，それについての一つの結果が\ref{prop:DIM}である．
 
 ここでは次の定理により，具体的な環の次元を計算する方法の１つを紹介しよう．
 
 \begin{thm}
-	体$K$上有限生成な整域$A$に対し，$\dim A=\trdeg_K A$である．
+	体$k$上有限生成な整域$A$に対し，$\dim A=\trdeg_k A$である．
 \end{thm}
 \begin{proof}
 	\begin{step}
@@ -386,17 +386,17 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 		
 		\item $\trdeg A\leq\dim A$であること．
 		
-		$\trdeg A=n$とおく．基礎体$K$を動かすと$n$が動く．$n$についての帰納法で示す．まず，$n=0$のときは明らかに$0\leq\dim A$である．次に，$n-1$で正しいとする．$\trdeg A=n$となる$A$を，$A=K[\nitem[r]{\alpha}]$とおく．すべての$\alpha_i$は代数的でないから，$\alpha_1$が$K$上超越的としてよい．$S=K[\alpha_1]\setminus\{0\}$は積閉で，これで局所化すると$A_S=K(\alpha_1)[\alpha_2,\dots,\alpha_r]$となる．$K(\alpha_1)=K'$とすると，$\trdeg_K' A_S=n-1$であるので，帰納法の仮定から（任意の基礎体について成り立っているので）$n-1\leq\dim A_S$である．ゆえに，$A_S$の素イデアルの列；
+		$n=\trdeg A$についての帰納法で示す．まず$n=0$のときは明らかに$0\leq\dim A$である．次に$\trdeg A=n-1$となるすべての$A$について正しいとする．$\trdeg A=n$となる$A$を，$A=k[\nitem[r]{\alpha}]$とおく．すべての$\alpha_i$は代数的でないから，$\alpha_1$が$k$上超越的としてよい．$S=k[\alpha_1]\setminus\{0\}$は積閉で，これで局所化すると$A_S=k(\alpha_1)[\alpha_2,\dots,\alpha_r]$となる．$k(\alpha_1)=k'$とすると，$\trdeg_k' A_S=n-1$であるので，帰納法の仮定から（任意の基礎体について成り立っているので）$n-1\leq\dim A_S$である．ゆえに，$A_S$の素イデアルの列；
 		\[ P _0\subsetneq P _1\subsetneq\dots\subsetneq P _{n-1}\]
 		がとれる．よって\ref{prop:Spec S^-1Aの引き戻し}より$ Q _i\cap S=\emptyset$となる$A$の素イデアルの列；
 		\[ Q _0\subsetneq\dots\subsetneq Q _{n-1}\]
-		がとれる．ここで，$ Q _{n-1}$が極大でなければ$ Q _{n-1}\subsetneq Q _n$となる真のイデアル$ Q _n$が存在するので，$A/ Q _{n-1}$が体でないことを示せばよい．さて，$ Q _{n-1}\cap S=( Q _{n-1}\cap K[\alpha_1])\setminus\{0\}=\emptyset$であるので，$\alpha_1\not\in Q _{n-1}$である．そこで，もし$\bar{\alpha_1}\in A/ Q _{n-1}$が$K$上代数的であると仮定すると，$f(\bar{\alpha_1})=0$となる$K$上の多項式$f$があり，これは$f(\alpha_1)\in Q _{n-1}$を意味する．ところが$f(\alpha_1)\in K[\alpha_1]$であるから，矛盾．よって$\bar{\alpha_1}$は$A/ Q _{n-1}$の超越的な元であるから，$\trdeg_K A/ Q _{n-1}>0$である．よって\ref{prop:Zariskiの補題}より$A/ Q _{n-1}$は体ではない．よって$n\leq\dim A$が示された．
+		がとれる．ここで，$ Q _{n-1}$が極大でなければ$ Q _{n-1}\subsetneq Q _n$となる真のイデアル$ Q _n$が存在するので，$A/ Q _{n-1}$が体でないことを示せばよい．さて，$ Q _{n-1}\cap S=( Q _{n-1}\cap k[\alpha_1])\setminus\{0\}=\emptyset$であるので，$\alpha_1\not\in Q _{n-1}$である．そこで，もし$\bar{\alpha_1}\in A/ Q _{n-1}$が$k$上代数的であると仮定すると，$f(\bar{\alpha_1})=0$となる$k$上の多項式$f$があり，これは$f(\alpha_1)\in Q _{n-1}$を意味する．ところが$f(\alpha_1)\in k[\alpha_1]$であるから，矛盾．よって$\bar{\alpha_1}$は$A/ Q _{n-1}$の超越的な元であるから，$\trdeg_k A/ Q _{n-1}>0$である．よって\ref{prop:Zariskiの補題}より$A/ Q _{n-1}$は体ではない．よって$n\leq\dim A$が示された．
 	\end{step}
 \end{proof}
 
 この定理の系として，直感的な次の事実が得られる．
 \begin{cor}\label{cor:多項式環の次元}
-	$\dim K[\nitem{X}]=n$である．また，$n\neq m$なら$K[\nitem{X}]$と$K[\nitem[m]{X}]$は同型ではない．
+	$\dim k[\nitem{X}]=n$である．また，$n\neq m$なら$k[\nitem{X}]$と$k[\nitem[m]{X}]$は同型ではない．
 \end{cor}
 
 環の次元$\dim A$は幾何的には$\spec A$の次元である．加群の次元については$\supp M$の（幾何的な）次元をもって定義しよう．$A$加群$M$が有限生成なら$V(\ann M)=\supp M$である（\ref{prop:Zariskiの閉集合とsupp}）．そこで一般の加群についても$\dim M=\dim (A/\ann M)$と定義する．
@@ -504,11 +504,11 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 \end{proof}
 
 \begin{prop}\label{prop:整なら最小多項式が根基からとれる}
-	$A\subset B$を整域の拡大とし，さらに$A$は整閉であるとする．$A$のイデアル$I$と$x\in\bar{I}_B$について，$x$の$K=\Frac A$上の最小多項式$F_x=T^n+c_1T^{n-1}+\dots+c_n$をとると，$c_i\in\sqrt{I}$とできる．
+	$A\subset B$を整域の拡大とし，さらに$A$は整閉であるとする．$A$のイデアル$I$と$x\in\bar{I}_B$について，$x$の$k=\Frac A$上の最小多項式$F_x=T^n+c_1T^{n-1}+\dots+c_n$をとると，$c_i\in\sqrt{I}$とできる．
 \end{prop}
 
 \begin{proof}
-	$I$上整なので，$K$上代数的なことは明らか．$F_x$のすべての根を$x=x_1,\dots,x_m$とし，それらを$K$に添加した体を$L$とすると，各$x_j$は$x$と同じ関係式によって$I$上整である．すると，$L$において$F_x$の係数$c_i$は$x_j$の多項式であるので，$c_i$は$I$上整である．すると，$c_i\in K$であったから$c_i\in\bar{I}_K$である．ここで，補題を$A\subset K$について考えると，$A$は整閉なので$I'=I$であるから$c_i\in\bar{I}_K=\sqrt{I}$である．
+	$I$上整なので，$k$上代数的なことは明らか．$F_x$のすべての根を$x=x_1,\dots,x_m$とし，それらを$k$に添加した体を$L$とすると，各$x_j$は$x$と同じ関係式によって$I$上整である．すると，$L$において$F_x$の係数$c_i$は$x_j$の多項式であるので，$c_i$は$I$上整である．すると，$c_i\in k$であったから$c_i\in\bar{I}_k$である．ここで，補題を$A\subset k$について考えると，$A$は整閉なので$I'=I$であるから$c_i\in\bar{I}_k=\sqrt{I}$である．
 \end{proof}
 
 \begin{thm}[下降定理]\label{thm:going down}\index{かこうていり@下降定理}
@@ -516,7 +516,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 \end{thm}
 
 \begin{proof}
-	上昇定理と同様に$n=2$の場合に帰着できる．$P_2'$が$B$で生成するイデアルを$BP_2'$とかく．$B_{P_1}$について同様に考えると，\ref{prop:上にイデアルがあることの同値条件}より$B_{P_1}P_2'\cap A=P_2'$を示せば良いことがわかる．
+	上昇定理と同様に$n=2$の場合に帰着できる．$P_2'$が$B$で生成するイデアルを$BP_2'$とかく．$B_{P_1}$について同様に考えると，\ref{prop:上にイデアルがあることの同値条件}より$B_{P_1}P_2'\cap A=P_2'$を示せばよいことがわかる．
 	
 	$x/s\in B_{P_1}P_2'\cap A$をとる．このとき$x\in BP_2'，s\in B-P_1$である．ここで\ref{lem:イデアルの整閉包と根基}において$B$が$A$上整なので$\bar{A}_B=B$であり，$\sqrt{BP_2'}=\bar{P_2'}_B$となるので$x$は$P_2'$上整である．すると\ref{prop:整なら最小多項式が根基からとれる}より，$x$の$\Frac A$上の最小多項式は；
 	\[F_x=T^n+a_1T^{n-1}+\dots+a_n\quad(a_i\in P_2')\]
@@ -562,7 +562,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 %を証明しよう，ということである．この定理は代数幾何学で大活躍する．
 
 \begin{lem}\label{lem:正規化の補題1}
-	$K[X_1,\dots,X_n]$について，任意の$f\in K[X_1,\dots,X_n]$に対し，$f\not\in K$ならば，与えられた自然数$q$の倍数$m_2,\dots,m_n$が存在して，$y_1=f_1,y_2=X_2+X_1^{m_2},\dots,y_n=X_n+X_1^{m_n} (m_i\leq0)$とおくとき$K[X_1,\dots,X_n]$は$K[y_1,\dots,y_n]$上整である．
+	$k[X_1,\dots,X_n]$について，任意の$f\in k[X_1,\dots,X_n]$に対し，$f\not\in k$ならば，与えられた自然数$q$の倍数$m_2,\dots,m_n$が存在して，$y_1=f_1,y_2=X_2+X_1^{m_2},\dots,y_n=X_n+X_1^{m_n} (m_i\leq0)$とおくとき$k[X_1,\dots,X_n]$は$k[y_1,\dots,y_n]$上整である．
 \end{lem}
 
 \begin{proof}
@@ -570,13 +570,13 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	\[M=X_1^{\sum k_it^{i-1}}+(X_1\text{について低次の}X_1,y_2,\dots,y_n\text{の項})\]
 	である．そこで$\omega(M)=\sum k_it^{i-1}$とおく．$f$を構成する単項式$M=X_1^{k_1}\dots X_n^{k_n}，M'=X_1^{l_1}\dots，X_n^{l_n}$に対して，辞書式順序において$(l_n,\dots,l_1)\leq (k_n,\dots,k_1)$ならば$\omega(M')\leq\omega(M)$となるから，$M_i$のうちで$\omega(M)$が最大のものは唯一つしかない．それを$M_1$とおく．このとき；
 	\[f=a_1X_1^{\omega(M_1)}+(X_1\text{について低次の}X_1,y_2,\dots,y_n\text{の項})\]
-	であるので，$y_1=f$であったことを思い出すと，$X_1$は$K[y_1,\dots,y_n]$を係数とする多項式；
+	であるので，$y_1=f$であったことを思い出すと，$X_1$は$k[y_1,\dots,y_n]$を係数とする多項式；
 	\[X^{\omega(M_1)}+(X\text{についての低次の項})+\frac{1}{a_1}y_1\]
-	の根である．よって$X_1$は$K[y_1,\dots,y_n]$上整である．すると，$2\leq i$について$X_i$は$X_1,y_i$でかけているので，$K[X_1,\dots,X_n]$は$K[y_1,\dots,y_n]$上で整である．
+	の根である．よって$X_1$は$k[y_1,\dots,y_n]$上整である．すると，$2\leq i$について$X_i$は$X_1,y_i$でかけているので，$k[X_1,\dots,X_n]$は$k[y_1,\dots,y_n]$上で整である．
 \end{proof}
 
 \begin{thm}[多項式環の正規化定理]
-	$K[X_1,\dots,X_n]$とそのイデアル$I$を考える．$\idht I=r$のとき，$y_1,\dots,y_n\in K[X_1,\dots,X_n]$が存在して，$K[X_1,\dots,X_n]$は$K[y_1,\dots,y_n]$上整であって，$K[\nitem{y}]$のイデアルとして$I\cap K[\nitem[n]{y}]=(\nitem[r]{y})$とできる．
+	$k[X_1,\dots,X_n]$とそのイデアル$I$を考える．$\idht I=r$のとき，$y_1,\dots,y_n\in k[X_1,\dots,X_n]$が存在して，$k[X_1,\dots,X_n]$は$k[y_1,\dots,y_n]$上整であって，$k[\nitem{y}]$のイデアルとして$I\cap k[\nitem[n]{y}]=(\nitem[r]{y})$とできる．
 \end{thm}
 
 \begin{proof}
@@ -584,17 +584,17 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	
 	\begin{step}\item $r=0$のときは$I=0$なので$y_i=X_i$とすればよい．
 	
-	\item	$I'\subset I$を$\idht I'=r-1$となるものとする．帰納法の仮定から$\nitem{y'}$で$I'\cap K[\nitem{y'}]=(\nitem[r]{y'})\subset I\cap K[\nitem{y'}]$となるものがとれる．\ref{cor:上にあるイデアルの高さ}より$\idht I'\cap K[\nitem{y'}]=r-1,\idht I\cap K[\nitem{y'}]=r$であるので，ある$f\in I\cap K[\nitem{y'}]$で$f\not\in I'\cap K[\nitem{y'}]$となるものがある．$I'\cap K[\nitem{y'}]=(\nitem[r]{y'})$より，$f(0,\dots,0,y_r',\dots,y_n')$も同じ条件を満たす．よって$f\in K[\nitem<r>{y'}]$としてよい．ここで\ref{lem:正規化の補題1}を用いると$y''_r=f,\dots,y''_n$で$K[\nitem<r>{y'}]$が$K[\nitem<r>{y''}]$上整であるものがとれる．ここで；
+	\item	$I'\subset I$を$\idht I'=r-1$となるものとする．帰納法の仮定から$\nitem{y'}$で$I'\cap k[\nitem{y'}]=(\nitem[r]{y'})\subset I\cap k[\nitem{y'}]$となるものがとれる．\ref{cor:上にあるイデアルの高さ}より$\idht I'\cap k[\nitem{y'}]=r-1,\idht I\cap k[\nitem{y'}]=r$であるので，ある$f\in I\cap k[\nitem{y'}]$で$f\not\in I'\cap k[\nitem{y'}]$となるものがある．$I'\cap k[\nitem{y'}]=(\nitem[r]{y'})$より，$f(0,\dots,0,y_r',\dots,y_n')$も同じ条件を満たす．よって$f\in k[\nitem<r>{y'}]$としてよい．ここで\ref{lem:正規化の補題1}を用いると$y''_r=f,\dots,y''_n$で$k[\nitem<r>{y'}]$が$k[\nitem<r>{y''}]$上整であるものがとれる．ここで；
 	\[y_1=y_1',\dots,y_{r-1}=y_{r-1}', y_r=y_r'',\dots,y_n=y_n''\]
-	とすると$K[\nitem{X}]$は$K[\nitem{y}]$上整で，$I\cap K[\nitem{y}]\supset (\nitem[r]{y})$であって$\idht(\nitem[r]{y})\geq r$だから$\supsetneq$ではありえず，$I\cap K[\nitem{y}]=(\nitem[r]{y})$である．
+	とすると$k[\nitem{X}]$は$k[\nitem{y}]$上整で，$I\cap k[\nitem{y}]\supset (\nitem[r]{y})$であって$\idht(\nitem[r]{y})\geq r$だから$\supsetneq$ではありえず，$I\cap k[\nitem{y}]=(\nitem[r]{y})$である．
 	\end{step}
 \end{proof}
 \begin{thm}[Noetherの正規化定理]\index{#Noetherのせいきかていり@Noetherの正規化定理}\label{thm:正規化定理}
-	$K$を体，$A$を有限生成$K$代数とする．このとき，$K$上代数的に独立であるような$z_1,\dots,z_s\in A$がとれて，$A$は$K[z_1,\dots,z_s]$上整である．
+	$k$を体，$A$を有限生成$k$代数とする．このとき，$k$上代数的に独立であるような$z_1,\dots,z_s\in A$がとれて，$A$は$k[z_1,\dots,z_s]$上整である．
 \end{thm}
 
 \begin{proof}
-	$A$が有限生成$K$代数であるから，全準同型$\varphi:K[\nitem{X}]\to A$が存在する．$I=\ker\varphi, \idht I=r$とおき，前定理を適用して$\nitem{y}$を得る．$y_{r+j}$の$\varphi$による像を$z_j$とすると，$K[\nitem{X}]$は$K[\nitem{y}]$上整なので，$A=\varphi(K[\nitem{X}])$は$K[\nitem[n-r]{z}]=\varphi(K[\nitem{y}])$上整である．よって$\nitem[n-r]{z}$が$K$上代数的に独立ならばよい．$z_i$についての関係式があったとすると，それの$z_i$を$y_{r+i}$に置き換えたものは$I=\ker\varphi$の元であるが，$I\cap K[\nitem{y}]=(\nitem[r]{y})$なので係数は0である．よって代数的に独立となり，主張が従う．
+	$A$が有限生成$k$代数であるから，全準同型$\varphi:k[\nitem{X}]\to A$が存在する．$I=\ker\varphi, \idht I=r$とおき，前定理を適用して$\nitem{y}$を得る．$y_{r+j}$の$\varphi$による像を$z_j$とすると，$k[\nitem{X}]$は$k[\nitem{y}]$上整なので，$A=\varphi(k[\nitem{X}])$は$k[\nitem[n-r]{z}]=\varphi(k[\nitem{y}])$上整である．よって$\nitem[n-r]{z}$が$k$上代数的に独立ならばよい．$z_i$についての関係式があったとすると，それの$z_i$を$y_{r+i}$に置き換えたものは$I=\ker\varphi$の元であるが，$I\cap k[\nitem{y}]=(\nitem[r]{y})$なので係数は0である．よって代数的に独立となり，主張が従う．
 \end{proof}
 
 Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf{鎖状環}と呼ばれる環になることがわかる．
@@ -605,7 +605,7 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 \end{defi}
 
 \begin{thm}\label{thm:体上有限生成整域は鎖状環}
-	体$K$上有限生成な整域$A$に対して，飽和した素イデアル鎖$P_0\subsetneq\dots\subsetneq P_t$について；
+	体$k$上有限生成な整域$A$に対して，飽和した素イデアル鎖$P_0\subsetneq\dots\subsetneq P_t$について；
 	\[t=\dim A/P_0-\dim A/P_t\]
 	である．つまり$A$は鎖状環である．
 \end{thm}
@@ -613,7 +613,7 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 \begin{proof}
 	$0=P_0\subset\dots\subset P_t$が飽和していて，$P_t$が極大であるとする．環を適当に割ることで上の状態に帰着できるので，これについて$t$についての帰納法を用いて，$t=\dim A$を示せばよい．
 		
-	$t=0$のとき，$A$は体であるので明らか．$t-1$まで正しいとする．$\dim A=\trdeg A=d$とおくと，Noetherの正規化定理より，$\nitem[d]{z}\in A$が存在して$A$は$K[\nitem[d]{z}]$上整である．ここで，任意の$i$について$z_i\not\in P_1$と仮定する．このとき$P_1\cap K[\nitem[d]{z}]\subset K$なので，$P_1\cap K[\nitem[d]{z}]=0$である．ところが\ref{cor:上にあるイデアルの高さ}より$1=\idht P_1=\idht (P_1\cap K[\nitem[d]{z}])$であるので矛盾．よって$z_1\in P_1$としてよい．このとき$z_j\not\in P_1 (j\neq1)$に注意して，$A/P_1$と$K[\nitem[d]{z}]/(P_1\cap K[\nitem[d]{z}])=K[\nitem<2>[d]{z}]$について帰納法の仮定から$t-1=d-1$である．よって$t=d$である．
+	$t=0$のとき，$A$は体であるので明らか．$t-1$まで正しいとする．$\dim A=\trdeg A=d$とおくと，Noetherの正規化定理より，$\nitem[d]{z}\in A$が存在して$A$は$k[\nitem[d]{z}]$上整である．ここで，任意の$i$について$z_i\not\in P_1$と仮定する．このとき$P_1\cap k[\nitem[d]{z}]\subset k$なので，$P_1\cap k[\nitem[d]{z}]=0$である．ところが\ref{cor:上にあるイデアルの高さ}より$1=\idht P_1=\idht (P_1\cap k[\nitem[d]{z}])$であるので矛盾．よって$z_1\in P_1$としてよい．このとき$z_j\not\in P_1 (j\neq1)$に注意して，$A/P_1$と$k[\nitem[d]{z}]/(P_1\cap k[\nitem[d]{z}])=k[\nitem<2>[d]{z}]$について帰納法の仮定から$t-1=d-1$である．よって$t=d$である．
 \end{proof}
 
 鎖状環の準同型像はまた鎖状環であることに注意すると，体上の有限生成代数はすべて鎖状環である．そこで次の定義をする．
@@ -622,7 +622,7 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 	Noether環$A$であって，任意の有限生成$A$代数が鎖状であるものを\textbf{強鎖状環}(univarsally catenary ring)であるという．
 \end{defi}
 
-先に述べたことから$A$が強鎖状であることと，すべての$n$について$A[X_1,\dots,X_n]$が鎖状であることは同値であり，体$K$は強鎖状である．
+先に述べたことから$A$が強鎖状であることと，すべての$n$について$A[X_1,\dots,X_n]$が鎖状であることは同値であり，体$k$は強鎖状である．
 
 鎖状環というトピックは\ref{prop:htとcohtの定義} (iii)の不等式と関係している．明らかに$A$が局所整域（極大イデアルと極小イデアルが一意的）で鎖状ならば，等号が成り立つ．すなわち，任意の$P\in\spec A$について；
 \[\idht P +\coht P =\dim A\]
@@ -637,7 +637,7 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 この表現のもとで，先に述べたことは局所整域である鎖状環において弱次元公式が成り立つ，と言い換えることができる．ではその逆，弱次元公式が成り立つ局所整域$A$は鎖状環である，は成り立つだろうか？これは$A$がNoether局所整域ならば正しい(Ratliff,1972)がその証明は難しい（\cite{matsu}，定理31.4.）．一方で，鎖状どころか強鎖状環ですら弱次元公式が成り立たない例が存在する（\ref{ex:鎖状だがht P+coht P<dim P}）．しかし，実用の面では\ref{thm:体上有限生成整域は鎖状環}により次の結果が従う．
 
 \begin{prop}\label{prop:DIM}
-	体$K$上の有限生成整域$A$において弱次元公式が成り立つ．
+	体$k$上の有限生成整域$A$において弱次元公式が成り立つ．
 \end{prop}
 
 \begin{proof}
@@ -645,7 +645,7 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 \end{proof}
 
 ところで，\textbf{次元公式}と呼ばれる等式も存在する．$A$をNoether整域，$B$を$A$上の有限生成整域とする．任意の$P\in\spec B$と$P'=P\cap A$について；
-\[\idht P+\trdeg_{K(P')} K(P)=\idht P'+\trdeg_{\Frac(A)} \Frac(B)\]
+\[\idht P+\trdeg_{k(P')} k(P)=\idht P'+\trdeg_{\Frac(A)} \Frac(B)\]
 が成り立つとき，$A$と$B$の間で\textbf{次元公式}(dimension formula)\index{じげんこうしき@次元公式}が成り立つという．$A$が体のときこれは体上有限生成整域についての弱次元公式にほかならない．
 
 実際のNoether環はほとんどが鎖状環であることが知られているが，その証明はCohen--Macaulay環の登場を待たなければならない．また，鎖状でないNoether環の例は\cite{Nag73}で与えられている．また鎖状であるが強鎖状でないNoether環の例も永田によって与えられている．
@@ -700,7 +700,7 @@ $ I $を$T$によって生成される$A$のイデアルとすると，$Z(T)=Z( 
 \[f(x)=c(x-a_1)\dots(x-a_n)\quad(c\in k)\]
 と分解できる．このとき$Z(f)=\{\nitem{a}\}$である．よって，$\A^1$の代数的集合は，有限な部分集合または$k$である．よって，開集合系は空集合及び有限部分集合の補集合となる（補有限位相）．特にこれはHausdorffではないが，コンパクトである位相の大事な例である（ここでは「任意の開被覆を有限個で取り直せる」という性質を指して\quo{コンパクト}と呼んだ．代数幾何学，特にBourbakiの流儀では慣習的に上の性質に加えてHausdorffを課してコンパクトといい，Hausdorffでないときに\textbf{準コンパクト}(quasi-compact)と呼ぶことがあるので注意してほしい）．
 
-ここで\ref{defi:Zariski位相}を思い出そう．$k^n$のZariski位相において，点$\{(a_1,\dots,a_n)\}$は$f=c(X_1-a_1)\cdots(X_n-a_n)$の零点集合となり，$K^n$の閉点になる．これは弱零点定理（\ref{thm:week nullstellensatz}）によって$K[X_1,\dots,X_n]$の極大イデアル，言い換えれば$\spec K[X_1,\dots,X_n]$の閉点が$(X_1,\dots,X_n)$しかないことと対応している．
+ここで\ref{defi:Zariski位相}を思い出そう．$k^n$のZariski位相において，点$\{(a_1,\dots,a_n)\}$は$f=c(X_1-a_1)\cdots(X_n-a_n)$の零点集合となり，$k^n$の閉点になる．これは弱零点定理（\ref{thm:week nullstellensatz}）によって$k[X_1,\dots,X_n]$の極大イデアル，言い換えれば$\spec k[X_1,\dots,X_n]$の閉点が$(X_1,\dots,X_n)$しかないことと対応している．
 
 また，Zariski位相は体$k=\Co$としたとき，Euclid位相より真に弱い位相となる．実際に多項式$f$を$\Co^n$から$\Co$への連続写像とみなせば，代数的集合はEuclid位相における閉集合$\{0\}$の$f$による引き戻しにほかならない．
 
