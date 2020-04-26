@@ -81,7 +81,7 @@ Noether加群とArtin加群について例を見てみよう．
 \end{prop}
 \begin{proof}
 	$M$を忠実なNoether加群とする．特に$M$は有限生成で，$u_1,\dots,u_n$をその生成系とする．このとき準同型；
-	\[\varphi:A\longrightarrow M^n;a\longmapsto(ax_1，\dots，ax_n)\]
+	\[\varphi:A\longrightarrow M^n;a\longmapsto(au_1,\dots,au_n)\]
 	について$\ker\varphi=\ann(M)$であるので$\ker\varphi=0$となり，$\varphi$は単射．よって$A$はNoether加群$M^n$の部分加群と同型なので，$A$はNoether加群である．
 \end{proof}
 
@@ -128,7 +128,7 @@ Noether加群とArtin加群について例を見てみよう．
 	はイデアルの降鎖列をなし，$A/P$はArtinなのでこれは停まる．するとある$n$が存在して$(x^n)=(x^{n+1})$であるから，ある$y\in\bar{A}$があって$x^n=yx^{n+1}$である．よって$x^n(1-xy)=0$であり，$A/P$は整域で$x\neq0$なので$xy=1$となり$x$は可逆．よって体である．
 	
 	次に有限個であることを見よう．$\specm A$を$A$の極大イデアル全体のなす集合とする．
-	\[S=\mkset{\ideal{m}_1\cap\dots\cap\ideal{m}_n}{n\in\Z_+,\ideal{m}\in\specm A}\]
+	\[S=\mkset{\ideal{m}_1\cap\dots\cap\ideal{m}_n}{n\in\Z_+,\ideal{m}_i\in\specm A}\]
 	とおくと，これは$A$のイデアルの族となるので極小元$I=\ideal{m}_1\cap\dots\cap\ideal{m}_r$が存在する。このとき任意の$\ideal{m}\in\spm A$に対し$\ideal{m}\cap I\in S$であるので，$\ideal{m}\cap I=I$となり$I\subset\ideal{m}$である．ここで各$1\leq i\leq r$に対し$\ideal{m}_i\not\subset\ideal{m}$であると仮定すると，それぞれ$x_i\in\ideal{m}_i\cap\ideal{m}^c$が存在して$\ideal{m}$が素イデアルなので$x_1x_2\dots x_r\not\in\ideal{m}$であるが，$x_1x_2\dots x_r\in I\subset\ideal{m}$なので矛盾．よって少なくとも1つの$1\leq j\leq r$が存在して$\ideal{m}_j\subset\ideal{m}$である．すると$\ideal{m}_j$は極大なので$\ideal{m}=\ideal{m}_j$である．よって$\spm A$は$I$の成分に現れる有限個の素イデアルのみからなる．
 \end{proof}
 
@@ -158,9 +158,9 @@ Noether, Artin性は\quo{鎖}についての性質である．ここである種
 	$0\neq x\in M$をとる．このとき$0\neq Ax\subset M$であり，$M$が単純なので$M=Ax$である．すると，準同型$\varphi:A\to M;a\mapsto ax$は全射であり$A/\ker\varphi\cong M$である．ここで$\ker\varphi\subset I$となるイデアル$I$をとると$I/\ker\varphi$は$A/\ker\varphi$の部分加群となり，$0$か$A/\ker\varphi$に等しい．よって$I=\ker\varphi,A$であり$\ker\varphi$は極大である．
 \end{proof}
 
-次のJordan--H\uml{o}lderの定理は群論においてもしられているが，加群についても成り立つ．
+次のJordan--H\uml{o}lderの定理は群論においても知られているが，加群についても成り立つ．
 \begin{thm}[Jordan--H\uml{o}lder]\index{#Jordan-Holderのていり@Jordan--H\uml{o}lderの定理}
-	加群$M$が組成列を持つなら，任意の組成列は長さが等しく，組成因子も順序と同系の違いを除いて等しい．
+	加群$M$が組成列を持つなら，任意の組成列は長さが等しく，組成因子も順序と同型の違いを除いて等しい．
 \end{thm}
 
 \begin{proof}
@@ -270,9 +270,9 @@ $M$の素因子がしっかり存在することを確認しておこう．
 		$P=\ann x$となる$x\in M$をとると，$S^{-1}P=\ann x/1$となる．実際$\subset$は明らかで，任意の$a/s\in\ann x/1$をとると，ある$h\in S$が存在して$hax=0$だから$ha\in\ann x=P$だが，$P\cap S=\emptyset$より$h\not\in P$なので$a\in P$となる．
 		
 		\item 
-		$S^{-1}P\in\ass_{S^{-1}A}$とすると，$S^{-1}P\in\spec S^{-1}A$より$P\in\spec A,P\cap S=\emptyset$に注意しよう．
+		$S^{-1}P\in\ass_{S^{-1}A}S^{-1}M$とすると，$S^{-1}P\in\spec S^{-1}A$より$P\cap S=\emptyset$に注意しよう．
 	
-		ある$x/s\in S^{-1}M$について$S^{-1}P=\ann x/s$とかける．$A$はNoetherなので$P=(a_1,\dots,a_r)$としよう．各$a_i$について$a_1/1\cdot x/s=0$より，ある$h_i\in S$が存在して$h_ia_ix=0$である．$h_i$たちの積を$h=h_1\cdots h_r$とすると$h\in S$であり，$Phx=0$が成り立つ．よって$P\subset\ann hx$である．逆に$y\in\ann hx$とすると，$S^{-1}M$において$y/1\cdot x/s=0$であるので$y/1\in S^{-1}P$であるから，あとは形式的な計算によって$y\in P$であることがわかる．よって$P=\ann hx\in\ass_A M$である．
+		ある$x/s\in S^{-1}M$について$S^{-1}P=\ann x/s$とかける．$A$はNoetherなので$P=(a_1,\dots,a_r)$としよう．各$a_i$について$a_i/1\cdot x/s=0$より，ある$h_i\in S$が存在して$h_ia_ix=0$である．$h_i$たちの積を$h=h_1\cdots h_r$とすると$h\in S$であり，$Phx=0$が成り立つ．よって$P\subset\ann hx$である．逆に$y\in\ann hx$とすると，$S^{-1}M$において$y/1\cdot x/s=0$であるので$y/1\in S^{-1}P$であるから，あとは形式的な計算によって$y\in P$であることがわかる．よって$P=\ann hx\in\ass_A M$である．
 	\end{eqv}
 \end{proof}
 
@@ -282,7 +282,8 @@ $M$の素因子がしっかり存在することを確認しておこう．
 \end{thm}
 
 \begin{proof}
-	$ P=\ann x$とする．すると，任意の$x\not\in P$に対して$sx\neq0$である．よって$x=x/1$は$M_ P$の零元でない．よって$M_ P\neq0$，すなわち$ P\in\supp M$である．よって，極小元が一致することを見るには$P\in\supp M$が極小なら$P\in\ass M$であることを示せばよい．
+	$ P=\ann x$とする．すると，任意の$s
+	\not\in P$に対して$sx\neq0$である．よって$x=x/1$は$M_ P$の零元でない．よって$M_ P\neq0$，すなわち$ P\in\supp M$である．よって，極小元が一致することを見るには$P\in\supp M$が極小なら$P\in\ass M$であることを示せばよい．
 	
 	まず$M_P$は$0$でない$A_P$加群であり，$\supp_{A_P} M_P=\{PA_P\}$を示す．それには$Q\subsetneq P$となる$Q\in\spec A$について$QA_P$による$M_P$の局所化が$0$であることを示せばよい．$P$が$\supp M$で極小なので$M_Q=0$だから，\ref{lem:M_p=0との同値条件}より任意の$x\in M$に対してある$a\not\in Q$が存在して$ax=0$である．すると$a/1\not\in QA_P$であり，任意の$x/s\in M_P$に対して$a/1\cdot x/s=0$である．よって再び\ref{lem:M_p=0との同値条件}から$M_P$の$QA_P$による局所化は$0$である．よって$\supp_{A_P} M_P=\{PA_P\}$がわかった．
 	
@@ -477,7 +478,7 @@ $P\in\ass M$であることと単射$\iota:A/P\to M$が存在することが同�
 \end{proof}
 
 準素分解の一意性については，極小素因子に対応する成分は一意的に定まることがわかる．
-\begin{thm}
+\begin{thm}\label{thm:準素成分の一意性}
 	$M$を有限生成な$A$加群とし，$N=N_1\cap\dots\cap N_r$をむだのない最短準素分解，$\ass(M/N)=\{P_1,\dots,P_r\}$とおく．$P_i$が$\ass(M/N)$で極小なら$f_{P_i}:M\longrightarrow M_{P_i}$を$P_i$における局所化とすると，$N_i=f^{-1}_{P_i}(N_{P_i})$となり，$P_i$準素成分は$N$と$P_i$から一意に定まる．
 \end{thm}
 \begin{proof}

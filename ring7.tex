@@ -109,7 +109,7 @@ $\prjdim M=0$であることと$M$が射影的であることは同値である�
 	任意の$x\in M_2$についてある$x_1\in M_1$が存在して$\psi(\varphi(x_1))=\psi(x)$である．このとき$\varphi(x_1)-x\in\ker\psi$なので$M_2=\varphi(M_1)+\ker\psi$である．よって仮定から$M_2=\varphi(M_1)$となる．
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{prop:射影被覆が同型の補題}
 	$M$を$A$加群とし，$M$の射影被覆$\varepsilon:P\to M$が存在したとする．射影加群$P'$への全射$\varepsilon':P'\to M$に対して分裂全射$f:P'\to P$が存在して，次の図式；
 	\[\begin{tikzcd}
 		P'\arrow[dd,"f",swap]\arrow[dr,"\varepsilon'"]\\[-1.5em]
@@ -506,16 +506,22 @@ $\dim M=0$とする．このとき$M$を$A/\ann M$加群とみると，$M$はNoe
 \begin{proof}
 	$d=\gldim A$とおく．また$r=\emdim A=\dim_k\ideal m/\ideal{m}^2$とおこう．まず$r=0$とする．$\ideal m=\ideal{m}^2$であるので，中山の補題から$\ideal m=0$である．よって$A$は体となり，$\gldim A=\prjdim A=0$なので題意が成り立つ．逆に$\gldim A=0$とすると，$\prjdim k=0$となり$k$は自由だから$k\cong A$となり，$A$は体となる．
 	
-	よって$r,d>0$と仮定してよい．$r$についての帰納法で示す．$r-1$まで正しいとしよう．$\ideal m\neq0$であり，中山の補題から$\ideal m\neq\ideal{m}^2$である．まず$x\in\ideal m\setminus\ideal{m}^2$を$A$正則にとれることを示す．任意の$x$が$A$正則でないと仮定する．すると$\ideal{m}\setminus\ideal{m}^2\subset\bigcap_{P\in\ass A}P$である．よって$\ideal m\subset\bigcap_{P\in\ass A}P\subset\ideal{m}^2$であるので，Prime avoidanceからある$P\in\ass A$について$\ideal{m}\subset P$である（$\ideal m\not\subset\ideal{m}^2$であるから）．$\ideal{m}$は極大なので$\ideal m\in\ass A$となり，単射$k\hookrightarrow A$が存在する（$\ideal m=\ann x$としたとき$a+\ideal m\mapsto ax$とすればよい）．よって短完全列；
+	よって$r,d>0$と仮定してよい．$r$についての帰納法で示す．$r-1$まで正しいとしよう．$\ideal m\neq0$であり，中山の補題から$\ideal m\neq\ideal{m}^2$である．まず$a\in\ideal m\setminus\ideal{m}^2$を$A$正則にとれることを示す．任意の$a$が$A$正則でないと仮定する．すると$\ideal{m}\setminus\ideal{m}^2\subset\bigcup_{P\in\ass A}P$である．よって$\ideal m\subset\bigcup_{P\in\ass A}P\subset\ideal{m}^2$であるので，Prime avoidanceからある$P\in\ass A$について$\ideal{m}\subset P$である（$\ideal m\not\subset\ideal{m}^2$であるから）．$\ideal{m}$は極大なので$\ideal m\in\ass A$となり，単射$k\hookrightarrow A$が存在する（$\ideal m=\ann x$としたとき$a+\ideal m\mapsto ax$とすればよい）．よって短完全列；
 	\[\ses{k}{A}{A/k}\]
 	について，$\Tor_d(A,k)=\Tor_{d+1}(A,k)=0,\Tor_d(k,k)\neq0$だからTorの長完全列を考えて；
 	\[\begin{tikzcd}
 		0\nxcell\Tor_{d+1}(A/k,k)\nxcell\Tor_d(k,k)\nxcell0
 	\end{tikzcd}\]
 	が完全であり$\Tor_{d+1}(A/k,k)\neq0$となるので\ref{thm:射影次元の言い換え}より$d+1\leq\prjdim A/k$であるが，これは$d=\gldim A$であるので矛盾．
+	
+	このとき，$A/aA$が$\emdim A/aA=r-1$となる大域次元有限な環であることを示そう．$r=\dim_k \ideal m/\ideal{m}^2$であるので，$a_1,\dots,a_r\in\ideal m$を$a_i+\ideal{m}^2$が$\ideal m/\ideal{m}^2$の基底になるようにとれる．ここで$a_1=a$としてよい．$I=(a_2,\dots,a_r)$とおくと，中山の補題より$aA+I=\ideal m$であり，$\emdim A/aA=\dim_k (\ideal{m}/aA)/(\ideal{m}/aA)^2=r-1$である．また$\ideal m/aA=(aA+I)/aA\cong I/(I\cap aA)$である．ここで任意の$ab\in aA\cap I$をとると，ある$c_i\in A$により$ab=c_2a_2+\dots+c_ra_r$とかけている．よって$ba_1-c_2a_2-\dots-c_ra_r=0$である．これを$k$加群$\ideal m/\ideal{m}^2$におとすと，$a_i+\ideal{m}^2$は一次独立であるからすべての係数は$k$でゼロ，つまり$b,c_i\in\ideal{m}$でなければならない．よって$I\cap aA\subset a\ideal{m}$である．よって；
+	\[\ideal m/a\ideal m\to\ideal m/aA=I/(I\cap aA)\to\ideal m/a\ideal m\]
+	が恒等だから$\ideal m/a\ideal m\to \ideal m/aA$は分裂する．よって$\ideal m/aA$は$\ideal m/\ideal{m}^2$の直和因子である．ゆえに$\prjdim_{A/aA}\ideal m/aA\leq\prjdim_{A/aA}\ideal m/\ideal{m}^2$であり，\ref{lem:prjdim_A/aA M/aM}より；
+	\[\prjdim_{A/aA} k-1=\prjdim_{A/aA}\ideal m/aA\leq\prjdim_A \ideal m=\prjdim_A k-1\]
+	よって$\gldim A/aA<\infty$であり，帰納法の仮定から$A/aA$は正則である．ゆえに$\dim A/aA=r-1$となり，$\dim A=\dim A/aA+1$だから$A$も$r$次元の正則局所環である．
 \end{proof}
 
-これが可換環論にホモロジー代数を導入したことによる成果のうちで初期の大結果である．この定理により次の定理がほぼ自明と化した．
+これが可換環論にホモロジー代数を導入したことによる大結果の最初の１つである．この定理により次の定理がほぼ自明と化した．
 \begin{thm}[Serreの定理]\index{#Serreのていり@Serreの定理}\label{thm:Serreの定理}
 	$A$を正則局所環とすると，任意の$P\in\spec A$について$A_P$も正則局所環である．
 \end{thm}
@@ -523,3 +529,163 @@ $\dim M=0$とする．このとき$M$を$A/\ann M$加群とみると，$M$はNoe
 \begin{proof}
 	前定理から$\prjdim_A A/P<\infty$であり，有限な極小自由分解を得る．これを$P$で局所化して$A_P/PA_P$の極小自由分解を得，$\prjdim_{A_P} A_P/PA_P<\infty$である．
 \end{proof}
+
+\section{有限自由分解とUFD}
+
+この節では有限自由分解と呼ばれる射影分解の一種をもつ加群について触れるとともに，Auslander--Buchsbaumの定理（\ref{prethm:Auslander-Bachusbaum}）の証明を与えよう．
+\begin{defi}[有限自由分解]\index{ゆうげんじゆうぶんかい@有限自由分解}
+	$A$を環，$M$を$A$加群とする．長さ有限の完全列；
+	\[\begin{tikzcd}
+		0\nxcell F_n\nxcell F_{n-1}\nxcell\dots\nxcell F_0\nxcell M\nxcell 0
+	\end{tikzcd}\]
+	であって，各$F_i$が有限階数の自由加群であるものが存在するとき，$M$は\textbf{有限自由分解}(finite free resolution)を持つという．
+\end{defi}
+
+まず，\ref{prop:射影被覆が同型の補題}の一般化であるSchanuelの補題を紹介しよう．
+\begin{lem}[Schanuelの補題]\index{#Schanuelのほだい@Schanuelの補題}
+	$A$を環，$M$を$A$加群とする．完全列；
+	\[\begin{tikzcd}
+		0\nxcell K\nxcell P_n\nxcell\dots\nxcell P_0\nxcell[\varepsilon] M\nxcell0\\
+		0\nxcell K'\nxcell Q_n\nxcell\dots\nxcell Q_0\nxcell[\varepsilon'] M\nxcell0
+	\end{tikzcd}\]
+	について，各$0\leq i\leq n$について$P_i,Q_i$が射影加群ならば；
+	\[P_0\oplus Q_1\oplus P_2\oplus\dots\cong Q_0\oplus P_1\oplus Q_2\oplus\dots\]
+	が成り立つ．
+\end{lem}
+
+\begin{proof}
+	$n$についての帰納法で示す．まず$n=0$とする．
+	\[\begin{tikzcd}
+		0\nxcell K\nxcell P\arrow[d,shift right=.5em,"g",swap]\nxcell[\varepsilon]M\nxcell0\\
+		0\nxcell K'\nxcell Q\arrow[u,shift right=.5em, "f",swap]\nxcell[\varepsilon']M\nxcell0
+	\end{tikzcd}\]
+	$P,Q$は射影的なので，上のように$f,g$が存在して$\varepsilon'\circ f=\varepsilon,\varepsilon\circ g=\varepsilon'$が成り立つ．そこで同型写像$\varphi,\psi:P\oplus Q\to P\oplus Q$を構成しよう；
+	\[\begin{tikzcd}
+	0\nxcell K\oplus Q\nxcell P\oplus Q\arrow[d,shift right=.5em,"\varphi",swap]\nxcell[\widetilde\varepsilon]M\nxcell0\\
+	0\nxcell K'\oplus P\nxcell P\oplus Q\arrow[u,shift right=.5em, "\psi",swap]\nxcell[\widetilde\varepsilon']M\nxcell0
+	\end{tikzcd}\]
+	$\varepsilon$を$P\oplus Q$に誘導した$(x,y)\mapsto \varepsilon(x)$を$\widetilde\varepsilon$と表す．$\varepsilon'$についても同様である．このとき；
+	\[\varphi:P\oplus Q\to P\oplus Q;(x,y)\mapsto (x-g(y),y+f(x-g(y)))\]
+	と定義する．同様に；
+	\[\psi:P\oplus Q\to P\oplus Q;(x,y)\mapsto(x+g(f(x)-y),y-f(x))\]
+	と定義すれば$\psi=\varphi^{-1}$となる．また$\widetilde\varepsilon'\circ\varphi=\widetilde\varepsilon$であり，誘導される$K\oplus Q\to K'\oplus P$について蛇の補題から同型であることがわかる．
+	
+	$n-1$まで正しいとしよう．次の完全列；
+	\[\begin{tikzcd}
+	0\nxcell K\nxcell P_n\nxcell\dots\nxcell P_1\nxcell\ker\varepsilon \nxcell0\\
+	0\nxcell K'\nxcell Q_n\nxcell\dots\nxcell Q_1\nxcell\ker\varepsilon'\nxcell0
+	\end{tikzcd}\]
+	について，$n=0$の場合から$\ker\varepsilon\oplus Q_0\cong\ker\varepsilon'\oplus P_0$であり，次の完全列；
+	\[\begin{tikzcd}
+	0\nxcell K\nxcell P_n\nxcell\dots\nxcell P_1\oplus Q_0\nxcell\ker\varepsilon\oplus Q_0\arrow[d,"\cong"] \nxcell0\\
+	0\nxcell K'\nxcell Q_n\nxcell\dots\nxcell Q_1\oplus P_0\nxcell\ker\varepsilon'\oplus P_0\nxcell0
+	\end{tikzcd}\]
+	に$n-1$の場合を適用して結論を得る．
+\end{proof}
+
+\begin{defi}[安定して自由]
+	$A$を環，$M$を$A$加群とする．有限自由加群$F,F'$が存在して$M\oplus F\cong F'$となるとき，$M$は\textbf{安定して自由}(stably free)であるという．
+\end{defi}
+
+\begin{prop}
+	有限生成な射影加群が有限自由分解をもてば安定的に自由である．
+\end{prop}
+
+\begin{proof}
+	$P$を有限生成な射影加群とする．
+	\[\begin{tikzcd}
+		0\nxcell P_n\nxcell\dots\nxcell P_0\nxcell P\nxcell0\\
+		0\nxcell 0\nxcell\dots\nxcell P\nxcell[\id] P\nxcell0
+	\end{tikzcd}\]	
+	についてSchanuelの補題を適用すればよい．
+\end{proof}
+
+
+\section{Serreの条件，因子類群}
+
+次の節でUFD，特にAuslander--Buchsbaumの定理（\ref{prethm:Auslander-Bachusbaum}）について述べるが，この節では準備のため整閉性についてのSerreの判定法，Krull環，因子類群の定義などについて述べておこう．
+
+\begin{defi}[Serreの条件]\index{#Serreのじょうけん@Serreの条件}
+	$A$をNoether環とする．
+	\begin{sakura}
+		\item 任意の$\idht P\leq n$となる$P\in\spec A$について$A_P$が正則局所環であるとき，$A$で$(R_n)$が成り立つという．
+		\item 任意の$P\in\spec A$について$\min\{n,\idht P\}\leq\mdepth A_P$となるとき，$A$で$(S_n)$が成り立つという．
+	\end{sakura}
+\end{defi}
+
+$(R_n)$についてはわかりやすい条件であるから，$(S_n)$について少し見てみよう．明らかに$A$で$(S_{n+1})$が成り立つならば$(S_n)$が成り立つ．また，次を確認することも容易いだろう．
+
+\begin{prop}
+	Noether環$A$がCM環であることと，任意の$n$について$(S_n)$が成り立つことは同値．
+\end{prop}
+
+また，次の言い換えが成り立つ．
+\begin{lem}
+	Noether環$A$について$(S_1)$が成り立つことと，任意の$P\in\ass A$が極小であることは同値である．
+\end{lem}
+
+\begin{proof}
+	任意の$P\in\ass A$をとる．このとき\ref{lem:素因子と局所化}より$PA_P\in\ass A_P$である．すると\ref{lem:depth 0とass}により$\mdepth A_P=0$である．よって$\min\{1,\idht P\}\leq0$だから$\idht P=0$となる．逆はこれを反対方向にたどればよい．
+\end{proof}
+
+まず，これを用いた被約性の判定法を紹介しよう．
+
+\begin{thm}[Serreの$(R_0)+(S_1)$判定法]
+	Noether環$A$について$(R_0),(S_1)$が成り立つことと$A$が被約であることは同値である．
+\end{thm}
+
+\begin{proof}
+	\begin{eqv}
+		\item $\nil A=\bigcap_{\idht P=0}P=0$であることを示す．$\ass A=\{P_1,\dots,P_r\}$とおき，$0$を準素分解して$0=Q_1\cap\dots\cap Q_r$とする．ここで$Q_i$は$P_i$準素イデアルとする．$(S_1)$より$\ass A=\mkset{P\in\spec A}{\idht P=0}$であることに注意すると，局所化$f_i:A\to A_{P_i}$について\ref{thm:準素成分の一意性}より$Q_i=f_i^{-1}(0)$である．ここで$(R_0)$から$A_{P_i}$は$0$次元の正則局所環，すなわち体である．よって$Q_i=P_i$となる．ゆえに$\bigcap_{\idht P=0}P=Q_1\cap\dots\cap Q_r=0$であるので，$A$は被約． 
+		\item $0=\bigcap_{\idht P=0}P$が$0$の準素分解となり，$\ass A=\mkset{P\in\spec A}{\idht P=0}$となるので$(S_1)$が成り立つ．また，$P'\in\ass A$が$P\neq P'$ならば$P'A_P=A_P$であるから；
+		\[0=\bigcap_{\idht P'=0}P'A_P=PA_P\]
+		となる．よって$A_P$は体となり，$(R_0)$が成り立つ．
+	\end{eqv}
+\end{proof}
+
+次に$(S_2)$についてみてみよう．以下\textbf{仮定に整域を課す}ことに注意せよ．
+
+\begin{lem}
+	$A$をNoether整域とする．$(S_2)$が成り立つことと，任意の$a\in A$で$0$でも単元でもないものについて，任意の$P\in\ass A/aA$は高さ$1$であることは同値である．
+\end{lem}
+
+\begin{proof}
+	\begin{eqv}
+		\item 任意の$P\in\ass A/aA$をとる．$a/1\in PA_P$は$A_P$正則である．$P=\ann (x+aA)$とおくと，任意の$b/1\in PA_P$について$bx/1=0\in A_P/aA_P$であるので$A_P/aA_P$正則元は存在しない．よって$\mdepth A_P=1$である．ゆえに$(S_2)$から$\min\{2,\idht P\}\leq1$であるから$\idht P\leq1$である．一方Krullの単項イデアル定理から$1\leq\idht P$なので，$\idht P=1$である．
+		\item $\idht P=0,1$のときは明らかに$\idht P\leq\mdepth A_P$が成り立つ．$2\leq\idht P$のときを考えればよい．$0\neq a_1\in P$を１つ固定する．任意の$a_2\in P$が$A/aA$の非正則元であるなら，$P\subset\bigcup_{Q\in\ass A/a_1A}$であるのでPrime avoidanceにより$P\subset Q$となる$Q\in\ass A/a_1A$が存在する．ここで仮定より$Q$は高さ1なので$\idht P\leq1$となって矛盾する．よって$A/a_1A$正則元$a_2\in P$が存在し，$2\leq\mdepth A_P$である．
+	\end{eqv}
+\end{proof}
+
+
+\begin{thm}[Serreの$(R_1)+(S_2)$判定法]
+	Noether整域$A$が整閉であることと，$A$で$(R_1),(S_2)$が成り立つことは同値である．特に次の条件；
+	\begin{sakura}
+		\item $A$は整閉である．
+		\item $A$について$(R_1),(S_2)$が成り立つ．
+		\item $A$について$(R_1)$が成り立ち，$A=\bigcap_{\idht P=1}A_P$である．
+	\end{sakura}
+	は同値である．
+\end{thm}
+
+\begin{proof}
+	\begin{eqv}[3]
+		\item $(R_1)$が成り立つことは明らかである（整閉整域は正規であって，またDVRとは$1$次元の正則局所環のことであるから）．また，$0$でも単元でもない$a\in A$について$P\in\ass_A (A/aA)$を考える．$P=\ann (b+aA)$となる$b\not\in aA$をとろう．定義より$bP\subset aA$である．$P$で局所化して考えよう．$bPA_P\subset aA_P$であるから，$b/aPAP\subset A_P$である．ここで$b/aPA_P\subset PA_P$なら，Cayley--Hamiltonの定理より$b/a$は$A_P$上整である．よって$b/a\in A_P$となるが，これはある$s\not\in P$が$bs\in Aa$となることを導き矛盾．ゆえに$b/aPA_P=A_P$である．よって$bPA_P=aA_P$となり，ある$x\in P$と$s\not\in P$によって$bx/s=a$である．このとき任意の$c/t\in PA_P$について，ある$r/u\in A_P$が存在して$bc/t=ar/u=bxr/su$となる．$A$は整域だから$c/t=xr/su$が成立する．よって$PA_P=xA_P$となり，極大イデアルが単項だから$A_P$は$1$次元である．よって$\idht P=1$となり，$(S_2)$が成り立つことがわかった．
+		\item $A\subset\bigcap_{\idht P=1}A_P$は明らかであるから，$x/s\in\Frac A$について$x/s\in\bigcap_{\idht P=1} A_P$かつ$x/s\not\in A$であると仮定する．$x\not\in sA$かつ$s$は$A$の非単元であることに注意する．すると$A/sA$を$A$加群とみたとき$\ann (x+sA)$は$A$の真のイデアルであるから，$s\in\ann(x+sA)\subset P$となる$P\in\ass (A/sA)$が存在する．すると，先の補題より$(S_2)$から$\idht P=1$が従う．よって$x/s\in A_P$なのである$a\in A$と$t\not\in P$が存在して$x/s=a/t$となるが，定義よりある$h\not\in P$が存在して$h(xt-as)=0$となる．$A$は整域なので$xt=as\in sA$となり，$t\in\ann(x+sA)\subset P$となって矛盾する．よって$x/s\in A$である．
+		\item $a/b\in\Frac A$について$A$上整であると仮定する．よって，$A$の元たちを適当にとれば；
+		\[(a/b)^n+c_1(a/b)^{n-1}+\dots+c_n=0\quad(c_i\in A)\]
+		となる$n$が存在する．このとき，仮定から$c_i$たちは整閉整域$A_P$の元であるから，$a/b$は$A_P$上整となり$a/b\in A_P$である．これが任意の$\idht P=1$となる$P$で言えるから$a/b\in\bigcap_{\idht P=1}A_P=A$である．
+	\end{eqv}
+\end{proof}
+
+この事実により，Auslander--Buchsbaumの定理を経由することなく次が示される．
+\begin{cor}
+	正則局所環は整閉整域である．
+\end{cor}
+
+\begin{proof}
+	正則ならば$(R_1)$は明らかになりたち，またCM環であるので$(S_2)$も成り立つ．
+\end{proof}
+
+\begin{thm}
+	正則局所環はUFDである．
+\end{thm}

@@ -193,7 +193,7 @@
 	\begin{step}
 		\item $A$の全商環$Q(A)$は有限個の体の直積であること（これは$A$が被約Noether環なら成り立つ）．
 		
-		$A$がNoetherなので，有限個の極小素イデアルを持つ．それを$P_1,\dots,P_ｒ$とする．\ref{cor:イデアルの準素分解}より$\ass A=\{P_1,\dots,P_r\}$であるので，$S=A\setminus(P_1\cup\dots\cup P_r)$とおくと$S^{-1}A=Q(A)$である．このとき$\spec Q(A)=\mkset{PQ(A)}{P\in\spec A,P\subset P_1\cup\dots\cup P_r}$であり，$P\in\spec A$が$P\subset P_1\cup\dots\cup P_r$を満たすならPrime avoidance（\ref{lem:Prime avoidance}）より$P\subset P_i$となる$i$が存在するので，極小性から$\spec Q(A)=\{P_1Q(A),\dots,P_rQ(A)\}$である．よってこれらは全て極大で，また互いに素．$A$が被約だから$Q(A)$もまたそうなので，中国剰余定理から；
+		$A$がNoetherなので，有限個の極小素イデアルを持つ．それを$P_1,\dots,P_r$とする．\ref{cor:イデアルの準素分解}より$\ass A=\{P_1,\dots,P_r\}$であるので，$S=A\setminus(P_1\cup\dots\cup P_r)$とおくと$S^{-1}A=Q(A)$である．このとき$\spec Q(A)=\mkset{PQ(A)}{P\in\spec A,P\subset P_1\cup\dots\cup P_r}$であり，$P\in\spec A$が$P\subset P_1\cup\dots\cup P_r$を満たすならPrime avoidance（\ref{lem:Prime avoidance}）より$P\subset P_i$となる$i$が存在するので，極小性から$\spec Q(A)=\{P_1Q(A),\dots,P_rQ(A)\}$である．よってこれらは全て極大で，また互いに素．$A$が被約だから$Q(A)$もまたそうなので，中国剰余定理から；
 		\[Q(A)\cong\prod Q(A)/P_iQ(A)\]
 		となり$Q(A)$は体の有限直積である．
 		
@@ -399,10 +399,10 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	$\dim k[\nitem{X}]=n$である．また，$n\neq m$なら$k[\nitem{X}]$と$k[\nitem[m]{X}]$は同型ではない．
 \end{cor}
 
-環の次元$\dim A$は幾何的には$\spec A$の次元である．加群の次元については$\supp M$の（幾何的な）次元をもって定義しよう．$A$加群$M$が有限生成なら$V(\ann M)=\supp M$である（\ref{prop:Zariskiの閉集合とsupp}）．そこで一般の加群についても$\dim M=\dim (A/\ann M)$と定義する．
+環の次元$\dim A$は幾何的には$\spec A$の次元である．加群の次元については$\supp M$の（幾何的な）次元をもって定義しよう．$A$加群$M$が有限生成なら$V(\ann M)=\supp M$である（\ref{prop:Zariskiの閉集合とsupp}）．そこで一般の加群についても$\dim M=\dim A/\ann M$と定義する．
 
 \begin{defi}[加群のKrull次元]\index{#Krullじげんかぐん@Krull次元（加群）}
-	$A$加群$M$について$\dim (A/\ann M)$を$M$のKrull\textbf{次元}と定め，$\dim M$とかく．
+	$A$加群$M$について$\dim A/\ann M$を$M$のKrull\textbf{次元}と定め，$\dim M$とかく．
 \end{defi}
 
 簡単な計算により次の言い換えができることがわかる．
@@ -413,7 +413,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	が成り立つ．
 \end{prop}
 \begin{proof}
-	まず$\dim M=r$とし，素イデアルの昇鎖$\ann M P\subsetneq P_1\subsetneq\dots\subsetneq P_r$を考える．次元の定義から$P$は$\ann M$の極小素イデアルとなる．ここで$V(\ann M)=\supp M$であり，$P$は\ref{thm:assとsuppの極小元}より$\ass M$の元である．また$r\leq \dim A/P$であるから，$r\leq\sup\mkset{\dim A/P}{P\in\ass M}$が示された．次に$P\in\ass M$を$\dim A/P$を最大にするものとすれば$P$は極小なので$\supp M$の元，つまり$\dim A/P\leq\dim A/(\ann M)$である．
+	まず$\dim M=r$とし，素イデアルの昇鎖$\ann M \subset P\subsetneq P_1\subsetneq\dots\subsetneq P_r$を考える．次元の定義から$P$は$\ann M$の極小素イデアルとなる．ここで$V(\ann M)=\supp M$であり，$P$は\ref{thm:assとsuppの極小元}より$\ass M$の元である．また$r\leq \dim A/P$であるから，$r\leq\sup\mkset{\dim A/P}{P\in\ass M}$が示された．次に$P\in\ass M$を$\dim A/P$を最大にするものとすれば$P$は極小なので$\supp M$の元，つまり$\dim A/P\leq\dim A/\ann M$である．
 \end{proof}
 
 \section{上昇定理と下降定理}
