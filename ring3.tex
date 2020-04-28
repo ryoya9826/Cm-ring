@@ -1,7 +1,7 @@
 \newpage
-\part[Integral extension and The elemnts of dimension theory]{整拡大と次元論初歩}\label{part:整拡大と次元論初歩}
+\part[Integral extension and The elements of dimension theory]{整拡大と次元論初歩}\label{part:整拡大と次元論初歩}
 
-代数曲線，特に古典的な代数多様体論では，曲線をより単純な曲線，特に直線に射影して性質を見る，という方法をとる．それは環の準同型としては$k[X]\to k[X，Y]/I$に対応し，これは\textbf{整拡大}というものになっている．また，多様体(Variety)と環を対応させて調べるという発送において，特に議論の対象となる環は代数閉体$k$上の有限生成代数であることが多い．そこで，一般の環についてある種の\textbf{次元}を定義するとともに，それが代数多様体の自然な次元と一致することを確認することを目標にしよう．すなわち，多項式環$k[\nitem{X}]$の自然な次元$n$を，多項式環の性質によらずに一般の環に拡張する．
+代数曲線，特に古典的な代数多様体論では，曲線をより単純な曲線，特に直線に射影して性質を見る，という方法をとる．それは環の準同型としては$k[X]\to k[X，Y]/I$に対応し，これは\textbf{整拡大}というものになっている．また，多様体(Variety)と環を対応させて調べるという発想において，特に議論の対象となる環は代数閉体$k$上の有限生成代数であることが多い．そこで，一般の環についてある種の\textbf{次元}を定義するとともに，それが代数多様体の自然な次元と一致することを確認することを目標にしよう．すなわち，多項式環$k[\nitem{X}]$の自然な次元$n$を，多項式環の性質によらずに一般の環に拡張する．
 
 \section{環の拡大}
 
@@ -41,7 +41,7 @@
 \end{prop}
 \begin{proof}
 	\begin{eqv}[4]
-		\item $x^n+a_1x^{n-1}x^{n-1}+\dots+a_0=0$とすると，任意の$k\geq n$に対して$x_k\in \bigoplus_{i=0}^{n-1}Ax_i$である（厳密には帰納法を用いる）．ゆえに$A[x]=\bigoplus Ax_i$となり有限生成である．
+		\item $x^n+a_1x^{n-1}+\dots+a_0=0$とすると，任意の$k\geq n$に対して$x^k\in \bigoplus_{i=0}^{n-1}Ax_i$である（厳密には帰納法を用いる）．ゆえに$A[x]=\bigoplus Ax_i$となり有限生成である．
 		
 		\item 明らか．
 		\item $M=C$とすればよい．
@@ -121,7 +121,7 @@
 \end{defi}
 
 \begin{ex}
-	用意に計算できるようにUFDは整閉整域である（\ref{ex:Q/Zの整閉包}で計算した$\Z$についての類似である）．それはGCD整域（\ref{defi:GCDdomain}）に対して用意に一般化できる．
+	容易に計算できるようにUFDは整閉整域である（\ref{ex:Q/Zの整閉包}で計算した$\Z$についての類似である）．それはGCD整域（\ref{defi:GCDdomain}）に対してこれまた容易に一般化できる．
 \end{ex}
 
 \begin{defi}[正規環]\index{せいきかん@正規環}
@@ -199,7 +199,7 @@
 		
 		\item $A\cong\prod A/P_i$であること．
 		
-		$e_i=(0,\dots,0,1,0,\dots,0)\in Q(A)$について，$e_i^2-e_i=0$よりこれｒは$A$上整である．$A$は$Q(A)$上整なので，これは$a_i+1\in\bigcap_{i\neq j}P_j,a_i\in P_i$となる$a_i\in A$の存在を意味する．よって$P_i$たちは互いに素となり，中国剰余定理から$A\cong\prod A/P_i$である．
+		$e_i=(0,\dots,0,1,0,\dots,0)\in Q(A)$について，$e_i^2-e_i=0$よりこれらは$A$上整である．$A$は$Q(A)$上整なので，これは$a_i+1\in\bigcap_{i\neq j}P_j,a_i\in P_i$となる$a_i\in A$の存在を意味する．よって$P_i$たちは互いに素となり，中国剰余定理から$A\cong\prod A/P_i$である．
 		
 		\item $A/P_i$が整閉整域であること．
 		
@@ -268,7 +268,7 @@ $L/k$が代数拡大であるときは$\emptyset$を超越基底とし，$\trdeg
 \end{prop}
 
 \begin{proof}
-	仮定から$k[\nitem{X}]$の0でない素イデアル$P'$が存在して$A=k[\nitem{X}]/P'$とかけている．簡単のため$k[X]=k[\nitem{X}]$と略記しよう．このとき，$P\subset Q$となる素イデアル$Q$について$\trdeg k[X]/Q<\trdeg k[X]/P$を示せばよい．$m=\trdeg A$とし，$m\leq\trdeg k[X]/Q，r=\trdeg k[X]/Q$とおき，$m\leq r$と仮定する．それぞれ$k[X]/P=k[\nitem{\alpha}]，k[X]/Q=k[\nitem\beta]$とし，適切に並べ替えて$\nitem[r]{\beta}$を$k[X]/Q$の超越基とする．また$\nitem[m]{\alpha}\in k[\nitem\alpha]$を自然な準同型$k[\nitem\alpha]\longrightarrow k[\nitem\beta]$において$\nitem[m]{\beta}$に移すものとする．また，$P，Q$はそれぞれ次の代入する写像；
+	仮定から$k[\nitem{X}]$の0でない素イデアル$P'$が存在して$A=k[\nitem{X}]/P'$とかけている．簡単のため$k[X]=k[\nitem{X}]$と略記しよう．このとき，$P\subset Q$となる素イデアル$Q$について$\trdeg k[X]/Q<\trdeg k[X]/P$を示せばよい．$m=\trdeg A$とし，$m\leq\trdeg k[X]/Q，r=\trdeg k[X]/Q$とおき，$m\leq r$と仮定する．それぞれ$k[X]/P=k[\nitem{\alpha}],k[X]/Q=k[\nitem\beta]$とし，適切に並べ替えて$\nitem[r]{\beta}$を$k[X]/Q$の超越基とする．また$\nitem[m]{\alpha}\in k[\nitem\alpha]$を自然な準同型$k[\nitem\alpha]\longrightarrow k[\nitem\beta]$において$\nitem[m]{\beta}$に移すものとする．また，$P,Q$はそれぞれ次の代入する写像；
 	\[\varphi:k[\nitem{X}]\longrightarrow k[\nitem\alpha]\]
 	\[\psi:k[\nitem{X}]\longrightarrow k[\nitem\beta]\]
 	の核であるので，$\alpha_i$の組の関係式が存在すれば，それは対応する$\beta_i$の組の関係式でもある．さて，任意の$0$でない$q\in Q$をとると，$\trdeg k[X]/P=m$だから，$p,\nitem[m]{\alpha}$は代数的に独立でない．よって，ある$k$上の多項式$f$が存在して$f(q,\nitem[m]{\alpha})=0$とできる．すると，$f(p,\nitem[m]{X})$は0でない関係式であり，これにより$\nitem[m]{\beta}$が消える．これは矛盾である．
@@ -294,7 +294,7 @@ $L/k$が代数拡大であるときは$\emptyset$を超越基底とし，$\trdeg
 	Artin--Tateの補題（\ref{lem:Artin-Tateの補題}）から$F$は有限型$k$代数である．$F=k(x_1,\dots,x_r)$であったので，$f_i,g_i\in k[x_1,\dots,x_r]$が存在して；
 	\[F=k[g_1/f_1,\dots,g_s/f_s]\]
 	とかける．すると$f=f_1\dots f_s$とおくと，$F=k[x_1,\dots,x_r][1/f]$と表せる．さて$1/(f+1)\in k(x_1,\dots,x_r)=F$より，多項式$h\in k[x_1,\dots,x_r][X]$が存在して$1/(f+1)=h(1/f)$となる．よって$N\gg0$をとれば$f^N/(f+1)\in k[x_1,\dots,x_r]$とかける．$N$をこのような条件を満たすものの中で最小のものとしよう．このとき$g\in k[x_1,\dots,x_r]$が存在して$f^N=gf+g$とかけている．$N\geq1$と仮定すると；
-	\[g/f=f^{N-1}+g\in k[x_1,\dots,x_r]\]
+	\[g/f=f^{N-1}-g\in k[x_1,\dots,x_r]\]
 	となるので，$g$は$f$で割り切れる．これは$N$の最小性に矛盾．よって$N=0$である．すなわち$1/(f+1)\in k[x_1,\dots,x_r]$となり，$f\in k$でなければならない．
 	
 	よって$F=k[x_1,\dots,x_r]$とかけるが，$F=k(x_1,\dots,x_r)$であったことに矛盾．よって$L$は$k$上代数的である．
@@ -342,7 +342,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	$A$を環，$P$を素イデアルとする．
 	\[\idht P=\sup\mkset{r\in\Z}{P=P_0\supsetneq P_1\supsetneq\dots\supsetneq P_r:\text{素イデアルの真減少列}}\]
 	\[\coht P=\sup\mkset{r\in\Z}{P=P_0\subsetneq P_1\subsetneq\dots\subsetneq P_r:\text{素イデアルの真増大列}}\]
-	を，それぞれ素イデアル$P$の\textbf{高さ（高度）}，\textbf{余高度}(height，coheight)という．coheightのことを\textbf{深さ}(depth)ということもある．一般のイデアル$I$については；
+	を，それぞれ素イデアル$P$の\textbf{高さ（高度）}，\textbf{余高度}(height,coheight)という．coheightのことを\textbf{深さ}(depth)ということもある．一般のイデアル$I$については；
 	\[\idht I=\min\mkset{\idht P}{P\in V(I)}\]
 	で$I$の高さを定義する．
 \end{defi}
@@ -361,7 +361,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 \begin{proof}
 	\begin{sakura}
 		\item 
-			\ref{prop:Spec S^-1Aの引き戻し}より，$\spec A_p$と$\mkset{ P '\in\spec A}{ P '\cap (A\setminus P )=\emptyset}=\mkset{ P '\in\spec A}{ P '\subset P }$の間には包含関係を保つ全単射がある．よって，$\dim A_p=\idht P $である．
+			\ref{prop:Spec S^-1Aの引き戻し}より，$\spec A_P$と$\mkset{ P '\in\spec A}{ P '\cap (A\setminus P )=\emptyset}=\mkset{ P '\in\spec A}{ P '\subset P }$の間には包含関係を保つ全単射がある．よって，$\dim A_p=\idht P $である．
 		\item 
 			素イデアルの対応定理を用いれば，(i)と同様．
 		\item 
@@ -386,7 +386,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 		
 		\item $\trdeg A\leq\dim A$であること．
 		
-		$n=\trdeg A$についての帰納法で示す．まず$n=0$のときは明らかに$0\leq\dim A$である．次に$\trdeg A=n-1$となるすべての$A$について正しいとする．$\trdeg A=n$となる$A$を，$A=k[\nitem[r]{\alpha}]$とおく．すべての$\alpha_i$は代数的でないから，$\alpha_1$が$k$上超越的としてよい．$S=k[\alpha_1]\setminus\{0\}$は積閉で，これで局所化すると$A_S=k(\alpha_1)[\alpha_2,\dots,\alpha_r]$となる．$k(\alpha_1)=k'$とすると，$\trdeg_k' A_S=n-1$であるので，帰納法の仮定から（任意の基礎体について成り立っているので）$n-1\leq\dim A_S$である．ゆえに，$A_S$の素イデアルの列；
+		$n=\trdeg A$についての帰納法で示す．まず$n=0$のときは明らかに$0\leq\dim A$である．次に$\trdeg A=n-1$となるすべての$A$について正しいとする．$\trdeg A=n$となる$A$を，$A=k[\nitem[r]{\alpha}]$とおく．すべての$\alpha_i$は代数的でないから，$\alpha_1$が$k$上超越的としてよい．$S=k[\alpha_1]\setminus\{0\}$は積閉で，これで局所化すると$A_S=k(\alpha_1)[\alpha_2,\dots,\alpha_r]$となる．$k(\alpha_1)=k'$とすると，$\trdeg_{k'} A_S=n-1$であるので，帰納法の仮定から（任意の基礎体について成り立っているので）$n-1\leq\dim A_S$である．ゆえに，$A_S$の素イデアルの列；
 		\[ P _0\subsetneq P _1\subsetneq\dots\subsetneq P _{n-1}\]
 		がとれる．よって\ref{prop:Spec S^-1Aの引き戻し}より$ Q _i\cap S=\emptyset$となる$A$の素イデアルの列；
 		\[ Q _0\subsetneq\dots\subsetneq Q _{n-1}\]
@@ -466,7 +466,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	\end{tikzcd}\]
 	ここで素イデアルの準同型による逆像も素イデアルであることに注意しよう．$\ideal{m}$を$B_{P'}$の極大イデアルとすると，$\ideal{m}\cap B\in\spec B$である．これを$P$とおくと，$P\cap A=P'$となる．
 	
-	実際，可換図式をみると$\iota_{P'}((P\cap A)A_{P'})=\ideal m$となるが，\ref{prop:簡略版lying over theorem}より$\iota_{P'}^{-1}(\ideal{m})=\ideal m\cap A=P'A_{P'}$であり，\ref{prop:局所的性質}より$\iota_P$は単射なので$(P'\cap A)A_{P'}=P'A_{P'}$である．ゆえに$P\cap A=P'$である．
+	実際，可換図式をみると$\iota_{P'}((P\cap A)A_{P'})=\ideal m$となるが，\ref{prop:簡略版lying over theorem}より$\iota_{P'}^{-1}(\ideal{m})=\ideal m\cap A=P'A_{P'}$であり，\ref{prop:局所的性質}より$\iota_P$は単射なので$(P\cap A)A_{P'}=P'A_{P'}$である．ゆえに$P\cap A=P'$である．
 \end{proof}
 
 \begin{thm}[上昇定理]\label{thm:going up}\index{じょうしょうていり@上昇定理}
@@ -500,7 +500,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	\[x^n+a_1x^{n-1}+\dots+a_n=0\]
 	となる．すると$x^n=-(a_1x^{n-1}+\dots+a_n)$であるので，$x\in\bar{A}_B$であるから$x^n\in I'$すなわち$x\in\sqrt{I'}$である．
 	
-	一方，$x\in\sqrt{I'}$とすると，$x^n\in I'$となる$n$が存在する．よって，$c_i\in\bar{A}_B$と$x_i\in I$によって$x^n=\sum_{i=1}^m c_ix_i$とかける．\ref{prop:整な元で生成される代数はfinite}より，$\varphi:A[c_1,\dots,c_m]\to A[c_1,\dots,c_1];y\mapsto x^ny$に対してCayley--Hamiltonの定理（\ref{thm:Cayley-Hamilton}）を適用できる．これにより$x^n$は$I$上整であり，$x\in\bar{I}_B$である．
+	一方，$x\in\sqrt{I'}$とすると，$x^n\in I'$となる$n$が存在する．よって，$c_i\in\bar{A}_B$と$x_i\in I$によって$x^n=\sum_{i=1}^m c_ix_i$とかける．\ref{prop:整な元で生成される代数はfinite}より，$\varphi:A[c_1,\dots,c_m]\to A[c_1,\dots,c_m];y\mapsto x^ny$に対してCayley--Hamiltonの定理（\ref{thm:Cayley-Hamilton}）を適用できる．これにより$x^n$は$I$上整であり，$x\in\bar{I}_B$である．
 \end{proof}
 
 \begin{prop}\label{prop:整なら最小多項式が根基からとれる}
@@ -538,7 +538,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	\begin{step}
 		\item $I$が素イデアルのとき．
 		
-		$\idht I=r$とおき，$I=P_0\supset\dots\supset P_r$を$B$の素イデアルの鎖とすると，$P_i\cap A\in\spec A$によって$I'\cap A=P_0\cap A\supset\dots\supset P_r\cap A$より$\idht I\leq \idht (I\cap A)$が成り立つ．また，$\idht (I\cap A)=r'$とおくと，$I\cap A=P_0'\supset\dots\supset P_{r'}'$となる$A$の素イデアルの鎖が存在する．\ref{thm:going down}より$P_i'$のうえにある$B$の素イデアル$P_i'$たちで降鎖をなすものが存在するから，$r'=\idht(I\cap A)\leq\idht I$が成り立つ．
+		$\idht I=r$とおき，$I=P_0\supset\dots\supset P_r$を$B$の素イデアルの鎖とすると，$P_i\cap A\in\spec A$によって$I\cap A=P_0\cap A\supset\dots\supset P_r\cap A$より$\idht I\leq \idht (I\cap A)$が成り立つ．また，$\idht (I\cap A)=r'$とおくと，$I\cap A=P_0'\supset\dots\supset P_{r'}'$となる$A$の素イデアルの鎖が存在する．\ref{thm:going down}より$P_i'$のうえにある$B$の素イデアル$P_i'$たちで降鎖をなすものが存在するから，$r'=\idht(I\cap A)\leq\idht I$が成り立つ．
 		
 		\item $I$が一般のイデアルのとき．
 		
@@ -562,7 +562,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 %を証明しよう，ということである．この定理は代数幾何学で大活躍する．
 
 \begin{lem}\label{lem:正規化の補題1}
-	$k[X_1,\dots,X_n]$について，任意の$f\in k[X_1,\dots,X_n]$に対し，$f\not\in k$ならば，与えられた自然数$q$の倍数$m_2,\dots,m_n$が存在して，$y_1=f_1,y_2=X_2+X_1^{m_2},\dots,y_n=X_n+X_1^{m_n} (m_i\leq0)$とおくとき$k[X_1,\dots,X_n]$は$k[y_1,\dots,y_n]$上整である．
+	$k[X_1,\dots,X_n]$について，任意の$f\in k[X_1,\dots,X_n]$に対し，$f\not\in k$ならば，与えられた自然数$q$の倍数$m_2,\dots,m_n$が存在して，$y_1=f,y_2=X_2+X_1^{m_2},\dots,y_n=X_n+X_1^{m_n} (m_i\geq0)$とおくとき$k[X_1,\dots,X_n]$は$k[y_1,\dots,y_n]$上整である．
 \end{lem}
 
 \begin{proof}
@@ -648,7 +648,7 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 \[\idht P+\trdeg_{k(P')} k(P)=\idht P'+\trdeg_{\Frac(A)} \Frac(B)\]
 が成り立つとき，$A$と$B$の間で\textbf{次元公式}(dimension formula)\index{じげんこうしき@次元公式}が成り立つという．$A$が体のときこれは体上有限生成整域についての弱次元公式にほかならない．
 
-実際のNoether環はほとんどが鎖状環であることが知られているが，その証明はCohen--Macaulay環の登場を待たなければならない．また，鎖状でないNoether環の例は\cite{Nag73}で与えられている．また鎖状であるが強鎖状でないNoether環の例も永田によって与えられている．
+実際のNoether環はほとんどが鎖状環であることが知られているが，その証明はCohen--Macaulay環の登場を待たなければならない．また，鎖状でないNoether環の例は\cite{Nag73}で与えられている．それだけでなく鎖状であるが強鎖状でないNoether環の例も永田によって与えられている．
 
 \section{Hilbertの零点定理}
 

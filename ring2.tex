@@ -415,7 +415,7 @@ $P\in\ass M$であることと単射$\iota:A/P\to M$が存在することが同�
 \end{prop}
 
 \begin{proof}
-	$ab\in I,a\not\in I$とする．これは$abM\subset N,aM\not\subset N$を意味するので，ある$x+N\neq0$について$bx+N\neq0$であり$a\in\ann (bx+N)\subset P$となる．よって$I$は$P$準素．
+	$ab\in I,a\not\in I$とする．これは$abM\subset N,aM\not\subset N$を意味するので，ある$x+N\neq0$について$ax+N\neq0$であり$b\in\ann (ax+N)\subset P$となる．よって$I$は$P$準素．
 \end{proof}
 
 \ref{prop:準素部分加群とass}の証明において($\Longrightarrow$)の証明には$M$が有限生成である必要はなかったことに注意すると，準素部分加群の定義を次のように拡張できる．
@@ -464,7 +464,7 @@ $P\in\ass M$であることと単射$\iota:A/P\to M$が存在することが同�
 	\[\iota:M/(N_1\cap N_2)\longrightarrow M/N_1\oplus M/N_2;x+N_1\cap N_2\longmapsto(x+N_1,x+N_2)\]
 	は単射であるので，短完全列；
 	\[0\longrightarrow M/N_1\longrightarrow M/N_1\oplus M/N_2\longrightarrow M/N_2\longrightarrow0\]
-	とあわせて，\ref{prop:完全列とass}から$\emptyset\neq\ass M/(N_1\cap N_2)\subset\ass M/N_1\cup\ann M/N_2=\{P\}$であるから$N_1\cap N_2$は$P$準素．
+	とあわせて，\ref{prop:完全列とass}から$\emptyset\neq\ass M/(N_1\cap N_2)\subset\ass M/N_1\cup\ass M/N_2=\{P\}$であるから$N_1\cap N_2$は$P$準素．
 \end{proof}
 
 これより，準素分解$N=\bigcap_i^r N_i$がむだのない分解であるとき，$N_{i_1}$と$N_{i_2}$がともに$ P$準素なら$N_{i_1}\cap N_{i_2}$も$ P$準素なので，$N_j=N_{i_1}\cap N_{i_2}$とおくと，分解の長さを短くできる．このように，すべての$i$に対し$\ass (M/N_i)$が異なるようにすることで\textbf{最短準素分解}が得られる．\index{さいたんじゅんそぶんかい@最短準素分解}
@@ -482,11 +482,11 @@ $P\in\ass M$であることと単射$\iota:A/P\to M$が存在することが同�
 	$M$を有限生成な$A$加群とし，$N=N_1\cap\dots\cap N_r$をむだのない最短準素分解，$\ass(M/N)=\{P_1,\dots,P_r\}$とおく．$P_i$が$\ass(M/N)$で極小なら$f_{P_i}:M\longrightarrow M_{P_i}$を$P_i$における局所化とすると，$N_i=f^{-1}_{P_i}(N_{P_i})$となり，$P_i$準素成分は$N$と$P_i$から一意に定まる．
 \end{thm}
 \begin{proof}
-	適当に並べ替えて$P_1$が極小であるとする．$P_i\not\subset P_1~(i\neq1)$である．よって$y\not\in P_1$かつ$y\in P_i$となる$y\in A$が存在する．このとき$(M/N_i)_{P_1}$において$y/1\in A_ P$は可逆．また，$y\in P_i=\sqrt{\ann M/N_i}$だから，ある$n$があって$y^n(M/N_i)=0$である．よって$y^n/1\cdot (M/N_i)_{P_1}=0$で，$y/1$は可逆なので$(M/N_i)_{P_1}=0$である．すると完全列；
+	適当に並べ替えて$P_1$が極小であるとする．$P_i\not\subset P_1~(i\neq1)$である．よって$y\in P_i$で$y\not\in P_1$となるものが存在する．このとき$(M/N_i)_{P_1}$において$y/1\in A_{P_1}$は可逆．また，$y\in P_i=\sqrt{\ann M/N_i}$だから，ある$n$があって$y^n(M/N_i)=0$である．よって$y^n/1\cdot (M/N_i)_{P_1}=0$で，$y/1$は可逆なので$(M/N_i)_{P_1}=0$である．すると完全列；
 	\[\ses{N_i}{M}{M/N_i}\]
 	に対し；
 	\[\ses{(N_i)_{P_1}}{M_{P_1}}{(M/N_i)_{P_1}}\]
-	も完全であるので$(N_i)_{P_1}=M_{P_1}$である．ここで$N_{P_1}=\bigcap_i^r (N_i)_{P_1}=(N_1)_{P_1}$であるので，$f^{-1}_ P(N_ P)=f^{-1}_ P((N_1)_ P)=N_1$であることがわかった．
+	も完全であるので$(N_i)_{P_1}=M_{P_1}$である．ここで$N_{P_1}=\bigcap_i^r (N_i)_{P_1}=(N_1)_{P_1}$であるので，$f^{-1}_{P_1}(N_{P_1})=f^{-1}_{P_1}((N_1)_{P_1})=N_1$であることがわかった．
 \end{proof}
 
 これをイデアルに関して述べ返すと，次のようになる．
