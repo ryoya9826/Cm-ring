@@ -218,8 +218,8 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 
 \begin{prop}[環の対応定理]\label{prop:環の対応定理}
 	$A$を環とし，$I$を$A$のイデアルとする．次の２つの集合；
-	\[X=\mkset{J:A\text{ のイデアル}}{I\subset J},\quad Y=\{A/I\text{ のイデアル}\}\]
-	の間には１対１の対応がある．
+	\[X=\mkset{J:A\text{のイデアル}}{I\subset J},\quad Y=\{A/I\text{ のイデアル}\}\]
+	の間には包含関係を保つ１対１の対応がある．
 \end{prop}
 
 \begin{proof}
@@ -237,25 +237,18 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 	\end{step}
 \end{proof}
 
-特別なイデアルについて，次のような定義をする．
 
 \begin{defi}[素イデアル]\index{そいである@素イデアル}
-	環$A$の真のイデアル$P$について，任意の$a,b\in A$に対して$ab\in P$ならば，$a\in P$または$b\in P$が成り立つとき，$P$を\textbf{素イデアル}(prime ideal)という．
+	環$A$の真のイデアル$P$について，任意の$a,b\in A$に対して$ab\in P$ならば，$a\in P$または$b\in P$が成り立つとき，$P$を\textbf{素イデアル}(prime ideal)という．環$A$の素イデアル全体を$\spec A$とかく．
 \end{defi}
 
-環$A$の素イデアル全体を$\spec A$とかく．例えば$\spec \Z=\mkset{(p)}{p=0\text{または}p\text{は素数．}}$である．素イデアルという言葉を用いると，環$A$が整域であることと$(0)$が素イデアルであることは同値である．
+例えば$\spec \Z=\mkset{(p)}{p=0\text{または}p\text{は素数．}}$である．素イデアルという言葉を用いると，環$A$が整域であることと$(0)$が素イデアルであることは同値である．
 
 \begin{defi}[極大イデアル]\index{きょくだいいである@極大イデアル}
-	環$A$の真のイデアル$\ideal{m}$について，$\ideal{m}\subset I\subset A$となる真のイデアル$I$は$\ideal{m}$に限るとき，$\ideal{m}$を\textbf{極大イデアル}(maximal ideal)という．
+	環$A$の真のイデアル$\ideal{m}$について，$\ideal{m}\subset I\subsetneq A$となる真のイデアル$I$は$\ideal{m}$に限るとき，$\ideal{m}$を\textbf{極大イデアル}(maximal ideal)という．環$A$の極大イデアル全体を$\specm A$とかく．
 \end{defi}
 
-環$A$の極大イデアル全体を$\specm A$とかく．
-
-\begin{exer}
-	$\specm \Z$を決定せよ．
-\end{exer}
-
-環の対応定理により，次の特徴づけが得られる．
+$\specm$は$\spec$-$m$の略である．本によっては$m$-$\spec A$とか，$\operatorname{Max} A$とかかかれる．環の対応定理により，次の特徴づけが得られる．
 
 \begin{prop}
 	$A$を環とする．
@@ -266,7 +259,7 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 \end{prop}
 
 \begin{exer}
-	対応定理（\ref{prop:環の対応定理})を用いてこれを示せ．
+	これを示せ（ヒント：(ii)は対応定理（\ref{prop:環の対応定理}）を使え）．
 \end{exer}
 
 体は整域であるので，次の系が導かれる．
@@ -275,10 +268,14 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 	極大イデアルは素イデアルである．
 \end{cor}
 
+\begin{exer}
+	$\specm \Z$を決定せよ（ヒント：Fermatの小定理を使え）．
+\end{exer}
+
 環の対応定理は素イデアルに限っても成り立つ．環$A$のイデアル$I$について，$I$を含む素イデアル全体を$V(I)=\mkset{P\in\spec A}{I\subset P}$とかく（$V$はVanishに由来し，幾何的な意味を持つ）．
 
 \begin{prop}[素イデアルの対応定理]
-	$A$を環とし，$I$を$A$のイデアルとする．$V(I)$と$\spec A/I$の間には１対１対応がある．
+	$A$を環とし，$I$を$A$のイデアルとする．$V(I)$と$\spec A/I$の間には包含関係を保つ１対１対応がある．
 \end{prop}
 \begin{proof}
 	対応定理と同様に自然な全射$\pi:A\to A/I$が対応を与える．
@@ -381,10 +378,16 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 
 冪零根基が素イデアルの共通部分であるので，極大イデアルの共通部分についても考えてみよう．
 \begin{defi}[Jacobson根基]\index{#Jacobsonこんき@Jacobson根基}
-	環$A$のすべての極大イデアルの共通部分をJacobson\textbf{根基}(Jacobson radical)といい，$\rad(A)$で表す．
+	環$A$のすべての極大イデアルの共通部分を\textbf{Jacobson根基}(Jacobson radical)といい，$\rad(A)$で表す．
 \end{defi}
 
-すなわち$\rad(A)=\bigcap_{\ideal{m}\in\specm A}\ideal{m}$である．極大イデアルは素イデアルであるから，$\nil(A)\subset\rad(A)$となっている．Jacobson根基については次の特徴づけがある．
+すなわち$\rad(A)=\bigcap_{\ideal{m}\in\specm A}\ideal{m}$である．極大イデアルは素イデアルであるから，$\nil(A)\subset\rad(A)$となっている．
+
+\begin{exer}
+	$\nil(A)=\rad(A)$であるが，$\specm A\subsetneq \spec A$であるような$A$の例を挙げよ．
+\end{exer}
+
+Jacobson根基については次の特徴づけがある．
 \begin{prop}
 	$\rad(A)=\mkset{a\in A}{\text{任意の}b\in A\text{について}1-ab\in A^\times}$が成り立つ．
 \end{prop}
@@ -398,7 +401,7 @@ $\Z/n\Z$の例からわかるように，剰余環$A/I$は$I$の元を0とみな
 	\end{mrkw}
 \end{proof}
 
-\section{ED,PID,UFD}
+\section{ED, PID, UFD}
 整数環$\Z$の持つ性質を一般の環に抽象化することで，ED, PID, UFDなどの良い性質が得られる．本節ではそれについて説明する．
 
 \begin{defi}[PID]\index{#PID@PID（単項イデアル整域）}\index{たんこういであるせいいき@単項イデアル整域}
@@ -416,7 +419,7 @@ $\Z$はPIDである．実際，任意のイデアル$I$について，$n\in I$�
 		\[b=aq+r,\quad \rho(r)<\rho(a)\]
 		となる．
 	\end{defiterm}
-	を満たすものが存在するとき，$\rho$をEulcid\textbf{関数}(Euclid function)，$A$をEuclid\textbf{整域}，ED (Euclid domain)という．
+	を満たすものが存在するとき，$\rho$を\textbf{Eulcid関数}(Euclid function)，$A$を\textbf{Euclid整域}，ED (Euclid domain)という．
 \end{defi}
 
 除法の原理によって，絶対値を与える関数$\Z\to\N$がEuclid関数となり$\Z$はEDである．

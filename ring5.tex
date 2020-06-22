@@ -40,7 +40,7 @@
 
 次の離散付値環が特に大切である．
 \begin{defi}[離散付値]\index{りさんふち@離散付値}\index{#DVR@DVR（離散付値環）}\index{りさんふちかん@離散付値環}
-	$G=\Z$としたときの付値$v$を\textbf{離散付値}(discrete valuation)といい，対応する付値環を\textbf{離散付値環}(discrete valuation ring)といい，DVRと略す．このとき，便宜上$v(0)=\infty$とする．
+	$G=\Z$としたときの付値$v$を\textbf{離散付値}(discrete valuation)という．対応する付値環を\textbf{離散付値環}(discrete valuation ring)といい，DVRと略す．このとき，便宜上$v(0)=\infty$とする．
 \end{defi}
 
 付値環についていくつかの性質を示しておこう．
@@ -153,7 +153,7 @@
 \section{Dedekind整域}
 
 \begin{defi}[Dedekind整域]\index{#Dedekindせいいき@Dedekind整域}
-	$A$を整域とする．すべての$A$の0でも$A$でもないイデアル$I$が有限個の素イデアルの積に(一意的に)かけるとき，$A$をDedekind\textbf{整域}という．
+	$A$を整域とする．すべての$A$の0でも$A$でもないイデアル$I$が有限個の素イデアルの積に(一意的に)かけるとき，$A$を\textbf{Dedekind整域}という．
 \end{defi}
 
 この条件は$\Z$の素因数分解の拡張を与えるために素イデアルが考案されたという歴史的経緯を考えると，素因数分解ができる環，というように捉えることができ，$\Z$のよい一般化になっている．この節ではDedekind環の公理的特徴づけを与えよう．
@@ -301,11 +301,12 @@ $k$の有限生成$A$部分加群$M$は分数イデアルである．なぜな�
 \begin{defi}[Poincar\'e級数]\index{#Poincareきゅうすう@Poincar\'e級数}
 	次数付き環$A$，次数付き有限生成$A$加群$M$について，$\lambda$をすべての有限生成$A_0$加群からなる集合族上の加法的関数とする．このとき；
 	\[P(M,t)=\sum_{n=0}^\infty \lambda(M_n)t^n\]
-	を$M$のPoincar\'e\textbf{級数}(Poincar\'e series)という．
+	を$M$の\textbf{Poincar\'e級数}(Poincar\'e series)という．
 \end{defi}
+
 Poincar\'e級数の考察には，次の定理により与えられる表示が強力である．
 
-\begin{thm}[Hilbert，Serre]
+\begin{thm}[Hilbert, Serre]
 	$P(M,t)$は有理関数である．特に$\Z$係数の多項式$f(t)\in\Z[t]$が存在して；
 	\[P(M,t)=\frac{f(t)}{\prod_{i=1}^s(1-t^{k_i})}\]
 	が成り立つ．
@@ -346,7 +347,7 @@ Poincar\'e級数の考察には，次の定理により与えられる表示が�
 
 \begin{defi}[Hilbert多項式]\index{#Hilbertたこうしき@Hilbert多項式}\label{defi:Hilbert多項式}
 	$k_1=\dots=k_s=1$のとき，有理係数で$d-1$次の($n$に関する)多項式$\varphi_M(n)$が存在して，$N
-	\leq n$ならば$\lambda(M_n)=\varphi_M(n)$が成り立つ．$\varphi_M$を，$M$の$\lambda$に関するHilbert\textbf{多項式}(function，polymonial)という．
+	\leq n$ならば$\lambda(M_n)=\varphi_M(n)$が成り立つ．$\varphi_M$を，$M$の$\lambda$に関する\textbf{Hilbert多項式}(function，polymonial)という．
 \end{defi}
 
 $A_0$がArtin（特に体）のとき，$M$は有限生成だからArtinかつNoether的なので\ref{prop:有限な組成列の同値条件}より組成列の長さ$l(M)$は有限である．そして$l(M)$は加法的である（確かめよ）．$x_i$を$A_0$上の不定元として$A=A_0[x_1,\dots,x_s]$とすると，$A_n$は$x_1^{m_1}\dots x_s^{m_s} (\sum m_i=n)$により生成される．$n$次の単項式は$\binom{n+s}{s}$個あるので，$l(A_n)=l(A_0)\binom{n+s}{s}$となり；
@@ -362,7 +363,7 @@ $A_0$がArtin（特に体）のとき，$M$は有限生成だからArtinかつNo
 		\item すべての十分大きな$n$について，次数が$s$以下の多項式$g(n)$が存在して$l(M/M_n)=g(n)$となる．
 		\item $g(n)$の先頭項は$M$と$I$のみに依存する（フィルター$\{M_n\}$には依存しない）．
 	\end{sakura}
-	が成り立つ．また(i),(ii)は$\{M_n\}$の安定性を仮定せずに成り立つ．
+	が成り立つ．また(i), (ii)は$\{M_n\}$の安定性を仮定せずに成り立つ．
 \end{prop}
 
 \begin{proof}
@@ -393,7 +394,7 @@ $\chi_I(n)$の次数は$I$の極小の生成系の個数以下であることに
 	である．右辺と左辺の次数は等しいので題意が成り立つ．
 \end{proof}
 
-$\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の極小の生成系の個数を$\delta(A)$とかくことにする．$d(A)$を$A$のHilbert-Samuel次元，$\delta(A)$を$A$の座標次元と呼ぶ．この節の残りの目標はNoether局所環$(A,\ideal{m})$について，次のKrullの次元定理；
+$\deg\chi_I(n)=d(A)$とかく．また，先程まで$s$とかいていた$I$の極小の生成系の個数を$\delta(A)$とかくことにする．$d(A)$を$A$のHilbert--Samuel次元，$\delta(A)$を$A$の座標次元と呼ぶ．この節の残りの目標はNoether局所環$(A,\ideal{m})$について，次のKrullの次元定理；
 \begin{thm}[Krullの次元定理]\index{#Krullのじげんていり@Krullの次元定理}\label{thm:Krullの次元定理}
 	$(A,\ideal{m})$をNoether局所環とする．$\chi_{\ideal{m}}(n)=l(A/\ideal{m}^n)$の次数を$d(A),A$の$\ideal{m}$準素イデアルの極小の生成系の個数を$\delta(A)$とおくと；
 	\[\dim A=d(A)=\delta(A)\]
@@ -617,10 +618,10 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 
 \section{Cohen--Macaulay 加群}
 
-重要な局所環のクラスの１つにCohen--Macaulay\textbf{環}（略してCM\textbf{環}と書くことも多い）がある．Cohen--Macaulay環は現在の可換環論で中心的な存在の１つであり，この節と続くもう１つの節（Cohen--Macaulay環について述べる）ではホモロジー代数を（ほとんど）要しない範囲で性質をまとめておこう．まずそのために\textbf{正則列}と\textbf{深さ}を導入する．
+重要な局所環のクラスの１つに\textbf{Cohen--Macaulay環}（略してCM\textbf{環}と書くことも多い）がある．Cohen--Macaulay環は現在の可換環論で中心的な存在の１つであり，この節と続くもう１つの節（Cohen--Macaulay環について述べる）ではホモロジー代数を（ほとんど）要しない範囲で性質をまとめておこう．まずそのために\textbf{正則列}と\textbf{深さ}を導入する．
 
 \begin{defi}[正則元]
-	$A$加群$M$について，$a\in A$が$M$に非例因子として作用する，すなわち任意の$0\neq x\in M$について$ax\neq0$であるとき，$a$は$M$\textbf{正則}(regular)であるという．
+	$A$加群$M$について，$a\in A$が$M$に非零因子として作用する，すなわち任意の$0\neq x\in M$について$ax\neq0$であるとき，$a$は$M$\textbf{正則}(regular)であるという．
 \end{defi}
 
 \begin{defi}[正則列]\index{せいそくれつ@正則列}
@@ -630,13 +631,13 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 例えば体上の多項式$A=k[X_1,X_2,X_3]$において$f_1=X_1(X_2-1),f_2=X_2,f_3=X_3(X_1-1)$とすると$f_1,f_2,f_3$は$A$正則列をなす．ところが$X_1$は$A/(f_1)$において$0$ではないが，$f_3X_3$は$0$であるので$f_1,f_3,f_2$は$A$正則列ではない．このように正則列は順序を考慮する必要があるが，局所環においては極大イデアルの元について順序によらないことが知られている．ここではより強く$\rad A$の元においてそのことを示そう．
 
 \begin{lem}\label{lem:正則元と素因子}
-	Noether環$A$上の加群$M$において$a\in A$が$M$正則でありかつ$\bigcap a^nM=0$であるものとする．このとき$M$の素因子$P\in\ass M$について$P+(a)\subset Q$となる$Q\in\ass (M/aM)$が存在する．
+	Noether環$A$上の加群$M$において$a\in A$が$M$正則でありかつ$\bigcap a^nM=0$であるものとする．このとき$M$の素因子$P\in\ass M$について$P+aA\subset Q$となる$Q\in\ass (M/aM)$が存在する．
 \end{lem}
 
 この補題の仮定はKrullの交叉定理（\ref{cor:Krullの交叉定理の系}）より$a\in\rad A$のとき満たされる．
 
 \begin{proof}
-	$x\in M$によって$P=\ann (x)$とかける．ここで$\bigcap a^nM=0$より，ある$k\geq0$が存在して$x\in a^kM$かつ$x\not\in a^{k+1}M$である．このとき$y\in M$によって$x=a^ky$と書けているとすると$y\not\in aM$である．ここで$\bar{y}$を$y$の$M/aM$における像とすると，$a$が$M$正則なので$(P+(a))\bar{y}=0$が成り立つ．これは$P+(a)\subset\ann (\bar{y})$を意味するが，\ref{prop:素因子の存在}よりある$Q\in\ass (M/aM)$が存在する．
+	$x\in M$によって$P=\ann (x)$とかける．ここで$\bigcap a^nM=0$より，ある$k\geq0$が存在して$x\in a^kM$かつ$x\not\in a^{k+1}M$である．このとき$y\in M$によって$x=a^ky$と書けているとすると$y\not\in aM$である．ここで$\bar{y}$を$y$の$M/aM$における像とすると，$a$が$M$正則なので$(P+aA)\bar{y}=0$が成り立つ．これは$P+aA \subset\ann (\bar{y})$を導き，\ref{prop:素因子の存在}よりある$Q\in\ass (M/aM)$で$P+aA\subset Q$となるものが存在する．
 \end{proof}
 
 \begin{prop}
@@ -646,7 +647,7 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 \begin{proof}
 	まず２つの場合に帰着できることをみよう．$a_1,\dots,a_i,a_{i+1},\dots,a_r$が$M$正則列であるとする．$N=M/(a_1,\dots,a_{i-1})M$とおくと$a_i$は$N$正則であり，$a_{i+1}$は$N/a_iN=M/(a_1,\dots,a_i)M$正則である．このとき$a_1,\dots,a_{i+1},a_i,\dots,a_r$が$M$正則列であることをみるには$a_{i+1}$が$N$の，$a_i$が$N/a_{i+1}N=M/(a_1,\dots,a_{i-1},a_{i+1})M$正則であることを示せばよい．
 	
-	よって$a_1$が$M$の，$a_2$が$M/a_1M$正則なら$a_2$が$M$の，$a_1$が$M/a_2M$正則であることを示せば十分である．まず$a_2$が$M$の零因子とすると，\ref{prop:素因子の存在}よりある$P\in\ass M$に対して$a_2\in P$である．ここで$a_1\in\rad A$より，Krullの交叉定理から$\bigcap a_1^nM=0$となるので，補題から$P+(a_1)\subset Q$となる$Q\in\ass (M/a_1M)$がある．すると$a_2\in P\subset Q$だから$a_2$が$M/a_1M$正則であることに矛盾する．よって$a_2$は$M$正則．また$a_1$が$M/a_2M$の零因子とすると，ある$x\not\in a_2M,y\in M$について$a_1x=a_2y$だが，このとき$a_2y\in a_1M$より$a_2$が$M/a_1M$正則だから$y\in a_1M$である．$y=a_1z$とおくと$a_1(x-a_2z)=0$となり，$a_1$は$M$正則なので$x=a_2z$となって矛盾する．よって$a_1$は$M/a_2M$正則である．
+	よって$a_1$が$M$の，$a_2$が$M/a_1M$正則なら$a_2$が$M$の，$a_1$が$M/a_2M$正則であることを示せば十分である．まず$a_2$が$M$の零因子とすると，\ref{prop:素因子の存在}よりある$P\in\ass M$に対して$a_2\in P$である．ここで$a_1\in\rad A$より，Krullの交叉定理から$\bigcap a_1^nM=0$となるので，補題から$P+a_1A \subset Q$となる$Q\in\ass (M/a_1M)$がある．すると$a_2\in P\subset Q$だから$a_2$が$M/a_1M$正則であることに矛盾する．よって$a_2$は$M$正則．また$a_1$が$M/a_2M$の零因子とすると，ある$x\not\in a_2M,y\in M$について$a_1x=a_2y$だが，このとき$a_2y\in a_1M$より$a_2$が$M/a_1M$正則だから$y\in a_1M$である．$y=a_1z$とおくと$a_1(x-a_2z)=0$となり，$a_1$は$M$正則なので$x=a_2z$となって矛盾する．よって$a_1$は$M/a_2M$正則である．
 \end{proof}
 
 \begin{cor}
@@ -656,12 +657,12 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 次元と関連して，加群の\textbf{深さ}というものを導入しよう．
 
 \begin{defi}[深さ]\index{ふかさ@深さ}
-	$A$をNoether環とし，$M$を有限生成$A$加群とする．$A$のイデアル$I$について$IM\neq M$であるとき，$I$の元からなる$M$正則列の長さの最大値を$M$の$I$における\textbf{深さ}(depth)といい，$\mdepth_I M$とかく．$IM=M$であるときは$\mdepth_I M=\infty$と定義する．特に$A$が極大イデアルが$\ideal{m}$である局所環のとき，$\ideal{m}$における$M$の深さを$\mdepth M$とかいて単に$M$に\textbf{深さ}という．
+	$A$をNoether環とし，$M$を有限生成$A$加群とする．$A$のイデアル$I$について$IM\neq M$であるとき，$I$の元からなる$M$正則列の長さの最大値を$M$の$I$における\textbf{深さ}(depth)といい，$\mdepth_I M$とかく．$IM=M$であるときは$\mdepth_I M=\infty$と定義する．特に$A$が極大イデアルが$\ideal{m}$である局所環のとき，$\ideal{m}$における$M$の深さを$\mdepth M$とかいて単に$M$の\textbf{深さ}という．
 \end{defi}
 
 この定義における$M\neq IM$という条件は，$M\neq0$のとき$(A,\ideal{m})$が局所環ということと中山の補題から$I\subset\ideal{m}$と同値である．
 
-さて，Noether局所環$(A,\ideal{m})$について$\dim A\leq \emdim A=\dim_k\ideal{m}/\ideal{m}^2$であり，これの等号が成り立つものを正則局所環というのであった．深さは環の次元を下から抑えるものとなっている．そのことを示そう．
+さて，Noether局所環$(A,\ideal{m})$について$\dim A\leq \emdim A=\dim_k\ideal{m}/\ideal{m}^2$であり，これの等号が成り立つものを正則局所環というのであった．深さは次元を下から抑えるものとなっている．そのことを示そう．
 
 \begin{prop}
 	Noether局所環$(A,\ideal{m})$と，有限生成$A$加群$M\neq0$について，任意の$P\in\ass M$に対し；
@@ -680,7 +681,7 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 これにより次の定義を導入する．
 
 \begin{defi}[Cohen--Macaulay加群]\index{#Cohen--Macaulayかぐん@Cohen--Macaulay加群}
-	Noether局所環$(A,\ideal{m})$上の有限生成加群$M$について，$\dim M=\mdepth M$であるとき$M$をCohen--Macaulay\textbf{加群}という．以後単にCM加群とかく．
+	Noether局所環$(A,\ideal{m})$上の有限生成加群$M$について，$\dim M=\mdepth M$であるとき$M$を\textbf{Cohen--Macaulay加群}という．以後単にCM加群とかく．
 \end{defi}
 
 まず，わかりやすいご利益として定義から次が従う．
@@ -707,7 +708,7 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 \end{lem}
 
 \begin{proof}
-	$a$は$A/\ann M$の非零因子なので，\ref{prop:dim A/xA=dim A-1}より$\dim M-1=\dim A/\ann M-1=\dim A/(\ann M+(a))$が成り立つ．また$\dim M/aM=\dim A/\ann(M/aM)$であるので，$\dim A/(\ann M+(a))=\dim A/\ann(M/aM)$であることを示せばよい．それには$P\in\spec A$が$\ann M+(a)\subset P$であることと$\ann(M/aM)\subset P$であることが同値であることを示せば十分である．
+	$a$は$A/\ann M$の非零因子なので，\ref{prop:dim A/xA=dim A-1}より$\dim M-1=\dim A/\ann M-1=\dim A/(\ann M+(a))$が成り立つ．また$\dim M/aM=\dim A/\ann(M/aM)$であるので，$V(\ann M+(a))=V(\ann M/aM)$を示せばよい．
 	
 	容易に$\ann(M/aM)\subset P$なら$\ann M\subset P$かつ$a\in P$であることがわかる．一方で$\ann M\subset P$かつ$a\in P$ならば$M_P\neq0$であり，また$a\in P$だから$(M/aM)_P=M_P/aM_P$であり，$a/1\in\rad (A_P)=PA_P$だから中山の補題より$M_P/aM_P\neq0$である．よって$P\in\supp M/aM$すなわち$\ann(M/aM)\subset P$となり，求める等式が示された．
 \end{proof}
@@ -724,7 +725,7 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 \end{lem}
 
 \begin{proof}
-	$(\Longleftarrow)$は明らか．$(\Longrightarrow)$は対偶を示す．任意の$P\in\ass M$について$I\not\subset P$であると仮定する．$\ass M$は有限だからPrime avoidance より$I\subsetneq\bigcup_{P\in\ass M}P$であり，\ref{cor:加群の零因子は素因子と等しい}より$x\in I$で$M$正則元となるものが存在する．
+	$(\Longleftarrow)$は明らか．$(\Longrightarrow)$は対偶を示す．任意の$P\in\ass M$について$I\not\subset P$であると仮定する．$\ass M$は有限だからPrime avoidance より$I\not\subset\bigcup_{P\in\ass M}P$であり，\ref{cor:加群の零因子は素因子と等しい}より$x\in I$で$M$正則元となるものが存在する．
 \end{proof}
 
 \begin{prop}\label{prop:CMの局所化もCM}
@@ -745,7 +746,7 @@ DVRは整閉なので，1次元の正則局所環は整閉である．またよ�
 
 正則環と同様に，局所環でない環は局所化により局所環とできることから次の定義をする．
 \begin{defi}[Cohen--Macaulay環]\index{#Cohen-Macaulayかん@Cohen--Macaulay環}
-	Noether環$A$について，任意の$P\in\spec A$による局所化$A_P$が$A_P$加群としてCohen--Macaulay加群となるとき$A$をCohen--Macaulay\textbf{環}という．
+	Noether環$A$について，任意の$P\in\spec A$による局所化$A_P$が$A_P$加群としてCohen--Macaulay加群となるとき$A$を\textbf{Cohen--Macaulay環}という．
 \end{defi}
 
 明らかに体はCM環である．また簡単な計算により１次元Noether整域はCM環であることがわかる．特にPID，Dedekind整域などはCM環である．この節では，CM環の簡単な性質を見るとともに，正則局所環やCM環上の多項式環がCM環であること，またすべてのCM環が強鎖状環であることを示そう．

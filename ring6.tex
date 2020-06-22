@@ -207,7 +207,7 @@
 完全列そのものではどこのホモロジー，コホモロジーをとっても消えてしまう．しかし，見方を返せば完全列に関手を施して複体を作ったときそこでホモロジーが消えない，ということは完全性が乱れてしまったということにほかならない．以前取り上げた左（右）完全関手はその一例である．このようにホモロジーは鎖がどれだけ完全列から離れているかという\quo{乱れ}を計測する手段であるといえる．
 
 \begin{defi}[コサイクル，コバウンダリー]\index{コサイクル}\index{コバウンダリー}
-	$\ker d_i$の元を\textbf{サイクル，輪体}(cycle)，$\im d^{i+1}$の元を\textbf{バウンダリー，境界輪体}(boundary)という．$\ker d^i,\im d_{i-1}$については\textbf{コサイクル，余輪体}(cocycle)， \textbf{コバウンダリー，余境界輪体}(coboundary)という．
+	$\ker d_i$の元を\textbf{サイクル}，\textbf{輪体}(cycle)，$\im d^{i+1}$の元を\textbf{バウンダリー}，\textbf{境界輪体}(boundary)という．$\ker d^i,\im d_{i-1}$については\textbf{コサイクル}，\textbf{余輪体}(cocycle)， \textbf{コバウンダリー}，\textbf{余境界輪体}(coboundary)という．
 \end{defi}
 
 次に複体の圏について考えたい．そのために複体の間の射$f_\bullet:A_\bullet\to B_\bullet$を考えねばならない．射$f_i:A_i\to B_i$の族$\{f_i\}$ないし$\{f^i\}$で，次の図式；
@@ -236,7 +236,7 @@
 
 を可換にするものを\textbf{複体の射}といい$f_\bullet$とかく．余複体についても双対的に考え$f^\bullet$とかく．まとめよう．
 \begin{defi}[複体の圏]
-	$\mathscr{A}$をAbel圏とする．対象を$\mathscr{A}$の複体，射を$f_\bullet$として定める圏を$\ch{A}$とかき， \textbf{複体の圏}という．また余鎖複体と$f^\bullet$のなす圏を$\coch{A}$とかく．
+	$\mathscr{A}$をAbel圏とする．対象を$\mathscr{A}$の複体，射を$f_\bullet$として定める圏を$\ch{A}$とかき，\textbf{複体の圏}という．また余鎖複体と$f^\bullet$のなす圏を$\coch{A}$とかく．
 \end{defi}
 
 コホモロジーとは導来関手である，と述べたが，まずホモロジーをとることは関手になることをみよう．
@@ -251,7 +251,7 @@
 
 コホモロジーについても同様に$\coch{A}$から$\mathscr{A}$への関手になる．ではいつ$H_i(f_\bullet)=H_i(g_\bullet)$となるかを考えよう．まず$H_i(f_\bullet)=H_i(g_\bullet)$であることと，任意の$x\in\ker d_i$に対して$f_i(x)-g_i(x)\in\im d'_{i+1}$であることは同値である．ここで射$s_i:A_i\to B_{i+1}$が存在して$f_i-g_i=(d'_{i+1}\circ s_i)+(s_{i-1}\circ d_i)$となるとき，$x\in\ker d_i$なら$f_i(x)-g_i(x)\in\im d'_{i+1}$である．このような$s^i$がすべての$i$でとれるとき，任意の次数のホモロジーが一致する．このとき$f_\bullet$と$g_\bullet$は\textbf{ホモトピー同値}であるという．
 \begin{defi}[ホモトピー同値]\index{ほもとぴーどうち@ホモトピー同値}
-	複体の射$f_\bullet,g_\bullet$に対し，射$s_i:A_i\to B_{i+1}$の族$\{s_i\}$で，各$i$に対し$f_i-g_i=(d'_{i+1}\circ s_i)+(s_{i-1}\circ d_i)$となるものが存在するとき$f_\bullet$と$g_\bullet$は\textbf{ホモトピー同値，ホモトピック}(homotopic)であるという．
+	複体の射$f_\bullet,g_\bullet$に対し，射$s_i:A_i\to B_{i+1}$の族$\{s_i\}$で，各$i$に対し$f_i-g_i=(d'_{i+1}\circ s_i)+(s_{i-1}\circ d_i)$となるものが存在するとき$f_\bullet$と$g_\bullet$は\textbf{ホモトピー同値}，\textbf{ホモトピック}(homotopic)であるという．
 \end{defi}
 
 \begin{figure}[H]
@@ -840,7 +840,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき，$d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_
 			F(P_1)\nxcell[F(d_1)]F(P_0)\nxcell[F(\varepsilon)]F(A)\nxcell0
 		\end{tikzcd}$は完全．よって$\im F(d_1)=\ker F(d_1)$であるので，$L_0F(A)=F(P_0)/\ker F(d_1)=F(A)$である．
 		
-		\item $A_1,A_2,A_3$の射影分解からなる複体の完全列で，分裂しているものを作りたい（これ自身はHorseshoe\textbf{の補題}と呼ばれる\index{#Horseshoeのほだい@Horseshoeの補題}）． $A_1,A_3$の射影分解の初項を$P_{0,1},P_{0,3}$とする．ここで $P_{0,2}=P_{0,1}\midoplus P_{0,3}$とおくと，これは射影的である．また自然な単射，全射があって次の図式が考えられる；
+		\item $A_1,A_2,A_3$の射影分解からなる複体の完全列で，分裂しているものを作りたい（これ自身は\textbf{Horseshoeの補題}と呼ばれる\index{#Horseshoeのほだい@Horseshoeの補題}）． $A_1,A_3$の射影分解の初項を$P_{0,1},P_{0,3}$とする．ここで $P_{0,2}=P_{0,1}\midoplus P_{0,3}$とおくと，これは射影的である．また自然な単射，全射があって次の図式が考えられる；
 		\begin{figure}[H]
 			\centering
 			\begin{tikzcd}
@@ -876,7 +876,7 @@ $h_n=\id_{P_n}-(f_n\circ g_n)$とおき，$d_{n+1}\circ s_n=h_n-(s_{n-1}\circ d_
 
 右導来関手についても同様に得られる．証明は省略するが，結果だけ述べておこう．
 
-\begin{thm}[右導来関手の特徴付け]
+\begin{thm}[右導来関手の特徴付け]\label{thm:右導来}
 	$F$を$\mathscr{A}\to\mathscr{B}$の加法的左完全関手とする．このとき$F$の導来関手$R^iF$に対し；
 	\begin{defiterm}{RDF}
 		\item $R^0 F\cong F$である．
@@ -1082,6 +1082,31 @@ $\Tor$と同様に，$\Ext(M,N)$の計算は$N$の単射分解と$M$の射影分
 	を得るが，これの各成分は$\prod\hom(P_{n,\lambda},N)$と同型である．よって主張が従う．
 \end{proof}
 
+最後に，Extの計算について１つ補題を用意しておこう．
+
+\begin{lem}\label{lem:ExtのAnn}
+	$A$を環とし，$M,N$を$A$加群とする．$a\in\ann (M)\cup\ann (N)$について，各$i$に対し$a\in\ann(\Ext^i(N,M))$である．
+\end{lem}
+
+\begin{proof}
+	まず$a\in\ann M$とする．$a$倍写像$a\cdot:M\to M$はゼロ写像である．それを$M$の入射分解に落として；
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		0\nxcell M\darrow[a\cdot~ =~0]\nxcell I^0\arrow[dashed,d,"0"]\nxcell I^1\arrow[dashed,d,"0"]\nxcell\cdots\\
+		0\nxcell M\nxcell I^0\nxcell I^1\nxcell\cdots
+		\end{tikzcd}
+	\end{figure}
+	となるので，これに$\hom(N,-)$を施しても縦の射はすべて$0$なのでよい．次に$a\in\ann N$とすると，$N$の単射分解に誘導して（この時点では誘導した射が$0$になるかどうかはわわからない），さらに$\hom(-,M)$を施すと可換性から；
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		0\nxcell \hom(N,M)\darrow[a\cdot~ =~0]\nxcell \hom(P_0,M)\arrow[dashed,d,"0"]\nxcell \hom(P_1,M)\arrow[dashed,d,"0"]\nxcell\cdots\\
+		0\nxcell \hom(N,M)\nxcell \hom(P_0,M)\nxcell \hom(P_1,M)\nxcell\cdots
+		\end{tikzcd}
+	\end{figure}
+	となるので題意が従う．	
+\end{proof}
 %%---archive これいらなかった気がする・・・。
 %ここで$\Tor$の計算に使うため,平坦性の同値条件を示しておく.
 %\begin{prop}

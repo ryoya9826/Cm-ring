@@ -320,7 +320,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 \begin{defi}[Krull次元]\index{#Krullじげん@Krull次元}\label{defi:Krull次元}
 		環$A$に対し，素イデアルの真の増大列
 		\[P_*:P_0\subsetneq P_1\subsetneq\dots\subsetneq P_n\]
-		に対して，$n$を列$ P_*$の\textbf{長さ}という．最長の素イデアルの列の長さを，環$A$のKrull\textbf{次元}といい，$\dim A$とかく．
+		に対して，$n$を列$ P_*$の\textbf{長さ}という．最長の素イデアルの列の長さを，環$A$の\textbf{Krull次元}といい，$\dim A$とかく．
 \end{defi}
 	
 自明な例として，体の次元は0である．（体でない）PIDの次元は1である．また，\ref{prop:Artinの素イデアル}よりArtin環の次元も0である．実は，次元0のNoether環であることとArtin環であることは同値である．
@@ -342,7 +342,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	$A$を環，$P$を素イデアルとする．
 	\[\idht P=\sup\mkset{r\in\Z}{P=P_0\supsetneq P_1\supsetneq\dots\supsetneq P_r:\text{素イデアルの真減少列}}\]
 	\[\coht P=\sup\mkset{r\in\Z}{P=P_0\subsetneq P_1\subsetneq\dots\subsetneq P_r:\text{素イデアルの真増大列}}\]
-	を，それぞれ素イデアル$P$の\textbf{高さ（高度）}，\textbf{余高度}(height,coheight)という．coheightのことを\textbf{深さ}(depth)ということもある．一般のイデアル$I$については；
+	を，それぞれ素イデアル$P$の\textbf{高さ（高度），余高度}(height, coheight)という．coheightのことを\textbf{深さ}(depth)ということもある．一般のイデアル$I$については；
 	\[\idht I=\min\mkset{\idht P}{P\in V(I)}\]
 	で$I$の高さを定義する．
 \end{defi}
@@ -402,7 +402,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 環の次元$\dim A$は幾何的には$\spec A$の次元である．加群の次元については$\supp M$の（幾何的な）次元をもって定義しよう．$A$加群$M$が有限生成なら$V(\ann M)=\supp M$である（\ref{prop:Zariskiの閉集合とsupp}）．そこで一般の加群についても$\dim M=\dim A/\ann M$と定義する．
 
 \begin{defi}[加群のKrull次元]\index{#Krullじげんかぐん@Krull次元（加群）}
-	$A$加群$M$について$\dim A/\ann M$を$M$のKrull\textbf{次元}と定め，$\dim M$とかく．
+	$A$加群$M$について$\dim A/\ann M$を$M$の\textbf{Krull次元}と定め，$\dim M$とかく．
 \end{defi}
 
 簡単な計算により次の言い換えができることがわかる．
@@ -655,7 +655,7 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 この節では，（古典的）代数幾何学の基礎を成す零点集合について紹介しよう．
 	
 \begin{defi}[Affine-$n$空間]\index{#Affineくうかん@Affine空間}
-	$k$を（代数閉）体とする．$k$の元$n$個の組すべてからなる集合を$n$次元Affine\textbf{空間}(Affine space)という．
+	$k$を（代数閉）体とする．$k$の元$n$個の組すべてからなる集合を$n$次元\textbf{Affine空間}(Affine space)という．
 \end{defi}
 
 体$k$は代数閉でなくても構わないが，後述するHilbertの零点定理は代数閉体でしか成り立たないため，注意が必要となる．
@@ -663,7 +663,7 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 $A=k[\nitem{X}]$に対し，$f\in A$と$(\nitem{a})=P\in k^n$について$f(P):=f(\nitem{a})$と定めることにより，$A$の元を$k^n$から$k$への写像と解釈することができる．
 
 \begin{defi}[零点集合]\index{れいてんしゅうごう@零点集合}
-	$T\subset A$とする．$Z(T)=\mkset{P\in k^n}{\text{任意の}f\in T\text{に対し}f(P)=0}$を，$T$の零点集合という．
+	$T\subset A$とする．$Z(T)=\mkset{P\in k^n}{\text{任意の}f\in T\text{に対し}f(P)=0}$を，$T$の\textbf{零点集合}(zero set)という．
 \end{defi}
 
 $A$はNoether環なので，イデアル$ I $は有限個の生成元$(\nitem{f})$を持つ．よって，$Z(I)$は有限個の多項式$\nitem{f}$の共通の零点と考えられる．
@@ -693,14 +693,14 @@ $ I $を$T$によって生成される$A$のイデアルとすると，$Z(T)=Z( 
 \end{proof}
 
 \begin{defi}[Zariski位相]\index{#Zariskiいそうだいすうたようたい@Zariski位相（代数多様体）}
-	$\A^n$に代数的集合全体を閉集合系とする位相を定める．これをZariski位相という．
+	$\A^n$に代数的集合全体を閉集合系とする位相を定める．これを\textbf{Zariski位相}という．
 \end{defi}
 
-例として，$k$上のZariski位相（これをAffine直線という）を考える．$A=k[X]$はPIDだから，すべての代数的集合は1つの多項式の零点の集まりである．$k$は代数閉体なので，0でない多項式$f$はその字数が$n$のとき
-\[f(x)=c(x-a_1)\dots(x-a_n)\quad(c\in k)\]
+例として，$k$上のZariski位相（これをAffine直線という）を考える．$A=k[X]$はPIDだから，すべての代数的集合は1つの多項式の零点の集まりである．$k$は代数閉体なので，$0$でない多項式$f$の次数が$n$のとき
+\[f(X)=c(X-a_1)\cdots(X-a_n)~(c\in k)\]
 と分解できる．このとき$Z(f)=\{\nitem{a}\}$である．よって，$\A^1$の代数的集合は，有限な部分集合または$k$である．よって，開集合系は空集合及び有限部分集合の補集合となる（補有限位相）．特にこれはHausdorffではないが，コンパクトである位相の大事な例である（ここでは「任意の開被覆を有限個で取り直せる」という性質を指して\quo{コンパクト}と呼んだ．代数幾何学，特にBourbakiの流儀では慣習的に上の性質に加えてHausdorffを課してコンパクトといい，Hausdorffでないときに\textbf{準コンパクト}(quasi-compact)と呼ぶことがあるので注意してほしい）．
 
-ここで\ref{defi:Zariski位相}を思い出そう．$k^n$のZariski位相において，点$\{(a_1,\dots,a_n)\}$は$f=c(X_1-a_1)\cdots(X_n-a_n)$の零点集合となり，$k^n$の閉点になる．これは弱零点定理（\ref{thm:week nullstellensatz}）によって$k[X_1,\dots,X_n]$の極大イデアル，言い換えれば$\spec k[X_1,\dots,X_n]$の閉点が$(X_1,\dots,X_n)$しかないことと対応している．
+ここで\ref{defi:Zariski位相}を思い出そう．$k^n$のZariski位相において，点$\{(a_1,\dots,a_n)\}$は$f=c(X_1-a_1)\cdots(X_n-a_n)$の零点集合となり，$k^n$の閉点になる．これは弱零点定理（\ref{thm:week nullstellensatz}）によって$k[X_1,\dots,X_n]$の極大イデアル，言い換えれば$\spec k[X_1,\dots,X_n]$の閉点が$(X_1-a_1,\dots,X_n-a_n)$しかないことと対応している．
 
 また，Zariski位相は体$k=\Co$としたとき，Euclid位相より真に弱い位相となる．実際に多項式$f$を$\Co^n$から$\Co$への連続写像とみなせば，代数的集合はEuclid位相における閉集合$\{0\}$の$f$による引き戻しにほかならない．
 

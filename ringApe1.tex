@@ -77,5 +77,18 @@ PIDだがEDでない環はこのように2次体の整数環についてよく�
 この補題が適用できることを見るために，$S^{-1}A$の極大イデアルは$S^{-1}P_i$のみであることを示そう．$P\in\spec A$が$P\subset\bigcup P_i$であるとすると，$P\subset P_i$となる$i$があることをいえば十分．任意の$a\in P$に対して，$a$を含む$P_j$たちは有限個なので，それをすべてとってきて$(a)\subset\bigcup_{j=1}^n P_j$とする．任意の$x\in P$に対し，$x$を含む$P_j$たちも有限個だから，ある$n'$に対して$(a,x)\subset\bigcup_{j=1}^{n'}P_j$とできる．Prime avoidanceより$(a,x)\subset P_{j}$となる$j\leq n'$がとれるが，$a\in P_j$より$j\leq n$でなければならず，すると$(a,x)\subset\bigcup_{j=1}^n P_j$である．よって，$x$は任意で，$n$のとりかたは$x$によらないので$P\subset\bigcup_{j=1}^n P_i$である．再びPrime avoidanceを使って$P\subset P_i$となる$i$がとれる．
 
 また，${S^{-1}A}_{S^{-1}P_i}=A_{P_i}$であるので，$S^{-1}A$は補題を満たす．
+\end{proof}
+\section{ホモロジー代数}
 
+\begin{surex}\label{ex:射影被覆が存在しない例}
+	$n>1$とすると，$\Z$加群として$\Z/n\Z$は射影被覆を持たない．
+\end{surex}
+
+\begin{proof}
+	まず$\Z/n\Z$は射影的でない．実際，$\Z/n\Z\to\Z$は$0$に限るので，次のような図式；
+	\[\begin{tikzcd}
+		\Z/n\Z\arrow[d,dashed,"\widetilde{\id}"]\arrow[dr,"\id"]\\
+		\Z\nxcell\Z/n\Z 
+	\end{tikzcd}\]
+	を可換にする$\widetilde{\id}$は存在しない．さて$\varepsilon:P\to\Z/n\Z$が射影被覆であるとすると，自然な全射$\Z\to\Z/n\Z$が射影加群からの全射だから\ref{prop:射影被覆が同型の補題}により全射$\Z\to P$が存在する．すると$P\cong\Z/m\Z$となる$m$が存在するが，$P$が射影的なので$P\cong\Z$でなければならない．さて$\Z\to\Z/n\Z$が射影被覆でないことを言えばよいが，明らかに核$n\Z$は余剰部分加群ではない．
 \end{proof}

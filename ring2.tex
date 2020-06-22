@@ -13,11 +13,11 @@ Noether環の定義は先に述べたとおりだが，まずはそれを加群�
 	\end{sakura}
 \end{prop} 
 
-証明は環の場合を適切に修正すればよいので省略する．これらの条件を満たす加群をNoether加群という．環$A$の部分$A$加群はイデアルにほかならないので，この定義はNoether環の自然な拡張である（$A$を$A$加群とみなすと，$A$がNoether加群なら$A$はNoether環，$A$がNoether環なら$A$はNoether加群である）．
+証明は環の場合を適切に修正すればよいので省略する．これらの条件を満たす加群を\textbf{Noether加群}という．環$A$の部分$A$加群はイデアルにほかならないので，この定義はNoether環の自然な拡張である（$A$を$A$加群とみなすと，$A$がNoether加群なら$A$はNoether環，$A$がNoether環なら$A$はNoether加群である）．
 
 (ii)の条件を\textbf{昇鎖条件}(ascending chain condition)といい，ACCと略す．包含の大小を逆にして；
 \[N_1\supset N_2\supset\dots\supset N_i\supset\cdots\]
-が停まるような$M$をArtin加群という．これを\textbf{降鎖条件}(descending chain condition，DCC)といい，$M$の部分加群の空でない族は包含に関する極小元を持つことと同値である．\index{#Artinかぐん@Artin加群}
+が停まるような$M$を\textbf{Artin加群}という．これを\textbf{降鎖条件}(descending chain condition，DCC)といい，$M$の部分加群の空でない族は包含に関する極小元を持つことと同値である．\index{#Artinかぐん@Artin加群}\index{#Noetherかぐん@Noether加群}
 
 Noether性，Artin性は環とは違って部分加群に遺伝する．これは明らかであろう．
 
@@ -234,7 +234,7 @@ $M_i/M_{i+1}$が単純になるように鎖を延長することができるが�
 \begin{defi}[素因子]\index{そいんし@素因子}
 	$A$加群$M$に対し，$\ann x=\mkset{a\in A}{ax=0}$が$A$の素イデアルであるとき，これを$M$の\textbf{素因子}(prime ideal associated to $M$)または，$M$に\textbf{属する素イデアル}(associated prime ideal)という．
 	
-	それらの全体を
+	それらの全体を；
 	\[\ass M(=\ass_A M)=\mkset{ P\in\spec A}{\text{ある}x\in M\text{に対して} P=\ann x\text{を満たす．}}\]
 	とかく．
 \end{defi}
@@ -330,7 +330,7 @@ $P\in\ass M$であることと単射$\iota:A/P\to M$が存在することが同�
 		任意の$0\neq x'\in\im\varphi\cap N$をとる．$x\in N$かつ$x\neq0$より，ある$a\not\in P$が存在して$x'=ax$である．ここで$P=\ann x$が素イデアルであることに注意すると$\ann x=\ann x'$である．また$x'\in\im\varphi$であり$\varphi$は単射なので，$0$でない$y\in M_1$が存在して$x'=\varphi(y)$である．すると$P=\ann y$であることが$\varphi$の単射性からわかる．よって$P\in\ass M_1$となる．
 	\end{sakura}
 \end{proof}
-\begin{thm}
+\begin{thm}\label{thm:Assは有限}
 	有限生成$A$加群$M$の素因子の集合$\ass M$は有限である．
 \end{thm}
 \begin{proof}

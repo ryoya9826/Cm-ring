@@ -1,4 +1,4 @@
-\part[completion，and Artin--Rees lemma]{完備化とArtin--Reesの補題}
+\part[Completion，and Artin--Rees lemma]{完備化とArtin--Reesの補題}
 
 この章では環や加群に位相を定めること，またその位相の完備化について考察する．また，その過程でArtin--Reesの補題を始めとする応用も広い諸結果に触れていこう．この章では\quo{極限}について触れる必要があるため，必要に応じて付録の極限の節を参照してもらいたい（圏の言葉を知らずともよいように配慮してある）．
 \section{位相群}
@@ -51,7 +51,7 @@ $H$を用いて位相群$G$がHausdorffであることの判定条件を与え�
 \begin{defi}[Cauchy列]\index{#Cauchyれつ@Cauchy列}
 	$G$の元の族$\{x_i\}$であって，$0$の任意の近傍$U$について，ある整数$n$が存在して；
 	\[\text{任意の}i,j\geq n\text{に対し} x_i-x_j\in U\]
-	が成り立つとき，$\{x_i\}$をCauchy\textbf{列}(Cauchy sequence)であるという．
+	が成り立つとき，$\{x_i\}$を\textbf{Cauchy列}(Cauchy sequence)であるという．
 \end{defi}
 
 Cauchy列を扱うには\quo{収束}の概念が不可欠であるため，距離空間でない一般の位相空間における収束を振り返っておこう．
@@ -61,7 +61,7 @@ Cauchy列を扱うには\quo{収束}の概念が不可欠であるため，距�
 \end{defi}
 
 $G$のCauchy列全体には，今までと同じように要素ごとの和をとることで和が定義され，次の関係；
-\[\{x_i\}\sim\{y_i\}\Longleftrightarrow \lim_{i\to\infty} x_i-y_i\to 0\tag{$\ast$}\]
+\[\{x_i\}\sim\{y_i\}\Longleftrightarrow \lim_{i\to\infty} x_i-y_i= 0\tag{$\ast$}\]
 は同値関係となる．
 
 \begin{defi}[完備化]\index{かんびか@完備化}
@@ -96,12 +96,12 @@ $G$のCauchy列全体には，今までと同じように要素ごとの和を�
 \begin{defi}[線形位相]\index{せんけいいそう@線形位相}
 	群$G$の部分群の列；
 	\[G=G_0\supset G_1\supset G_2\dots\supset G_n\supset\cdots\]
-	が与えられたとき，$U$が$0$の開近傍になることは$U$がある部分群$G_n$を含むことであると定義するとこれは$G$の位相になる．これを部分群の列が定める\textbf{線形位相}(liniear topology)という．
+	が与えられたとき，$U$が$0$の開近傍になることは$U$がある部分群$G_n$を含むことであると定義するとこれは$G$の位相になる．これを部分群の列が定める\textbf{線形位相}(linear topology)という．
 \end{defi}
 
 この条件は位相群$G$が部分群の減少列$\{G_n\}$からなる$0$の基本近傍系を持つ，と言いかえることもできる．
 
-位相になることを確かめておこう．そのために$g\in G$について$p_g:G\to G;x\mapsto x+g$が全単射であることを用いる．$V\subset G$が$x\in G$の開近傍であるとは，$p_g^{-1}(V)$が$0$の開近傍になることであると定めよう．このとき$x$の開近傍全体$\mathcal{V}(x)$は$x$の近傍系の公理を満たす．
+位相になることを確かめておこう．そのために$g\in G$について$p_g:G\to G;x\mapsto x+g$が全単射であることを用いる．$V\subset G$が$x\in G$の開近傍であるとは，$p_x^{-1}(V)$が$0$の開近傍になることであると定めよう．このとき$x$の開近傍全体$\mathcal{V}(x)$は$x$の近傍系の公理を満たす．
 
 \begin{lem}
 	$\mathcal{V}(x)$を上のように定める．このとき；
@@ -115,6 +115,7 @@ $G$のCauchy列全体には，今までと同じように要素ごとの和を�
 \end{lem}
 
 \begin{proof}
+
 	(i)から(iii)はほぼ明らかであるから，(iv)だけ示す．
 	
 	$U$を$x$の近傍とする．このとき，ある$n$が存在して$G_n\subset p_x^{-1}(U)$となる．このとき$p_x(G_n)=V$とおくと，$p_x^{-1}(V)=G_n$であるから，$V$も$x$の近傍となる．任意の$y\in V$をとると，ある$g_0\in G_n$がとれて$y=g_0+x$である．このとき$p_y^{-1}(V)=(G_n+x)-(g_0+x)=G_n-g_0=G_n$であり，$V\subset U$であるから$G_n\subset p_y^{-1}(U)$が成り立つ．よって$U$は$y$の近傍となっている．
@@ -240,7 +241,7 @@ Artin--Reesの補題の証明にはRees環という次数付き環が活躍す�
 ここで，次数付き環に関して非常に有用な命題を示しておこう．
 
 \begin{prop}\label{prop:次数付き環のNoether性}
-	$A$を次数付き環とする．$A$がNoetherであることと，$A_0$がNoetherで，$A$が有限生成$A_0$代数であることは同値である．
+	$A$を次数付き環とする．$A$がNoetherであることと，$A_0$がNoetherで$A$が有限生成$A_0$代数であることは同値である．
 \end{prop}
 
 \begin{proof}
@@ -254,15 +255,15 @@ Artin--Reesの補題の証明にはRees環という次数付き環が活躍す�
 \end{proof}
 
 \begin{defi}[Rees環]\index{#Reesかん@Rees環}
-	環$A$のイデアル$I$と$A$加群$M$に対し，次数付き環；
+	環$A$のイデアル$I$に対し，次数付き環；
 	\[R_A(I)=\middleoplus I^n\]
-	をイデアル$I$のRees\textbf{環}(Rees ring)という．特に$I$の生成元を$\{x_i\}$とするとき，$R_A(I)$は$\{x_i\}$で生成される$A$代数であることに注意しよう．
+	をイデアル$I$の\textbf{Rees環}(Rees algebra)という．特に$I$の生成元を$\{x_i\}$とするとき，$R_A(I)$は$\{x_i\}$で生成される$A$代数であることに注意しよう．
 \end{defi}
 
 Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 
 \begin{lem}
-	$A$をNoether環，$M$を有限生成$A$加群とする．$M$の$I$フィルター$\{M_n\}$に対しが安定していることと，$M^\ast\coloneq \middleoplus M_n$が有限生成$R_A(I)$加群であることは同値である．
+	$A$をNoether環，$M$を有限生成$A$加群とする．$M$の$I$フィルター$\{M_n\}$が安定していることと，$M^\ast\coloneq \middleoplus M_n$が有限生成$R_A(I)$加群であることは同値である．
 \end{lem}
 
 \begin{proof}
@@ -329,8 +330,8 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 	$A$をNoetherとし，$I$を$A$のイデアルとする．$I$進完備化$\widehat{A}$について；
 	\begin{sakura}
 		\item $\widehat{I}=\widehat{A}I\cong\widehat{A}\otimes_A I$
-		\item $\widehat{I^n}=\widehat{I}^n$
-		\item $I^n/I^{n+1}\cong\widehat{I}^n/\widehat{I}^{n+1}$
+		\item $\widehat{I^n}=\widehat{I}{\phantom{|}}^n$
+		\item $I^n/I^{n+1}\cong\widehat{I}{\phantom{|}}^n/\widehat{I}{\phantom{|}}^{n+1}$
 		\item $\widehat{I}$は$\widehat{A}$のJacobson根基に含まれる．
 	\end{sakura}
 	が成り立つ．
@@ -340,9 +341,9 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 	\begin{sakura}
 		\item $A$がNoetherなので$I$は有限生成である．よって\ref{prop:有限生成なら完備化は係数拡大}より$\widehat{A}\otimes_A I\to\widehat{I}$は同型であり，その像は$\widehat{A}I$である．
 		
-		\item (i)より$\widehat{I^n}=\widehat{A}I^n=(\widehat{A}I)^n=\widehat{I}^n$である．
+		\item (i)より$\widehat{I^n}=\widehat{A}I{\phantom{|}}^n=(\widehat{A}I)^n=\widehat{I}{\phantom{|}}^n$である．
 		
-		\item \ref{cor:完備化しても商は同型}より$\widehat{A}/\widehat{I}^n\cong A/I^n$であり，これから(iii)が従う．
+		\item \ref{cor:完備化しても商は同型}より$\widehat{A}/\widehat{I}{\phantom{|}}^n\cong A/I^n$であり，これから(iii)が従う．
 		
 		\item 任意の$x\in\widehat{I}$について，すべての$A$に対し$\{\sum_{k=0}^i x^k\}$が$\widehat{A}$の$\widehat{I}$進位相においてCauchy列をなすので，$1+x+x^2+\dots=(1-x)^{-1}$は$\widehat{A}$において収束する．よって$1-x$は単元である．よって，任意の$a\in\widehat{A}$についても$1-ax$は単元となり，$\widehat{I}$はJacobson根基に含まれる．
 	\end{sakura}
@@ -419,7 +420,7 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 \end{proof}
 
 \begin{prop}
-	環$A$とそのイデアル$I$，$M$加群$A$と$I$フィルター$\{M_n\}$を考える．$A$が$I$進位相について完備であり，$\bigcap M_n=0$がなりたち（すなわち$M$はHausdorff），$G(M)$が有限生成$G(A)$加群ならば$M$は有限生成$A$加群である．
+	環$A$とそのイデアル$I$，$A$加群$M$と$I$フィルター$\{M_n\}$を考える．$A$が$I$進位相について完備であり，$\bigcap M_n=0$がなりたち（すなわち$M$はHausdorff），$G(M)$が有限生成$G(A)$加群ならば$M$は有限生成$A$加群である．
 \end{prop}
 
 \begin{proof}
