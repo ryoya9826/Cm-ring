@@ -1,0 +1,509 @@
+\part[Introduction of Local Cohomology]{局所コホモロジー入門}
+この章では，\cite{Grothendieck1966}によって導入された\textbf{局所コホモロジー}の考え方を説明する．
+
+\section{Čechコホモロジー}
+
+この節では，環とその上の加群についての\textbf{Čechコホモロジー}を定義しよう．$A$を環とし，その元の列$a_1,\dots,a_r$を固定する．$I=\{j_1,\dots,j_i\}\subset\{1,\dots,r\}$について$a_I=a_{j_1}\dots a_{j_i}$とおく．同様に$A^r$の基底を$e_1,\dots,e_r$とし，$e_I=e_{j_1}\wedge\dots\wedge e_{j_i}$とする．
+
+\begin{defi}[Čech複体]\index{#Cechふくたい@Čech複体}\index{#Cechこほもろじー@Čechコホモロジー}
+	$A$を環とし，$a_1,\dots,a_r\in A$をとる．各$1\leq i\leq r$について；
+	\[C^i(\underline{a})=\sum_{\# I=i}A_{a_I}e_I\]
+	\[d^i:C^i(\underline{a})\to C^{i+1}(\underline{a});xe_I\mapsto\sum_{j=1}^n xe_I\wedge e_j\]
+	で定義する（ただし，$x$の像は$a_{I\cup\{j\}}$による局所化$A_{a_{I\cup\{j\}}}$への像とする）．$i=0$について$C^0(\underline{a})=A,d^0:a\mapsto\sum_{j=1}^r ae_i$として定義すると，これは複体をなす．これを\textbf{Čech複体(Čech complex)}という．この複体のコホモロジーを$\check{H}^i(\underline{a})$とかき，\textbf{Čechコホモロジー}という．
+\end{defi}
+
+$A$加群$M$については$C^\bullet(\underline{a},M)=C^\bullet(\underline{a})\otimes M$で定義する．その定義から\v{C}echコホモロジーは$\delta$関手である．
+
+\begin{prop}
+	$A$を環とする．$a_1,\dots,a_r\in A$と$A$加群$M$について，$\check{H}^\bullet(\underbar{a},M)$は$\delta$関手である．
+\end{prop}
+
+\begin{proof}
+	$A$加群の完全列；
+	\[\ses{M_1}{M_2}{M_3}\]
+	を考える．\v{C}ech複体$C^\bullet(\underbar{a})$は各成分が平坦$A$加群からなるので，$C^\bullet(\underbar{a},M)=C^\bullet(\underbar{a})\otimes M$だから；
+	\[\ses{C^\bullet(\underbar{a},M_1)}{C^\bullet(\underbar{a},M_2)}{C^\bullet(\underbar{a},M_3)}\]
+	は複体の完全列をなす．よって\ref{lem:ホモロジー長完全列と連結射の存在}から連結射が存在し，\ref{prop:連結射の可換性}から$\check{H}^\bullet(\underbar{a},M)$は$\delta$関手である．
+\end{proof}
+
+次にKoszul（余鎖）複体から\v{C}ech複体への複体の射を自然に定義できることを見よう．
+
+\begin{lem}\label{lem:KoszulからCech}
+	$A$を環とし，$a_1,\dots,a_r\in A$に対して，$1\leq i\leq r$について；
+	\[\varphi^i:K^i(\underline{a})\to C^i(\underline{a});(e_I)^\ast\mapsto (1/a_I)e_I\]
+	と定義するとこれは複体の射をなす．
+\end{lem}
+
+\begin{proof}
+	Koszul複体$K^\bullet(\underline{a})$における微分を$\delta^i$とすると；\[\delta^i(e_I^\ast)=(e_J\mapsto e_I^\ast(\delta_{i+1}(e_j)))\]
+	で，これは$j\not\in I$を用いて$J=I\cup\{j\}$と表せるとき$e_J=e_I\wedge e_j$を$a_j$に対応させ，それ以外の場合$0$に送る線型写像なので；
+	\[\varphi^{i+1}\circ\delta^i(e_I^\ast)=\sum_{j\not\in I}\frac{a_j}{a_Ia_j} e_I\wedge e_j=\sum_{j\not\in I} \frac{1}{a_I} e_I\wedge e_j\]
+	であり，これは$d^i\circ\varphi^i(e_I^\ast)$と一致する．
+\end{proof}
+
+任意の$\ngeq0$について，列$a_1^n,\dots,a_r^n$を$\underline{a}^n$と略記することにする．このとき任意の$n\leq m$に対して；
+\[\varphi_{mn}^\bullet:K^\bullet(\underline{a}^n)\to K^\bullet(\underline{a}^m)
+;(e_I)^\ast\mapsto(a_I)^{m-n}(e_I)^\ast\]
+と定めることで$\{K^\bullet(\underline{a}^n)\}_{n\in\N}$は帰納系をなす．上の補題によって，$C^\bullet(\underline{a})$はこの帰納系の極限としてかけることを確かめよう．
+
+\begin{prop}
+	$A$を環とし，$a_1,\dots,a_r\in A$をとる．このとき；
+	\[\ilim_{n}K^\bullet(\underline{a}^n)\cong C^\bullet(\underline{a})\]
+	である．
+\end{prop}
+
+\begin{proof}
+	まず，\ref{lem:KoszulからCech}と同様にして$\varphi^\bullet_n:K^\bullet(\underline{a}^n)\to C^\bullet(\underline{a}^n)=C^\bullet(\underline{a})$を定めると，$n\leq m$のとき$\varphi^\bullet_{m}\circ\varphi^\bullet_{nm}=\varphi^\bullet_n$であることが簡単に確かめられる．これにより$\ilim K^\bullet(\underline{a}^n)\to C^\bullet(\underline{a})$が定まる．各$C^i(\underline{a})$の元は$b_I/a_I^{n_I} e_I$の有限和の形でかけているので，$n_I$の最大値をとって$b_I$を取り替えれば$\sum 1/a_I^{n}(b_Ie_I)$とかけるから，これは$\sum(b_Ie_I)\in K^i(\underline{a}^n)$の像である．よって$\ilim K^\bullet(\underline{a}^n)\to C^\bullet(\underline{a})$は全射．
+	
+	また，$x\in K^i(\underline{a}^n)$について$\varphi^i_n(x)=0$であったとすると，$x=\sum b_Ie_I^\ast$としたとき$\varphi_n^i(x)=\sum b_I/a_I^{n}e_I^\ast=0$なので，$A_{a_I^n}$において$b_I/a_I^n=0$である．これは十分大きな$l\geqq 0$により$a_I^lb_I=0$であることを主張しているので，$x$は有限和だから$l$を（必要なら）さらに大きくすることで$\varphi_{nm}^i(x)=0$とできる．よって$\ilim K^\bullet(\underline{a}^b)\to C^\bullet(\underline{a})$は単射でもあることがわかった．
+\end{proof}
+
+帰納極限を取ることは完全関手なので，Čechコホモロジーは次のようにかける．
+
+\begin{cor}
+	$A$を環，$a_1,\dots,a_n\in A$とする．$A$加群$M$に対して；
+	\[\check{H}^i(\underline{a},M)\cong\ilim_{n}H^i(\underline{a}^n,M)\]
+	である．
+\end{cor}
+
+\section{弱副正則列}
+次の節において\textbf{局所コホモロジー}を導入するが，$A$がNoetherなら\v{C}echコホモロジーと局所コホモロジーが一致する，すなわち$a_1,\dots,a_r\in A$について$I=(a_1,\dots,a_r)$とおいたとき，$A$加群$M$について$\check{H}^i(\underbar{a},M)\cong H^i_I(M)$であることはよく知られている．実はNoetherでない場合は一般に成り立たず，\cite{Schenzel2003}は，任意の$i$と$A$加群$M$について\v{C}echコホモロジーと局所コホモロジーが一致するための必要十分条件として\textbf{弱副正則列}を定義した．本節ではそれについて紹介しよう．
+
+\begin{defi}[本質的零]\index{ほんしつてきれい@本質的零}
+	Abel圏$\mathscr{A}$上の射影系$(X_n)$について，任意の$n$に対してある$m\geq n$が存在して，$\varphi_{mn}:X_m\to X_n$が零射であるとき，$(X_n)$は\textbf{本質的零(essentially zero)}または\textbf{副零(pro-zero)}であるという．
+\end{defi}
+
+明らかに$(X_n)$が本質的零なら$\plim X_n=0$である．これが成り立たない例は，例えば$1$次元以上のNoether局所環の極大イデアル$\ideal{m}$をとると$\ideal{m}^n\neq 0$かつ$\bigcap\ideal{m}^n=0$なので$\{\ideal{m}^n\}_{n\geq 0}$がその例を与える．
+
+\begin{prop}
+	射影系の完全列$\ses[(f_n)][(g_n)]{(X_n)}{(Y_n)}{(Z_n)}$について，$(Y_n)$が本質的零であることと，$(X_n),(Z_n)$が本質的零であることは同値である．
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item 明らかに成り立つ．
+		\item 任意の$n$に対して，$(X_n)$が本質的零だからある$m\geq n$が存在して$X_m\to X_n$が零射であるようにできる．さらに$m$に対して$l\geq m$を$Z_l\to Z_m$が零射であるようにとると，次の各行が完全な可換図式；
+		\[\begin{tikzcd}
+			0\nxcell X_{l}\darrow[]\nxcell[f_{l}] Y_{l}\darrow[\varphi_{lm}]\nxcell[g_{l}]Z_{l}\darrow[0]\nxcell 0\\
+			0\nxcell X_m\darrow[0]\nxcell[f_m]Y_m\darrow[\varphi_{m,n}]\nxcell Z_m\darrow[]\nxcell0\\
+			0\nxcell X_n\nxcell[f_n]Y_n\nxcell[g_n]Z_n\nxcell0
+		\end{tikzcd}\]
+		を得る．簡単な図式追跡によって$\varphi_{ln}=\varphi_{mn}\circ\varphi_{lm}=0$であることがわかる．
+	\end{eqv}
+\end{proof}
+
+$(\Longleftarrow)$の証明には中央の完全性しか用いていないことに注意しておく．
+
+Koszul複体，\v{C}ech複体についてこれまでと同様の言葉使いをする．すなわち$A$を環とし，その元の列$a_1,\dots,a_r$を固定する．$I=\{j_1,\dots,j_i\}\subset\{1,\dots,r\}$について$a_I=a_{j_1}\dots a_{j_i}$とおく．同様に$A^n$の基底を$e_1,\dots,e_n$とし，$e_I=e_{j_1}\wedge\dots\wedge e_{j_i}$とする．また$n\geq 0$について列$a_1^n,\dots,a_r^n$を$\underbar{a}^n$で表す．この記号のもと，$n\leq m$なら$K_i(\underbar{a}^m)\to K_i(\underbar{a}^n);e_I\mapsto a_I^{m-n}e_I$によって$(K_i(\underbar{a}^n))_{n\in\N}$は射影系をなす．
+
+\begin{defi}[弱副正則列]\index{じゃくふくせいそくれつ@弱副正則列}
+	$A$を環とする．$a_1,\dots,a_r\in A$について，任意の$1\leq i\leq r$に対して$(H_i(\underbar{a}^n))_{n\in\N}$が本質的零であるとき，$a_1,\dots,a_r$は\textbf{弱副正則列(weakly proregular sequence)}であるという．
+\end{defi}
+
+定義から弱副正則列は並び替えによらない．$a\in A$が弱副正則であることは，$H_1(a^n)=\ann a^n$なので$\ann a^m\to\ann a^n;x\mapsto a^{m-n}x$で定まる$\{\ann a^n\}$が本質的零であることと同値．また正則列は弱副正則列であることに注意する．実際$a_1,\dots,a_r$が正則列なら$a_1^n,\dots,a_r^n$もそうで，$H_i(\underbar{a}^n)\cong
+H^{r-i}(\underbar{a}^n)\cong\Ext^{r-i}(A/(a_1^n,\dots,a_r^n)A,A)$だから，$0<i$なら$H^i(\underbar{a}^n)=0$である．
+
+\begin{prop}\label{prop:w.proregとCechがeffaceableが同値}
+	$A$を環とし，$a_1,\dots,a_r\in A$とする．このとき$a_1,\dots,a_r$は弱副正則列であることと，$\check{H}^\bullet(\underbar{a},-)$が消去的な$\delta$関手であること，すなわち任意の$i>0$に対して，$I$が入射的$A$加群ならば$\check{H}^i(\underbar{a},I)=0$であることは同値である．
+\end{prop}
+
+\begin{proof}
+	$\check{H}^i(\underbar{a},I)=\ilim H^i(\underbar{a}^n,I)$であることに注意しよう．
+	\begin{eqv}
+		\item $K^\bullet(\underbar{a}^n,I)=\hom(K_\bullet(\underbar{a}^n),I)$であって，$\hom(-,I)$が完全関手なのでコホモロジーと可換だから$H^i(\underbar{a}^n,I)\cong\hom(H_i(\underbar{a}^n,I))$である．いま$(H_i(\underbar{a}^n))$が本質的に零なので，任意の$n\geq 0$に対して$m\geq n$が存在して$H_i(\underbar{a}^m)\to H_i(\underbar{a}^n)$が零射であるから，これに$\hom(-,I)$を施しても零射なので$\ilim\hom(H_i(\underbar{a}^n,I)=0$である．
+		\item
+		任意の$n\geq 0$に対して，入射加群への埋め込み$\varepsilon:H_i(\underbar{a}^n)\to I$をとる．このとき$\varepsilon\in H^i(\underbar{a}^n,I)$と思え，$\ilim H^i(\underbar{a}^n,I)=0$より，ある$m\geq n$が存在して$\varepsilon$の$H^i(\underbar{a}^m,I)$への像は$0$である．これは；
+		\[\begin{tikzcd}H_i(\underbar{a}^m)\nxcell H^i(\underbar{a}^n)\nxcell[\varepsilon] I\end{tikzcd}\]
+		が零射ということにほかならず，$\varepsilon$が単射なので前の射も零射である．
+	\end{eqv}
+\end{proof}
+
+この命題により，$\underbar{a}$が弱副正則列なら\v{C}echコホモロジーは$\check{H}^0(\underbar{a},-)$の右導来関手であることがわかる．次の関心はいつ点列が弱副正則になるか，ということにある．弱副正則列は，その名前から分かる通り\textbf{副正則列}という概念の一般化である．
+%まったく同様に，$a_1,\dots,a_r$が弱副正則列であるならば任意の$i>0$と任意の平坦$A$加群について$(H_i(\underbar{a}^n,F))$は本質的零であり，逆が成り立つことは明らかである．
+
+%\begin{cor}
+%	$A$を環とする．$a_1,\dots,a_r\in A$とする．このとき次の条件；
+%	\begin{sakura}
+%		\item $a_1,\dots,a_r$は弱副正則列である．
+%		\item 任意の$n>0$について$a_1^n,\dots,a_r^n$は弱副正則列である．
+%		\item ある$m>0$について$a_1^m,\dots,a_r^m$は弱副正則列である．
+%	\end{sakura}
+%	は同値．
+%\end{cor}
+%
+%\begin{proof}
+%	(iii)$\Longrightarrow$(i)のみが問題であるが，$I$を入射加群としたとき；
+%	\[\ilim H^i(\underbar{a}^n,I)\cong\ilim H^i(\underbar{a}^{nm},I)\]
+%	であるので，前命題から従う．
+%\end{proof}
+
+\begin{defi}[副正則列，\cite{Greenlees1992}]\index{ふくせいそくれつ@副正則列}
+	$A$を環とする．$a_1,\dots,a_r\in A$について，任意の$1\leq i\leq r$と任意の$n>0$について，ある$m\geq n$が存在して，任意の$a\in A$に対して$a a_i^m\in(a_1^m,\dots,a_{i-1}^m)$ならば$a a_i^{m-n}\in(a_1^n,\dots,a_{i-1}^n)$とできるとき，$a_1,\dots,a_r$を\textbf{副正則列(proregular sequence)}という．
+\end{defi}
+
+この条件はイデアル商の記号を使えば$((a_1^m,\dots,a_{i-1}^m):a_i^m A)\subset((a_1^n,\dots,a_{i-1}^n):a_i^{m-n}A)$と書くこともできることに注意する（記号が煩雑ではあるが）．無論これも正則列の一般化である．実際$a_1,\dots,a_r$が正則列なら任意の$n>0$について$m=n$とすればよい．
+
+また$a\in A$が副正則列であることは，任意の$n>0$について，ある$m\geq n$が存在して$\ann a^m\subset\ann a^{m-n}$であることと同値であることから，次の事実を注意しておく．
+
+\begin{prop}
+	$A$を環とする．任意の$a\in A$について$a$が弱副正則であることと，副正則であることは同値である．
+\end{prop}
+
+次に示すとおり，この概念は非Noether環に特有の現象である．
+
+\begin{prop}\label{prop:Noether環のすべての点列はproreg}
+	$A$をNoether環とすると，任意の$a_1,\dots,a_r\in A$は副正則列である．
+\end{prop}
+
+\begin{proof}
+	$J_{m}=((a_1^m,\dots,a_{i-1}^m):a_i^m A), I_{n,m}=((a_1^n,\dots,a_{i-1}^n):a_i^{m-n}A)$とおく（添字$i$は省略する）と，上にも注意したとおり$a_1,\dots,a_r$が副正則であることは任意の$1\leq i\leq n$と任意の$n>0$についてある$m\geq n$が存在して$J_m\subset I_{n,m}$となることと同値である．ここで$\{I_{n,m}\}_{m\geq n}$はイデアルの昇鎖をなし，$A$がNoetherなのである$m_0\geq n$でとまる．ここで$a\in J_{m_0}$とする．$m=m_0+n$とおくと，$a a_i^{m-n}=aa_i^{m_0}\in(a_1^{m_0},\dots,a_{i-1}^{m_0})\subset(a_1^n,\dots,a_{i-1}^n)$なので$a\in I_{n,m}=I_{n,m_0}$となることがわかる．
+\end{proof}
+
+\begin{prop}
+	$A$を環とする．$a_1,\dots,a_r\in A$が副正則列なら弱副正則列である．
+\end{prop}
+
+\begin{proof}
+	$r$についての帰納法で示す．$r=1$のとき，$a$が副正則とすると，任意の$n>0$に対して，ある$m\geq n$が存在して$\ann a^m\subset\ann a^{m-n}$である．よって$H_1(a^n)=\ann a^n$なので，射影系$(H_1(a^n))$は本質的零である．
+	
+	$r-1$まで正しいとする．\ref{lem:C_bulletとC_bullet(-1)の間の完全列}により，複体の完全列；
+	\[\ses{K_\bullet(a_1^n,\dots,a_{r-1}^n)}{K_\bullet(a_1^n,\dots,a_r^n)}{K_\bullet(a_1^n,\dots,a_{r-1}^n)(-1)}\]
+	からホモロジーの長完全列；
+	\settowidth{\masyulengtha}{$H_1(a_1^n,\dots,a_r^n)$}
+	\[\begin{tikzcd}
+		&\makebox[\masyulengtha]\cdots\nxcell H_i(a_1^n,\dots,a_{r-1}^n)\nxcell[(-1)^ia_r^n]\\
+		H_1(a_1^n,\dots,a_{r-1}^n)\nxcell H_1(a_1^n,\dots,a_r^n)\nxcell H_{i-1}(a_1^n,\dots,a_{r-1}^n)\nxcell[(-1)^{i-1}a_r^n]\\
+		H_{i-1}(a_1^n,\dots,a_{r-1}^n)\nxcell\makebox[\masyulengtha]\cdots
+	\end{tikzcd}\]
+	が得られる．ゆえに；
+	\[\ses{H_0(a_r^n,H_i(a_1^n,\dots,a_{r-1}^n))}{H_i(a_1^n,\dots,a_r^n)}{H_1(a_r^n,H_{i-1}(a_1^n,\dots,a_{r-1}^n))}\]
+	が完全であり，これは射影系の間の完全列を誘導する．帰納法の仮定から１つ目の射影系は本質的零で，$H_1(a_r^n,H_{i-1}(a_1^n,\dots,a_{r-1}^n))=\mkset{x\in H_{i-1}(a_1^n,\dots,a_{r-1}^n)}{a_r^nx=0}$であるから$i>1$のとき３つ目も本質的零である．よって$i=1$のとき，$\mkset{x\in H_{0}(a_1^n,\dots,a_{r-1}^n)}{a_r^nx=0}$を考えればよいが，これが本質的零であることはまさしく$a_1,\dots,a_r$が副正則列であることである．
+\end{proof}
+
+これで本節の主定理が得られた．
+\begin{cor}\label{cor:Noether環上のすべての点列はwproreg}
+	$A$をNoether環とする．任意の$a_1,\dots,a_r\in A$は弱副正則列をなす．
+\end{cor}
+
+\begin{proof}
+	\ref{prop:Noether環のすべての点列はproreg}と上の命題から従う．
+\end{proof}
+\section{局所コホモロジー}
+
+環$A$と，イデアル$I$について，関手$\Gamma_{I}:\mathbf{Mod}(A)\to\mathbf{Mod}(A)$を；
+\[\Gamma_{I}(-)=\ilim_{n}\hom_A(A/I^n,-)\]
+で定義する．計算上は次の形が便利である．
+	
+\begin{prop}
+	$A$を環とし，$I$をイデアルとする．関手$\mathscr{E}:\mathbf{Mod}(A)\to\mathbf{Mod}(A)$を；
+	\[\mathscr{E}(M)=\mkset{x\in M}{\text{ある$n\in\N$について$I^nx=0$である．}}\]
+	で定義すると，$\Gamma_{I}$と$\mathscr{E}$は自然同型である．
+\end{prop}
+
+\begin{proof}
+	$A$加群$M$について$\hom_A(A/I^n,M)\cong\mkset{x\in M}{I^nx=0}$であり，右辺の順極限は$\bigcup_{n\in\N}\mkset{x\in M}{I^nx=0}=\mathscr{E}(M)$なので同型が従う．また，$f:M\to N$について；
+	\[\Gamma_{I}(f):\Gamma_{I}(M)\to\Gamma_{I}(N);\{\varphi_i:A/I^i\to M\}\mapsto\{f\circ\varphi_i:A/I^i\to N\}\]
+	\[\mathscr{E}(f):\mathscr{E}(M)\to\mathscr{E}(N);x\mapsto f(x)\]
+	であるので，これは明らかに可換である．
+\end{proof}
+
+定義により$\Gamma_{\ideal{m}}$は左完全な加法的関手である．これの導来関手を\textbf{局所コホモロジー}という．
+
+\begin{defi}[局所コホモロジー]\index{きょくしょこほもろじー@局所コホモロジー}
+	$A$を環とし，$I$をイデアルとする．関手$\Gamma_{I}$の導来関手を\textbf{局所コホモロジー(local cohomology)}といい，$H^i_{I}$で表す．
+\end{defi}
+
+$\Gamma_{I}(M)=\ilim_n\hom(A/I^n,M)$であって，帰納極限が完全関手であることから；
+
+\[H^i_{I}(M)\cong\ilim_n\Ext^i(A/I^n,M)\]
+であることに注意しよう．次に局所コホモロジーと\v{C}echコホモロジーの間の関係について整理する．まず各コホモロジーの$0$次部分は自然に一致していることに注意しよう．
+
+\begin{lem}
+	$A$を環とし，$a_1,\dots,a_r\in A$について$I=(a_1,\dots,a_r)$とおく．任意の$A$加群$M$に対して；
+	\[\Gamma_I(M)=\check{H}^0(\underbar{a},M)\]
+	が成り立つ．
+\end{lem}
+
+\begin{proof}
+	$\check{H}^0(\underbar{a},M)$は；
+	\[M\to\bigoplus M_{a_i}e_i;x\mapsto(x/1)e_i\]
+	の核である．ゆえに$x\in\check{H}^0(\underbar{a},M)$とおくと，任意の$1\leq i\leq r$についてある$n_i\geq 0$が存在して$a_i^{n_i}x=0$である．ゆえに$I^nx=0$となる$n\geq 0$がとれ，$x\in\Gamma_I(M)$である．もちろん逆も成り立ち，$M$の部分加群として等しい．
+\end{proof}
+
+前節における準備によって，Noether環上では常に局所コホモロジーと\v{C}echコホモロジーが一致することを示すことができる．
+
+\begin{thm}
+$A$を環とし，$a_1,\dots,a_r\in A$について$I=(a_1,\dots,a_r)$とおく．$\underbar{a}$が弱副正則列であることと，任意の$	A$加群$M$と$i$に対して$H_I^i(M)\cong\check{H}^i(\underbar{a},M)$であることは同値．
+\end{thm}
+
+\begin{proof}
+	\begin{eqv}
+		\item \v{C}echコホモロジーは$\delta$関手であり，上の注意から$H_I^0(M)=\check{H}^0(\underbar{a},M)$なので\v{C}echコホモロジーが普遍的ならよいが，\ref{prop:w.proregとCechがeffaceableが同値}により消去的なので\ref{thm:delta関手が消去的なら普遍的}により成り立っている．
+		\item \ref{prop:w.proregとCechがeffaceableが同値}から明らかである．
+	\end{eqv}
+\end{proof}
+
+\begin{cor}\label{cor:Noether環の局所コホモロジーはCech}
+	$A$をNoether環とする．任意の$a_1,\dots,a_r\in A$について$I=(a_1,\dots,a_r)$とおくと，任意の$A$加群$M$と$i$について$H^i_I(M)\cong\check{H}^i(\underbar{a},M)$である．
+\end{cor}
+
+\begin{proof}
+	\ref{cor:Noether環上のすべての点列はwproreg}と上の定理から従う．
+\end{proof}
+
+この結果から，例えばNoether環上の局所コホモロジーは根基によらないことなどがすぐにわかる（もちろん定義から直接示すこともできる）．
+
+\section{完備局所環の構造定理の概略}
+
+局所環の理論では，示したい性質が完備化で保たれることを見ることで，完備な環に帰着させることは有力な論法である（例えば\ref{thm:完備化してもlocal cohomは同型}）．この節では完備局所環の持つよい性質の１つとして，非常に強力なHenselの補題と，完備局所環の構造定理（Cohenの定理）を紹介したい．のだが，完備局所環の構造定理の証明は一般の場合には難しく，ここでは体を含む場合にのみ証明を述べたいと思う．
+
+\begin{thm}[Henselの補題]\index{#Henselのほだい@Henselの補題}
+	$(A,\ideal{m},k)$を完備局所環とする．多項式の係数を$\ideal{m}$で割ることにより得られる全射$\pi:A[X]\to k[X]$を考える．任意のモニック多項式$F\in A[X]$に対して，$f=\pi(F)\in k[X]$とおく．モニックで互いに素な$g,h\in k[X]$が存在して，$f=gh$とかけているとき，モニックな$G,H\in A[X]$が存在して，$F=GH$かつ$\pi(G)=g,\pi(H)=h$を満たす．
+\end{thm}
+
+\begin{proof}
+	任意の$n\geq0$に対して，モニック多項式$G_n,H_n\in A[X]$を；
+	\[\pi(G_n)=g, \pi(H_n)=h, F-G_nH_n\in\ideal{m}^nA[X], G_{n+1}-G_n,H_{n+1}-H_n\in\ideal{m}^n A[X]\]
+	となるように作ればよい．$G_1,H_1$は単に$\pi(G_1)=g,\pi(H_1)=h$となるモニック多項式をとればよい．帰納的に$G_n,H_n$までとれているとする．いま；
+	\[F-G_nH_n=\sum a_i\Phi_i~(a_i\in\ideal{m}^n)\]
+	とおくと，$k[X]$において$(g,h)=1$なので，$\pi(\Phi_i)=g\psi_i+h\psi_i'$とおける．いま$\Psi_i,\Psi_i'\in A[X]$を$\pi(\Psi_i)=\psi_i,\pi(\Psi_i')=\psi_i'$となるようにとり，$G_{n+1}=G_n-\sum a_i\Psi_i', H_{n+1}=H_n-\sum a_n\Psi_i$とおけば；
+	\[F-G_{n+1}H_{n+1}=\sum a_i(\Phi_i-G_n\Psi_i-H_n\Psi_i') +(\sum a_i\Phi_i)(\sum a_i\Psi_i')\]
+	であるので，題意を満たす．
+\end{proof}
+
+ここで局所環$(A,\ideal{m},k)$の標数について注意をしておく．$A$と$k$の標数が同じとき$A$は\textbf{等標数(equicharacteristic)}であるといい，$A$と$k$の標数が異なるとき$A$は\textbf{混標数(mixed characteristic)}であるという．\index{とうひょうすう@等標数}\index{こんひょうすう@混標数}
+
+\begin{prop}
+	局所環$(A,\ideal{m},k)$の標数について，$A,k$標数の組は；
+	\begin{figure}[H]
+		\centering
+		\begin{tabular}{l|cc}
+			&$A$の標数&$k$の標数\\
+			\hline
+			等標数$0$&$0$&$0$\\
+			等標数$p$&$p$&$p$\\
+			混標数$(0,p)$&$0$&$p$\\
+			混標数$(p^n,p)$&$p^n$&$p$
+		\end{tabular}
+	\end{figure}
+	の４通りしかない．ここで$p$は素数，$n\geq 2$である．
+\end{prop}
+
+
+\begin{proof}
+	整域の標数が$0,p$に限ることはわかっている．$\Char k\leq\Char A$であることに注意すると，$\Char k=0$なら$\Char A=0$であることはすぐにわかる．次に$\Char k=p$であるとすると，$\Char A=n$としたとき$\Z\to A\to k$の核を考えて$(n)\subset(p)$であるので$n=p^in'~(n'\not\in (p))$とかける．ここで$A$において$p^in\cdot 1=0$で，$n'\cdot1\in\ideal{m}$なら$n'(1+\ideal{m})=0$だからこれは$n'\not\in (p)$に反する．よって$n\cdot1\not\in\ideal{m}$でなければならず，$n'\cdot 1$は単元なので$p^i\cdot 1=0$となり，$n$の最小性から$n=p^i$であったことがわかる．
+\end{proof}
+
+\begin{prop}
+	局所環$(A,\ideal{m},k)$において，体を含むことと等標数であることは同値である．
+\end{prop}
+
+\begin{proof}
+	体を含むなら等標数であることは明らか．逆に等標数であるとする．$\Char k=0$ならば$\Q\subset k$であり，任意の$n>1$について$1/n$に対応する$a+\ideal{m}\in k$をとると$a\not\in\ideal{m}$かつ$na+\ideal{m}=1+\ideal{m}$であるので，$na-1=b\in\ideal{m}$とすれば，$n=(1+b)/a$とかけ，\ref{prop:Jacobson根基の特徴づけ}から$1+b$も単元なので$n$は$A$で単元である．よって$\Q\subset A$となる．また$\Char k=\Char A=p$なら$\Z\to A$の核は$(p)$なので，$A$は$\F_p=\Z/p\Z$を自然に含む．
+\end{proof}
+
+ここで歴史的なことを述べると，局所環とはもともと\cite{Krull1938}によって導入されたものだが，その定義は，環$A$であって；
+\begin{sakura}
+	\item $A$のすべてのイデアルが有限生成である．
+	\item $A$の非単元全体がイデアルをなす．
+\end{sakura}
+の２つを満たすものを局所環という，とされており現代の言葉で言えば唯一の極大イデアルをもつNoether環のことを局所環と呼んでいた（日本語で読める重要な文献の１つである\cite{Nagata1974}においてもその流儀で，本書で言う局所環を\textbf{擬局所環}と呼んでいる）．そこで\cite{Cohen1946}は次の\textbf{超局所環（generalised local ring）}を定義し，完備な超局所環が（Krullの意味での，すなわちNoetherな）局所環であることを示した．
+
+\begin{defi}[超局所環]
+	環$A$であって，以下の条件；
+	\begin{sakura}
+		\item $A$の非単元全体$\ideal{m}$が有限生成なイデアルをなす．
+		\item $\bigcap_{n=1}^\infty \ideal{m}^n=0$である．
+	\end{sakura}
+	を満たすものを\textbf{超局所環(generized local ring)}という．
+\end{defi} 
+
+もちろん，本書では単に「局所環」といったらNoether性は仮定しないことを注意しておく．よって，generizedと名付けられていながら$\{\text{超局所環}\}\subset\{\text{局所環}\}$のような状況であることに気をつけてほしい．
+
+\begin{prop}
+	完備局所環$(A,\ideal{m})$は$\ideal{m}$が有限生成ならNoetherである．
+\end{prop}
+\begin{proof}
+	$A$が完備だから$A\to\widehat{A}$は同型，特に$\bigcap\ideal{m}^n=0$である．よって\ref{cor:G(M)がNoetherならMもNoether}により$G(A)$がNoetherならよいが，$\ideal{m}=(a_1,\dots,a_r)$とすれば$G(A)=k[a_1+\ideal{m}^2,\dots,a_r+\ideal{m}^2]$である（\ref{prop:G(hat{A})はNoether}を参照せよ）のでNoetherである．
+\end{proof}
+
+歴史的な話はこれくらいにして，完備局所環の構造定理を述べよう．
+
+\begin{defi}[係数環]\index{けいすうかん@係数環}
+	$(A,\ideal{m},k)$を局所環とする．$A$の部分環$R$であって，$A$が等標数のとき，$R$は体であって$R\to A\to k$は同型，すなわち$A=R+\ideal{m}$であるものを$A$の\textbf{係数体(coefficient field)}という．$A$が混標数で$\Char k=p$のときは，$R$は$pR$を極大イデアルとする完備局所環で，$R\to A\to k$は全射，すなわち$A=R+\ideal{m}, R\cap\ideal{m}=pR$であるとき，$R$を$A$の\textbf{係数環(coefficient ring)}であるという．
+\end{defi}
+
+\begin{thm}[Cohenの完備局所環の構造定理]\index{#Cohenのかんびきょくしょかんのこうぞうていり@Cohenの完備局所環の構造定理}
+	完備局所環$(A,\ideal{m})$は係数環$R$をもつ．
+\end{thm}
+
+この定理の特別な場合として，$A$がNoetherの場合には完備局所環は正則局所環の準同型像でかけることがわかる．
+\begin{thm}[完備Noether局所環の構造定理]
+	$(A,\ideal{m},k)$を$\ideal{m}=(a_1,\dots,a_n)$であるような完備Noether局所環とすると，係数環$R\subset A$が存在して$A$は$R[[ X_1,\dots,X_n]]$の準同型像である．
+\end{thm}
+
+\begin{proof}
+	$S=R[[ X_1,\dots,X_n]]$は完備局所環である．実際$f\in(X_1,\dots,X_n)S$を考えると，Cauchy列$\{\sum_{i=0}^n f^i\}$は収束し，$1-f$が単元である．よって$(X_1,\dots,X_n)S\subset\rad S$であり，$\spm S=\spm S/(X_1,\dots,X_n)S=\spm R$であることがわかる．ここで係数環の定義から$R$は$pR~(\Char k=p)$を極大イデアルとする局所環であるので，$S$は$(p,X_1,\dots,X_n)S$を極大イデアルとする局所環である．
+	
+	ここで$\varphi:S=R[[ X_1,\dots,X_n]]\to A;X_i\mapsto a_i$を考えると，これは局所準同型であって，$\varphi((p,X_1,\dots,X_n)S)$が$A$で生成するイデアルは$\ideal{m}$に他ならず，いま係数環の定義から$R/pR\cong k$なので\ref{prop:完備な環上の加群の有限生成性without随伴次数環}から$1$は$S$加群として$A$を生成するので，$\varphi$は全射である．よって$A$は$S=R[[ X_1,\dots,X_n]]$の準同型像である．
+\end{proof}
+
+Cohenの構造定理の証明は体を含む場合にのみ証明することにしよう．完全な証明は例えば\cite{Nagata1974}，定理8.1.1.などをみよ．
+
+\begin{thm}\label{thm:完備正則局所環のNoether正規化}
+	$(A,\ideal{m},k)$を完備Noether局所環で，$A$は等標数または整域であるとする．このとき$A$の部分環$A'$が存在して；
+	\begin{sakura}
+		\item $(A',\ideal{n})$は完備正則局所環である．
+		\item $A$は有限生成$A'$加群である．
+		\item $A'/\ideal{n}\cong k$である．
+	\end{sakura}
+	が成り立つ．
+\end{thm}
+
+\begin{proof}
+	まず$A$が等標数であるとする．$\dim A=d$として，巴系$\{a_1,\dots,a_d\}$をとる．このとき；
+	\[\varphi:k[[ X_1,\dots,X_d]] \to A;X_i\mapsto a_i\]
+	の像を$A'$とおく．このとき$A'$は完備局所環の準同型像なので完備局所環で，その極大イデアルは$\ideal{n}=(a_1,\dots,a_n)A'$である．いま$A'/\ideal{n}=k$であって，$(a_1,\dots,a_n)A$は$\ideal{m}$準素だから$A/(a_1,\dots,a_n)A$はArtinなので特に$k$上有限生成である．よって\ref{prop:完備な環上の加群の有限生成性without随伴次数環}から$A$は有限生成$A'$加群である．特に$A'\subset A$は整拡大で，$\dim A'=\dim A$である（\ref{cor:整拡大なら次元等しい}）．また$\dim k[[X_1,\dots,X_d]]=d$で，これは整域だから$\varphi$は単射である．ゆえに$A'$は正則である．
+	
+	次に$A$が$\Char k=p>0$であるような整域とする．証明は概ね上と同じである．このとき$\Char A=0$で，$A$の巴系を$\{p,a_1,\dots,a_{d-1}\}$としてとり，$A$の係数環を$R$とすれば；
+	\[\varphi:R[[X_1,\dots,X_{d-1}]]\to A;X_i\mapsto a_i\]
+	の像を$A'$とおくとその極大イデアルは$\ideal{n}=(p,a_1,\dots,a_{d-1})$であるので$A'/\ideal{n}=R/pR\cong k$で，上と全く同様にして$A$は$A'$上有限生成である．いま$A$が整域だから$R$も整域である．すると$R$は極大イデアルが単項な整域なのでDVRである．ゆえに$R[[X_1,\dots,X_{d-1}]]$は$d$次元の整域だから$\varphi$は単射である．
+\end{proof}
+
+この定理で整域を外すと成り立たない例は以下（\ref{ex:完備局所環のNoether正規化のアナロジーの反例}）にある．
+\section{Grothendieckの定理群}
+
+この節では局所コホモロジーに関する，Grothedieckによる消滅定理と双対定理を証明する．まずNoether環上の局所コホモロジーがArtinであることを証明しよう．
+\begin{prop}
+	$A$をNoether環，$I$を$A$のイデアルとする．$P\in\spec A$について；
+	\[\Gamma_I(\E(A/P))=\begin{cases}
+		\E(A/P) &\text{if~$I\subset P$.}\\
+		0&\text{else.}
+	\end{cases}\]
+	である．
+\end{prop}
+
+\begin{proof}
+	まず，任意の$x\neq 0\in\E(A/P)$について$\ann x$は$P$準素であることに注意する．実際$Ax\cong A/\ann x\subset\E(A/P)$なので，$\ass (A/\ann x)\subset\ass \E(A/P)=\{P\}$より$\ann x$は$P$準素である．
+	
+	さて$\Gamma_I(\E(A/P))\neq 0$とすると，任意の$x\neq 0\in\Gamma_I(\E(A/P))$をとる．$I^nx=0$となる$n$があり，また$Ax\cap A/P\neq 0$なので，$0\neq a+P\in Ax\cap A/P$をとれば$I^na\subset P$で，$a\not\in P$だから$I\subset P$となり，$I\not\subset P$ならば$\Gamma_I(\E(A/P))=0$であることがわかる．
+	
+	次に$I\subset P$とする．任意の$0\neq x\in \E(A/P)$をとると，$0\neq ax\in Ax\cap A/P$をとると，$I=(a_1,\dots,a_r)$としたとき$a_iax=0$なので$a\not\in\ann x$だから，$\ann x$は$P$準素なので$a_i^{n_i}x=0$となる$n_i$がとれる．よって$n_i$の総和を$n$として$I^nx=0$とできる．よって$\Gamma_I(\E(A/P))=\E(A/P)$である．
+\end{proof}
+
+\begin{cor}\label{cor:極大イデアルについての局所コホモロジー}
+	$(A,\ideal{m},k)$をNoether局所環，$M$を有限生成$A$加群とする．このとき$H^i_{\ideal{m}}(M)$は；
+	\[\begin{tikzcd}
+		0\nxcell\E(k)^{\mu^0(\ideal{m},M)}\nxcell\E(k)^{\mu^1(\ideal{m},M)}\nxcell\cdots
+	\end{tikzcd}\]
+	のコホモロジーである．
+\end{cor}
+
+\begin{cor}\label{cor:Gorenstein環の局所コホモロジー}
+	$(A,\ideal{m},k)$がGorensteinなら；
+	\[H^i_{\ideal{m}}(A)\cong
+		\begin{cases}
+			\E(k)&\text{if~$i=d$}\\
+			0&\text{else}
+		\end{cases}\]
+	である．
+\end{cor}
+
+\begin{proof}
+	\ref{thm:Gorensteinの特徴づけ}により$i\neq d$ならば$\mu^i(\ideal{m},A)=0$で，$i=d$ならば$\mu^d(\ideal{m},A)=1$である．
+\end{proof}
+
+\begin{thm}\label{thm:Noether局所環の入射包絡はArtin}
+	$(A,\ideal{m},k)$をNoether局所環とするとき，$E=\E(k)$はArtinである．
+\end{thm}
+
+\begin{proof}
+	\ref{claim:matlis2}より$A$が完備なら$E$はArtinであることに注意しよう．$A$線型写像$E\to \E\otimes_A \widehat{A};x\mapsto x\otimes 1$を考える．$x\neq 0$であるとき，$Ax\otimes_A\widehat{A}\cong(x\otimes 1)\widehat{A}$であって，$\widehat{A}$は$A$上忠実平坦（\ref{prop:完備化は忠実平坦}）なので\ref{prop:忠実平坦の言い換え}から$Ax\otimes\widehat{A}\neq 0$であるから$x\otimes 1\neq 0$である．よってこれは単射．また任意の$x\otimes(a_i)\in E\otimes_A\widehat{A}$をとると，$x\in E$よりある$n\geq 0$が存在して$\ideal{m}^nx=0$である．このとき$(a_n)$と$(a_i)$は$i\geq n$のとき$a_i-a_n\in\ideal{m}^i$で，$\ideal{m}^nx=0$だから$x\otimes(a_n)=x\otimes(a_i)$である．よって$E\to E\otimes_A\widehat{A}$は全射となり，同型である．これによって$E$は$\widehat{A}$加群とみなせる．
+	
+	さて$\widehat{A}/\widehat{\ideal{m}}\cong k\subset E$は本質的なので，$E$が$\widehat{A}$加群として入射的であることを示せばよい．$I$を$\widehat{A}$のイデアルとする．$\widehat{A}$線型写像$\varphi:I\to E$を考える．ここで$\widehat{A}$はNoetherなので$I$は有限生成だから，ある$n\geq 0$が存在して$\varphi(\widehat{\ideal{m}}^nI)=\widehat{\ideal{m}}^n\varphi(I)=0$である．いま，Artin--Reesの補題（\ref{prop:Artin--Reesの補題}）から，ある$k\geq 0$が存在して，任意の$i\geq k$に対して；
+	\[\widehat{\ideal{m}}^k\widehat{A}\cap I=\widehat{\ideal{m}}^{i-k}(\widehat{\ideal{m}}^k\widehat{A}\cap I)\]
+	であるので，$i=n+k$とすれば$\widehat{\ideal{m}}^k\widehat{A}\cap I\subset\widehat{\ideal{m}}^n I$であるので$\varphi(\widehat{\ideal{m}}^k\widehat{A}\cap I)=0$となり，$I/(\widehat{\ideal{m}}^k\cap I)\cong (I+\widehat{\ideal{m}}^k\widehat{A})/\widehat{\ideal{m}}^k\widehat{A}$に注意して$\varphi:(I+\widehat{\ideal{m}}^k\widehat{A})/\widehat{\ideal{m}}^k\widehat{A}\to E$とみなせる．ここで定義域は$\widehat{A}/\widehat{\ideal{m}}^k\widehat{A}\cong A/\ideal{m}^k$のイデアルなので，これは$A/\ideal{m}^k$にのびる．よって$\widehat{A}\to E$とでき，$E$は入射的$\widehat{A}$加群である．
+	
+	ゆえに$E$は$\widehat{A}$加群としてArtinである．また，任意の$A$部分加群$N\subset E$について，証明の前半と同様に$N\to N\otimes_A\widehat{A}$によって$N$を$E$の$\widehat{A}$部分加群とみなせ，$E$の部分$A$加群の減少列はとまることがわかる．ゆえに$E$は$A$加群としてもArtinである．
+\end{proof}
+
+\begin{cor}\label{cor:局所コホモロジーはArtin}
+	$(A,\ideal{m})$をNoether局所環，$M$を有限生成$A$加群とすると$H^i_{\ideal{m}}(M)$はArtinである．
+\end{cor}
+
+\begin{proof}
+	前定理と\ref{cor:極大イデアルについての局所コホモロジー}から従う．
+\end{proof}
+
+次に局所コホモロジーは完備化で保たれることを示そう．\ref{prop:有限生成なら完備化は係数拡大}により，有限生成な加群$M$について$\widehat{M}\cong M\otimes_A\widehat{A}$であることに注意する．
+\begin{prop}\label{prop:NoetherかつArtinは完備化と同型}
+	$(A,\ideal{m})$をNoether局所環とする．$M$をArtinかつNoether加群とすると，$M\cong\widehat{M}$である．
+\end{prop}
+
+\begin{proof}
+	$M$の組成列$\{M_i\}$をとる．このとき$M_1\cong k$に注意して，完全列；
+	\[\ses{k}{M_2}{k}\]
+	がある．\ref{thm:Noether局所環の入射包絡はArtin}と同様に$k\cong k\otimes_A\widehat{A}\cong\widehat{k}$である．よって$M_2\to M_2\otimes_A\widehat{A};x\mapsto x\otimes 1$を考えると；
+	\[\begin{tikzcd}
+		0\nxcell k\darrow\nxcell M_2\darrow\nxcell k\darrow\nxcell 0\\
+		0\nxcell\widehat{k}\nxcell\widehat{M_2}\nxcell\widehat{k}\nxcell 0
+	\end{tikzcd}\]
+	において両端の縦の射が同型なので，中央も同型である．よって帰納的に$M\cong\widehat{M}$が従う．
+\end{proof}
+
+\begin{thm}\label{thm:完備化してもlocal cohomは同型}
+	$(A,\ideal{m})$をNoether局所環，$M$を有限生成$A$加群とする．このとき，任意の$i\geq 0$に対して；
+	\[H^i_{\ideal{m}}(M)\cong H^i_{\widehat{\ideal{m}}}(\widehat{M})\]
+	が成り立つ．
+\end{thm}
+
+\begin{proof}
+	\ref{prop:任意の加群は有限生成の帰納極限}により$H^i_{\ideal{m}}(M)\cong\ilim M_i$と局所コホモロジーは有限生成$A$加群の帰納極限とかける．いま\ref{cor:局所コホモロジーはArtin}より$M_i$はArtinかつNoether加群であることに注意すると帰納極限とテンソル積は可換（\ref{prop:帰納極限とテンソル積の交換}）で，\ref{prop:NoetherかつArtinは完備化と同型}から；
+	\[H^i_{\ideal{m}}(M)\cong\ilim M_i\cong\ilim(M_i\otimes_A\widehat{A})\cong(\ilim M_i)\otimes \widehat{A}\cong H^i_{\ideal{m}}(M)\otimes\widehat{A}\]
+	であり，また$H^i_{\ideal{m}}(M)\cong\ilim\Ext^i(A/\ideal{m}^n,M)$であるので，\ref{prop:平坦とExtの交換}から；
+	\[H^i_{\ideal{m}}(M)\cong H^i_{\ideal{m}}(M)\otimes\widehat{A}\cong\ilim\Ext^i_{\widehat{A}}(\widehat{A}/\widehat{\ideal{m}}^n,\widehat{M})\cong H^i_{\widehat{\ideal{m}}}(\widehat{M})\]
+	であることがわかった．
+\end{proof}
+
+\begin{lem}\label{lem:Noether局所環の局所コホモロジーが一致する条件}
+	$(A,\ideal{m}),(B,\ideal{n})$をNoether局所環とする．$\ideal{m}=(a_1,\dots,a_n)$としたとき，環準同型$\varphi:A\to B$で$(\varphi(a_1),\dots,\varphi(a_n))$が$\ideal{n}$準素であるものが存在するならば，任意の$B$加群$M$について$A$加群の同型；
+	\[H^i_{\ideal{m}}(M)\cong H^i_{\ideal{n}}(M)~(i\geq 0)\]
+	が存在する．
+\end{lem}
+
+\begin{proof}
+	仮定より$\sqrt{(\varphi(a_1),\dots,\varphi(a_n))}=\ideal{n}$なので，\ref{cor:Noether環の局所コホモロジーはCech}から$\check{H}^i(\underline{a},M)\cong\check{H}^i(\underline{\varphi(a)},M)$を確かめればよい．Čech複体を考えると$A_{a_I}\otimes_A M\cong B_{\varphi(a)_I}\otimes_B M$を示せばよいが，例えば$a\in A$と$x\in M$について$a\otimes x=1\otimes \varphi(a)x$であることからこの同型は明らかである．
+\end{proof}
+
+\begin{thm}[局所コホモロジーの消滅定理，Grothendieck]
+	$(A,\ideal{m},k)$をNoether局所環とする．有限生成$A$加群$M$について$t=\mdepth M, d=\dim M$とおく．このとき，$i<t$または$d<i$ならば$H^i_{\ideal{m}}(M)=0$であり，また$i=t,d$のとき$H^i_{\ideal{m}}(M)\neq 0$である．
+\end{thm}
+
+\begin{proof}
+	まず$i<t$ならば$\mu^i(\ideal{m},M)=0$なので，\ref{cor:極大イデアルについての局所コホモロジー}から$H^i_{\ideal{m}}(M)=0$である．次に$d<i$の場合を考える．ここで$d=\dim M=\dim A/\ann M$であり，$A\to A/\ann M$に\ref{lem:Noether局所環の局所コホモロジーが一致する条件}を適用することで$\dim A=d$としてよい．このとき$A$の巴系$a_1,\dots,a_d$をとれば\ref{cor:Noether環の局所コホモロジーはCech}から$i>d$について$H^i_{\ideal{m}}(M)\cong\check{H}^i(\underbar{a},M)=0$であることがわかる．
+	
+	次に$H^t(M)\neq 0$であることを，$t$についての帰納法で示そう．まず$t=0$のときは$\ideal{m}\in\ass M$だから単射$k\to M$が存在し，これによって$k\subset\Gamma_{\ideal{m}}(M)\neq 0$である．次に$t-1$まで正しいとすると，$M$正則元$a\in\ideal{m}$がとれ，完全列；
+	\[\ses[a\cdot]{M}{M}{M/aM}\]
+	が導く局所コホモロジーの長完全列；
+	\[\begin{tikzcd}
+		H^{t-1}_{\ideal{m}}(M)\nxcell H^{t-1}_{\ideal{m}}(M/aM)\nxcell H^t_{\ideal{m}}(M)
+	\end{tikzcd}\]
+	において$H^{t-1}_{\ideal{m}}(M)=0, H^{t-1}_{\ideal{m}}(M/aM)\neq 0$なので$H^{t}_{\ideal{m}}(M)\neq 0$であることがわかる．
+	
+	最後に$H^d_{\ideal{m}}(M)\neq 0$を示そう．まず\ref{thm:完備化の次元}より$\dim A=\dim\widehat{A}$であり，$\widehat{\ann M}=\ann\widehat{M}$であるので$\dim M=\dim\widehat{M}$である．よって\ref{thm:完備化してもlocal cohomは同型}から$A$を完備としてよい．次に$\dim M=\dim A/P$なる$P\in V(\ann M)$をとる（$A$がNoetherなので$V(\ann M)$の極小元は有限）と，完全列；
+	\[\ses{PM}{M}{M/PM}\]
+	において$\dim PM\leq \dim M$だから，局所コホモロジーの完全列；
+	\[\begin{tikzcd}
+		H^d_{\ideal{m}}(M)\nxcell H^d_{\ideal{m}}(M/PM)\nxcell H^{d+1}_{\ideal{m}}(PM)=0
+	\end{tikzcd}\]
+	を得る．ゆえに$H^d_{\ideal{m}}(M/PM)\neq 0$ならばよい．ここで$M/PM$を$A/P$加群としてみて，\ref{lem:Noether局所環の局所コホモロジーが一致する条件}を使うと$A$を$\dim A=d$であるような完備局所整域としてよいことがわかる．このとき\ref{thm:完備正則局所環のNoether正規化}から，部分環$A'\subset A$であって，完備正則局所環でその極大イデアルが$\ideal{m}$準素で，さらに$\dim A'=\dim A$であるものがとれる．よって\ref{lem:Noether局所環の局所コホモロジーが一致する条件}から$A$を完備正則局所環としてよい．$K=\Frac A$とおくと，$M\otimes_A K$は，素イデアル$(0)$による$M$の局所化にほかならない．自然な$\varphi:M\to M\otimes K$を考える．$M\otimes K$の$K$上の基底$\{e_1,\dots,e_r\}$と，$\im\varphi$の$A$加群としての生成系$\{u_1,\dots,u_n\}$をとれば包含$\im\varphi\to M\otimes K$により$u_i=\sum_{j} a_{ij}/b_{ij}e_j$とかける．ここで$b=\prod_{i,j}b_{ij}$とおけば，自然な包含$\im\varphi\to \sum_{j}A/be_j$がある．これによって$\im\varphi$を自由加群$A^r$の部分加群とみなす．ここで完全列；
+	\[\ses{\im\varphi}{A^r}{C}\tag{$(\ast$)}\]
+	を考えると，$\varphi\otimes\id_K$は同型なので，$M\otimes K=\im\varphi\otimes K$で，また$K$は$A$の局所化なので平坦だから，完全列；
+	\[\ses{M\otimes K}{A^r\otimes K}{C\otimes K}\]
+	を得るが，構成から$M\otimes K\cong A^r\otimes K$なので$C\otimes K=0$である．すると，任意の$x\in C$に対して，ある$a\neq 0$が存在して$ax=0$となるので，$C$は有限生成だから，生成系をとれば$a\neq 0\in \ann C$となるような$a$があることがわかる．すると$A/\ann C$では$(0)$は素ではないので，$\dim C<\dim A$となる．すると$(\ast)$から局所コホモロジーの長完全列をとると，いま$A$は正則だから特にGorensteinなので，\ref{cor:Gorenstein環の局所コホモロジー}から；
+	\[\begin{tikzcd}
+		H^d_{\ideal{m}}(\im\varphi)\nxcell H^d_{\ideal{m}}(A^r)=\E(k)^r\nxcell H^d_{\ideal{m}}(C)=0
+	\end{tikzcd}\]
+	である．ゆえに$H^d_{\ideal{m}}(\im\varphi)\neq 0$である．同様に$\ses{\ker\varphi}{M}{\im\varphi}$において$\dim\ker\varphi<\dim A$なので，$H^d_{\ideal{m}}(M)\neq 0$であることがわかった．
+\end{proof}
+ 

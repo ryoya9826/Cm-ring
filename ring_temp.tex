@@ -1,0 +1,300 @@
+\part[untitled]{寄せ集め}
+
+\section{次数付き加群のなす圏}
+
+この節では，$\mathbf{Mod}(A)$の部分圏，次数付き加群のなす圏を定義し，そのなかでの導来関手の役割について論じる．
+
+いままでに何度か登場しているが，もう一度次数付き加群の定義を述べておこう；
+
+\begin{defi}[次数付き加群]\index{じすうつきかぐん@次数付き加群}
+	$A$を次数付き環とする．$A$加群$M$とその部分加群の族$\{M_i\}$について，$M=\bigoplus_{i\in\Z} M_i$が成り立ち，すべての$i,j$について$A_iM_j\subset M_{i+j}$が成り立つとき，$M$を\textbf{次数付き}$A$\textbf{加群(graded $A$-module)}という．
+\end{defi}
+
+$M_i$を$M$の$i$次斉次部分という．定義から，任意の$x\in M$は一意な斉次分解$x=\sum x_i$を持つことに注意しよう．また，$A$を次数付き環とし，$M,N$を次数付き$A$加群とする．$A$線型写像$f:M\to N$について，任意の$i$に対し$f(M_i)\subset N_i$を満たすとき，$f$を\textbf{斉次(homogeneous)}であるという．
+\begin{defi}[次数付き加群のなす圏]
+	$A$を次数付き環とする．圏$\mathbf{gr\text{-}Mod}(A)$を；
+	\[\operatorname{ob}(\mathbf{gr\text{-}Mod}(A))=\mathbf{Mod}(A),\quad \hom_{\mathbf{gr\text{-}Mod}(A)}(M,N)=\mkset{f\in\hom_A(M,N)}{f:\text{斉次}}\]
+	で定める．これを\textbf{次数付き加群のなす圏(category of graded $A$-module)}という．
+\end{defi}
+
+\begin{defi}
+	次数付き$A$加群$M$について，部分$A$加群$N$であって，直和分解$N=\bigoplus_{i\in\Z}N_i$で$N_i=N\cap M_i$となっているものが存在するとき，$N$を$M$の\textbf{次数付き部分加群}であるという．
+\end{defi}
+
+\begin{prop}
+	$M$を次数付き$A$加群とし，$N$をその次数付き部分加群とする．このとき，$M/N$も自然な次数付き加群としての構造を持つ．
+\end{prop}
+
+\begin{proof}
+	$M/N\cong\bigoplus M_i/(N\cap M_i)\cong\bigoplus M_i/N_i$により次数構造が入る．
+\end{proof}
+
+次に，代数幾何でもよく使われる\textbf{ねじり}を加えた加群を定義しておこう．
+
+\begin{defi}[ねじり加群]
+	$M$を次数付き$A$加群とする．任意の$n\in\Z$について，次数付き加群$M(n)=\bigoplus_{i\in\Z}M_{i+n}$を，\textbf{ねじり（次数付き）加群(twisting graded module)}という．
+\end{defi}
+
+一般に$A$加群$M$について，生成系$\{u_\lambda\}_{\lambda\in\Lambda}$をとれば，自由加群からの全射$\bigoplus_{\lambda\in\Lambda}A\to M;(a_\lambda)\mapsto \sum a_\lambda u_\lambda$が存在する．特に，生成系として自明な$\{m\}_{m\in M}$をとることもでき，これを用いることで，次数付き$A$加群$M$に対して，自由加群；
+\[F=\bigoplus_{n\in\Z}A(n)^{\oplus M_{-n}}\cong\bigoplus_{i\in\Z}\bigoplus_{n\in\Z}A_{i+n}^{\oplus M_{-n}}\]
+からの全射が存在することを示せる．この$F$は$i$次斉次部分を$\bigoplus_{n\in\Z}A_{i+n}^{\oplus M_{-n}}$とすることで次数付き$A$加群になる．これにより$\grmod(A)$が射影的対象を十分に持つことを証明できる．
+
+\begin{thm}
+	$\grmod(A)$は射影的対象を十分にもつ．
+\end{thm}
+\begin{proof}
+	次数付き$A$加群$M$をとる．自由な次数付き加群$F$を上のように構成しよう．各$A_{i+n}^{\oplus M_{-n}}$について；
+	\[A_{i+n}^{\oplus M_{-n}}\to M;(a_{i+n,m})_{m\in M_{-n}}\mapsto\sum_{m\in M_{-n}}a_{i+n,m}m\]
+	と定義して，これを線型に拡張したものを$\varphi:F\to M$とすれば，これが斉次な全射となる．
+	
+	あとは$F$が$\grmod(A)$の射影的対象であることをみればよい．任意の全射斉次射$\varepsilon:M\to N$と$f:F\to N$に対して，$F$は$\mathbf{Mod}(A)$で射影的だから$\widetilde{f}:F\to M$で$\varepsilon\circ\widetilde{f}=f$となるものがある．ここで，次数付き加群$M$に対して$\pr_i:M\to M_i$を元$x$の$i$次斉次部分を取り出す射とすれば，これは$A$線型で$\pr_n\circ\widetilde{f}\circ\pr_n:F\to M$が定まり，これも$A$線型である．また，任意の$x\in F$について$\pr_n(x)\neq0$となる$n$は有限であるから；
+	\[g:F\to M;x\mapsto\sum_{n\in\Z}\pr_n\circ\widetilde{f}\circ\pr_n(x)\]
+	がwell-definedな斉次射であって，$\widetilde{f}$と同様の可換性を満たす．
+\end{proof}
+
+%\section{Noether環上で局所コホモロジーと\v{C}echコホモロジーが一致することの古典的証明}
+%
+%仮定が天下り的だが入射分解と異なる複体で局所コホモロジーを計算するための条件を与えよう．
+%
+%\begin{thm}\label{thm:local cohomを与える条件}
+%	$A$を環とし，$I$をイデアル，$M$を$A$加群とする．複体$C^\bullet$であって，以下の条件；
+%	\begin{sakura}
+%		\item 任意の$i<0$について$C^i=0$である．
+%		\item $C^0=M$である．
+%		\item 任意の$i\geq 1$について$H^j_I(C^i)=0~(j\geq 0)$である．
+%		\item 任意の$i$について$\Gamma_I(H^i(C^\bullet))=H^i(C^\bullet), H^j_I(H^i(C^\bullet))=0~(j\geq 1)$である．
+%	\end{sakura}
+%	を満たすとき，任意の$i$について$H^i_I(M)\cong H^i(C^\bullet)$である．
+%\end{thm}
+%
+%\begin{proof}
+%	複体の微分を$d^i$と書くことにしよう．各$i\geq 0$について，完全列；
+%	\[\ses{\ker d^i}{C^i}{\im d^i}\]
+%	がある．ここで$\im d^i\subset C^{i+1}$より$H^0_I(\im d^i)\subset H^0_I(C^{i+1})=0$であることに注意しよう．
+%
+%	$\ker d^0=H^0(C^\bullet)$に注意すると，$\Gamma_I(-)$が導く長完全列を$i=0$の場合に考えて；
+%	\[\begin{tikzcd}
+%		0\nxcell H^0(C^\bullet)\nxcell \Gamma_I(M)\nxcell 0\\
+%		\nxcell 0\nxcell H^1_I(M)\nxcell H^1_I(\im d^0)\\
+%		\nxcell 0\nxcell H^2_I(M)\nxcell H^2_I(\im d^0)\\
+%		\nxcell\cdots
+%	\end{tikzcd}\]
+%	が完全だから$H^0(C^\bullet)\cong\Gamma_I(M), H^j_I(M)\cong H^j_I(\im d^0)~(j\geq 1)$である．また，一般の$i$の場合には；
+%	\[\begin{tikzcd}
+%		0\nxcell H^1(\ker d^i)\nxcell 0\nxcell H^1_I(\im d^i)\\
+%		\nxcell H^2(\ker d^i)\nxcell 0\cdots
+%	\end{tikzcd}\]
+%	が得られ，$H^1_I(\ker d^i)=0, H^j_I(\im d^i)\cong H^{j+1}_I(\ker d^i)~(j\geq 1)$である．
+%	
+%	次に$i\geq 1$について$\ses{\im d^{i-1}}{\ker d^i}{H^i(C^\bullet)}$から得られる長完全列；
+%	\settowidth{\masyulengtha}{$H^1_I(\im d^{i-1})$}%
+%	\settowidth{\masyulengthb}{$H^i(C^\bullet)$}
+%	\[\begin{tikzcd}
+%		0\nxcell {0}\nxcell 0\nxcell H^i(C^\bullet)\\
+%		\nxcell H^1_I(\im d^{i-1})\nxcell 0\nxcell \makebox[\masyulengthb]{0}\\
+%		\nxcell H^2_I(\im d^{i-1})\nxcell H^2_I(\ker d^i)\nxcell \makebox[\masyulengthb]{0}\\
+%		\nxcell\makebox[\masyulengtha]{\cdots}
+%	\end{tikzcd}\]
+%	より$H^i(C^\bullet)\cong H^1_I(\im d^{i-1}), H^j_I(\im d^{i-1})\cong H^j_I(\ker d^i)~(j\geq2)$がわかる．以上より；
+%	\[H^i(C^\bullet)\cong H^1_I(\im d^{i-1})\cong H^2_I(\ker d^{i-1})\cong H^2_I(\im d^{i-2})\cong\dots\cong H^i_I(\im d^0)=H^i_I(M)\]
+%	である．
+%\end{proof}
+%
+%これを用いて，十分よい条件のもとでČechコホモロジーが局所コホモロジーを与えることを証明しよう．
+%
+%\begin{prop}\label{prop:Gamma_I(M)=Mならいいね}
+%	$A$をNoether環とし，$M$を$A$加群とする．イデアル$I$について$\Gamma_I(M)=M$ならば，任意の$i\geq 1$について$H^i_I(M)=0$である．
+%\end{prop}
+%
+%\begin{proof}
+%	$M$の極小入射分解を$I^\bullet$とする．$I^0=\E(M)$に注意して；	\[\ses[\varepsilon]{M}{\E(M)}{\ker d^1}\]
+%	が導く長完全列を考えると，コホモロジーは入射的対象を消すので$i\geq 2$について$H^i_I(M)\cong H^{i-1}_I(\ker d^1)$であり；
+%	\[\ses{\ker d^1}{I^1}{\ker d^2}\]
+%	について同様に$H^i_I(\ker d^1)\cong H^{i-1}_I(\ker d^2)$であることから，これを繰り返して$H^i_I(M)\cong H^1_I(\ker d^{i-1})$である．ここで$\ker d^1\cong\E(M)/M$に注意して；
+%	\[\ses{\E(M)/M}{I^1}{\ker d^2}\]
+%	も完全で，$H^2_I(M)\cong H^1_I(\E(M)/M)$であるから；
+%	\begin{sakura}
+%		\item $\Gamma_I(M)=M$ならば$H^1_I(M)=0$であること．
+%		\item $\Gamma_I(M)=M$ならば$\Gamma_I(\E(M)/M))=\E(M)/M$であること．
+%	\end{sakura}
+%	の２つを示せば，繰り返すことで任意の$i\geq 1$について$H^1_I(M)=0$であることがわかる．
+%	
+%	まず$\Gamma_I(\E(M))=\E(M)$であること示そう．\ref{cor:E(M)の構造}により；
+%	\[I^0=\E(M)\cong\bigoplus_{P\in\spec A}\E(A/P)^{\mu^0(P,M)}\]
+%	とできることに注意すると，$I\not\subset P$であるような$P\in\spec A$について$\mu^0(P,M)=0$であることを示せばよい．任意の$\varphi\in\hom(A/P,M)$をとり，$\varphi(1+P)=x$とする．$\Gamma_I(M)=M$だから，ある$n\geq 0$が存在して$I^n x=0$とできる．ここで$a\not\in P$であるような$a\in I$をとれば$a^n x=0$なので，$a^n\varphi=0$である．よって$\varphi$の$\hom_{A_P}(k(P),M_P)$における像は$0$であり，$\mu^0(P,M)=0$である．ゆえに；
+%	\[\E(M)=\bigoplus_{P\in V(I)}\E(A/P)^{\mu^0(P,M)}\]
+%	でとなり，\ref{prop:入射包絡のlocal cohom}から$\Gamma_I(\E(M))=\E(M)$である．さて任意の$x+M\in\E(M)/M$をとると，$x\in\Gamma_I(\E(M))$なので，ある$n\geq 0$がとれて$I^nx=0$とできる．よって$I^n(x+M)=0$であり，$\Gamma_I(\E(M)/M)=\E(M)/M$である．ゆえに$(ii)$が示された．また局所コホモロジーの長完全列を考えたら；
+%	\[\begin{tikzcd}
+%		0\nxcell M\nxcell \E(M)\nxcell \E(M)/M\nxcell H^1_I(M)\nxcell 0
+%	\end{tikzcd}\]
+%	が得られ，$H^1_I(M)=0$である．これで$(i)$も示され，証明が完了した．
+%\end{proof}
+%
+%\begin{prop}\label{prop:local cohom消えるような直和分解ある}
+%	$A$をNoether環とし，$I$をそのイデアルとする．$A$加群$M$について，直和分解$M=\bigoplus_{\lambda\in\Lambda}M_\lambda$が存在して，任意の$\lambda$について$a_\lambda\in I$が存在して$a_\lambda\cdot:M_\lambda\to M_\lambda$が同型射であるとき，任意の$i\geq 0$について$H^i_I(M)=0$である．
+%\end{prop}
+%
+%\begin{proof}
+%	局所コホモロジーは直和と可換なので，ある$a\in I$が存在して，$a\cdot:M\to M$が同型であるとしてよい．すると完全列；
+%	\[\ses[a\cdot]{M}{M}{0}\]
+%	があり，これについて局所コホモロジーの長完全列を考えたら，任意の$i$について$H^i_I(M)$上で$a\cdot$も同型である．ここで$H^i_I(M)\cong\ilim\Ext^i(A/I^n,M)$だから，任意の$x\in H^i_I(M)$に対して十分大きな$n$をとれば$a^nx=0$であるので，$a\cdot$は同型だったから$x=0$で，$H^i_I(M)=0$でなければならない．
+%\end{proof}
+%%%%直接的証明も面白いのでアーカイブしておこう．
+%%
+%%
+%%	
+%%	入射包絡と$\Gamma_I(-)$は直和と可換
+%%
+%%本番はうっかりしていたが，入射包絡と直和が可換にNoether性がいるっぽい．おもいついた証明は\mu^0(P,M\oplus N)=\mu^0(P,M)+\mu^0(P,N)を使う．
+%%
+%%	なので，$a\in I$が存在して$a\cdot:M\to M$が同型であるとしてよい．このとき，$a\cdot$は$\E(M)$上でも同型を与える．実際$x\in\E(M)$について$ax=0$であるとすると，任意の$bx\in Ax\cap M$について$abx=0$であるので，$bx\in M$だから$bx=0$となり，$Ax\cap M=0$である．これは$x=0$を導く．よって$a\cdot$は単射である．すると，$\E(M)$は入射的なので，次の図式を可換にするような$\varphi:\E(M)\to\E(M)$が存在する；
+%%	\[\begin{tikzcd}
+%%		&&\E(M)\\
+%%	0\nxcell\E(M)\arrow[ur,"\id"]\nxcell[a\cdot]\E(M)\arrow[u,dashed,"\varphi"]
+%%	\end{tikzcd}\]
+%%	ここで，自然な単射$\varepsilon:M\to\E(M)$について，$\varphi\circ\varepsilon$は単射である．実際任意の$x\in M$に対して$\varphi\circ\varepsilon(x)=0$とするとき，$a\cdot$は$M$上の同型だから$x=az$となる$z\in M$をとれば$\varphi\circ\varepsilon(x)=\varphi(a\varepsilon(z))=\varepsilon(z)=0$であるから，$\varepsilon$は単射なので$\varphi\circ\varepsilon$も単射．よって\ref{prop:入射包絡の言い換え}から$\varphi$も単射となり，$a\cdot$は同型であることがわかった．
+%%		このとき$\E(M)/M$上でも同型である．実際任意の$x+M\in\E(M)/M$について$ax\in M$とすると，$ax=az$となる$z\in M$が存在するが，$\E(M)$上でも$a\cdot$は単射なので$x=z\in M$である．全射性は$\E(M)$の上で全射であることから明らか．
+%%		次に$\Gamma_I(\E(M)/M)=0$を示す．$x+M\in\E(M)/M$について，ある$n\geq 0$が存在して$I^nx\subset M$であると仮定すると，$a^nx\in M$なので，上と同様にして$x\in M$であることがわかる．同様にして$\Gamma_I(M)=\Gamma_I(\E(M))=0$も確かめられ，完全列；
+%%	\[\begin{tikzcd}
+%%		0\nxcell 0\nxcell 0\nxcell 0\nxcell H^1_I(M)\nxcell 0
+%%	\end{tikzcd}\]
+%%	から$H^1_I(M)=0$が従う．
+%
+%\begin{thm}
+%	$A$をNoether環，$M$を$A$加群とする．$I$を$A$のイデアルとし，$a_1,\dots,a_n\in I$を$\sqrt{(a_1,\dots,a_n)}=\sqrt{I}$となるような元とすると，任意の$i$について$H^i_I(M)\cong\check{H}^i(\underline{a},M)$である．
+%\end{thm}
+%
+%\begin{proof}
+%	Čech複体が\ref{thm:local cohomを与える条件}の条件を満たしていればよいので\ref{prop:Gamma_I(M)=Mならいいね}，\ref{prop:local cohom消えるような直和分解ある}の２つを確かめればよい．後者の条件は$a_I$が$A_{a_I}e_I$上の全単射を与えることからわかる．
+%		
+%	前者については，\ref{cor:CechはKoszulの帰納極限}を用いると各$m$について；
+%	\[\Gamma_I(H^i(\underline{a}^m,M))=H^i(\underline{a}^m,M)\]
+%	を確かめればよい．任意の$x\in\check{H}^i(\underline{a},M)$をとると，$\check{H}^i(\underline{a},M)\cong\ilim_m H^i(\underline{a}^m,M)$であるので，\ref{prop:Koszul複体は生成イデアルで消える}から十分大きな$m$をとれば$(a_1^m,\dots,a_n^m)x=0$である．ここで仮定から$I^n\subset (a_1,\dots,a_n)$となる$n\geq 0$がとれ，$I^{2mn}x=0$である．
+%\end{proof}
+
+\section{導分と微分}
+
+本節では，$A$加群の導分と微分と呼ばれる技法について軽い説明を行う．これは代数幾何学においては，（複素）多様体論における微分形式の理論をスキーム論に対応させるものとして用いられる．本節では純粋に環論としての応用の一端でも紹介したい．
+\begin{defi}[導分]\index{どうぶん@導分}
+	$A$を環とする．$A$加群$M$への写像$D:A\to M$であって，次の条件；
+	\begin{defiterm}{D}
+		\item $D(a+b)=D(a)+D(b)$
+		\item $D(ab)=bD(a)+aD(B)$
+	\end{defiterm}
+	を満たすとき，$D$を$A$から$M$への\textbf{導分(derivation)}といい，その全体を$\der(A,M)$と表す．
+\end{defi}
+
+条件(D2)はLeibnitz則と呼ばれるものに相当する．$\der(A,M)$は自然に$A$加群をなすことに注意する．また$R$代数$f:R\to A$に対して，$D\in\der(A,M)$で$D\circ f=0$であるものを$R$上の導分といい，その全体$\der_R(A,M)$で表す．このとき$\der_R(A,M)\subset\hom_R(A,M)$であることに注意しよう．
+
+導分は（共変）関手$\der_R(A,-):\mathbf{Mod}(A)\to\mathbf{Mod}(A)$を自然に定め，これは表現可能関手である．
+
+\begin{defi}[Kähler微分加群]\index{#Kahlerびぶんかぐん@Kähler微分加群}
+	$A$を$R$代数とする．関手$\der_R(A,-)$を表現する対象，すなわち$A$加群$\Omega_{A/R}$と導分$d_{A/R}:A\to\Omega_{A/R}$の組であって，任意の$A$加群$M$と導分$D:A\to M$に対して，$A$線型写像$f:\Omega_{A/R}\to M$で$D=f\circ d_{A/R}$となるものが一意に存在するとき，$\omega_{A/R}$を\textbf{Kähler微分加群(module of Kähler differentials)}または単に\textbf{微分加群}という．
+\end{defi}
+
+以後，実際に微分加群が存在することを示していこう．もちろん定義から存在すれば一意的に定まる同型を除いて一意である．
+
+$A,B$を$R$代数，$M$を$B$加群とする．$M$の$B$によるイデアル化$A\ast M$（\ref{defi:idealisation}）において自然な全射$\pi:B\ast M\to B$は$R$代数の射であり，$R$代数の可換図式；
+\[\begin{tikzcd}
+	A\arrow[d,shift left=.5ex,"h"]\arrow[d,shift right=.5ex,"h'",swap]\arrow[rd,"g"]\\
+	B\ast M\nxcell[\pi] B
+\end{tikzcd}\]
+を考える．図式の可換性から，写像$\varphi:A\to M$を用いて任意の$a\in A$に対して$h(a)=(g(a),\varphi(a))$とかける．このとき$\varphi$は加法的，すなわち$\varphi(a+b)=\varphi(a)+\varphi(b)$が成り立つことに注意する．同様に$h'(a)=(g(a),\varphi'(a))$とおくと$h(a)-h'(a)=(0,\varphi(a)-\varphi'(a))$であるので，加法的な写像$A\to M;a\mapsto \varphi(a)-\varphi'(a)$が定まる．記号の濫用ではあるが，これを$h-h':A\to M$と表すことにする．いま$M$を$g:A\to B$によって$A$加群とみなすと$h-h'\in\der_R(A,M)$である．命題の形にまとめておこう．
+
+\begin{prop}\label{prop:R代数の射の差は導分}
+	$A,B$を$R$代数，$M$を$B$加群とする．$R$代数の可換図式；
+	\[\begin{tikzcd}
+		A\arrow[d,shift left=.5ex,"h"]\arrow[d,shift right=.5ex,"h'",swap]\arrow[rd,"g"]\\
+		B\ast M\nxcell[\pi] B
+	\end{tikzcd}\]
+	を考える．$M$を$g:A\to B$によって$A$加群とみなすとき，上で構成した$h-h'$は$A$から$M$への導分，すなわち$h-h'\in\der_R(A,M)$である．逆に$D\in\der_R(A,M)$ならば$D+h:a\mapsto (0,D(a))+h(a)$は図式を可換にする$R$代数の射である．
+\end{prop}
+
+\begin{proof}
+	構成から(D1)は明らかである．任意の$a,b\in A$に対して$(h-h')(ab)=\varphi(ab)-\varphi'(ab)$である．ここで；
+	\[h(ab)=h(a)h(b)=(g(a),\varphi(a))(g(b),\varphi(b))=(g(ab),g(b)\varphi(a)+g(a)\varphi(b))\]
+	であるので，$A$加群として$\varphi(ab)=b\varphi(a)+a\varphi(b)$であり，$h'$についても同様に考えてて$(h-h')(ab)=b(\varphi(a)-\varphi'(a))+a(\varphi(b)-\varphi'(b))$となり(D2)が成り立っていることがわかった．
+	
+	次に任意の$D\in\der_R(A,M)$に対し$D+h$を考えると，これが図式を可換にする加法的な写像であることは明らかである．積については；
+	\[\begin{aligned}
+		(h+D)(a)\cdot (h+D)(b)&=h(ab)+h(a)(0,D(b))+h(a)(0,D(a))+(0,D(a))(0,D(b))\\
+		&=h(ab)+(g(a),\varphi(a))(0,D(b))+(g(b),\varphi(b))(0,D(a))\\
+		&=h(ab)+(0,aD(b)+bD(a))\\
+		&=(h+D)(ab)
+	\end{aligned}\]
+	となりこれは環準同型である．$R$代数の射であることも明らか．
+\end{proof}
+
+ここで，$R$代数$A$に対して，$A\otimes_R A$は$(a\otimes b)(a'\otimes b')=aa'\otimes bb'$によって$R$代数をなすことに注意する．環準同型$A\otimes_R A\to A;a\otimes b\to ab$の核を$I$とかくと，$I/I^2$において任意の$a\in A$と$b\otimes c\in I$に対して$a\otimes 1-1\otimes a\in I$に注意すると；
+\[(a\otimes 1)(b\otimes c)+I^2=(1\otimes a)(b\otimes c)+I^2\]
+が成り立つ．そこで，$I/I^2$に$a(b\otimes c)=ab\otimes c=b\otimes ac$によって$A$加群の構造を入れる．
+
+\begin{thm}
+	$A$を$R$代数とする．$A\otimes_R A\to A;a\otimes b\to ab$の核を$I$としたとき，$I/I^2$を補題の方法で$A$加群とみたものは関手$\der_R(A,-)$を表現する．すなわち$\Omega_{A/R}\cong I/I^2$である．
+\end{thm}
+
+\begin{proof}
+	次の写像$\varphi:A\to A\ast I/I^2;a\mapsto(a,1\otimes a-a\otimes 1+I^2)$を考えると，これは次の図式；
+	\[\begin{tikzcd}
+		A\arrow[d,"\varphi"]\arrow[rd,"\id"]\\
+		A\ast I/I^2\nxcell[\pi] A
+	\end{tikzcd}\]
+	を可換にする$R$代数の射である．実際これが環準同型であること以外は明らかで，$\varphi(a)\varphi(b)$の第$2$成分を定義に沿って計算すると；
+	\[\begin{aligned}
+		a(1\otimes b+b\otimes 1)+b(1\otimes a-a\otimes 1)I^2&=(a\otimes 1)(1\otimes b-b\otimes 1)+(1\otimes b)(1\otimes a-a\otimes 1)\\
+		&=a\otimes b-ab\otimes 1+1\otimes ab-ab\otimes 1+I^2\\
+		&1\otimes ab-ab\otimes 1+I^2
+	\end{aligned}\]
+	であるから$\varphi(ab)=\varphi(a)\varphi(b)$であることがわかった．ここで$\iota:A\to A\ast M$を自然な包含とするとこれも図式を可換にする$R$代数の射なので，\ref{prop:R代数の射の差は導分}から$\varphi-\iota:A\to I/I^2;a\mapsto 1\otimes a-a\otimes 1+I^2$は導分である．これを$d_{A/R}$と表すことにする．任意の$a\otimes b\in I/I^2$を考えると$a\otimes b=(a\otimes 1)(1\otimes b-b\otimes 1)$であるから，$A$加群として$d_{A/R}(b)$の形の元で生成されていることに注意する．$f:I/I^2\to M$を$a\otimes b+I^2\mapsto aD(b)$と定めるとこれはwell-definedな$A$線型写像で，上の注意から図式を可換にする$f$はこれのみである． 
+\end{proof}
+
+\begin{thm}[第１基本完全列]
+	$f:R\to A, g:A\to B$を環準同型とする．このとき；
+	\[\alpha:\Omega_{A/R}\otimes_A B\to\Omega_{B/R};d_{A/R}(a)\otimes b\mapsto bd_{B/R}(g(a))\]
+	\[\beta:\Omega_{B/R}\to\Omega_{B/A};d_{B/R}(b)\mapsto d_{B/A}(b)\]
+	はwell--definedであって；
+	\[\begin{tikzcd}
+		\Omega_{A/R}\otimes_A B\nxcell[\alpha]\Omega_{B/R}\nxcell[\beta]\Omega_{B/A}\nxcell0
+	\end{tikzcd}\]
+	が完全である．
+\end{thm}
+
+\begin{proof}
+	まず$\alpha,\beta$のwell--definednessを確かめよう．$d_{B/R}:B\to\Omega_{B/R}$に対して$d_{B/R}\circ g:A\to\Omega_{B/R}\in\der_R(A,\Omega_{B/R})$により，普遍性から$\widetilde\alpha:\Omega_{A/R}\to\Omega_{B/R};d_{A/R}(a)\mapsto d_{B/R}(g(a))$が一意に存在して；
+	\[\alpha:\Omega_{A/R}\otimes_A B\to \Omega_{B/R};d_{A/R}(a)\otimes b\mapsto b d_{B/R}(g(a))\]
+	が定まる．
+%	\[\begin{tikzcd}
+%		&&\Omega_{B/R}\\
+%		&\Omega_{B/R}&\Omega_{B/R}\otimes_A B\arrow[u]\\
+%		A\arrow[ur,"d_{B/R}\circ g"]\nxcell[d_{A/R}]\Omega_{A/R}\arrow[u,dashed,"\widetilde\alpha"]\nxcell \Omega_{A/R}\otimes_A B\arrow[u,"\widetilde\alpha\otimes\id"]
+%	\end{tikzcd}\]
+
+	また$\beta$は$d_{B/R}:B\to\Omega_{B/A}$が$R$上の導分でもあるから，自然に$\beta:\Omega_{B/R}\to\Omega_{B/A};d_{B/R}(b)\mapsto d_{B/A}(b)$が定まる．
+	
+	\begin{step}
+		\item 任意の$B$加群$M$に対して，$\hom_B(\Omega_{A/R}\otimes_A B,M)\cong\der_R(A,M)$であること．ただし右辺は$D:A\to M$について$bD:a\mapsto bD(a)$で$B$加群とみる．
+		
+		$D\in\der_R(A,M)$から$\alpha$と同様に$\varphi$を作ろう；
+		\[\begin{tikzcd}
+			&&M\\
+		&M&M\otimes_AB\arrow[u]\\
+		A\arrow[ur,"D"]\nxcell[d_{A/R}]\Omega_{A/R}\arrow[u,dashed,"\widetilde\varphi"]\nxcell \Omega_{A/R}\otimes_A B\arrow[u,"\widetilde\varphi\otimes\id"]\arrow[uu,bend right=50,"\varphi"]
+		\end{tikzcd}\]
+	\end{step}
+\end{proof}
+\section{問題にしたら面白そうなもの}
+
+\begin{ques}
+	Abel圏において，各行が完全な可換図式；
+	\[\begin{tikzcd}
+		0\nxcell M_1\darrow[0]\nxcell M_2\darrow[\varphi]\nxcell M_3\darrow[0]\nxcell0\\
+		0\nxcell N_1\nxcell N_2\nxcell N_3\nxcell0
+	\end{tikzcd}\]
+	があったとき，$\varphi=0$であるだろうか？
+\end{ques}
+
+\begin{ques}
+	$A$をNoether環とする．任意の$a\in A$と$n>0$について，ある$m\geq n$が存在して$\ann a^m\subset\ann a^{m-n}$であることを示せ．
+\end{ques}
+
+\quad

@@ -1,0 +1,367 @@
+\part[Unique Factorisation Domain]{UFD}
+
+\section{UFDとAuslander--Buchsbaumの定理}
+
+この節では有限自由分解と呼ばれる射影分解の一種をもつ加群について触れるとともに，Auslander--Buchsbaumの定理（\ref{prethm:Auslander-Buchsbaum}）の証明を与える．まずUFDについていくつかの性質を見ていこう．まず整域$A$がUFDであることと，単項イデアルについての昇鎖律を満たし，既約元が素元であることは同値であることを示そう．前半の部分は元を無限に割り続けることはできないということ，後半の部分は分解の一意性を保証する．この節では単項イデアルについての昇鎖律をACCP (Ascending Chain Condition on Principal ideals)と略記する．
+
+\begin{prop}
+	整域$A$について，ACCPが成り立つならば任意の$a\in A$が既約元と単元の積に書ける．
+\end{prop}
+
+\begin{proof}
+	既約分解できない$a\in A$が存在するとする．すなわち，$a=f_1\cdots f_n$と書いたとき，少なくとも１つは単元でも既約でもない．特に$a$は既約でない．このとき$a=r_1a_1$として$r_1,a_1$をどちらも非単元にとれる．またどちらかは既約でないので，それを$a_1$としよう．同様に$a_1=r_2a_2$とすると$a=r_1r_2a_2$なので$r_2,a_2$のどちらかは既約でなく，またどちらも単元ではない．すると単項イデアルの昇鎖；
+	\[(a)\subset(a_1)\subset\cdots\subset(a_n)\subset\cdots\]
+	が得られ，仮定よりある$n$でとまる．すると$a_n=r_{n+1}a_{n+1}$に対して$a_{n+1}\in(a_n)$だから$r_{n+1}$は単元となり，これは矛盾する．
+\end{proof}
+
+実はこれの逆は成り立たない．\ref{ex:ACCPの成り立たない原子整域}をみよ．UFDという条件下では同値になる．
+
+\begin{prop}
+	整域$A$について，$A$がUFDであることとACCPが成り立ち，かつ既約元が素元であることは同値．
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item
+	既約元が素元であることはすでにみた（\ref{prop:UFDでは既約と素元が同値}）．よって(ACCP)を示そう．
+		\[(a_1)\subset (a_2)\subset\cdots\subset(a_n)\subset\cdots\quad(a_i\not\in A^\times)\]
+		を単項イデアルの昇鎖とする．任意の$i$について$a_i=ra_{i+1}$とかける．$r,a_{i+1}$を既約分解；
+		\[r=sr_1\cdots r_k, a_{i+1}=tb_1\cdots b_l\quad(s,t\in A^\times, 0\leq k,1\leq l)\]
+		する．ここで$k=0$であることと$r$が単元であること，特に$(a_i)=(a_{i+1})$であることが同値であることに注意する．このとき$a_i$は$k+l$個の既約因子をもち，$a_{i+1}$は$l$個の既約因子を持つので，イデアルの昇鎖において既約因子の個数は減っていく．特に$(a_i)\subsetneq(a_{i+1})$であることと真に減ることは同値なので，既約因子の個数は$0$にはなれないからいずれ止まる．
+		\item 上の命題よりACCPから既約分解の存在が言え，既約元は素元なので分解の一意性も保証されている．
+	\end{eqv}
+\end{proof}
+
+まずはUFDのよく知られた判定法として，\cite{Nagata1957}によるものを紹介しよう．
+\begin{lem}
+	$A$を整域とする．$S\subset A$を素元によって生成された積閉集合とする．$f\in A$を既約であるとする．このとき$f/1\in A_S$も既約または単元であり，また$f$が素元であることと$f/1$が素元または単元であることは同値である．
+\end{lem}
+
+\begin{proof}
+	まず$f/1$が既約であることを示そう．$f/1=a/s\cdot b/t$とかけるとする．すると$stf=ab$とかける．$st\in S$なので，素元$p_1,\dots,p_n$をとって$st=p_1\cdots p_n$とかける．よって各$i$について$ab\in (p_i)$であるから，$a\in (p_i)$または$b\in (p_i)$である．よってある$r,r'\in A$と$s',s''\in S$がとれて$f=rr',a=s'r,b=s''r'$とかける．$f$は既約なので$r$または$r'$は単元である．よって$a\in S$または$b\in S$となり$a/s$または$b/t$は単元である．よって$f/1$は既約である．
+	
+	次に$f\in A$が素元であるとする．すると$A_S/(fA_S)=S^{-1}(A/fA)$において$A/fA$は整域であるから$S^{-1}(A/fA)$はゼロまたは整域である．よって$f/1$は素元または単元である．逆を示そう．まず$f/1$が単元であるとすると，$f/1\cdot a/s=1$となる$a/s\in A_S$が存在する．このとき$fa=s\in S$であるので，適当な$p_1,\dots,p_n$をとって$fa=p_1\cdots p_n$とかける．よって各$i$について$f\in (p_i)$または$a\in (p_i)$である．任意の$i$について$f\not\in (p_i)$ならば$f$は単元になり既約であることに矛盾．よって$f\in (p_i)$となる$i$があるが，$f$が既約なので$(f)=(p_i)$となり$f$は素元である．また$f/1$が素元であるとすると，$ab\in (f)$とすると$(f/1)$が素イデアルだからある$s\in S$と$r\in A$が存在して$sa=rf$または$sb=rf$である．$sa=rf$のときに示す．$s=p_1\cdots p_n$と表そう．このとき$rf\in (p_i)$より，ある$i$について$f\in (p_i)$なら$f$は素元であり問題ない．また任意の$i$について$f\not\in (p_i)$なら$a\in (f)$となり$(f)$が素イデアルであることが従う．
+\end{proof}
+
+\begin{thm}[永田の判定条件]\label{thm:UFDnagata}
+	$A$を既約分解が存在するような整域とする．このとき，以下の条件；
+	\begin{sakura}
+		\item $A$はUFDである．
+		\item 任意の素元たちで生成される$A$の積閉集合$S$について$A_S$はUFDはである．
+		\item ある素元たちで生成された$A$の積閉集合$S$が存在して$A_S$はUFDである．
+	\end{sakura}
+	は同値である．
+\end{thm}
+
+\begin{proof}
+	\begin{eqv}[3]
+		\item 任意の$f/s\in A_S$をとる．$f\in A$を既約分解して$f=f_1\dots f_n$とすると$f/s=1/s f_1/1 \cdots f_r/1$とかけ，補題から$f/s$は単元と素元の積でかけているので，$A_S$はUFDである．
+		\item 明らか．
+		\item $f\in A$を既約元とする．補題より$f/1$は既約であり，$A_S$がUFDだから$f/1$は素元．すると再び補題より$f$は素元である．
+	\end{eqv}
+\end{proof}
+
+この定理において，既約分解が存在するという仮定を外すことはできない．\ref{ex:UFD永田の反例}をみよ．この条件は$A$がNoetherなら成り立っていることに注意する．Noether性を課してしまえばUFDにはわかりやすい言い換えがある．
+
+\begin{prop}
+	Noether整域$A$がUFDであることはすべての高さ$1$の素イデアルが単項であることと同値である．
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item $P\in\spec A$が高さ$1$であるとする．任意の$0$でない$a\in P$について既約分解$a=f_1\cdots f_r$する．このときある$f_i$について$f_i\in (P)$であるから$(f_i)\subset P$であり，UFDにおいて既約元は素元だから$(f_i)\in\spec A$である．すると$\idht P=1$だから$(f_i)=P$である．
+		\item 既約元は素元であることを示せばよい．$f$を既約元とする．$(f)$の極小素イデアル$P$について単項イデアル定理より$\idht P=1$である．よって$P$は単項だから$P=(a)$とかける．よって$f\in (a)$なのである$r$について$f=ar$であり，$f$は既約だから$r$は単元．よって$(f)=P$となり$f$は素元である．
+	\end{eqv}
+\end{proof}
+
+UFDとそのNoether性に関連して，次の興味深い事実を示しておこう．
+
+\begin{prop}
+	環$A$が$1$次元のUFDであることとPIDであることは同値である．
+\end{prop}
+
+\begin{proof}
+	逆はよく知られているので，$A$が$1$次元UFDがならばNoetherであることを示そう．任意の$P\in\spec A$は単項である．実際$P=(0)$のときは明らかで，任意の$a\neq 0\in P$をとって$a=f_1\cdots f_r$と既約分解し，$f_i\in P$となる$_i$をとれば$(f_i)\subset P$であり，$A$がUFDなので$(f_i)\in\spec A$であり，いま$\dim A=1$なので$P=(f_i)$である．よって$A$はNoetherである（\ref{thm:CohenのNoether判定法}）．またUFDは整閉整域なので$A$はDedekind整域であることがわかり，特にすべてのイデアルは素イデアルの有限積でかける．よってPIDである．
+\end{proof}
+\begin{lem}\label{lem:安定して自由でrank1なら単項}
+	$A$が整域であるとする．イデアル$I$で$I\oplus A^n\cong A^{n+1}$となるものは単項イデアルである．
+\end{lem}
+
+\begin{proof}
+	$A^{n+1}$の基底を$\{e_0,\dots,e_n\}$とする．また$I\oplus A^n\hookrightarrow A\oplus A^{n}$としたとき，$f_0$を$A$の，$\{f_1,\dots,f_n\}$を$A^n$の基底とすれば，同型；
+	\[\varphi:A^{n+1}\to I\oplus A^n\]
+	の基底による表現は$\varphi(e_i)=\sum_{j=0}^n a_{ij}f_j$とかける．行列$(a_{ij})$の$(i,0)$余因子を$d_i$とおき，$\det (a_{ij})=d$とすると，$\sum a_{i0}d_i=d,\sum a_{ij}d_i=0~(j\neq i)$である．よって$e_0'=\sum d_ie_i$とおくと$\varphi(e_0')=df_0$であり，$\varphi$は全射だから$\varphi(e_i')=f_i$となる$e_i'\in A^{n+1}$が存在する．ここで$e_i'=\sum_{j=0}^n c_{ij}e_j$とおくと，行列として；
+	\[(c_{ij})(a_{ij})=
+	\begin{pmatrix}
+		d&0&\cdots&0\\
+		0&1&&0\\
+		\vdots&&\ddots\\
+		0&0&&1
+	\end{pmatrix}\]
+	が成り立つ（$e_i'=\sum_{j=0}^n c_{ij}e_j$の両辺に$\varphi$を施してみよ）．よって$\det (c_{ij})=1$となるので，$e_0',\dots,e_n'$は$A^{n+1}$の基底である．ゆえに$If_0=\varphi(Ae_0')=Ad f_0$となり，$I=Ad$である．
+\end{proof}
+この補題の条件は一般に\textbf{安定して自由}であるといわれる．
+
+\begin{defi}[安定して自由]
+	$A$を環，$M$を$A$加群とする．有限自由加群$F,F'$が存在して$M\oplus F\cong F'$となるとき，$M$は\textbf{安定して自由(stably free)}であるという．
+\end{defi}
+
+加群が安定して自由であることを判定する条件として，\textbf{有限自由分解}が有効である．
+\begin{defi}[有限自由分解]\index{ゆうげんじゆうぶんかい@有限自由分解}
+	$A$を環，$M$を$A$加群とする．長さ有限の完全列；
+	\[\begin{tikzcd}
+		0\nxcell F_n\nxcell F_{n-1}\nxcell\dots\nxcell F_0\nxcell M\nxcell 0
+	\end{tikzcd}\]
+	であって，各$F_i$が有限階数の自由加群であるものが存在するとき，$M$は\textbf{有限自由分解(finite free resolution)}を持つという．
+\end{defi}
+
+\begin{lem}[Schanuelの補題]\index{#Schanuelのほだい@Schanuelの補題}
+	$A$を環，$M$を$A$加群とする．完全列；
+	\[\begin{tikzcd}
+		0\nxcell K\nxcell P_n\nxcell\dots\nxcell P_0\nxcell[\varepsilon] M\nxcell0\\
+		0\nxcell K'\nxcell Q_n\nxcell\dots\nxcell Q_0\nxcell[\varepsilon'] M\nxcell0
+	\end{tikzcd}\]
+	について，各$0\leq i\leq n$について$P_i,Q_i$が射影加群ならば；
+	\[P_0\oplus Q_1\oplus P_2\oplus\dots\cong Q_0\oplus P_1\oplus Q_2\oplus\dots\]
+	が成り立つ．
+\end{lem}
+
+\begin{proof}
+	$n$についての帰納法で示す．まず$n=0$とする．
+	\[\begin{tikzcd}
+		0\nxcell K\nxcell P\arrow[d,shift right=.5em,"g",swap]\nxcell[\varepsilon]M\nxcell0\\
+		0\nxcell K'\nxcell Q\arrow[u,shift right=.5em, "f",swap]\nxcell[\varepsilon']M\nxcell0
+	\end{tikzcd}\]
+	$P,Q$は射影的なので，上のように$f,g$が存在して$\varepsilon'\circ f=\varepsilon,\varepsilon\circ g=\varepsilon'$が成り立つ．そこで同型写像$\varphi,\psi:P\oplus Q\to P\oplus Q$を構成しよう；
+	\[\begin{tikzcd}
+		0\nxcell K\oplus Q\nxcell P\oplus Q\arrow[d,shift right=.5em,"\varphi",swap]\nxcell[\widetilde\varepsilon]M\nxcell0\\
+		0\nxcell K'\oplus P\nxcell P\oplus Q\arrow[u,shift right=.5em, "\psi",swap]\nxcell[\widetilde\varepsilon']M\nxcell0
+	\end{tikzcd}\]
+	$\varepsilon$を$P\oplus Q$に誘導した$(x,y)\mapsto \varepsilon(x)$を$\widetilde\varepsilon$と表す．$\varepsilon'$についても同様である．このとき；
+	\[\varphi:P\oplus Q\to P\oplus Q;(x,y)\mapsto (x-g(y),y+f(x-g(y)))\]
+	と定義する．同様に；
+	\[\psi:P\oplus Q\to P\oplus Q;(x,y)\mapsto(x+g(f(x)-y),y-f(x))\]
+	と定義すれば$\psi=\varphi^{-1}$となる．また$\widetilde\varepsilon'\circ\varphi=\widetilde\varepsilon$であり，誘導される$K\oplus Q\to K'\oplus P$について蛇の補題から同型であることがわかる．
+	
+	$n-1$まで正しいとしよう．次の完全列；
+	\[\begin{tikzcd}
+		0\nxcell K\nxcell P_n\nxcell\dots\nxcell P_1\nxcell\ker\varepsilon \nxcell0\\
+		0\nxcell K'\nxcell Q_n\nxcell\dots\nxcell Q_1\nxcell\ker\varepsilon'\nxcell0
+	\end{tikzcd}\]
+	について，$n=0$の場合から$\ker\varepsilon\oplus Q_0\cong\ker\varepsilon'\oplus P_0$であり，次の完全列；
+	\[\begin{tikzcd}
+		0\nxcell K\nxcell P_n\nxcell\dots\nxcell P_1\oplus Q_0\nxcell\ker\varepsilon\oplus Q_0\arrow[d,"\cong"] \nxcell0\\
+		0\nxcell K'\nxcell Q_n\nxcell\dots\nxcell Q_1\oplus P_0\nxcell\ker\varepsilon'\oplus P_0\nxcell0
+	\end{tikzcd}\]
+	に$n-1$の場合を適用して結論を得る．
+\end{proof}
+
+\begin{prop}
+	有限生成な射影加群が有限自由分解をもてば安定的に自由である．
+\end{prop}
+
+\begin{proof}
+	$P$を有限生成な射影加群とする．
+	\[\begin{tikzcd}
+		0\nxcell F_n\nxcell\dots\nxcell F_0\nxcell P\nxcell0\\
+		0\nxcell 0\nxcell\dots\nxcell P\nxcell[\id] P\nxcell0
+	\end{tikzcd}\]	
+	についてSchanuelの補題を適用すればよい．
+\end{proof}
+
+これらの準備を踏まえていよいよAuslander--Buchsbaumの定理を証明しよう．
+\begin{thm}[Auslander--Buchsbaumの定理]\index{#Auslander--Buchsbaumのていり@Auslander--Buchsbaumの定理}\label{thm:Auslander--Buchsbaumの定理}
+	正則局所環はUFDである．
+\end{thm}
+
+\begin{proof}
+	正則局所環$(A,\ideal{m})$について，$\dim A=d$の帰納法で示す．$d=0,1$のときは体，DVRでありUFDである．$d>1$としよう．$f\in \ideal{m}$を正則巴系の１部分とすると，\ref{prop:正則局所環は落ちる}により$A/fA$は正則局所環，特に整域である．ゆえに$f$は素元であるので，\ref{thm:UFDnagata}により$A_f$がUFDであることを示せばよい．
+	
+	$R=A_f$とおき，$P'\in\spec R$で$\idht P'=1$であるものをとる．まず$P'$が射影的であることを示す．$R$の極大イデアル$\ideal{m}'$を任意にとる．このとき$Q=\ideal{m}'\cap A$とおくと，$f\not\in Q$であり$R_{\ideal{m}'}=A_Q$である．Serreの定理により$R_{\ideal{m}'}$は正則であり，また$Q\subsetneq\ideal{m}$から$\dim A_Q<d$であるから，帰納法の仮定より$R_{\ideal{m}'}$はUFDである．すると$P'\subset\ideal{m}'$なら$P'R_{\ideal{m}'}$は単項であり，$P'\not\subset\ideal{m}'$なら$P'R_{\ideal{m}'}=R_{\ideal{m}'}$である．よって常に$P'R_{\ideal{m}'}\cong R_{\ideal{m}'}$であるから，$P'R_{\ideal{m}'}$は射影的$R_{\ideal{m}'}$加群である．よって\ref{prop:射影加群は局所的}から$P'$は射影的$R$加群である．
+	
+	次に$P=P'\cap A$とおく．$A$は正則局所環なので$P$は有限自由分解を持ち，よって$P'$も有限自由分解を持つ．$P'$は射影加群だったから先の命題より安定して自由である．よって\ref{lem:安定して自由でrank1なら単項}により$P'$は単項イデアルとなり，$A_f$はUFDであることがわかった．
+\end{proof}
+
+\section{Serreの条件}
+
+\begin{defi}[Serreの条件]\index{#Serreのじょうけん@Serreの条件}
+	$A$をNoether環とする．
+	\begin{sakura}
+		\item 任意の$\idht P\leq n$となる$P\in\spec A$について$A_P$が正則局所環であるとき，$A$で$(R_n)$が成り立つという．
+		\item 任意の$P\in\spec A$について$\min\{n,\idht P\}\leq\mdepth A_P$となるとき，$A$で$(S_n)$が成り立つという．
+	\end{sakura}
+\end{defi}
+
+$(R_n)$についてはわかりやすい条件であるから，$(S_n)$について少し見てみよう．明らかに$A$で$(S_{n+1})$が成り立つならば$(S_n)$が成り立つ．また，次を確認することも容易いだろう．
+
+\begin{prop}
+	Noether環$A$がCM環であることと，任意の$n$について$(S_n)$が成り立つことは同値である．
+\end{prop}
+
+また，次の言い換えが成り立つ．
+\begin{lem}
+	Noether環$A$について$(S_1)$が成り立つことと，任意の$P\in\ass A$が極小であることは同値である．
+\end{lem}
+
+\begin{proof}
+	\begin{eqv}
+		\item
+			任意の$P\in\ass A$をとる．このとき\ref{lem:素因子と局所化}より$PA_P\in\ass A_P$である．すると\ref{lem:depth 0とass}により$\mdepth A_P=0$である．よって$\min\{1,\idht P\}\leq0$だから$\idht P=0$となる．
+		\item
+			$(S_1)$が成り立たないとする．このときある$P\in\spec A$が存在して，$1\leq\idht(P)$かつ$\mdepth A_P=0$である．すると\ref{lem:depth 0とass}によって$PA_P\in\ass A_P$で，再び\ref{lem:素因子と局所化}より$P\in\ass A$である．
+	\end{eqv}
+\end{proof}
+
+まず，これを用いた被約性の判定法を紹介しよう．
+
+\begin{thm}[Serreの$(R_0)+(S_1)$判定法]
+	Noether環$A$について$(R_0),(S_1)$が成り立つことと$A$が被約であることは同値である．
+\end{thm}
+
+\begin{proof}
+	\begin{eqv}
+		\item $\nil A=\bigcap_{\idht P=0}P=0$であることを示す．$\ass A=\{P_1,\dots,P_r\}$とおき，$0$を準素分解して$0=Q_1\cap\dots\cap Q_r$とする．ここで$Q_i$は$P_i$準素イデアルとする．$(S_1)$より$\ass A=\mkset{P\in\spec A}{\idht P=0}$であることに注意すると，局所化$f_i:A\to A_{P_i}$について\ref{thm:準素成分の一意性}より$Q_i=f_i^{-1}(0)$である．ここで$(R_0)$から$A_{P_i}$は$0$次元の正則局所環，すなわち体である．よって$Q_i=P_i$となる．ゆえに$\bigcap_{\idht P=0}P=Q_1\cap\dots\cap Q_r=0$であるので，$A$は被約． 
+		\item $0=\bigcap_{\idht P=0}P$が$0$の準素分解となり，$\ass A=\mkset{P\in\spec A}{\idht P=0}$となるので$(S_1)$が成り立つ．また，$P'\in\ass A$が$P\neq P'$ならば$P'A_P=A_P$であるから；
+		\[0=\bigcap_{\idht P'=0}P'A_P=PA_P\]
+		となる．よって$A_P$は体となり，$(R_0)$が成り立つ．
+	\end{eqv}
+\end{proof}
+
+次に$(S_2)$についてみてみよう．以下\textbf{仮定に整域を課す}ことに注意せよ．
+
+\begin{lem}
+	$A$をNoether整域とする．$(S_2)$が成り立つことと，任意の$a\in A$で$0$でも単元でもないものについて，任意の$P\in\ass A/aA$は高さ$1$であることは同値である．
+\end{lem}
+
+\begin{proof}
+	\begin{eqv}
+		\item 任意の$P\in\ass A/aA$をとる．まず$\mdepth A_P=1$を示そう．$a/1\in PA_P$は$A_P$正則である．また$P=\ann (x+aA)$とおくと，任意の$b/1\in PA_P$について$bx/1=0\in A_P/aA_P$であるので$A_P/aA_P$正則元は存在しない．よって$\mdepth A_P=1$である．ゆえに$(S_2)$から$\min\{2,\idht P\}\leq1$であるから$\idht P\leq1$である．一方Krullの単項イデアル定理から$1\leq\idht P$なので，$\idht P=1$である．
+		\item $\idht P=0,1$のときは明らかに$\idht P\leq\mdepth A_P$が成り立つ．$2\leq\idht P$のときを考えればよい．$0\neq a_1\in P$を１つ固定する．任意の$a_2\in P$が$A/aA$の非正則元であるなら，$P\subset\bigcup_{Q\in\ass A/a_1A}$であるのでPrime avoidanceにより$P\subset Q$となる$Q\in\ass A/a_1A$が存在する．ここで仮定より$Q$は高さ1なので$\idht P\leq1$となって矛盾する．よって$A/a_1A$正則元$a_2\in P$が存在し，$2\leq\mdepth A_P$である．
+	\end{eqv}
+\end{proof}
+
+\begin{thm}[Serreの$(R_1)+(S_2)$判定法]\label{thm:Serre's condition}
+	Noether整域$A$が整閉であることと，$A$で$(R_1),(S_2)$が成り立つことは同値である．特に次の条件；
+	\begin{sakura}
+		\item $A$は整閉である．
+		\item $A$について$(R_1),(S_2)$が成り立つ．
+		\item $A$について$(R_1)$が成り立ち，$A=\bigcap_{\idht P=1}A_P$である．
+	\end{sakura}
+	は同値である．
+\end{thm}
+
+\begin{proof}
+	\begin{eqv}[3]
+		\item $(R_1)$が成り立つことは明らかである（整閉整域は正規であって，またDVRとは$1$次元の正則局所環のことであるから）．また，$0$でも単元でもない$a\in A$について$P\in\ass_A (A/aA)$を考える．$P=\ann (b+aA)$となる$b\not\in aA$をとろう．定義より$bP\subset aA$である．$P$で局所化して考えよう．$bPA_P\subset aA_P$であるから，$b/aPAP\subset A_P$である．ここで$b/aPA_P\subset PA_P$なら，Cayley--Hamiltonの定理より$b/a$は$A_P$上整である．よって$b/a\in A_P$となるが，これはある$s\not\in P$が$bs\in Aa$となることを導き矛盾．ゆえに$b/aPA_P=A_P$である．よって$bPA_P=aA_P$となり，ある$x\in P$と$s\not\in P$によって$bx/s=a$である．このとき任意の$c/t\in PA_P$について，ある$r/u\in A_P$が存在して$bc/t=ar/u=bxr/su$となる．$A$は整域だから$c/t=xr/su$が成立する．よって$PA_P=xA_P$となり，極大イデアルが単項だから$A_P$は$1$次元である．よって$\idht P=1$となり，$(S_2)$が成り立つことがわかった．
+		\item $A\subset\bigcap_{\idht P=1}A_P$は明らかであるから，$x/s\in\Frac A$について$x/s\in\bigcap_{\idht P=1} A_P$かつ$x/s\not\in A$であると仮定する．$x\not\in sA$かつ$s$は$A$の非単元であることに注意する．すると$A/sA$を$A$加群とみたとき$\ann (x+sA)$は$A$の真のイデアルであるから，$s\in\ann(x+sA)\subset P$となる$P\in\ass (A/sA)$が存在する．すると，先の補題より$(S_2)$から$\idht P=1$が従う．よって$x/s\in A_P$なのである$a\in A$と$t\not\in P$が存在して$x/s=a/t$となるが，定義よりある$h\not\in P$が存在して$h(xt-as)=0$となる．$A$は整域なので$xt=as\in sA$となり，$t\in\ann(x+sA)\subset P$となって矛盾する．よって$x/s\in A$である．
+		\item $a/b\in\Frac A$について$A$上整であると仮定する．よって$A$の元たちを適当にとれば；
+		\[(a/b)^n+c_1(a/b)^{n-1}+\dots+c_n=0\quad(c_i\in A)\]
+		となる$n$が存在する．このとき，仮定から$c_i$たちは整閉整域$A_P$の元であるから，$a/b$は$A_P$上整となり$a/b\in A_P$である．これが任意の$\idht P=1$となる$P$で言えるから$a/b\in\bigcap_{\idht P=1}A_P=A$である．
+	\end{eqv}
+\end{proof}
+
+\section{Krull整域}
+
+この節では，Noether整閉整域を少し一般化したKrull整域と因子類群について論じよう．高さ１の素イデアルからなる集合を$\htone(A)=\mkset{P\in\spec A}{\idht P=1}$とおく．
+\begin{defi}[Krull整域]\index{#Krullせいいき@Krull整域}
+	整域$A$が次の条件；
+	\begin{defiterm}{KD}
+		\item 任意の$P\in\htone(A)$について$A_P$はDVRである（$(R_1)$が成り立つ）．
+		\item $A=\bigcap_{P\in\htone(A)}A_P$である．
+		\item 任意の$a\neq 0\in A$について，$\#\mkset{P\in\htone(A)}{a\in P}<\infty$である．
+	\end{defiterm}
+	をすべて満たすとき，$A$を\textbf{Krull整域(Krull domain)}という．
+\end{defi}
+
+Serreの条件（\ref{thm:Serre's condition}）により，Noether環について整閉整域であることとKrull整域であることは同値である．
+
+以下，$A$を商体$K$のKrull整域とするとき各$P\in\htone(A)$について$A_P$の付値を$v_p:K^\times\to\Z$とおく．
+
+\begin{prop}
+	$A$をKrull整域とすると，任意の$\alpha\in K$に対して；
+	\[\#\mkset{P\in\spec A}{v_P(\alpha)\neq0}<\infty\]
+	である．
+\end{prop}
+
+\begin{proof}
+	$a,b\in A,b\neq 0$を用いて$\alpha=a/b$とおく．まず$a=0$のときは明らかだから，$a,b\neq 0$としてよい．$v_P(a/b)<0$なら，付値の定義から$a/b\not\in A_P$より$b\in P$となる．また$v_P(a/b)>0$なら$v_P(b/a)<0$なので$a\in P$である．よって(KD3)から従う．
+\end{proof}
+
+\begin{cor}
+	$A$をKrull整域とすると，商体が$\Frac A$であるようなDVRの族$\{A_\lambda\}_{\lambda\in\Lambda}$が存在して，次の条件；
+	\begin{sakura}
+		\item $A=\bigcap_{\lambda\in\Lambda}$である．
+		\item 任意の$\alpha\in K^\times$に対して，$v_\lambda(\alpha)\neq 0$となるような$\lambda$は高々有限個である．
+	\end{sakura}
+	を満たす．
+\end{cor}
+
+じつはこの命題は逆も成り立つことを証明していこう．
+
+\begin{defi}
+	整域$A$について，商体が$\Frac A$であるようなDVRの族$\mathscr{F}=\{A_\lambda\}_{\lambda\in\Lambda}$が存在して，次の条件；
+	\begin{sakura}
+		\item $A=\bigcap_{\lambda\in\Lambda}$である．
+		\item 任意の$\alpha\in K^\times$に対して，$v_\lambda(\alpha)\neq 0$となるような$\lambda$は高々有限個である．
+	\end{sakura}
+	が成り立っているとき，$\mathscr{F}$は\textbf{$A$を定義する(defining family of $A$)}という．
+\end{defi}
+
+この定義のもと，Krull整域とは$\{A_P\}_{P\in\spec A}$によって定義された整域のことである．
+
+\begin{prop}
+	$A$はDVRの族$\{A_\lambda\}_{\lambda\in\Lambda}$により定義されているとする．$A$の積閉集合$S$について，$\Lambda'=\mkset{\lambda\in\Lambda}{A_S\subset A_\lambda}$とおく．このとき$A_S$は$\{A_\lambda\}_{\lambda\in\Lambda'}$により定義されている．
+\end{prop}
+
+\begin{proof}
+	条件のうち(ii)は自明であるので，$A_S=\bigcap_{\lambda\in\Lambda'}A_\lambda$を示せばよい．$\subset$は明らかであるので，逆を示そう．任意の$\alpha\neq\in\bigcap_{\lambda\in\Lambda'}A_\lambda$をとる．各$A_\lambda$の極大イデアルを$\ideal{m}_\lambda$とおくと，$\lambda\in\Lambda'$と$S\cap\ideal{m}_\lambda=\emptyset$が同値であることに注意する．いま$v_\lambda(\alpha)<0$であるような$\lambda\in\Lambda$は有限個なので，それらを$\lambda_1,\dots,\lambda_n$とおく．$\lambda_i\not\in\Lambda'$であるから，$t_{\lambda_i}\in S\cap\ideal{m}_{\lambda_i}$が存在する．いま$v_{\lambda_i}(t_{\lambda_i})>0$だから，$t_{\lambda_i}$を適当なベキでとりかえて$v_{\lambda_i}(t_{\lambda_i}\alpha)>0$としてよい．ここで$t=t_{\lambda_1}\cdots t_{\lambda_n}$とおけば，任意の$\lambda\in\Lambda$に対して$v_\lambda(t\alpha)\geq 0$なので$t\alpha\in A$である．ここで$t\in S$だから$\alpha\in A_S$となり，$A_S=\bigcap_{\lambda\in\Lambda'}A_\lambda$である．
+\end{proof}
+
+\begin{lem}
+	$v$を体$K$の付値とする．任意の$\alpha,\beta\in K$に対して，$v(\alpha)\neq v(\beta)$ならば$v(\alpha+\beta)=\min\{v(\alpha),v(\beta)\}$である．
+\end{lem}
+
+\begin{proof}
+	$v(\alpha)>v(\beta)$としてよい．$(A,\ideal{m})$を$v$の付値環とすると，このとき$\alpha\beta^{-1}\in\ideal{m}$である．よって$\alpha\beta^{-1}+1\in A^\times$であり，$v(\alpha+\beta)-v(\beta)=v(\alpha\beta^{-1}+1)=0$である．
+\end{proof}
+
+%\begin{lem}
+%	$K$を体とし，$v:K^\times\to G$を付値，$A$をその付値環とする．任意の$0\neq g\in G$と$n>0$に対して$ng\neq 0$である．
+%\end{lem}
+%
+%\begin{proof}
+%	$g>0$とする．$v(\alpha)=g$なる$\alpha\in K$をとると$\alpha\in A$かつ$\alpha^{-1}\not\in A$である．もし$nv(\alpha)=0$であるとすると，$v(\alpha^{-n})=-v(\alpha^n)=0$であるので$\alpha^{-n}\in A$であり$\alpha^{-1}=\alpha^{-n}\alpha^{n-1}\in A$となり矛盾する．$g<0$のときも同様．
+%\end{proof}
+
+\begin{prop}
+	$K$を体とし，$A_i$を$K$の付値環，$A=\bigcap A_i$とおく．任意の$\alpha\in K$に対して，ある$s\geq 2$が存在して；
+	\[(1+\alpha+\dots+\alpha^{s-1})^{-1}, \alpha(1+\alpha+\dots+\alpha^{s-1})^{-1}\in A\]
+	である．
+\end{prop}
+
+\begin{proof}
+	各$A_i$について考え，しばらく添え字の$i$を忘れる．まず；
+	\[(1-\alpha)(1+\alpha+\dots+\alpha^{s-1})=1-\alpha^s\]
+	に注意する．
+	\begin{step}
+	\item 
+		$\alpha\not\in A$のとき．
+		
+		任意の$s\geq 2$に対して$v(-\alpha^s)=sv(\alpha)<0$であるので；
+		\[v(1+\alpha+\dots+\alpha^{s-1})=v(1-\alpha^s)-v(1-\alpha)=sv(\alpha)-v(\alpha)=(s-1)v(\alpha)<0\]
+		であり$(1+\alpha+\dots+\alpha^{s-1})^{-1}\in A$である．また$v(\alpha(1+\alpha+\dots+\alpha^{s-1})^{-1})=sv(\alpha)<0$であり$\alpha(1+\alpha+\dots+\alpha^{s-1})^{-1}\in A$である．
+	\item
+		$\alpha\in A$でありかつ，任意の$s\geq 2$に対して$v(1-\alpha^s)=0$であるとき．
+		
+		$0\leq v(1-\alpha)$に注意すれば，任意の$s$に対して；
+		\[v(1+\alpha+\dots+\alpha^{s-1})=-v(1-\alpha)\leq 0\]
+		となり$(1+\alpha+\dots+\alpha^{s-1})^{-1}\in A$である．
+		
+	\item 
+		$\alpha\in A$でありかつ，$v(1-\alpha)>0$であるとき．
+		
+		$1+\alpha+\dots+\alpha^{s-1}\in A$より；
+		\[0\leq v(1+\alpha+\dots+\alpha^{s-1})=v(1-\alpha^s)-v(1-\alpha)\]
+		であるので$v(1-\alpha)\leq v(1-\alpha^s)$である．
+	\end{step}
+\end{proof}

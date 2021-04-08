@@ -1,0 +1,373 @@
+\part[Methods of Non Commutative Algebras]{非可換環論の手法}
+この章では，非可換環論の手法を可換環論に取り入れることで得られる結果について紹介しよう．本章を通して，特に断らない限り$A$は可換環を，$R$は可換とは限らない環を表す．
+
+\section{非可換環論の用語}
+
+この節では，本章で用いる非可換環の用語について述べておくことにする．これらの事項の証明については\cite{Hazewinkel2005}を参照してほしい（いつか証明をつけます）．
+\begin{defi}[局所環]
+	非可換環$R$について，以下の同値な条件；
+	\begin{sakura}
+		\item $R$は唯１つの右極大イデアルを持つ．
+		\item $R$は唯１つの左極大イデアルを持つ．
+		\item $0\neq 1$であり，任意の非単元$x,y\in  R$について，$x+y$も非単元である．
+		\item $0\neq 1$であり，任意の$x\in  R$について，$x$または$1-x$のどちらかは単元である．
+	\end{sakura}
+	をみたすとき，$R$を局所環という．
+\end{defi}
+このとき右極大イデアルと左極大イデアルは一致することに注意する．また可換環の場合と同様に，非単元全体が真の両側イデアルをなすことがわかる．
+
+\begin{defi}[Jacobson根基]
+	環$R$に対して，すべての右極大イデアルの共通部分を$\rad R$で表し，これを$R$のJacobson根基という．
+\end{defi}
+
+実は$\rad R=\mkset{x\in R}{1+RxR\subset R^\times}$であって，これはすべての左極大イデアルの共通部分とも一致する．これにより$\rad R$は両側イデアルとなり，$R/\rad R$が意味を持つ．また，定義から直ちに分かることだが任意の$x\neq0\in\rad A$は\textbf{準正則(quiasiregular)}，すなわち$1-x$は$R$の単元である．
+
+次に冪等元についていくらか述べておこう．環$R$の元$e$であって$e^2=e$であるものを冪等元というのであった．$0,1$のことを自明な冪等元という．
+
+\begin{defi}
+2つの冪等元$e,f$に対して$ef=fe=0$であるとき$e,f$は\textbf{直交(orthogonal)}するという．また$I$を$R$の両側イデアルとする．剰余環$R/I$における冪等元$e+I$に対して，$R$の冪等元$f$が存在して$f+I=e+I$であるとき，$e+I$は\textbf{$I$を法として持ち上がる(lift modulo $I$)}という．
+\end{defi}
+
+$R$を環とすると，任意の冪等元$e\in R$は零因子である（$e(1-e)=0$）．よって整域は非自明な冪等元を持たない．またJacobson根基$\rad R$に含まれる冪等元は$0$のみである．実際$e\neq 0\in\rad R$について$1-e\in R^\times$だから，上の注意から$e$が冪等なら$e=0$でなければならない．
+
+また冪等元$e\in R$であって$\End_R(eR)=eRe$が局所環であるものを$e$を\textbf{局所冪等元(local idempotent)}という．
+
+\begin{defi}[半単純環]\index{はんたんじゅんかん@半単純環}
+	環$R$であって，$R$加群として単純$R$加群の直和であるものを\textbf{半単純(semi simple)}であるという．
+\end{defi}
+
+可換環$A$においては単純加群は常に$A/\ideal{m}~(\ideal{m}\in\spm A)$に限ることに注意しておこう．
+
+\begin{defi}[半局所環]\index{はんきょくしょかん@半局所環}
+	環$R$であって，$R/\rad R$が半単純環であるものを\textbf{半局所(semi local)}であるという．
+\end{defi}
+
+さて，可換環$A$が半局所であることを，その極大イデアルが有限個であることと定義していたこと（\ref{defi:半局所環}）を思い出すと，実際上の定義と可換環では同値である．
+
+\begin{prop}
+	可換環$A$において，$A$の極大イデアルが有限個であることと$A/\rad A$が半単純であることは同値である．
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item $\spm A=\{\ideal{m}_1,\dots,\ideal{m}_r\}$とおくと，これらは互いに素なので中国剰余定理（\ref{thm:中国剰余定理}）から$A/\rad A\cong A/\ideal{m}_1\times\dots\times A/\ideal{m}_r$である．
+		\item $A/\rad A\cong A/\ideal{m}_1\oplus\dots\oplus A/\ideal{m}_r$であるとすると，$\spec A/\rad A=\{\ideal{m}_1,\dots,\ideal{m}_r\}$であるから$A$の極大イデアルは高々有限個である．
+	\end{eqv}
+\end{proof}
+
+\section{射影被覆とKrull--Schmidt圏}
+
+射影被覆の存在と関連して，非可換環の表現論で現れるKrull--Schmidt圏について紹介しよう．この節においても，特に断らない限り環は可環であるとしておく．\ref{prop:射影被覆の言い換え}によって，一般のAbel圏について射影被覆の定義を拡張することができる．
+
+\begin{defi}\index{みぎきょくしょう@右極小}
+	$\mathscr{A}$をAbel圏とする．射$f:A\to B$について，任意の$\varphi:A\to A$に対して$f\circ\varphi=f$ならば$\varphi$は同型であるとき，$f$は\textbf{右極小(right minimal)}であるという．$A\in\mathscr{A}$について，ある射影的対象$P\in\mathscr{A}$と全射$\pi:P\to A$が存在して$\pi$が右極小であるとき，$(P,\pi)$を$A$の\textbf{射影被覆}であるという．
+\end{defi}
+
+射影被覆を常に持つようなAbel圏を考えたい．そこで，Krull--Schmidt圏という圏を考えてみよう（この圏は加法圏だが，右極小という条件は加法圏でもworkすることに注意する）．
+
+\begin{defi}[Krull--Schmidt圏]\index{#Krull--Schmidtけん@Krull--Schmidt圏}
+	加法圏$\mathscr{A}$であって，任意の$A\in\mathscr{A}$に対して，直和分解；
+	\[A=A_1\oplus\dots\oplus A_n\]
+	であって，各$A_i$の自己準同型（非可換）環が局所環であるものが存在するとき，$\mathscr{A}$を\textbf{Krull--Schmidt圏}であるという．
+\end{defi}
+
+この自己準同型環が局所環，という条件の意味付けをみてみよう．次の事実がある；
+\begin{prop}
+	環$A$上の加群$M$について，自己準同型環$\End(M)$が（非可換）局所環ならば$M$は直既約である．
+\end{prop}
+
+証明は非可換環論の範疇なので，ここでは省略する（いつか書くかも）．この事実により，Krull--Schmidt圏では$\End(M)$が局所環であることと直既約であることは同値である．
+
+\begin{defi}
+	$\mathscr{A}$を加法圏とし，$A,B\in\mathscr{A}$とする．このとき；
+	\[\rad_{\mathscr{A}}(A,B)=\mkset{f:A\to B}{\text{任意の}g:B\to A\text{に対して，}\id_A-gf\text{が同型．}}\]
+	と定め，これを$A,B$の$\mathscr{A}$における\textbf{Jacobson根基}という．
+\end{defi}
+
+この定義を以下のように書き換えることもできる；
+\[\rad_{\mathscr{A}}(A,B)=\mkset{f:A\to B}{\text{任意の}g:B\to A\text{に対して，}\id_B-fg\text{が同型．}}\]
+これを示そう．いまからやることは非可換環における計算の一般化である；
+
+\begin{prop}
+	$\mathscr{A}$をプレ加法圏とし，$A,B\in\mathscr{A}$とする．任意の$f:A\to B$に対して，以下の主張；
+	\begin{sakura}
+		\item[(i)${}_{\text{\phantom{L}}}$] 任意の$g:B\to A$に対して$\id_A-gf$が同型である．
+		\item[(i)${}_{\text{L}}$] 任意の$g:B\to A$に対して$\id_A-gf$が左可逆である．
+		\item[(i)${}_{\text{R}}$]任意の$g:B\to A$に対して$\id_A-gf$が右可逆である．
+		\item[(ii)${}_{\phantom{L}}$]任意の$g:B\to A$に対して$\id_B-fg$が同型である．
+		\item[(ii)${}_{\text{L}}$]任意の$g:B\to A$に対して$\id_B-fg$が左可逆である．
+		\item[(ii)${}_{\text{R}}$]任意の$g:B\to A$に対して$\id_B-gf$が左可逆である．
+	\end{sakura}
+	は同値である．
+\end{prop}
+
+\begin{proof}
+	明らかに(i)と(i)${}_{\text{L}}$かつ(i)${}_{\text{R}}$は同値であり，(ii)についても同様．まず(i)${}_{\text{L}}$と(ii)${}_{\text{L}}$は同値であることを示す．$\id_A-gf$が左可逆であるとすると，$h:A\to A$で$h(\id_A-gf)=\id_A$であるものがある．このとき；
+	\[\begin{aligned}(\id_B+fhg)(\id_B-fg)&=\id_B-fg+fhg(\id_B-fg)\\
+		&=\id_B-fg+fh(g-gfg)=\id_B-fg+fh(\id_X-gf)g\\
+		&=\id_B-fg-fg=\id_B
+	\end{aligned}\]
+	となり，$\id_B-fg$も左可逆になる．逆も同様に確かめられ，同値であることがわかる．全く同様に(i)${}_{\text{R}}$と(ii)${}_{\text{R}}$は同値である．
+	
+	よって(i)${}_{\text{L}}$ならば(ii)，(i)${}_{\text{R}}$ならば(i)を示せばよい．さて(i)${}_{\text{L}}$を仮定すると，上の証明と同様に；
+	\[(\id_B+fhg)(\id_B-fg)=\id_B\]
+	であり，$\id_B+fhg$は右逆をもつ．ここで(ii)${}_{\text{L}}$も成り立っているから，$g$として$-hg:B\to A$をとれば$\id_B+fhg$は左逆も持つことになり，同型である．よって$\id_B-fg$も同型で，(ii)が示された．
+	
+	全く同様にして(i)${}_{\text{R}}$ならば(i)が成り立ち，同値である．
+\end{proof}
+
+\begin{cor}
+	$\mathscr{A}$を加法圏とし，$A,B\in\mathscr{A}$とすると；
+	\[\begin{aligned}
+		\rad_{\mathscr{A}}(A,B)&=\mkset{f:A\to B}{\text{任意の}g:B\to A\text{に対して，}\id_A-gf\text{が同型．}}\\
+		&=\mkset{f:A\to B}{\text{任意の}g:B\to A\text{に対して，}\id_B-fg\text{が同型．}}
+	\end{aligned}\]
+	が成り立つ．
+\end{cor}
+
+この命題の証明の(i)${}_{\text{L}}$と(ii)${}_{\text{L}}$の証明を取り出すことで，次の便利な性質が言えていることがわかる（証明の中で$g$を任意にとれることを使っているのは(i)${}_{\text{L}}$ならば(ii)であること（(i)${}_{\text{R}}$ならば(i)であること）のみであることに注意する）．
+
+\begin{lem}\label{lem:id-gfの可逆性とid-fgの可逆性は同値}
+	$\mathscr{A}$をプレ加法圏とし，$A,B\in\mathscr{A}$とする．任意の$f:A\to B,g:B\to A$に対して$\id_A-gf$が左可逆であることと，$\id_B-fg$が左可逆であることは同値である．この主張は左を右に変えても成り立つ．
+\end{lem}
+
+\begin{prop}\label{prop:加法圏の根基はイデアルっぽい}
+	$\mathscr{A}$を加法圏，$A,B\in\mathscr{A}$とする．任意の$f:A\to B\in\rad_{\mathscr{A}}(A,B)$と$g:B\to A$に対して$fg\in\rad_{\mathscr{A}}(B,B)$である．
+\end{prop}
+
+\begin{proof}
+	任意の$h:B\to B$に対して$\id_B-fgh$が可逆であることを示せばよいが，これは$f\in\rad(A,B)$であることから従う．
+\end{proof}
+Krull--Schmidt圏の直既約対象については簡単な表示がある．
+
+\begin{prop}\label{prop:KS圏の根基}
+	$\mathscr{A}$をKrull--Schmidt圏とし，$A,B\in\mathscr{A}$を直既約とする．このとき；
+	\[\rad_{\mathscr{A}}(A,B)=\mkset{f:A\to B}{f:\text{非同型}}\]
+	が成り立つ．
+\end{prop}
+
+\begin{proof}
+	まず$f\in\rad(A,B)$とすると，任意の$g:B\to A$について$\id_A-gf$が同型である．いま$f$が同型なら逆射$f^{-1}:B\to A$があるので，$\id_A-f^{-1}f=0$が同型となり，これは$\End(A)$が局所環であることに反する．よって$\subset$が示された．
+	
+	逆に$f$を非同型とする．もし$\id_A-gf$が同型でないような$g:B\to A$があると仮定しよう．すると$\End(A)$が局所環だから$gf$は同型であり，特に$f$は左逆を持つ．すると$f$は同型でないので右逆を持たない，すなわち$fg\in\End(B)$が同型でない．しかし$\End(B)$も局所環だから$\id_B-fg$は同型で，\ref{lem:id-gfの可逆性とid-fgの可逆性は同値}から$\id_A-gf$も同型になり矛盾する．ゆえに$\supset$も正しい．
+\end{proof}
+
+\begin{thm}\label{thm:Krull--Schmidt圏の右極小射への取り替え}
+	$\mathscr{A}$を加法圏とし，$\mathscr{C}$を$\mathscr{A}$の加法的部分圏で，$\mathscr{C}$がKrull--Schmidt圏であるとする．任意の$A,B\in\mathscr{A}$と，任意の$f:A\to B$に対して，もし$A\in\mathscr{C}$ならば$A$の直和分解$A=A'\oplus A''$であって，右極小な射$f':A'\to B$とゼロ射$f'':A''\to 0$が存在して$f=(f',f'')$と表示できるものが存在する．
+\end{thm}
+
+\begin{proof}
+	$A$の直既約分解$A=A_1\oplus\dots\oplus A_n$を固定する．$f:A\to B$について，$f$を成分表示$f=(f_1,\dots,f_n)~(f_i:A_i\to B)$したときに現れるゼロ射の個数を$z(f)$とする．このとき任意の$A$の自己同型$\varphi\in\End(A)$について$z(f\varphi)$が最大となるような$\varphi$がとれる．$f$を$f\varphi$でとりかえれば，任意の$A$の自己同型$\varphi$について$z(f\varphi)\leq z(f)$となるようにできる．$z(f)=m,A'=A_1\oplus\dots A_m$とおき，$f':(f_1,\dots,f_m):A'\to B$が右極小であることを示そう．任意の$\varphi\in\End(A')$について$f=f\varphi$と仮定する．$\varphi$を行列表示する；
+	\[\begin{pmatrix}
+		\varphi_{11}&\varphi_{12}&\cdots&\varphi_{1m}\\
+		\varphi_{21}&\varphi_{22}&&\vdots\\
+		\vdots&&\ddots&\vdots\\
+		\varphi_{m1}&\cdots&\cdots&\varphi_{mm}
+	\end{pmatrix}\]
+	すると$f=f\varphi$だから；
+	\[(f_1,\dots,f_m)=(f_1,\dots,f_m)
+	\begin{pmatrix}
+		\varphi_{11}&\cdots&\varphi_{1m}\\
+		\vdots&\ddots&\vdots\\
+		\varphi_{m1}&\cdots&\varphi_{mm}
+	\end{pmatrix}\]
+	において第一成分を計算すると；
+	\[f_1(\id_{A_1}-\varphi_{11})=f_2\varphi_{21}+\dots+f_m\varphi_{m1}\tag{$\ast$}\]
+	であって，もし$\varphi_{11}$が同型なら$\End(A_1)$は局所環だから$\id_{A_1}-\varphi_{11}$は同型で，逆射を右からかけて；
+	\[f_1=f_2\varphi_{21}'+\dots+f_m\varphi_{m1}'\]
+	という表示を得る．すると；
+	\[(f_1,\dots,f_m)\begin{pmatrix}
+		\id_{A_1}&0&\cdots&0\\
+		-\varphi_{21}'&\id_{A_2}&\cdots&0\\
+		\vdots&\vdots&\ddots&\vdots\\
+		-\varphi_{1m}'&0&\cdots&\id_{A_m}
+	\end{pmatrix}=(0,f_2,\dots,f_m)\]
+	とかけ，行列に対応する同型射を$\varphi'$とすれば$z(f\varphi')=m-1<z(f)$となって矛盾する．よって$\varphi_{11}$は同型でなければならない．同様に，$\varphi_{i1}~(2\leq i\leq m)$が同型ならば，同様に$(\ast)$から$f_2$を$f_1,f_3,\dots,f_m$で表示する式を得るので$\varphi_{i1}$は同型でない．このようにして，$\varphi_{ij}$は$i=j$のとき同型で，そうでないとき非同型であることがわかる．言い換えると，$\varphi_{ij}$は$i=j$のとき$\varphi_{ii}\in\rad(A_i,A_i)$で，$i\neq j$のとき$\varphi_{ij}\in\rad(A_j,A_i)$である（\ref{prop:KS圏の根基}）．
+	
+	ここで，射$\varphi':A'\to A'$であって，すべての成分について$\varphi_{ij}'\in\rad(A_j,A_i)$であるようなものをとると．$\varphi'\in\rad(A',A')$である．実際逆射$\psi$が存在するなら，それを成分表示してかけることで$\varphi_{11}\psi_{11}+\dots+\varphi_{1m}\psi_{m1}=\id_{A_1}$となるが，\ref{prop:加法圏の根基はイデアルっぽい}によりこれは$\rad(A',A')$の元の和となり，同型になりえないので矛盾する．
+	
+	よって$\varphi$は$\End(A')/\rad(A',A')$において可逆である．よって逆元$\psi+\rad(A',A')$をとれば$1-\varphi\psi,1-\psi\varphi\in\rad(A',A')$である．よって$\varphi\psi,\psi\varphi\not\in\rad(A',A')$だから$\varphi\psi,\psi\varphi$は可逆で，同型である．ゆえに$\varphi$は同型であることがわかった．
+\end{proof}
+
+この定理と射影被覆の言い換えから次が従う．
+
+\begin{cor}
+	$\mathscr{A}$を射影的対象を十分に持つAbel圏とすると，$\mathscr{A}$がKrull--Schmidtなら$\mathscr{A}$は射影被覆を持つ．
+\end{cor}
+
+応用として，Artin環上の有限生成加群は極小射影分解（\ref{defi:極小射影分解}）を持つことを示そう．
+
+\begin{prop}
+	$A$をArtin環とする．$A$上の有限生成加群のなす圏$\mathbf{mod}(A)$はKrull--Schmidtである．
+\end{prop}
+
+\begin{proof}
+	任意の$M\in\mathbf{mod}(A)$について，\ref{prop:ArtinまたはNoetherなら直既約分解がある}により直既約分解$M=M_1\oplus\dots M_n$がある．ここで，各$M_i$についてFittingの補題（\ref{thm:Fitting}）から任意の$\varphi\in\End(M_i)$は同型または冪零で，$\varphi$が同型ならば$\varphi^n=0$となる$n\geq0$がとれて；
+	\[(\id_{M_i}-\varphi)(\id_{M_1}+\varphi+\dots+\varphi^{n-1})=(\id_{M_1}+\varphi+\dots+\varphi^{n-1})(\id_{M_1}-\varphi)=\id_{M_1}\]
+	だから$\id_{M_i}-\varphi$は同型なので，$\End(M_i)$は局所環である．
+\end{proof}
+
+\begin{cor}
+	$A$をArtin環とする．$A$上の有限生成加群のなす圏$\mathbf{mod}(A)$はつねに射影被覆を持つ．
+\end{cor}
+
+\begin{prop}
+	$A$を$\mathbf{mod}(A)$がKrull--Schmidtであるような環とすると，$A$は（可換）局所環の有限直和である．
+\end{prop}
+
+\begin{proof}
+	まず，任意の環$A$について$\End(A)=A$であることに注意する．さて$A\in\mathbf{mod}(A)$なので，$A$加群としての直和分解$A=A_1\oplus\dots\oplus A_n$があって，$\End(A_i)$は（非可換かもしれない）局所環である．有限の直和なので，繰り返すことで$n=2$の場合のみ考えればよい．加群の同型写像$A\to A_1\oplus A_2$における$1$の像を$(e_1,e_2)$とすると，$(e_1,0),(0,e_2)$に対応する$A$の元をそれぞれ$\widetilde{e_1},\widetilde{e_2}$としたら$\widetilde{e_1}+\widetilde{e_2}=1, \widetilde{e_1}\widetilde{e_2}=0$を満たし，$A$は環として$A/(\widetilde{e_2})\oplus A/(\widetilde{e_1})$と同型である．このとき$A/(\widetilde{e_2})\cong A_1$であり，$A_2$についても同様．よって$A/(\widetilde{e_2})=\End(A/(\widetilde{e_2})=\End(A_1)$は局所環であり，題意が従う．
+\end{proof}
+
+
+\section{半完全環}
+
+前節によって，環$A$であって任意の有限生成加群が射影被覆を持つものを探すには，$\mathbf{mod}(A)$がKrull--Schmidtであるような環$A$を探せばよい，ということがわかった．本節では，そのような環は（非可換環論では）\textbf{半完全環}と呼ばれていることを紹介し，その可換環論における特徴づけを示そう．
+
+\begin{defi}[半完全環]\index{はんかんぜんかん@半完全環}
+	環$R$であって，任意の有限生成$R$加群が射影被覆をもつものを\textbf{半完全(semi perfect)}であるという．
+\end{defi}
+
+ここで$R$加群は右としても左としてもよい．次のような特徴づけが知られている．
+\begin{thm}[\cite{Bass1960}, \cite{Muller1970}]
+	環$R$に対して，次は同値である．
+	\begin{sakura}
+		\item 任意の有限生成左$R$加群は射影被覆を持つ（$R$は半完全である）．
+		\item 任意の有限生成右$R$加群は射影被覆を持つ．
+		\item $R$は半局所環であって，任意の$R/\rad R$の冪等元は$\rad R$を法として持ち上がる．
+		\item 互いに直交する有限個の局所冪等元$e_1,\dots,e_r$が存在して，$1=e_1+\dots+e_r$と表せる．
+	\end{sakura}
+\end{thm}
+
+(i),(ii)と(iii)の同値性は\cite{Bass1960}，(iv)との同値性は\cite{Muller1970}による．
+
+これにより，可換環では次の特徴付けが得られる．
+\begin{prop}
+	$A$を可換環とすると，半完全であることと（可換）局所環の直和であることは同値である．
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item 上の定理により$1=e_1+\dots+e_r$と分解したとき；
+		\[A\to Ae_1\oplus\dots\oplus Ae_r;a\mapsto (ae_1,\dots,ae_r)\]
+		が同型を与える．
+		\item $(A_i,\ideal{m}_i)$を局所環として，$A=A_1\oplus\dots\oplus A_r$であるとする．このとき$\rad A=\ideal{m}_1\oplus\dots\oplus\ideal{m}_r$であることに注意する．$(a_i)+\rad A$を冪等であるとすると，$a_i\not\in\ideal{m}_i$ならば$a_i-a_i^2\in\ideal{m}_i$であるので$1-a_i\in\ideal{m}_i$であるから；
+		\[b_i=\begin{cases}
+			0&\text{if}~a_i\in\ideal{m}_i\\
+			1&\text{if}~a_i\not\in\ideal{m}_i
+		\end{cases}\]
+		とおけば$b_i-a_i\in\ideal{m}_i$となり，$(a_i)+\rad A=(b_i)+\rad A$で$(b_i)$は$A$の冪等元である．
+	\end{eqv}
+\end{proof}
+\section{プレ加法圏上の加群}
+Abel圏のいくつかの条件を抜いた圏を\textbf{加法圏}という．
+
+\begin{defi}[加法圏]\index{かほうけん@加法圏}\index{ぷれかほうけん@プレ加法圏}
+	圏$\mathscr{A}$がAbel圏の定義における(AC1), (AC2), (AC3)を満たすとき\textbf{加法圏(additive category)}であるという．(AC2)のみを満たすものを\textbf{プレ加法圏，前加法圏(pre-additive category)}という．
+\end{defi}
+
+この定義のもとでは自明にAbel圏は加法圏であるが，これらの圏の定義には文献によって差異がある．それは次の結果があるからである；
+
+\begin{thm}
+	$\mathscr{A}$をAbel圏の定義の(AC1), (AC3), (AC4), (AC5)を満たす圏とすると(AC2)を満たす．
+\end{thm}
+
+証明は\cite{Shiho2016}，定理2.101にある（非常に長大なので事実として紹介するに留める）．
+
+ここでは加法圏より更に弱いプレ加法圏について考えてみる．それは次のような圏に興味があるからである．
+\begin{defi}[環が誘導する圏]
+	$A$を環とする．このとき，圏$\Lambda$を；
+	\[\ob(\Lambda)=\{\ast\}~\text{（一点集合）}\]
+	\[\hom(\ast,\ast)=\{a\in A\}\]
+	で定める（射の合成は積で定める）と，これは圏になり，環の構造からプレ加法圏となる．
+\end{defi}
+
+環論において，$\Lambda$という記号は可換とは限らない環を表すことが多い．ここではそれを濫用して，環が誘導するプレ加法圏に用いる．
+
+この定義から，プレ加法圏は「環の多対象版」であると言われる．環から加群を考える（環の表現論）ことができるように，加法圏から加群を考えることができる（加法圏の表現論）．
+
+このとき，関手圏$\Func(\Lambda,\mathbf{Ab})$を考えてみよう．$F:\Lambda\to\mathbf{Ab}$を関手とすると；
+\[\Lambda\to\mathbf{Ab};*\mapsto M:=F(*)\]
+\[(a:*\to *)\mapsto F(a):M\to M\]
+が定まる．ここで$F$が加法的ならば，$F(a)$はまさに$a$による$M$への作用を定め，$M$は$A$加群となる．これを一般化したものが次の定義である．
+
+\begin{defi}
+	$\mathscr{A}$をプレ加法圏とする．加法的関手$\opcat{A}\to\mathbf{Ab}$の全体を$\mathbf{Mod}(\mathscr{A})$とかき，右$\mathscr{A}$加群のなす圏という．
+\end{defi}
+
+一般に次が成り立ち，これはAbel圏である．
+
+\begin{thm}
+	$\mathscr{A}$をAbel圏とし，$\mathscr{C}$を圏とする，関手圏$\Func(\mathscr{C},\mathscr{A})$はAbel圏となる．
+\end{thm}
+
+証明は$\mathscr{A}$がAbel圏であることからすぐにわかるが，例えば自然変換$\theta:F\\Lambdaightarrow G$と$\mathscr{C}$の図式$f:X\to Y$に対して，$\mathscr{A}$がAbel圏であることから，$\theta_X:F(X)\to G(X)$はAbel圏の準同型になり，核，余核をもつ．すなわち，次の図式；
+\[\begin{tikzcd}
+	0\darrow&0\darrow\\
+	\ker\theta_X\darrow\nxcell\ker\theta_Y\darrow\\
+	F(X)\darrow[\theta_X]\nxcell[F(f)]F(Y)\darrow[\theta_Y]\\
+	G(X)\darrow\nxcell[G(f)]G(Y)\darrow\\
+	\coker\theta_X\darrow\nxcell\coker\theta_Y\darrow\\
+	0&0
+\end{tikzcd}\]
+が可換で，各列は完全である．直和，積も自然に定まり，準同型定理が成り立つこともわかる．
+
+射が自然変換であるので，$M,N\in\mathbf{Mod}(\mathscr{A})$について$\varphi\in\hom(M,N)$は$\varphi:M\\Lambdaightarrow N$と書くべきであるが，Abel圏における図式でもあるのでしばしば$M\to N$で表す．
+
+\begin{lem}
+	$\mathscr{A}$をプレ加法圏とする．任意の$A\in\mathscr{A}$に対し，$\hom(-,A)$は$\mathbf{Mod}(\mathscr{A})$の射影的対象である．
+\end{lem}
+
+\begin{proof}
+	$M,N\in\mathbf{Mod}(\mathscr{A})$とし，$\varphi:M\to N$を全射（すなわち，任意の$A\in\mathscr{A}$に対して$\varphi_A:M(A)\to N(A)$は全射準同型）であるとする．任意の$\hom(-,A)\to N$が$\hom(-,M)\to M$に持ち上がることを見ればよい．
+	
+	米田の補題より，$\hom(-,A)\to N$に対応する$x\in N(A)$がある．全射$\varphi_A:M(A)\to N(A)$があるので，ある$y\in M(A)$が存在して$\varphi_A(y)=x$である．この$y$に対応する$\theta:\hom(-,A)\to M$を米田の補題からとる．すると，これが求める持ち上げである（米田の補題から$\id$の行き先が可換ならばよく，それは明らか）．
+\end{proof}
+
+\begin{thm}
+	$\mathscr{A}$をプレ加法圏とすると，$\mathbf{Mod}(\mathscr{A})$は射影対象を十分に持つ．
+\end{thm}
+
+\begin{proof}
+	任意の$M\in\mathbf{Mod}(\mathscr{A})$をとる．任意の$A\in\mathscr{A}$について，$x\in M(A)$をとると米田の補題から$\hom(-,A)\to M$が得られる．すると，直和して；
+	\[\bigoplus_{A\in\mathscr{A}}\bigoplus_{x\in M(A)}\hom(-,A)\to M;(f_x:B\to A)_{x\in A, A\in\mathscr{A}}\mapsto (M(f_x)(x))\]
+	を考えればこれが全射である．実際，任意の$B\in\mathscr{A}$について$\bigoplus_{A\in\mathscr{A}}\bigoplus_{x\in M(A)}\hom(B,A)\to M(B)$が全射ならよい．任意の$y\in M(B)$に対して，米田の補題から$\hom(-,B)\to M$がとれ，これに$B$を代入すれば$\hom(B,B)\to M(B);(f:B\to A)\mapsto M(f)(y)$である．これによる$\id_B$の像が$y$であるから，$(f_x:B\to A)_{x\in A, A\in\mathscr{A}}$を$A=B,x=y$の場合に$f_x=\id_B$，それ以外の場合に0とさだめればこれの像が$y$である．
+\end{proof}
+
+今まで見てきたように表現可能関手は$\mathbf{Mod}(\mathscr{A})$の射影対象であり，任意の$M\in\mathbf{Mod}(\mathscr{A})$は表現可能関手の直和からの全射がある．これを$\mathbf{Mod}(A)$の類似とみることで次の定義をする．
+
+\begin{defi}
+	$\mathscr{A}$をプレ加法圏とする．$M\in\mathbf{Mod}(\mathscr{A})$であって，表現可能関手の有限直和からの全射が存在するものを\textbf{有限生成(finitely generated)}であるという．
+\end{defi}
+
+\begin{thm}
+	$\mathscr{A}$をKrull--Schmidt圏とすると，任意の有限生成右$\mathscr{A}$加群は射影被覆を持つ．
+\end{thm}
+
+\begin{proof}
+	有限生成右$\mathscr{A}$加群$M$をとる．すると，表現可能関手の有限直和からの全射；
+	\[f:\bigoplus_{A\in\mathscr{A}}\hom(-,A)\to M\]
+	が存在する．ここで米田埋め込み$y:\mathscr{A}\to\mathbf{Mod}(\mathscr{A})$は忠実充満なので，$\mathscr{A}$は$\mathbf{Mod}(\mathscr{A})$の部分圏$y(\mathscr{A})$と圏同値で，$\mathscr{A}$がKrull--Schmidtだから$y(\mathscr{A})$もKrull--Schmidtである．また$y(\mathscr{A})$の対象の有限直和全体を$y'(\mathscr{A})$とすればこれもKrull--Schmidtで，\ref{thm:Krull--Schmidt圏の右極小射への取り替え}を$f$に適用して右極小な全射$f':\oplus\hom(-,A)\to M$が存在する．よってこれが射影被覆である．
+\end{proof}
+%
+%\begin{cor}
+%	$A$を局所環とすると，任意の有限生成$A$加群は射影被覆を持つ．
+%\end{cor}
+%
+%局所環の直和はすべて射影被覆を持つことの証明を与えよう．
+%
+%\begin{prop}
+%	$A_1,A_2$を環とし，$P_1,P_2$をそれぞれ射影的$A_1,A_2$加群とする．このとき$P_1\oplus P_2$は射影的$A_1\oplus A_2$加群である．
+%\end{prop}
+%
+%\begin{proof}
+%	$P_1$は射影的$A_1$加群なので，ある$A_1$加群$K_1$が存在して$F_1=P_1\oplus K_1$は自由$A_1$加群である．それの基底を$\{e_i\}_{i\in I}$とし，$P_2$についても同様に$F_2=P_2\oplus K_2\cong\oplus_{j\in J} A_2e_j$とする．そこで$I,J$の非交和を$\Lambda$とすると，$A_1^\Lambda\cong F_1\oplus A_1^J, A_2^\Lambda\cong F_2\oplus A_2^I$とできるので，これの直和$(A_1\oplus A_2)^\Lambda$は自由$A_1\oplus A_2$加群で，$P_1\oplus P_2$を直和因子に持つ．よって射影的である．
+%\end{proof}
+%
+%\begin{thm}
+%	$A$を局所環の有限直和であるような環とすると，任意の有限生成$A$加群は射影被覆を持つ．
+%\end{thm}
+%
+%\begin{proof}
+%	$A=A_1\oplus\dots\oplus A_n$とし，各$A_i$が局所環であるとする．$n=2$の場合を考えればよい．$M$を$A$上の有限生成加群とすると，ある$m\in\N$と全射$\pi:A^m\to M$がある．いま$A^m=(A_1\oplus A_2)^m\cong A_1^m\oplus A_2^m$であって，$\pi_1:A_1^m\to M,\pi_2:A_2^m\to M$によって$\ker\pi=\ker\pi_1\oplus\ker\pi_2$とかけて，$M\cong (A_1^m\oplus A_2^m)/(\ker\pi_1\oplus\ker\pi_2)=(A_1^m/\ker\pi_1)\oplus(A_2^m/\ker\pi_2)$であるから，$M$はそれぞれ有限生成$A_1,A_2$加群の直和である．それぞれ射影被覆を持つから，それを$(P_1,\varepsilon_1), (P_2,\varepsilon_2)$とすると，$(P_1\oplus P_2, \varepsilon_1\oplus\varepsilon_2)$も$M$の射影被覆である．実際$\ker(\varepsilon_1\oplus\varepsilon_2)=\ker\varepsilon_1\oplus\ker\varepsilon_2$なので，それぞれの成分について独立に計算すればよい．
+%\end{proof}

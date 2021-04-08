@@ -1,94 +1,1074 @@
-\part[Appendix \thepart, Various Example]{様々な例}
+\part[Appendix \thepart, Category theory]{圏論}\label{chap:cat}%
 
-Counter example of Commutative Algebra を目指したい．
+現代的な代数学では，もはや圏論の言葉なしに議論を展開することは困難である．この付録では最低限の圏論について触れることにしよう．詳細に興味がある場合は例えば\cite{MacLane1998}，\cite{Shiho2016}などを見よ．この章の詳細に至るまで（証明などを省略している場所も多いので，場合によっては参照先まで）理解する必要は（圏の専門家以外にとっては）あまりなく，道具として使えるようになれば十分であろう．そのため，発展的な内容に言及する場合では他書への参照にとどめ，ここでは詳しく述べない．また，そこに続く議論についても読者は参照先をみていないと仮定してすすめることにする．
 
-\section{加群の同型と相等}
+\section{圏の定義}
 
-加群について，全単射準同型の存在，すなわち同型$M\cong N$と，集合としての相等$M=N$は区別しなければならない．例えば中山の補題で大変なことになる．次の例を見てみよう．
+\begin{defi}[圏]\index{けん@圏}
+	集合$\operatorname{ob}(\mathscr{A})$について，任意の$A,B\in\operatorname{ob}(\mathscr{A})$に対して集合$\hom_{\mathscr{A}}(A,B)$が存在して，以下の条件；
+	\begin{defiterm}{C}
+		\item 任意の$A,B,C\in\operatorname{ob}(\mathscr{A})$について，結合的な演算；
+		\[\circ:\hom_{\mathscr{A}}(B,C)\times\hom_{\mathscr{A}}(A,B)\to\hom_{\mathscr{A}}(A,C);(g,f)\mapsto g\circ f\]
+		が定義されている（これを\textbf{合成(composition)}という）．
+		\item 任意の$A\in\operatorname{ob}(\mathscr{A})$について$\id_A\in\hom_{\mathscr{A}}(A,A)$が存在して，任意の$B\in\operatorname{ob}(\mathscr{A})$と$f\in\hom_{\mathscr{A}}(A,B)$について$f=f\circ\id_A=\id_B\circ f$が成り立つ（この$\id_A$を$A$上の\textbf{恒等射(identity)}という）．
+	\end{defiterm}
+	をみたすとき，組$(\operatorname{ob}(\mathscr{A}),\{\hom_{\mathscr{A}}(A,B)\}_{A,B\in\operatorname{ob}(\mathscr{A})},\circ)$を単に$\mathscr{A}$とかいて，$\mathscr{A}$は\textbf{圏(category)}であるという．
+\end{defi}
 
-\begin{ex}
-	$A$を環，$x$を零因子でない元とする．$A$加群として$A\cong xA$であるので，中山の補題（\ref{cor:NAK}）からある$a\in A$で$a-1\in(x)，aA=0$となるものが存在する．$aA=0$より$a=0$であり，$-1\in (x)$となるので$x$は可逆である．
+誤解のおそれがないときは$\hom_{\mathscr{A}}(A,B)$は単に$\hom(A,B)$とかく．また簡単のために$A\in\operatorname{ob}(\mathscr{A})$を$A\in\mathscr{A},f\in\hom(A,B)$を$f:A\to B$とかく．$A\in\mathscr{A}$を$\mathscr{A}$の\textbf{対象(object)}といい，$f:A\to B$を$A$から$B$への\textbf{射(morphism, map, arrow)}という．
+
+この定義ではゴチャゴチャしていてわかりにくいと思うが，要はある数学的対象と，その間の（構造を保つような）写像，つまり代数構造なら準同型，位相構造なら連続写像など全体，の組を１つのデータとして扱おう，というのが圏の定義のモチベーションとなっている．
+
+\begin{ex}	
+	\symlist{$\mathbf{Set}$}{集合全体，写像．}
+	\symlist{$\mathbf{Top}$}{位相空間全体，連続写像.}
+	\symlist{$\mathbf{Ab}$}{Abel群全体，準同型写像．}
+	\symlist{$\mathbf{Ring}$}{（１を持つ可換）環全体，準同型写像．}
+	\symlist{$\mathbf{Mod}(A)$}{$A$加群全体，$A$線型写像．}
+	などはすべて自然に圏をなす．ここでは１つの対象のみからなる圏など，いかにも圏論チックな例は扱わない．
 \end{ex}
 
-この結果は明らかに正しくない．矛盾を引き起こした理由は\textbf{同型}であって\textbf{相等}ではないときに中山の補題を適用してしまったからである．このように加群の同型をイコールと思って扱うと大変なことになってしまうので注意を必要とする．
-\section{ED,PID,UFD}
-\begin{surex}
-	体$K$について，$K[X,X^{-1}]$はPIDである．
+ここで「集合全体の集合」によって圏$\mathbf{Set}$を定義しているが，実はこれを素朴に集合として扱うことはできない．そのために以下で\quo{正当化}を行う．いまから述べることは集合論的な厳密さのためには大切であるが，実際に圏について議論をするためにはほとんど不要である．そのため，特に興味がない場合は急カーブの終了まで読み飛ばすと幸せになれるかもしれない．
+
+\begin{tightcurve}
+	
+さて，集合を単に「物の集まり」と考える，公理化されていない集合論では，圏を考えるときに自然に現れる「集合全体の集合」のようなものを考えると矛盾が起こってしまうことに注意しなければならない．
+
+\begin{surex}[Cantorのパラドックス]\index{#Cantorのぱらどっくす@Cantorのパラドックス}
+	$X$をすべての集合を含む集合とすると，Cantorの定理により$X$のすべての部分集合の集合，すなわち$X$の冪集合$\mathfrak{P}(X)$は$X$より真に大きな濃度を持つが，$\mathfrak{P}(X)\subset X$なのでこれは矛盾である．
 \end{surex}
+
+このような問題に対処するために\textbf{公理的集合論(axiomatic set theory)}がZermelo, Fraenkelらによって構築された．それらの詳細を述べる余裕はないので，興味があれば\cite{Kunen2009}などを参照してほしい．ここでは，現代の数学は公理系として\textbf{ZFC (Zermelo--Fraenkel + Axiom of Choice)}と呼ばれる，Zermelo--Fraenkelの公理系に選択公理を加えたものが採用されているということを注意しておく．ZFの各公理について，インフォーマルな形ではあるが紹介しておく；
+
+\begin{defiterm}{ZF}
+	\item 空集合は集合である．
+	\item 要素の等しい集合は等しい（外延性公理）．
+	\item $x,y$が集合ならば，$x,y$のみを集合とする集合$\{x,y\}$が存在する（対の公理）．
+	\item $x$が集合ならば，$x$の要素全体からなる集合$\bigcup x$が存在する（和集合の公理）．
+	\item $x$が集合ならば，$x$の部分集合全体からなる集合$\mathfrak{P}(x)$が存在する（冪集合の公理）．
+	\item 集合$x$の写像による像も集合である（置換公理）．
+	\item ある集合$A$であって，$\emptyset\in A$かつ任意の$x\in A$に対して$x\cup\{x\}\in A$であるものが存在する（無限公理）．
+	\item 集合$x$について，無限降下列$x\ni x_1\ni x_2\ni\cdots$は存在しない（正則性公理）．
+\end{defiterm}
+
+ZFCにおいては，「すべての集合を含む集合」はもはや集合としては扱わない．そのようなものは\textbf{真のクラス(proper class)}と呼ばれ，\textbf{VGB (von Neumann--G\uml{o}del--Bernays)}といったZFCより大きいような公理系でないと扱うことができない．しかし，次の\textbf{Grotendieck 宇宙}というアイデアを使用すると，ZFCに１つの公理を追加するだけで，圏論で扱う範囲のクラスをすべて集合として，しかも矛盾なく取り扱うことができるようになる．
+
+\begin{defi}[Grotendieck宇宙]\index{#Grotendieckうちゅう@Grothendieck宇宙}
+	集合$U$であって，次の性質；
+	\begin{defiterm}{GU}
+		\item $x\in y, y\in U$ならば$x\in U$である．
+		\item $x, y\in U$ならば$\{x, y\}\in U$である．
+		\item $x\in U$ならば$\mathfrak{P}(x)\in U$である．
+		\item $I\in U, x_i\in U~(i\in I)$ならば$\bigcup_{i\in I}x_i\in U$である．
+	\end{defiterm}
+	を満たすものを\textbf{Grothendieck宇宙(universe)}であるという．
+\end{defi}
+
+簡単な議論によって，Grothendieck宇宙は次のような性質を持つ；
+\begin{sakura}
+	\item $x\in U$ならば$\{x\}\in U$である．
+	\item $x\in U$ならば$\bigcup_{y\in x}y\in U$である．
+	\item $x,y\in U$ならば$x\times y\in U$である．
+	\item $x\in U,y\subset x$ならば$y\in U$である．
+\end{sakura}
+
+列挙すればまだまだ切りがないが，これらの性質によって（$U$が身近な対象を１つでも含んでいれば）$U$は普段扱うような対象をすべて含んでいることがわかる．ただし$U\not\in U$であることに注意が必要であり，これによってCantorのパラドックスを防いでいる．
+
+$\emptyset$はGrothendieck宇宙である．また遺伝的有限集合の集合と呼ばれる$V_\omega$もGrothendieck宇宙になるが，これらは$\N$を元として持たない．そのため定義に$\N\in U$を課す流儀もある（例えば\cite{MacLane1998}）．
+
+ZFCでは$\emptyset,V_\omega$以外のGrothendieck宇宙の存在を証明できない．そこで，本書では次の公理を認めることにする．
+
+\begin{axi}[宇宙公理]\index{うちゅうこうり@宇宙公理}
+	任意の集合$X$に対して，$X\in U$となるGrothendieck宇宙$U$が存在する．
+\end{axi}
+
+これにより，十分大きなGrothendieck宇宙$U$をとることで，望む限りの大きさを持った集合を実現できる．そのため，本書では以後Grothendieck宇宙$U$を１つ固定し，その$U$を集合全体だと思うことにする（圏$\mathbf{Set}$を$U$で定義する）．この流儀ではもはやの$U$元でないものは$\mathbf{Set}$の対象ではないが，望むだけ$U$を大きくすればよいのでもはや問題ではない．
+
+こんな公理を勝手に導入してよいのか，と思われるかもしれないが，これは「到達不能基数の存在」と呼ばれる公理と同値であり，これをZFCに付け加えたものは無矛盾であると推測されている．
+
+真のクラスを扱う圏論では，従来通りの集合，つまり真のクラスでないものを\textbf{小さい(small)}集合と呼んでいた．ここでは次の定義をする．
+
+\begin{defi}\index{ちいさいしゅうごう@小さい集合}
+	Grothendieck宇宙$U$の元を\textbf{小さい(small)}集合という．
+\end{defi}
+
+$\operatorname{ob}(\mathscr{A})$が小さい集合であるような圏を\textbf{小さい圏(small category)}という．よく使われる$\mathbf{Set}$や，$\mathbf{Mod}(A)$などは小さい圏ではない．また，実用上の圏は次にあるように$\hom$に簡単な構造を要請する．
+
+\begin{defi}\index{きょくしょてきにちいさい（圏）@局所的に小さい（圏）}
+	圏$\mathscr{A}$について，任意の$A,B\in\mathscr{A}$に対して$\hom(A,B)$が小であるとき$\mathscr{A}$を\textbf{局所的に小さい(locally small)}圏であるという．
+\end{defi}
+
+上にある例はすべて局所的に小さい圏である．以降すべての圏は明記しない限り局所的に小さいことを仮定する．
+\end{tightcurve}
+
+一般の集合における単射，全射の概念を圏について拡張しよう．まず，圏の対象の同型について定義する．
+
+\begin{defi}[同型]
+	$\mathscr{A}$を圏とし，$A,B\in\mathscr{A}$とする．ある$f:A\to B,g:B\to A$が存在して，$g\circ f=\id_A,f\circ g=\id_B$であるとき，$A$と$B$は同型であるといい，$A\cong B$で表す．
+\end{defi}
+
+このような$f,g$を同型射という．明らかに$g$は$f$に対して一意である（確かめよ）．そこで$g$を$f^{-1}$とかく．また同型は同値関係であることもすぐにわかる．
+
+\begin{defi}[モノ射，エピ射]\index{ものしゃ@モノ射}\index{えぴしゃ@エピ射}
+	$\mathscr{A}$を圏とし，$A,B\in\mathscr{A}$とする．射$f:A\to B$に対して；
+	\[\text{任意の$D\in\mathscr{A}$と$g_1,g_2:D\to A$に対して，$f\circ g_1=f\circ g_2$ならば$g_1=g_2$である．}\]
+	が成り立つとき，$f$は\textbf{モノ射(monomorphism)}であるという．また；
+	\[\text{任意の$D'\in\mathscr{A}$と$h_1,h_2:B\to D'$に対して，$h_1\circ f=h_2\circ f$ならば$h_1=h_2$である．}\]
+	が成り立つとき，$f$を\textbf{エピ射(epimorphism)}であるという．
+\end{defi}
+
+モノ射を\textbf{左簡約可能(left cancellable)}，エピ射を\textbf{右簡約可能(right cancellable)}ともいう．集合論でおなじみの次の性質が成り立つ．
+
+\begin{prop}
+	$\mathscr{A}$を圏とし，$A,B,C\in\mathscr{A},f:A\to B,g:B\to C$とする．このとき；
+	\begin{sakura}
+		\item $f$が同型射ならば，$f$はモノ射かつエピ射である．
+		\item $f,g$がともにモノ射（エピ射）ならば，$g\circ f$もモノ射（エピ射）である．
+		\item $g\circ f$がモノ射ならば$f$はモノ射である．
+		\item $g\circ f$がエピ射ならば$g$はエピ射である．
+	\end{sakura}
+	が成り立つ．
+\end{prop}
+
+証明は簡単であるから各自に任せる．ここで単射，全射といわずにモノ射，エピ射と呼ぶのには理由がある．それはモノ射かつエピ射であったとしても同型射になりえないことがあるからである．
+\begin{ex}
+可環環のなす圏$\mathbf{Ring}$を考えよう．自然な$\iota:\Z\to\Q$と，$f_1,f_2:\Q\to A$を考える（$A$は可環環）．このとき$f_1\circ\iota=f_2\circ\iota$とすると，任意の$p/q\in\Q$に対して$f_1(p/q)=f_1(p)f_1(q)^{-1}=f_2(p)f_2(q)^{-1}=f_2(p/q)$であるので$\iota$はエピ射である．明らかにモノ射だから，$\iota$はエピ射かつモノ射だが，同型射ではない．
+\end{ex}
+
+\begin{defi}[始対象，終対象，零対象]\index{したいしょう@始対象}\index{しゅうたいしょう@終対象}\index{ぜろたいしょう@零対象}
+	$\mathscr{A}$を圏とする．ある$E\in\mathscr{A}$であって，任意の$A\in\mathscr{A}$に対して$\hom(E,A)$が１点集合であるようなものを$\mathscr{A}$の\textbf{始対象(initial object)}という．双対的に$\hom(A,E)$が１点であるような$E$を\textbf{終対象(terminal object, final object)}という．始対象かつ終対象であるものを$\mathscr{A}$の\textbf{零対象(zero object)}という．
+\end{defi}
+
+\begin{prop}
+	圏$\mathscr{A}$において，始対象（終対象）は存在すれば同型を除いて一意である．
+\end{prop}
 
 \begin{proof}
-	$I$を$K[X,X^{-1}]$のイデアルとする．これはNoetherなので$I=(f_1,\dots,f_r)$とできる．$f_1,\dots,f_r$に現れる負ベキの項は高々有限個だから，ある$n\geq0$が存在して$X^nf_i\in K[X]$とできる．$(X^nf_1,\dots,X^nf_r)$を$K[X]$のイデアルとみると，これはPIDなので$(X^nf_1,\dots,X^nf_r)=(g)$となる$g\in K[X]$が存在し，$K[X,X^{-1}]$のイデアルとしても$(f_1,\dots,f_r)=(g)$となる．
+	$E,E'$が始対象であるとすると，$\hom(E,E')=\{f\},\hom(E',E)=\{g\}$とかける．このとき$g\circ f\in\hom(E,E)=\{\id_E\}$であるので$g\circ f=\id_E$で，同様に$f\circ g=id_{E'}$だから$E,E'$は同型である．終対象についても同様に示される．
 \end{proof}
-\begin{surex}[UFDだがPIDでない環]
-	体$K$について，$K[X,Y]$はUFDだがPIDではない．
-\end{surex}
+
+例えば$\mathbf{Ring}$では始対象は$\Z$，終対象は零環$\{0\}$である．零対象は存在しない．$\mathbf{Mod}(A)$においては始対象，終対象，零対象は$0$である．
+
+次に一般の圏における積，余積（直和）を導入しよう．
+
+\begin{defi}[積]
+	$\mathscr{A}$を圏とする．対象の族$\{A_\lambda\}_{\lambda\in\Lambda}$に対して，$A\in\mathscr{A}$と射の族$p_\lambda:A\to A_\lambda$が存在して，任意の$X\in\mathscr{A}$と射の族$f_\lambda:X\to A_\lambda$に対して$f:X\to A$で$f_\lambda=p_\lambda\circ f$となるものが一意に存在するとき，$(A,\{p_\lambda\})$を$\{A_\lambda\}$の\textbf{積(prodict)}であるという．$A=\prod_{\lambda\in\Lambda}A_\lambda$とかく．
+\end{defi}
+
+$p_\lambda$は\textbf{射影(projection)}と呼ばれる．$\mathscr{A}$が終対象$E$を持つとき，$\Lambda=\emptyset$のときの積は$E$と定める（\cite{Leinster2014}，例5.1.9を参照のこと）．
+
+\begin{defi}[余積]
+	$\mathscr{A}$を圏とする．対象の族$\{A_\lambda\}_{\lambda\in\Lambda}$に対して，$A\in\mathscr{A}$と射の族$\iota_\lambda:A_\lambda\to A$が存在して，任意の$X\in\mathscr{A}$と射の族$f_\lambda:A_\lambda\to X$に対して$f:A\to X$で$f_\lambda=f\circ \iota_\lambda$となるものが一意に存在するとき，$(A,\{\iota_\lambda\})$を$\{A_\lambda\}$の\textbf{余積(coprodict)}であるという．$A=\coprod_{\lambda\in\Lambda}A_\lambda$とかく．
+\end{defi}
+
+
+このように，自然な射（この例では$p_\lambda,\iota_\lambda$）について，ある条件を満たした射（この例では$f_\lambda$）に対して可換になるような\textbf{$f$が一意に存在する}という性質を\textbf{普遍性(universality)}という．このように圏論では普遍性をみたすものをもってその概念を定義する，ということがよく行われる．普遍性により積，余積が存在すれば（同型を除いて）一意であることがわかる．
+
+\begin{minipage}{.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		&\prod A_\lambda\arrow[dr,"p_\lambda"]\\
+		X\arrow[ur,dashed,"f"]\arrow[rr,"f_\lambda"]&&A_\lambda
+		\end{tikzcd}
+		\caption{積の普遍性}
+	\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		&\coprod A_\lambda\arrow[rd,"f",dashed]\\
+		A_\lambda\arrow[ur,"\iota_\lambda"]\arrow[rr,"f_\lambda"]&&X
+		\end{tikzcd}
+		\caption{余積の普遍性}
+	\end{figure}
+\end{minipage}
+
+余積は\textbf{直和(direct sum)}，または\textbf{圏論的和(categorical sum)}とも呼ばれ，$\coprod A_\lambda$は$\bigoplus A_\lambda$ともかかれる．実際加群の圏$\mathbf{Mod}(A)$では直和が余積としての役割を果たしている．このことを加群の直和は余積の普遍性を満たす，という．積と同様に，$\mathscr{A}$が始対象$E$を持つならば$\Lambda=\emptyset$についての余積を$E$で定義しよう．一般の圏$\mathscr{A}$においては，必ずしも積，余積が存在するとは限らないことに注意が必要である（例えば\cite{Leinster2014}，例5.1.2）．
+
+最後に\textbf{ファイバー積}とその双対概念について述べておくことにしよう．
+
+\begin{defi}[ファイバー積]\index{ふぁいばーせき@ファイバー積}
+	$\mathscr{A}$を圏とする．射$f:A\to C, g:B\to B$について，ある$A\times_C B\in\mathscr{A}$と$p_A:A\times_CB\to A, p_B:A\times_CB\to B$で$f\circ p_A=g\circ p_B$を満たすものが存在して，任意の$D\in\mathscr{A}$と$s:D\to A, t:D\to B$で$f\circ s=g\circ t$を満たすものに対して，$u:D\to A\times_CB$であって$s=p_A\circ u, t=p_B\circ u$となるものが一意的に存在するとき，組$(A\times_CB, p_A, p_B)$を$A,B$の$C$上の\textbf{ファイバー積(fibre product)}または\textbf{引き戻し(pullback)}という．
+\end{defi}
+
+\begin{defi}[余ファイバー積]\index{よふぁいばーせき@余ファイバー積}
+	$\mathscr{A}$を圏とする．射$f:C\to A, g:C\to B$について，ある$A\sqcup_C B\in\mathscr{A}$と$i_A:A\to A\sqcup_C B, i_B:B\to A\sqcup_C B$で$i_A\circ f=i_B\circ g$を満たすものが存在して，任意の$D\in\mathscr{A}$と$s:A\to D, t:B\to D$で$s\circ f=t\circ g$を満たすものに対して，$u:A\sqcup_C B\to D$であって$s=u\circ i_A, t=u\circ i_B$となるものが一意的に存在するとき，組$(A\sqcup_C B, i_A, i_B)$を$A,B$の$C$上の\textbf{余ファイバー積(fibre sum)}または\textbf{押し出し(pushout)}という．
+\end{defi}
+
+\begin{minipage}{.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			D\arrow[rrd,"t",bend left=30]\arrow[ddr,"s",bend right=30,swap]\arrow[rd,"u",dashed]\\
+			&A\times_C B\arrow[d,"p_A",swap]\nxcell[p_B]B\darrow[g]\\
+			&A\nxcell[f]C
+		\end{tikzcd}
+		\caption{ファイバー積の普遍性}
+	\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			C\arrow[d,"f"]\nxcell[g]B\arrow[d,"i_B"]\arrow[rdd,"t",bend left=30]\\
+			A\arrow[rrd,"s",bend right=30]\nxcell[i_A]A\sqcup_C B\arrow[rd,"u",dashed]\\
+			&&D
+		\end{tikzcd}
+		\caption{余ファイバー積の普遍性}
+	\end{figure}
+\end{minipage}
+
+加群の圏では，ファイバー積，余ファイバー積ともに常に存在する．$f:A\to C,g:B\to C$によるファイバー積は；
+\[A\otimes_C B=\mkset{(x,y)\in A\times B}{f(x)=g(y)}\]
+であり，$p_A,p_B$は自然な射影である．また$f:C\to A,g:C\to B$による余ファイバー積は；
+\[A\sqcup_C B=(A\times B)/\mkset{(f(x),-g(x))}{x\in C}\]
+で，$i_A,i_B$は自然な包含である．
+また環の圏におけるテンソル積$A\otimes_C B$は余ファイバー積であることを注意しておく．
+\section{核，余核とAbel圏}
+
+普遍性を用いた定義ができる対象として，射の核，余核がある．ただし，そのために\textbf{零射}と呼ばれる自明な射を考える必要がある．この零射の存在のために圏が零対象を持つことを仮定する．
+
+\begin{defi}[零射]\index{ぜろしゃ@零射}
+	$\mathscr{A}$を零対象$0$を持つ圏とする．任意の$A,B\in\mathscr{A}$について，自然な$A\to 0$と$0\to B$の合成$0_{AB}:A\to B$が定まる．これを$A$から$B$への\textbf{零射(zero morphism)}という．誤解の恐れがない場合，単に$0:A\to B$とかく．
+\end{defi}
+
+次の性質を持つ射を零射と定義する流儀もある．その定義においては零射は零対象のない圏でも議論しうることに注意が必要である．
+\begin{prop}
+	$\mathscr{A}$を零対象$0$を持つ圏とする．任意の$A,B\in\mathscr{A}$と零射$0_{AB}:A\to B$について，任意の$C,C'\in\mathscr{A}$と$f,g:B\to C, f',g':C'\to A$に対して$f\circ0_{AB}=g\circ0_{AB}, 0_{AB}\circ f'=0_{AB}\circ g'$が成り立つ． 
+\end{prop}
+\begin{proof}
+	$C\in\mathscr{A}, f,g:B\to C$についてのみ示す．自然な射に${}_A0:A\to0,0_B:0\to B$と名前をつけておくと，$0_{AB}=0_B\circ{}_A0$である．ここで次の図式；
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+			A\arrow[rr,"0_{AB}"]\arrow[rd,"{}_A0"]&&B\arrow[r,shift left =.5em,"f"]\arrow[r,shift right=.5em,"g",swap]&C\\
+			&0\arrow[ur,"0_B"]
+		\end{tikzcd}
+	\end{figure}
+	ここで$0$は始対象だから，$f\circ 0_B=g\circ 0_B$である．よってこれに右から${}_A0$を合成して題意が従う．
+\end{proof}
+
+特別な場合として．零射は何を合成しても零射であることがわかる．
+
+\begin{cor}
+	$\mathscr{A}$を零対象$0$を持つ圏とする．任意の$A\in\mathscr{A}$について，$\id_A =0$ならば$A=0$である．
+\end{cor}
 
 \begin{proof}
-	\ref{cor:多変数もUFD}．
+	任意の$C\in\mathscr{A}$について，$f:A\to C$とすると$f=f\circ\id=0$であるから$A$は始対象であり，まったく同様にして終対象．
 \end{proof}
-\begin{surex}[PIDだがEDでない環]
-	$\Z[(1+\sqrt{-19})/2]$はPIDだがEDではない．
-\end{surex}
 
-PIDだがEDでない環はこのように2次体の整数環についてよく知られているが，次の定理が知られている（証明は\cite{goel2018nullstellenstze}を見よ）．
+\begin{defi}[射の核]
+	圏$\mathscr{A}$を零対象$0$を持つ圏とする．射$f:A\to B$を固定する．$K\in\mathscr{A}$と射$\iota:K\to A$が存在して，次の普遍性；
+	\begin{defiterm}{K}
+		\item $f\circ\iota:K\to B$は零射である．
+		\item 任意の$K'\in\mathscr{A}$と，$\iota':K'\to A$であって$f\circ\iota'$が零射であるものについて，$u:K'\to K$であって$\iota\circ u=\iota'$となるものが一意的に存在する．
+	\end{defiterm}
+	を満たすとき，$(K,\iota)$を$f$の\textbf{核}(kernel)といい，$K=\ker f$とかく．
+\end{defi}
+
+\begin{defi}[射の余核]
+	圏$\mathscr{A}$を零対象$0$を持つ圏とする．射$f:A\to B$を固定する．$C\in\mathscr{A}$と，射$\pi:B\to C$が存在して，次の普遍性；
+	\begin{defiterm}{CoK}
+		\item $\pi\circ f:A\to C$は零射である．
+		\item 任意の$C'\in\mathscr{A}$と，$\pi':B\to C'$であって$\pi'\circ f$が零射であるものについて，$u:C\to C'$であって$\pi'=u\circ\pi$であるものが一意的に存在する．
+	\end{defiterm}
+	を満たすとき，$(C,\pi)$を$f$の\textbf{余核(cokernel)}といい，$C=\coker f$とかく．
+\end{defi}
+
+\begin{minipage}{.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		&A\arrow[rd,"f"]\\
+		&\ker f\arrow[u,"\iota"]\nxcell[0]B\\
+		K'\arrow[uur,"\iota'",bend left]\arrow[ur,"u",dashed]\arrow[rru,"0",bend right]
+		\end{tikzcd}
+		\caption{核の普遍性}
+	\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{.45\textwidth}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		&&C'\\
+		A\arrow[urr,"0",bend left]\arrow[rd,"f"]\nxcell[0]\coker f\arrow[ur,dashed,"u"]\\
+		&B\arrow[u,"\pi"]\arrow[uur,"\pi'",bend right]
+		\end{tikzcd}
+		\caption{余積の普遍性}
+	\end{figure}
+\end{minipage}
+
+一般の圏では存在するかどうかはわからないが，普遍性からもし存在すれば（同型を除いて）一意的である．直感的には自明だが，圏論においてはそれほど明らかでない命題群を証明しておく．以下，核，余核について明示しない限りは「もし存在すれば」という言明を省略する．
+
+\begin{prop}\label{prop:核はモノ}
+	$\mathscr{A}$を零対象$0$を持つ圏とする．$\iota:\ker f\to A$はモノ射，$\pi:B\to\coker f$はエピ射である．
+\end{prop}
+
+\begin{proof}
+	$\iota$についてのみ示す．任意の$C\in\mathscr{A}$と$g_1,g_2:C\to\ker f$について$\iota\circ g_1=\iota\circ g_2$と仮定する．これを$\iota':C\to A$とおくと，$f\circ\iota'=0$なので普遍性から$u:C\to\ker f$が一意的に存在して$\iota'=\iota\circ u$である．いま$g_1,g_2$はどちらも$u$の条件を満たしているから，一意性より$g_1=g_2=u$である．
+\end{proof}
+
+\begin{prop}\label{prop:0射の核と余核}
+	$\mathscr{A}$を零対象$0$を持つ圏とする．零射$0:A\to B$の核，余核は存在して，それぞれ$A,B$である．
+\end{prop}
+
+\begin{proof}
+	$(A,\id)$が核としての普遍性を満たす．実際$0\circ\id=0$であり，また任意の$K\in\mathscr{A}$と$\varphi:K\to A$について$0\circ\varphi=0$であり，$u$として$\varphi$をとればよい．余核も同様．
+\end{proof}
+
+\begin{prop}\label{prop:モノ射の核は0}
+	$\mathscr{A}$を零対象$0$を持つ圏とする．$f:A\to B$がモノ射であるならば$\ker f=0$であり，また$f$がエピ射ならば$\coker f=0$である．	
+\end{prop}
+
+\begin{proof}
+	$f$がモノ射のときのみ示す．自然な$\iota:\ker f\to A$について，$0=f\circ\iota=f\circ0$より$\iota=0$である．$\iota$はモノ射だから，問題は$0:A\to B$がモノ射ならば$A=0$であることに帰着するが，これは$0=0\circ\id_A=0\circ0$より$\id_A=0$となるので$A=0$となり正しい．
+\end{proof}
+
+\begin{defi}[射の像と余像]
+	圏$\mathscr{A}$を零対象$0$を持つ圏とする．射$f:A\to B$が余核を持つとき，さらに$\pi:B\to\coker f$の核が存在すれば，それを$\im f$とかいて$f$の\textbf{像(image)}という．また$f$が核を持つとき，さらに$\iota:\ker f\to A$の余核が存在すれば，それを$\coim f$とかいて$f$の\textbf{余像(coimage)}という．
+\end{defi}
+
+\begin{prop}\label{prop:coim to im}
+	圏$\mathscr{A}$を零対象$0$を持つ圏とする．$f:A\to B$について核，余核，像，余像がすべて存在するとき，射$h:\coim f\to\im f$が一意的に存在する．
+\end{prop}
+
+\begin{proof}
+	$\im f=\ker\pi$だから，自然な$\varphi:\im f\to B$がある．このとき，普遍性から$f=\varphi\circ u$となるような$u:A\to\im f$が存在する．また$0=f\circ\iota=(\varphi\circ u)\circ\iota$であり，\ref{prop:核はモノ}より$\varphi$がモノ射なので$u\circ\iota=0$である．すると，$\coim f=\coker\iota$の普遍性から$h:\coim f\to\im f$が一意的に存在することがわかる．
+\end{proof}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+		\ker f\arrow[rd,"0"]\nxcell[\iota] A\arrow[d]\arrow[rd,dashed,"u"]\nxcell[f] B\nxcell[\pi]\coker f\\
+		&\coim f\arrow[r,dashed,"h"]\arrow[d,equal]&\im f\arrow[u,"\varphi"]\arrow[ur,"0"]\arrow[d,equal]\\[-1em]
+		&\coker\iota&\ker\pi
+	\end{tikzcd}
+	\caption{}
+\end{figure}
+
+$\textbf{Mod}(A)$などでは$\coim f=\coker\iota=X/\im\iota=X/\ker f$であること（準同型定理）を考えると，$\coim f\cong\im f$を要請したくなるのは自然だろう．この発想を定式化したものが\textbf{Abel圏}(Ablelian group)である．
+
+\begin{defi}[Abel圏]\index{#abelけん@Abel圏}
+	圏$\mathscr{A}$が次の条件；
+	\begin{defiterm}{AC}
+		\item $\mathscr{A}$は零対象0を持つ．
+		\item 任意の$A,B\in\mathscr{A}$に対し，$\hom_{\mathscr{A}}(A,B)$はAbel群としての自然な構造を持つ．すなわち，任意の$C\in\mathscr{A}$と，$f_1,f_2\in\hom(A,B),g\in\hom(C,A),h\in\hom(B,C)$に対して；
+		\[(f_1+f_2)\circ g=f_1\circ g+f_2\circ g, h\circ(f_1+f_2)=h\circ f_1+h\circ f_2\]
+		が成り立つ．
+		\item 任意の$A,B\in\mathscr{A}$に対し，積$A\times B$，直和$A\oplus B$が存在する．
+		\item 任意の$A,B\in\mathscr{A}$と任意の$f\in\hom(A,B)$について，核$\ker f$と余核$\coker f$が存在する．
+		\item \ref{prop:coim to im}において構成された射によって$\coim f$と$\im f$は同型である（準同型定理）．
+	\end{defiterm}
+	を満たすとき，$\mathscr{A}$を\textbf{Abel圏(Abelian Category)}であるという．
+\end{defi}
+
+Abel圏の例としては，Abel群の圏$\mathbf{Ab}$， $A$加群の圏$\mathbf{Mod}(A)$などの他に代数幾何学で重要な役割を果たす，スキーム$(X,\oka_X)$上の$\oka_X$加群の層の圏などがある．群の圏や環の圏はそうではないことに注意せよ．
+
+Abel圏ではモノ射，エピ射の概念が従来の単射，全射と一致することがわかる．
+
+\begin{lem}
+	$\mathscr{A}$をAbel圏とする．$f:A\to B$がモノ射ならば$A$は$B\to\coker f$の核であり，$f$がエピ射ならば$B$は$\ker f\to B$の余核である．
+\end{lem}
+
+\begin{proof}
+	$f$がモノ射のときにのみ示す．\ref{prop:モノ射の核は0}より$\ker f=0$であり，\ref{prop:0射の核と余核}から$\coim f=A$である．よって$\coim f\cong\im f=\coker\pi$である．
+\end{proof}
+
+\begin{prop}
+	$\mathscr{A}$をAbel圏とする．$f:A\to B$がモノ射かつエピ射ならば$f$は同型射である．
+\end{prop}
+
+\begin{proof}
+	上の補題より$\coim f=A,\im f=B$がわかる．よって同型射$h:A\cong B$が存在し，$f=\id\circ h\circ \id=h$なので$f$も同型射である．
+\end{proof}
+
+Abel圏においては，射の列の完全性を考えることができる．これが環準同型と線型写像の違いになっていて，加群のなす圏を考える大きなご利益の１つである．
+
+\begin{defi}[完全列]
+	$\mathscr{A}$をAbel圏とする．$A,B,C\in\mathscr{A}$と$f:A\to B, g:B\to C$について$\im f\cong\ker g$であるとき；
+	\[\begin{tikzcd}
+		A\nxcell[f]B\nxcell[g]C
+	\end{tikzcd}\]
+	は\textbf{完全列(exact sequence)}であるという．
+\end{defi}
+
+\section{関手}
+
+この節では，圏と圏の間の関係を記述する道具として，\textbf{関手}について簡単に説明しよう．
+
+\begin{defi}[関手]\index{かんしゅ@関手}\index{きょうへんかんしゅ@共変関手}
+	$\mathscr{A},\mathscr{B}$を圏とする．写像；
+	\[F:\operatorname{ob}(\mathscr{A})\to\operatorname{ob}(\mathscr{B});A\mapsto F(A)\]
+	と，任意の$A,B\in\mathscr{A}$ついて，写像；
+	\[F_{A,B}:\hom(A,B)\to\hom(F(A),F(B));f\mapsto F_{A,B}(f)\]
+	が存在して，次の条件；
+	\begin{sakura}
+		\item 任意の$A\in\mathscr{A}$について$F_{A,A}(\id_A)=\id_{F(A)}$である．
+		\item 任意の$f\in\hom(A,B),g\in\hom(B,C)$に対して$F_{A,C}(g\circ f)=F_{B,C}(g)\circ F_{A,B}(g)$が成り立つ．
+	\end{sakura}
+	を満たすとき，組$(F,\{F_{A,B}\}_{A,B\in\mathscr{A}})$を$\mathscr{A}$から$\mathscr{B}$への\textbf{関手(functor)}，特に\textbf{共変関手(covariant functor)}といい$F:\mathscr{A}\to\mathscr{B}$で表す．特に誤解の恐れのない場合には$F_{A,B}$も単に$F$とかく．
+\end{defi}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\draw[rounded corners=1ex](-5,0) rectangle (-1,4);
+	\draw(-4,4) node[fill=white]{$\mathscr{A}$};
+	\draw (-3,2) node {
+		\begin{tikzcd}
+		&B\arrow[dr,"g"]\\		
+		A\arrow[rr,"g\circ f"]\arrow[ru,"f"]&&C
+		\end{tikzcd}
+	};
+	\draw[arrows={->},thick] (-.5,2) -- (.5,2) node[above,pos=.5]{$F$};
+	\draw[rounded corners=1ex](1,0) rectangle (7,4);
+	\draw(2,4) node[fill=white]{$\mathscr{B}$};
+	\draw (4,2) node {
+		\begin{tikzcd}
+		&F(B)\arrow[dr,"F(g)"]\\
+		F(A)\arrow[rr,"F(g)\circ F(f)"]\arrow[ru,"F(f)"]&&F(C)		
+		\end{tikzcd}
+	};
+	\end{tikzpicture}
+	\caption{}
+\end{figure}
+例えば，$A$加群の圏$\mathbf{Mod}(A)$において，テンソル積$-\otimes M$は$\mathbf{Mod}(A)$から$\mathbf{Mod}(A)$への関手になる．$\hom$関手とよばれる$\hom(M,-)$や局所化$S^{-1}-$ももちろん関手で，このように抽象的な「操作」自体を数学的対応として定式化できることが圏論が必要とされる理由の一端である．
+
+では$\hom(-,M)$はどうなのかというと，これは$f:M_1\to M_2$に対して（関手の定義からは$\hom(f,M)$と書くべきところを$f^\ast$（\ref{prop:homは半完全}のあたりを参照のこと）と書くことによって）$f^\ast:\hom(M_2,M)\to\hom(M_1,M)$を返すため，これは関手の条件を満たさない．しかし\textbf{双対圏}というものを考えることで関手とみなすことができるようになる（簡単に言うと射の向きを逆にした圏である）．
+
+\begin{defi}[双対圏]\index{そうついけん@双対圏}
+	圏$\mathscr{A}$について，圏$\opcat{A}$を；
+	\[\operatorname{ob}(\opcat{A})=\operatorname{ob}(\mathscr{A}),\quad\hom_{\opcat{A}}(A,B)=\hom_{\mathscr{A}}(B,A)\]
+	と定める．これを$\mathscr{A}$の\textbf{双対圏(dual category)}という．
+\end{defi}
+
+\begin{defi}[反変関手]\index{はんへんかんしゅ@反変関手}
+	圏$\mathscr{A},\mathscr{B}$について，関手$\opcat{A}\to\mathscr{B}$を$\mathscr{A}$から$\mathscr{B}$への\textbf{反変関手(contravariant functor)}という．
+\end{defi}
+
+反変関手についても$F:\mathscr{A}\to\mathscr{B}$と書くことがあるが，その場合は反変であることを必ず注意する．例えば$\hom(-,M)$は$\mathbf{Mod}(A)$から$\mathbf{Mod}(A)$への反変関手であると表現する．
+
+次に，いわゆる関手の間の射，\textbf{自然変換}を説明する．
+\begin{defi}[自然変換]\index{しぜんへんかん@自然変換}
+	$\mathscr{A},\mathscr{B}$を圏とする．関手$F,G:\mathscr{A}\to\mathscr{B}$に対して，射の族$\{\theta_A:F(A)\to G(A)\}_{A\in\mathscr{A}}が存在して，$任意の$\mathscr{A}$の射$f:A\to B$について以下の図式（Figure.\ref{fig:自然変換}）を可換にするとき，$\theta:F\Rightarrow G$とかいて，$\theta$を関手$F$から$G$への\textbf{自然変換(natural transformation)}という．
+\end{defi}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+	\draw[rounded corners=1ex](-5,0) rectangle (-1,4);
+	\draw(-4,4) node[fill=white]{$\mathscr{A}$};
+	\draw (-3,2) node {
+		\begin{tikzcd}
+		A\nxcell[f] B
+		\end{tikzcd}
+	};
+	\draw[arrows={->},thick] (-.5,2.5) -- (.5,2.5) node[above,pos=.5]{$F$};
+	\draw[arrows={->},thick] (-.5,1.5) -- (.5,1.5) node[below,pos=.5]{$G$};
+	\draw[-implies,double equal sign distance]  (0,2.375) -- (0,1.625) node[right,pos=.5]{$\theta$};
+	\draw[rounded corners=1ex](1,0) rectangle (7,4);
+	\draw(2,4) node[fill=white]{$\mathscr{B}$};
+	\draw (4,2) node {
+		\begin{tikzcd}
+		F(A)\darrow[\theta_A]\nxcell[F(f)]F(B)\darrow[\theta_B]\\
+		G(A)\nxcell[G(f)]G(B)	
+		\end{tikzcd}
+	};
+	\end{tikzpicture}
+	\caption{自然変換}\label{fig:自然変換}
+\end{figure}
+
+関手$F$から$G$への自然変換の全体を$\Nat(F,G)=\mkset{\theta:F\Rightarrow G}{\theta:\text{自然変換}}$で表す．２つの自然変換$\theta:F\Rightarrow G,\sigma:G\Rightarrow H$があったとき，各$A\in\mathscr{A}$について$\sigma\circ\theta(A)=\sigma(A)\circ\theta(A)$とすれば，これは自然変換$F\Rightarrow H$になることが確かめられる．これを$\theta,\sigma$の\index{すいちょくごうせい@垂直合成}\textbf{垂直合成(vertical composition)}という．またすべての$A\in\mathscr{A}$に対して$\theta(A)$が$F(A)$から$G(A)$への同型射であるとき，$\theta$を\index{しぜんどうけい@自然同型}\textbf{自然同型(naturally isomorphism)}という．これらを用いることで圏から圏を作る方法の１つである，\textbf{関手圏}を考えることができる．
+
+\begin{defi}[関手圏]\index{かんしゅけん@関手圏}
+	$\mathscr{A},\mathscr{B}$を圏とする．圏$\Func(\mathscr{A},\mathscr{B})$を；
+	\[\ob(\Func(\mathscr{A},\mathscr{B}))=\mkset{F:\mathscr{A}\to\mathscr{B}}{F:\text{関手}}\]
+	\[\hom(F,G)=\mkset{\theta:F\Rightarrow G}{\theta:\text{自然変換}}=\Nat(F,G)\]
+	と定める．これを$\mathscr{A},\mathscr{B}$の間の\textbf{関手圏(functor category)}という．
+\end{defi}
+
+この圏において，$\Func(\mathscr{A},\mathscr{B})$はもはや$\mathbf{Set}$の元でないかもしれないことを注意しておこう（本稿では宇宙公理を課しているので集合ではある）．
+
+次に圏の間の同型を考えてみよう．
+\begin{defi}[圏同型]\index{けんどうけい@圏同型}
+	圏$\mathscr{A},\mathscr{B}$に対して，関手$F:\mathscr{A}\to\mathscr{B}, G:\mathscr{B}\to\mathscr{A}$であって$G\circ F=\id_{\mathscr{A}},F\circ G=\id_{\mathscr{B}}$となるものが存在するとき，$\mathscr{A}$と$\mathscr{B}$は\textbf{圏同型(isomorphism of categories)}であるという．
+\end{defi}
+
+この条件は圏論においては強すぎる．というのも，例えば加群論においては同型程度の違いを無視（同一視）することが多いが，圏同型の定義では$G\circ F$が$\id$であることを要請する，すなわち$A\in\mathscr{A}$について$G\circ F(A)=A$であることを要求する．実際の関手の計算においてはここまで強い条件を考える必要はなく，つぎの\textbf{圏同値}が有用である．
+
+\begin{defi}[圏同値]\index{けんどうち@圏同値}\index{そうついどうち@双対同値}
+	圏$\mathscr{A},\mathscr{B}$に対して，関手$F:\mathscr{A}\to\mathscr{B}, G:\mathscr{B}\to\mathscr{A}$であって$G\circ F\cong\id_{\mathscr{A}},F\circ G\cong\id_{\mathscr{B}}$となるものが存在するとき，$\mathscr{A}$と$\mathscr{B}$は\textbf{圏同値(equivalence of categories)}であるという．
+\end{defi}
+
+この定義における$G\circ F\cong\id$とは，これらの関手が自然同型という意味である．$\opcat{A}$と$\mathscr{B}$が圏同値なとき$\mathscr{A}$と$\mathscr{B}$は\textbf{反変同値，双対同値(dual equivalance)}であるという．\index{はんへんどうち@反変同値}
+
+Abel圏の条件において，$\hom$がAbel群になっているという条件をいまだ使っていなかった．
+\begin{defi}[加法的関手]\index{かほうてきかんしゅ@加法的関手}
+	$\mathscr{A}, \mathscr{B}$をAbel圏とし，関手$F:\mathscr{A}\to\mathscr{B}$について；
+	\[F(f+g)=F(f)+F(g)\]
+	を満たすとき，$F$を\textbf{加法的(additive)}関手という．
+\end{defi}
+
+加法的関手なら$F(0)=0$であることに注意しよう．この節の最後に何度も取り上げてきた\textbf{完全関手}について述べる．
+
+\begin{defi}[完全関手]\index{かんぜんかんしゅ@完全関手}
+	$\mathscr{A},\mathscr{B}$をAbel圏とする．加法的関手$F:\mathscr{A}\to\mathscr{B}$と，$\mathscr{A}$の対象からなる短完全列；
+	\[\begin{tikzcd}
+	0\nxcell A\nxcell B\nxcell C\nxcell 0
+	\end{tikzcd}\]
+	を考える．ここで，$F(A)\to F(B)\to F(C)$が完全であるとき$F$を\textbf{半完全(half-exact)}であるといい，$0\to F(A)\to F(B)\to F(C)\to 0$が完全であるとき\textbf{完全(exact)}であるという．$G$が加法的反変関手であるときは，$0\to G(C)\to G(B)\to G(A)\to0$が完全であるとき$G$は\textbf{（反変）完全}であるという．
+\end{defi}
+
+完全列；
+\[\begin{tikzcd}
+0\nxcell A\nxcell B\nxcell C 
+\end{tikzcd}\]
+
+について，それぞれ；
+
+\[\begin{tikzcd}
+0\nxcell F(A)\nxcell F(B)\nxcell F(C)
+\end{tikzcd}\]
+\[\begin{tikzcd}
+0\nxcell G(C)\nxcell G(B)\nxcell G(A)
+\end{tikzcd}\]
+
+が完全であるとき，$F$を\textbf{左完全(left-exact)}，$G$を\textbf{反変左完全(contravariant left-exact)}であるという．また；
+
+\[\begin{tikzcd}
+A\nxcell B\nxcell C\nxcell0
+\end{tikzcd}\]
+
+に対して；
+
+\[\begin{tikzcd}
+F(A)\nxcell F(B)\nxcell F(C)\nxcell0
+\end{tikzcd}\]
+\[\begin{tikzcd}
+G(C)\nxcell G(B)\nxcell G(A)\nxcell 0
+\end{tikzcd}\]
+
+が完全であるとき，$F$を\textbf{右完全(right-exact)}，$G$を\textbf{反変右完全(contravariant right-exact)}であるという．
+
+簡単な計算によって，完全関手は核，余核，像を保つことがわかる．
+\begin{prop}\label{prop:完全関手は核，像を保つ}
+	$\mathscr{A},\mathscr{B}$をAbel圏とし，$F:\mathscr{A}\to\mathscr{B}$を完全関手とする．$M,N\in\mathscr{A},f:M\to N$に対して，$F(\ker f)=\ker F(f),F(\coker f)=\coker F(f),F(\im)=\im F(f)$が成り立つ． 
+\end{prop}
+
+\begin{proof}
+	完全列；
+	\[\begin{tikzcd}
+	0\nxcell\ker f\nxcell M\nxcell[f] N\nxcell\coker f\nxcell0
+	\end{tikzcd}\]
+	に対して$F$を施して；
+	\[\begin{tikzcd}
+	0\nxcell F(\ker f)\nxcell F(M)\nxcell[F(f)]F(N)\nxcell F(\coker f)\nxcell0
+	\end{tikzcd}\]
+	が完全だから$F(\ker f)=\ker F(f),F(\coker f)=\coker F(f)$であり，$\im f$は$N\to\coker f$の核だから$F(\im)=\im F(f)$も成り立っている．
+\end{proof}
+
+\section{射影極限，帰納極限}
+
+完備化の文脈で極限を考察する必要があることから，この節では極限についてまとめておく．またこの節の知識は第４章に入るまでは必要としない．完備化の文脈で必要となったとき，改めて参照されるとよいと思う．もし代数幾何学も勉強されているなら，層のstalk（茎）を考える際に扱うことになる．
+
+\begin{defi}[前順序，Poset]\index{ぜんじゅんじょ@前順序}\index{#Poset@Poset}\index{はんじゅんじょ@半順序}
+	集合$X$とその上の関係$\leq$に対し，反射律と推移律を満たすとき$\leq$を\textbf{前順序(preorder)}といい，$(X,\leq)$を\textbf{前順序集合(preordered set)}という．前順序$\leq$が更に半対称であるとき，$(X,\leq)$を\textbf{半順序集合(partially ordered set)}，略して\textbf{Poset}という．
+\end{defi}
+
+%\begin{defi}[有向集合]\index{ゆうこうしゅうごう@有向集合}
+%	$I$を前順序集合とする．任意の有限部分集合$I'\subset I$が上界を持つとき，$I$を\textbf{有向集合(directed set)}またはフィルター付き集合(filterd set)という．
+%\end{defi}
+
+これを用いて，一般の圏における\textbf{射影系，帰納系}を定義しよう．
+
+\begin{defi}[射影系]\index{しゃえいけい@射影系}\index{ぎゃくけい@逆系}
+	$\mathscr{A}$を圏とし，$I$をPoset とする．各$i\in I$について$A_i\in\mathscr{A}$が存在し，また$i\leq j$となる$i,j\in I$に対して射$\varphi_{ji}:A_j\to A_i$が存在して，次の条件；
+	\begin{defiterm}{PS}
+		\item 任意の$i\in I$に対し$\varphi_{ii}=\id_{A_i}$である．
+		\item $i,j,k\in I$が$i\leq j\leq k$を満たすなら，$\varphi_{ki}=\varphi_{ji}\circ\varphi_{kj}$である．
+	\end{defiterm}
+	を満たすとき，組$(A_i,\varphi_{ji})_{i,j\in I}$を$I$上の\textbf{射影系(projective system)}または\textbf{逆系(inverse system)}といい，誤解のおそれがなければ$(A_i)$と略記する．
+\end{defi}
+
+射影系の射の向きを逆にしたもの（双対圏における射影系）を\textbf{帰納系}という．
+\begin{defi}[帰納系]\index{きのうけい@帰納系}\index{じゅんけい@順系}
+	$\mathscr{A}$を圏とし，$I$をPoset とする．各$i\in I$について$A^i\in\mathscr{A}$が存在し，また$i\leq j$となる$i,j\in I$に対して射$\varphi^{ij}:A^i\to A^j$が存在して，次の条件；
+	\begin{defiterm}{IS}
+		\item 任意の$i\in I$に対し$\varphi^{ii}=\id_{A_i}$である．
+		\item $i,j,k\in I$が$i\leq j\leq k$を満たすなら，$\varphi^{ik}=\varphi^{jk}\circ\varphi^{ij}$である．
+	\end{defiterm}
+	を満たすとき，組$(A^i,\varphi^{ij})_{i,j\in I}$を$I$上の\textbf{帰納系(inductive system)}または\textbf{順系(direct system)}といい，$(A^i)$と略す．
+\end{defi}
+
+\begin{minipage}{.4\hsize}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		A_i&&A_k\arrow[ll,"\varphi_{ki}"]\arrow[ld,"\varphi_{kj}"]\\
+		&A_j\arrow[ul,"\varphi_{ji}"]
+		\end{tikzcd}
+		\caption{射影系}
+	\end{figure}
+\end{minipage}
+\hspace{\fill}
+\begin{minipage}{.4\hsize}
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		A^i\arrow[rr,"\varphi^{ik}"]\arrow[dr,"\varphi^{ij}"]&&A^k\\
+		&A^j\arrow[ur,"\varphi^{jk}"]
+		\end{tikzcd}
+		\caption{帰納系}
+	\end{figure}
+\end{minipage}
+
+イメージとして，$\mathscr{A}$において，$(A_i),(A^i)$が$\N$をPoset とする射影系，帰納系をなしているとしよう．このとき；
+\[\begin{tikzcd}
+\cdots\nxcell A_2\nxcell A_1\nxcell A_0,\quad A^0\nxcell A^1\nxcell A^2\nxcell\cdots
+\end{tikzcd}\]
+のような列を考えることができる．この列において「左にずっと行ったところ」と「右にずっと行ったところ」が射影極限と帰納極限である．それぞれ定義のあとの図もみよ．
+
+\begin{defi}[射影極限]\index{しゃえいきょくげん@射影極限}\index{ぎゃくきょくげん@逆極限}
+	$(A_i)$を圏$\mathscr{A}$における射影系とする．$A$及び射の族$\varphi_i:A\to A_i$の組$(A,\varphi_i)$で，次の条件；
+	\begin{defiterm}{PL}
+		\item $i\leq j$に対し$\varphi_{ji}\circ\varphi_j=\varphi_i$.
+		\item 任意の集合$B$と，任意の射の族$f_i:B\to A_i$で$i\leq j$に対し$\varphi_{ji}\circ f_i=f_j$となるものに対して，射$f:B\to A$で$f_i=\varphi_i\circ f$となるものが一意的に存在する．
+	\end{defiterm}
+	を満たすものを\textbf{射影極限(projective limit)}または\textbf{逆極限(inverse limit)}といい，$A:=\plim[i\in I] A_i$とかく．
+\end{defi}
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+	\plim A_i\nxcell\cdots\nxcell A_j\nxcell[\varphi_{ji}]A_i\nxcell\cdots\\
+	B\arrow[u,dashed,"f"]\arrow[urr,"f_j",bend right=0]\arrow[urrr,"f_i",bend right=10,swap]
+	\end{tikzcd}
+	\caption{射影極限}
+\end{figure}
+
+\begin{defi}[帰納極限]\index{きのうきょくげん@帰納極限}\index{じゅんきょくげん@順極限}
+	$(A^i)$を圏$\mathscr{A}$における帰納系とする．$A\in\mathscr{A}$及び射の族$\varphi^i:A\to A^i$の組$(A,\varphi^i)$で，次の条件；
+	\begin{defiterm}{IL}
+		\item $i\leq j$に対し$\varphi^j\circ \varphi^{ij}=\varphi^i$.
+		\item 任意の集合$B$と，任意の射の族$f^i:A^i\to B$で$i\leq j$に対し$f^j\circ\varphi^{ij}=f^i$となるものに対して，射$f:A\to B$で$f^i=f\circ\varphi^i$となるものが一意的に存在する．
+	\end{defiterm}
+	を満たすものを\textbf{帰納極限(inductive limit)}または\textbf{順極限(direct limit)}といい，$\ilim[i\in I]A^i$とかく．
+\end{defi}
+\begin{figure}[H]
+	\centering
+	\begin{tikzcd}
+	\cdots\nxcell A^i\arrow[drrr,"f^i",bend right=10,swap]\nxcell[\varphi^{ij}]A^j\arrow[drr,"f^j"]\nxcell\cdots\nxcell\ilim A^i\arrow[d,dashed,"f"]\\
+	&&&&B
+	\end{tikzcd}
+	\caption{帰納極限}
+\end{figure}
+
+普遍性からの標準的な結果によって，射影極限や帰納極限は同型を除いて一意的である．加群の圏$\mathbf{Mod}(A)$において必ず極限が存在することを示そう．
 
 \begin{thm}
-	$b,c\in\R$を$b>0,c>0$とする．$\R[X,Y]/(X^2+bY^2+c)$はPIDであるがEDではない．
+	加群の圏$\mathbf{Mod}(A)$において，必ず射影極限が存在する．
+\end{thm}
+\begin{proof}
+	$(M_i)$を射影系とする．直積$\prod M_i$の部分加群；
+	\[M=\mkset{(x_i)\in\prod M_i}{\text{任意の}i\leq j\text{について} x_j=\varphi_{ji}(x_i)}\]
+	を考える．$\varphi_i$を自然な射影$M\to M_i$と定めることで，$(M,\varphi_i)$は射影極限の普遍性を満たす．
+\end{proof}
+
+\begin{thm}
+	加群の圏$\mathbf{Mod}(A)$において，必ず帰納極限が存在する．
+\end{thm}
+\begin{proof}
+	$(M^i)$を帰納系とする．直和$M'=\bigoplus M^i$を考え，自然な単射を$\iota^i:M^i\to M'$とする．$M'$の部分集合；
+	\[S=\mkset{\iota^j(f^{ij}(x^i))-\iota^i(x^i)}{i<j,x^i\in M^i}\]
+	が生成する$M'$の部分加群を$N$とする．このとき$M=M'/N$について自然な準同型$\pi:M'\to M$に対して$\varphi^i=\pi\circ\iota^i:M^i\to M$と定義することで$(M,\varphi^i)$は帰納極限の普遍性を満たす．
+\end{proof}
+
+\begin{defi}[射影系，帰納系の射]
+	$I$をPoset とし，$(A_i),(B_i)$を圏$\mathscr{A}$における$I$上の帰納系とする．このとき$f_i:A_i\to B_i$なる$\mathscr{A}$の射の族$(f_i)$で，任意の$i\leq j$についてFigure.\ref{fig:射影系の射}が可換であるものを$(A_i)$から$(B_i)$への\textbf{射影系の射}という．帰納系の射についてはFigure.\ref{fig:帰納系の射}が可換であるものをいう．
+\end{defi}
+
+\begin{minipage}{.45\hsize}
+	\begin{figure}[H]
+	\centering
+	\begin{tikzcd}[row sep=huge, column sep=huge]
+	A_j\arrow[r,"\varphi^{ji}"]\arrow[d,"f_j"]&A_i\arrow[d,"f_i"]\\
+	B_j\arrow[r,"\psi^{ji}"]&B_i
+	\end{tikzcd}
+	\caption{射影系の射}\label{fig:射影系の射}
+\end{figure}
+\end{minipage}
+\hspace{\fill}
+\begin{minipage}{.45\hsize}
+	\begin{figure}[H]
+	\centering
+	\begin{tikzcd}[row sep=huge, column sep=huge]
+	A^i\arrow[r,"\varphi^{ij}"]\arrow[d,"f^i"]&A^j\arrow[d,"f^j"]\\
+	B^i\arrow[r,"\psi^{ij}"]&B^j
+	\end{tikzcd}
+	\caption{帰納系の射}\label{fig:帰納系の射}
+\end{figure}
+\end{minipage}
+
+これによりPoset を固定したとき，$\mathscr{A}$の射影系全体，帰納系全体は圏をなす．Abel圏$\mathscr{A}$において，射影系，帰納系の圏はまたAbel圏になることを注意しておこう．とはいえ，ここでは$\mathbf{Mod}(A)$でしか極限が存在することを示していないので，以後$\mathbf{Mod}(A)$上の帰納系，射影系のみを考えることにする．
+
+Abel圏の定義から射影系，帰納系の完全列を考えることができるが，具体的に次のように定義することもできる（核，余核を一般的に考えた場合の定義と一致することを確かめよ）．
+
+\begin{defi}
+	$\mathbf{Mod}(A)$における，Poset $I$上の射影系$(X_i),(Y_i),(Z_i)$に対し，射$(f_i):(X_i)\to(Y_i),(g_i):(Y_i)\to(Z_i)$が各$i$について系列；
+	\[\begin{tikzcd}
+	0\arrow[r]&X_i\arrow[r,"f_i"]&Y_i\arrow[r,"g_i"]&Z_i\arrow[r]&0
+	\end{tikzcd}\]
+	を完全にするとき；
+	\[\begin{tikzcd}
+	0\arrow[r]&(X_i)\arrow[r,"(f_i)"]&(Y_i)\arrow[r,"(g_i)"]&(Z_i)\arrow[r]&0
+	\end{tikzcd}\]
+	を射影系の完全列であるという．帰納系の完全列についても同様に定める．
+\end{defi}
+
+加群の射影（帰納）系の列に対して，極限をとることで自然な列が誘導される．すなわち，射影系の射$(f_i):(X_i)\to (Y_i)$について$f:\plim X_i\to\plim Y_i;(x_i)\mapsto(f_i(x_i))$と定めると，これは線形写像になる．帰納極限についても同様．よって極限をとることは関手になる．特に帰納極限は完全関手となるが，射影極限についてはそうとは限らないことが大切である．
+
+\begin{prop}
+	$\mathbf{Mod}(A)$における，Poset $I$上の帰納系の圏において，帰納極限は完全関手である．すなわち帰納系$(X^i,\varphi^{ij}),(Y^i,\psi^{ij}),(Z^i,\omega^{ij})$について；
+	\[\begin{tikzcd}
+	0\arrow[r]&(X^i)\arrow[r,"(f^i)"]&(Y^i)\arrow[r,"(g^i)"]&(Z^i)\arrow[r]&0
+	\end{tikzcd}\]
+	が完全であるとき；
+	\[\begin{tikzcd}
+	0\arrow[r]&\ilim X^i\arrow[r,"f"]&\ilim Y^i\arrow[r,"g"]&\ilim Z^i\arrow[r]&0
+	\end{tikzcd}\]
+	は完全である．
+\end{prop}
+\begin{proof}
+	\begin{step}
+		\item $f$の単射性．
+		
+		任意の$x\in \ilim X^i$をとり，$f(x)=0$と仮定する．$x=\varphi^i(x^i)$となる$x^i$をとると$f(x)=f^i(x^i)=0$であるので，$f^i$は単射だから$x^i=0$である．よって$x$は$0$で代表されるから$x=0$となる．
+		
+		\item $\im f=\ker g$であること．	
+		
+		任意の$y\in\ker g$をとる．$y=\psi^i(y^i)$となる$y^i$をとると，$g(y)=(\omega^i\circ g^i)(y^i)=0$である．よって帰納極限の構成からある$i\leq j$がとれて$\omega^{ij}(g^i(y^i))=0$となる．ここで$\omega^{ij}\circ g^i=g^j\circ\psi^{ij}$であるので$\psi^{ij}(y^i)\in\ker g^j=\im f^j$である．よってある$x^j\in A^j$がとれて$f^j(x^j)=\psi^{ij}(y^i)$となる．ゆえに$f(\varphi^{j}(x^j))=(\psi^j\circ\psi^{ij})(y^i)=\psi^i(y^i)=y$となり$y\in\im f$である．
+			\begin{figure}[H]
+				\centering
+				\begin{tikzcd}[row sep=huge, column sep=huge]
+				A^j\arrow[d,"\varphi^j"]\arrow[r,"f^j"]&B^j\arrow[d,"\psi^j"]&Y^i\arrow[l,"\psi^{ij}"]\arrow[ld,"\psi^i"]\\
+				\ilim X^i\arrow[r,"f"]&\ilim Y^i
+				\end{tikzcd}
+			\end{figure}
+		
+		次に任意の$y\in\im f$をとる．すなわち，ある$x\in\ilim X^i$がとれて$f(x)=y$である．ここで$x=\varphi^i(x^i)$となる$x^i\in X^i$をとる．すると$\psi^i(f(x^i))=y$となる．よって$g(y)=(\omega^i\circ g^i)(f(x^i))=\omega(0)=0$となるので$y\in\ker g$である．
+		\item $g$の全射性．
+		
+		任意の$z\in\ilim Z^i$をとる．$\omega^i(z^i)=z$となる$z^i\in Z^i$をとると，$g^i$は全射なのである$y^i$がとれて$g(y^i)=z^i$である．ここで$y=\psi^i(y^i)$とおくと$g(y)=(\omega^i\circ g^i)(y^i)=\omega^i(z^i)=z$となる．
+	\end{step}
+\end{proof}
+
+射影極限については一般に全射性は保存されない．
+\begin{prop}
+	$\mathbf{Mod}(A)$における，Poset $I$上の射影系の圏において，射影極限は左完全関手である．すなわち，射影系$(X_i,\varphi_{ij}),(Y_i,\psi_{ij}),(Z_i,\omega_{ij})$の完全列；
+	\[\ses[(f_i)][(g_i)]{(X_i)}{(Y_i)}{(Z_i)}\]
+	に対して；
+	\[\begin{tikzcd}
+	0\nxcell \plim X_i\nxcell[f]\plim Y_i\nxcell[g]\plim Z_i
+	\end{tikzcd}\]
+	は完全である．
+\end{prop}
+
+\begin{proof}
+	帰納極限と同様に構成から左完全であることは明らか（本質的に図式追跡）である．
+\end{proof}
+
+射影極限が完全となるための条件を１つ与えよう．
+\begin{defi}[全射的な系]
+	$\mathbf{Mod}(A)$における，Poset $I$上の射影系$(X_i,\varphi_{ij})$について，各$i$について$\varphi_{i+1,i}$が全射であるとき$(X_i)$を\textbf{全射的な系(surjective system)}であるという．
+\end{defi}
+
+\begin{thm}\label{thm:最初がsurjectiveなら射影極限は完全}
+	$\mathbf{Mod}(A)$における，Poset $I$上の射影系の完全列；
+	\[\ses[(f_i)][(g_i)]{(X_i)}{(Y_i)}{(Z_i)}\]
+	において，$(X_i)$が全射的ならば；
+	\[\ses[f][g]{\plim X_i}{\plim Y_i}{\plim Z_i}\]
+	は完全である．
 \end{thm}
 
 \begin{proof}
-	$\R[X,Y]/(X^2+bY^2+c)$は$b>0,c>0$のときEDではない（\cite{goel2018nullstellenstze}，系2.17）．また，$\R[X,Y]/(X^2+bY^2+c)$がPIDであることは$c>0$と同値である（\cite{goel2018nullstellenstze}，系2.18）．
-\end{proof}
-
-\section{素イデアルについて}
-\begin{surex}[鎖状だが$\idht P+\coht P=\dim A$が成りたたない例]\label{ex:鎖状だがht P+coht P<dim P}
-	$(A,\ideal{m})$をDVR（すなわち$1$次元Noether局所整閉整域）とする．$B=A[X]$とすればこれは鎖状だが，$\idht P+\coht P=\dim A$を満たさない$P\in\spec B$が存在する．
-\end{surex}
-
-\begin{proof}
-	$\ideal{m}$は単項なので，$\ideal{m}=(a)$とおこう．\ref{cor:Noether多項式の次元}より$\dim B=2$である（$(0)\subsetneq (a)\subsetneq (a,X)$により$2\leq\dim B$と考えても構わない）．$P=(aX-1)$とおくと，これは$B$の極大イデアルであるが，高さ$1$である．よって；
-	\[\idht P+\coht P=1+0=1\neq 2=\dim B\]
-	となり，成り立たない．
+	$g$の全射性のみ示せばよい．任意の$(z_i)\in\plim Z_i$をとる．帰納的に$(y_i)$を構成しよう．すなわち$y_i\in Y_i$で$\psi_i(y_i)=z_i$となるものがあるとき，$y_{i+1}\in B_{i+1}$で$\psi_{i+1}(y_{i+1})=y_i,g_{i+1}(y_{i+1})=z_{i+1}$となるものを作ればよい．
 	
-	また，１次元のNoether整域はCM環である．CM環は強鎖状（\ref{cor:CM環は強鎖状}）であるから，$B$は鎖状である．
+	$z_{i+1}$に対して$g_{i+1}(y_{i+1}')=z_{i+1}$となるものをとる．すると$g_i(y_i)=z_i=\omega_{i+1}(z_{i+1})=g_i(\psi_{i+1}(y_{i+1}'))$より$y_i-\psi_{i+1}(y_{i+1}')\in\im f_i$である．よって$y_i-\psi_{i+1}(y_{i+1}')=f_i(x_i)$となる$x_i\in X_i$がとれる．いま$\varphi_{i+1}:A_{i+1}\to X_i$は全射なので，$\varphi_{i+1}(x_{i+1})=x_i$となるものをとると$y_i-\psi_{i+1}(y_{i+1}')=f_i(\varphi_{i+1}(x_{i+1}))=\psi_{i+1}(f_{i+1}(x_{i+1}))$となり，$y_i=\psi_{i+1}(y_{i+1}'+f_{i+1}(x_{i+1}))$である．ここで$y_{i+1}=y_{i+1}'+f_{i+1}(x_{i+1})$とおけば条件を満たす．
 \end{proof}
 
-この例ではNoether環なので単項イデアルの高さは高々１である（Krullの標高定理）が，Noether性という仮定を外せば高さ２以上の単項イデアルが存在する．
-\begin{surex}[無限次元のNoether整域の例（\citealp{nagatakan}）]\label{ex:無限次元Noether環}
-	$k$を体とし，$A=k[x_1,\dots,x_n，\dots]$を可算無限個の変数をもつ多項式環とする．自然数の増加列$\{n_i\}$を，$n_i-n_{i-1}<n_{i+1}-n_i$が成り立つように取る．$P_i=(x_{n_i},\dots,x_{n_{i+1}-1})$とおく．これらは素イデアルであるから，$\bigcup P_i$の$A$における補集合を$S$とすると，これは積閉である．$S^{-1}A$は無限次元のNoether整域となる．
-\end{surex}
+極限とよく使われる関手，$\hom$とテンソル積との関係を示しておこう．
 
-\begin{proof}
-実際，$S^{-1}A$の素イデアルは$\bigcup P_i$に含まれる$A$の素イデアルであることを考えると$\dim S^{-1}A=\infty$であることは明らか．Noetherであることは，次の補題から従う．
-		
-\begin{lem}
-	環$A$について，以下の2つ；
+\begin{prop}
+	$\mathbf{Mod}(A)$における，Poset $I$上の射影系$(X_i)$と帰納系$(X^i)$に対して，任意の$M\in\mathbf{Mod}(A)$について；
 	\begin{sakura}
-		\item $\ideal{m}$が$A$の極大イデアルならば，$A_{\ideal{m}}$はNoetherである．
-		\item 任意の$0\neq x\in A$について，$x$を含む$A$の極大イデアルは有限個しかない．
+		\item $\hom(M,\plim X_i)\cong\plim\hom(M,X_i)$である．
+		\item $\hom(\ilim X^i,M)\cong\plim\hom(X^i,M)$である．
 	\end{sakura}
-		を満たすならば，$A$はNoetherである．
-\end{lem}
-		
-\begin{proof}[\textbf{補題の証明}]
-	$I$を$A$のイデアルとする．(ii)より，$I$を含む極大イデアルは有限個しかない．それらを$\ideal{m}_1,\dots,\ideal{m}_s$としよう．任意の$x_0\in I$をとる．$x$を含む極大イデアルは有限個であるから，それを$\ideal{m}_1,\dots,\ideal{m}_s,\ideal{m}_{s+1},\dots,\ideal{m}_{s+r}$とする．各$1\leq j\leq r$について，$x_j\in I$で$x_j\not\in\ideal{m}_j$であるものがとれる．また，(i)より各$1\leq i\leq s$について$A_{\ideal{m}_i}$はNoetherなので，$IA_{\ideal{m}_i}$を生成する$I$の元は有限個である．それらを$x_{s+1},\dots,x_{s+t}$としよう．$I'=(x_0,\dots,x_t)$とおく．明らかに$I'\subset I$であるので，$A$自然な$A$加群の準同型$\iota:I'\hookrightarrow I$が存在する．このとき\ref{prop:局所的性質}を用いて$\iota$が全射であることを示す．$A$の極大イデアル$\ideal{m}$について，$\ideal{m}$が$\ideal{m}_1,\dots,\ideal{m}_s$のどれとも異なるとき，$I，I'\not\subset\ideal{m}$であるから，$IA_{\ideal{m}}=I'A_{\ideal{m}}=A_{\ideal{m}}$である．また$\ideal{m}_i (1\leq i\leq s)$については，$I'$は$IA_{\ideal{m}_i}$の生成元をすべて含むので，$I'A_{\ideal{m}_i}=IA_{\ideal{m}_i}$である．よって，任意の極大イデアルに$\iota$を誘導したものは全単射であるから，\ref{prop:局所的性質}によって$\iota$は全射，すなわち$I=I'$である．よって$I$は有限生成．
-\end{proof}
-		
-この補題が適用できることを見るために，$S^{-1}A$の極大イデアルは$S^{-1}P_i$のみであることを示そう．$P\in\spec A$が$P\subset\bigcup P_i$であるとすると，$P\subset P_i$となる$i$があることをいえば十分．任意の$a\in P$に対して，$a$を含む$P_j$たちは有限個なので，それをすべてとってきて$(a)\subset\bigcup_{j=1}^n P_j$とする．任意の$x\in P$に対し，$x$を含む$P_j$たちも有限個だから，ある$n'$に対して$(a,x)\subset\bigcup_{j=1}^{n'}P_j$とできる．Prime avoidanceより$(a,x)\subset P_{j}$となる$j\leq n'$がとれるが，$a\in P_j$より$j\leq n$でなければならず，すると$(a,x)\subset\bigcup_{j=1}^n P_j$である．よって，$x$は任意で，$n$のとりかたは$x$によらないので$P\subset\bigcup_{j=1}^n P_i$である．再びPrime avoidanceを使って$P\subset P_i$となる$i$がとれる．
-
-また，${S^{-1}A}_{S^{-1}P_i}=A_{P_i}$であるので，$S^{-1}A$は補題を満たす．
-\end{proof}
-\section{ホモロジー代数}
-
-\begin{surex}\label{ex:射影被覆が存在しない例}
-	$n>1$とすると，$\Z$加群として$\Z/n\Z$は射影被覆を持たない．
-\end{surex}
+	が成り立つ．
+\end{prop}
 
 \begin{proof}
-	まず$\Z/n\Z$は射影的でない．実際，$\Z/n\Z\to\Z$は$0$に限るので，次のような図式；
-	\[\begin{tikzcd}
-		\Z/n\Z\arrow[d,dashed,"\widetilde{\id}"]\arrow[dr,"\id"]\\
-		\Z\nxcell\Z/n\Z 
-	\end{tikzcd}\]
-	を可換にする$\widetilde{\id}$は存在しない．さて$\varepsilon:P\to\Z/n\Z$が射影被覆であるとすると，自然な全射$\Z\to\Z/n\Z$が射影加群からの全射だから\ref{prop:射影被覆が同型の補題}により全射$\Z\to P$が存在する．すると$P\cong\Z/m\Z$となる$m$が存在するが，$P$が射影的なので$P\cong\Z$でなければならない．さて$\Z\to\Z/n\Z$が射影被覆でないことを言えばよいが，明らかに核$n\Z$は余剰部分加群ではない．
+	射影系$(X_i)$に対して，$\hom(M,X_i)$は自然に射影系をなす．このとき，$N\in\mathbf{Mod}(A)$と射の族$f_i:N\to\hom(M,X_i)$で$\hom(M,X_j)\to\hom(M,X_i)$と可換であるものについて，任意の$x\in N$に対し$f_i(x):M\to X_i$が得られ，普遍性から$f(x):M\to\plim X_i$が得られる．これにより$f:N\to\hom(M,\plim X_i)$が得られ，$\hom(M,\plim X_i)$は普遍性を満たすから；
+	\[\hom(M,\plim X_i)\cong\plim\hom(M,X_i)\]
+	である．帰納系についても同様に示せる．
 \end{proof}
+
+\begin{prop}\label{prop:帰納極限とテンソル積の交換}
+	$\mathbf{Mod}(A)$における，Poset$I$上の帰納系$(X^i)$に対して，任意の$A$加群$M$について；
+	\[\ilim(X^i\otimes_A M)\cong(\ilim X^i)\otimes N\]
+	である．
+\end{prop}
+
+\begin{proof}
+	$\varphi^i:X^i\to\ilim X^i$により$\varphi^i\otimes\id:X^i\otimes M\to(\ilim X^i)\otimes M$が定まり，これは$f:\ilim(X^i\otimes M)\to(\ilim X^i)\otimes M$を導く．
+	
+	また，$y\in M$を固定すると，$X^i\to X^i\otimes M;x\mapsto x\otimes y$と自然な$X^i\otimes M\to\ilim(X^i\otimes M)$の合成で$g^i_y:X^i\to\ilim(X^i\otimes M)$が定まり，これは$g_y:\ilim X^i\to\ilim(X^i\otimes M)$を与える．ここで$(\ilim X^i)\times M\to\ilim(X^i\otimes M);(x,y)\mapsto g_y(x)$は構成から$A$双線形で，$g:(\ilim X^i)\otimes M\to\ilim(X^i\otimes M)$を導く．これが$f$の逆を与えていることは容易にわかる．
+\end{proof}
+
+一方で射影極限とテンソル積は必ずしも可換ではない（\ref{ex:射影極限とテンソル積が可換でない例}）．
+
+最後に，任意の加群は有限生成加群の帰納極限でかけることを注意しておこう．
+
+\begin{prop}\label{prop:任意の加群は有限生成の帰納極限}
+	$A$を環とし，$M$を$A$加群とする．このとき，有限生成加群からなる帰納系$\{M^i\}$があって，$M=\ilim M^i$とかける．
+\end{prop}
+
+\begin{proof}
+	$M$の有限生成加群全体に包含関係で順序をいれると，それが包含射によって帰納系をなす．$M$自身が帰納極限としての普遍性を満たすことは明らかである．
+\end{proof}
+\section{表現可能関手と米田の補題}
+この節以降の話題は，標準的な可換環論のコースではあまり必要とされないが，非可換環の表現論などでは多用され，可換環論でもしばしば有用であるどころか，代数幾何学と関連して三角圏，導来圏などを考える際には必須であるので，ある程度の内容をまとめておくことにする．
+
+まず圏同値という概念の書き換えを与える．
+
+\begin{defi}[忠実，充満]\index{ちゅうじつかんしゅ@忠実（関手）}\index{じゅうまんかんしゅ@充満（関手）}
+	$F:\mathscr{A}\to\mathscr{B}$を関手とする．各$A,B\in\mathscr{A}$について；
+	\[F:\hom(A,B)\to\hom(F(A),F(B));f\mapsto F(f)\]
+	が単射であるとき\textbf{忠実(faithful)}，全射であるとき\textbf{充満(full)}という．忠実かつ充満であるときには\textbf{忠実充満(fully faithful)}であるという．
+\end{defi}
+
+\begin{prop}\label{prop:忠実充満は本質的単射}
+	関手$F:\mathscr{A}\to\mathscr{B}$が忠実充満であるとする．任意の$A,A'\in\mathscr{A}$について，$F(A)\cong F(A')$ならば$A\cong A'$である．
+\end{prop}
+
+\begin{proof}
+	同型射$g:F(A)\to F(A')$をとると，$F$が充満なので$f:A\to A'$が存在して$F(f)=g$である．同様に$g^{-1}:F(A')\to F(A)$についても$F(f')=g^{-1}$となるような$f':A'\to A$が存在する．このとき$F(f'\circ f)=\id_{F(A)}=F(\id_{A})$かつ$F(f\circ f')=\id_{F(A')}=F(\id_A')$なので，$F$が忠実だから$f'\circ f=\id_A,f\circ f'=\id_A'$となって$A\cong A'$である．
+\end{proof}
+
+この命題は忠実充満な関手が「単射っぽい」ということを主張している．また，この証明から次がわかる．
+
+\begin{lem}\label{lem:忠実充満はconservative}
+	関手$F:\mathscr{A}\to\mathscr{B}$が忠実充満であるとする．$\mathscr{A}$の射$f:A\to A'$について，$F(f)$が同型ならば$f$も同型である．
+\end{lem}
+
+この性質を\textbf{保守的(conservative)}であるという．
+
+\begin{defi}[本質的全射]\index{ほんしつてきぜんしゃ@本質的全射}
+	関手$F:\mathscr{A}\to\mathscr{B}$について，任意の$B\in\mathscr{B}$に対して，ある$A\in\mathscr{A}$が存在して$F(A)\cong B$であるとき，$F$は\textbf{本質的全射(essentially surjective)}であるという．
+\end{defi}
+
+これは「全射っぽい」性質の定式化で，$F(A)\cong F(A')$ならば$A\cong A'$であるという性質は本質的単射と表現できる．これによって圏同値の言い換えを与えることができる．
+
+\begin{thm}
+	関手$\mathscr{A}\to\mathscr{B}$が圏同値であることと，$F$が忠実充満な本質的全射であることは同値である．
+\end{thm}
+
+\begin{proof}
+	\begin{eqv}
+		\item $G:\mathscr{B}\to\mathscr{A}$を$G\circ F\cong\id_{\mathscr{A}}$となるような関手とし，自然変換$\theta:G\circ F\Rightarrow\id_{\mathscr{A}}$をとる．まず任意の$B\in\mathscr{B}$に対し，$A=G(B)$とすれば$F\circ G(B)\cong B$なので$F$は本質的全射である．
+		
+		次に$F$が忠実であることを示す．任意の$A,A'\in\mathscr{A}$について，$f,f':A\to A'$が$F(f)=F(f')$であるとする．すると$G\circ F(f)=G\circ F(f')$であり同型$\theta_A:G\circ F(A)\to A,\theta_{A'}:G\circ F(A')\to A'$が存在して；
+		\[\begin{tikzcd}
+			G\circ F(A)\darrow[\theta_A]\nxcell[G\circ F(f)]G\circ F(A')\darrow[\theta_{A'}]\\
+			A\nxcell[f]A'
+		\end{tikzcd}\]
+		が可換なので$f=\theta_{A'}\circ(G\circ F(f))\circ\theta_A^{-1}=\theta_{A'}\circ(G\circ F(f'))\circ\theta_A^{-1}=f'$である．
+		
+		次に$F$が充満であることを示そう．任意の$A,A'\in\mathscr{A}$と$g:F(A)\to F(A')$をとる．$f=\theta_{A'}\circ G(g)\circ\theta_{A}^{-1}$とおくと，$G\circ F(f)=G(g)$で，$G$も忠実なので$F(f)=g$である，
+		
+		\item $F$を充実充満な本質的全射とする．任意の$B\in\mathscr{B}$について$F(A)\cong B$となる$A\in\mathscr{A}$が存在するので，それを１つ選んで$G(B)$とおく．また同型$\varepsilon_B:F(G(B))\to B$を固定しておく．また$\mathscr{B}$の射$g:B\to B'$について，$\varepsilon_{B'}^{-1}\circ g\circ\varepsilon_B:F(G(B))\to F(G(B'))$に対して$F$が忠実充満なので，ある$G(g):G(B)\to G(B')$が一意に存在して$F(G(g))=\varepsilon_{B'}^{-1}\circ g\circ\varepsilon_B$である．これらにより関手$G:\mathscr{B}\to\mathscr{A}$が定まる（選択公理を用いる）．このとき構成から$\varepsilon:F\circ G\Rightarrow \id_{\mathscr{B}}$は自然同型であるので，自然同型$\theta:G\circ F\Rightarrow\id_{\mathscr{A}}$を構成すればよい．
+		
+		任意の$A\in\mathscr{A}$をとる．$F(A)\in\mathscr{B}$に対して，同型射$\varepsilon_{F(A)}:F\circ G\circ F(A)\to F(A)$を考えると，$F$は忠実充満だから$\theta_A:G\circ F(A)\to A$が一意に存在し，\ref{lem:忠実充満はconservative}により$\theta_A$は同型である．これによって定まる$\theta$が自然変換であることをみればよいが，これは定義に沿って計算すれば明らかである．
+	\end{eqv}
+\end{proof}
+
+\begin{cor}
+	圏同値は推移的である．すなわち$\mathscr{A}\cong\mathscr{B},\mathscr{B}\cong\mathscr{C}$ならば$\mathscr{A}\cong\mathscr{C}$である．
+\end{cor}
+
+\begin{proof}
+	容易に忠実，充満，本質的全射は関手の合成で保たれることがわかり，題意が従う．
+\end{proof}
+
+また，この言い換えにより忠実充満な関手$F:\mathscr{A}\to\mathscr{B}$があれば，$\mathscr{A}$は$\mathscr{B}$の部分圏に同型であることがわかる．これをはっきり定式化すると次のようになる．
+
+\begin{cor}
+	$F:\mathscr{A}\to\mathscr{B}$を忠実充満関手とする．$\mathscr{B}$の部分圏；
+	\[\ob\mathscr{B'}=\mkset{F(A)\in\mathscr{B}}{A\in\mathscr{A}}\]
+	\[\hom_{\mathscr{B'}}(F(A),F(A'))=\mkset{F(f):F(A)\to F(A')}{f:A\to A'}\]
+	は$\mathscr{A}$と圏同値で，$\hom_{\mathscr{B'}(F(A),F(A')}=\hom_{\mathscr{B}}(F(A),F(A'))$である（このことを$\mathscr{B'}$は$\mathscr{B}$の\textbf{充満部分圏(full subcategory)}であると表現する）．
+\end{cor}
+
+次に表現可能関手と米田の補題について説明する．
+
+\begin{defi}[表現可能関手]\index{ひょうげんかのうかんしゅ@表現可能関手}
+	$\mathscr{A}$を圏とする．（共変）関手$F:\mathscr{A}\to\mathbf{Set}$について，ある$A\in\mathscr{A}$が存在して$F\cong\hom_{\mathscr{A}}(A,-)$であるとき，$F$は$A$により\textbf{表現可能(presentable)}であるという．
+\end{defi}
+
+$F$が反変関手のときは，$F\cong\hom(-,A)$となる$A$があるとき表現可能であるという．表現可能関手について，次の非常に強力な定理がある（どれくらい強力かということを端的に表している文章がある．\quo{If the Yoneda lemma were false then the world would look much more complex.~\cite{Leinster2014}}）．
+
+\begin{thm}[米田の補題]\index{よねだのほだい@米田の補題}
+	$\mathscr{A}$を圏とし，$A\in\mathscr{A}$とする．このとき，任意の反変関手$F:\mathscr{A}\to\mathbf{Set}$に対して，次の全単射；
+	\[\Nat(\hom(-,A),F)\to F(A);\theta\mapsto\theta_A(\id_A)\tag{$\ast$}\]
+	が存在する．
+\end{thm}
+\begin{proof}
+	任意の$B\in\mathscr{A}$と$f:B\to A$を考える．このとき，自然変換の定義から；
+	\[\begin{tikzcd}
+		\hom(A,A)\darrow[\theta_A]\nxcell[-\circ f]\hom(B,A)\darrow[\theta_B]\\
+		F(A)\nxcell[F(f)]F(B)
+	\end{tikzcd}\]
+	が可換である．すると，$\id_A$について$\theta_B(f)=F(f)(\theta_A(\id_A))$が成り立つから，$\theta$は$\theta_A(\id_A)$により一意に定まる．これは$(\ast)$が単射であることを意味する．
+	
+	次に$(\ast)$が全射であることを示そう．任意の$x\in F(A)$をとる．このとき，任意の$B\in\mathscr{A}$に対して；
+	\[\theta_B:\hom(B,A)\to F(B);f\mapsto F(f)(x)\]
+	と定めると，$\theta$が自然変換になる．実際，任意の$B,C\in\mathscr{A}$と$g:C\to B$に対して；
+	\[\begin{tikzcd}
+		\hom(B,A)\darrow[\theta_B]\nxcell[-\circ g]\hom(C,A)\darrow[\theta_C]\\
+		F(B)\nxcell[F(g)]F(C)
+	\end{tikzcd}\]
+	が可換になることが簡単に確かめられる．すると$\theta_A(\id_A)=x$であるので，全射が示された．
+\end{proof}
+全く同様に，$\hom(A,-)$についての米田の補題も示せる．
+
+\begin{thm}
+	$\mathscr{A}$を圏とし，$A\in\mathscr{A}$とする．このとき，任意の関手$F:\mathscr{A}\to\mathbf{Set}$に対して，次の全単射；
+	\[\Nat(\hom(A,-),F)\to F(A);\theta\mapsto\theta_A(\id_A)\tag{$\ast$}\]
+	が存在する．
+\end{thm}
+
+これに関連して，対象から$\hom$関手を作る操作は関手的である．
+
+\begin{defi}[米田埋め込み]\index{よねだうめこみ@米田埋め込み}
+	$\mathscr{A}$を圏とする．関手$y:\mathscr{A}\to\Func(\opcat{A},\mathbf{Set})$を;
+	\[A\mapsto\hom_{\mathscr{A}}(-,A)\]
+	\[f:A\to B\mapsto y(f):\hom(-,A)\Rightarrow\hom(-,B)\]
+	で定める．ただし，自然変換$y(f)$は$C\in\mathscr{A}$に対して；
+	\[y(f)_C=f\circ -:\hom(C,A)\to\hom(C,B)\]
+	で与えられるものである．これを\textbf{米田埋め込み(Yoneda embedding)}という．$A$に対し$\hom(A,-)$を対応させる関手も同様に考えられ，これも米田埋め込みという．
+\end{defi}
+
+\begin{prop}
+	米田埋め込みは忠実充満である．
+\end{prop}
+
+\begin{proof}
+	任意の$A,B\in\mathscr{A}$をとる．米田埋め込み$y(B)$について米田の補題を適用すると全単射
+	\[\Nat(\hom(-,A),\hom(-,B))\to\hom(A,B);\theta\mapsto\theta_A(\id_A)\]
+	があり，その逆写像は$f\in\hom(A,B)$に対して，自然変換$\theta:\hom(-,A)\Rightarrow\hom(-,B)$を$C\in\mathscr{A}$について$\theta_C=f\circ -$とすることで定まっている．これを$\psi$とおく．すると$y$の定義から$f:A\to B$と任意の$C\in\mathscr{A}$について$y(f)_C=\psi(f)_C$であり，自然変換として$y(f)=\psi(f)$である．ここで$\psi$は全単射であるから$y$が忠実充満であることがわかった．
+\end{proof}
+
+\begin{cor}
+	$\mathscr{A}$を圏とし，$A,B\in\mathscr{A}$とする．$y(A)\cong y(B)$，すなわち任意の$C\in\mathscr{A}$について$\hom(C,A)\cong\hom(C,B)$ならば$A\cong B$である．
+\end{cor}
+
+\begin{proof}
+	$y$は忠実充満なので，\ref{prop:忠実充満は本質的単射}により従う．
+\end{proof}
+
+\section{随伴関手}
+
+\begin{defi}[随伴]\index{ずいはんかんしゅ@随伴関手}
+	$F:\mathscr{A}\to\mathscr{B},G:\mathscr{B}\to\mathscr{A}$を関手とする．関手；
+	\[\hom_{\mathscr{B}}(F(-),-):\opcat{{A}}\times\mathscr{B}\to\mathbf{Set},\quad\hom_{\mathscr{A}}(-,G(-)):\opcat{{A}}\times\mathscr{B}\to\mathbf{Set}\]
+	の間の同型な自然変換；
+	\[\theta:\hom_{\mathscr{B}}(F(-),-)\Rightarrow\hom_{\mathscr{A}}(-,G(-))\]
+	が存在するとき，$G$を$F$の\textbf{右随伴(right adjunction)}，$F$を$G$の\textbf{左随伴(left adjunction)}といい$F\vdash G$で表す．
+\end{defi}
+
+定義より，任意の$\mathscr{A}$の射$f:A\to A'$と$\mathscr{B}$の射$g:B\to B'$に対して；
+\[\begin{tikzcd}
+	\hom(F(A'),B)\darrow[\theta_{A',B}]\nxcell[-\circ F(f)]\hom(F(A),B)\darrow[\theta_{A,B}]&\hom(F(A),B)\darrow[\theta_{A,B}]\nxcell[g\circ-]\hom(F(A),B')\darrow[\theta_{A,B'}]\\
+	\hom(A',G(B))\nxcell[-\circ f]\hom(A,G(B))&\hom(A,G(B))\nxcell[G(g)\circ -]\hom(A,G(B'))
+\end{tikzcd}\]
+が可換である．
+次のように随伴の定義を言い換えることもできる．
+
+\begin{prop}
+	$F:\mathscr{A}\to\mathscr{B},G:\mathscr{B}\to\mathscr{A}$を関手とする．$F\vdash G$であることと，自然変換$\varepsilon:\id_{\mathscr{A}}\Rightarrow GF, \eta:FG\Rightarrow\id_{\mathscr{B}}$が存在して，$(\eta\circ F)\circ(F\circ\varepsilon)=\id_F$かつ$(G\circ\eta)\circ(\varepsilon\circ G)=\id_G$となることと同値である．
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item 任意の$A\in\mathscr{A}$に対して，同型$\theta_{A,F(A)}:\hom(F(A),F(A))\to\hom(A,GF(A))$による$\id_{F(A)}$の像を$\varepsilon_A:A\to GF(A)$とおく．まず$\varepsilon$が自然変換であることを示す．すなわち$f:A\to A'$に対して；
+		\[\begin{tikzcd}
+			A\arrow[d,"\varepsilon_A"]\nxcell[f]A'\darrow[\varepsilon_{A'}]\\
+			GF(A)\nxcell[GF(f)]GF(A')
+		\end{tikzcd}\]
+		が可換であることを示そう．随伴の定義から，２つの可換図式；
+		\[\begin{tikzcd}
+			\hom(F(A'),F(A'))\darrow[\theta_{A',F(A')}]\nxcell[-\circ F(f)]\hom(F(A),F(A')]\darrow[\theta_{A,F(A')}]&\hom(F(A),F(A))\darrow[\theta_{A,F(A)}]\nxcell[F(f)\circ-]\hom(F(A),F(A'))\darrow[\theta_{A,F(A')}]\\
+			\hom(A',GF(A'))\nxcell[-\circ f]\hom(A,GF(A'))&\hom(A,GF(A))\nxcell[GF(f)\circ-]\hom(A,GF(A'))
+		\end{tikzcd}\]
+		が得られ，この図式における$\id_{F(A')},\id_{F(A)}$の像を計算すると$\varepsilon_{A'}\circ f=\theta_{A,F(A')}(F(f))=GF(f)\circ\varepsilon_A$がわかる．同様に同型$\theta_{G(B),B}:\hom(FG(B),B)\to\hom(G(B),G(B))$による$\id_{G(B)}$の引き戻しを$\eta_B$とおくと，これも自然変換である．
+		
+		ここで，任意の$\varphi:F(A)\to B$について；
+		\[\begin{tikzcd}
+			\hom(F(A),F(A))\darrow[\theta_{A,F(A)}]\nxcell[\varphi\circ-]\hom(F(A),B)\darrow[\theta_{A,B}]\\
+			\hom(A,GF(A))\nxcell[G(\varphi)\circ -]\hom(A,G(B)
+		\end{tikzcd}\]
+		から$\theta_{A,B}(\varphi)=G(\varphi)\circ\varepsilon_A$であることがわかる．同様に，任意の$\psi:A\to G(B)$に対して；
+		\[\begin{tikzcd}
+			\hom(FG(B),B)\darrow[\theta_{G(B),B)}]\nxcell[-\circ F(\psi)]\hom(F(A),B)\darrow[\theta_{A,B}]\\
+			\hom(G(B),G(B))\nxcell[-\circ\psi]\hom(A,G(B))
+		\end{tikzcd}\]
+		から$\theta_{A,B}^{-1}(\psi)=\eta_B\circ F(\psi)$である．ゆえに$\eta_{F(A)}\circ F(\varepsilon_A)=\theta_{A,F(A)}^{-1}(\varepsilon_A)=\id_{F(A)}, G(\eta_B)\circ\varepsilon_{G(B)}=\id_{G(B)}$となる．
+		\item $\theta_{A,B}:\hom(F(A),B)\to\hom(A,G(B));\varphi\mapsto G(\varphi)\circ\varepsilon_A$と定めると，$(\Longrightarrow)$の証明を逆にたどることによりこれは自然変換となり，$\hom(A,G(B))\to\hom(F(A),B);\psi\mapsto\eta_B\circ F(\psi)$が逆の自然変換を与えることもわかる．よって$F\vdash G$である．
+	\end{eqv}
+\end{proof}
+
+反変関手の随伴については，反変関手$F:\mathscr{A}\to\mathscr{B},G:\mathscr{B}\to\mathscr{A}$を共変関手$F:\mathscr{A}\to\opcat{B},G:\opcat{A}\to\mathscr{B}$と見たときの随伴で定義する．すなわち自然同値；
+\[\theta_{A,B}:\hom_{\mathscr{A}}(A,G(B))\to\hom_{\opcat{B}}(F(A),B)=\hom_{\mathscr{B}}(B,F(A))\]
+が存在するとき$F\vdash G$とかく．もちろんこれは自然変換$\varepsilon:\id_{\mathscr{A}}\Rightarrow GF, \eta:\id_{\mathscr{B}}\Rightarrow FG$で，$(F\circ\varepsilon)\circ(\eta\circ F)=\id_F, (G\circ\eta)\circ(\varepsilon\circ G)=\id_G$を満たすものが存在するということと同値である．
+
+随伴の例を少しだけ見てみよう．$M\in\Mod$に対して$M\otimes -, \hom(M,-)$について，$N,P\in\Mod$に対して；
+\[\hom(M\otimes N,P)\cong\hom(N,\hom(M,P))\]
+となり$(M\otimes -)\vdash\hom(M,-)$である（\ref{lem:Homと平坦代数のテンソル}）．反変関手の随伴については，例えばスキームの圏$\mathbf{Sch}$と，環の圏$\mathbf{Ring}$について；
+\[\Gamma(-):\mathbf{Sch}\to\mathbf{Ring};X\mapsto \Gamma(X,\oka_X)\]
+\[\spec -:\mathbf{Ring}\to\mathbf{Sch};A\mapsto\spec A\]
+により$\hom_{\mathbf{Sch}}(X,\spec A)\cong\hom_{\mathbf{Ring}}(A,\Gamma(X,\oka_X))$なので$\Gamma(-)\vdash\spec -$である．
+
+
+%%%%%%射影，帰納極限の随伴について書きかけ
+%次に，射影系，帰納系を関手と考えることができることを説明し，極限と$\hom$の間の関係について考察しよう．
+%
+%$I$をPosetとする．このとき．対象全体を$I$とし，射を；
+%\[\hom(i,j)=\begin{cases}
+%	\{\theta_{ij}\}&\text{if}~i\leq j\\
+%	\emptyset&\text{if}~i\not\leq j
+%\end{cases}\]
+%ただし$\theta_{ii}=\id_i, i\leq j\leq k$のとき$\theta_{ik}=\theta_{jk}\circ\theta_{ij}$となっているように定めると，これは圏をなす．この圏も$I$と書くことで，Posetは圏とみることができる．射$\theta_{ij}$は$i\leq j$のときに限り，かつ一意に存在するから，$\theta_{ij}$のことを単に$i\leq j$とかくことにする．すると，圏$\mathscr{A}$上の帰納系は関手$I\to\mathscr{A}$と，射影系は反変関手$I\to\mathscr{A}$とみなせる．これはまた逆も成り立つ．命題の形でまとえておこう．
+%
+%\begin{prop}
+%	$\mathscr{A}$を圏とし，$I$をPosetとする．関手圏$\mathscr{A}^I$は$\mathscr{A}$における$I$上の帰納系全体のなす圏と一致する．射影系全体のなす圏は$\mathscr{A}^{I^{\mathrm{op}}}$と一致する．
+%\end{prop}
+%
+%帰納系の射$(f^i):(A^i)\to(B^i)$は$I\to (A_i)$と$I\to (B_i)$の間の自然変換にほかならないことを確認せよ．
+%
+%\begin{defi}[定数関手]\index{ていすうかんしゅ@定数関手}
+%	$\mathscr{A}$を圏とし，$I$をPosetとする．$A\in\mathscr{A}$について；
+%	\[\Delta_A:I\to\mathscr{A};i\mapsto A\]
+%	\[\hom(i,j)\to\hom(A,A);i\leq j\mapsto \id_A\]
+%	と定めると，関手になる．これを$A$を値とする\textbf{定数関手(constant functor)}という．
+%\end{defi}
+%
+%この定数関数は共変関手としても反変関手としても扱うことができることを注意しておく．よって射影系とも，帰納系とも扱うことができる．
+%
+%$\mathscr{A}$を$\mathbf{Mod}(A)$のように常に極限が存在する圏とする．$\mathscr{A}$における$I$上の射影系$(A_i)$に対して，$B\in\mathscr{A}$と$f_i:B\to A_i$の族をとると，極限の普遍性から$f:B\to\plim A_i$が存在する．逆に$f:B\to\plim A_i$を与えると射の族$f_i:B\to A_i$がとれるから．集合論的な全単射；
+%\[\hom_{\mathscr{A}}(B,\plim A_i)\to \hom_{\mathscr{A}^{I^{\mathrm{op}}}}(\Delta_B,(A_i))\]
+%が存在する．

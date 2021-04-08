@@ -1,1 +1,1338 @@
-\part[Local cohomology]{局所コホモロジー}
+\part[Introduction of Gorenstein Homological Algebra]{Gorensteinホモロジー代数入門}
+
+\section{Gorenstein環}
+
+この節では，Noether局所環についての入射次元について考察することで，CM環のうちでも重要なクラスをなす\textbf{Gorenstein環}を定義し，その特徴づけを与えよう．
+
+\begin{defi}[Gorenstein環]\index{#Gorensteinかん@Gorenstein環}
+	Noether局所環$(A,\ideal m)$について$\injdim A<\infty$であるとき，$A$は\textbf{Gorenstein局所環}であるという．一般のNoether環$A$については，任意の$P\in\spec A$について$A_P$がGorensteinのとき$A$は\textbf{Gorensitein環}であるという．
+\end{defi}
+
+まずGorenstein局所環がGorensteinであることを示さねばならない．
+
+\begin{lem}\label{lem:Noetherなら入射の局所化は入射}
+	$A$をNoether環とし，$S\subset A$を積閉集合とする．$E$が入射的$A$加群ならば，局所化$E_S$も入射的$A_S$加群である．
+\end{lem}
+
+\begin{proof}
+	$A_S$のイデアルはすべて$A$のイデアル$I$により$I_S$とかけている．$\begin{tikzcd}
+	0\nxcell I\nxcell A
+	\end{tikzcd}$について；
+	\[\begin{tikzcd}
+	\hom(A,E)\nxcell\hom(I,E)\nxcell0
+	\end{tikzcd}\]
+	が完全で，$I$が有限生成だから$-\otimes A_S$を施して；
+	\[\begin{tikzcd}
+	\hom_{A_S}(A_S,E_S)\nxcell\hom_{A_S}(I_S,E_S)\nxcell0
+	\end{tikzcd}\]
+	が完全である．よって$E_S$は入射的$A_S$加群．
+\end{proof}
+
+\begin{prop}
+	$A$がGorenstein局所環ならば，任意の$P\in\spec A$に対して，$A_P$もGorensteinである．
+\end{prop}
+
+\begin{proof}
+	$A$の入射分解を；
+	\[\begin{tikzcd}
+	0\nxcell A\nxcell I^0\nxcell\dots\nxcell I^n\nxcell0
+	\end{tikzcd}\]
+	とすると，$P$で局所化して；
+	\[\begin{tikzcd}
+	0\nxcell A_P\nxcell I^0_P\nxcell\dots\nxcell I^n_P\nxcell0
+	\end{tikzcd}\]
+	が$A_P$の入射分解となり，$\injdim_{A_P} A_P\leq n$である．
+\end{proof}
+\ref{prop:injdimのイデアルによる判定}をNoether性を課すことでより簡単に書き換えるところから始めよう．
+
+\begin{prop}\label{prop:Noetherのinjdim判定法}
+	$A$をNoether環とし，$M$を$A$加群とする．このとき，与えられた$n$について$\injdim M\leq n$であることと，任意の$P\in\spec A$について$\Ext^{n+1}(A/P,M)=0$であることは同値である．
+\end{prop}
+
+\begin{proof}
+	$(\Longrightarrow)$は明らか．任意のイデアル$I$について$\Ext^{n+1}(A/I,M)=0$を示せばよい．\ref{cor:Assからできる組成列もどき}より；
+	\[A/I=N_r\supset\dots\supset N_1\supset N_0=0\]
+	で，各$i$について$N_{i}/N_{i-1}\cong A/P_i$となる$P_i\in\spec A$が存在するものがとれる．これから$\Ext^{n+1}(A/P_i,M)=0$により$\Ext^{n+1}(A/I,M)=0$となることがわかり，題意が従う．
+\end{proof}
+
+この証明から次の補題を定式化することができる．
+
+\begin{lem}
+	$A$をNoether環とし，$M$を$A$加群，$N$を有限生成$A$加群とする．与えられた$n$について，任意の$P\in\supp N$について$\Ext^n(A/P,M)=0$ならば$\Ext^n(N,M)=0$である．
+\end{lem}
+
+\begin{lem}\label{lem:Ext=0は落ちる}
+	$(A,\ideal{m})$をNoether局所環とする．$\ideal{m}\neq P\in\spec A$と有限生成$A$加群$M$について，任意の$P\neq Q\in\ V(P)$に対して$\Ext^{n+1}(A/Q,M)=0$ならば$\Ext^n(A/P,M)=0$である．
+\end{lem}
+
+\begin{proof}
+	任意の$a\in\ideal{m}\setminus P$をとる．このとき；
+	\[\ses[a\cdot]{A/P}{A/P}{A/(P+aA)}\]
+	が完全である．よって；
+	\[\begin{tikzcd}
+	\Ext^n(A/P,M)\nxcell[a\cdot]\Ext^n(A/P,M)\nxcell\Ext^{n+1}(A/(P+aA),M)
+	\end{tikzcd}\]
+	が誘導される．ここで$V(P+aA)\subset V(P)\setminus\{P\}$であるから，仮定と補題により$\Ext^{n+1}(A/(P+aA),M)=0$である．ゆえに中山の補題から$\Ext^n(A/P,M)=0$となる．
+\end{proof}
+
+\begin{thm}\label{thm:Noether局所環上の入射次元}
+	$(A,\ideal{m},k)$をNoether局所環とし，$M$を有限生成$A$加群とする．このとき；
+	\[\injdim M=\sup\mkset{i\in\N}{\Ext^i(k,M)\neq0}\]
+	である．
+\end{thm}
+
+\begin{proof}
+	$n=\sup\mkset{i\in\N}{\Ext^i(k,M)\neq0}$とおこう．$n\leq\injdim M$は明らかである．逆を示そう．任意の$P\in\spec A$をとる．また$\coht P=d$とし；
+	\[P=P_0\subsetneq\cdots\subsetneq P_d=\ideal{m}\]
+	を考える．ここで$\Ext^{n+d+1}(k,M)=0$なので，補題から$\Ext^{n+d}(A/P_{d-1},M)=0$である．次に，構成から同様に$P_{d-2}\subsetneq Q\subsetneq \ideal{m}$となる$Q$について$\Ext^{n+d}(A/Q,M)=0$なので，補題から$\Ext^{n+d-1}(A/P_{d-2},M)=0$である．これを繰り返して$\Ext^{n+1}(A/P,M)=0$となる．よって\ref{prop:Noetherのinjdim判定法}より$\injdim M\leq n$である．
+\end{proof}
+
+\begin{lem}\label{lem:A/aAのExt}
+	$A$を環とし，$M$を$A$加群とする．$M$正則元$a\in A$について$A$正則でもあるならば，$aN=0$となる任意の$A$加群$N$について；
+	\[\Ext^{i+1}_A(N,M)\cong\Ext^i_{A/aA}(N,M/aM)\]
+	である．
+\end{lem}
+\begin{proof}
+	$T^i=\Ext^{i+1}_{A}(-,M):\mathbf{Mod}(A/aA)\to\mathbf{Ab}$とおく．これが$\hom_{A/aA}(-,M/aM)$の導来関手に一致することを示そう．\ref{cor:反変delta関手が普遍的なら導来関手}により，$T^\bullet$が$T^0=\hom_{A/aA}(-,M/aM)$であるような普遍的反変$\delta$関手であることを見ればよい．まず$N$が$aN=0$，すなわち$A/aA$加群であるとき$\hom_A(N,M)=0$であることを注意しておく．$A$加群の完全列；
+	\[\ses[a\cdot]{M}{M}{M/aM}\]
+	から；
+	\[\begin{tikzcd}
+		\hom_A(N,M)=0\nxcell\hom_A(N,M/aM)\nxcell\Ext^1_A(N,M)\nxcell[a\cdot]\cdots
+	\end{tikzcd}\]
+	が誘導され，\ref{prop:ExtのAnn}により$a\cdot$は$0$なので；
+	\[T^0(N)=\Ext^1_A(N,M)=\hom_A(N,M/aM)=\hom_{A/aA}(N,M/aM)\]
+	である．また$A/aA$加群の任意の短完全列;
+	\[\ses{N_1}{N_2}{N_3}\]
+	について$\hom_A(N_i,M)=0$なので，$\hom_{A}(-,M)$の導く長完全列；
+	\settowidth{\masyulengtha}{$\Ext^1_A(N_1,M)$}
+	\[\begin{tikzcd}
+		0\nxcell\Ext^1_A(N_3,M)\nxcell\Ext^1_A(N_2,M)\nxcell\Ext^1_A(N_1,M)\\
+		\nxcell\makebox[\masyulengtha]\cdots
+	\end{tikzcd}\]
+	が得られる．連結射と可換なことは明らかなので，$T^\bullet$が反変$\delta$関手になる．普遍的であることを示すために，余消去的であることを見よう．$a$が$A$正則なので，$A$加群の完全列；
+	\[\ses[a\cdot]{A}{A}{A/aA}\]
+	から$\prjdim_A A/aA=1$である．よって$i>0$について$\Ext^{i+1}_A(A/aA,M)=0$だからすべての$A/aA$自由加群$F$について$\Ext^{i+1}_A(F,M)=0$である．ゆえに各$T^i$は余消去的である．よって$T^\bullet$は普遍的であることがわかった．
+\end{proof}
+
+\ref{thm:Noether局所環上の入射次元}と上の補題から次の定理を得る．
+\begin{thm}\label{thm:injdim A/aA=injdim A-1}
+	$(A,\ideal{m},k)$をNoether局所環，$M$を有限生成$A$加群とする．$A$正則元$a\in\ideal{m}$について$M$正則でもあるならば；
+	\[\injdim_{A/aA}(M/aM)=\injdim_A M-1\]
+	である．
+\end{thm}
+%\begin{lem}
+%	$(A,\ideal{m},k)$をNoether局所環とする．$M$を有限生成$A$加群，$P\in\spec A$とする．
+%	\[P=P_0\subsetneq P_1\subsetneq\dots\subsetneq P_d=\ideal{m}\]
+%	となる素イデアル鎖が存在するならとき，$\Ext^i_{A_P}(A_P/PA_P,M_P)\neq 0$ならば$\Ext^{i+d}_A(k,M)\neq0$である．
+%\end{lem}
+%
+%\begin{proof}
+%	あらかじめ素イデアル鎖を飽和させておく．まず$P\subsetneq\ideal{m}$であり，間に素イデアルが存在しないときに示す．対偶を考えて$\Ext_A^{i+1}(k,M)=0$を仮定しよう．任意の$a\in\ideal{m}\setminus P$をとる．このとき；
+%	\[\ses[a\cdot]{A/P}{A/P}{A/(P+aA)}\]
+%	が完全である．また$P\subsetneq P+aA\subset\ideal{m}$なので，$A/(P+aA)$はArtinである．よって組成列を持ち，$\Ext^{i+1}_A(A/(P+aA),M)=0$であることがわかる．よって；
+%	\[\begin{tikzcd}
+%		\Ext^i_A(A/P,M)\nxcell[a\cdot]\Ext^i_A(A/P,M)\nxcell0
+%	\end{tikzcd}\]
+%	が完全であり，中山の補題から$\Ext^i_A(A/P,M)=0$である．よって$P$で局所化して$\Ext^i_{A_P}(A_P/PA_P,M_P)=0$である．これを$P_{d-1}\subsetneq P_d$に適用して$\Ext^{i+d-1}_{A_P}(A_P/PA_P,M_P)=0$となり，繰り返して結論を得る．
+%\end{proof}
+
+これらの準備により，次の結果を示すことができる．
+
+\begin{thm}[Gorenstein環の特徴づけ]\label{thm:Gorensteinの特徴づけ}
+	$(A,\ideal{m},k)$を$d$次元のNoether局所環とする．このとき次の条件；
+	\begin{sakura}
+		\item $A$はGorensteinである．
+		\item $\injdim A=d$である．
+		\item $\Ext^d_A(k,A)\cong k$であり，任意の$i\neq d$について$\Ext^i_A(k,A)=0$である．
+		\item $A$はCM環であり，$\Ext^d_A(k,A)\cong k$である．
+		\item $A$はCM環であり，すべての巴系で生成されるイデアルは既約である．
+		\item $A$はCM環であり，巴系から生成されるイデアルで既約なものが存在する．
+		\item ある$i>d$が存在して，$\Ext^i_A(k,A)=0$となる．
+	\end{sakura}
+	は同値である．
+\end{thm}
+
+\begin{proof}
+	\begin{eqv}[7]
+		\item 
+		$\injdim A=r,\dim A=d$とおく．$P\in\spec A$を；
+		\[P=P_0\subsetneq P_1\subsetneq\dots\subsetneq P_d=\ideal{m}\]
+		となるようにとる．このとき$P$は極小だから$PA_P\in\ass_{A_P}A_P$で，$\hom_{A_P}(k(P),A_P)\neq0$であるから，ここで$\Ext^d_A(k,A)=0$ならば\ref{lem:Ext=0は落ちる}から$\Ext^{d-1}_A(A/P_{d-1},A)=0$であり，局所化して$\Ext^{d-1}_{A_{P_2}}(k(P_2),A_{P_2})=0$である．これを繰り返して$\hom_{A_P}(k(P),A_P)=0$となるので矛盾する．よって$\Ext^d_A(k,A)\neq0$であり，$d\leq r$である．逆を$r$についての帰納法で示そう．$r=0$のとき$d=r=0$となり明らかなので，$r>0$とする．このとき\ref{thm:Noether局所環上の入射次元}より$\Ext^r(k,A)\neq0$である．また$\mdepth A>0$である．実際$\mdepth A=0$なら$\ideal{m}\in\ass A$で，単射$k\to A$がある．すると$\injdim A=r$であるから完全列；
+		\[\begin{tikzcd}
+		\Ext^r(A,A)\nxcell\Ext^r(k,M)\nxcell0
+		\end{tikzcd}\]
+		が誘導され，また$A$自身が射影的であるから$\Ext^r(A,A)=0$である．よって$\Ext^r(k,M)=0$となり矛盾し，$\mdepth A>0$であることがわかった．よって$A$正則元$a\in\ideal{m}$がとれる．そこで\ref{thm:injdim A/aA=injdim A-1}より$\injdim_{A/aA}A/aA=r-1$であるから，帰納法の仮定より$\dim A/aA=d-1=r-1$である．よって$r=d$となることがわかった．
+		\item $d$についての帰納法で示す．まず$d=0$とすると，$\ideal{m}\in\ass A$より$\ideal{m}=\ann x$とかける$x\in A$が存在する．このとき，単射$\iota:k\to A;a+\ann x\mapsto ax$が誘導する$\iota^\ast:\hom(A,A)=A\to\hom(k,A)$を考えると，これは$a$倍写像を$ax$倍写像に対応させるものにほかならず，その核は$\ideal{m}$である．また$\injdim A=0$より$A$が入射的なので全射なので．$\hom(k,A)\cong k$である．また$\injdim A=0$だから$i>0$について$\Ext^i(k,A)=0$となる．次に$d-1$まで正しいとすると，(i)$\Longrightarrow$(ii) と同様の議論から$A$正則元$a\in\ideal{m}$が存在し，$A/aA$は$d-1$次元のGorenstein環である．\ref{lem:A/aAのExt}と帰納法の仮定から；
+		\[\Ext^i_A(k,A)=\Ext^{i-1}_{A/aA}(k,A/aA)=\begin{cases}
+		k&\text{if}~i=d\\0&\text{if}~i\neq d
+		\end{cases}\]
+		であるので題意が成り立つ．
+		\item $\mdepth A=\min\mkset{i\in\N}{\Ext^i(K,A)\neq0}$であったことを思い出すと，$\mdepth A=\dim A=d$であることがわかる．
+		\item $a_1,\dots,a_d$を$A$の巴系とすると，\ref{prop:CM局所環での正則列と巴系}から$a_1,\dots,a_d$は$A$正則列である．$A'=A/(a_1,\dots,a_d)A$とおくと，\ref{lem:A/aAのExt}から；
+		\[\hom_{A'}(k,A')\cong\Ext^n_A(k,A)\cong k\]
+		である．ここで$(A',\ideal{m})$はArtinで，$0\neq I$を$A'$の極小なイデアルとすると，$0\neq x\in I$をとると$f:k\to A;1\mapsto x$が定まる．このとき明らかに$f(k)\subset I$であり，$I$の極小性から$I=f(k)$である．定数倍は同じイデアルを定めるので，$\hom_{A'}(k,A')\cong k$だから$A'$は$0$でない極小なイデアル$I_0$を唯１つもつことがわかる．すると，$A'$において$0$は既約である．実際$I,J\neq 0$とすると，どちらも$I_0$を含むから$I\cap J\neq0$である．よって$A$において$(a_1,\dots,a_d)$は既約である．
+		\item 自明．
+		\item $I$を巴系で生成される既約なイデアルとすると，$A'=A/I$とおけば$A'$はArtinで，上と同様にして；
+		\[\Ext^{d+i}_A(k,A)\cong\Ext^i_{A'}(k,A')\]
+		がわかる．よって$\Ext^1_{A'}(k,A')=0$を示せばよい．
+		
+		まず$A'$はArtinだから$\hom_{A'}(k,A')\neq0$であり，明らかに任意の$f\neq0\in\hom_{A'}(k,A')$に対して$f(k)$は$A'$の$0$でない極小なイデアルを定めることがわかる．すると任意の$f,g\neq0\in\hom_{A'}(k,A')$に対して$f(k)\neq g(k)$ならば$f(k)\cap g(k)=0$であり，$A'$において定義から$0$は既約なので矛盾するから，$f(k)=g(k)$である．すると$f(1)=g(\alpha)$となる$\alpha\in k$があり，$f=\alpha g$である．ゆえに$\hom_{A'}(k,A')\cong k$である．
+		
+		次に$A'$はArtinなので，組成列となるイデアル鎖$0=I_0\subsetneq I_1\subsetneq\dots\subsetneq I_r=A'$がとれる．ここで\ref{prop:単純加群の構造}より，各$1\leq i\leq r-1$について完全列；
+		\[\ses{I_i}{I_{i+1}}{k}\]
+		があり，$\hom_{A'}(k,A')\cong k$がわかっていることに気をつけて，$\hom_{A'}(-,A')$が誘導する長完全列；
+		\[\begin{tikzcd}
+		0\nxcell k\nxcell\hom_{A'}(I_{i+1},A')\nxcell[\varphi_{i+1}]\hom_{A'}(I_i,A')\nxcell[\partial_i]\Ext^1(k,A')\nxcell
+		\end{tikzcd}\]
+		を考える．
+		
+		$i$についての帰納法で$\ell(\hom_{A'}(I_i,A'))\leq i$を示そう．まず$i=1$のときは$I_1=k$なので明らか．$\ell(\hom_{A'}(I_{i-1},A'))=l_i\leq i-1$と仮定する．もし$\partial_{i-1}=0$とすると；
+		\[\ses{k}{\hom(I_i,A')}{\hom(I_{i-1},A')}\]
+		が完全なので$\hom(I_i,A')/k\cong\hom(I_{i-1},A')$であるから$\ell(\hom(I_i,A'))=l+1\leq i$である．$\partial_{i-1}\neq0$なら，$\ker\varphi_{i}=k$で，$\im\varphi_{i}=\hom(I_i,A')/k\subsetneq\hom(I_{i-1},A')$なので$\ell(\hom(I_i,A')/k)<l-1\leq i-1$であり，$\ell(\hom(I_i,A'))\leq i$となる．
+		
+		これらの証明から，$\ell(\hom(I_i,A')=i$となるのは$\partial_1,\dots,\partial_{i-1}$がすべて$0$であるときに限ることがわかる．いま$\ell(\hom(I_r,A'))=\ell(\hom(A',A')=r$だから，$\partial_1=\dots=\partial_{r-1}=0$となり；
+		\[\ses{I_{r-1}}{A'}{k}\]
+		が導く$\Ext$の長完全列を考えると；
+		\[\begin{tikzcd}0\nxcell\Ext^1(k,A')\nxcell\Ext^1(A',A')=0
+		\end{tikzcd}\]
+		となり$\Ext^1(k,A')=0$である．
+		\item
+		$d$についての帰納法で示す．$d=0$のときは，$\spec A=\{\ideal{m}\}$なので\ref{prop:Noetherのinjdim判定法}より$\injdim A<i$である．
+		
+		$d-1$まで正しいとしよう．任意の$P\in\spec A$について，$\Ext^i_A(A/P,A)=0$を示す．
+		\[\mkset{P\in\spec A}{\Ext^i_A(A/P,A)\neq0}\neq\emptyset\]
+		と仮定しよう．極大元$P$が存在する．いま$\Ext^i_A(A/\ideal{m},A)=0$なので$P\neq\ideal{m}$だから，ある$a\in\ideal{m}\setminus P$がとれて；
+		\[\ses[a\cdot]{A/P}{A/P}{A/(P+aA)}\]
+		が完全である．ここで\ref{cor:Assからできる組成列もどき}（\ref{thm:Assは有限}の証明）から；
+		\[A/(P+aA)=M_r\supset\dots\supset M_1\supset M_0=0\]
+		で，$M_{i}/M_{i-1}\cong A/P_i~(P_i\in\spec A)$であるものがとれるが，その構成は$P_1\in\ass A/(P+aA)\subset V(P+aA), P_2\in\ass (M_r/M_1)=\ass A/P_1\subset V(P_1)$であり，$A/P_1\subset M_2\subset A/(P+aA)$だから$M_2=A/I~(P+aA\subset I\subset P_1)$とでき，$P_3\in\ass (M_r/M_2)=\ass A/I\subset V(I)$のように続いていくので，特に$P_i$はすべて$V(P)$に含まれるようにとれる．仮定から$\Ext_A^i(A/P_i,A)=0$であり，これは$\Ext_A^i(A/(P+aA),A)=0$を導く．すると；
+		\[\begin{tikzcd}
+		0\nxcell\Ext^i_A(A/P,A)\nxcell[a\cdot]\Ext^i_A(A/P,A)
+		\end{tikzcd}\]
+		が完全である．この$a\cdot$が全射ならば，中山の補題より$\Ext^i_A(A/P,A)=0$となり矛盾する．
+		
+		それを示すためには$\Ext^i_A(A/P,A)$がArtinであることみればよい．より強く，任意の有限生成$A$加群$M$について$\Ext^i_A(M,A)$が組成列を持つことを示そう．任意の極大でない素イデアル$P$に対して；
+		\[P=P_0\subsetneq P_1\subsetneq\dots\subsetneq P_l=\ideal{m}\]
+		を極大な鎖とすると，$\Ext^i_A(A/\ideal{m},A)=0$より\ref{lem:Ext=0は落ちる}を繰り返し用いて$\Ext^{i-l}_A(A/P,A)=0$である．これを$P$で局所化して$\Ext^{i-l}_{A_P}(k(P),A_P)=0$となり，$\dim A_P\leq d-l<i-l$なので．帰納法の仮定から$\injdim A_P<\infty$である．すると，任意の有限生成$A$加群$M$に対して；
+		\[(\Ext^i_A(M,A))_P=\Ext^i_{A_P}(M_P,A_P)=0\]
+		であるので，$\supp(\Ext^i_A(M,A))\subset\{\ideal{m}\}$である．$\Ext^i_A(M,A)\neq0$のとき必ず素因子をもつから，$\ass(\Ext^i_A(M,A))=\{\ideal{m}\}$としてよい．再び\ref{cor:Assからできる組成列もどき}により；
+		\[\Ext^i_A(M,A)=M_r\supset\dots\supset M_1\supset M_0=0\]
+		で，$M_{i}/M_{i-1}\cong A/P_i~(P_i\in\spec A)$であるものがとれるが，構成から$P_1=\ideal{m}$であり，また$M_r\neq M_1$のとき$P_2\in\ass (M_r/M_1)\subset \supp (M_r/M_1)\subset\{\ideal{m}\}$だから，$P_2=\ideal{m}$である．同様にもし$M_r\neq M_2$なら$P_3\in\supp(M_r/M_2)\subset\{\ideal{m}\}$なので，以下同様に続けることでこれは組成列をなす．
+	\end{eqv}
+\end{proof}
+
+
+%(iv) to (iii)をアーカイブしておく
+%		\item $I$を巴系で生成される既約なイデアルとすると，$A'=A/I$とおけば$A'$はArtinで，上と同様にして；
+%		\[\Ext^{d+i}_A(k,A)\cong\Ext^i_{A'}(k,A')\]
+%		である．$A$がCM環なので$\mdepth A=d$だから，任意の$i<d$に対して$\Ext^i(k,A)=0$であることはすぐにわかる．よって；
+%		\[\hom_{A'}(k,A')\cong k,\quad\Ext^i_{A'}(k,A')=0~(i>0)\]
+%		を示せばよい．
+%		
+%		まず$\hom$について示す．$A$はArtinだから$\hom_{A'}(k,A')\neq0$であり，明らかに任意の$f\neq0\in\hom_{A'}(k,A')$に対して$f(k)$は$A'$の$0$でない極小なイデアルを定めることがわかる．すると任意の$f,g\neq0\in\hom_{A'}(k,A')$に対して$f(k)\neq g(k)$ならば$f(k)\cap g(k)=0$であり，$A'$において定義から$0$は既約なので矛盾するから，$f(k)=g(k)$である．すると$f(1)=g(\alpha)$となる$\alpha\in k$があり，$f=\alpha g$である．ゆえに$\hom_{A'}(k,A')\cong k$である．
+%		
+%		次に$\Ext$について示す．\ref{prop:Noetherのinjdim判定法}より$\Ext^1_{A'}(k,A')=0$を示せば$A'$は入射的であることがわかるので，１次のところのみみればよい．$A'$はArtinなので，組成列となるイデアル鎖$0=I_0\subsetneq I_1\subsetneq\dots\subsetneq I_r=A'$がとれる．ここで\ref{prop:単純加群の構造}より，各$1\leq i\leq r-1$について完全列；
+%		\[\ses{I_i}{I_{i+1}}{k}\]
+%		があり，$\hom_{A'}(k,A')\cong k$がわかっていることに気をつけて，$\hom_{A'}(-,A')$が誘導する長完全列；
+%		\[\begin{tikzcd}
+%		0\nxcell k\nxcell\hom_{A'}(I_{i+1},A')\nxcell[\varphi_{i+1}]\hom_{A'}(I_i,A')\nxcell[\partial_i]\Ext^1(k,A')\nxcell
+%		\end{tikzcd}\]
+%		を考える．
+%		
+%		$i$についての帰納法で$\ell(\hom_{A'}(I_i,A'))\leq i$を示そう．まず$i=1$のときは$I_1=k$なので明らか．$\ell(\hom_{A'}(I_{i-1},A'))=l_i\leq i-1$と仮定する．もし$\partial_{i-1}=0$とすると；
+%		\[\ses{k}{\hom(I_i,A')}{\hom(I_{i-1},A')}\]
+%		が完全なので$\hom(I_i,A')/k\cong\hom(I_{i-1},A')$であるから$\ell(\hom(I_i,A'))=l+1\leq i$である．$\partial_{i-1}\neq0$なら，$\ker\varphi_{i}=k$で，$\im\varphi_{i}=\hom(I_i,A')/k\subsetneq\hom(I_{i-1},A')$なので$\ell(\hom(I_i,A')/k)<l-1\leq i-1$であり，$\ell(\hom(I_i,A'))\leq i$となる．
+%		
+%		これらの証明から，$\ell(\hom(I_i,A')=i$となるのは$\partial_1,\dots,\partial_{i-1}$がすべて$0$であるときに限ることがわかる．いま$\ell(\hom(I_r,A'))=\ell(\hom(A',A')=r$だから，$\partial_1=\dots=\partial_{r-1}=0$となり，$\ses{I_{r-1}}{A'}{k}$が導く$\Ext$の長完全列を考えると；
+%		\[\begin{tikzcd}0\nxcell\Ext^1(k,A')\nxcell\Ext^1(A',A')=0
+%		\end{tikzcd}\]
+%		となり$\Ext^1(k,A')=0$である．
+%		
+%		よって示された．
+
+
+\section{入射包絡}
+
+射影被覆（\ref{defi:射影被覆}）の双対として入射加群について考えたものが\textbf{入射包絡}であり，こちらは必ず存在する．それだけでなく，Noether環上の入射加群の構造を入射包絡によって決定することさえできる（\ref{thm:Noether環の入射加群の構造}）．
+
+\begin{defi}[入射包絡]\index{ほんしつてきぶぶんかぐん@本質的部分加群}\index{にゅうしゃほうらく@入射包絡}\label{defi:入射包絡}
+	$A$を環とし，$M$を$A$加群とする．$M$の部分加群$N$が；
+	\[\text{任意の$M$の部分加群$L$について$N\cap L=0$なら$L=0$．}\]
+	を満たすとき，$N$は$M$の\textbf{本質的(essential)}な部分加群であるという．$A$加群$M$について入射加群$I$と単射$\varepsilon:M\to I$が存在して$\im\varepsilon$が$I$の本質加群のとき，$(I,\varepsilon)$は$M$の\textbf{入射包絡(injective hull)}であるという．
+\end{defi}
+
+本質部分加群については次の判定条件が強力である．
+\begin{prop}\label{prop:本質的加群の判定条件}
+	$A$加群$M$の部分加群$N$が本質的であることと，任意の$x\neq0\in M$について$Ax\cap N\neq0$であることは同値である．
+\end{prop}
+
+\begin{proof}
+	$(\Longleftarrow)$のみ示す．$N\cap L=0$かつ$L\neq0$とすると，$x\neq0\in L$がとれ，このとき$Ax\subset L$より$Ax\cap N\subset L\cap N=0$であるので$Ax\cap N=0$だがこれは矛盾．よって$L=0$である．
+\end{proof}
+
+射影被覆の場合と同様に，入射包絡の同値な言い換えを与え，存在すれば同型を除いて一意であることを示そう．
+\begin{prop}\label{prop:入射包絡の言い換え}
+	$A$を環とする．$A$加群$M$と，入射加群$I$への単射$\varepsilon:M\to I$があるとする．このとき，以下の条件；
+	\begin{sakura}
+		\item $\varepsilon:M\to I$が入射包絡である．
+		\item 任意の$A$加群$N$と，$A$線型写像$\varphi:I\to N$に対して，$\varphi\circ\varepsilon$が単射ならば$\varphi$も単射である．
+		\item 任意の$A$線型写像$\varphi:I\to I$に対して，$\varphi\circ\varepsilon=\varepsilon$ならば$\varphi$は同型である．
+	\end{sakura}
+	は同値である．
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}[3]
+		\item 任意の$x\neq0\in I$について$\varphi(x)\neq 0$ならばよい．いま$\im\varepsilon$は$I$で本質的なので，\ref{prop:本質的加群の判定条件}から$Ax\cap\im\varepsilon\neq 0$である．よって，ある$y\in M$と$a\in A$が存在して$\varepsilon(y)=ax\neq 0$である．すると$\varphi(\varepsilon(y))=a\varphi(x)\neq 0$なので$\varphi(x)\neq 0$である．
+		\item 仮定より$\varphi$は単射なので，$I$が入射的だから$\psi\circ\varphi=\id_I$となる$\psi:I\to I$がある．すると，次の図式；
+		\[\begin{tikzcd}
+			&&I\\
+			0\nxcell I\arrow[ur,"\id"]\nxcell[\varphi]I\arrow[u,"\psi"]\\
+			&&M\arrow[ul,"\varepsilon"]\arrow[u,"\varepsilon"]
+		\end{tikzcd}\]
+		が可換なので，$\varepsilon=\psi\circ\varepsilon$だから(ii)より$\psi$は単射となり，$\varphi,\psi$は同型である．
+		\item $L$を$\im\varepsilon\cap L= 0$となる$I$の部分加群とする．自然な全射$\pi:I\to I/L$を考えると，$\pi\circ\varepsilon$は単射である．すると，$I$が単射的なのである$f:I/L\to I$が存在して；
+		\[\begin{tikzcd}
+			&&I\\
+			0\nxcell M\arrow[ur,"\varepsilon"]\arrow[dr,"\varepsilon"]\nxcell[\pi\circ\varepsilon]I/L\arrow[u,"f"]\\
+			&&I\arrow[u,"\pi"]
+		\end{tikzcd}\]
+		が可換である．よって$f\circ\pi$は同型で，特に$\pi$は単射である．ゆえに$L=0$である．
+	\end{eqv}
+\end{proof}
+
+射影被覆の場合（\ref{prop:射影被覆は存在すれば一意}）の証明と全く双対に，入射包絡は存在すれば必ず一意であることがわかる．射影被覆と異なるのは入射包絡が必ず存在することである．
+
+\begin{thm}[入射包絡の存在]
+	$A$加群$M$について入射包絡が必ず存在する．
+\end{thm}
+
+\begin{proof}
+	$A$加群の圏は入射的対象を十分に持つ（\ref{thm:加群の圏はhas enough injectives}）ので，入射加群$I$と単射$\varepsilon:M\to I$が存在する．次の集合；
+	\[\mathscr{E}=\mkset{E:I\text{の部分加群}}{M\subset E, M\text{は}E\text{の本質部分加群}}\]
+	は$M\in\mathscr{E}$なので空ではなく，帰納的順序集合をなす．よってZornの補題から極大元がとれ，それを$E$としよう．次に；
+	\[\mathscr{L}=\mkset{L:I\text{の部分加群}}{L\cap E=0}\]
+	は$0\in\mathscr{L}$より空でなく，帰納的順序集合をなすなので極大元を$L$とおく．埋め込み$\iota:E\to I$と自然な全射$\pi:I\to I/L$を考える．合成$\pi\circ\iota$は単射であり，$\pi(E)$は$I/L$で本質的．実際$L\subset N\subset I$を$I$の部分加群とすると，$\pi(E)\cap N/L=0$なら$E\cap N\subset L$だが$E\cap L=0$より$E\cap N=0$となり，$L$の極大性より$N=L$である．
+	
+	$I$が入射的なので，次の図式；
+	\[\begin{tikzcd}
+	&&I\\
+	0\nxcell E\arrow[ur,"\iota",hookrightarrow]\nxcell[\pi\circ\iota]I/L\arrow[u,dashed,"\varphi"]
+	\end{tikzcd}\]
+	が可換になる$\varphi:I/L\to I$が存在する．次に$E$は$\varphi(I/L)$の本質部分加群であることを示そう．$\varphi(I/L)$の部分加群$N$について$E\cap N=0$であるとする．このとき$\pi(E)\cap\varphi^{-1}(N)=0$である．実際$x\in\pi(E)\cap\varphi^{-1}(N)$とすると，ある$y\in E$が存在して$\pi(y)=x$である．このとき$\varphi(\pi(y))=y\in N\cap E$より$y=0$であり，ゆえに$x=0$となる．すると$\pi(E)$は$I/L$の本質部分加群なので$\varphi^{-1}(N)=0$となり$N\subset\im\varphi$だから$N=0$となる．すると$E$は$M$の本質拡大で，$\varphi(I/L)$は$E$の本質拡大なので$\varphi(I/L)$は$M$の本質拡大だから（\ref{prop:本質的加群の判定条件}を用いて確かめよ）$E$の極大性より$E=\varphi(I/L)$である．よって$\iota:E\to I$は分裂単射となる．ゆえに$E$は入射加群であり，これが$M$の入射包絡にほかならない．
+\end{proof}
+
+この定理により，$A$加群$M$の入射包絡は同型を除いて必ず一意に存在するので$\E_A(M)$とかくことにしよう．
+
+\begin{lem}\label{lem:入射包絡のAss}
+	$A$をNoether環，$M$を$A$加群，$\E(M)$を$M$の入射包絡とする．このとき$\ass M=\ass\E(M)$である．
+\end{lem}
+
+\begin{proof}
+	\ref{prop:完全列とass}より$\ass M\subset\ass \E(M)$は明らかで，任意の$P\in\ass\E(A)$に対して$A/P\subset\E(M)$で，$M$は$\E(M)$で本質的なので$A/P\cap M\neq 0$であるから，$x\neq 0\in A/P\cap M$をとれば，$P=\ann x$である．
+\end{proof}
+
+\begin{lem}\label{lem:入射包絡は局所化と可換}
+	$A$をNoether環とし，$S\subset A$を積閉集合，$M$を$A$加群とする．このとき；
+	\[(\E_A(M))_S=\E_{A_S}(M_S)\]
+	が成り立つ．
+\end{lem}
+\begin{proof}
+	$E=\E_A(M)$とおこう．\ref{lem:Noetherなら入射の局所化は入射}により$E_S$は入射的で，単射$M_S\to E_S$があるので，$M_S$が$E_S$で本質的であることを示せばよい．そのために任意の$x/s\in E_S$に対して$A_S(x/s)\cap M_S\neq 0$をみる．ここで$A_S(x/s)=A_S x$なので$x/s$を$x\in E$で置き換えてよく，また，$A$のイデアルの族；
+	\[\Sigma=\mkset{\ann_A(sx)}{s\in S}\]
+	の極大元$\ann(sx)$をとると，また$A_Sx=A_S(sx)$なので，$x$を$sx$でとりかえて$A_S x\cap M_S\neq0$を$\ann x$が$\Sigma$で極大という仮定のもとで示せばよい．$I=\mkset{a\in A}{ax\in M}$とおくと，$Ix=Ax\cap M$であり，$M$が$E$で本質的なので，$Ix\neq 0$である．$I=(a_1,\dots,a_n)$とおく．ある$i$があって$a_ix/1\neq 0\in M_S$ならばよいので，任意の$i$について$a_ix/1=0$と仮定する．するとある$t\in S$があって$a_i tx=0$で，これは$a_i \in\ann tx$で意味する．ここで$\ann x\subset\ann tx$だが，$\ann x$は$\Sigma$で極大なので$a_i\in\ann x$であり，矛盾．ゆえに$A_Sx\cap M_S\neq 0$である．
+\end{proof}
+
+\begin{defi}[礎石]\index{そせき@礎石}\index{#Socle@Socle}
+	$(A,\ideal{m},k)$を局所環とする．$A$加群$M$について；
+	\[\soc M=\hom_A(k,M)\]
+	と定義し，これを$M$の\textbf{礎石(socle)}という．
+\end{defi}
+
+礎石はあまり浸透していない訳語に思え，本書では主にSocleの語を用いることにする．$\soc M$は$(0\colon_M\ideal{m})=\mkset{x\in M}{\ideal{m}x=0}$と書き換えることもできる．
+
+\begin{lem}
+	$A$を局所環，$M$を$A$加群とする．$M$の任意の本質的な部分加群$N$について，$\soc M\subset N$である．
+\end{lem}
+
+\begin{proof}
+	$N\subset M$を本質的とすると，任意の$x\neq 0\in\soc M$について$Ax\cap N\neq 0$で，ある$a\in A$が存在して$ax\neq 0\in N$である．すると$x\in\soc M$だから$a$は単元で，$x\in N$である．
+\end{proof}
+
+\begin{prop}\label{prop:ArtinのSocleはessential}
+	$(A,\ideal{m},k)$をNoether局所環，$N$をArtin $A$加群とすると，$\soc N\subset N$は本質的である．
+\end{prop}
+
+\begin{proof}
+	任意の$0\neq x\in N$に対し，$Ax\cap\soc N=\soc Ax$である．ここで$Ax$はNoetherかつArtinなので組成列を持ち，明らかに$\soc Ax=\hom(k,Ax)\neq0$である．
+\end{proof}
+
+補題と合わせることで，Noether局所環上のArtin加群においては，Socleが本質的な部分加群の中で最小なものを与えることがわかる．
+
+\begin{lem}\label{lem:k(P)とHom}
+	$A$をNoether環とする．任意の$P\in\spec A$について；
+	\[k(P)\cong\hom_{A_P}(k(P),\E(A/P)_P)\]
+	が成り立つ．
+\end{lem}
+
+\begin{proof}
+	$\E(A/P)_P=\E_{A_P}(k(P))$だから，Noether局所環$(A,\ideal{m},k)$において；
+	\[k\cong\hom_A(k,E(k))=\soc \E(k)\]
+	を示せば十分である．いま$k\subset \E(k)$が本質的だから$\soc \E(k)\subset k$であり，逆も簡単に確かめられる．
+\end{proof}
+
+\begin{prop}
+	$A$を環とする．任意の$P\in\spec A$に対して$\E(A/P)$は直既約である．$A$がNoetherなら，$E$が直既約な入射加群ならばある$P\in\ass E$が存在して$E\cong\E(A/P)$である．また$P\neq Q\in\spec A$なら$\E(A/P)\not\cong\E(A/Q)$である．
+\end{prop}
+
+\begin{proof}
+	まず，$\E(A/P)=E_1\oplus E_2$であると仮定する．このとき$E_i\cap A/P\neq 0$はあるイデアル$P\subset I_i$によって$I_i+P$とかけている．すると$E_1\cap E_2\subset I_1I_2+P\neq0$であり，これは内部直和であることに矛盾している．
+	
+	ここからは$A$にNoether性を課す．$E$を直既約な入射加群とする．$P\in\ass E$をとり，$\E(A/P)$を考える．\ref{prop:入射包絡の言い換え}より$\E(A/P)$は$E$の直和因子だが，$E$が直既約なので$E\cong\E(A/P)$である．また，$P\neq Q\in\spec A$とすると，\ref{lem:入射包絡のAss}から$\ass\E(A/P)=\{P\}\neq\{Q\}=\ass\E(A/Q)$であり，同型になりえないことがわかる．
+\end{proof}
+
+これらの準備をもとに，Noether環上の入射加群の構造を決定する．それを記述するためのホモロジカルな不変量を定義しよう．
+
+いくつかのホモロジカルな不変量を定義しておこう．
+
+\begin{defi}[Bass数，型]\index{#Bassすう@Bass数}\index{かた@型}
+	$A$をNoether環とする．有限生成$A$加群$M$と$P\in\spec A$について；
+	\[\mu^i(P,M)=\dim_{k(P)}\Ext^i_{A_P}(k(P),M_P)\]
+	を$M$の$P$に関する$i$番目の\textbf{Bass数(Bass number)}という．また，Noether局所環$(A,\ideal{m})$上の有限生成$A$加群$M$について$\mdepth M=d$であるとき；
+	\[r(M)=\mu^d(\ideal{m},M)\]
+	を$M$の\textbf{型(type)}という．
+\end{defi}
+
+この記号のもとで，例えばGorenstein環とは１型のCM環のことである，と述べることができる．
+
+\begin{thm}\label{thm:Noether環の入射加群の構造}
+	$A$をNoether環とすると，$A$上の入射加群$E$は$\E_A(A/P)~(P\in\spec A)$の直和でかける．さらに，その分解は；
+	\[E=\bigoplus_{P\in\spec A}\E_A(A/P)^{\mu^0(P,E)}\]
+	で与えられる．
+	
+\end{thm}
+
+\begin{proof}
+	$E$を入射加群とする．先の命題より，$E$は直既約な加群の直和であればよい．
+	
+	\[\Sigma=\mkset{E'\subset E}{E'\text{は入射的で，直既約な加群の（内部）直和}}\]
+	と定義すると，$E_1'<E_2'$を$E_1'$は$E_2'$の直和因子であることと定めると，これは帰納的順序集合であり，極大元$E'$をとる．$E'$も入射的なので，次の図；
+	\[\begin{tikzcd}
+	&&E'\\
+	0\nxcell E'\arrow[ur,"\id"]\nxcell E\arrow[u,dashed]
+	\end{tikzcd}\]
+	が可換なので，$E'$は$E$の直和因子．$E=E'\oplus N$とおく．$N\neq 0$とおくと，$P\in\ass N$について$\E(A/P)$は$N$の直和因子で，$E=(E'\oplus \E(A/P))\oplus N'$となって$E'$の極大性に矛盾するから，$N=0$で$E$は直既約な加群の直和である．
+	
+	次に；
+	\[E\cong\bigoplus_{P\in\spec A}\E(A/P)^{n_P}\]
+	とおくと，固定した$P\in\spec A$について；
+	\begin{align*}
+	\hom_{A_P}(k(P),E_P)&\cong\bigoplus_{P\in\spec A}\hom_{A_P}(k(P),\E_{A_P}(A_P/QA_P)^{n_{Q}})\\
+	&\cong\bigoplus_{Q\subset P}\hom_{A_P}(k(P),\E_{A_P}(A_P/QA_P)^{n_Q})
+	\end{align*}
+	である．ここで$\hom_{A_P}(k(P),\E_{A_P}(A_P/QA_P))=(\hom_A(A/P,\E(A/Q)))_P$なので，$\hom_A(A/P,\E(A/Q))\neq 0$と仮定する．$f:A/P\to\E(A/Q)$が$0$でないとすると，$f(A/P)\cap A/Q\neq 0$で，ある$x\neq 0\in f(A/P)\cap A/Q$をとると，$Q=\ann x\supset P$であるから，$P=Q$である．よって，\ref{lem:k(P)とHom}から；
+	\[\hom_{A_P}(k(P),E_P)=\hom_{A_P}(k(P),\E(A/P)_P^{n_P})=k(P)^{n_P}\]
+	となり，$n_P=\mu^0(P,E)$である．
+\end{proof}
+
+このように，Noether環上の入射加群はすべて入射包絡の直和であることがわかるが，一般の環では入射加群の無限直和がまた入射加群かどうかはまったく明らかではないことを，次の定理とともに紹介しておく．
+
+\begin{prop}
+	環$A$がNoetherであることと，任意の入射加群の族$\{E_\lambda\}_{\lambda\in\Lambda}$について，$\bigoplus_{\lambda\in\Lambda} E_\lambda$であることは同値である．
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item $I$を$A$のイデアルとし，$\varphi:I\to\bigoplus E_\lambda$を$A$線型写像とする．$\varphi_\lambda$を$\varphi$と$\bigoplus E_\lambda\to E_\lambda$の合成とする．$I$が有限生成なので，有限個の$\lambda$以外では$I$の生成系が$\varphi_\lambda$で消える．よって，有限部分集合$\Lambda'\subset\Lambda$が存在して$\varphi(I)\subset\bigoplus_{\lambda\in\Lambda'}E_\lambda$とできる．$\Lambda'=\{1,\dots,n\}$としよう．各$1\leq i\leq n$について$\varphi_i$を$\widetilde{\varphi}_i:A\to E_i$に拡張すると；
+		\[\widetilde{\varphi}:A\to\bigoplus_{\lambda\in\Lambda}E_\lambda;1\mapsto\sum_{i=1}^n\widetilde{\varphi}_i(1)\]
+		は$\varphi$の拡張である．
+		\item $I_1\subset\dots\subset I_i\subset\cdots$を$A$のイデアルの昇鎖とする．$I=\bigcup I_i$とおこう．各$i$について$A/I_i$の入射包絡を$E_i=\E(A/I_i)$とおくと，$A/I_i\subset E_i$であって；
+		\[\varphi:I\to\bigoplus E_i;a\mapsto (a+I_i)_i\]
+		が$A$線型である．$\bigoplus E_i$は入射的だから$\widetilde{\varphi}:A\to\bigoplus E_i$に拡張できる．ここで$\widetilde{\varphi}(1)=(x_i)$とおくと，$x_i\neq0$となる$i$は有限個で，その最大値を$n$とする．すると任意の$i>n$について．任意の$a\in I$に対し$a+I_i=0$となるから，$I\subset I_i$で$A$はNoetherである．
+	\end{eqv}
+\end{proof}
+
+\ref{defi:極小射影分解}で極小射影分解を定義したが，射影被覆の代わりに入射包絡をとることでまったく双対に極小入射分解が定義でき，またそれは必ず存在する．
+
+\begin{defi}[極小入射分解]\index{きょくしょうにゅうしゃぶんかい@極小入射分解}
+	$A$を環とし，$M$を$A$加群とする．$M$の入射分解；
+	\[\begin{tikzcd}
+	0\nxcell I^0\nxcell[d^0]I^1\nxcell[d^2]\cdots
+	\end{tikzcd}\]
+	について，各$I^i$が$\coker d^{i-1}$の入射包絡になっているとき，それを$M$の\textbf{極小入射分解(minimal injective resolution)}という．
+\end{defi}
+
+\ref{thm:Noether環の入射加群の構造}により，Noether環上の有限生成加群について，極小入射分解の各成分の構造を決定でき，それは$M$のみによって定まる．特に，これは\ref{thm:Noether環の入射加群の構造}の改良である．
+
+\begin{thm}[極小入射分解の構造定理]
+	$A$をNoether環とし，$M$を有限生成$A$加群，$I^\bullet$を$M$の極小入射分解とする．このとき；
+	\[I^i\cong\bigoplus_{P\in\spec A}E(A/P)^{\mu^i(P,M)}\]
+	である．
+\end{thm}
+
+\begin{proof}
+	$I^i$を$M$の極小入射分解とすると，\ref{lem:入射包絡は局所化と可換}より$P\in\spec A$について；
+	\[\begin{tikzcd}
+	0\nxcell M_P\nxcell I^0_P=E(M_P)\nxcell[d^0_P] I^1_P\nxcell[d^1_P]\cdots
+	\end{tikzcd}\]
+	は$M_P$の極小入射分解である．ここで$\hom_{A_P}(k(P),I^i_P)\cong\Ext^i_{A_P}(k(P),M_P)$を示そう．$\hom_{A_P}(k(P),I^i_P)=\soc_{A_P}I^i_P$で，$\im d^{i-1}_P\subset I^i_P$は本質的なので，$\hom_{A_P}(k(P),I^i_P)\subset\im d^{i-1}_P=\ker d^i_P$である．これがすべての$i$で成り立つから，関手$\hom_{A_P}(k(P),-)$を$d_i$に施すと$\im {d_i}_\ast=0$となり，$\Ext^i_{A_P}(k(P),M_P)=\hom_{A_P}(k(P),I^i_P)$であることがわかる．よって，\ref{thm:Noether局所環上の入射次元}の証明と同様に示された．
+\end{proof}
+
+最後に，この定理の$i=0$の部分は$M$が有限生成であることを必要としないことを示しておこう．
+
+\begin{cor}
+	$A$をNoether環とし，$M$を$A$加群とする．このとき；
+	\[\E(M)\cong\bigoplus_{P\in\spec A}\E(A/P)^{\mu^0(P,M)}\]
+	である．
+\end{cor}
+
+\begin{proof}
+	\ref{thm:Noether環の入射加群の構造}から，各$P\in\spec A$において$\mu^0(P,M)=\mu^0(P,\E(M))$，すなわち$\hom_{A_P}(k(P),M_P)=\hom_{A_P}(k(P),\E_{A_P}(M_P))$を示せばよい．さて上の定理の証明と同様に；
+	\[\begin{tikzcd}
+		0\nxcell M_P\nxcell \E(M_P)\nxcell[d^0_P]I_P^1\nxcell\cdots
+	\end{tikzcd}\]
+	を考えると，$M_P\subset\E(M_P)$は本質的だから$\hom_{A_P}(k(P),\E(M_P))\subset M_P=\ker d^0_P$なので；
+	\[\begin{tikzcd}
+		0\nxcell\hom_{A_P}(k(P),M_P)\nxcell\hom_{A_P}(k(P),\E(M_P))\nxcell0
+	\end{tikzcd}\]
+	が完全である．よって示された．
+\end{proof}
+
+
+\section{Matlisの双対定理}
+この節では，Matlisの双対定理について述べようと思う．Matlisの双対定理とは，Noether完備局所環$(A,\ideal{m},k)$において$k$の入射包絡を$E=E_A(k)$とおくとき，関手$\hom_A(-,E)$がNoether加群とArtin加群の間に双対を与えるという主張である．この節では，$\hom(M,E)$を$M^\vee$とかくことにする．
+
+極小入射加群の構造はBass数により決定されることを見た．それに対応して，極小射影分解の構造を決定する数を定義しよう．
+\begin{defi}[Betti数]\index{#bettiすう@Betti数}
+	$(A,\ideal{m},k)$をNoether局所環とし，$M$を有限生成$A$加群とする．$M$の極小自由（極小射影）分解$P_\bullet$について，各$i$における$\rank(P_i)$を$\beta_i(M)$とかき，$M$の$i$次の\textbf{Betti数(Betti number)}という．とくに$\beta_0(M)=\dim_k M/\ideal{m}M$を$\mu(M)$とかく．
+\end{defi}
+
+これによって，まずはNoether局所環上の，有限生成Artin加群に関する双対を見ていこう．
+
+\begin{prop}[NoetherかつArtin加群についての双対定理]\label{prop:Artin加群においての双対定理}
+	$(A,\ideal{m},k)$をNoether局所環，$M$をNoetherかつArtin加群，すなわち組成列を持つ加群とする．このとき；
+	\begin{sakura}
+		\item $M^\vee$もNoetherかつArtinであり，$\ell(M)=\ell(M^\vee)$が成り立つ．
+		\item 自然な；
+		\[M\to M^{\vee\vee};x\mapsto(f\mapsto f(x))\]
+		は同型である．
+		\item $\mu(M)=r(M^\vee)$であり，$r(M)=\mu(M^\vee)$である．
+	\end{sakura}
+\end{prop}
+
+\begin{proof}
+	\begin{sakura}
+	\item $\ell(M)$についての帰納法．$\ell(M)=1$なら$M=k$であり，\ref{lem:k(P)とHom}から$k=k^\vee$なのでよい．$\ell(M)=l>1$とする．
+	\[M=M_l\supset M_{l-1}\supset\dots\supset M_0=0\]
+	を$M$の組成列とすると；
+	\[\ses{M_{l-1}}{M}{k}\]
+	が完全で，$E$は入射加群だから；
+	\[\ses{k}{M^\vee}{M_{l-1}^\vee}\]
+	も完全で，帰納法の仮定より$M_{l-1}^\vee$は長さ$l-1$の組成列をもち，また$M^\vee/k\cong M_{l-1}^\vee$だから$M^\vee$も長さ$l$の組成列を持つ．
+
+	\item$\ell(M)$についての帰納法．$\ell(M)=1$のとき，すなわち$M=k$のときは$k^{\vee\vee}=k$なので自然な射が$0$でなければよいが，これは明らか．$\ell(M)>1$とすると，組成列をとって；
+	\[\ses{M_{l-1}}{M}{k}\]
+	が完全で，$M_{l-1}^{\vee\vee}\cong M_{l-1}$だから，次の可換図式；
+	\[\begin{tikzcd}
+	0\nxcell M_{l-1}\darrow\nxcell M\darrow\nxcell k\darrow\nxcell0\\
+	0\nxcell M_{l-1}^{\vee\vee}\nxcell M^{\vee\vee}\nxcell k^{\vee\vee}\nxcell0
+	\end{tikzcd}\]
+	において，左と右の縦の射は同型だから，蛇の補題より中央も同型．
+	
+	\item 自然な単射$\ideal{m}M\to M$に対して，$\hom(-,E)$を施して$\varphi:M^\vee\to(\ideal{m}M)^\vee$が得られるが，これによる$f:M\to E$の像は$f$の$\ideal{m}M$への制限であり，$(M/\ideal{m}M)^\vee=\ker\varphi$だが，$f\in(M/\ideal{m}M)^\vee$であることは$\varphi(f)=0$すなわち$\ideal{m}f=0$であることと同値であり，$(M/\ideal{m}M)^\vee=\soc M^\vee$である．よって$M^\vee$もArtinだから；
+	\[\mu(M)=\dim_k M/\ideal{m}M=\dim_k (M/\ideal{m}M)^\vee=\dim_k\soc M^\vee=\dim_k\hom(k,M^\vee)=r(M^\vee)\]
+	である．すると$\mu(M^\vee)=r(M^{\vee\vee})=r(M)$であることもわかる．
+	\end{sakura}
+\end{proof}
+
+%\begin{prop}
+%	$(A,\ideal{m},k)$がArtin局所環であるとき，忠実な$A$加群$M$で$r(M)=1$であるものについて，$M$は$E$と同型である．
+%\end{prop}
+%
+%\begin{proof}
+%	いま$E=A^\vee$だから，$\ell(E)=\ell(A)<\infty$で，$E$はNoetherかつArtinである．また$A\cong\hom(E,E)$であるから$f:E\to E$はスカラー倍に限られ，特に$E$は忠実である．さて，$M$を忠実で$r(M)=1$であるような$A$加群とすると，$\mu(M^\vee)=1$なので，ある$f:M\to E$があって$M^\vee=Af$である．すると$M=M^{\vee\vee}=\hom(Af,E)$である．いま$a\in A$について$af=0$とすると，$a\hom(Af,E)=aM=0$で$M$が忠実なので$a=0$である．よって$Af\cong A$であり，$M\cong\hom(A,E)\cong E$である．
+%\end{proof}
+
+\begin{thm}[Matlisの双対定理]\label{thm:Matlisの双対定理}\index{#Matlisのそうついていり@Matlisの双対定理}
+	$(A,\ideal{m},k)$を完備Noether局所環とする．$M,N$をそれぞれNoether,Artinな$A$加群とする．$k$の入射包絡を$E$とおいたとき，完全反変関手$-^\vee=\hom(-,E)$について；
+	\begin{sakura}
+		\item $M^\vee$はArtinで，$N^\vee$はNoetherである．
+		\item $M^{\vee\vee}\cong M, N^{\vee\vee}\cong N$である．
+	\end{sakura}
+	が成り立つ．
+\end{thm}
+
+これを証明するために，主張を分割しよう．
+
+\begin{prop}\label{claim:matlis1}
+	$(A,\ideal{m},k)$を完備Noether局所環とすると，$A^{\vee\vee}\cong A$である．
+\end{prop}
+
+\begin{proof}
+	$E^\vee\cong A$を示せばよい．$n\geq 0$について，$E_n=\hom_A(A/\ideal{m}^n,M)=\mkset{x\in E}{\ideal{m}^nx=0}$とおく．すると，$A/\ideal{m}^n$における$k$の入射包絡は$E_n$である．これを示すには$E_n$が入射的$A/\ideal{m}^n$加群であることをみればよい．$\varphi:M_1\to M_2$を単射な$A/\ideal{m}^n$線形写像，$f:M_1\to E_n$を$A/\ideal{m}^n$線形とすると，これを$A$線形とおもうことで，$A$加群の可換図式；
+	\[\begin{tikzcd}
+		&&E\arrow[r,hookrightarrow]&E\\
+		0\nxcell M_1\arrow[ur,"f"]\nxcell[\varphi]M_2\arrow[ur,dashed,"\widetilde{f}"]
+	\end{tikzcd}\]
+	が得られる．ここで$\ideal{m}^n\widetilde{f}(M_2)=0$なので，$\im\widetilde{f}\subset E_n$であるから，$\widetilde{f}$を$A/\ideal{m}^n$線形とみなせばよい．
+	
+	さて，$A/\ideal{m}^n$はArtinなので，\ref{prop:Artin加群においての双対定理}から$A/\ideal{m}^n\cong E_n^\vee$であり；
+	\[A=\plim A/\ideal{m}^n=\plim E_n^\vee=\plim\hom(E_n,E)=\hom(\ilim E_n,E)\]
+	であるので，$\ilim E_n=\bigcup_{n\geq 0} E_n$だから$E\subset\bigcup_{n\geq 0}E_n$を示せばよい．任意の$x\neq 0\in E$をとると，$\ass Ax\subset \ass E=\{\ideal{m}\}$なので，\ref{prop:準素部分加群とass}により$\ann x$は$\ideal{m}$準素イデアルで，$\sqrt{\ann x}=\ideal{m}$だから，ある$n$について$\ideal{m}^nx=0$である．よって示された．
+\end{proof}
+
+\begin{prop}\label{claim:matlis2}
+	$(A,\ideal{m},k)$を完備Noether局所環とすると，$E$はArtinである．
+\end{prop}
+
+\begin{proof}
+	$E$の降鎖列$E=N_0\supset N_1\supset\cdots$をとる．すると，$E^\vee\cong A$なので，\ref{claim:matlis1}より；
+	\[\begin{tikzcd}
+		E^\vee\cong A\nxcell N_1^\vee\nxcell N_2^\vee\nxcell\cdots
+	\end{tikzcd}\]
+	が得られ，各$N_i^\vee\to N_{i+1}^\vee$は全射である．すると$N_i^\vee=A/I_i$とかけるイデアル$I_i$がとれ，イデアルの昇鎖$0=I_0\subset I_1\subset\cdots$を与える．$A$はNoetherなのでこれは止まり，ある$n$について$N_i^\vee= N_{i+1}^\vee$とできる．ここで$N_i=N_{i+1}$を示したいので，そうでないと仮定しよう．すると$N=N_i/N_{i+1}\neq0$であるが，完全列；
+	\[\ses{N_{i+1}}{N_i}{N}\]
+	に$-^\vee$を適用して$N^\vee=0$である．一方で$N_i\subset E$なので$\ass N_i=\{\ideal{m}\}$であるから，$\ass N\subset\supp N=\{\ideal{m}\}$で，極小元は一致するので$\ideal{m}\in\ass N$，すなわち単射$k\to N$が存在し，全射$0=N^\vee\to k^\vee=k$が存在する．これは矛盾である．
+\end{proof}
+
+\begin{prop}\label{claim:matlis3}
+	$(A,\ideal{m},k)$を完備Noether局所環とする．$N$をArtin加群であることは，ある$n$が存在して，単射$N\to E^n$が存在することと同値である．
+\end{prop}
+
+\begin{proof}
+	\ref{claim:matlis2}から$E^n$はArtinだから，$(\Longrightarrow)$のみみればよい．$N$をArtinとすると，$\soc N$もArtinで，これは$k$線型空間としてもArtinだから，\ref{prop:Artinなベクトル空間はNoether}より$r(N)=\dim_k\soc N<\infty$である．また，任意の$x\neq0\in N$に対して$Ax\cap\soc N=\soc Ax$で，また$Ax$もArtinだから$\mdepth Ax=0$で，$\soc Ax\neq0$である．よって$\soc N\subset N$は本質的で，入射包絡のとり方から$N\subset\E(\soc N)\cong \E^{r(N)}$である．
+\end{proof}
+
+\begin{prop}\label{claim:matlis4}
+	$(A,\ideal{m},k)$をNoether局所環とする．$M$を$A$加群とすると，自然な写像；
+	\[\varphi:M\to M^{\vee\vee};x\mapsto(f\mapsto f(x))\]
+	は単射である．
+\end{prop}
+
+\begin{proof}
+	$x\in\ker\varphi$とし，$x\neq 0$とする．すると，$0\neq y\in E$により；
+	\[f:Ax\to E;x\mapsto y\]
+	が定まり，これはゼロでない．このとき，$E$が入射的だからこれは$\widetilde{f}:M\to E$に持ち上がり，$\widetilde{f}(x)\neq0$となるが，これは矛盾である．
+\end{proof}
+
+これらの準備を踏まえれば，Matlisの双対定理は簡単に示すことができる．
+\begin{proof}[\textbf{\ref{thm:Matlisの双対定理}の証明}]
+	\begin{sakura}
+		\item $M$をNoether加群とすると，ある$n\geq0$について全射$A^n\to M$があり，これにより単射$M^\vee\to E^n$があることになって$M^\vee$はArtinである．また$N$をArtinとすると，\ref{claim:matlis3}から単射$N\to E^n$があって，全射$A^n\to N^\vee$が得られるので$N^\vee$はNoetherである．
+		\item $M$をNoetherとすると，自然な；
+		\[\begin{tikzcd}
+			0\nxcell K\darrow\nxcell A^n\darrow\nxcell M\darrow\nxcell0\\
+			0\nxcell K^{\vee\vee}\nxcell A^n\nxcell M^{\vee\vee}\nxcell0
+		\end{tikzcd}\]
+		において\ref{claim:matlis4}から$M\to M^{\vee\vee}$は単射で，また蛇の補題から全射であることもわかる．また$N$をArtinとすると；
+		\[\begin{tikzcd}
+			0\nxcell N\darrow\nxcell E^n\darrow\nxcell C\darrow\nxcell0\\
+			0\nxcell N^{\vee\vee}\nxcell E^n\nxcell C^{\vee\vee}\nxcell0
+		\end{tikzcd}\]
+		についても\ref{claim:matlis4}と蛇の補題から$N\to N^{\vee\vee}$は同型である．
+	\end{sakura}
+\end{proof}
+
+\section{外積代数}
+
+この節では，外積代数と呼ばれる\textbf{非可換環}を定義し，Koszul複体を扱うための準備をする．非可換環とはいっても，可換環上の加群になっている場合を扱うため，環構造が本質なわけではない．従来どおり，\textbf{単に環といった場合には可換環を指す．}
+
+\begin{defi}[多元環]\index{たげんかん@多元環}
+	$A$を環，$E$を$A$加群とする．乗法$\cdot: E\times E\to E$で，任意の$x,y,z\in E,a,b\in A$に対して；
+	\begin{sakura}
+		\item （結合的） $(x\cdot y)\cdot z=x\cdot (y\cdot z).$
+		\item （単位的） ある$e\in E$が存在して，$e\cdot x=x\cdot e=x$である．
+		\item （$A$-双線型） $(ax+by)\cdot z=ax\cdot z+by\cdot z, x\cdot(ay+bz)=ax\cdot y+bx\cdot z.$
+	\end{sakura}
+	を満たすものがあるとき，組$(E,\cdot)$を\textbf{$A$多元環(associative $A$--algebra)}という．
+\end{defi}
+
+この定義によって，$E$は非可換環である．多元環とは，スカラー倍と整合性のあるような環構造を持つ$A$加群，ととらえることができる．
+
+多元環のなかでも代表的なものを紹介しよう．
+\begin{defi}[テンソル代数]\index{てんそるだいすう@テンソル代数}
+	$A$を環，$M$を$A$加群とする．$M$の$i$個のテンソル積を；
+	\[M^{\otimes i}=\underbrace{M\otimes\dots\otimes M}_{i\text{個}}, M^{\otimes 0}=A\]
+	とおき；
+	\[\bigotimes M=\bigoplus_{i=0}^\infty M^{\otimes i}\]
+	を$M$の\textbf{テンソル代数}(tensor algebra)という．
+\end{defi}
+多元環としての積は；
+\[M^{\otimes m}\times M^{\otimes n}\to M^{\otimes m+n};(x_1\otimes\cdots\otimes x_m,y_1\otimes\cdots\otimes y_n)\mapsto x_1\otimes\cdots\otimes x_m\otimes y_1\otimes\cdots\otimes y_n\]
+を線型に拡張することで定める．またこれによりテンソル代数は次数構造を持つ．
+
+\begin{prop}[テンソル代数の普遍性]
+	$A$を環，$M$を$A$加群，$E$を$A$多元環，$\varphi:M\to E$を$A$線型とする．このとき，多元環の準同型；
+	\[\widetilde{\varphi}:\bigotimes M\to E\]
+	で，自然な包含$\iota:M\to\bigotimes M$に対して$\varphi=\widetilde{\varphi}\circ\iota$が成り立つものが一意的に存在する．
+\end{prop}
+
+\begin{proof}
+	$n\geq 2$とする．
+	\[\varphi_n:\underbrace{M\times\cdots\times M}_{n\text{個}}\to E;(x_1,\dots,x_n)\mapsto \varphi(x_1)\cdots\varphi(x_n)\]
+	は$A$多重線型となり，テンソル積の普遍性から$\widetilde\varphi_n:M^{\otimes n}\to N$が存在して；
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		M\times\cdots\times M\arrow[d,hook]\nxcell[\varphi_n]E\\
+		M^{\otimes n}\arrow[ur,"\widetilde\varphi_n",swap]
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+	が可換となる．$n=0,1$については$e$を$E$の単位元として；
+	\[\widetilde\varphi_0:A\to E;a\mapsto ae,~\widetilde\varphi_1=\varphi\]
+	とする．これらにより；
+	\[\widetilde\varphi:\bigotimes M\to E;x_1\otimes\dots\otimes x_n\mapsto\widetilde\varphi_i(x_1\otimes\cdots\otimes x_n)\]
+	を定めると，これが求める条件を満たす．
+	
+	$A$多元環の準同型であることは構成から明らかであり，また$\psi:\bigotimes M\to E$が同じ可換性を持つとすると，$A$多元環の準同型であることから；
+	\[\psi(x_1\otimes\dots\otimes x_n)=\psi(x_1)\cdots\psi(x_n)\]
+	であるが，可換性より$\psi(x_i)=\varphi(x_i)$でなければならないので，$\psi=\widetilde\varphi$である．
+\end{proof}
+
+\begin{defi}[外積代数]\index{がいせきだいすう@外積代数}
+	$A$を環，$M$を$A$加群とする．$I_M$を$\mkset{x\otimes x}{x\in M}$が生成する$\bigotimes M$の両側イデアルとする．このとき；
+	\[\bigwedge M=(\bigotimes M)/I_M\]
+	を$M$の\textbf{外積代数(exterior algebra)}という．$x_1\otimes\cdots\otimes x_n$の像を$x_1\wedge\dots\wedge x_n$とかく．
+\end{defi}
+
+定義より，任意の$x\in M$について$x\wedge x=0$である．また；
+\[(x+y)\otimes(x+y)=x\otimes x+x\otimes y+y\otimes x+y\otimes y\]
+であるから，つねに$x\wedge y=-y\wedge x$が成り立つ．これを一般化した計算規則が次である．
+
+\begin{prop}
+	$A$を環，$M$を$A$加群とする．$x_1\wedge\cdots\wedge x_n\in\bigwedge M$について；
+	\begin{sakura}
+		\item ある$1\leq i\neq j\leq n$について$x_i=x_j$ならば，$x_1\wedge\dots\wedge x_n=0$である．
+		\item 任意の$\sigma\in S_n$について，$x_{\sigma(1)}\wedge\dots x_{\sigma(n)}=\sgn(\sigma)x_1\wedge\dots\wedge x_n$である．
+	\end{sakura}
+	が成り立つ．
+\end{prop}
+
+\begin{proof}
+	\begin{sakura}
+		\item $n=2$のときは自明である．$n$についての帰納法で示す．$n-1$まで正しいとする．$i=1,j=n$の場合以外は帰納法の仮定からすでに示されている．
+		\[x_1\otimes x_2\otimes\dots\otimes x_{n-1}\otimes x_1+x_1\otimes\dots\otimes x_1\otimes x_{n-1}=(x_1\otimes\dots\otimes x_{n-2})\otimes(x_{n-1}\otimes x_1+x_1\otimes x_{n-1})\]
+		であって，先の計算から$x_{n-1}\otimes x_1+x_1\otimes x_{n-1}\in I_M$である．また帰納法の仮定から$x_1\otimes\dots\otimes x_1\otimes x_{n-1}\in I_M$であるので，$x_1\otimes x_2\otimes\dots\otimes x_{n-1}\otimes x_1\in I_M$となる．よって示された．
+		
+		\item (i)のように元をひっくり返すことを繰り返せばよい．
+	\end{sakura}
+\end{proof}
+
+$x_1,\dots,x_n\in M$を固定する．有限集合$I=\{i_1,\dots,i_m\}\subset\{1,\dots,n\}~(i_1<\dots<i_m)$について，$x_I=x_{i_1}\wedge\dots\wedge x_{i_m}$とおく．また$x_\emptyset=1$と約束する．
+
+\begin{prop}
+	$A$を環，$M$を$A$加群とする．$x_1,\dots,x_n\in M$について，$J,K\subset\{1,\dots,n\}$に対し；
+	\[i=\#\mkset{(j,k)\in J\times K}{j>k},~\sgn(J,K)=
+	\begin{cases}
+	(-1)^i&\text{if}~J\cap K=\emptyset\\
+	0&\text{if}~J\cap K\neq\emptyset
+	\end{cases}\]
+	とおくと，$x_J\wedge x_K=\sgn(J,K)x_{J\cup K}$である．
+\end{prop}
+
+証明は明らかであろう．ところで，$I_M$は斉次イデアルであるので，$\bigwedge M$には$M^{\otimes i}$の像を$\bigwedge^i M$とおくことで；
+\[\bigwedge M=\bigoplus_{i=0}^\infty \bigwedge^i M\]
+となり，次数構造が入る．
+
+\begin{prop}[外積代数の普遍性]\label{prop:外積代数の普遍性}
+	$A$を環，$M$を$A$加群，$E$を$A$多元環，$\varphi:M\to E$を$A$線型とする．また，任意の$x\in M$について$\varphi(x)^2=0$であるとき，多元環の準同型；
+	\[{\widetilde\varphi}':\bigwedge M\to E\]
+	が存在して，自然な$M\hookrightarrow\bigwedge M$との合成が$\varphi$となる．
+\end{prop}
+
+\begin{proof}
+	テンソル代数の普遍性から$\widetilde\varphi:\bigotimes M\to E$が存在し，$I_M\subset\ker\widetilde\varphi$なので$\bigwedge M$にwell-defined に誘導できる．
+\end{proof}
+
+\begin{prop}\label{prop:有限生成加群の外積代数}
+	$A$を環とし，$M$を$A$加群とする．$r$を$M$の生成系の個数とすると，任意の$i>r$について$\bigwedge^i M=0$である．
+\end{prop}
+
+\begin{proof}
+	$r$が有限の場合のみを考えれば十分である．$u_1,\dots,u_r$を$M$の生成系とすると，
+	\[\bigwedge^r M=\mkset{au_1\wedge\dots\wedge u_r}{a\in A}\]
+	であるので，$\bigwedge^{r+1}M=0$がわかる．よって題意が従う．
+\end{proof}
+
+\begin{prop}
+	$A$を環とし，$M,N$を$A$加群とする．$\varphi:M\to N$を$A$線型とする．このとき；
+	\[\bigwedge\varphi:\bigwedge M\to\bigwedge N;x_1\wedge\dots\wedge x_n\mapsto\varphi(x_1)\wedge\dots\wedge\varphi(x_n)\]
+	がwell-definedに定まる．
+\end{prop}
+
+\begin{proof}
+	$x_1\otimes\dots\otimes x_n\in I_M$ならば，これはある$1\leq i\neq j\leq n$について$x_i=x_j$となっている元の線型和だから$\varphi(x_1)\otimes\dots\otimes\varphi(x_n)\in I_N$であるから，$\bigwedge\varphi$がwell-definedに定まる．
+\end{proof}
+
+これにより外積代数は関手的である．$\bigwedge(f\circ g)=\bigwedge f\circ \bigwedge g,\bigwedge\id_M=\id_{\bigwedge M}$であることを確かめよ．また明らかに$\varphi$が全射なら，$\bigwedge\varphi$も全射である．一方で単射が単射に移るとは限らない（\ref{ex:単射の外積が単射でない例}）．
+
+外積代数のテンソル積もまた外積代数になることが知られている．まずはテンソル積に多元環としての構造を入れよう．$M_1,M_2$を$A$加群とする．演算を；
+\[\begin{aligned}(x_1\wedge\dots\wedge x_m)\otimes(y_1\wedge\dots\wedge y_n)&\cdot(x_1'\wedge\dots\wedge x_k')\otimes(y_1'\wedge\dots\wedge y_l')\\
+&=(-1)^{nk}(x_1\wedge\dots\wedge x_m\wedge x_1'\wedge\dots \wedge x_k')\otimes(y_1\wedge\dots\wedge y_n\wedge y_1'\wedge\dots \wedge y_l')
+\end{aligned}\]
+で定めると；
+\[\bigwedge M_1\otimes \bigwedge M_2\cong \bigoplus_{i=1}^\infty\bigwedge^i M_1\otimes \bigoplus_{j=1}^\infty\bigwedge^j M_2\cong A\oplus M_1\otimes A\oplus A\otimes M_2\oplus\cdots\]
+であるから，$n$次斉次部分を$\bigoplus_{i+j=n}\bigwedge^i M_1\otimes\bigwedge^j M_2$とする次数付き$A$多元環になる．
+
+\begin{prop}\label{prop:外積代数のテンソルと直和}
+	$A$を環とし，$M_1,M_2$を$A$加群とすると，次数構造も含めての同型；
+	\[\bigwedge M_1\otimes\bigwedge M_2\cong \bigwedge (M_1\oplus M_2)\]
+	が存在する．
+\end{prop}
+
+\begin{proof}
+	$1$次部分の間の射；
+	\[M_1\oplus M_2\to M_1\otimes A\oplus A\otimes M_2;x+y\mapsto (x\otimes 1)+(1\otimes y)\]
+	を考えると，$((x\otimes 1)+(1\otimes y))((x\otimes 1)+(1\otimes y))=0$であるので\ref{prop:外積代数の普遍性}より；
+	\[\varphi:\bigwedge (M_1\oplus M_2)\to\bigwedge M_1\otimes\bigwedge M_2\]
+	が定まる．逆は；
+	\[\psi:\bigwedge M_1\otimes\bigwedge M_2\to\bigwedge(M_1\oplus M_2);(x_1\wedge\dots\wedge x_m)\otimes(y_1\wedge\dots\wedge y_n)\mapsto x_1\wedge\dots\wedge x_m\wedge y_1\wedge\dots\wedge y_n\]
+	が与える．
+\end{proof}
+
+\begin{prop}
+	$A$を環，$F$を$\{e_\lambda\}_{\lambda\in\Lambda}$を基底とする$A$自由加群とする．$\Lambda$を整列させて，有限部分集合$I\subset\Lambda$の元を$I=\{\lambda_1\leq\dots\leq\lambda_n\}$と表示する．$\mathcal{F}(\Lambda)=\mkset{I\subset\Lambda}{\#I<\infty}$とおくと，$\bigwedge F$は$\{e_I\}_{I\in\mathcal{F}(\Lambda)}$を基底とする自由$A$加群となる．
+\end{prop}
+
+\begin{proof}
+	$F$が有限生成の場合に証明すれば十分である．なぜなら有限生成の場合に正しいとし，$\{e_I\}_{I\in\mathcal{F}(\Lambda)}$が基底でないとすると，自明でない関係式$\sum a_je_{I_j}=0$がある．このとき，$\Lambda'$を$a_j\neq0$となる$j$についての$I_j$の和集合とすると$\Lambda'$は空でない有限集合で，$F'$を$\{e_\lambda\}_{\lambda\in\Lambda'}$で生成される有限生成自由$A$加群とすると，$\mathcal{F}(\Lambda')$は$\Lambda'$の冪集合にほかならず，$\bigwedge F$は$\{e_I\}_{I\subset\Lambda'}$を基底とする自由加群になるが，これは$\Lambda'$の構成に矛盾する．
+	
+	よって$F$を有限生成としてよい．$F=\bigoplus_{i=1}^n Ae_i$とすると，$\bigwedge Ae_i=A\oplus Ae_i$であり（\ref{prop:有限生成加群の外積代数}）；
+	\[\bigwedge F\cong \bigwedge Ae_1\otimes\dots\otimes\bigwedge Ae_n\cong(A\oplus Ae_1)\otimes\dots\otimes(A\oplus Ae_n)\]
+	であるから$\bigwedge F$は自由であり，右辺の基底は；
+	\[\mkset{u_1\otimes\dots\otimes u_n}{u_i\in\{1,e_i\}}\]
+	なので，対応する$\bigwedge F$の基底は$u_1\wedge\dots\wedge u_n$だから，証明が完了した．
+\end{proof}
+
+\begin{cor}\label{cor:wedge Pもprojective}
+	$A$を環とし，$P$を射影的$A$加群とする．このとき$\bigwedge P$も射影的$A$加群である．特に各$i$について$\bigwedge^i P$も射影的である．
+\end{cor}
+
+\begin{proof}
+	$F$を$P$を直和因子とする自由$A$加群とする．自然な移入と射影$\iota:P\to F,\pi:F\to P$を考えると，$\pi\circ\iota=\id_P$であって，$(\bigwedge\pi)\circ(\bigwedge\iota)=\id_{\bigwedge P}$となるので$\bigwedge\pi$は分裂全射であり，$\bigwedge P$は自由加群$\bigwedge F$の直和因子となるので射影的である．
+\end{proof}
+
+\begin{lem}
+	$A$を環，$M,N$を$A$加群とする．$x_1,\dots,x_n\in M$について$x_1\wedge\dots\wedge x_n=0$とすると，$n$重交代線型写像$f:M^n\to N$について$f(x_1,\dots,x_n)=0$である．
+\end{lem}
+
+\begin{proof}
+	テンソル積の普遍性から$A$線型写像$\widetilde{f}:M^{\otimes n}\to N$が存在して$\widetilde{f}(x_1\otimes\dots\otimes x_n)=f(x_1,\dots,x_n)$である．ここで$x_1\otimes\dots\otimes x_n\in I_M$より，$x\otimes x$の倍元の線型和だから$I_M\subset\ker\widetilde{f}$に注意して；
+	\[f(x_1,\dots,x_n)=\widetilde{f}(x_1\otimes\dots\otimes x_n)=0\]
+	が成り立つ．
+\end{proof}
+
+\begin{prop}
+	$A$を環，$P$を射影的$A$加群とする．$x_1,\dots,x_n\in P$について，ある$a\neq0\in A$が存在して$ax_1\wedge\dots\wedge x_n=0$ならば，$x_1,\dots,x_n$は線型従属である．
+\end{prop}
+
+\begin{proof}
+	$n$についての帰納法で示す．$n=1$のときは自明なので，$n>1$とする．もし$ax_2\wedge\dots\wedge x_n=0$なら帰納法の仮定から明らかなので，$ax_2\wedge\dots\wedge x_n\neq0$と仮定する．すると\ref{cor:wedge Pもprojective}より$\bigwedge^{n-1} P$も射影的だから，$f(ax_2\wedge\dots\wedge x_n)=b\neq0$となる$f\in\hom(\bigwedge^{n-1} P,A)$が存在する（\ref{prop:射影加群はtorsionless}）．ここで；
+	\[P^n\to P;(x_1,\dots,x_n)\mapsto\sum_{i=1}^n(-1)^{i+1}x_i f(x_1\wedge\dots\wedge\widehat{x_i}\wedge\dots\wedge x_n)\]
+	は$n$重交代線型写像であるので，$x_1\wedge ax_2\wedge\dots\wedge x_n=0$に補題を適用して；
+	\[bx_1+ax_2f(x_1\wedge x_3\wedge x_4\wedge\dots\wedge x_n)x_3+\dots+(-1)^n f(x_1\wedge\dots\wedge x_{n-1})=0\]
+	であるから$x_1,\dots,x_n$は線型従属であることがわかった．
+\end{proof}
+
+\begin{thm}
+	$M,N$を射影的$A$加群とすると，単射$A$線型写像$\varphi:M\to N$に対して$\bigwedge\varphi$も単射である．
+\end{thm}
+
+\begin{proof}
+	まず$M$を自由であるとする．$\{e_\lambda\}_{\lambda\in\Lambda}$を$M$の基底とすると，$\{e_J\}_{J\in\mathcal{F}(\Lambda)}$が$\bigwedge M$の基底である．$u=\sum a_Je_J\in\ker\bigwedge f$をとり，$u\neq 0$と仮定する．$a_J\neq 0$となる$J$は有限個なので，$\bigcup_{a_J\neq0}J=\{\lambda_1,\dots,\lambda_n\}$とおく．極小な$J_0$を１つ固定し，$K=\bigcup_{a_J\neq0}J\setminus J_0$とすると；
+	\[u\wedge e_K=\sgn(J_0,K)e_{J_0\cup K}\]
+	となり，$\sgn(J_0,K)f(e_{\lambda_1})\wedge\dots\wedge f(e_{\lambda_n})=0$がわかるので，先の命題から$\{f(e_{\lambda_i})\}$は線型従属となるが，これは$f$が単射であることに矛盾する．よって$\bigwedge f$は単射である．
+	
+	次に$M$が一般の射影加群であるとすると，$M$は自由加群$F$の直和因子である．$F\cong M\oplus K$と表し，単射線型写像$g:F\to N\oplus F;(x,y)\mapsto (f(x),0,y)$を考えると，次の図式；
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}
+		M\arrow[d,hook]\nxcell[f]N\arrow[d,hook]\\
+		F\nxcell[g]N\oplus F
+		\end{tikzcd}
+		\caption{}
+	\end{figure}
+	が可換である．ここで$F$は自由だから$\bigwedge g$は単射で，$M\to F$は分裂しているので単射（\ref{cor:wedge Pもprojective}の証明もみよ）であるから，$\bigwedge f$も単射でなければならない．
+\end{proof}
+
+一般に$A,B$を環とし，$f:A\to B$を環準同型（すなわち$B$は$A$代数）とする．このとき，$A$多元環$E$の係数拡大$E\otimes_A B$は$(x\otimes b)(y\otimes b')=xy\otimes bb'$により$B$多元環となる．
+\begin{prop}[係数環の拡大]
+	$A,B$を環とし，$f:A\to B$を環準同型とする．このとき，$A$加群$M$について，$B$加群として；
+	\[(\bigwedge M)\otimes_A B\cong\bigwedge(M\otimes_A B)\]
+	が成り立つ．
+\end{prop}
+
+\begin{proof}
+	$\iota:M\to\bigwedge M$と$\id_B$のテンソル積$M\otimes_A B\to(\bigwedge M)\otimes_A B$は$B$線型である．またこれは$2$乗すると$0$であるので，外積代数の普遍性から；
+	\[\varphi:\bigwedge(M\otimes_A B)\to(\bigwedge M)\otimes_
+	A B\]
+	が得られる．これの逆は；
+	\[\psi:(\bigwedge M)\otimes_A B\to\bigwedge(M\otimes_A B);x_1\wedge\dots\wedge x_n\otimes b\mapsto b(x_1\otimes 1)\wedge\dots\wedge(x_n\otimes1)\]
+	が与える．
+\end{proof}
+\section{Koszul複体}
+
+\begin{defi}[Koszul複体]\index{#Koszulふくたい@Koszul複体}
+	$A$を環とし，$L$を$A$加群，$f:L\to A$を$A$線型写像とする．
+	\[d_{f,n}:\bigwedge^n L\to\bigwedge^{n-1}L;x_1\wedge\dots\wedge x_n\mapsto\sum_{i=1}^n(-1)^{i+1}f(x_i)x_1\wedge\dots\wedge\widehat{x}_i\wedge\dots\wedge x_n\]
+	が定める複体；
+	\[\begin{tikzcd}
+	\cdots\nxcell\bigwedge^n L\nxcell[d_{f,n}]\bigwedge^{n-1}L\nxcell\cdots\nxcell\bigwedge^2 L\nxcell[d_{f,2}]L\nxcell[f]A\nxcell0
+	\end{tikzcd}\]
+	を$K_\bullet(f)$とかき，これを$f$の\textbf{Koszul複体(Koszul complex)}という．また，$A$加群$M$について；
+	\[K_\bullet(f,M)=K_\bullet\otimes_A M, d_{f,M}=d_f\otimes\id_M\]
+	を$f$の$M$係数Koszul複体という．
+\end{defi}
+$\bigwedge L=\bigoplus_{i=1}^\infty\bigwedge^i L$により，Koszul複体は多元環としての次数構造をもつ．以後，単に$\bigwedge L$とかいたら$A$線形写像$f:L\to A$とともにKoszul複体としての構造も備えているものと考えていることに注意してほしい．また，$K_\bullet(f,M)$を$\bigwedge L\otimes M$の定める複体として定義しているが$\bigwedge L\otimes M$は（左）$\bigwedge L$加群としての構造をもつ．すなわち$\bigwedge L\otimes M$の元は$y\otimes m$の形の元の線型和であるので，$x\in\bigwedge L$について$x(y\otimes m)=(x\wedge y)\otimes m$と定めればよい．
+
+複体$K_\bullet(f)$の$n$次のホモロジーを$H_n(f)$とかく．次の命題（計算規則）により，$\ker d_f=\bigoplus \ker d_{f,n}$と$H_\bullet(f)=\bigoplus H_n(f)$は次数付き構造をもつことがわかる．
+
+\begin{lem}
+	環$A$上で線形写像$f:L\to A$が定めるKoszul複体$K_\bullet(f)$を考える．$x,y\in\bigwedge L,\z\in\bigwedge L\otimes M$とし，$x$を斉次元とする．このとき；
+	\begin{sakura}
+		\item $d_f(x\wedge y)=d_f(x)\wedge y+(-1)^{\deg x}x\wedge d_f(y)$
+		\item $d_{f,M}(x\z)=d_f(x)\z+(-1)^{\deg x}xd_{f,M}(\z)$
+	\end{sakura}
+	が成り立つ．
+\end{lem}
+\begin{proof}
+	線型性から$y,\z$を和に分解して$y=y_1\wedge\dots\wedge y_m, \z=y'\otimes m$としてよいことに気をつければ，ただの単純計算である．
+\end{proof}
+
+\begin{prop}
+	環$A$上で線形写像$f:L\to A$が定めるKoszul複体$K_\bullet(f)$を考える．$\ker d_f$は$\bigwedge L$の次数付き$A$部分多元環になり，$H_\bullet(f)$はそこから誘導される次数付き（交代）$A$多元環の構造を持つ．
+\end{prop}
+
+\begin{proof}
+	先の計算規則から一般に$A$加群$M$に対して；
+	\begin{sakura}
+		\item $\ker d_f\ker d_{f,M}\subset\ker d_{f,M}$
+		\item $\ker d_f\im d_{f,M}\subset\im d_{f,M}$
+		\item $\im d_f\ker d_{f,M}\subset\im d_{f,M}$
+	\end{sakura}
+	が成り立つことがわかる．$M=A$のときの$K_\bullet(f,M)$が$K_\bullet(f)$にほかならないことから$\ker d_f$が$A$多元環の構造を持つこと．また$\im d_f$が$\ker d_f$の両側イデアルとなることがわかる．
+\end{proof}
+
+\begin{defi}[Koszul余鎖複体]
+	$A$を環，$f:L\to A$を線形写像とする．反変関手$\hom(-,A)$により，余鎖複体；
+	\[\begin{tikzcd}
+	0\nxcell A\nxcell\hom(L,A)\nxcell\hom(\bigwedge^2L,A)\nxcell\cdots
+	\end{tikzcd}\]
+	が得られる．これを$K^\bullet(f)$とかき，\textbf{Koszul余鎖複体(Koszul cohain complex)}という．
+\end{defi}
+
+$M$係数については，$K^\bullet(f,M)=\hom(K_\bullet(f),M)$で定める．$K^\bullet(f)\otimes M$でないのは$\Ext$との整合性を保つためである．
+
+さて，一般に$f_1:L_1\to A,f_2:L_2\to A$があったとき，$f:L_1\oplus L_2\to A;(x_1,x_2)\mapsto f_1(x_1)+f_2(x_2)$により$A$線型写像が定まる．\ref{prop:外積代数のテンソルと直和}により，$K_\bullet(f)$と$K_\bullet(f_1),K_\bullet(f_2)$の間にはテンソル積を介した関係があるのでは，と推測することは自然であろう．これを定式化するために複体のテンソル積を定義する．
+\begin{defi}[複体のテンソル積]
+	$K_\bullet,L_\bullet$を$A$加群の複体とする．二重複体$W_{p,q}=K_p\otimes L_q$の全複体；
+	\[T_n=\bigoplus_{i=0}^n K_i\otimes L_{n-i},\quad d_n=\sum_{i=0}^n d'_i\otimes\id_{L_{n-1}}+(-1)^i\id_{K_i}\otimes d''_{{n-i}}\]
+	を$K_\bullet, L_\bullet$の\textbf{テンソル積複体}といい，$K_\bullet\otimes L_\bullet$で表す．
+\end{defi}
+
+\begin{prop}
+	複体のテンソル積は可換である，すなわち$K_\bullet\otimes L_\bullet=L_\bullet\otimes K_\bullet$が成り立つ．
+\end{prop}
+
+\begin{proof}
+	$x_i\otimes y_{n-i}\mapsto (-1)^{i(n-i)}y_{n-i}\otimes x_i$を線型に拡張したものが複体の同型射を与える．
+\end{proof}
+
+\begin{prop}
+	上の記号のもとに$K_\bullet(f_1)\otimes K_\bullet(f_2)\cong K_\bullet(f)$である．
+\end{prop}
+\begin{proof}
+	\ref{prop:外積代数のテンソルと直和}の証明によって；
+	\[\bigwedge L_1\otimes\bigwedge L_2\to\bigwedge (L_1\oplus L_2):(x_1\wedge\dots\wedge x_m)\otimes(y_1\wedge\dots\wedge y_n)\mapsto x_1\wedge\dots\wedge x_m\wedge y_1\wedge\dots\wedge y_n\]
+	が同型射だった．これが複体の射にもなる． 
+\end{proof}
+
+$a_1,\dots,a_n\in A$について，自由加群$A^n$の基底を$\{e_i\}$とおいたとき，$f:A^n\to A;e_i\mapsto a_i$によりKoszul複体$K_\bullet(f)$が定まる．これは$K_\bullet(a_1,\dots,a_n)$ないし$K_\bullet(\underline{a})$とかかれ，この形のKoszul複体がよく使われる．上の命題により，即座に$a_i$の順番によらないことがわかる．
+
+\begin{cor}
+	$A$を環とする．$a_1,\dots,a_r\in A$について，$K_\bullet(\underline{a})=K_\bullet(a_1,\dots,a_r)$は順番によらない．
+\end{cor}
+
+$K_\bullet(\underline{a},M)=K_\bullet(\underline{a})\otimes M$のホモロジーを$H_i(\underline{a},M)$，また$K^\bullet(\underline{a},M)=\hom(K_\bullet(\underline{a}),M)$のコホモロジーを$H^i(\underline{a},M)$とかく．
+
+\begin{prop}
+	$A$を環とする．$a_1,\dots,a_r\in A$と$A$加群$M$について，$I=(a_1,\dots,a_r)$とすると，任意の$i$について$IH_i(\underline{a},M)=0$である．
+\end{prop}
+
+\begin{proof}
+	定義から$H_0(\underline{a},M)=M/IM,~H_r(\underline{a},M)=\mkset{x\in M}{Ix=0}$である．また$0<i<r$について$x\in\ker d_i$とすると；
+	\[x=\sum c_j(e_{j_1}\wedge\dots\wedge e_{j_i})\otimes y_j~(c_j\in A,y_j\in M)\]
+	とかけている．この式の$j$成分を$x_j$とおくとき，各$1\leq k\leq r$について；
+	\[d_{i+1}(\sum c_j(e_k\wedge e_{j_1}\wedge\dots\wedge e_{j_i})\otimes y_j)=\sum d_{i+1}(c_j(e_k\wedge e_{j_1}\wedge\dots\wedge e_{j_i})\otimes y_j)=\sum a_kx_j- e_k\wedge d_i(x_j)=a_k x\]
+	となり，$a_kx\in\im d_{i+1}$である．よって$IH_i(\underline{a},M)=0$である．
+\end{proof}
+
+
+\begin{prop}
+	$A$を環とし，$a_1,\dots,a_r\in A$について$I=(a_1,\dots,a_r)$とおくと，自然な$A$線形写像；
+	\[H_i(\underline{a},M)\to\Tor_i(A/I,M),\quad \Ext^i(A/I,M)\to H^i(\underline{a},M)\]
+	がある．
+\end{prop}
+\begin{proof}
+	$A/I$の射影分解を$P_\bullet$とする．$\id_{A/I}$の持ち上げを考えて，次の各行が可環な図式；
+	\[\begin{tikzcd}	
+		\cdots\nxcell \bigwedge^2 A^r\arrow[dd,"f_2",dashed]\nxcell[]A^r\arrow[dd,dashed,"f_1"]\nxcell[]A\arrow[dd,"f_0"]\arrow[dr,"\varepsilon"]\\[-1.5em]
+		&&&&A/I\nxcell0\\[-1.5em]
+		\cdots\nxcell P_2\nxcell[]P_1\nxcell[]P_0\arrow[ur,"\varepsilon'"]
+	\end{tikzcd}\]
+	を得る．よって複体の射$f_\bullet:K_\bullet(\underline{a})\to P_\bullet$に対して$-\otimes M,\hom(-,M)$を施して題意を得る．
+\end{proof}
+
+これが同型になるための条件として，$a_1,\dots,a_r$が正則列ならよいことを示していこう．まずKoszulホモロジーとコホモロジーの間に自然な同型があることをみる．階数$r$の自由加群$F$について，$\bigwedge^i L$は階数が$\binom{r}{i}$であるから，自然な同型$\bigwedge^i L\cong\bigwedge^{r-1} L$に注意しよう．特に自然な同型$\omega_r:\bigwedge^r L\to A;e_1\wedge\dots\wedge e_r\mapsto 1$が存在する．
+\begin{prop}
+	$A$を環とし，$a_1,\dots,a_r$が定めるKoszul複体を考える．任意の$0\leq i\leq r$について；
+	\[\omega_i:\bigwedge^i L\to(\bigwedge^{r-i}L)^\ast;x\mapsto(y\mapsto\omega_n(x\wedge y))\]
+	と定めると，これは同型射であり，また$\tau_i=(-1)^{i(i-1)/2}\omega_i$は$K_\bullet(\underline{a})$と$K^\bullet(\underline{a})$の間の複体の同型射を与える．
+\end{prop}
+
+\begin{proof}
+	まず同型射であることを確かめよう．$\mathscr{G}_i=\mkset{I\subset\{1,\dots,r\}}{\#I=i}$とおくと$\{e_I\}_{I\in\mathscr{G}_i}$が$\bigwedge^i L$の基底であることに注意する．
+	
+	$x\in\bigwedge^i L$に対して，$\omega_i(x)=0$であるとする．$x=\sum_{I\in\mathscr{G}_i}a_Ie_I$とおく．各$I$に対して$J_I=\{1,\dots,r\}\setminus I$とおくと，$\sgn(I,J_I)\neq0$であって$e_I\wedge e_{J_I}=\sgn(I,J_I)=e_1\wedge\dots\wedge e_n$である．また$I\neq I'\in\mathscr{G}_i$に対して$I'\cap J_I\neq\emptyset$だから；
+	\[x\wedge e_{J_I}=a_I\sgn(I,J_I)e_1\wedge\dots\wedge e_r\]
+	であるので，$w_r(x\wedge e_{J_I})=a_I\sgn(I,J_I)=0$だから$a_I=0$である．よって$x=0$となる．これで単射であることが示された．また任意の$f:\bigwedge^{n-i}L\to A$に対して，基底$\{e_I\}_{I\in\mathscr{G}_{r-i}}$の像をそれぞれ$a_I$と，また$J_I=\{1,\dots,n\}\setminus I$とおくと，$x=a_I\sgn(I,J_I)e_{J_I}$とおけば$x\in\bigwedge^i L$であって，$f=\omega_i(x)$である．よって同型であることがわかった．
+	
+	複体の射であること，すなわち；
+	\[\begin{tikzcd}
+	0\nxcell\bigwedge^r L\darrow[\tau_r]\nxcell[d]\bigwedge^{r-1}L\darrow[\tau_{r-1}]\nxcell[d]\cdots\nxcell[d]L\darrow[\tau_1]\nxcell[d]A\darrow[\tau_0]\nxcell 0\\
+	0\nxcell A\nxcell[d^\ast] L^\ast\nxcell[d^\ast]\cdots\nxcell[d^\ast](\bigwedge^{r-1}L)^\ast\nxcell[d^\ast](\bigwedge^r L)^\ast\nxcell 0
+	\end{tikzcd}\]
+	が可換であることについては計算によって確かめられる．
+\end{proof}
+
+\begin{cor}\label{cor:Koszul hom と cohom}
+	$A$を環とし，$a_1,\dots,a_r\in A$について，$H_i(\underline{a},M)\cong H^{r-i}(\underline{a},M)$が成り立つ．
+\end{cor}
+\begin{proof}
+	先の命題より$K_\bullet(\underline{a})=K^\bullet(\underline{a})$である．ここで，有限階数の自由加群$F$と$A$加群$M$について，$\{e_i\}$を$F$の基底とすると，同型$F^\ast\otimes M\cong F\otimes M\cong\hom (F,M)$がある．これにより$K_\bullet(\underline{a},M)\cong K^\bullet(\underline{a},M)$となって，これのホモロジーが一致することから題意を得る．
+\end{proof}
+
+$A$加群の複体$C_\bullet$について，$C_n'=C_{n-1}$となる複体$C_\bullet'$を$C_\bullet(-1)$とかく．%（\ref{defi:ねじり加群}もみよ）．
+\begin{lem}\label{lem:C_bulletとC_bullet(-1)の間の完全列}
+	$A$を環とし，$a\in A$，$C_\bullet$を$A$加群の複体とする．このとき，複体の完全列；
+	\[\ses{C_\bullet}{C_\bullet\otimes K_\bullet(a)}{C_\bullet(-1)}\]
+	があり，ホモロジーの間の長完全列；
+	\[\begin{tikzcd}
+	\cdots\nxcell H_n(C_\bullet)\nxcell H_n(C_\bullet\otimes K_\bullet(a))\nxcell H_{n-1}(C_\bullet)\nxcell[\partial_n] H_{n-1}(C_\bullet)\nxcell\cdots
+	\end{tikzcd}\]
+	の連結射は$(-1)^{n-1}a$倍で与えられる．
+\end{lem}
+
+\begin{proof}
+	$K_\bullet(a)$は；
+	\[\begin{tikzcd}
+	0\nxcell A\nxcell[a\cdot]A\nxcell0
+	\end{tikzcd}\]
+	なので，$C_\bullet\otimes K_\bullet(a)$の$n$次部分は$\bigoplus_{i=0}^n C_{i}\otimes K_{n-i}(a)=C_n\oplus C_{n-1}$より，自然な；
+	\[\begin{tikzcd}
+	0\nxcell C_n\nxcell[\iota_n] C_n\oplus C_{n-1}\nxcell[\pi_n] C_{n-1}\nxcell0
+	\end{tikzcd}\]
+	が複体の射であればよいが，これは定義から明らかである．また\ref{lem:ホモロジー長完全列と連結射の存在}の証明とその後の注意から，$C_\bullet\otimes K_\bullet(a)$の微分を$d_n'$とすれば，$x_{n-1}\in C_{n-1}$に対して；
+	\[\partial_n{x_{n-1}}=\iota_{n-1}^{-1}\circ d_n'\circ\pi_n^{-1}(x_{n-1})=(-1)^{n-1}ax_{n-1}\]
+	となる．
+\end{proof}
+
+%\begin{lem}
+%	$A$を環，$a\in A$を$C_\bullet$正則とする．このとき；
+%	\[H_\bullet(C_\bullet\otimes K_\bullet(a))\cong H_\bullet(C_\bullet/aC_\bullet)\]
+%	である．
+%\end{lem}
+%
+%\begin{proof}
+%	$f:C_n\oplus C_{n-1}\to C_n/aC_n;x_n+x_{n-1}\mapsto	x_n+aC_n$複体の射であり，これによる$H_\bullet(f)$が同型射である．単射を確かめよう．任意の$x_n+x_{n-1}\in\ker d_n'$に対して，$x_n+aC_n\in\im d_{n+1}''$とすると，ある$y_{n+1}\in C_{n+1}$が存在して，$x_n-d(y_{n+1})\in aC_n$である．なので，$x_n-d(y_{n+1})=az_n$とかける$z_n\in C_n$が存在する．すると$d(x_n)=ad(z_n)$であり，これを；
+%	\[d_n'(x_n+x_{n-1})=d(x_n)+(-1)^{n-1}ax_{n-1}+d(x_{n-1})=0\]
+%	に代入すると；
+%	\[a(d(z_n)+(-1)^{n-1}x_{n-1})+d(x_{n-1})=0\]
+%	であり，$a$で括られた部分は$n-1$次で，$d(x_{n-1})$は$n-2$次なので$a(d(z_n)+(-1)^{n-1}x_{n-1})=0$となる．$a$は正則だから$d(z_n)=-(-1)^{n-1}x_{n-1}=(-1)^n x_{n-1}$となり，このとき；
+%	\[d_{n+1}'(y_{n+1}+(-1)^nz_n)=d(y_{n+1})+az_n+(-1)^nd(z_n)=x_n+x_{n-1}\]
+%	となり，$x_n+x_{n-1}+\im d_{n+1}'=0$である．全射も同様にして示される．
+%\end{proof}
+
+\begin{prop}
+	$A$を環とし，$M$を$A$加群とする．$a_1,\dots,a_r\in A$を$M$正則列とすると，$K_\bullet(\underline{a},M)$はacyclicである．
+\end{prop}
+
+\begin{proof}
+	$n$についての帰納法で示す．$r=1$のときは$K_\bullet(\underline{a},M)$は$\begin{tikzcd}
+	0\nxcell M\nxcell[a\cdot]M\nxcell0	
+	\end{tikzcd}$なので明らか．$r-1$まで正しいとする．\ref{lem:C_bulletとC_bullet(-1)の間の完全列}を$C_\bullet=K_\bullet(a_1,\dots,a_{r-1},M), a=a_r$として適用すると$C_\bullet\otimes K_\bullet(a_r)=K_\bullet(\underline{a},M)$であるから；
+	\settowidth{\masyulengtha}{$H_1(a_1,\dots,a_{r-1},M)$}
+	\[\begin{tikzcd}
+	\nxcell H_1(a_1,\dots,a_{r-1},M)\nxcell H_1(a_1,\dots,a_{r},M)\nxcell H_1(a_1,\dots,a_{r-1},M)\nxcell[-a_r]\\
+	\nxcell H_0(a_1,\dots,a_{r-1},M)\nxcell H_0(a_1,\dots,a_{r},M)\nxcell\makebox[\masyulengtha]{$0$}
+	\end{tikzcd}\]
+	が完全で，仮定より$H_1(a_1,\dots,a_{r-1},M)=0$であり，$K_\bullet(a_1,\dots,a_{r-1},M)$を考えると$H_0(a_1,\dots,a_{r-1},M)\cong M/(a_1,\dots,a_{r-1})M$であるから，$H_0$の上で$-a_r$倍は単射なので$H_1(a_1,\dots,a_{r},M)=0$であることがわかる．$i>1$は自然に消えているから，証明が終わる．
+\end{proof}
+
+\begin{cor}\label{cor:正則列のKoszul複体は射影分解を与える}
+	$A$を環とし，$A$正則列$a_1,\dots,a_r$について$I=(a_1,\dots,a_r)$とおくと，$A$加群$M$について；
+	\[H_i(\underline{a},M)\cong\Tor_i(A/I,M),~H^i(\underline{a},M)\cong\Ext^i(A/I,M)\]
+	であって，特に$\Tor_i(A/I,M)\cong\Ext^{r-i}(A/I,M)$が成り立つ．
+\end{cor}
+
+\begin{proof}
+	上の命題より$K_\bullet(\underline{a})$が$A/I$の射影分解になるので，$\Tor_i(A/I,M)\cong H_i(\underline{a},M), H^i(\underline{a},M)\cong\Ext^i(A/I,M)$であり，また\ref{cor:Koszul hom と cohom}と合わせて$\Tor_i(A/I,M)\cong\Ext^{r-i}(A/I,M)$である．
+\end{proof}
+
+\begin{cor}\label{cor:正則列が生成するイデアルについてprjdim A/I=d}
+	$(A,\ideal{m},k)$をNoether局所環とする．$a_1,\dots,a_d$を極大な$A$正則列とし，$I=(a_1,\dots,a_d)$とおくと，$\prjdim A/I=d$である．
+\end{cor}
+
+\begin{proof}
+	まず$\mdepth_I A=d$だから$\Ext^d(A/I,A)\neq 0$なので，$d\leq\prjdim A/I$である．いま$K_\bullet(\underline{a})$は長さ$d$の$A/I$の射影（自由）分解を与えるから，$\prjdim A/I=d$であることがわかる．
+\end{proof}
+
+%\begin{cor}
+%	正則局所環はGorenstein局所環である．
+%\end{cor}
+%
+%\begin{proof}
+%	$(A,\ideal{m},k)$を正則局所環とし，$d=\dim A$とすると，$\ideal{m}=(a_1,\dots,a_d)$とおける．先の命題より$\prjdim k=d$であるから，任意の$i>d$について$\Ext^i(k,A)=0$となり，\ref{thm:Gorensteinの特徴づけ}から$A$はGorensteinである．
+%\end{proof}
+\section{標準加群}
+
+\begin{defi}[標準加群]\index{ひょうじゅんかぐん@標準加群}
+	$(A,\ideal{m},k)$をCM局所環とする．CM加群$C$であって，$\dim C=\dim A$であり，入射次元が有限かつ１型であるものを\textbf{標準加群(canonical module)}という．標準加群はよく$\omega_A$と書かれる．
+\end{defi}
+
+例えば，$(A,\ideal{m},k)$をArtin局所環とすると，入射包絡$\E(k)$が標準加群である．逆に$\omega_A$がArtin局所環の標準加群であったとすると，定義から$\hom (k,\omega_A)=\soc \omega_A\cong k$であって，\ref{prop:ArtinのSocleはessential}により$k\subset \omega_A$は本質的だから$\omega_A\cong\E(k)$となり，標準加群は同型を除いて一意的に存在する．また，Gorenstein局所環は自身を標準加群として持つ．
+
+$\omega_A$という記号の使い方から分かる通り，一般の環がもし標準加群を持てばそれは一意に定まる．本節ではまずそのことを示し，存在するための条件を決定しよう．
+
+\begin{defi}[極大CM加群]\index{きょくだいCohenMacaulayかぐん@極大Cohen--Macaulay加群}
+	$(A,\ideal{m})$をCM局所環とする．有限生成$A$加群$M$であり，$\mdepth M=\dim A$であるものを\textbf{極大(maximal) Cohen--Macaulay加群}という．
+\end{defi}
+
+一般に$\mdepth M\leq\dim M\leq\dim A$であるので，この定義は$\dim M=\dim A$であるCM加群といってもよい．またこの定義のもとで標準加群とは，入射次元が有限な極大CM加群で１型のもの，と表現できる．
+
+\begin{prop}
+	$M$をNoether局所環$(A,\ideal{m})$上の極大CM加群とすると，任意の$A$正則元$a\in A$について$a$は$M$正則でもある（すなわち，$M$は\textbf{torsion free}である）．
+\end{prop}
+
+\begin{proof}
+	$a\not\in\bigcup_{P\in\ass M}P$を示せばよい．そうでないと仮定すると，Prime avoidanceから$a\in P$となる$P\in\ass M$が存在する．すると，\ref{prop:dim A/aA=dim A-1}により$\coht P\leq\dim A-1$である．一方で\ref{prop:depth M<=dim A/P}から；
+	\[\dim A=\mdepth M\leq \dim A/P\leq\dim A\]
+	であるので$\dim A/P=\coht P=\dim A$であり，これは矛盾．
+\end{proof}
+
+標準加群の定義の書き換えを与えよう．まず，Auslander--Buchsbaumの公式の入射次元版を示す．
+
+\begin{thm}\label{thm:入射次元有限ならdepth Aと同じ}
+	$(A,\ideal{m},k)$をNoether局所環とする．$M$を$\injdim M<\infty$である有限生成$A$加群とすると；
+	\[\injdim M=\mdepth A\]
+	である．
+\end{thm}
+
+\begin{proof}
+	$d=\mdepth A$とおき，$a_1,\dots,a_d$を極大な$A$正則列，$I=(a_1,\dots,a_d)$とおく．\ref{cor:正則列のKoszul複体は射影分解を与える}により$\Ext^d(A/I,M)\cong M/IM\neq 0$なので$d\leq\injdim M$である．ここで$d<\injdim M$と仮定して矛盾を導こう．$\mdepth A/I=0$なので，単射$k\to A/I$がある．短完全列；
+	\[\ses{k}{A/I}{C}\]
+	が導く完全列；
+	\settowidth{\masyulengtha}{$\Ext^{r}(C,M)$}%
+	\settowidth{\masyulengthb}{$\cdots$}%
+	\[\begin{tikzcd}
+		\cdots\nxcell \Ext^d(C,M)\nxcell\Ext^d(A/I,M)\nxcell\Ext^d(k,M)\\
+		\makebox[\masyulengthb]{}\nxcell\makebox[\masyulengtha]\cdots\\
+		\makebox[\masyulengthb]{}\nxcell\Ext^r(C,M)\nxcell\Ext^r(A/I,M)\nxcell\Ext^r(k,M)\\
+		\makebox[\masyulengthb]{}\nxcell\Ext^{r+1}(C,M)\nxcell\makebox[\masyulengtha]{\mbox{$\cdots$}}
+	\end{tikzcd}\]
+	を考えると，\ref{cor:正則列が生成するイデアルについてprjdim A/I=d}より$\prjdim A/I=d$だから，$i>d$について$\Ext^i(A/I,M)=0$である．よって$\Ext^r(k,M)\cong\Ext^{r+1}(C,M)$だが，\ref{thm:Noether局所環上の入射次元}により$\Ext^{r+1}(C,M)\neq 0$となって矛盾．よって$d=r$である．
+\end{proof}
+
+\begin{cor}
+	$(A,\ideal{m},k)$をCM局所環とする．有限生成$A$加群$C$が標準加群であることと；
+	\[\Ext^i(k,C)=\begin{cases}
+		k&\text{if}~i=\dim A\\
+		0&\text{else}
+	\end{cases}\]
+	であることは同値である．
+\end{cor}
+
+\begin{cor}
+	$(A,\ideal{m},k)$を１次元以上のNoether局所環とすると，任意の入射的$A$加群は有限生成でない．
+\end{cor}
+
+次に，環が標準加群を持つならばそれは一意に定まることを示そう．補題をいくつか用意する．
+
+\begin{lem}\label{lem:正則列で落として同型ならもとも同型}
+	$(A,\ideal{m})$をNoether局所環とする．$M,N$を有限生成$A$加群とし，$a_1,\dots,a_r$が$N$正則であるとする．$A$線形写像$f:M\to N$に対して，$I=(a_1,\dots,a_r)$とおいたとき；
+	\[\widetilde{f}:M/IM\to N/IN;x+IM\mapsto f(x)+IN\]
+	が同型ならば$f$も同型である．
+\end{lem}
+
+\begin{proof}
+	まず$N=f(M)+IN$であるので，中山の補題から$f$は全射である．$f$が単射であることを$r$についての帰納法で示す．$r=1$のときは，$K=\ker f$とおくと；
+	\[\ses[][f]{K}{M}{N}\]
+	が完全で，$-\otimes A/a_1A$が導く長完全列において$\widetilde{f}$が同型だから$K/a_1K=0$となり，中山の補題から$K=0$である．$n>1$の場合も$n=1$の場合を繰り返せばよい．
+\end{proof}
+
+\begin{lem}
+	$(A,\ideal{m})$を$d$次元のCM局所環とする．$M,N$を有限生成$A$加群とし，$N$は入射次元が有限な極大CM加群で，$\mdepth M=r$であるとする．このとき，任意の$i>d-r$に対して$\Ext^{d-r}(M,N)=0$である．
+\end{lem}
+
+\begin{proof}
+	$r$についての帰納法で示す．まず一般に\ref{thm:入射次元有限ならdepth Aと同じ}から$i>d$なら$\Ext^d(M,N)=0$なので，$r=0$のときは正しい．
+	
+	$r>0$とする．$a\in\ideal{m}$を$M$正則元とすると；
+	\[\ses[a\cdot]{M}{M}{M/aM}\]
+	が導く長完全列；
+	\[\begin{tikzcd}
+		\cdots\nxcell\Ext^i(M,N)\nxcell[a\cdot]\Ext^i(M,N)\nxcell\Ext^{i+1}(M/aM,N)\nxcell\cdots
+	\end{tikzcd}\]
+	において，$i>d-r$のとき$i+1>d-(r-1)$で，$\mdepth M/aM=r-1$だから，帰納法の仮定より$\Ext^{i+1}(M/aM,N)=0$となって，中山の補題から$\Ext^i(M,N)=0$である．
+\end{proof}
+
+\begin{prop}\label{prop:極大CMのhomも極大CM}
+	$(A,\ideal{m})$をCM局所環する．$M,N$を極大CM加群であって，$\injdim N<\infty$とする．すると，$A$正則列$a_1,\dots,a_r~(r\leq\dim A)$について$I=(a_1,\dots,a_r)$とおくと；
+	\[\hom(M,N)\otimes A/IA\cong\hom_{A/I}(M/IM,N/IN)\tag{$\ast$}\]
+	であって，$\hom(M,N)$は極大CM加群である．
+\end{prop}
+
+\begin{proof}
+	帰納的に示せるので，$r=1$の場合のみ示そう．$a$を$A$正則とすると，$N$は極大なので$N$正則でもあり；
+	\[\ses[a\cdot]{N}{N}{N/aN}\]
+	が完全．すると補題から；
+	\[\ses[a\cdot]{\hom(M,N)}{\hom(M,N)}{\hom(M,N/aN)}\]
+	も完全．よって$\hom_{A/aA}(M/aM,N/aN)\cong\hom_A(M,N/aN)\cong\hom(M,N)\otimes A/aA$であることがわかる．
+	
+	また$a$が$M,N$正則なら$a$は$\hom(M,N)$正則であることは簡単に確かめられ，$A$正則列が$\hom(M,N)$正則列になることが($\ast$)からわかるので，極大CM加群であることもわかる．
+\end{proof}
+
+\begin{thm}
+	Noether局所環$(A,\ideal{m},k)$において，$C,C'$が標準加群ならば$C\cong C'$である．
+\end{thm}
+
+\begin{proof}
+	$d=\dim A$とおく．\ref{thm:入射次元有限ならdepth Aと同じ}より$\injdim C=\injdim C'=d$に注意する．$a_1,\dots,a_d$を極大$A$正則列とし，$I=(a_1,\dots,a_d)$とすると，Artin環$A/I$の上で$C/IC$は入射的である．また$\Ext^d(k,C)\cong k$に\ref{lem:A/aAのExt}を用いると$\hom_{A/I}(k,C/IC)\cong k$である．よって$C/IC$は$A/I$の標準加群で，同様に$C'/IC'$もそうだから，特に$C/IC\cong C'/IC'\cong\E_{A/I}(k)$である．すると，\ref{prop:極大CMのhomも極大CM}から；
+	\[\hom(C,C')\otimes A/I\cong\hom_{A/I}\cong\hom_{A/I}(C/IC,C'/IC')\]
+	である．すると，$\varphi\in\hom(C,C')$を$\widetilde{\varphi}:C/IC\to C'/IC'$が同型であるようにとると，\ref{lem:正則列で落として同型ならもとも同型}からこれは同型であることがわかった．
+\end{proof}
+
+これにより，標準加群は存在すれば同型を除いて一意に定まるので，標準加群を$\omega_A$と書くことにしよう．
+
+\begin{prop}\label{prop:標準加群を正則列で割る}
+	$(A,\ideal{m})$をCM局所環とし，$\omega_A$を$A$上の極大CM加群とする．任意の$A$正則列$a_1,\dots,a_r~(r\leq\dim A)$について$I=(a_1,\dots,a_r)$とおく．このとき，$\omega_A$が$A$の標準加群であることと，$\omega_A/I\omega_A$は$A/IA$の標準加群であることは同値である．
+\end{prop}
+
+\begin{proof}
+	$\omega_A$は極大CM加群なので$a_1$は$\omega_A$正則であり，$\omega_A/a_1\omega_A$も$\dim \omega_A/a_1\omega_A=\dim \omega_A-1=\dim A-1=\dim A/a_1A$である$A/a_1A$上の極大CM加群だから，帰納的に$a_1,\dots,a_t$は$\omega_A$正則列になり，$\omega_A/I\omega_A$は$A/IA$上の極大CM加群である．また\ref{thm:injdim A/aA=injdim A-1}から$\injdim \omega_A/I\omega_A<\infty$であり，$d=\dim A$とおけば\ref{lem:A/aAのExt}から$\Ext^{d-r}_{A/IA}(k,\omega_A/I\omega_A)=\Ext^d(k,\omega_A)\cong k$である．
+	
+	この議論は$A$正則元でわると次元，入射次元が$1$下がる，また$\Ext$の次数を$1$下げたものと同型になるという事実に基づいており，逆が成り立つこともすぐにわかる．
+\end{proof}
+
+\begin{lem}\label{lem:hom(B,I)もinjective}
+	$B$を$A$代数とする．$I$を入射的$A$加群とすると，$\hom_A(B,I)$は入射的$B$加群である．
+\end{lem}
+
+\begin{proof}
+	$M$を$B$加群とする．このとき；
+	\[\hom_A(M,I)\cong\hom_B(M,\hom_A(B,I))\]
+	である．実際；
+	\[\varphi:\hom_A(M,I)\to\hom_B(M,\hom_A(B,I));(f:M\to I)\mapsto (x\mapsto(1\mapsto f(x))\]
+	\[\psi:\hom_B(M,\hom_B(B,I))\to\hom_A(M,I);(g:M\to\hom_A(B,I))\mapsto(x\mapsto g(x)(1))\]
+	がそれぞれ逆を与える．
+\end{proof}
+
+\begin{thm}\label{thm:Canonicalmoduleは遺伝する}
+	$\varphi:(A,\ideal{m},k)\to(B,\ideal{n})$を局所準同型とする．$A,B$がCM局所環，$B$が有限生成$A$加群で，かつ$A$の標準加群$\omega_A$が存在するならば，$t=\dim A-\dim B$とおくと$\Ext^t_A(B,\omega_A)$が$B$の標準加群である．
+\end{thm}
+
+\begin{proof}
+	まず$\dim A=\dim B$の場合を示そう．$d=\dim A$とおくと，$A$正則列$a_1,\dots,a_d$がとれる．このとき\ref{prop:極大CMのhomも極大CM}より$\omega_A,\hom_A(B,\omega_A)$は極大CM加群だからこの正則列は$\omega_A,\hom_A(B,\omega_A)$正則列でもある．また$I=(a_1,\dots,a_d)$とおけば；
+	\[\hom_A(B,\omega_A)\otimes A/I\cong\hom_{A/I}(B/IB,\omega_A/I\omega_A)\]
+	である．いま$B$は$A$加群として極大CM加群だから，$\varphi(a_1),\dots,\varphi(a_d)$は$B$の正則列で，$B/IB$加群として；
+	\[\hom_A(B,\omega_A)/(\varphi(a_1),\dots,\varphi(a_d))\hom_A(B,\omega_A)\cong\hom_{A/I}(B/IB,\omega_A/I\omega_A)\]
+	である．\ref{prop:標準加群を正則列で割る}により$\hom_{A/I}(B/IB,\omega_A/I\omega_A)$がArtin環$B/IB$の標準加群ならよい．極大CM加群であることはわかっている．いま$\omega_A/I\omega_A$は$A/I$の標準加群だから$\omega_A/I\omega_A\cong\E_{A/I}(k)$で，$\hom_{A/I}(B/IB,\omega_A/I\omega_A)$は\ref{lem:hom(B,I)もinjective}より入射的$B/IB$加群である．すると\ref{thm:Noether環の入射加群の構造}から$\hom_{A/I}(B/IB,\omega_A/I\omega_A)\cong\E_{B/IB}(k)^r$となる$r>0$がとれ，\ref{prop:Artin加群においての双対定理}から；
+	\[\ell(\E_{B/IB}(k))=\ell(B/IB)=\ell(\hom_{A/I}(B/IB,\omega_A/I\omega_A))=r\ell(\E_{B/IB}(k))\]
+	なので$r=1$である．ここで２つめの等号には$\varphi$が局所準同型であることから$B/IB$加群としての組成列が$A/I$加群としての組成列になることを用いた．以上より$\hom_{A/I}(B/IB,\omega_A/I\omega_A)$は$B/IB$の標準加群であり，$\hom_A(B,\omega_A)$は$B$の標準加群である．
+	
+	一般のときは，単射$A/\ker\varphi\to B$において$B$が$A$上有限生成なので，上昇定理により$\dim A/\ker\varphi=\dim B$であるから，\ref{prop:depth_I M=dim M-dim M/IM}により$\mdepth_{\ker\varphi}A=\dim A-\dim B$なので，$A$正則列$a_1,\dots,a_t\in\ker\varphi$がとれる．すると$I=(a_1,\dots,a_t)$とおけば\ref{lem:A/aAのExt}から$\Ext^t_A(B,\omega_A)\cong\hom_{A/I}(B,\omega_A/I\omega_A)$なので，$\dim A=\dim B$の場合に帰着する． 
+\end{proof}
+
+この定理の特別な場合として，$(A,\ideal{m})$をGorenstein局所環とし，$B$をその準同型像とするとGorenstein局所環の準同型像は標準加群を持つことがわかる．実際には，これこそが標準加群を持つための条件である．すなわち，標準加群を持つことと，Gorenstein局所環の準同型像であることは同値である（\ref{thm:Canonicalmodの存在条件}）．これを示すために加群の\textbf{イデアル化}について少し考える必要がある．これを次の節で紹介し，上の定理の証明を与えよう．
+
+\section{イデアル化}
+
+\begin{defi}[イデアル化]\index{いであるか@イデアル化}\index{#trivial extension@trivial extension}\label{defi:idealisation}
+	$A$を環とし，$M$を$A$加群とする．$A$加群としての直和$A\oplus M$に対して；
+	\[(a,x)+(b,y)=(a+b,x+y)\]
+	\[(a,x)(b,y)=(ab,ay+bx)\]
+	と定めるとこれは環をなす．これを$A*M$とかいて，$M$の$A$による\textbf{イデアル化(idealisation)}，または$A$の$M$による\textbf{trivial extension}という．
+\end{defi}
+
+まずイデアル化についての簡単な性質を列挙する．
+
+\begin{prop}
+	$A$を環とし，$M$を$A$加群とする．このとき；
+	\begin{sakura}
+		\item $0*M=\mkset{(0,x)\in A*M}{x\in M}$は$(0*M)^2=0$であるような$A*M$のイデアルである．
+		\item $A\to A*M;a\mapsto (a,0)$は単射で，$A$は$A*M$の部分環とみなすことができる．
+		\item $\spec (A*M)=\mkset{P*M}{P\in\spec A}$である．特に$\dim A=\dim A*M$．
+		\item $A$がNoetherであるとき，$M$が有限生成であることと$A*M$がNoetherであることは同値である．
+		\item $A$が$\ideal{m}$を極大イデアルとする局所環であるとき，$(A*M,\ideal{m}*M)$も局所環である．
+	\end{sakura}
+	が成り立つ．
+\end{prop}
+
+\begin{proof}
+	(iii)のみ示す．まず$P\in\spec A$とすると$P*M\in\spec A*M$となることはすぐに分かる．逆に$Q\in\spec A*M$とする．任意の$a\in A$で，ある$x\in M$について$(a,x)\in Q$であるものをとると，$a*M\subset Q$である．実際$(a,0)^2=(a^2,0)=(a,-x)(a,x)\in Q$なので$(a,0)\in Q$であり，またこのとき(i)から$0*M\subset Q$だから任意の$y\in M$について$(a,0)+(0,y)=(a,y)\in Q$である．よって$P=\mkset{a\in A}{a*M\subset Q}$とおけばこれは$A$の素イデアルをなし，$Q=P*M$である．
+\end{proof}
+
+\begin{prop}
+	$A$を環とし，$M$を$A$加群とする．$(a,x)\in A*M$が$A*M$の正則元であることと，$a$が$A$正則かつ$M$正則であることは同値である．
+\end{prop}
+
+\begin{proof}
+	それぞれ対偶を示す．
+	\begin{eqv}
+		\item $a$が$A$の零因子または$M$の零因子ならば$A*M$の零因子であることを示す．
+		
+		まず$M$の零因子であるときは簡単で，ある$y\neq 0$が存在して$ay=0$であるから，$(a,x)(0,y)=(0,0)$である．次に$A$の零因子であると仮定すると，ある$b\neq0\in A$が存在して$ab=0$である．もし$b\in\ann M$ならば$(a,x)(b,0)=0$なのでよい．$b\not\in\ann M$ならば，ある$y\in M$が存在して$by\neq 0$かつ$(a,x)(0,by)=0$となる．
+		
+		\item $(a,x)(b,y)=0$となる$(b,y)\neq 0\in A*M$が存在するとする．ここで$b\neq 0$のとき$ab=0$なのでよい．次に$b=0$とすると$y\neq 0$で，$(a,x)(0,y)=(0,ay)=0$なので$a$は$M$の零因子である．
+	\end{eqv}
+\end{proof}
+
+すると，$A$正則元$a$について$M$正則でもあれば$(a,0)$が$A*M$正則である．このとき；
+\[A*M/(a,0)A*M\cong (A/aA)*(M/aM)\]
+であるから（一般の単項イデアルによる剰余加群がきれいな形をしているとは限らない），次のような結果が成り立つ．
+
+\begin{prop}\label{prop:MCMなら拡大してもCM}
+	$(A,\ideal{m})$を$d$次元CM局所環とし，$M$を有限生成$A$加群とする．このとき，$M$が極大CM加群であることと，$A*M$がCM局所環であることは同値である．
+\end{prop}
+
+\begin{proof}
+	\begin{eqv}
+		\item $a_1,\dots,a_d$を$A$正則列とする．このとき$a_1$は$M$正則だから$(a_1,0)$は$A*M$正則で$A*M/(a_1,0)A*M=(A/a_1A)*(M/a_1M)$である．このとき$M/a_1M$は$A/a_1A$加群として極大CM加群で，$a_2$は$A/a_1A$正則だから，同様に続けることで$(a_1,0),\dots,(a_d,0)$は$A*M$正則列をなし，$d=\mdepth A*M=\dim A*M$である．
+		\item $d$についての帰納法で示す．$d=0$のときは明らか．$d>0$とする．$A*M$正則元$(a_1,x_1)$を$A*M$正則とると，先の命題より$(a_1,0)$も$A*M$正則で，$A*M/(a_1,0)A*M=(A/a_1A)*(M/a_1M)$は$d-1$次のCM局所環である．すると，仮定から$M/a_1M$は$A/a_1A$加群として極大CMであるので，$M/a_1M$正則列$a_2,\dots,a_d$がとれる．すると$a_1,\dots,a_d$が$M$正則列となって，$M$は極大CM加群である．
+	\end{eqv}
+\end{proof}
+
+これらの準備により，予告しておいた通り標準加群を持つ条件を決定しよう．
+
+\begin{thm}\label{thm:Canonicalmodの存在条件}
+	$(A,\ideal{m},k)$を$d$次元CM局所環とする．$A$が標準加群$\omega_A$を持つことと，Gorenstein局所環の準同型像であることは同値である．
+\end{thm}
+
+\begin{proof}
+	前述の通り，Gorenstein局所環の準同型像なら標準加群を持つことはわかっている．$A$が標準加群$\omega_A$を持つとしよう．このとき$A*\omega_A$がGorensteinであることを示す．いま\ref{prop:MCMなら拡大してもCM}から$A*\omega_A$はCM局所環なので，$r(A*M)=1$を示せばよい．いま$a_1,\dots,a_d$を$A$正則列とすると，\ref{prop:標準加群を正則列で割る}により$A*\omega_A/(a_1,\dots,a_d)A*\omega_A\cong(A/(a_1,\dots,a_d)A)*\omega_{A/(a_1,\dots,a_d)A}$であるから，$\dim A=0$，すなわち$A$がArtinの場合に帰着する．
+	
+	このとき$\omega_A=\E_A(k)$であることに注意する．
+	\[\soc (A*\E(k))=\mkset{(a,x)\in A*\E(k)}{(a,x)\ideal{m}*M=0}\cong k\]
+	を示せばよい．任意の$(a,x)\in\soc (A*\E(k))$をとると，任意の$r\in\ideal{m}$について$(r,0)(a,x)=(ra,rx)=0$なので$a\in\soc A,x\in\soc\E(k)$である．ここで$a\neq0$と仮定すると，完全列；
+	\[\begin{tikzcd}
+		A\nxcell[a\cdot]A\nxcell A/aA\nxcell0
+	\end{tikzcd}\]
+	に$\hom_A(-,\E(k))$を適用すると，\ref{thm:Canonicalmoduleは遺伝する}により，完全列；
+	\[\begin{tikzcd}
+		0\nxcell\E_{A/aA}(k)\nxcell\E_A(k)\nxcell[a\cdot]\E_k(A)
+	\end{tikzcd}\]
+	が得られるが，Matlisの双対定理から$\ell(\E_{A/aA}(k))=\ell(A/aA)<\ell(A)=\ell(\E_A(k))$だから$a\cdot:\E_A(k)\to\E_A(k)$は$0$射ではない．するとある$y\neq 0\in\E_A(k)$があって$ay\neq 0$である．このとき$(0,y)(a,x)=(0,ay)\neq0$となり$(a,x)\in\soc A*\E_A(k)$に矛盾する．よって$a=0$であり，$\soc (A*\E_A(k))\cong\soc\E_A(k)\cong k$である．よって$A*\E_A(k)$はGorensteinであることがわかった．
+	
+	よって，一般に$A*\omega_A$はGorensteinで，$A*\omega_A\to A;(a,x)\mapsto a$が準同型になり，$A$はGorenstein局所環の準同型像である． 
+\end{proof}

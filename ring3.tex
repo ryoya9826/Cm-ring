@@ -1,16 +1,16 @@
 \newpage
-\part[Integral extension and The elements of dimension theory]{整拡大と次元論初歩}\label{part:整拡大と次元論初歩}
+\part[Integral extension and The elements of dimension theory]{整拡大と次元論初歩}
 
-代数曲線，特に古典的な代数多様体論では，曲線をより単純な曲線，特に直線に射影して性質を見る，という方法をとる．それは環の準同型としては$k[X]\to k[X，Y]/I$に対応し，これは\textbf{整拡大}というものになっている．また，多様体(Variety)と環を対応させて調べるという発想において，特に議論の対象となる環は代数閉体$k$上の有限生成代数であることが多い．そこで，一般の環についてある種の\textbf{次元}を定義するとともに，それが代数多様体の自然な次元と一致することを確認することを目標にしよう．すなわち，多項式環$k[\nitem{X}]$の自然な次元$n$を，多項式環の性質によらずに一般の環に拡張する．
+代数曲線，特に古典的な代数多様体論では，曲線をより単純な曲線，特に直線に射影して性質を見る，という方法をとる．それは環の準同型としては$k[X]\to k[X,Y]/I$に対応し，これは\textbf{整拡大}というものになっている．また，多様体(variety)と環を対応させて調べるという発想において，特に議論の対象となる環は代数閉体$k$上の有限生成代数であることが多い．そこで，一般の環についてある種の\textbf{次元}を定義するとともに，それが代数多様体の自然な次元と一致することを確認することを目標にしよう．すなわち，多項式環$k[\nitem{X}]$の自然な次元$n$を，多項式環の性質によらずに一般の環に拡張する．
 
 \section{環の拡大}
 
-体の拡大の基礎については第０章で少しまとめているが，Galois理論などの入門書を適宜参照のこと．体の拡大$L/k$において，代数的，超越的という概念があった．その概念を環の場合に拡張することを考えてみよう．代数$f:A\to B$を考え，これを環の拡大とみなしたい．体の場合は，体からの任意の準同型が単射なので，任意の準同型を埋め込みとして問題はなかった．そこで，$f:A\to B$が単射であるとき\textbf{環の拡大}という．しばらくは一般の$A$代数$B$について議論をしていこう．まずは代数的という性質を環の拡大の場合に拡張する．
+体の拡大の基礎については第０章で少しまとめているが，Galois理論などの入門書を適宜参照のこと．体の拡大$L/k$において，代数的，超越的という概念があった．その概念を環の場合に拡張することを考えてみよう．$A$代数$f:A\to B$を考え，これを環の拡大とみなしたい．体の場合は，体からの任意の準同型が単射なので，任意の準同型を埋め込みとして問題はなかった．そこで，$f:A\to B$が単射であるとき\textbf{環の拡大}という．しばらくは一般の$A$代数$B$について議論をしていこう．まずは代数的という性質を環の拡大の場合に拡張する．
 
 \begin{defi}[整]\index{せい@整}
 	$B$を$A$代数とする．$x\in B$に対し，$A$係数のモニックな多項式$g\in A[X]$が存在して；
 	\[g(x)=x^n+a_1x^{n-1}+\dots+a_n=0\]
-	が$A$加群$B$で成立するとき，$x$は$A$上\textbf{整}(integral)であるという．
+	が$A$加群$B$で成立するとき，$x$は$A$上\textbf{整(integral)}であるという．
 \end{defi}
 
 任意の$x\in B$が$A$上で整のとき，$B$は$A$上整であるという．$\Z$上で整である複素数のことを\textbf{代数的整数}，$\Q$上で整である複素数のことを\textbf{代数的数}といっていたことを思い出そう．
@@ -35,7 +35,7 @@
 	\begin{sakura}
 		\item	$x\in B$は$A$上で整である．
 		\item	$A[x]$は$A$加群として有限生成である．
-		\item	有限生成$A$加群$C\subset B$が存在して，$A[x]\subset C$が成り立つ．
+		\item	$B$の部分環$C$で，$A$加群として有限生成なものが存在して，$A[x]\subset C$が成り立つ．
 		\item	$A$上有限生成な$A[x]$加群$M$であって，任意の$f\in A[x]$について，任意の$m\in M$に対し$fm=0$ならば$f=0$を満たすものが存在する（有限生成で忠実な$A[X]$加群が存在する）．
 	\end{sakura}
 \end{prop}
@@ -45,7 +45,7 @@
 		
 		\item 明らか．
 		\item $M=C$とすればよい．
-		\item $\varphi:M\to M=m\mapsto xm$は$A$加群としての自己準同型になり，$\varphi(M)=x\cdot M\subset M$より，Cayley--Hamiltonの定理（\ref{thm:Cayley-Hamilton}）を$I=A$として使うことができる．すると；
+		\item $\varphi:M\to M=m\mapsto xm$は$A$加群としての自己線型写像になり，$\varphi(M)=x\cdot M\subset M$より，Cayley--Hamiltonの定理（\ref{thm:Cayley-Hamilton}）を$I=A$として使うことができる．すると；
 		\[\varphi^n+a_1\varphi^{n-1}+\dots+a_n=0\]
 		となるから，この式の左辺は$x^n+a_1x^{n-1}+\dots+a_n$倍写像であるので，忠実性から従う．
 	\end{eqv}
@@ -56,7 +56,7 @@
 	$B$を$A$代数とし，$M$を$B$加群とする．$B$が$A$加群として有限生成かつ$M$が$B$加群として有限生成であるとき，$M$は$A$加群として有限生成である．
 \end{lem}
 \begin{proof}
-	$B，M$それぞれの生成元を$\{x_i\},\{y_j\}$として$B=\bigoplus Ax_i,M=\bigoplus By_j$とすると，$M=\bigoplus_i \left(\bigoplus_j Ax_iy_j\right)$であることがわかり，$A$加群としても有限生成である．
+	$B, M$それぞれの生成元を$\{x_i\},\{y_j\}$として$B=\bigoplus Ax_i,M=\bigoplus By_j$とすると，$M=\bigoplus_i \left(\bigoplus_j Ax_iy_j\right)$であることがわかり，$A$加群としても有限生成である．
 \end{proof}
 
 \begin{prop}\label{prop:整な元で生成される代数はfinite}
@@ -90,15 +90,15 @@
 	が成り立つ．このとき$B'=A[b_1,\dots,b_n]$とおくと，\ref{prop:整な元で生成される代数はfinite}よりこれは有限生成$A$加群であり，$x$は$B'$上でも整なので$B'[x]$も有限生成$A$加群となる．よって\ref{prop:整拡大の特徴づけ}より，$x$は$A$上整である．
 \end{proof}
 \section{整閉整域と正規環}
+整域$A$があったとき，その商体$\Frac A$を考えることで自然な環の拡大$A\subset\Frac A$がある．例えば$\Z\subset\Q$を考えたとき，\ref{ex:Q/Zの整閉包}より$\Z$上整な$\Q$の元は$\Z$のみである．このような整域を\textbf{整閉整域}という．この概念をしっかりと定義するために，まずは次の定義をしよう．
+
 \begin{defi}[整閉包]\index{せいへいほう@整閉包}
 	$A\subset B$を環の拡大とする．$A$上整な$B$の元全体，すなわち；
 	\[\mkset{b\in B}{\text{ある}a_1,\dots,a_m\in A\text{が存在して}，b^m+a_1b^{m-1}+\dots+a_m=0}\]
-	を$A$の$B$における\textbf{整閉包}(integral closure)という．ここでは$\bar{A}_B$と書くことにする．\footnotemark
+	を$A$の$B$における\textbf{整閉包(integral closure)}という．ここでは$\bar{A}_B$と書くことにする．\footnotemark
 \end{defi}\footnotetext{{Globalに通用する記号はないように思われる．}}
 
-例えば，\ref{ex:Q/Zの整閉包}より$\Z\subset\Q$の整閉包$\bar{\Z}_{\Q}$は$\Z$である．
-
-次が成り立つ．
+先に述べたとおり$\Z\subset\Q$の整閉包$\bar{\Z}_{\Q}$は$\Z$である．閉包というからには，一般に次が成り立つ．
 
 \begin{prop}
 	\begin{sakura}
@@ -117,15 +117,39 @@
 \end{proof}
 
 \begin{defi}[整閉]\index{せいへいせいいき@整閉整域}
-	$A\subset B$を環の拡大とする．$\bar{A}_B=A$のとき，$A$は$B$において\textbf{整閉}(integrally closed)であるといい，特に整域$A$がその商体$\Frac A$で整閉のとき，\textbf{整閉整域}(integrally closed domain)という．
+	$A\subset B$を環の拡大とする．$\bar{A}_B=A$のとき，$A$は$B$において\textbf{整閉(integrally closed)}であるといい，特に整域$A$がその商体$\Frac A$で整閉のとき，\textbf{整閉整域(integrally closed domain)}という．
 \end{defi}
 
 \begin{ex}
-	容易に計算できるようにUFDは整閉整域である（\ref{ex:Q/Zの整閉包}で計算した$\Z$についての類似である）．それはGCD整域（\ref{defi:GCDdomain}）に対してこれまた容易に一般化できる．
+	容易に計算できるようにUFDは整閉整域である（\ref{ex:Q/Zの整閉包}で計算した$\Z$についての類似である）．それはGCD整域（\ref{defi:GCDdomain}）に対して容易に一般化できる．
 \end{ex}
 
+整閉より強い概念として，次の\textbf{完整閉}を紹介しよう．
+
+\begin{defi}[完整閉]\index{かんせいへい@完整閉}
+	$A$を整域とする．任意の$x\in\Frac(A)$について，ある$r\in A$が存在して，すべての$n>0$について$ax^n\in A$ならば$x\in A$が成り立つとき，$A$は\textbf{完整閉}(completely integrally closed)であるという．
+\end{defi}
+
+\begin{prop}
+	整域$A$が完整閉ならば整閉整域である．
+\end{prop}
+
+\begin{proof}
+	$x\in\Frac(A)$が$A$上で整であるとする．すると，\ref{prop:整拡大の特徴づけ}により$A[x]$は有限生成$A$加群なので，生成系$u_1,\dots, u_n$をとれば，分母を一斉に払う$r\in A$がとれる．すなわち$rA[x]\subset A$とできる．よって$A$は完整閉なので$x\in A$となり，$A$は整閉整域である．
+\end{proof}
+
+実は$A$がNoetherなら逆も正しい．
+
+\begin{prop}
+	$A$をNoether整域とすると，整閉ならば完整閉である．
+\end{prop}
+
+\begin{proof}
+	$x\in\Frac(A)$について，ある$r\in A$が存在して，すべての$n>0$について$rx^n\in A$であると仮定する．すると$A[x]\subset A\cdot 1/r$であり，$A\cdot 1/r$は有限生成$A$加群で，$A$がNoetherなので$A[x]$も有限生成$A$加群であり，\ref{prop:整拡大の特徴づけ}から$x$は$A$上整である．よって$A$が整閉なので$x\in A$である．
+\end{proof}
+
 \begin{defi}[正規環]\index{せいきかん@正規環}
-	環$A$について，任意の$P\in\spec A$に対し$A_P$が整閉整域であるとき，$A$を\textbf{正規環}(normal ring)という．
+	環$A$について，任意の$P\in\spec A$に対し$A_P$が整閉整域であるとき，$A$を\textbf{正規環(normal ring)}という．
 \end{defi}
 
 これは幾何的にも意味のある命題であるが，正規環は被約である．
@@ -225,13 +249,13 @@
 \begin{defi}[代数的に独立]\index{だいすうてきにどくりつ@代数的に独立}
 	$L/k$を体の拡大とする．$\nitem[r]{\alpha}\in L$に対し，
 	\[\varphi:k[\nitem[r]{X}]\longrightarrow L;f(\nitem[r]{X})\longmapsto f(\nitem[r]{\alpha})\]
-	が単射であるとき，$\nitem[r]{\alpha}$は$k$上\textbf{代数的に独立}(algebraically independent)であるという．また，部分集合$S\subset L$に対し，その任意の有限部分集合が代数的に独立であるとき，$S$を$k$上代数的に独立な集合であるという．
+	が単射であるとき，$\nitem[r]{\alpha}$は$k$上\textbf{代数的に独立(algebraically independent)}であるという．また，部分集合$S\subset L$に対し，その任意の有限部分集合が代数的に独立であるとき，$S$を$k$上代数的に独立な集合であるという．
 \end{defi}
 
 これを用いて超越次数を定義しよう．
 
 \begin{defi}[超越基底]\index{ちょうえつきてい@超越基底}\index{ちょうえつじすう@超越次数}
-	$L/k$を体の拡大とする．$\{\nitem[r]{\alpha}\}$が$k$上代数的に独立な集合で，$L/k(\nitem[r]{\alpha})$が代数拡大であるとき，$\nitem[r]{\alpha}$を$L/k$の\textbf{超越基底}(transcendental basis)といい，$r=\trdeg_k L$とかいてこれを\textbf{超越次数}(transcendence degree)という．
+	$L/k$を体の拡大とする．$\{\nitem[r]{\alpha}\}$が$k$上代数的に独立な集合で，$L/k(\nitem[r]{\alpha})$が代数拡大であるとき，$\nitem[r]{\alpha}$を$L/k$の\textbf{超越基底(transcendental basis)}といい，$r=\trdeg_k L$とかいてこれを\textbf{超越次数(transcendence degree)}という．
 \end{defi}
 
 $L/k$が代数拡大であるときは$\emptyset$を超越基底とし，$\trdeg_k L=0$と定める．超越次数のwell-definednessを示そう．
@@ -242,11 +266,15 @@ $L/k$が代数拡大であるときは$\emptyset$を超越基底とし，$\trdeg
 \begin{proof}
 	超越基底が有限のときのみ示す．
 	\begin{step}
-		\item まず超越基底が存在することを示す．集合族:
+		\item 超越基底が存在すること．
+		
+		集合族；
 		\[\Sigma=\mkset{S}{S:\text{代数的に独立な集合}}\]
 		は空ではなく，包含関係により帰納的順序集合をなす．よってZornの補題より極大元$\mathcal{S}$が存在する．このとき，$L/k(\mathcal{S})$を考えると，ある$x\in L$が$k(\mathcal{S})$上代数的でないと仮定したとき，$\mathcal{S}\cup\{x\}$は代数的に独立で，$x\not\in\mathcal{S}$なので$\mathcal{S}$の極大性に反する．よって$L/k(\mathcal{S})$は代数拡大で，$\mathcal{S}$が超越基底となる．
 			
-		\item 次数のwell-definednessを示そう．$\{\nitem[r]{\alpha}\}$と$\{\nitem[s]{\beta}\}$がどちらも$L/k$の超越基底であるとする．$s\leq r$を言えばよい．$L/k(\nitem[r]{\alpha})$は代数拡大なので，$\beta_1$は$k(\nitem[r]{\alpha})$上代数的．すなわち，$a_i\in k(\nitem[r]{\alpha})$によって，関係式；
+		\item 次数のwell-definedness．
+		
+		$\{\nitem[r]{\alpha}\}$と$\{\nitem[s]{\beta}\}$がどちらも$L/k$の超越基底であるとする．$s\leq r$を言えばよい．$L/k(\nitem[r]{\alpha})$は代数拡大なので，$\beta_1$は$k(\nitem[r]{\alpha})$上代数的．すなわち，$a_i\in k(\nitem[r]{\alpha})$によって，関係式；
 		\displaystar
 		\[a_n{\beta_1}^n+a_{n-1}{\beta_1}^{n-1}+\dots+a_1\beta_1+a_0=0\quad(a_n\neq0)\]
 		を満たす．$\beta_1$は$L/k$において超越的なので，少なくとも1つの$\alpha_i$が存在して，$a_0,\dots,a_n$のうち少なくとも1つには$\alpha_i$が表れる．番号を取り替えて，それを$\alpha_1$とすると，$(\ast)$は$\alpha_1$が$k(\alpha_2,\dots,\alpha_r,\beta_1)$上代数的であることを示している．すると，$L$の任意の元は$k(\nitem[r]{\alpha})$上代数的なので，$L/k(\alpha_2,\dots,\alpha_r,\beta_1)$は代数拡大である．すると，$\beta_2$は$k(\alpha_2,\dots,\alpha_r,\beta_1)$上代数的だから，$b_i\in k(\alpha_2,\dots,\alpha_r,\beta_1)$がとれて；
@@ -334,7 +362,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	\[A\supset P_1\supset P_1P_2\supset\dots\supset P_1P_2\dots P_n=0\]
 	を考えると，$A$がNoether的なので\ref{thm:秋月}の証明と同様に，隣り合う2項の剰余加群；
 	\[M_i=P_1\dots P_i/P_1\dots P_{i-1}\]
-	はNoether的．$M_i$は体$A/P_i$上の加群なので，\ref{prop:Artinなベクトル空間はNoether}より$M_i$はArtin的である．帰納的に$A$もArtin的である．
+	はNoether．$M_i$は体$A/P_i$上の加群なので，\ref{prop:Artinなベクトル空間はNoether}より$M_i$はArtinである．帰納的に$A$もArtin的である．
 \end{proof}
 	
 ここで，次元と関連したイデアルの情報を定義しておこう．
@@ -342,7 +370,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	$A$を環，$P$を素イデアルとする．
 	\[\idht P=\sup\mkset{r\in\Z}{P=P_0\supsetneq P_1\supsetneq\dots\supsetneq P_r:\text{素イデアルの真減少列}}\]
 	\[\coht P=\sup\mkset{r\in\Z}{P=P_0\subsetneq P_1\subsetneq\dots\subsetneq P_r:\text{素イデアルの真増大列}}\]
-	を，それぞれ素イデアル$P$の\textbf{高さ（高度），余高度}(height, coheight)という．coheightのことを\textbf{深さ}(depth)ということもある．一般のイデアル$I$については；
+	を，それぞれ素イデアル$P$の\textbf{高さ（高度），余高度(height, coheight)}という．coheightのことを\textbf{深さ(depth)}ということもある．一般のイデアル$I$については；
 	\[\idht I=\min\mkset{\idht P}{P\in V(I)}\]
 	で$I$の高さを定義する．
 \end{defi}
@@ -399,13 +427,13 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	$\dim k[\nitem{X}]=n$である．また，$n\neq m$なら$k[\nitem{X}]$と$k[\nitem[m]{X}]$は同型ではない．
 \end{cor}
 
-環の次元$\dim A$は幾何的には$\spec A$の次元である．加群の次元については$\supp M$の（幾何的な）次元をもって定義しよう．$A$加群$M$が有限生成なら$V(\ann M)=\supp M$である（\ref{prop:Zariskiの閉集合とsupp}）．そこで一般の加群についても$\dim M=\dim A/\ann M$と定義する．
+環の次元$\dim A$は幾何的には$\spec A$の次元である．加群の次元については$\supp M$の（幾何的な）次元をもって定義しよう．$A$加群$M$が有限生成なら$V(\ann M)=\supp M$である（\ref{prop:Zariskiの閉集合とsupp}）．
 
-\begin{defi}[加群のKrull次元]\index{#Krullじげんかぐん@Krull次元（加群）}
-	$A$加群$M$について$\dim A/\ann M$を$M$の\textbf{Krull次元}と定め，$\dim M$とかく．
+\begin{defi}[加群のKrull次元]
+	$A$を環とする．有限生成$A$加群$M$について$\dim A/\ann M$を$M$の\textbf{Krull次元}と定め，$\dim M$とかく．
 \end{defi}
 
-簡単な計算により次の言い換えができることがわかる．
+ここでは有限生成ではない加群については次元を定義していないことに注意しよう．また簡単な計算により次の言い換えができることがわかる．
 
 \begin{prop}
 	Noether環$A$上の有限生成加群$M$について；
@@ -420,12 +448,12 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 この節では，次節でNoetherの正規化定理（\ref{thm:正規化定理}）を証明する際に有力な道具となる\textbf{上昇定理}（going up theorem，\ref{thm:going up}）と\textbf{下降定理}（going down theorem，\ref{thm:going down}）を示そう．
 
 \begin{defi}
-	$A\subset B$を環の拡大とする．$A$のイデアル$I'$に対し，$B$のイデアル$I$が存在して$I\cap A=I'$となっているとき，$I$は$I'$の\textbf{上にある}(lying over)という．
+	$A\subset B$を環の拡大とする．$A$のイデアル$I'$に対し，$B$のイデアル$I$が存在して$I\cap A=I'$となっているとき，$I$は$I'$の\textbf{上にある(lying over)}という．
 \end{defi}
 
 次の命題は簡単だが大切である．
 \begin{prop}\label{prop:整域の整拡大と体}
-	$A\subset B$を整域の拡大とする．$B$が$A$上整であるとき，$A$が体であることと$B$が体であることは同値．
+	$A\subset B$を整域の拡大とする．$B$が$A$上整であるとき，$A$が体であることと$B$が体であることは同値である．
 \end{prop}
 
 \begin{proof}
@@ -447,7 +475,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 証明は明らかなので省略する．
 
 \begin{prop}\label{prop:簡略版lying over theorem}
-	$A\subset B$を整拡大とする．$P\in\spec B$について，$P$が極大であることと$P\cap A$が極大であることは同値．
+	$A\subset B$を整拡大とする．$P\in\spec B$について，$P$が極大であることと$P\cap A$が極大であることは同値である．
 \end{prop}
 
 \begin{proof}
@@ -477,7 +505,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 	帰納法によって$n=2$の場合についてのみ示せば十分である．$\bar{A}=A/P_1',\bar{B}=B/P_1$とする．\ref{lem:整従属は剰余環に落ちる}より$\bar{B}$は$\bar{A}$上整である．そこで$\bar{P_2'}\in\spec \bar A$について\ref{thm:上にある素イデアルの存在}より$\bar{P_2}\in\spec \bar{B}$が存在して$\bar{P_2}\cap\bar{A}=\bar{P_2'}$である．$\bar{P_2}$に対応する$P_2\in\spec B$について$P_2\cap A=P_2'$となり，示された．
 \end{proof}
 
-\begin{cor}
+\begin{cor}\label{cor:整拡大なら次元等しい}
 	$A\subset B$を整拡大とする．このとき$\dim A=\dim B$である．
 \end{cor}
 
@@ -555,7 +583,7 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 %\begin{defi}[次元公式]\index{じげんこうしき@次元公式}
 %	環$A$と任意の$P\in\spec A$について；
 %	\[\idht P+\coht P=\dim A\]
-%	が成り立つとき，$A$で\textbf{次元公式}(dimension formula)が成り立つという．
+%	が成り立つとき，$A$で\textbf{次元公式(dimension formula)}が成り立つという．
 %\end{defi}
 %
 %
@@ -580,14 +608,11 @@ Zariskiの補題の直接の応用の一つとして，Hilbertの零点定理（
 \end{thm}
 
 \begin{proof}
-	$r$についての帰納法で示す．
+	$r$についての帰納法で示す．$r=0$のときは$I=0$なので$y_i=X_i$とすればよい．
 	
-	\begin{step}\item $r=0$のときは$I=0$なので$y_i=X_i$とすればよい．
-	
-	\item	$I'\subset I$を$\idht I'=r-1$となるものとする．帰納法の仮定から$\nitem{y'}$で$I'\cap k[\nitem{y'}]=(\nitem[r]{y'})\subset I\cap k[\nitem{y'}]$となるものがとれる．\ref{cor:上にあるイデアルの高さ}より$\idht I'\cap k[\nitem{y'}]=r-1,\idht I\cap k[\nitem{y'}]=r$であるので，ある$f\in I\cap k[\nitem{y'}]$で$f\not\in I'\cap k[\nitem{y'}]$となるものがある．$I'\cap k[\nitem{y'}]=(\nitem[r]{y'})$より，$f(0,\dots,0,y_r',\dots,y_n')$も同じ条件を満たす．よって$f\in k[\nitem<r>{y'}]$としてよい．ここで\ref{lem:正規化の補題1}を用いると$y''_r=f,\dots,y''_n$で$k[\nitem<r>{y'}]$が$k[\nitem<r>{y''}]$上整であるものがとれる．ここで；
+	$r-1$まで正しいとする．$I'\subset I$を$\idht I'=r-1$となるものとする．帰納法の仮定から$\nitem{y'}$で$I'\cap k[\nitem{y'}]=(\nitem[r]{y'})\subset I\cap k[\nitem{y'}]$となるものがとれる．\ref{cor:上にあるイデアルの高さ}より$\idht I'\cap k[\nitem{y'}]=r-1,\idht I\cap k[\nitem{y'}]=r$であるので，ある$f\in I\cap k[\nitem{y'}]$で$f\not\in I'\cap k[\nitem{y'}]$となるものがある．$I'\cap k[\nitem{y'}]=(\nitem[r]{y'})$より，$f(0,\dots,0,y_r',\dots,y_n')$も同じ条件を満たす．よって$f\in k[\nitem<r>{y'}]$としてよい．ここで\ref{lem:正規化の補題1}を用いると$y''_r=f,\dots,y''_n$で$k[\nitem<r>{y'}]$が$k[\nitem<r>{y''}]$上整であるものがとれる．ここで；
 	\[y_1=y_1',\dots,y_{r-1}=y_{r-1}', y_r=y_r'',\dots,y_n=y_n''\]
 	とすると$k[\nitem{X}]$は$k[\nitem{y}]$上整で，$I\cap k[\nitem{y}]\supset (\nitem[r]{y})$であって$\idht(\nitem[r]{y})\geq r$だから$\supsetneq$ではありえず，$I\cap k[\nitem{y}]=(\nitem[r]{y})$である．
-	\end{step}
 \end{proof}
 \begin{thm}[Noetherの正規化定理]\index{#Noetherのせいきかていり@Noetherの正規化定理}\label{thm:正規化定理}
 	$k$を体，$A$を有限生成$k$代数とする．このとき，$k$上代数的に独立であるような$z_1,\dots,z_s\in A$がとれて，$A$は$k[z_1,\dots,z_s]$上整である．
@@ -601,7 +626,7 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 \begin{defi}[鎖状環]\index{さじょうかん@鎖状環}
 	環$A$の素イデアルの真増大列$P_0\subset P_1\subset\cdots$についてどの隣接した2項の間にも素イデアルが存在しないとき，その鎖は飽和しているという．任意の$P\subset P'$となる素イデアルについて，次の飽和したイデアルの鎖；
 	\[P=P_0\subsetneq\dots\subsetneq P_n= P'\]
-	の長さがすべて同一の有限値であるとき，$A$を\textbf{鎖状環}(catenary ring)という．
+	の長さがすべて同一の有限値であるとき，$A$を\textbf{鎖状環(catenary ring)}という．
 \end{defi}
 
 \begin{thm}\label{thm:体上有限生成整域は鎖状環}
@@ -619,7 +644,7 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 鎖状環の準同型像はまた鎖状環であることに注意すると，体上の有限生成代数はすべて鎖状環である．そこで次の定義をする．
 
 \begin{defi}[強鎖状環]\index{きょうさじょうかん@強鎖状環}
-	Noether環$A$であって，任意の有限生成$A$代数が鎖状であるものを\textbf{強鎖状環}(univarsally catenary ring)であるという．
+	$A$を環とする．任意の有限生成$A$代数が鎖状であるとき，$A$は\textbf{強鎖状環(univarsally catenary ring)}であるという．
 \end{defi}
 
 先に述べたことから$A$が強鎖状であることと，すべての$n$について$A[X_1,\dots,X_n]$が鎖状であることは同値であり，体$k$は強鎖状である．
@@ -631,10 +656,10 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 \begin{defi}[弱次元公式]\index{じゃくじげんこうしき@弱次元公式}\label{defi:弱次元公式}
 	環$A$について，任意の$P\in\spec A$について；
 	\[\idht P+\coht P=\dim A\]
-	が成り立つとき，$A$において\textbf{弱次元公式}(week dimension formula)が成り立つという．
+	が成り立つとき，$A$において\textbf{弱次元公式(week dimension formula)}が成り立つという．
 \end{defi}
 
-この表現のもとで，先に述べたことは局所整域である鎖状環において弱次元公式が成り立つ，と言い換えることができる．ではその逆，弱次元公式が成り立つ局所整域$A$は鎖状環である，は成り立つだろうか？これは$A$がNoether局所整域ならば正しい(Ratliff,1972)がその証明は難しい（\cite{matsu}，定理31.4.）．一方で，鎖状どころか強鎖状環ですら弱次元公式が成り立たない例が存在する（\ref{ex:鎖状だがht P+coht P<dim P}）．しかし，実用の面では\ref{thm:体上有限生成整域は鎖状環}により次の結果が従う．
+この表現のもとで，先に述べたことは局所整域である鎖状環において弱次元公式が成り立つ，と言い換えることができる．ではその逆，弱次元公式が成り立つ局所整域$A$は鎖状環である，は成り立つだろうか？これは$A$がNoether局所整域ならば正しい（\cite{Ratliff1972}）がその証明は難しい（\cite{Matsumura1980}，定理31.4.）．一方で，鎖状どころか強鎖状環ですら弱次元公式が成り立たない例が存在する（\ref{ex:鎖状だがht P+coht P<dim P}）．しかし，実用の面では\ref{thm:体上有限生成整域は鎖状環}により次の結果が従う．
 
 \begin{prop}\label{prop:DIM}
 	体$k$上の有限生成整域$A$において弱次元公式が成り立つ．
@@ -646,16 +671,16 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 
 ところで，\textbf{次元公式}と呼ばれる等式も存在する．$A$をNoether整域，$B$を$A$上の有限生成整域とする．任意の$P\in\spec B$と$P'=P\cap A$について；
 \[\idht P+\trdeg_{k(P')} k(P)=\idht P'+\trdeg_{\Frac(A)} \Frac(B)\]
-が成り立つとき，$A$と$B$の間で\textbf{次元公式}(dimension formula)\index{じげんこうしき@次元公式}が成り立つという．$A$が体のときこれは体上有限生成整域についての弱次元公式にほかならない．
+が成り立つとき，$A$と$B$の間で\textbf{次元公式(dimension formula)}\index{じげんこうしき@次元公式}が成り立つという．$A$が体のときこれは体上有限生成整域についての弱次元公式にほかならない．
 
-実際のNoether環はほとんどが鎖状環であることが知られているが，その証明はCohen--Macaulay環の登場を待たなければならない．また，鎖状でないNoether環の例は\cite{Nag73}で与えられている．それだけでなく鎖状であるが強鎖状でないNoether環の例も永田によって与えられている．
+実際のNoether環はほとんどが鎖状環であることが知られているが，その証明はCohen--Macaulay環の登場を待たなければならない．また，鎖状でないNoether環の例は\cite{Nagata1973}で与えられている．それだけでなく鎖状であるが強鎖状でないNoether環の例も永田によって与えられている．
 
 \section{Hilbertの零点定理}
 
-この節では，（古典的）代数幾何学の基礎を成す零点集合について紹介しよう．
+この節では，（古典的）代数幾何学の基礎を成す零点集合について紹介し，Hilbertの零点定理を証明しよう．
 	
 \begin{defi}[Affine-$n$空間]\index{#Affineくうかん@Affine空間}
-	$k$を（代数閉）体とする．$k$の元$n$個の組すべてからなる集合を$n$次元\textbf{Affine空間}(Affine space)という．
+	$k$を（代数閉）体とする．$k$の元$n$個の組すべてからなる集合を$n$次元\textbf{Affine空間(Affine space)}という．
 \end{defi}
 
 体$k$は代数閉でなくても構わないが，後述するHilbertの零点定理は代数閉体でしか成り立たないため，注意が必要となる．
@@ -663,13 +688,13 @@ Noetherの正規化定理によって，体上の有限生成代数$A$が\textbf
 $A=k[\nitem{X}]$に対し，$f\in A$と$(\nitem{a})=P\in k^n$について$f(P):=f(\nitem{a})$と定めることにより，$A$の元を$k^n$から$k$への写像と解釈することができる．
 
 \begin{defi}[零点集合]\index{れいてんしゅうごう@零点集合}
-	$T\subset A$とする．$Z(T)=\mkset{P\in k^n}{\text{任意の}f\in T\text{に対し}f(P)=0}$を，$T$の\textbf{零点集合}(zero set)という．
+	$T\subset A$とする．$Z(T)=\mkset{P\in k^n}{\text{任意の}f\in T\text{に対し}f(P)=0}$を，$T$の\textbf{零点集合(zero set)}という．
 \end{defi}
 
 $A$はNoether環なので，イデアル$ I $は有限個の生成元$(\nitem{f})$を持つ．よって，$Z(I)$は有限個の多項式$\nitem{f}$の共通の零点と考えられる．
 
 \begin{defi}[代数的集合]\index{だいすうてきしゅうごう@代数的集合}
-	$X\subset k^n$に対し，ある$T\subset A$が存在して，$X=Z(T)$となるとき，$X$を\textbf{代数的集合}(algebraic set)という．
+	$X\subset k^n$に対し，ある$T\subset A$が存在して，$X=Z(T)$となるとき，$X$を\textbf{代数的集合(algebraic set)}という．
 \end{defi}
 
 $ I $を$T$によって生成される$A$のイデアルとすると，$Z(T)=Z( I )$が成り立つので，代数的集合$X$に対応する$T$をイデアルとなるように取れる．
@@ -693,14 +718,14 @@ $ I $を$T$によって生成される$A$のイデアルとすると，$Z(T)=Z( 
 \end{proof}
 
 \begin{defi}[Zariski位相]\index{#Zariskiいそうだいすうたようたい@Zariski位相（代数多様体）}
-	$\A^n$に代数的集合全体を閉集合系とする位相を定める．これを\textbf{Zariski位相}という．
+	$\A^n$に代数的集合全体を閉集合系とする位相を定める．これを\textbf{Zariski位相(Zariski topology)}という．
 \end{defi}
 
 例として，$k$上のZariski位相（これをAffine直線という）を考える．$A=k[X]$はPIDだから，すべての代数的集合は1つの多項式の零点の集まりである．$k$は代数閉体なので，$0$でない多項式$f$の次数が$n$のとき
 \[f(X)=c(X-a_1)\cdots(X-a_n)~(c\in k)\]
-と分解できる．このとき$Z(f)=\{\nitem{a}\}$である．よって，$\A^1$の代数的集合は，有限な部分集合または$k$である．よって，開集合系は空集合及び有限部分集合の補集合となる（補有限位相）．特にこれはHausdorffではないが，コンパクトである位相の大事な例である（ここでは「任意の開被覆を有限個で取り直せる」という性質を指して\quo{コンパクト}と呼んだ．代数幾何学，特にBourbakiの流儀では慣習的に上の性質に加えてHausdorffを課してコンパクトといい，Hausdorffでないときに\textbf{準コンパクト}(quasi-compact)と呼ぶことがあるので注意してほしい）．
+と分解できる．このとき$Z(f)=\{\nitem{a}\}$である．よって，$\A^1$の代数的集合は，有限な部分集合または$k$である．よって，開集合系は空集合及び有限部分集合の補集合となる（補有限位相）．特にこれはHausdorffではないが，コンパクトである位相の大事な例である（ここでは「任意の開被覆を有限個で取り直せる」という性質を指して「コンパクト」と呼んだ．代数幾何学，特にBourbakiの流儀では慣習的に上の性質に加えてHausdorffを課してコンパクトといい，Hausdorffでないときに\textbf{準コンパクト(quasi-compact)}と呼ぶことがあるので注意してほしい）．
 
-ここで\ref{defi:Zariski位相}を思い出そう．$k^n$のZariski位相において，点$\{(a_1,\dots,a_n)\}$は$f=c(X_1-a_1)\cdots(X_n-a_n)$の零点集合となり，$k^n$の閉点になる．これは弱零点定理（\ref{thm:week nullstellensatz}）によって$k[X_1,\dots,X_n]$の極大イデアル，言い換えれば$\spec k[X_1,\dots,X_n]$の閉点が$(X_1-a_1,\dots,X_n-a_n)$しかないことと対応している．
+ここでZariski位相（\ref{defi:Zariski位相}）を思い出そう．$k^n$のZariski位相において，点$\{(a_1,\dots,a_n)\}$は$f=c(X_1-a_1)\cdots(X_n-a_n)$の零点集合となり，$k^n$の閉点になる．これは弱零点定理（\ref{thm:week nullstellensatz}）によって$k[X_1,\dots,X_n]$の極大イデアル，言い換えれば$\spec k[X_1,\dots,X_n]$の閉点が$(X_1-a_1,\dots,X_n-a_n)$しかないことと対応している．
 
 また，Zariski位相は体$k=\Co$としたとき，Euclid位相より真に弱い位相となる．実際に多項式$f$を$\Co^n$から$\Co$への連続写像とみなせば，代数的集合はEuclid位相における閉集合$\{0\}$の$f$による引き戻しにほかならない．
 
@@ -732,8 +757,7 @@ $Y\subset \A^n$に対し
 	が包含関係を逆にする全単射となる．
 \end{prop}
 \begin{proof}
-	\begin{step}
-		\item Hilbertの零点定理より，$ I \in Ri$とすると，$I(Z( I ))=\sqrt{ I }= I $となるので，$\varphi\circ\psi=\id{Ri}$である．
-		\item まず，任意の$Y\subset \A^n$に対し，$Z(I(Y))$は$Y$の閉包$\bar{Y}$に等しいことを示す．簡単に確かめられるように$Y\subset Z(I(Y))$であって，$Z(I(Y))$は閉なので，$\bar{Y}\subset Z(I(Y))$である．ここで，$W$を$Y\subset W$となる閉集合とする．すると，$W=Z( I )$となるイデアル$ I $がとれる．$Y\subset Z( I )$なので$I(Z( I ))\subset I(Y)$である．ここで$ I \subset \sqrt{ I }=I(Z( I ))$だから，$Z(I(Y))\subset Z( I )=W$が成立．よって$Z(I(Y))\subset \bar{Y}$となる．以上より$Z(I(Y))=\bar{Y}$であることがわかった．ここで，$\bar{Y}$が代数的集合，すなわち$Y\in As$なら$\bar{Y}=Y$であるので，$\psi\circ\varphi=\id{As}$である．
-	\end{step}
+	まずHilbertの零点定理より，$ I \in Ri$とすると，$I(Z( I ))=\sqrt{ I }= I $となるので，$\varphi\circ\psi=\id{Ri}$である．
+	
+	次に$\psi\circ\varphi=\id{As}$を確かめよう．まず，任意の$Y\subset \A^n$に対し，$Z(I(Y))$は$Y$の閉包$\bar{Y}$に等しいことを示す．簡単に確かめられるように$Y\subset Z(I(Y))$であって，$Z(I(Y))$は閉なので，$\bar{Y}\subset Z(I(Y))$である．ここで，$W$を$Y\subset W$となる閉集合とする．すると，$W=Z( I )$となるイデアル$ I $がとれる．$Y\subset Z( I )$なので$I(Z( I ))\subset I(Y)$である．ここで$ I \subset \sqrt{ I }=I(Z( I ))$だから，$Z(I(Y))\subset Z( I )=W$が成立．よって$Z(I(Y))\subset \bar{Y}$となる．以上より$Z(I(Y))=\bar{Y}$であることがわかった．ここで，$\bar{Y}$が代数的集合，すなわち$Y\in As$なら$\bar{Y}=Y$であるので，$\psi\circ\varphi=\id{As}$である．
 \end{proof}

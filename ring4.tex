@@ -1,16 +1,16 @@
-\part[Completion，and Artin--Rees lemma]{完備化とArtin--Reesの補題}
+\part[Completion and Artin--Rees lemma]{完備化とArtin--Reesの補題}
 
-この章では環や加群に位相を定めること，またその位相の完備化について考察する．また，その過程でArtin--Reesの補題を始めとする応用も広い諸結果に触れていこう．この章では\quo{極限}について触れる必要があるため，必要に応じて付録の極限の節を参照してもらいたい（圏の言葉を知らずともよいように配慮してある）．
+この章では環や加群に位相を定め，その位相の完備化について考察する．また，その過程でArtin--Reesの補題を始めとする応用も広い諸結果に触れていこう．%この章では「極限」について触れる必要があるため，必要に応じて付録の極限の節を参照してもらいたい（圏の言葉を知らずともよいように配慮してある）．
 \section{位相群}
-
+環も加群も群としての構造を持っているのであるから，まずは一般に\textbf{位相群}について論じよう．
 \begin{defi}[位相群]\index{いそうぐん@位相群}
 	$G$をAbel群とする．また，集合として$G$が位相空間であり，次の写像；
 	\[p:G\times G\to G;(x,y)\mapsto x+y\]
 	\[m:G\to G;x\mapsto -x\]
-	が連続であるとき，$G$を\textbf{位相群}(topological group)という．
+	が連続であるとき，$G$を\textbf{位相群(topological group)}という．
 \end{defi}
 
-$g\in G$について，写像$p_g:G\to G;x\mapsto x+g$は$G$上の自己同相写像となる．よって，任意の点$g$の近傍はすべて$0$の近傍$U$を用いて$g+U$と表せる．よって$G$の位相は$0$の近傍によって決定される．
+$g\in G$について，写像$p_g:G\to G;x\mapsto x+g$は$G$上の自己同相写像となる．よって，任意の点$g$の近傍はすべて$0$の近傍$U$を用いて$g+U$と表せる．特に$G$の位相は$0$の近傍によって決定される．
 
 \begin{prop}
 	$H$を$G$における$0$のすべての近傍の共通部分とする．$H$は$G$の部分群であり，$\{0\}$の閉包に等しい．
@@ -21,13 +21,13 @@ $g\in G$について，写像$p_g:G\to G;x\mapsto x+g$は$G$上の自己同相�
 	
 	$p$の連続性から$p^{-1}(U)$は$G\times G$の開集合である．よって$G$の開集合族$\{U_i\},\{V_i\}$が存在して$p^{-1}(U)=\bigcup (U_i\times V_i)$とかける．ここで$(0,0)\in p^{-1}(U)$だから適当な$i$について$(0,0)\in U_i\times V_i$である．このとき$U_i,V_i$は$0$の近傍となり，仮定から$x\in U_i,y\in V_i$とできる．よって$(x,y)\in p^{-1}(U)$すなわち$x+y\in U$である．よって$x+y\in H$である．同様に$m^{-1}(U)$を考えれば$x^{-1}\in H$がわかる．
 	
-	次に$H=\bar{\{0\}}$を示そう．$x\in\bar{\{0\}}$であることを($\ast$)とすると，これは任意の$x$の開近傍$U$が$0\in U$となることと同値である．ここで$U$は$0$の開近傍$V$を用いて$x+V$とかけることに注意すると，$(\ast)$は$0$の任意の開近傍$V$に対して$0\in x+V$となることと同値．これは更に$-x\in V$と言い換えることができ，$-x\in H$と同値である．ゆえに$x\in\bar{\{0\}}$は$x\in H$と同値である．
+	次に$H=\bar{\{0\}}$を示そう．$x\in\bar{\{0\}}$であることを($\ast$)とすると，これは任意の$x$の開近傍$U$が$0\in U$となることと同値である．ここで$U$は$0$の開近傍$V$を用いて$x+V$とかけることに注意すると，$(\ast)$は$0$の任意の開近傍$V$に対して$0\in x+V$となることと同値である．これは更に$-x\in V$と言い換えることができ，$-x\in H$と同値である．ゆえに$x\in\bar{\{0\}}$は$x\in H$と同値である．
 \end{proof}
 
-$H$を用いて位相群$G$がHausdorffであることの判定条件を与えよう．ここで位相空間に関する次の命題を思い出しておく．
+この節を通じて，単に$H$と書いたら$G$における$0$のすべての近傍の交わりとする．$H$を用いて位相群$G$がHausdorffであることの判定条件を与えよう．ここで位相空間に関する次の命題を思い出しておく．
 
-\begin{prop}\label{prop:Hausdorffと対角線}
-	位相空間$M$がHausdorffであることと，$\Delta=\mkset{(x,y)\in M\times M}{x=y}$が$M\times M$が閉集合であることは同値．
+\begin{prop}
+	位相空間$M$がHausdorffであることと，対角集合$\Delta=\mkset{(x,y)\in M\times M}{x=y}$が$M\times M$における閉集合であることは同値である．
 \end{prop}
 \begin{proof}
 	$M$がHausdorffであるとき，$\Delta^c$が開であることを示す．任意の$(x,y)\in\Delta^c$に対して$x\neq y$である．$M$がHausdorffなので，開近傍$x\in U_x,y\in U_y$で$U_x\cap U_y=\emptyset$であるものがとれる．すると$U_x\times U_y$は$(x,y)$の開近傍で$U_x\times U_y\subset\Delta^c$である．よって$(x,y)$は内点なので$\Delta^c$は開である．
@@ -36,7 +36,7 @@ $H$を用いて位相群$G$がHausdorffであることの判定条件を与え�
 \end{proof}
 
 \begin{prop}\label{prop:位相群がHdfになる条件}
-	$G$がHausdorffであることと$H=0$すなわち$\{0\}$が閉集合であることは同値である．特に$G/H$はHausdorffである．
+	$G$がHausdorffであることと，$H=0$であること，すなわち$\{0\}$が閉集合であることは同値である．特に$G/H$はHausdorffである．
 \end{prop}
 
 \begin{proof}
@@ -51,13 +51,13 @@ $H$を用いて位相群$G$がHausdorffであることの判定条件を与え�
 \begin{defi}[Cauchy列]\index{#Cauchyれつ@Cauchy列}
 	$G$の元の族$\{x_i\}$であって，$0$の任意の近傍$U$について，ある整数$n$が存在して；
 	\[\text{任意の}i,j\geq n\text{に対し} x_i-x_j\in U\]
-	が成り立つとき，$\{x_i\}$を\textbf{Cauchy列}(Cauchy sequence)であるという．
+	が成り立つとき，$\{x_i\}$を\textbf{Cauchy列(Cauchy sequence)}であるという．
 \end{defi}
 
-Cauchy列を扱うには\quo{収束}の概念が不可欠であるため，距離空間でない一般の位相空間における収束を振り返っておこう．
+Cauchy列を扱うには「収束」の概念が不可欠であるため，距離空間でない一般の位相空間における収束を振り返っておこう．
 
 \begin{defi}[収束]
-	位相空間$M$について，系列$\{x_i\}$に対してある$x\in M$が存在して，任意の$x$の開近傍$U$に対してある$n>0$が存在して$i\geq n$ならば$x_i\in U$となるものが存在するとき，$\{x_i\}$は$x$に\textbf{収束}(converge)するという．
+	位相空間$M$について，系列$\{x_i\}$に対してある$x\in M$が存在して，任意の$x$の開近傍$U$に対してある$n>0$が存在して$i\geq n$ならば$x_i\in U$となるものが存在するとき，$\{x_i\}$は$x$に\textbf{収束(converge)}するという．
 \end{defi}
 
 $G$のCauchy列全体には，今までと同じように要素ごとの和をとることで和が定義され，次の関係；
@@ -65,7 +65,7 @@ $G$のCauchy列全体には，今までと同じように要素ごとの和を�
 は同値関係となる．
 
 \begin{defi}[完備化]\index{かんびか@完備化}
-	同値関係$(\ast)$による$G$のCauchy列全体の同値類を$\widehat G$とかき，$G$の\textbf{完備化}(completion)という．
+	同値関係$(\ast)$による$G$のCauchy列全体の同値類を$\widehat G$とかき，$G$の\textbf{完備化(completion)}という．
 \end{defi}
 
 この定義により，$\Q$を加法群としてみたときの完備化$\widehat{\Q}$は$\R$になることが自然に納得されるだろう．
@@ -89,22 +89,20 @@ $G$のCauchy列全体には，今までと同じように要素ごとの和を�
 \end{proof}
 
 この節の最後に，完備化はテンソル積や局所化といったこれまでの操作と同様に関手になる，ということを注意しておく．というのも$G,H$を位相群（先程まで考えていた$H$とは異なる）としたとき，準同型$f:G\to H$により$G$のCauchy列は$H$のCauchy列を定めるから，群準同型$\widehat{f}:\widehat{G}\to\widehat{H}$が定義される．このとき$(g\circ f)\widehat{\mathstrut}=\widehat{g}\circ\widehat{f}$となるからである．
-\section{線形位相と代数的な完備化}
+\section{線型位相と代数的な完備化}
 
-ここまでは一般的な位相で考えてきたが，代数的な都合から$G$に\textbf{線形位相}という位相を入れて考えていくことにする．
+ここまでは一般的な位相で考えてきたが，代数的な都合から$G$に\textbf{線型位相}という位相を入れて考えていくことにする．
 
-\begin{defi}[線形位相]\index{せんけいいそう@線形位相}
+\begin{defi}[線型位相]\index{せんけいいそう@線型位相}
 	群$G$の部分群の列；
-	\[G=G_0\supset G_1\supset G_2\dots\supset G_n\supset\cdots\]
-	が与えられたとき，$U$が$0$の開近傍になることは$U$がある部分群$G_n$を含むことであると定義するとこれは$G$の位相になる．これを部分群の列が定める\textbf{線形位相}(linear topology)という．
+	\[G=G_0\supset G_1\supset G_2\supset\dots\supset G_n\supset\cdots\]
+	が与えられたとき，$U\subset G$について，ある$n\geq 0$について$G_n\subset U$であるとき，$U$が$0$の開近傍であると定義する．これは$G$の位相を定め，これを部分群の列が定める\textbf{線型位相(linear topology)}という．
 \end{defi}
 
-この条件は位相群$G$が部分群の減少列$\{G_n\}$からなる$0$の基本近傍系を持つ，と言いかえることもできる．
-
-位相になることを確かめておこう．そのために$g\in G$について$p_g:G\to G;x\mapsto x+g$が全単射であることを用いる．$V\subset G$が$x\in G$の開近傍であるとは，$p_x^{-1}(V)$が$0$の開近傍になることであると定めよう．このとき$x$の開近傍全体$\mathcal{V}(x)$は$x$の近傍系の公理を満たす．
+この条件は位相群$G$が部分群の減少列$\{G_n\}$からなる$0$の基本近傍系を持つ，と言いかえることもできる．位相になることを確かめておこう．
 
 \begin{lem}
-	$\mathcal{V}(x)$を上のように定める．このとき；
+	$\mathcal{V}(x)=\mkset{V\subset G}{p^{-1}_x(V)\text{が}0\text{の開近傍である}}$と定める．このとき；
 	\begin{sakura}
 		\item 任意の$V\in\mathcal{V}(x)$に対して$V\subset U$ならば$U\in\mathcal{V}(x)$である．
 		\item $U_1,\dots,U_n\in\mathcal{V}(x)$ならば$\bigcap_{i=1}^n U_i\in\mathcal{V}(x)$である．
@@ -121,32 +119,32 @@ $G$のCauchy列全体には，今までと同じように要素ごとの和を�
 	$U$を$x$の近傍とする．このとき，ある$n$が存在して$G_n\subset p_x^{-1}(U)$となる．このとき$p_x(G_n)=V$とおくと，$p_x^{-1}(V)=G_n$であるから，$V$も$x$の近傍となる．任意の$y\in V$をとると，ある$g_0\in G_n$がとれて$y=g_0+x$である．このとき$p_y^{-1}(V)=(G_n+x)-(g_0+x)=G_n-g_0=G_n$であり，$V\subset U$であるから$G_n\subset p_y^{-1}(U)$が成り立つ．よって$U$は$y$の近傍となっている．
 \end{proof}
 
-以上より，任意の点の近傍系が定まったから，$G$全体に位相が定まることがわかった．この位相のもとでも$p_g$は自然な自己同相写像であることに注意しよう．また，$\{G_n\}$が定める線形位相において，各$G_n$は開かつ閉であることに注意しよう．
+以上より，任意の点の近傍系が定まったから，$G$全体に位相が定まることがわかった．この位相のもとでも$p_x$は自然な自己同相写像であることに注意しよう．また，$\{G_n\}$が定める線型位相において，各$G_n$は開かつ閉であることに注意しよう．
 
-先の節で，位相的な完備化$\widehat{G}$と$\varphi:G\to\widehat{G}$を定義した．線形位相については，$\varphi$が埋め込みであることと$\bigcap G_n=0$が成り立つことが同値である．このとき，線形位相はHausdorffであるだけでなく非常によい位相となることが知られている．
+先の節で，位相的な完備化$\widehat{G}$と$\varphi:G\to\widehat{G}$を定義した．線型位相については，$\varphi$が埋め込みであることと$\bigcap G_n=0$が成り立つことが同値である．このとき，線型位相はHausdorffであるだけでなく非常によい位相となることが知られている．
 
 \begin{prop}
 	$G$と部分群の減少列$\{G_n\}$について，$\bigcap G_n=0$が成り立つとき；
 	\[d(x,y)=\inf\mkset{\left(\frac{1}{2}\right)^n}{x-y\in G_n}\]
-	と定めるとこれは$G$上の距離になり，$d$が定める位相は$\{G_n\}$による線形位相と一致する．
+	と定めるとこれは$G$上の距離になり，$d$が定める位相は$\{G_n\}$による線型位相と一致する．
 \end{prop}
 
 \begin{proof}
 	まずは距離になっていることを示そう．正値性，対称性，三角不等式が成り立つことは明らか．非退化であることを示す．$x=y$のとき$x-y=0$はすべての部分群に含まれるので，$d(x,y)=0$である．逆に$d(x,y)=0$とすると，任意の$\varepsilon>0$に対して，ある$n$で$x-y\in G_n$となるものが存在して$(1/2)^n<\varepsilon$である．ここで任意の$m>0$に対して$\varepsilon=(1/2)^m$とすれば，これに対してとれる$n$は$n<m$を満たし，$x-y\in G_n\subset G_m$より$x-y\in G_m$である．よって$x-y\in\bigcap G_n=0$であり$x-y=0$がわかる．
 	
-	以上より$d$は距離を定める．次に$0$の近傍全体が線形位相における$0$の近傍全体と一致することを見よう．$x\in G_n$のとき$d(x,0)\leq (1/2)^n$であること，$x\not\in G_n$であるとき$(1/2)^n<d(x,0)$であることに注意する．各$n$について$B_{(1/2)^{n-1}}(0)=G_n$であることを示す．$x\in G_n$ならば$d(x,0)\leq (1/2)^n<(1/2)^{n-1}$より$x\in B_{(1/2)^{n-1}}(0)$である．逆に$x\in B_{(1/2)^{n-1}}(0)$とすると，$d(x，0)<(1/2)^{n-1}$より$d(x,0)\leq(1/2)^n$でなければならないから，$x\not\in G_n$であるとすると矛盾する．
+	以上より$d$は距離を定める．次に$0$の近傍全体が線型位相における$0$の近傍全体と一致することを見よう．$x\in G_n$のとき$d(x,0)\leq (1/2)^n$であること，$x\not\in G_n$であるとき$(1/2)^n<d(x,0)$であることに注意する．各$n$について$B_{(1/2)^{n-1}}(0)=G_n$であることを示す．$x\in G_n$ならば$d(x,0)\leq (1/2)^n<(1/2)^{n-1}$より$x\in B_{(1/2)^{n-1}}(0)$である．逆に$x\in B_{(1/2)^{n-1}}(0)$とすると，$d(x，0)<(1/2)^{n-1}$より$d(x,0)\leq(1/2)^n$でなければならないから，$x\not\in G_n$であるとすると矛盾する．
 	
-	さて，任意の$\varepsilon>0$をとる．ここで，$(1/2)^{n-1}<\varepsilon$となる$n$を取ることができる．このとき$B_{(1/2)^{n-1}}(0)=G_n$であるから，$G_n\subset B_\varepsilon(0)$となり$B_\varepsilon(0)$は線形位相において開であり，逆に$U$が線形位相において開ならば$G_n$は$0$の開球であり$U$に含まれるから，距離空間において開である．
+	さて，任意の$\varepsilon>0$をとる．ここで，$(1/2)^{n-1}<\varepsilon$となる$n$を取ることができる．このとき$B_{(1/2)^{n-1}}(0)=G_n$であるから，$G_n\subset B_\varepsilon(0)$となり$B_\varepsilon(0)$は線型位相において開であり，逆に$U$が線型位相において開ならば$G_n$は$0$の開球であり$U$に含まれるから，距離空間において開である．
 	
 \end{proof}
 
-ここで，自然な全射$\theta_{n}:G/G_{n}\to G/G_{n-1}$を考えると，$\{G/G_n,\theta_n\}$は射影系をなす．射影極限；
+$G$はAbel群であるとする．ここで，自然な全射$\theta_{n}:G/G_{n}\to G/G_{n-1}$を考えると，$\{G/G_n,\theta_n\}$は射影系をなす．射影極限；
 \[\plim G/G_n=\mkset{(\xi_n)}{\text{任意の}n\leq m\text{について}\theta_m(\xi_m)=\xi_n\text{が成り立つ．}}\]
 
 がCauchy列による完備化$\widehat{G}$と同型であることを示す．
 
 \begin{thm}[代数的な完備化]
-	$G$の部分群の列$\{G_n\}$からなる線形位相を考える．射影系$\{G/G_n\}$を考えると，次の同型が成り立つ．
+	Abel群$G$の部分群の列$\{G_n\}$からなる線型位相を考える．射影系$\{G/G_n\}$を考えると，次の同型が成り立つ．
 	\[\widehat{G}=\plim G/G_n\]
 \end{thm}
 
@@ -159,22 +157,22 @@ $G$のCauchy列全体には，今までと同じように要素ごとの和を�
 解析的な意味での完備性，すなわち実数の完備性とはある種の公理であった（同値な命題として中間値の定理やBolzano--Weierstra\ss の定理などがある）が，ここでは純粋に代数的な完備化として射影極限による構成を与えることができているので，完備であることの定義を天下り的に定義しよう．
 
 \begin{defi}[完備]
-	位相群$G$について，$\varphi:G\to\widehat{G}$が同型であるとき，\textbf{完備}(complete)であるという．
+	位相群$G$について，$\varphi:G\to\widehat{G}$が同型であるとき，\textbf{完備(complete)}であるという．
 \end{defi}
 
 $\varphi$が単射なことと$\bigcap G_n=0$が成り立つことが同値であったので，完備な位相群は距離空間である．この節の残りの部分では，完備化は完備であることを示すことを目標にする．
 
 \begin{prop}\label{prop:位相群において完備化は完全}
-	群の完全列；
-	\[\ses[][p]{G'}{G}{G''}\]
-	を考える．$G$に部分群の列$\{G_n\}$で定義される線形位相が入っているとき，$G',G''$にはそれぞれ$\{G'\cap G_n\},\{p(G_n)\}$による線形位相を考えることができ，次の完全列；
+	Abel群の完全列；
+	\[\ses[][\pi]{G'}{G}{G''}\]
+	を考える．$G$に部分群の列$\{G_n\}$で定義される線型位相が入っているとき，$G',G''$にはそれぞれ$\{G'\cap G_n\},\{\pi(G_n)\}$による線型位相を考えることができ，次の完全列；
 	\[\ses{\widehat{G}'}{\widehat{G}}{\widehat{G}''}\]
 	が得られる．
 \end{prop}
 
 \begin{proof}
-	一般に，定義から線形位相による射影系$\{G/G_n\}$は全射的である．よって\ref{thm:最初がsurjectiveなら射影極限は完全}を次の完全列；
-	\[\ses{G'/(G'\cap G_n)}{G/G_n}{G''/p(G_n)}\]
+	一般に，定義から線型位相による射影系$\{G/G_n\}$は全射的である．よって\ref{thm:最初がsurjectiveなら射影極限は完全}を次の完全列；
+	\[\ses{G'/(G'\cap G_n)}{G/G_n}{G''/\pi(G_n)}\]
 	に適用すればよい．
 \end{proof}
 
@@ -196,32 +194,34 @@ $\varphi$が単射なことと$\bigcap G_n=0$が成り立つことが同値で�
 
 \section{I進位相とArtin--Reesの補題}
 
-位相群の例で重要なものは，やはり加群についての応用である．環$A$のイデアル$I$により定義される線形位相のなかで重要なものに，$I$進位相がある．
+位相群の例で重要なものは，やはり加群についての応用である．環$A$のイデアル$I$により定義される線型位相のなかで重要なものに，$I$進位相がある．
 
 \begin{defi}[$I$進位相]\index{#Iしんいそう@$I$進位相}
-	$A$加群$M$と$A$のイデアル$I$を考える．$\{I^nM\}$は$M$の部分加群の減少列をなし，これによる線形位相を$I$\textbf{進位相}($I$-adic topology)という．
+	$A$加群$M$と$A$のイデアル$I$を考える．$\{I^nM\}$は$M$の部分加群の減少列をなし，これによる線型位相を$I$\textbf{進位相($I$-adic topology)}という．
 \end{defi}
 
-これからは特筆しない限り，$A$加群$M$の位相は$I$進位相を考える．$M$の完備化$\widehat{M}$は$\widehat{A}$加群になることに注意しよう．また，$f:M\to N$を$A$加群の準同型とすると，$f(I^nM)=I^nf(M)\subset I^nN$であるので，$f$は$I$進位相について連続である．よって$\widehat{f}:\widehat{M}\to\widehat{N}$が定まる．
+これからは特筆しない限り，$A$加群$M$の位相は$I$進位相を考える．$M$の完備化$\widehat{M}$は$\widehat{A}$加群になることに注意しよう．また，$f:M\to N$を$A$線型写像とすると，$f(I^nM)=I^nf(M)\subset I^nN$であるので，$f$は$I$進位相について連続である．よって$\widehat{f}:\widehat{M}\to\widehat{N}$が定まる．
 
 この節の目標は，群の場合と同様に$A$加群の完全列；
-\[\ses[][p]{M'}{M}{M''}\]
+\[\ses[][\pi]{M'}{M}{M''}\]
 に対して；
 \[\ses{\widehat{M}'}{\widehat{M}}{\widehat{M}''}\]
-が完全であることを示すことである（実はこれは$A$がNoetherで，$M$が有限生成$A$加群であるときにしか成り立たない）．群の場合と同様に考えると，$M',M''$はそれぞれ$\{(I^nM)\cap M'\},\{I^n p(M)\}$で定義される線形位相による完備化についての完全列は得られる．よって，問題はそれぞれの線形位相が$I$進位相と一致しているだろうか？ということになる．この問題を解決するために，\textbf{フィルター}という概念を導入しよう．
+が完全であることを示すことである（実はこれは$A$がNoetherで，$M$が有限生成$A$加群であるときにしか成り立たない）．群の場合と同様に考えると，$M',M''$はそれぞれ$\{(I^nM)\cap M'\},\{I^n \pi(M)\}$で定義される線型位相による完備化についての完全列は得られる．よって，問題はそれぞれの線型位相が$I$進位相と一致しているだろうか？ということになる．定義からすぐに，部分加群群の列$\{M_n\},\{M_n'\}$があったとき，任意の$n$について$M_n\subset M_{m_1}',M_n'\subset M_{m_2}$となるような$m_1,m_2$が存在するならばこの２つの列から定まる線形位相は一致することがわかる．特別な場合を定義しておこう．
 
-\begin{defi}[$I$フィルター]\index{#Iフィルター@$I$フィルター}\index{あんていしているふぃるたー@安定しているフィルター}
-	$A$加群$M$と，$A$のイデアル$I$を考える．$M_n$を$M$の部分加群として，降鎖$M=M_0\supset M_1\supset\dots\supset M_n\cdots$を考える．すべての$n$に対して，$IM_n\subset M_{n+1}$が成り立つとき，降鎖$\{M_n\}$は$I$\textbf{フィルター}($I$-filtration)であるという．特に，ある$n_0\in\N$が存在して，任意の$n\geq n_0$に対して$IM_n=M_{n+1}$が成り立つとき，そのフィルターは\textbf{安定している}(stable)という．
+\begin{defi}
+	$\{M_n\},\{M_n'\}$を$M$の部分加群の列とする．ある$n_0\in\N$が存在して，任意の$n\in\N$について；
+	\[M_{n+n_0}\subset M_n',M_{n+n_0}'\subset M_n\]
+	が成り立つとき，$\{M_n\}$と$\{M_n'\}$は\textbf{有界な差(bounded difference)}を持つという．
 \end{defi}
 
-\begin{defi}[有界な差]\index{ゆうかいなさふぃるたー@有界な差（フィルター）}
-	$\{M_n\},\{M_n'\}$を$M$の$I$フィルターとする．ある$n_0\in\N$が存在して，任意の$n\in\N$について；
-	\[M_{n+n_0}\subset M_n',M_{n+n_0}'\subset M_n\]
-	が成り立つとき，$\{M_n\}$と$\{M_n'\}$は\textbf{有界な差}(bounded difference)を持つという．
+\textbf{フィルター}という概念を導入すると，有界な差を持つための条件をわかりやすくすることができる．
+
+\begin{defi}[$I$フィルター]\index{#Iフィルター@$I$フィルター}\index{あんていふぃるたー@安定フィルター}
+	$A$加群$M$と，$A$のイデアル$I$を考える．$M_n$を$M$の部分加群として，降鎖$M=M_0\supset M_1\supset\dots\supset M_n\cdots$を考える．すべての$n$に対して，$IM_n\subset M_{n+1}$が成り立つとき，降鎖$\{M_n\}$は$I$\textbf{フィルター($I$-filtration)}であるという．特に，ある$n_0\in\N$が存在して，任意の$n\geq n_0$に対して$IM_n=M_{n+1}$が成り立つとき，そのフィルターは\textbf{安定(stable)}しているという．
 \end{defi}
 
 \begin{lem}\label{lem:安定しているフィルターは有界な差を持つ}
-	$\{M_n\},\{M_n'\}$を$M$の安定している$I$フィルターとすると，それらは有界な差を持つ．
+	$\{M_n\},\{M_n'\}$を$M$の安定$I$フィルターとすると，それらは有界な差を持つ．
 \end{lem}
 
 \begin{proof}
@@ -234,30 +234,30 @@ $\varphi$が単射なことと$\bigcap G_n=0$が成り立つことが同値で�
 	安定しているすべての$I$フィルターの定める位相は$I$進位相に一致する．
 \end{cor}
 
-よって，問題は$\{(I^nM)\cap M'\},\{I^n p(M)\}$がそれぞれ$M',M''$の安定しているフィルターとなるかどうかに帰着することがわかった．$\{I^n p(M)\}$は定義から安定しているので，$\{(I^nM)\cap M'\}$について考えればよい．これにはArtin--Reesの補題が有効に働くため，この節の残りではこれを示すことにしよう．
+よって，問題は$\{(I^nM)\cap M'\},\{I^n \pi(M)\}$がそれぞれ$M',M''$の安定フィルターとなるかどうかに帰着することがわかった．$\{I^n \pi(M)\}$は定義から安定しているので，$\{(I^nM)\cap M'\}$について考えればよい．これにはArtin--Reesの補題が有効に働くため，この節の残りではこれを示すことにしよう．
 
-Artin--Reesの補題の証明にはRees環という次数付き環が活躍するので，次数付き環についていくつか思い出しておこう．環$S$について，加法群としての部分加群の族$\{S_d\}$が存在して，$S=\middleoplus_d S_d$であり，すべての$d,e$について$S_dS_e\subset S_{d+e}$を満たすとき，$S$を\textbf{次数付き環}(graded ring)というのであった．$S_+=\middleoplus_{d>0}S_d$は$S$のイデアルとなっていて，無縁イデアルという．$S$を次数付き環とし，$S$加群$M$とその部分加群の族$\{M_n\}$について，$M=\middleoplus_n M_n$が成り立ち，すべての$d,n$について$S_dM_n\subset M_{n+d}$が成り立つとき，$M$を\textbf{次数付き}$S$\textbf{加群}(graded $S$-module)という．各$M_n$は$S_0$加群であることに注意しよう．次数付き$S$加群$M,N$について，$S$加群の準同型$f:M\to N$がすべての$n$について$f(M_n)\subset N_n$を満たすとき，$f$を次数付き加群の準同型であるという．
+Artin--Reesの補題の証明にはRees環という次数付き環が活躍するので，次数付き環についていくつか思い出しておこう．環$A$について，加法群としての部分加群の族$\{A_d\}$が存在して，$A=\bigoplus A_d$であり，すべての$i,j$について$A_iA_j\subset A_{i+j}$を満たすとき，$A$を\textbf{次数付き環(graded ring)}というのであった．$A$を次数付き環とし，$A$加群$M$とその部分加群の族$\{M_d\}$について，$M=\bigoplus M_d$が成り立ち，すべての$i,j$について$A_iM_j\subset M_{i+j}$が成り立つとき，$M$を\textbf{次数付き}$A$\textbf{加群(graded $A$-module)}という．各$M_d$は$A_0$加群であることに注意しよう．次数付き$A$加群$M,N$について，$A$線型写像$f:M\to N$がすべての$d$について$f(M_d)\subset N_d$を満たすとき，$f$を次数付き加群の線型写像，また斉次射であるという．
 
 ここで，次数付き環に関して非常に有用な命題を示しておこう．
 
 \begin{prop}\label{prop:次数付き環のNoether性}
-	$A$を次数付き環とする．$A$がNoetherであることと，$A_0$がNoetherで$A$が有限生成$A_0$代数であることは同値である．
+	$A$を次数付き環とする．$A$がNoetherであることと，$A_0$がNoetherで，$A$が有限生成$A_0$代数であることは同値である．
 \end{prop}
 
 \begin{proof}
 	\begin{eqv}
-		\item $S_0=S/S_+$より$S_0$はNoetherである．$S_+$は$S$のイデアルなので有限生成である．そこで$x_i$たちを$S_+$の生成元とすると，これは斉次元の和でかけるので，適切に取り替えることで$x_i$は次数$k_i$の斉次元としてよい．また$S_+$の定義より$k_i>0$であることに注意しよう．
+		\item $A_0=A/A_+$より$A_0$はNoetherである．$A_+$は$A$のイデアルなので有限生成である．そこで$x_i$たちを$A_+$の生成元とすると，これは斉次元の和でかけるので，適切に取り替えることで$x_i$は次数$k_i$の斉次元としてよい．また$A_+$の定義より$k_i>0$であることに注意しよう．
 		
-		$S_+=(x_1,\dots,x_s), S'=S_0[x_1,\dots,x_s]$とする．帰納法により，任意の$d$について$S_d\subset S'$であることを示す．$d=0$のときは明らかである．任意の$x\in S_d$をとる．$x\in S_+$より$x=\sum a_ix_i$とかける．ここで$x$は斉次なので$a_i\in S_{d-k_i}$でなければならない（$m<0$のとき$S_m=0$と考えている）．帰納法の仮定より$a_i\in S'$なので，$x\in S'$であることがわかる．よって$S_d\subset S$が成り立ち，$S=S'$である．
+		$A_+=(x_1,\dots,x_A), A'=A_0[x_1,\dots,x_A]$とする．帰納法により，任意の$d$について$A_d\subset A'$であることを示す．$d=0$のときは明らかである．任意の$x\in A_d$をとる．$x\in A_+$より$x=\sum a_ix_i$とかける．ここで$x$は斉次なので$a_i\in A_{d-k_i}$でなければならない（$m<0$のとき$A_m=0$と考えている）．帰納法の仮定より$a_i\in A'$なので，$x\in A'$であることがわかる．よって$A_d\subset A$が成り立ち，$A=A'$である．
 		
-		\item Hilbertの基底定理(\ref{thm:Hilbertの基底定理})より従う．
+		\item Hilbertの基底定理（\ref{thm:Hilbertの基底定理}）より従う．
 	\end{eqv}
 \end{proof}
 
 \begin{defi}[Rees環]\index{#Reesかん@Rees環}
 	環$A$のイデアル$I$に対し，次数付き環；
 	\[R_A(I)=\middleoplus I^n\]
-	をイデアル$I$の\textbf{Rees環}(Rees algebra)という．特に$I$の生成元を$\{x_i\}$とするとき，$R_A(I)$は$\{x_i\}$で生成される$A$代数であることに注意しよう．
+	をイデアル$I$の\textbf{Rees環(Rees algebra)}という．特に$I$の生成元を$\{x_i\}$とするとき，$R_A(I)$は$\{x_i\}$で生成される$A$代数であることに注意しよう．
 \end{defi}
 
 Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
@@ -272,13 +272,17 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 	逆に$M^\ast$が有限生成$R_A(I)$加群であるとすると，$M^\ast$はNoetherである．いま$\{M_n^\ast\}$は$M^\ast$の部分加群からなる昇鎖であるからこれは停まる．ここで$\bigcup M_n^\ast=M^\ast$であるので，ある$n_0$が存在して$M_{n_0}^\ast=M^\ast$となり，これは任意の$n\geq0$について$I^nM_{n_0}=M_{n_0+n}$が成り立つことを意味している．よって$\{M_n\}$は安定している．
 \end{proof}
 
-\begin{prop}[Artin--Reesの補題]\index{#Artin--Reesのほだい@Artin--Reesの補題}\label{prop:Artin--Reesの補題}
+\begin{thm}[Artin--Reesの補題]\index{#Artin--Reesのほだい@Artin--Reesの補題}\label{prop:Artin--Reesの補題}
 	$A$をNoether環とし，$A$のイデアル$I$と有限生成加群$M$を考える．$M$の安定している$I$フィルター$\{M_n\}$と部分加群$M'$について，$\{M'\cap M_n\}$は$M'$の安定している$I$フィルターである．
-\end{prop}
+\end{thm}
 
 \begin{proof}
 	$\{M'\cap M_n\}$が$I$フィルターであることは明らかである．このフィルターが定める次数付き加群$\middleoplus (M'\cap M_n)$は$M^\ast$の部分加群であり，補題から$M^\ast$は有限生成$R_A(I)$加群であり，$R_A(I)$はNoetherだから$\middleoplus (M'\cap M_n)$も有限生成である．再び補題より$\{M'\cap M_n\}$は安定している．
 \end{proof}
+
+Artin--Reesの補題の主張を使いやすく言い換えておこう．$I$をNoether環$A$のイデアルと有限生成$A$加群$M$，その部分加群$M'$についてある$n\geq 0$が存在して，任意の$i\geq n$について；
+\[I^iM\cap N=I^{i-n}(I^nM\cap N)\]
+が成り立つ．
 
 これにより以下の定理が得られた．
 
@@ -292,7 +296,7 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 
 \section{Krullの交叉定理}
 
-この節では，自然な準同型$A\to\widehat{A}$により，$\widehat{A}$を$A$代数としてみて，完備化についての考察を続けよう．まずはテンソル積$\widehat{A}\otimes_A \widehat{M}$が$\widehat{M}$と一致する条件を調べよう．$A$加群の準同型$M\to\widehat{M}$が誘導する準同型；
+この節では，自然な準同型$A\to\widehat{A}$により，$\widehat{A}$を$A$代数としてみて，完備化についての考察を続けよう．まずはテンソル積$\widehat{A}\otimes_A \widehat{M}$が$\widehat{M}$と一致する条件を調べよう．$A$線型写像$M\to\widehat{M}$が誘導する線型写像；
 \[\begin{tikzcd}
 	M\otimes_A 
 	\widehat{A}\nxcell\widehat{M}\otimes_A\widehat{A}\nxcell\widehat{M}\otimes_{\widehat{A}}\widehat{A}=\widehat{M}
@@ -306,17 +310,17 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 \begin{proof}
 	$M$は有限生成なので，ある$n$について；
 	\[\ses[\iota][\varphi]{\ker\varphi}{A^n}{M}\]
-	が完全である．テンソル積，完備化はそれぞれ左完全，完全であるから，先の準同型により，次の可換図式を考えることができる．
+	が完全である．テンソル積，完備化はそれぞれ左完全，完全であるから，先の線型写像により，次の可換図式を考えることができる．
 	\[\begin{tikzcd}[sep=large]
 		&\ker\varphi\otimes_A \widehat{A}\arrow[d,"f"]\nxcell[\iota\otimes\id]A^n\otimes_A\widehat{A}\arrow[d,"g"]\nxcell[\varphi\otimes\id]M\otimes_A\widehat{A}\arrow[d,"h"]\nxcell0\\
 		0\nxcell\widehat{\ker\varphi}\nxcell[\widehat{\iota}]\widehat{A^n}\nxcell[\widehat\varphi]\widehat{M}\nxcell0
 	\end{tikzcd}\]
 	ここで，加群の圏において射影極限は有限個の直和と可換であるから$g$は同型射である．すると$g$は全射なので$h$も全射である．
 	
-	また，$A$がNoetherであったとしよう．このとき$\ker\varphi$は有限生成なので，$f$も全射である．このとき，図式追跡によって$h$が単射であることを示すことができる（$\iota\otimes\id$が単射ではないので，five lemmaなどは使えないことに注意）．よって同型となることがわかる．
+	また，$A$がNoetherであったとしよう．このとき$\ker\varphi$は有限生成なので，$f$も全射である．このとき，図式追跡によって$h$が単射であることを示すことができる（\ref{lem:snake}もみよ）．よって同型となることがわかる．
 \end{proof}
 
-\begin{cor}
+\begin{cor}\label{cor:完備家は平坦}
 	$A$がNoetherであるとき，$\widehat{A}$は平坦$A$代数である．
 \end{cor}
 
@@ -357,6 +361,15 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 	まず，\ref{lem:完備化に関してのもろもろの補題}(iii)より，$\widehat{A}/\widehat{\ideal{m}}\cong A/\ideal{m}$なので，$\widehat{\ideal{m}}$は極大イデアルである．また，$\widehat{\ideal{m}}'$を$\widehat{A}$の別の極大イデアルとすると，\ref{lem:完備化に関してのもろもろの補題}(iv)より$\widehat{\ideal{m}}$は$\widehat{A}$のJacobson根基に含まれ，定義より$\widehat{\ideal{m}}\subset\widehat{\ideal{m}}'$がわかる．よって$\widehat{\ideal{m}}=\widehat{\ideal{m}}'$であり，局所環である．
 \end{proof}
 
+また，このときNoether局所環の$\widehat{A}$が$A$上忠実平坦であることを証明しておく．
+
+\begin{prop}\label{prop:完備化は忠実平坦}
+	$(A,\ideal{m})$をNoether局所環とする．このとき$\widehat{A}$は$A$上忠実平坦である．
+\end{prop}
+
+\begin{proof}
+	\ref{cor:完備家は平坦}より$\widehat{A}$は平坦$A$加群で，また\ref{lem:完備化に関してのもろもろの補題}から$\ideal{m}\widehat{A}=\widehat{\ideal{m}}\neq 0$なので\ref{prop:忠実平坦の言い換え}から$\widehat{A}$は忠実平坦である．
+\end{proof}
 環$A$とそのイデアル$I$による完備化への自然な写像$M\to\widehat{M}$は，一般に単射とは限らず，それは$\bigcap I^nM$により決定されるのだった．その構造について（条件付きではあるが）次のKrullの交叉定理が知られている．
 
 \begin{thm}[Krullの交叉定理]\index{#Krullのこうさていり@Krullの交叉定理}
@@ -366,12 +379,12 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 \end{thm}
 
 \begin{proof}
-	Artin--Reesの補題（\ref{prop:Artin--Reesの補題}）より，十分大きな$n$について$I^n M\cap L=I^{n-k}(I^kM\cap L)$となる$k\geq0$をとることができる．ここで，構成から$I^n M\cap L=L$であるので$L=IL$である．よって，中山の補題（\ref{thm:NAK}）からある$a\in I$が存在して，$(1-a)L=0$である．
+	Artin--Reesの補題（\ref{prop:Artin--Reesの補題}）より，十分大きな$n$について$I^n M\cap L=I^{n-k}(I^kM\cap L)$となる$k\geq0$をとることができる．ここで，構成から$I^n M\cap L=L$であるので$L=IL$である．よって，中山の補題からある$a\in I$が存在して，$(1-a)L=0$である．
 \end{proof}
 
 この定理から多くの重要な系が得られる．
 
-\begin{cor}
+\begin{cor}\label{cor:Noetherならbigcap I^n=0}
 	$A$をNoether整域とし，$I\neq A$をイデアルとすると，$\bigcap I^n=0$である．
 \end{cor}
 
@@ -388,11 +401,11 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 
 \begin{defi}[随伴次数環]\index{ずいはんじすうかん@随伴次数環}\index{ずいはんかぐん@随伴加群}\label{defi:随伴次数環}
 	環$A$とそのイデアル$I$，$A$加群$M$とその$I$フィルター$\{M_n\}$を考える．このとき；
-	\[G(A)(=G_I(A))\coloneq\bigoplus_{n\geq0}I^n/I^{n+1}，\quad G(M)\coloneq\bigoplus_{n\geq0}M_n/M_{n+1}\]
-	をそれぞれ$I$に関する$A$の\textbf{随伴次数環}(associated graded ring)，$M$の\textbf{随伴}$G(A)$\textbf{加群}(associatred graded $G(A)$-module)という．
+	\[G_I(A)\coloneq\bigoplus_{n\geq0}I^n/I^{n+1}，\quad G(M)\coloneq\bigoplus_{n\geq0}M_n/M_{n+1}\]
+	をそれぞれ$I$に関する$A$の\textbf{随伴次数環(associated graded ring)}，$M$の\textbf{随伴}$G_I(A)$\textbf{加群(associatred graded $G_I(A)$-module)}という．
 \end{defi}
 
-積は次のように定義する．$x_n\in I^n$について，$\bar{x_n}$を$I^n/I^{n+1}$における像とする．$\bar{x_n}\cdot\bar{x_m}$を，$x_nx_m\in I^{n+m}$の$I^{n+m}/I^{n+m+1}$の像と定義すると，これは代表元のとり方によらない．作用についても同様に考えると，この演算のもとでこれらは斉次成分を$I^n/I^{n+1},M_n/M_{n+1}$としてもつ次数付き環，加群になる．
+よく省略して$G(A)$とかかれる．積は次のように定義しよう．$a_n\in I^n$について，$\bar{a_n}$を$I^n/I^{n+1}$における像とする．$\bar{a_n}\cdot\bar{a_m}$を，$a_na_m\in I^{n+m}$の$I^{n+m}/I^{n+m+1}$の像と定義すると，これは代表元のとり方によらない．作用についても同様に考えると，この演算のもとでこれらは斉次成分を$I^n/I^{n+1},M_n/M_{n+1}$としてもつ次数付き環，加群になる．
 
 \begin{prop}\label{prop:G(hat{A})はNoether}
 	$A$をNoether，$I$を$A$のイデアルとする．このとき；
@@ -405,7 +418,7 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 
 \begin{proof}
 	\begin{sakura}
-		\item $A$はNoetherなので，$I=(x_1,\dots, x_n)$とできる．$G(A)$の$0$次斉次成分は$A/I$であり，これはNoetherである．$x_i$の$I/I^2$における像を$\bar{x_i}$とすれば$G(A)=A/I[\bar{x_1},\dots,\bar{x_n}]$であり，Hilbertの基底定理から$G(A)$はNoether．
+		\item $A$はNoetherなので，$I=(a_1,\dots, a_n)$とできる．$G(A)$の$0$次斉次成分は$A/I$であり，これはNoetherである．$a_i$の$I/I^2$における像を$\bar{a_i}$とすれば$G(A)=A/I[\bar{a_1},\dots,\bar{a_n}]$であり，Hilbertの基底定理から$G(A)$はNoether．
 		
 		\item $I^n/I^{n+1}\cong\widehat{I}^n/\widehat{I}^{n+1}$であったことから従う．
 	\end{sakura}
@@ -416,10 +429,10 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 \end{prop}
 
 \begin{proof}
-	$\{M_n\}$が安定しているので，ある$n_0$が存在して，任意の$n\geq0$について$M_{n_0+n}=I^nM_{n_0}$である．よって$G(M)=\middleoplus_{n\leq n_0}M_n/M_{n+1}$であり，各斉次成分はNoetherなので，$G(M)$はNoetherである．
+	$\{M_n\}$が安定しているので，ある$n_0$が存在して，任意の$n\geq0$について$M_{n_0+n}=I^nM_{n_0}$である．よって$G(M)=\bigoplus_{n\leq n_0}M_n/M_{n+1}$であり，各斉次成分はNoetherなので，$G(M)$はNoetherである．
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{prop:完備な環上の加群の有限生成性}
 	環$A$とそのイデアル$I$，$A$加群$M$と$I$フィルター$\{M_n\}$を考える．$A$が$I$進位相について完備であり，$\bigcap M_n=0$がなりたち（すなわち$M$はHausdorff），$G(M)$が有限生成$G(A)$加群ならば$M$は有限生成$A$加群である．
 \end{prop}
 
@@ -440,7 +453,7 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 \end{proof}
 
 \begin{cor}\label{cor:G(M)がNoetherならMもNoether}
-	環$A$とそのイデアル$I$，$A$加群$M$と$I$フィルター$\{M_n\}$に対して，$A$は$I$進完備で$\bigcap M_n=0$が成り立つとする．このとき$G(M)$がNoether$G(A)$加群ならば$M$はNoether$A$加群である．
+	環$A$とそのイデアル$I$，$A$加群$M$と$I$フィルター$\{M_n\}$に対して，$A$は$I$進完備で$\bigcap M_n=0$が成り立つとする．このとき$G(M)$がNoether $G(A)$加群ならば$M$はNoether $A$加群である．
 \end{cor}
 
 \begin{proof}
@@ -453,4 +466,24 @@ Hilbertの基底定理より，$A$がNoetherなら$R_A(I)$もNoetherである．
 
 \begin{proof}
 	$\widehat{A}$の$\widehat{I}$進位相を考える．	$\widehat{A}$は完備なので$\bigcap \widehat{I}^n\widehat{A}=0$であり，また\ref{prop:G(hat{A})はNoether}より$G(\widehat{A})$はNoetherだから\ref{cor:G(M)がNoetherならMもNoether}より$\widehat{A}$はNoetherである．
+\end{proof}
+
+この節の最後に，完備な環上の加群の有限生成性について随伴次数環を使ったもの（\ref{prop:完備な環上の加群の有限生成性}）とは異なる方法を紹介しておこう．
+
+\begin{prop}\label{prop:完備な環上の加群の有限生成性without随伴次数環}
+	$A$を環とし，$I$を$A$が$I$進位相で完備であるような$A$のイデアルとする．$A$加群$M$について$\bigcap I^n M=0$であって，$M/IM$が有限生成$A/I$加群ならば$M$は有限生成$A$加群である．
+\end{prop}
+
+\begin{proof}
+	$u_1,\dots,u_r\in M$を，その$M/IM$への像が$A/I$加群として$M/IM$を生成しているとする．このとき$M=(u_1,\dots,u_r)+IM$とかけ；
+	\[M=(u_1,\dots,u_r)+I((u_1,\dots, u_r)+IM)=(u_1,\dots,u_r)+I^2M\]
+	であるので，任意の$n>0$に対して$M=(u_1,\dots,u_r)+I^nM$である．ここで任意の$x\in M$に対して$x=\sum a_{i,0}u_i+x_1~(x_1\in IM)$とかき；
+	\[x_1=\sum a_{i,1}u_i+x_2~(a_{i,1}\in I,~x_2\in I^2M)\]
+	のようにして$a_{i,j}\in I^j,~x_j\in I^jM$をとると，$\sum_{j\geq 0} a_{i,j}$は$A$で収束するので，それを$b_i$とおくと；
+	\[\begin{aligned}
+		x&=\sum a_{i,0}u_i+x_1\\
+		&=\sum (a_{i,0}+a_{i,1})u_i+x_2\\
+		&=\cdots
+	\end{aligned}\]
+	であるので，$x-\sum b_iu_i\in\bigcap I^n M=0$であるから$M$は$u_i$によって生成される．
 \end{proof}

@@ -1,11 +1,19 @@
+%
+% +++
+% latex = "uplatex"
+% bibtex = "upbibtex"
+% +++
+\RequirePackage{plautopatch}
+\RequirePackage{exppl2e}
 \documentclass[autodetect-engine,dvi=dvipdfmx,ja=standard,japaram={units}]{bxjsarticle} %%%every thing OK!  
 %\setpagelayout{showframe}	%%%margin可視化
 \usepackage{fancyhdr}
 \usepackage{graphicx,float}
 \usepackage{tikz,tikz-cd}
+\usetikzlibrary{arrows}
 \usepackage[hyperfigures]{hyperref}
-\usepackage[links]{askw}
-\input{adjustmentforme}
+\usepackage{askw}
+\usepackage{adjustmentforme}
 \usepackage{mathrsfs}
 \usepackage{makeidx}
 \usepackage{masyufont}
@@ -19,22 +27,34 @@
 \else
 	\usepackage{newtxtext,newtxmath}
 	\masyufont{BIZUD}
-	
 \fi
 \usepackage{manfnt}
 \newenvironment{tightcurve}{%
 	\par\dbend\vspace*{1zh}\par
 }{%
-	\par\hspace*{\fill}\dbend\vspace*{1zh}\par
+	\interlinepenalty=10000
+	\newline\hspace*{\fill}\dbend\vspace*{1zh}
+	\par
 }
-\setmytitle{author={安藤 遼哉（@ryoya9826）}}
+\setmytitle{author={安藤 遼哉（@Reincarnatorsan）}}
 \begin{document}
-	
 	\nocite{*}
 	\mytitle{可換環論}
 	\newpage
 	\part*{はじめに}
-	代数幾何学を学ぶには，多様な前提知識が必要になる．特に可換環論，スキーム論，複素多様体（Riemann面）論が大切である．そこで，筆者のこれらの分野の学習ノートという形も兼ねて各分野についてのPDFを作成することにした．これはそのうち可換環論についての分冊である．とはいえ，最低限の基礎的なこと，環の定義などを圧縮したものを第0章として，またテンソル積や中山の補題などについてを第１章にまとめておくことにする．\textbf{また，このノートでは環といえば単位元を持つ可換環のこととする．}
+可換環論とは，大雑把に言えば可換な２つの演算，加法と乗法を備えた集合についての理論である．これらはもともと整数全体の集合$\Z$の一般化として生み出され，Kummer, Dedekindにより素因数分解の一般化としてイデアルが導入された．その後，多項式全体のなす多項式環に関する研究が進行するとともに，1900年以前は個別の環について計算することが主な研究になっていた．というのは当時の主なテーマの１つに不変式環の有限性があったのであるが，当時は各群の作用について個別に計算する以外に有効な手法を人々は有していなかった．そこに巨人Hilbertが登場し，いまの言葉を使えばNoether次数付き環の理論を駆使して，一度に多数の環に対して有限性を判定するという結果を与えた．この手法は当時から見ればあまりに抽象的であったため，「これは数学ではなく神学だ」とも評されていた．しかしながらこのような抽象的な手法が有効であることが認められるとともに，我が国では園正造，諸外国ではNoether, Krull, Macaulay, Cohenらによって可換環論は抽象化への道を歩むことになる（これこそが可換環論の始まりとみる研究者も多い）．その後はZariskiや永田雅宜らによって代数幾何学と可換環論の間に深いつながりがあることが示され，代数幾何的な視点からの研究が盛んになってゆく．代数幾何学で扱われる環の多く，または初等的な例はNoether環，特に体上有限生成代数であったこと，またイデアルの有限性からくる扱いやすさもあり，可換環論における主要な興味の対象はNoether環にあった．そして1950年代，GrothendieckやSerreといった巨人たちにより可換環論にホモロジー代数が導入され，\cite{Serre1956}は当時の難問であった「正則局所環の素イデアルによる局所化はまた正則か？」という問題をホモロジー代数を駆使して見事に解決し理論の有効性を自ら示した．その後はBass, Auslander, Buchsbaum らの活躍によりホモロジカルな手法による研究が可換環論の主流な分野へと成長してゆく．
+
+そしてホモロジカル予想と呼ばれる一連の予想が1960年代から提唱され始め，\cite{Hochster1975}によりこれを包括するbig CM予想が提唱された（ほとんどのホモロジカル予想はbig CM予想から従う）．CMとはCohen--Macaulayの略であるが，\cite{Hochster1991}が\quo{the Cohen-Macaulay condition (possibly on the local rings of a variety) is just what is needed to make the theory work.}と述べている通り，CM性は非常にありがたい性質であって，環が与えられたとき「その環はCMか？」という問題を真っ先に考えることが多い．環がCMでないときは，次の問題もよく考えられていた．
+\begin{prob} 
+	$(A,\ideal{m})$をNoether局所環とする．$A$代数$B$であって，$B\neq\ideal{m}B$でありかつ，任意の$A$の巴系$a_1,\dots,a_d$に対して$a_1,\dots,a_d$を$B$正則列とするようなものが存在するか？
+\end{prob}
+	
+このような$B$はbig CM代数と呼ばれる．この$B$を$A$加群$M$としたものがbig CM予想である．一般にホモロジカル予想は局所環についての問題ということができ，局所環は等標数と呼ばれる場合と混標数と呼ばれる場合の２つに別れていることを注意しておく．\cite{Hochster1983}は等標数のBig CM予想を解決し，そして「正標数の環ではFrobenius写像の解析が微積分の代用となる」という問題意識のもと，\cite{Hochster1990}は等標数において密着閉包という理論を提唱した．これにより等標数のホモロジカル予想の証明が簡略化され，約20年もの間ホモロジカルな手法による可換環論の間で一大旋風を巻き起こした．混標数の場合に\quo{密着閉包}を定義することでBig CM予想を完全に解決することが期待され（Hochsterの夢），\cite{Heitmann2002}, \cite{Hochster2002}
+	はその方針で３次元以下のbig CM予想を解決したが，一般の解決には至らなかった．最終的にbig CM予想を解決したのはScholzeによるパーフェクトイド代数で，\cite{Andre2018-1,Andre2018-2}はパーフェクトイド代数とAlmost ring theoryを駆使することによってbig CM予想を肯定的に解決した．これによってホモロジカル予想はその大半が解決され，またパーフェクトイド代数は混標数の場合に非常に強力な理論であると見られている．実際Ma, Schwede, \v{C}esnavi\v{c}ius らによって混標数の場合のみ未解決であった問題がパーフェクトイド代数によって次々と解決されてきている．このようにNoether局所環について非常に深い理論が構築されてきたのである．
+
+これまでに環論は表現論，代数幾何学と相互に関連して発展してきたため，応用先の要請と扱いやすさの両方の観点からNoether性に絞った研究が多かった．そもそもCM性などの概念は素朴にはNoether環のみに考えられる定義であったが，1990年代からGlaz, Anderson, Hamilton, Marley らによって，非Noetherの場合にもCM性の類似が求められてきた．またNoether環の場合に成り立つ結果の一般化（例えば\cite{Schenzel2003}は，Noether環では局所コホモロジーと\v{C}echコホモロジーが一致するという事実の非Noether環への一般化を与えた）なども研究されてきている．いま現在非Noether環についての深い理論と解決すべき大きな問題があるとは言えないが，筆者は今後数論幾何などの文脈からも非Noether環の状況を明らかにすることが要請されると考えている．
+
+本ノートでは，筆者が勉強した限りの可換環論とその周辺分野について，これまでの教科書にない視点を少しでも紹介しながらまとめることができればよいと思っている．筆者の力不足もあり，ホモロジカル予想の深淵に立ち入るために必要な密着閉包などの概念が未だにまとめられておらず，上で紹介したBig CM予想などについて未だ解説できていないのが残念である．\textbf{このノートでは特に断らない限り環といえば単位元を持つ可換環のこととする．}
 	
 	\hspace*{\fill}CC-BY-NC-SAのもとに公開します．
 	{\large
@@ -45,15 +65,14 @@
 	
 	\hspace*{\fill}最終更新日~\dots~\today
 	
-	
-	
+
 	\part*{記号}
-	
+
 	\symlist{$\N$}{自然数全体の集合（本書では$0$を含む）．}
 	\symlist{$\Z,\Q,\R,\Co$}{それぞれ整数，有理数，実数，複素数全体の集合．}
-	\symlist{$\Z_+$}{正の整数全体の集合．$\Q,\R$などに対しても同様．}
+	\symlist{$\Z_+,\Q_+,\R_+$}{それぞれ正の整数，正有理数，正の実数全体の集合．}
 	\symlist{$\#A$}{集合$A$に対し，$A$の元の個数またはその濃度．}
-	\symlist{$\subset$}{本書では等号の可能性を除外しない．真の包含関係は$\subsetneq$を用いる．}
+	\symlist{$\subset$}{本書では包含は等号の可能性を除外しない．真の包含関係は$\subsetneq$を用いる．}
 	\symlist{$f:A\twoheadrightarrow B$}{$f$が全射であること．}
 	\symlist{$f:A\hookrightarrow B$}{$f$が単射であること．}
 	
@@ -63,29 +82,33 @@
 	
 	\input{ring0} %環の基礎
 	\input{ring1} %準備
-	\input{ring2} %Noether
+	\input{ring2} %Noether性
 	\input{ring3} %整拡大
 	\input{ring4} %完備化
 	\input{ring5} %次元論
 	\input{ring6} %Homology代数
-	\input{ring7} %Homology代数的手法
-%	\input{ring8} %local cohomology
+	\input{ring7} %Serre's thm
+	\input{ring8} %Gorenstein homology
+	\input{ring9} %Local cohomology
+	\input{ring10} %UFD?
+	\input{ring11} %Krull--Schmidt圏とか
+	\input{ring_temp} %寄せ集め.
 	
-	
-	\def\prepartname{付録}
-	\def\postpartname{}
+	\def\prepartname{付録}%
+	\def\postpartname{}%
 	\thepartchange
-	\input{ringApe1} %例
-	\input{ringApe2} %圏
-%	\input{ringApe3} 
-	\input{ring@temp}
+	\input{ringApe1} %圏
+	\input{ringApe2} %例
+%	\input{ringApe3}
 	
-	\addcontentsline{toc}{part}{索引}%
+	\clearpage
+	\phantomsection 
+	\addcontentsline{toc}{part}{索引}
 	\printindex
 	
-	\newpage
-	\bibliographystyle{askw-jecon-no-sort} %%hyperref，natbib必須
-	\addcontentsline{toc}{part}{参考文献} %bookのときは切る
+	\clearpage
+	\bibliographystyle{ua-jecon} %%hyperref，natbib必須
+	\phantomsection \addcontentsline{toc}{part}{参考文献}
 	\bibliography{ring}
 	
 \end{document}
